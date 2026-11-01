@@ -37,6 +37,11 @@ jobs:
           repository: scarp-lang/scarp
           ref: afe8b5380c9d6c4774162e51c6c9bc8b90901671
           path: .compiler
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install TypeScript automation dependencies
+        run: npm install --no-audit --no-fund
       - name: Verify checked out compiler commit
         run: test "$(git -C .compiler rev-parse HEAD)" = "afe8b5380c9d6c4774162e51c6c9bc8b90901671"
       - name: Check pinned fixture sources and outputs

@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 const scarpGrammar = {
   name: 'scarp',
   scopeName: 'source.scarp',
+  repository: {}, // required by Shiki's typed TextMate grammar registration
   patterns: [
     { name: 'comment.line.double-slash.scarp', match: '//.*$' },
     { name: 'string.quoted.double.scarp', begin: '"', end: '"', patterns: [
