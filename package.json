@@ -8,15 +8,21 @@
     "docs:dev": "vitepress dev docs --host 127.0.0.1",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "check:docs": "node scripts/check-docs.mjs",
-    "check": "npm run check:docs && npm run check:fixtures && npm run check:i18n && npm run docs:build",
-    "check:fixtures": "node scripts/check-fixtures.mjs",
-    "test:compiler": "node scripts/test-compiler.mjs",
-    "check:evidence": "node scripts/check-evidence.mjs",
-    "check:i18n": "node scripts/check-i18n.mjs"
+    "typecheck": "vue-tsc --noEmit -p tsconfig.json",
+    "check:tooling": "tsx scripts/check-tooling.ts",
+    "check:docs": "tsx scripts/check-docs.ts",
+    "check:i18n": "tsx scripts/check-i18n.ts",
+    "check:fixtures": "tsx scripts/check-fixtures.ts",
+    "check:evidence": "tsx scripts/check-evidence.ts",
+    "test:compiler": "tsx scripts/test-compiler.ts",
+    "check": "npm run typecheck && npm run check:tooling && npm run check:docs && npm run check:i18n && npm run check:fixtures && npm run docs:build"
   },
   "devDependencies": {
-    "vitepress": "1.6.4"
+    "vitepress": "1.6.4",
+    "@types/node": "22.15.30",
+    "typescript": "5.8.3",
+    "tsx": "4.20.5",
+    "vue-tsc": "2.2.12"
   },
   "engines": {
     "node": ">=20.19.0"
