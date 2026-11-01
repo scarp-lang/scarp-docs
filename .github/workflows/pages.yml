@@ -25,6 +25,8 @@ jobs:
         run: npm run check:docs && npm run check:fixtures
       - name: Build static website
         run: npm run docs:build
+      - name: Verify generated bilingual HTML and SEO metadata
+        run: npm run check:site-build
       - uses: actions/upload-pages-artifact@v3
         with:
           path: docs/.vitepress/dist
