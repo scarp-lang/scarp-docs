@@ -1,0 +1,60 @@
+{
+  "compilerRepository": "scarp-lang/scarp",
+  "compilerRef": "v0.0.5-alpha.1",
+  "compilerCommit": "afe8b5380c9d6c4774162e51c6c9bc8b90901671",
+  "cases": [
+    {
+      "name": "hello",
+      "source": "hello.srp",
+      "expected": "hello.stdout"
+    },
+    {
+      "name": "functions",
+      "source": "functions.srp",
+      "expected": "functions.stdout"
+    },
+    {
+      "name": "loops",
+      "source": "loops.srp",
+      "expected": "loops.stdout"
+    },
+    {
+      "name": "repeat",
+      "source": "repeat.srp",
+      "expected": "repeat.stdout"
+    },
+    {
+      "name": "output",
+      "source": "output.srp",
+      "expected": "output.stdout"
+    },
+    {
+      "name": "vectors",
+      "source": "vectors.srp",
+      "expected": "vectors.stdout"
+    },
+    {
+      "name": "modules",
+      "source": "module_demo.srp",
+      "expected": "module_demo.stdout"
+    }
+  ],
+  "upstreamGitBlobs": {
+    "functions.srp": "221502cb333f3fc402c7db3fc864c86157845b18",
+    "functions.stdout": "92f018f8f101dacedc3ed158167ee44cee086c6c",
+    "hello.srp": "27f238aa93444b2b06505c73bcfd4e48b7e6f107",
+    "hello.stdout": "b3db9f161912933c3aaa91b998d734b03abaecd1",
+    "loops.srp": "118d0285f4457f11649a87072377f4be69777053",
+    "loops.stdout": "48082f72f087ce7e6fa75b9c41d7387daecd447b",
+    "module_demo.srp": "ca2b9da821743be7ba890413b2d53701d8e5e9df",
+    "module_demo.stdout": "a53feed4eeb8d23f4311fadd319e3f77d4b25cc6",
+    "modules/linear.srp": "474eb2cd6e58afbfd04e39ba519faa1ad024e595",
+    "modules/settings.srp": "8bcb50a0c459c16ede7a7748e5f60fe0443e1bc0",
+    "output.srp": "9f080ec27a124fd09d817da843a795af8bb04f5f",
+    "output.stdout": "e3ae143631b9fb78bb91c5dc5a1d44f2fadc53a9",
+    "repeat.srp": "d19b37f0c7454e64f7c8a093782c01c8cdc05711",
+    "repeat.stdout": "9807191ab0a725715beff8f74c1b49fe8dd17e59",
+    "vectors.srp": "cad3456d6c2ba83a3199e726a36de84d7ed5aade",
+    "vectors.stdout": "e566db6eb486a97d50c41d48770e1e44972a0bb2"
+  }
+}

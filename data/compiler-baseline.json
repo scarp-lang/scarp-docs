@@ -1,0 +1,25 @@
+{
+  "repository": "scarp-lang/scarp",
+  "release": "v0.0.5-alpha.1",
+  "published": "2026-11-01",
+  "releaseSourceCommit": "afe8b5380c9d6c4774162e51c6c9bc8b90901671",
+  "inspectedMainCommit": "1d3b69a79bb0f656b4da3517560ce59e1e41f3bc",
+  "documentationStatus": "experimental-prerelease",
+  "verifiedFeatures": [
+    "bind-and-var",
+    "checked-integer-and-finite-float",
+    "strings-and-booleans",
+    "branches-and-bounded-loops",
+    "typed-funcra-functions-and-contracts",
+    "vectors-and-tiles",
+    "relative-source-modules",
+    "run-check-tokens-cli"
+  ],
+  "unavailableFeatures": [
+    "general-purpose-standard-library",
+    "package-manager",
+    "native-code-generation",
+    "user-defined-types",
+    "closures-and-generics"
+  ]
+}
