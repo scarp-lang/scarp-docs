@@ -12,18 +12,25 @@ Official VitePress documentation for the experimental [Scarp Programming Languag
 
 ## Development
 
-Requires Node.js 20.19+ and npm. From the root:
+Requires Node.js 20.19+ and npm. Documentation automation is written in **TypeScript** using `tsx`; the site is VitePress/Vue with Markdown source pages. From the root:
 
 ~~~sh
 npm install
 npm run docs:dev       # local VitePress server
+npm run typecheck      # strict TypeScript / Vue static analysis
+npm run check:tooling  # enforce TS-only authored tooling
 npm run check:docs     # internal pages, links, content policy, navigation
 npm run check:i18n     # all pages have Hindi equivalents and matching code snippets
+npm run check          # typecheck, content, i18n, fixtures, production build
 npm run docs:build     # static production build
 npm run docs:preview   # preview the build
 ~~~
 
 Pages are under `docs/` and are written in Markdown. Navigation, theme, code grammar, and canonical `/scarp-docs/` base path are configured in `docs/.vitepress/config.mts`. Small style overrides are in `docs/.vitepress/theme/`.
+
+## TypeScript-first architecture
+
+All project-maintained **executable tooling** under `scripts/` uses `.ts` files: navigation validation, Hindi parity, pinned compiler evidence, fixture checks, compiler smoke tests, and tooling rules. TypeScript is checked in CI with `vue-tsc`, including the VitePress config, Vue components and client scripts. This is a **TypeScript-first application**, not a claim that the whole repository can be 100% TS files: documentation stays in Markdown, Vue SFC templates and CSS remain for presentation, and `.srp` fixtures remain actual Scarp source. No authored `.js`/`.mjs` tooling is required.
 
 ## Source-of-truth policy
 

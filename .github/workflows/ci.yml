@@ -15,6 +15,10 @@ jobs:
           node-version: '22'
       - name: Install dependencies
         run: npm install --no-audit --no-fund
+      - name: Type-check TypeScript and Vue sources
+        run: npm run typecheck
+      - name: Ensure documentation tooling uses TypeScript
+        run: npm run check:tooling
       - name: Check pages and local links
         run: npm run check:docs
       - name: Check Hindi translation parity
