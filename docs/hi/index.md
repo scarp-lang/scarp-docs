@@ -1,0 +1,42 @@
+---
+layout: home
+
+title: Scarp प्रोग्रामिंग लैंग्वेज
+titleTemplate: आधिकारिक हिन्दी दस्तावेज़
+
+hero:
+  name: Scarp
+  text: सीमाओं से आगे बनाएँ।
+  tagline: Scarp के प्रकाशित compiler पर आधारित सत्यापित मार्गदर्शिकाएँ, अब हिन्दी में। यह भाषा अभी प्रयोगात्मक है।
+  image:
+    src: https://avatars.githubusercontent.com/u/350973173?v=4
+    alt: Scarp का आधिकारिक लोगो
+  actions:
+    - theme: brand
+      text: शुरुआत करें
+      link: /hi/guide/installation
+    - theme: alt
+      text: भाषा संदर्भ
+      link: /hi/language/overview
+    - theme: alt
+      text: GitHub पर स्रोत
+      link: https://github.com/scarp-lang/scarp
+
+features:
+  - title: हिन्दी में पूरी दस्तावेज़ संरचना
+    details: स्थापना, वेरिएबल, फ़ंक्शन, मॉड्यूल, मेमोरी और CLI को हिन्दी में समझें।
+    link: /hi/guide/introduction
+  - title: वास्तविक compiler प्रमाण
+    details: v0.0.5-alpha.1 के कोड और परीक्षण पर आधारित जानकारी।
+    link: /hi/reference/evidence
+  - title: सीखने के उदाहरण
+    details: लूप, फ़ंक्शन और module-based प्रोग्राम चरणबद्ध सीखें।
+    link: /hi/examples/
+  - title: Scarp समुदाय
+    details: आधिकारिक GitHub, DEV, Reddit और अन्य सार्वजनिक चैनल।
+    link: /hi/community/social
+---
+
+::: warning प्रयोगात्मक रिलीज़
+Scarp का v0.0.5-alpha.1 **स्थिर भाषा विनिर्देश नहीं** है। Syntax और API बदल सकते हैं। [वर्तमान फ़ीचर स्थिति](/hi/reference/status) पढ़ें।
+:::

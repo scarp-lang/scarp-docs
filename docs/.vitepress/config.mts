@@ -26,6 +26,73 @@ export default defineConfig({
   title: 'Scarp',
   description: 'The official documentation for the experimental Scarp Programming Language',
   lang: 'en-US',
+  locales: {
+    root: { label: 'English', lang: 'en-US' },
+    hi: {
+      label: 'हिन्दी',
+      lang: 'hi-IN',
+      link: '/hi/',
+      title: 'Scarp दस्तावेज़',
+      description: 'Scarp प्रोग्रामिंग लैंग्वेज के आधिकारिक हिन्दी दस्तावेज़',
+      themeConfig: {
+        outline: { label: 'इस पृष्ठ पर' },
+        docFooter: { prev: 'पिछला', next: 'अगला' },
+        lastUpdated: { text: 'अंतिम अपडेट' },
+        nav: [
+          { text: 'शुरुआत', link: '/hi/guide/installation' },
+          { text: 'भाषा', link: '/hi/language/overview' },
+          { text: 'CLI', link: '/hi/tooling/cli' },
+          { text: 'उदाहरण', link: '/hi/examples/' },
+          { text: 'समुदाय', items: [
+            { text: 'आधिकारिक लिंक', link: '/hi/community/social' },
+            { text: 'योगदान', link: '/hi/community/contributing' },
+            { text: 'DEV Community', link: 'https://dev.to/scarplang' },
+            { text: 'Reddit', link: 'https://www.reddit.com/r/ScarpLang/' }
+          ] },
+          { text: 'v0.0.5-alpha.1', link: '/hi/reference/status' }
+        ],
+        sidebar: [
+          { text: 'स्वागत', items: [
+            { text: 'परिचय', link: '/hi/guide/introduction' },
+            { text: 'इंस्टॉलेशन', link: '/hi/guide/installation' },
+            { text: 'पहला प्रोग्राम', link: '/hi/guide/first-program' },
+            { text: 'लूप ट्यूटोरियल', link: '/hi/tutorials/repeat-and-loops' },
+            { text: 'मॉड्यूल ट्यूटोरियल', link: '/hi/tutorials/modules-walkthrough' }
+          ] },
+          { text: 'भाषा संदर्भ', items: [
+            { text: 'अवलोकन', link: '/hi/language/overview' },
+            { text: 'वेरिएबल और स्कोप', link: '/hi/language/variables' },
+            { text: 'डेटा प्रकार', link: '/hi/language/types' },
+            { text: 'ऑपरेटर', link: '/hi/language/operators' },
+            { text: 'कंट्रोल फ्लो', link: '/hi/language/control-flow' },
+            { text: 'फ़ंक्शन', link: '/hi/language/functions' },
+            { text: 'मॉड्यूल', link: '/hi/language/modules' },
+            { text: 'आउटपुट', link: '/hi/language/output' },
+            { text: 'मेमोरी', link: '/hi/language/memory' },
+            { text: 'वैक्टर और टाइल', link: '/hi/language/numerics' }
+          ] },
+          { text: 'टूलिंग और संदर्भ', items: [
+            { text: 'CLI', link: '/hi/tooling/cli' },
+            { text: 'समस्या निवारण', link: '/hi/tooling/troubleshooting' },
+            { text: 'फीचर स्थिति', link: '/hi/reference/status' },
+            { text: 'सत्यापन', link: '/hi/reference/evidence' },
+            { text: 'रनटाइम बजट', link: '/hi/reference/budgets' },
+            { text: 'त्रुटि कोड', link: '/hi/reference/diagnostics' },
+            { text: 'Built-ins', link: '/hi/reference/library' },
+            { text: 'सोर्स सुरक्षा', link: '/hi/reference/source-loading' },
+            { text: 'Rust embedding', link: '/hi/reference/rust-embedding' },
+            { text: 'Compatibility', link: '/hi/reference/compatibility' }
+          ] },
+          { text: 'उदाहरण और समुदाय', items: [
+            { text: 'उदाहरण', link: '/hi/examples/' },
+            { text: 'सोशल लिंक', link: '/hi/community/social' },
+            { text: 'योगदान करें', link: '/hi/community/contributing' },
+            { text: 'मेंटेनर सूची', link: '/hi/project/maintenance' }
+          ] }
+        ]
+      }
+    }
+  },
   base: '/scarp-docs/',
   cleanUrls: true,
   appearance: true,
