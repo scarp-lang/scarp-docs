@@ -7,7 +7,7 @@ const docs = resolve(root, 'docs')
 const config = resolve(docs, '.vitepress/config.mts')
 const checked = [resolve(root, 'README.md'), resolve(root, 'CONTRIBUTING.md')]
 
-function walk(folder) {
+function walk(folder: string): string[] {
   return readdirSync(folder).flatMap(name => {
     if (name.startsWith('.') || name === 'node_modules') return []
     const path = resolve(folder, name)
@@ -16,19 +16,19 @@ function walk(folder) {
 }
 
 checked.push(...walk(docs))
-const failures = []
+const failures: string[] = []
 let pageCount = 0
 let linkCount = 0
 let fenceCount = 0
 const configured = readFileSync(config, 'utf8')
-const baseline = JSON.parse(readFileSync(resolve(root, 'data/compiler-baseline.json'), 'utf8'))
+const baseline = JSON.parse(readFileSync(resolve(root, 'data/compiler-baseline.json'), 'utf8')) as { repository: string; release: string }
 const supportedFences = new Set(['scarp', 'rust', 'sh', 'bash', 'shell', 'text', 'json', 'ts', 'js', 'yaml'])
 
-function error(file, problem) {
+function error(file: string, problem: string): void {
   failures.push(`${relative(root, file)}: ${problem}`)
 }
 
-function withoutCode(text) {
+function withoutCode(text: string): string {
   let inside = false
   let marker = ''
   return text.split(/\r?\n/).map(line => {
@@ -50,7 +50,7 @@ function withoutCode(text) {
   }).join('\n')
 }
 
-function slugify(str) {
+function slugify(str: string): string {
   return str
     .toLowerCase()
     .replace(/<[^>]*>/g, '')
@@ -60,11 +60,11 @@ function slugify(str) {
     .replace(/\s+/g, '-')
 }
 
-function anchors(path) {
+function anchors(path: string): Set<string> {
   const raw = readFileSync(path, 'utf8')
   const headings = withoutCode(raw).split('\n').filter(line => /^#{1,6}\s+/.test(line))
-  const set = new Set()
-  const counts = new Map()
+  const set = new Set<string>()
+  const counts = new Map<string, number>()
   for (const line of headings) {
     const base = slugify(line.replace(/^#{1,6}\s+/, '').replace(/\s+#+$/, ''))
     const used = counts.get(base) || 0
@@ -74,7 +74,7 @@ function anchors(path) {
   return set
 }
 
-function resolveTarget(file, link) {
+function resolveTarget(file: string, link: string): void {
   let url
   try { url = decodeURI(link.trim()) } catch { error(file, `malformed link URI: ${link}`); return }
   if (/^(https?:\/\/|mailto:|tel:|#)/.test(url)) {

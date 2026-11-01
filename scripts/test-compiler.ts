@@ -4,17 +4,17 @@ import { fileURLToPath } from 'node:url'
 import { spawnSync } from 'node:child_process'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const { compilerRef, cases } = JSON.parse(readFileSync(resolve(root, 'conformance/manifest.json'), 'utf8'))
+const { compilerRef, cases } = JSON.parse(readFileSync(resolve(root, 'conformance/manifest.json'), 'utf8')) as { compilerRef: string; cases: Array<{name: string; source: string; expected: string}> }
 const binary = process.argv[2]
 if (!binary) {
-  console.error('Usage: node scripts/test-compiler.mjs <path-to-scarp-binary>')
+  console.error('Usage: npm run test:compiler -- <path-to-scarp-binary>')
   process.exit(2)
 }
 const exe = resolve(binary)
 const workdir = resolve(root, 'conformance/programs')
 let failed = 0
 
-function call(args) {
+function call(args: string[]) {
   return spawnSync(exe, args, { cwd: workdir, encoding: null, maxBuffer: 10 * 1024 * 1024, timeout: 30000 })
 }
 const version = call(['--version'])

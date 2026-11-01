@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs'
+import { readFileSync, readdirSync, existsSync } from 'node:fs'
 import { join, resolve, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -6,16 +6,9 @@ const root = resolve(fileURLToPath(new URL('..', import.meta.url)))
 const docs = join(root, 'docs')
 const hi = join(docs, 'hi')
 const config = readFileSync(join(docs, '.vitepress/config.mts'), 'utf8')
-const failures = []
-function pages(dir) {
-  return readdirSync(dir, { withFileTypes: true }).flatMap(item => {
-    const full = join(dir, item.name)
-    return item.isDirectory() ? item.name.startsWith('.') ? [] : pages(full)
-      : item.name.endsWith('.md') ? [relative(dir === hi ? hi : docs, full)] : []
-  })
-}
+const failures: string[] = []
 // Use a common root for recursion; do not change it for nested directories.
-function allMarkdown(base, current=base) {
+function allMarkdown(base: string, current = base): string[] {
   return readdirSync(current,{withFileTypes:true}).flatMap(item => {
     const full=join(current,item.name)
     return item.isDirectory() ? item.name.startsWith('.') ? [] : allMarkdown(base,full)
@@ -25,8 +18,8 @@ function allMarkdown(base, current=base) {
 const enPaths = allMarkdown(docs).filter(path => !path.startsWith('hi/'))
 const hiPaths = new Set(allMarkdown(hi))
 const devanagari = /[\u0900-\u097F]/g
-function codeBlocks(raw) {
-  const result=[]
+function codeBlocks(raw: string): string[] {
+  const result: string[] = []
   for (const match of raw.matchAll(/^([~`]{3,})[^\n]*\n([\s\S]*?)^\1\s*$/gm)) result.push(match[2].trim())
   return result
 }

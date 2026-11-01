@@ -4,13 +4,13 @@ import { resolve, dirname, relative, isAbsolute } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const baseline = JSON.parse(readFileSync(resolve(root, 'data/compiler-baseline.json'), 'utf8'))
-const manifest = JSON.parse(readFileSync(resolve(root, 'conformance/manifest.json'), 'utf8'))
+const baseline = JSON.parse(readFileSync(resolve(root, 'data/compiler-baseline.json'), 'utf8')) as { repository: string; release: string; releaseSourceCommit: string }
+const manifest = JSON.parse(readFileSync(resolve(root, 'conformance/manifest.json'), 'utf8')) as { compilerRepository: string; compilerRef: string; compilerCommit: string; cases: Array<{ name: string; source: string; expected: string }>; upstreamGitBlobs: Record<string, string> }
 const programs = resolve(root, 'conformance/programs')
-const names = new Set()
+const names = new Set<string>()
 
-function fail(message) { throw Error(`Conformance fixtures: ${message}`) }
-function safeFile(file) {
+function fail(message: string): never { throw Error(`Conformance fixtures: ${message}`) }
+function safeFile(file: string): string {
   if (typeof file !== 'string' || !file || isAbsolute(file)) fail(`invalid path ${file}`)
   const full = resolve(programs, file)
   const rel = relative(programs, full)
@@ -36,8 +36,8 @@ for (const entry of manifest.cases) {
 // provenance check offline, even on machines without the Rust toolchain.
 const expectedBlobs = manifest.upstreamGitBlobs
 if (!expectedBlobs || Object.keys(expectedBlobs).length < 16) fail('missing pinned upstream Git blob identifiers')
-const recordedFiles = new Set()
-function verifyBlobs(dir) {
+const recordedFiles = new Set<string>()
+function verifyBlobs(dir: string): void {
   for (const item of readdirSync(dir, { withFileTypes: true })) {
     const full = resolve(dir, item.name)
     if (item.isDirectory()) { verifyBlobs(full); continue }
@@ -59,7 +59,7 @@ if (process.argv[2]) {
   const upstream = resolve(process.argv[2])
   if (!existsSync(upstream) || !statSync(upstream).isDirectory()) fail(`missing compiler examples directory: ${upstream}`)
   let compared = 0
-  function compareDirectory(dir) {
+  function compareDirectory(dir: string): void {
     for (const item of readdirSync(dir, { withFileTypes: true })) {
       const local = resolve(dir, item.name)
       if (item.isDirectory()) { compareDirectory(local); continue }
