@@ -9,10 +9,11 @@
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "check:docs": "node scripts/check-docs.mjs",
-    "check": "npm run check:docs && npm run check:fixtures && npm run docs:build",
+    "check": "npm run check:docs && npm run check:fixtures && npm run check:i18n && npm run docs:build",
     "check:fixtures": "node scripts/check-fixtures.mjs",
     "test:compiler": "node scripts/test-compiler.mjs",
-    "check:evidence": "node scripts/check-evidence.mjs"
+    "check:evidence": "node scripts/check-evidence.mjs",
+    "check:i18n": "node scripts/check-i18n.mjs"
   },
   "devDependencies": {
     "vitepress": "1.6.4"

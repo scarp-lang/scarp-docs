@@ -17,6 +17,8 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Check pages and local links
         run: npm run check:docs
+      - name: Check Hindi translation parity
+        run: npm run check:i18n
       - name: Check verified example fixtures
         run: npm run check:fixtures
       - name: Build VitePress site

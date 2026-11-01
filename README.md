@@ -2,7 +2,9 @@
 
 Official VitePress documentation for the experimental [Scarp Programming Language](https://github.com/scarp-lang/scarp).
 
-**Website:** https://scarp-lang.github.io/scarp-docs/
+**Website (English):** https://scarp-lang.github.io/scarp-docs/
+
+**हिन्दी दस्तावेज़:** https://scarp-lang.github.io/scarp-docs/hi/
 
 **Compiler:** https://github.com/scarp-lang/scarp
 
@@ -16,6 +18,7 @@ Requires Node.js 20.19+ and npm. From the root:
 npm install
 npm run docs:dev       # local VitePress server
 npm run check:docs     # internal pages, links, content policy, navigation
+npm run check:i18n     # all pages have Hindi equivalents and matching code snippets
 npm run docs:build     # static production build
 npm run docs:preview   # preview the build
 ~~~
@@ -55,3 +58,7 @@ npm run test:compiler -- /absolute/path/to/scarp
 ```
 
 On GitHub Actions, the Documentation CI workflow checks out that commit independently, first byte-compares all fixtures to the tagged compiler examples, builds the Rust interpreter offline, and finally compares actual output byte-for-byte. This is deliberately separate from Markdown/VitePress validation, which does not prove a language snippet executes.
+
+## हिन्दी अनुवाद
+
+VitePress के language selector से English/Hindi बदलें। सभी documentation sections का Hindi संस्करण `docs/hi/` में है। यह self-hosted, reviewed Markdown content है; external translation API की आवश्यकता नहीं। नई compiler सुविधाओं के साथ दोनों भाषाओं के pages अपडेट करें।
