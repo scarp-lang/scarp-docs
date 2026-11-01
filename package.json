@@ -1,0 +1,23 @@
+{
+  "name": "@scarp-lang/docs",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Official documentation website for the Scarp Programming Language",
+  "scripts": {
+    "docs:dev": "vitepress dev docs --host 127.0.0.1",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "check:docs": "node scripts/check-docs.mjs",
+    "check": "npm run check:docs && npm run check:fixtures && npm run docs:build",
+    "check:fixtures": "node scripts/check-fixtures.mjs",
+    "test:compiler": "node scripts/test-compiler.mjs",
+    "check:evidence": "node scripts/check-evidence.mjs"
+  },
+  "devDependencies": {
+    "vitepress": "1.6.4"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  }
+}
