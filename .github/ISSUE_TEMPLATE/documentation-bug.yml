@@ -1,0 +1,32 @@
+name: Documentation correction
+description: Report an inaccurate, confusing, or broken Scarp documentation page
+labels: [documentation]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Documentation page URL
+      placeholder: https://scarp-lang.github.io/scarp-docs/language/variables
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What is incorrect or unclear?
+      description: Quote the smallest relevant sentence or example.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Scarp compiler version
+      placeholder: v0.0.5-alpha.1
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Expected behavior and compiler evidence
+      description: Include the matching compiler test, release note, output, or source link.
+    validations:
+      required: false

@@ -1,0 +1,43 @@
+name: Documentation CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Check pages and local links
+        run: npm run check:docs
+      - name: Check verified example fixtures
+        run: npm run check:fixtures
+      - name: Build VitePress site
+        run: npm run docs:build
+
+  compiler-conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: scarp-lang/scarp
+          ref: afe8b5380c9d6c4774162e51c6c9bc8b90901671
+          path: .compiler
+      - name: Verify checked out compiler commit
+        run: test "$(git -C .compiler rev-parse HEAD)" = "afe8b5380c9d6c4774162e51c6c9bc8b90901671"
+      - name: Check pinned fixture sources and outputs
+        run: npm run check:fixtures -- .compiler/examples
+      - name: Validate compiler-evidence links
+        run: npm run check:evidence -- .compiler
+      - name: Build released Scarp interpreter
+        run: cargo build --manifest-path .compiler/Cargo.toml --locked --offline
+      - name: Execute all documented conformance examples
+        run: npm run test:compiler -- .compiler/target/debug/scarp
