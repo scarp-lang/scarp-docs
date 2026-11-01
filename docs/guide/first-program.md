@@ -1,0 +1,59 @@
+# Your first Scarp program
+
+This tutorial targets **v0.0.5-alpha.1**. Confirm `scarp --version` before you begin.
+
+## Create a file
+
+Create `hello.srp` in a directory you control and save it as UTF-8:
+
+~~~scarp
+// hello.srp
+bind language = "Scarp";
+print("Hello from", language);
+print(1 + 2 * 3);
+~~~
+
+## Run the file
+
+~~~sh
+scarp run hello.srp
+~~~
+
+Expected stdout:
+
+~~~text
+Hello from Scarp
+7
+~~~
+
+From the compiler source checkout, use `cargo run -- run hello.srp` instead of an installed `scarp` command. The filename is resolved relative to the shell's working directory.
+
+## Check without output
+
+~~~sh
+scarp check hello.srp
+~~~
+
+On success this command is **silent**. It checks syntax, names, mutability, types, and the selected execution path. It does not simply parse source: reachable arithmetic and runtime-budget errors can still be reported. `tokens` is different—it only lists lexical tokens.
+
+~~~sh
+scarp tokens hello.srp
+~~~
+
+## Change a value
+
+~~~scarp
+var visits = 1;
+visits += 1;
+print("Visits:", visits);
+~~~
+
+`var` permits reassignment; `bind` does not. Scarp requires semicolons for these statements and does not implicitly convert strings into numeric operands. The `print` statement accepts comma-separated values.
+
+Next read [variables](/language/variables), [types](/language/types), and the [CLI reference](/tooling/cli).
+
+**Verified against:** [first-program tutorial](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/docs/tutorials/first-program.md), [output guide](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/docs/output.md).
+
+## Next: use a complete tested program
+
+Try the [loop tutorial](/tutorials/repeat-and-loops) or [modules walkthrough](/tutorials/modules-walkthrough). The documentation project's [conformance suite](https://github.com/scarp-lang/scarp-docs/tree/main/conformance) mirrors compiler-owned examples and checks their actual outputs when CI can build the published interpreter.
