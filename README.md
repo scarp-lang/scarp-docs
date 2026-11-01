@@ -21,7 +21,9 @@ npm run typecheck      # strict TypeScript / Vue static analysis
 npm run check:tooling  # enforce TS-only authored tooling
 npm run check:docs     # internal pages, links, content policy, navigation
 npm run check:i18n     # all pages have Hindi equivalents and matching code snippets
-npm run check          # typecheck, content, i18n, fixtures, production build
+npm run test:site-meta  # unit tests for bilingual canonical and hreflang URLs
+npm run check:site-build # inspect generated English/Hindi HTML after docs:build
+npm run check          # typecheck, content, i18n, fixtures, SEO and production build
 npm run docs:build     # static production build
 npm run docs:preview   # preview the build
 ~~~
@@ -37,6 +39,10 @@ All project-maintained **executable tooling** under `scripts/` uses `.ts` files:
 The compiler **repository is `scarp-lang/scarp`** (not `scarp-lang/scarp-lang`). Language facts are checked against compiler source, its executable tests, and its published documentation for v0.0.5-alpha.1. Each technical page links to the corresponding compiler reference. Status distinctions are described in [Feature status](docs/reference/status.md).
 
 A syntax proposal is *not* evidence that a feature ships. A future feature should remain marked **planned** until verified in a published compiler version. Documentation examples should be copied from or checked against compiler fixtures whenever possible.
+
+## Bilingual SEO and production quality gates
+
+The typed VitePress helper `docs/.vitepress/site-meta.ts` generates canonical URLs and reciprocal `hreflang` (`en`, `hi`, `x-default`) entries for each English/Hindi page. CI validates both the helpers and generated HTML **after** building VitePress. This catches wrong base paths, mismatched language metadata, missing output pages and incorrect Open Graph URLs rather than relying on source-text checks alone. A deployment is blocked when any source page is missing from the compiled site.
 
 ## Deployment
 

@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { pageSeoHead } from './site-meta'
 
 /** Scarp source-language grammar; deliberately limited to implemented syntax. */
 const scarpGrammar = {
@@ -99,6 +100,8 @@ export default defineConfig({
   cleanUrls: true,
   appearance: true,
   sitemap: { hostname: 'https://scarp-lang.github.io/scarp-docs/' },
+  // Absolute canonical and reciprocal language URLs for the static bilingual output.
+  transformHead: ({ page }) => pageSeoHead(page),
   head: [
     ['meta', { name: 'theme-color', content: '#2563eb' }],
     ['link', { rel: 'icon', href: 'https://avatars.githubusercontent.com/u/350973173?v=4' }]
