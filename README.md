@@ -36,6 +36,10 @@ CI validates links/content and builds VitePress on pull requests. The Pages work
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Please propose focused changes backed by compiler implementation or tests.
 
+## Official community channels
+
+The [community page](docs/community/social.md) lists Scarp's verified public GitHub, X, YouTube, Instagram, Threads, and Bluesky profiles, plus the public contact address. Navigation icons link directly to those channels. Do not add unverified social handles or link personal developer profiles as official Scarp accounts.
+
 ## Compiler-backed conformance checks
 
 The `conformance/` directory contains seven pinned source/output pairs copied from the released Scarp compiler examples. To verify fixture integrity locally (does not require Rust):

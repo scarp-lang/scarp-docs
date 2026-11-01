@@ -35,6 +35,9 @@ features:
   - title: Developer-friendly navigation
     details: Local search, code highlighting, accessible mobile navigation, and light/dark appearances.
     link: /guide/first-program
+  - title: Official Scarp community
+    details: Find the project's verified social channels, news, and ways to contribute.
+    link: /community/social
 ---
 
 ::: warning Experimental language
