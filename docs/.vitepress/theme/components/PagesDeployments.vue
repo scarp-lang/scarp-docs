@@ -1,47 +1,61 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
+import { useData } from 'vitepress'
+import { deploymentLabels, getSuccessfulRunCount, PAGES_HISTORY_URL } from '../lib/pages-api.ts'
 
-// Public, read-only GitHub Actions API. No secret token, browser tracking, or
-// fabricated static counter; failures leave a link to GitHub's source of truth.
+// Work only in the browser after mount: the static build never contacts GitHub.
+const { lang } = useData()
+const labels = computed(() => deploymentLabels(lang.value))
 const count = ref<number | null>(null)
 const pending = ref(true)
-const error = ref(false)
-const historyUrl = 'https://github.com/scarp-lang/scarp-docs/actions/workflows/pages.yml'
-const endpoint = 'https://api.github.com/repos/scarp-lang/scarp-docs/actions/workflows/pages.yml/runs?status=success&per_page=1'
+const failed = ref(false)
 
-onMounted(async () => {
+async function loadCount(): Promise<void> {
+  if (pending.value && count.value !== null) return
+  pending.value = true
+  failed.value = false
+  count.value = null
   try {
-    const response = await fetch(endpoint, { headers: { Accept: 'application/vnd.github+json' } })
-    if (!response.ok) throw new Error(`GitHub API response: ${response.status}`)
-    const data: unknown = await response.json()
-    if (typeof data !== 'object' || data === null || !('total_count' in data)) throw new Error('Missing count')
-    const total = (data as { total_count: unknown }).total_count
-    if (typeof total !== 'number' || !Number.isSafeInteger(total) || total < 0) throw new Error('Invalid count')
-    count.value = total
+    count.value = await getSuccessfulRunCount()
   } catch {
-    error.value = true
+    // No fabricated number on API failure or rate limit; visitors can view GitHub.
+    failed.value = true
   } finally {
     pending.value = false
   }
-})
+}
+
+onMounted(() => { void loadCount() })
 </script>
 
 <template>
-  <div class="pages-deployments">
-    <p class="heading">Successful GitHub Pages workflow runs</p>
-    <p class="value" aria-live="polite">
-      <span v-if="pending">Loading from GitHub… / GitHub से जानकारी मिल रही है…</span>
+  <section class="pages-deployments" :aria-label="labels.heading">
+    <p class="heading">{{ labels.heading }}</p>
+    <p class="value" aria-live="polite" aria-atomic="true">
+      <span v-if="pending && count === null">{{ labels.loading }}</span>
       <strong v-else-if="count !== null">{{ count }}</strong>
-      <span v-else-if="error">Count unavailable / संख्या उपलब्ध नहीं</span>
+      <span v-else>{{ labels.unavailable }}</span>
     </p>
-    <p class="detail">Live count from the public GitHub Actions API; not a manual counter.</p>
-    <p><a :href="historyUrl" target="_blank" rel="noopener noreferrer">View run history / सभी deployments देखें</a></p>
-  </div>
+    <p v-if="failed" class="notice" role="status">{{ labels.unavailable }}</p>
+    <p class="detail">{{ labels.explanation }}</p>
+    <div class="actions">
+      <button type="button" :disabled="pending" @click="loadCount">
+        {{ failed ? labels.retry : labels.refresh }}
+      </button>
+      <a :href="PAGES_HISTORY_URL" target="_blank" rel="noopener noreferrer">{{ labels.history }}</a>
+    </div>
+  </section>
 </template>
 
 <style scoped>
 .pages-deployments { border: 1px solid var(--vp-c-divider); border-radius: 12px; padding: 1rem 1.25rem; }
 .heading { font-weight: 600; margin: 0; }
 .value { margin: .5rem 0; font-size: 1.75rem; }
-.detail { color: var(--vp-c-text-2); font-size: .875rem; }
+.detail, .notice { color: var(--vp-c-text-2); font-size: .875rem; }
+.actions { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+.actions button { padding: .35rem .65rem; border: 1px solid var(--vp-c-divider); border-radius: 6px; }
+.actions button:hover:not(:disabled) { background: var(--vp-c-bg-soft); }
+.actions button:focus-visible { outline: 2px solid var(--vp-c-brand-1); outline-offset: 2px; }
+.actions button:disabled { opacity: .55; cursor: wait; }
+.actions a { font-weight: 500; }
 </style>
