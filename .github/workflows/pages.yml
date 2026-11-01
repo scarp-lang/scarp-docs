@@ -21,8 +21,8 @@ jobs:
       - uses: actions/configure-pages@v5
       - name: Install dependencies
         run: npm install --no-audit --no-fund
-      - name: Validate docs and pinned fixtures
-        run: npm run check:docs && npm run check:fixtures
+      - name: Validate TypeScript, languages, fixtures and deployment API
+        run: npm run typecheck && npm run check:docs && npm run check:i18n && npm run check:fixtures && npm run test:pages-api && npm run test:site-meta
       - name: Build static website
         run: npm run docs:build
       - name: Verify generated bilingual HTML and SEO metadata
