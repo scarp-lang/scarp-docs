@@ -46,13 +46,25 @@ export default defineConfig({
     outline: { level: [2, 3], label: 'On this page' },
     docFooter: { prev: 'Previous', next: 'Next' },
     editLink: { pattern: `${docsRepo}/edit/main/docs/:path`, text: 'Improve this page on GitHub' },
-    socialLinks: [{ icon: 'github', link: sourceRepo }],
+    // Public Scarp accounts verified against their published profile descriptions.
+    // Add other platforms only after confirming their exact official URLs.
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/scarp-lang', ariaLabel: 'Scarp on GitHub' },
+      { icon: 'x', link: 'https://x.com/ScarpLang', ariaLabel: 'Scarp on X' },
+      { icon: 'youtube', link: 'https://www.youtube.com/@ScarpLang', ariaLabel: 'Scarp on YouTube' },
+      { icon: 'instagram', link: 'https://www.instagram.com/scarplang/', ariaLabel: 'Scarp on Instagram' },
+      { icon: 'bluesky', link: 'https://bsky.app/profile/scarplang.bsky.social', ariaLabel: 'Scarp on Bluesky' },
+      { icon: 'threads', link: 'https://www.threads.net/@scarplang', ariaLabel: 'Scarp on Threads' }
+    ],
     nav: [
       { text: 'Guide', link: '/guide/installation' },
       { text: 'Language', link: '/language/overview' },
       { text: 'CLI', link: '/tooling/cli' },
       { text: 'Examples', link: '/examples/' },
-      { text: 'Contributing', link: '/community/contributing' },
+      { text: 'Community', items: [
+        { text: 'Official channels', link: '/community/social' },
+        { text: 'Contributing', link: '/community/contributing' }
+      ] },
       { text: 'v0.0.5-alpha.1', items: [
         { text: 'Feature status', link: '/reference/status' },
         { text: 'Compiler releases', link: `${sourceRepo}/releases` }
@@ -92,6 +104,7 @@ export default defineConfig({
       ] },
       { text: 'Learn and contribute', items: [
         { text: 'Verified examples', link: '/examples/' },
+        { text: 'Official social channels', link: '/community/social' },
         { text: 'Contributing', link: '/community/contributing' },
         { text: 'Docs maintainer checklist', link: '/project/maintenance' }
       ] }
