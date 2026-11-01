@@ -27,6 +27,8 @@ jobs:
         run: npm run check:fixtures
       - name: Unit-test SEO URL helpers
         run: npm run test:site-meta
+      - name: Unit-test typed deployment API and fallbacks
+        run: npm run test:pages-api
       - name: Build VitePress site
         run: npm run docs:build
       - name: Verify bilingual generated HTML and SEO metadata
