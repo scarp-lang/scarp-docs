@@ -62,6 +62,8 @@ export default defineConfig({
       { text: 'CLI', link: '/tooling/cli' },
       { text: 'Examples', link: '/examples/' },
       { text: 'Community', items: [
+        { text: 'DEV Community', link: 'https://dev.to/scarplang' },
+        { text: 'Scarp on Reddit', link: 'https://www.reddit.com/r/ScarpLang/' },
         { text: 'Official channels', link: '/community/social' },
         { text: 'Contributing', link: '/community/contributing' }
       ] },

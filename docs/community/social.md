@@ -10,6 +10,8 @@ Follow the official **Scarp Programming Language** accounts for project announce
 | Instagram | [@scarplang](https://www.instagram.com/scarplang/) | Scarp project profile and visual updates |
 | Threads | [@scarplang](https://www.threads.net/@scarplang) | Scarp project profile and community posts |
 | Bluesky | [@scarplang.bsky.social](https://bsky.app/profile/scarplang.bsky.social) | Scarp project profile and development updates |
+| DEV Community | [Scarp Programming Language](https://dev.to/scarplang) | Articles, compiler updates, and programming tutorials |
+| Reddit | [r/ScarpLang](https://www.reddit.com/r/ScarpLang/) | Official Scarp discussion community |
 
 Accounts may not have published posts yet; an account being listed here does **not** imply that content or a feature has already been released.
 
@@ -22,3 +24,5 @@ For project correspondence, contact [scarplang@gmail.com](mailto:scarplang@gmail
 ## Keep the links accurate
 
 Before adding a new social channel, confirm its profile is publicly accessible and identifies the Scarp Programming Language project. Do not link unverified lookalike accounts or assume a handle is available simply because the name matches. In particular, a public Discord invitation, Facebook page URL, or LinkedIn company page URL is not listed here until its official destination is confirmed.
+
+The official DEV and Reddit pages have been inspected publicly. The LinkedIn company link is intentionally not included until its exact ownership and URL can be confirmed.
