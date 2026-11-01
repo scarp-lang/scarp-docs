@@ -5,15 +5,15 @@ import { fileURLToPath } from 'node:url'
 // Checks the *repository paths* linked as compiler evidence, not remote HTTP
 // reachability. Use only a checkout of the exact pinned release commit.
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const baseline = JSON.parse(readFileSync(resolve(root, 'data/compiler-baseline.json'), 'utf8'))
+const baseline = JSON.parse(readFileSync(resolve(root, 'data/compiler-baseline.json'), 'utf8')) as { repository: string; release: string }
 const checkout = process.argv[2] ? resolve(process.argv[2]) : null
 if (!checkout || !existsSync(resolve(checkout, 'Cargo.toml'))) {
-  console.error('Usage: node scripts/check-evidence.mjs <pinned-compiler-checkout>')
+  console.error('Usage: npm run check:evidence -- <pinned-compiler-checkout>')
   process.exit(2)
 }
 const docs = resolve(root, 'docs')
 const files = [resolve(root, 'README.md'), resolve(root, 'CONTRIBUTING.md')]
-function walk(dir) {
+function walk(dir: string): void {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
     if (entry.name.startsWith('.')) continue
     const path = resolve(dir, entry.name)
@@ -22,19 +22,19 @@ function walk(dir) {
   }
 }
 walk(docs)
-const failures = []
+const failures: string[] = []
 const prefix = `https://github.com/${baseline.repository}/`
 let checked = 0
 for (const page of files) {
   const content = readFileSync(page, 'utf8')
   for (const [url] of content.matchAll(/https:\/\/github\.com\/scarp-lang\/scarp\/(?:blob|tree)\/v[0-9]+\.[0-9]+\.[^/\s)]+\/[^\s)<>"']+/g)) {
-    let parsed
+    let parsed: URL
     try { parsed = new URL(url) } catch { failures.push(`${relative(root, page)}: malformed evidence URL ${url}`); continue }
     const parts = parsed.pathname.split('/').filter(Boolean)
     if (parts[0] !== 'scarp-lang' || parts[1] !== 'scarp') continue
     const [kind, tag, ...segments] = parts.slice(2)
     if (tag !== baseline.release) { failures.push(`${relative(root, page)}: unexpected pinned compiler release ${tag}`); continue }
-    let rel
+    let rel: string
     try { rel = decodeURIComponent(segments.join('/')) } catch { failures.push(`${relative(root, page)}: invalid encoded evidence path`); continue }
     const target = resolve(checkout, rel)
     const normalized = relative(checkout, target)
