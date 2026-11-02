@@ -1,5 +1,7 @@
 # Scarp इंस्टॉल करें
 
+**नई प्रकाशित रिलीज़:** [v0.0.5-alpha.3](/hi/releases/v0.0.5-alpha.3), 2 नवंबर 2026। नए CLI और text built-ins चलाने के लिए उसी version का [official archive तथा SHA-256 checksum](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.3) लें। `scarp --version` जाँचें। नीचे के विस्तृत installation चरण अभी पुराने **v0.0.5-alpha.1** baseline से संबंधित हैं; alpha.3 commands पुराने executable पर न चलाएँ।
+
 **नवीनतम प्रकाशित रिलीज़: [v0.0.5-alpha.2](/hi/releases/v0.0.5-alpha.2) (2 नवंबर 2026)।** इस पृष्ठ का विस्तृत installation क्रम अभी सत्यापित **alpha.1** baseline का है। Alpha.2 की नई सुविधाएँ चलाने के लिए [नए रिलीज़ archives](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.2) और उसी release का checksum व version चुनें।
 
 यदि आपने alpha.1 पहले से स्थापित किया है, तो [alpha.1 → alpha.2 अपग्रेड परीक्षण](/hi/reference/upgrade-readiness) में देखें कि कौन से पुराने examples को नए compiler पर पुनः सत्यापित किया गया है। Archive और checksum जाँच भी आवश्यक है।
