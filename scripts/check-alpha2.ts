@@ -1,10 +1,11 @@
 import { readFileSync, readdirSync } from 'node:fs'
 import { createHash } from 'node:crypto'
-import { resolve, join, dirname } from 'node:path'
+import { resolve, join, dirname, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { verifyTutorialExamples } from './lib/tutorial-evidence.ts'
+import { extractCodeFences } from './lib/code-fences.ts'
 
-type Fixture = { name: string; source: string; expected: string }
+type Fixture = { name: string; source: string; expected: string; supportingSources?: string[]; inspectionSnapshot?: string }
 type Manifest = { compilerRepository: string; compilerRef: string; compilerCommit: string; cases: Fixture[]; pages: Array<{ page: string; cases: string[] }>; upstreamGitBlobs: Record<string, string> }
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const folder = join(root, 'conformance/alpha2')
@@ -14,14 +15,23 @@ if (manifest.compilerRepository !== 'scarp-lang/scarp' || manifest.compilerRef !
     manifest.compilerCommit !== 'e4db8e191cd7ea623123cae7348450ca6c95b170') {
   failures.push('release identity differs from the published alpha.2 tag')
 }
-if (manifest.cases.length < 9 || new Set(manifest.cases.map(c => c.name)).size !== manifest.cases.length) {
-  failures.push('expected at least nine unique published alpha.2 cases')
+if (manifest.cases.length < 12 || new Set(manifest.cases.map(c => c.name)).size !== manifest.cases.length) {
+  failures.push('expected at least twelve unique published alpha.2 cases')
 }
-const recordedFiles = readdirSync(folder).sort()
+const safeFixture = (name: string): boolean => /^(?:modules\/)?[a-z0-9_]+\.(?:srp|stdout|modules\.json)$/.test(name)
+function collectFiles(dir: string): string[] {
+  return readdirSync(dir, { withFileTypes: true }).flatMap(entry => {
+    const full = join(dir, entry.name)
+    if (entry.isDirectory()) return collectFiles(full)
+    if (!entry.isFile()) { failures.push(`non-file in fixture directory: ${full}`); return [] }
+    return [relative(folder, full).replaceAll('\\', '/')]
+  })
+}
+const recordedFiles = collectFiles(folder).sort()
 const declaredFiles = Object.keys(manifest.upstreamGitBlobs).sort()
 if (JSON.stringify(recordedFiles) !== JSON.stringify(declaredFiles)) failures.push('fixture directory files differ from pinned blob inventory')
 for (const name of declaredFiles) {
-  if (!/^[a-z0-9_]+\.(?:srp|stdout)$/.test(name)) { failures.push(`unsafe fixture name: ${name}`); continue }
+  if (!safeFixture(name)) { failures.push(`unsafe fixture name: ${name}`); continue }
   const bytes = readFileSync(join(folder, name))
   const sha = createHash('sha1').update(`blob ${bytes.length}\0`).update(bytes).digest('hex')
   if (manifest.upstreamGitBlobs[name] !== sha) failures.push(`upstream published Git blob mismatch: ${name}`)
@@ -36,7 +46,20 @@ const evidence = manifest.cases.flatMap(item => {
     failures.push(`invalid or unpinned case paths: ${item.name}`)
     return []
   }
-  return [{ name: item.name, source: readFileSync(join(folder, item.source), 'utf8'), expected: readFileSync(join(folder, item.expected), 'utf8') }]
+  const supportingSources: Array<{ name: string; source: string }> = []
+  for (const name of item.supportingSources ?? []) {
+    if (!/^modules\/[a-z0-9_]+\.srp$/.test(name) || !manifest.upstreamGitBlobs[name]) {
+      failures.push(`invalid or unpinned supporting file for ${item.name}: ${name}`)
+      continue
+    }
+    supportingSources.push({ name, source: readFileSync(join(folder, name), 'utf8') })
+  }
+  if (item.inspectionSnapshot && (!/^[a-z0-9_]+\.modules\.json$/.test(item.inspectionSnapshot) ||
+      !manifest.upstreamGitBlobs[item.inspectionSnapshot])) {
+    failures.push(`invalid or unpinned JSON inspection snapshot: ${item.name}`)
+  }
+  return [{ name: item.name, source: readFileSync(join(folder, item.source), 'utf8'),
+    expected: readFileSync(join(folder, item.expected), 'utf8'), supportingSources }]
 })
 const caseByName = new Map(evidence.map(item => [item.name, item]))
 const seenPages = new Set<string>()
@@ -65,7 +88,15 @@ for (const entry of manifest.pages ?? []) {
   }
   for (const locale of ['en', 'hi'] as const) {
     const path = join(root, 'docs', locale === 'hi' ? 'hi' : '', entry.page)
-    failures.push(...verifyTutorialExamples(readFileSync(path, 'utf8'), grouped).map(problem => `${locale}/${entry.page}: ${problem}`))
+    const markdown = readFileSync(path, 'utf8')
+    failures.push(...verifyTutorialExamples(markdown, grouped).map(problem => `${locale}/${entry.page}: ${problem}`))
+    const jsonFences = extractCodeFences(markdown).filter(fence => fence.language === 'json').map(fence => fence.code)
+    for (const caseName of entry.cases) {
+      const item = manifest.cases.find(candidate => candidate.name === caseName)
+      if (!item?.inspectionSnapshot) continue
+      const snapshot = readFileSync(join(folder, item.inspectionSnapshot), 'utf8').trim()
+      if (!jsonFences.includes(snapshot)) failures.push(`${locale}/${entry.page}: missing or altered tagged JSON snapshot for ${caseName}`)
+    }
   }
 }
 for (const name of caseByName.keys()) if (!covered.has(name)) failures.push(`unmapped alpha.2 case: ${name}`)
