@@ -51,6 +51,8 @@ export default defineConfig({
             { text: 'DEV Community', link: 'https://dev.to/scarplang' },
             { text: 'Facebook', link: 'https://facebook.com/ScarpLang' },
             { text: 'LinkedIn', link: 'https://linkedin.com/company/ScarpLang' },
+            { text: 'Discord #welcome', link: 'https://discord.com/channels/1566388621085253663/1566389853531152454' },
+            { text: 'Discord #language-development', link: 'https://discord.com/channels/1566388621085253663/1566388870826827856' },
             { text: 'Reddit', link: 'https://www.reddit.com/r/ScarpLang/' }
           ] },
           { text: 'v0.0.5-alpha.1', link: '/hi/reference/status' }
@@ -135,6 +137,7 @@ export default defineConfig({
       { icon: 'instagram', link: 'https://www.instagram.com/scarplang/', ariaLabel: 'Scarp on Instagram' },
       { icon: 'facebook', link: 'https://facebook.com/ScarpLang', ariaLabel: 'Scarp on Facebook' },
       { icon: 'linkedin', link: 'https://linkedin.com/company/ScarpLang', ariaLabel: 'Scarp on LinkedIn' },
+      { icon: 'discord', link: 'https://discord.com/channels/1566388621085253663/1566389853531152454', ariaLabel: 'Scarp Discord welcome channel (server membership may be required)' },
       { icon: 'bluesky', link: 'https://bsky.app/profile/scarplang.bsky.social', ariaLabel: 'Scarp on Bluesky' },
       { icon: 'threads', link: 'https://www.threads.net/@scarplang', ariaLabel: 'Scarp on Threads' }
     ],
@@ -147,6 +150,8 @@ export default defineConfig({
         { text: 'DEV Community', link: 'https://dev.to/scarplang' },
         { text: 'Scarp on Facebook', link: 'https://facebook.com/ScarpLang' },
         { text: 'Scarp on LinkedIn', link: 'https://linkedin.com/company/ScarpLang' },
+        { text: 'Discord #welcome', link: 'https://discord.com/channels/1566388621085253663/1566389853531152454' },
+        { text: 'Discord #language-development', link: 'https://discord.com/channels/1566388621085253663/1566388870826827856' },
         { text: 'Scarp on Reddit', link: 'https://www.reddit.com/r/ScarpLang/' },
         { text: 'Official channels', link: '/community/social' },
         { text: 'Contributing', link: '/community/contributing' }

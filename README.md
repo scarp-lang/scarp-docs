@@ -73,7 +73,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Please propose focused changes backed by
 
 ## Official community channels
 
-The [community page](docs/community/social.md) lists Scarp's public GitHub, X, Facebook, LinkedIn, YouTube, Instagram, Threads, Bluesky, DEV and Reddit profiles, plus the public contact address. Navigation icons link directly to those channels. Use maintainer-provided or independently confirmed official project URLs; never link personal developer profiles as Scarp accounts.
+The [community page](docs/community/social.md) lists Scarp's GitHub, X, Facebook, LinkedIn, YouTube, Instagram, Threads, Bluesky, DEV and Reddit profiles, plus the public contact address and maintainer-provided Discord channel links. Navigation icons link to official destinations. Use maintainer-provided or independently confirmed project URLs; never link personal developer profiles as Scarp accounts.
+
+**Discord channels:** [#welcome](https://discord.com/channels/1566388621085253663/1566389853531152454) and [#language-development](https://discord.com/channels/1566388621085253663/1566388870826827856). These are **channel deep links**, not public server invitation URLs. Visitors may need to join the Discord server and obtain access before opening them.
 
 ## Compiler-backed conformance checks
 

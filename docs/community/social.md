@@ -1,6 +1,6 @@
 # Connect with Scarp
 
-Follow the official **Scarp Programming Language** accounts for project announcements, compiler updates, tutorials, and community news. According to the project maintainer, Scarp's social profiles were created on **November 1, 2026**. The Facebook and LinkedIn URLs were supplied directly by the maintainer on **November 2, 2026**; their addition to these docs is not a claim of separate platform ownership verification.
+Follow the official **Scarp Programming Language** accounts for project announcements, compiler updates, tutorials, and community news. According to the project maintainer, Scarp's social profiles were created on **November 1, 2026**. The Facebook, LinkedIn, and Discord channel URLs were supplied directly by the maintainer on **November 2, 2026**; their inclusion is not a claim of separate platform ownership or public-access verification.
 
 | Platform | Official Scarp account | What you can find |
 | --- | --- | --- |
@@ -14,8 +14,14 @@ Follow the official **Scarp Programming Language** accounts for project announce
 | Bluesky | [@scarplang.bsky.social](https://bsky.app/profile/scarplang.bsky.social) | Scarp project profile and development updates |
 | DEV Community | [Scarp Programming Language](https://dev.to/scarplang) | Articles, compiler updates, and programming tutorials |
 | Reddit | [r/ScarpLang](https://www.reddit.com/r/ScarpLang/) | Official Scarp discussion community |
+| Discord | [#welcome](https://discord.com/channels/1566388621085253663/1566389853531152454) | Orientation and community introductions |
+| Discord | [#language-development](https://discord.com/channels/1566388621085253663/1566388870826827856) | Discuss the Scarp language and its development |
 
 Accounts may not have published posts yet; an account being listed here does **not** imply that content or a feature has already been released.
+
+### Discord access
+
+The links above open **specific channels inside the Scarp Discord server**, not a server invitation. You may need to sign in to Discord, join the server, and have permission to view each channel. If you are not yet a member, these URLs alone might not let you join. No public invite link has been provided.
 
 ## Get help and contribute
 
@@ -25,6 +31,6 @@ For project correspondence, contact [scarplang@gmail.com](mailto:scarplang@gmail
 
 ## Keep the links accurate
 
-Before adding a new social channel, confirm its profile is publicly accessible and identifies the Scarp Programming Language project. Do not link unverified lookalike accounts or assume a handle is available simply because the name matches. In particular, a public Discord invitation is not listed here until its official destination is confirmed.
+Before adding a new social channel, confirm its profile is publicly accessible and identifies the Scarp Programming Language project. Do not link unverified lookalike accounts or assume a handle is available simply because the name matches. In particular, a **public Discord invitation** is not listed here because no invite URL has been provided. The direct Discord channel links do not replace an invitation.
 
-The LinkedIn and Facebook URLs are supplied by the project maintainer. The official DEV and Reddit pages were inspected publicly when they were originally added.
+The LinkedIn, Facebook, and Discord channel URLs are supplied by the project maintainer. The official DEV and Reddit pages were inspected publicly when they were originally added.
