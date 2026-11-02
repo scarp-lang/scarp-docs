@@ -1,6 +1,7 @@
 import { readFileSync, readdirSync, existsSync } from 'node:fs'
 import { join, resolve, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { extractCodeFences, firstMissingCodeBlock } from './lib/code-fences.ts'
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)))
 const docs = join(root, 'docs')
@@ -18,19 +19,22 @@ function allMarkdown(base: string, current = base): string[] {
 const enPaths = allMarkdown(docs).filter(path => !path.startsWith('hi/'))
 const hiPaths = new Set(allMarkdown(hi))
 const devanagari = /[\u0900-\u097F]/g
-function codeBlocks(raw: string): string[] {
-  const result: string[] = []
-  for (const match of raw.matchAll(/^([~`]{3,})[^\n]*\n([\s\S]*?)^\1\s*$/gm)) result.push(match[2].trim())
-  return result
-}
 for (const path of enPaths) {
   if (!hiPaths.has(path)) {failures.push(`Hindi page missing for ${path}`);continue}
   const original=readFileSync(join(docs,path),'utf8')
   const translated=readFileSync(join(hi,path),'utf8')
   if ((translated.match(devanagari)||[]).length < 50) failures.push(`${path}: translation must contain substantial Hindi text`)
   if (!path.endsWith('index.md') && !translated.startsWith('# ')) failures.push(`${path}: missing localized heading`)
-  for (const snippet of codeBlocks(original)) {
-    if (!translated.includes(snippet)) failures.push(`${path}: upstream code block altered or omitted (${snippet.slice(0,32)})`)
+  try {
+    const upstreamExamples = extractCodeFences(original)
+    const localizedExamples = extractCodeFences(translated)
+    const missing = firstMissingCodeBlock(upstreamExamples, localizedExamples)
+    if (missing !== -1) {
+      const example = upstreamExamples[missing]
+      failures.push(`${path}: code fence #${missing + 1} from line ${example.line} is missing, changed, or reordered (${example.code.slice(0, 32)})`)
+    }
+  } catch (cause) {
+    failures.push(`${path}: invalid fenced Markdown: ${cause instanceof Error ? cause.message : String(cause)}`)
   }
   if (translated.includes('https://github.com/scarp-lang/scarp-lang')) failures.push(`${path}: wrong compiler repository`)
 }
