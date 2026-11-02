@@ -32,9 +32,9 @@ features:
   - title: सत्यापित फ़ंक्शन ट्यूटोरियल
     details: आधिकारिक compiler के वास्तविक फ़ंक्शन प्रोग्राम और जाँचे गए आउटपुट चरणबद्ध समझें।
     link: /hi/tutorials/verified-functions
-  - title: न्यूमेरिकल वैक्टर, टाइल और मॉड्यूल
-    details: प्रकाशित compiler के जाँचे गए उदाहरणों से वैक्टर, matrix inference और multi-file प्रोग्राम सीखें।
-    link: /hi/tutorials/verified-tiles
+  - title: न्यूमेरिकल वैक्टर, टाइल और वर्गीकरण
+    details: प्रकाशित compiler के जाँचे गए उदाहरणों से matrix inference, softmax और one-hot targets सीखें।
+    link: /hi/tutorials/verified-classification
   - title: सीखने के उदाहरण
     details: लूप, फ़ंक्शन और module-based प्रोग्राम चरणबद्ध सीखें।
     link: /hi/examples/
