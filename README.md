@@ -45,6 +45,12 @@ A syntax proposal is *not* evidence that a feature ships. A future feature shoul
 
 The translation guard compares actual fenced-code blocks, including repeated snippets, in the original English order. Hindi pages may contain additional explanation, but no original example may be silently changed or dropped. The parser itself has standalone TypeScript unit tests.
 
+## Compiler-backed tutorial evidence
+
+The [verified functions tutorial](docs/tutorials/verified-functions.md) and [हिन्दी फ़ंक्शन ट्यूटोरियल](docs/hi/tutorials/verified-functions.md) present exact source/output pairs from the released interpreter. `data/tutorial-evidence.json` explicitly maps tutorial pages to the pinned `conformance/manifest.json` cases. `scripts/check-tutorial-evidence.ts` rejects missing, modified, misplaced or reordered examples in either language, while `scripts/test-tutorial-evidence.ts` regression-tests the matcher. `npm run check:tutorial-evidence` requires no network or Rust toolchain; actual program execution is still covered separately by the compiler-conformance GitHub Actions job.
+
+A future version is not promoted automatically: change the pinned baseline only after reviewing a published release, updating the fixtures, and re-running compiler conformance.
+
 ## Bilingual SEO and production quality gates
 
 The typed VitePress helper `docs/.vitepress/site-meta.ts` generates canonical URLs and reciprocal `hreflang` (`en`, `hi`, `x-default`) entries for each English/Hindi page. CI validates both the helpers and generated HTML **after** building VitePress. This catches wrong base paths, mismatched language metadata, missing output pages and incorrect Open Graph URLs rather than relying on source-text checks alone. A deployment is blocked when any source page is missing from the compiled site.
@@ -67,6 +73,8 @@ The `conformance/` directory contains seven pinned source/output pairs copied fr
 
 ```sh
 npm run check:fixtures
+npm run check:tutorial-evidence # match bilingual tutorial code + stdout against published fixtures
+npm run test:tutorial-evidence # unit-test source/output pairing and drift detection
 ```
 
 To execute them, build the **exact** published Scarp source commit `afe8b5380c9d6c4774162e51c6c9bc8b90901671` (tag `v0.0.5-alpha.1`), then run:

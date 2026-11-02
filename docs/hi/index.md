@@ -29,6 +29,9 @@ features:
   - title: वास्तविक compiler प्रमाण
     details: v0.0.5-alpha.1 के कोड और परीक्षण पर आधारित जानकारी।
     link: /hi/reference/evidence
+  - title: सत्यापित फ़ंक्शन ट्यूटोरियल
+    details: आधिकारिक compiler के वास्तविक फ़ंक्शन प्रोग्राम और जाँचे गए आउटपुट चरणबद्ध समझें।
+    link: /hi/tutorials/verified-functions
   - title: सीखने के उदाहरण
     details: लूप, फ़ंक्शन और module-based प्रोग्राम चरणबद्ध सीखें।
     link: /hi/examples/

@@ -56,4 +56,4 @@ Next read [variables](/language/variables), [types](/language/types), and the [C
 
 ## Next: use a complete tested program
 
-Try the [loop tutorial](/tutorials/repeat-and-loops) or [modules walkthrough](/tutorials/modules-walkthrough). The documentation project's [conformance suite](https://github.com/scarp-lang/scarp-docs/tree/main/conformance) mirrors compiler-owned examples and checks their actual outputs when CI can build the published interpreter.
+Next practice real functions in the [verified functions tutorial](/tutorials/verified-functions), then continue with [loops](/tutorials/repeat-and-loops) or [source modules](/tutorials/modules-walkthrough). The documentation project's [conformance suite](https://github.com/scarp-lang/scarp-docs/tree/main/conformance) mirrors compiler-owned examples and checks their actual outputs when CI can build the published interpreter.
