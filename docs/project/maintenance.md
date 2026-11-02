@@ -13,6 +13,10 @@ npm run docs:build
 
 Node.js 22 or a runtime satisfying the declared `engines` entry is required. The docs use VitePress and Markdown; no application router or hand-written pages are needed. The conformance job additionally requires Rust/Cargo and the pinned compiler. It runs on GitHub Actions with an explicit upstream source commit.
 
+## Separate release-track gates
+
+The [newly published alpha.2 guide](/releases/v0.0.5-alpha.2) has five exact source/output program pairs checked by `npm run check:alpha2` and the separate `alpha2-conformance` CI job. The main 11-program reference remains pinned to alpha.1. Maintain both released source commits and their own fixture Git blobs; do not re-label old tests as proof of alpha.2 behavior. When validating compiler source links locally, supply **both** source checkouts to `npm run check:evidence -- /path/to/alpha1 /path/to/alpha2`.
+
 ## Updating to a new compiler release
 
 1. Confirm the release exists, and inspect the tagged code, tests, examples, CLI implementation, release notes and exact source commit.
