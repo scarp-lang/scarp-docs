@@ -3,7 +3,7 @@ import { spawnSync } from 'node:child_process'
 import { resolve, dirname, basename } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-type Case = { name: string; source: string; expected: string; code: string }
+type Case = { name: string; source: string; expected: string; code: string; supportingSources?: string[] }
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const rootFixtures = resolve(root, 'conformance/alpha2-errors')
 const manifest = JSON.parse(readFileSync(resolve(root, 'conformance/alpha2-errors-manifest.json'), 'utf8')) as { compilerRef: string; cases: Case[] }
@@ -23,10 +23,18 @@ for (const item of manifest.cases) {
   const expected = readFileSync(resolve(rootFixtures, item.expected))
   for (const action of ['check', 'run']) {
     const result = invoke([action, source], directory)
-    if (result.error || result.status !== 1 || result.stdout?.length || !result.stderr?.equals(expected)) {
+    // Native filesystem loaders show absolute paths for imported modules,
+    // whereas the compiler's own in-memory golden fixtures use short labels.
+    // Only normalize the exact resolved paths of declared tagged support files;
+    // every remaining byte of the published diagnostic must still agree.
+    let received = result.stderr?.toString('utf8') ?? ''
+    for (const path of item.supportingSources ?? []) {
+      received = received.replaceAll(resolve(rootFixtures, path), basename(path))
+    }
+    if (result.error || result.status !== 1 || result.stdout?.length || received !== expected.toString('utf8')) {
       failures++
       console.error('FAIL ' + action + ' ' + item.name + ': expected status=1, stdout empty, byte-exact stderr ' + item.code)
-      console.error('received status=' + result.status + ', stdout=' + JSON.stringify(result.stdout?.toString()) + ', stderr=' + JSON.stringify(result.stderr?.toString()) + ', error=' + String(result.error))
+      console.error('received status=' + result.status + ', stdout=' + JSON.stringify(result.stdout?.toString()) + ', normalized stderr=' + JSON.stringify(received) + ', error=' + String(result.error))
     } else {
       console.log('PASS ' + action + ' ' + item.name + ': exact published ' + item.code + ' diagnostic')
     }
