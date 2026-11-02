@@ -1,5 +1,7 @@
 # ऑपरेटर और एक्सप्रेशन
 
+**नया alpha.2 संस्करण:** [bitwise integers और typed declarations](/hi/releases/v0.0.5-alpha.2) में binary/hex literals, bitwise operators और नए compound assignments प्रकाशित हुए हैं। वहाँ पूरा tagged program और stdout मौजूद है। नीचे की सूची पुराने **alpha.1** operators के लिए ही है।
+
 Scarp v0.0.5-alpha.1 में इनका समर्थन है:
 
 | श्रेणी | ऑपरेटर | अर्थ |
