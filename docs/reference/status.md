@@ -4,6 +4,8 @@
 
 **Newer published prerelease:** [v0.0.5-alpha.2](/releases/v0.0.5-alpha.2) was published **November 2, 2026** from compiler commit `e4db8e191cd7ea623123cae7348450ca6c95b170`. Its new language features and inspection commands are documented in the **five-program release guide** and the [four-program collections tutorial](/tutorials/alpha2-collections-and-learning), with a separate alpha.2 compiler conformance job checking **12** published source/output cases, including cross-file module constant evaluation and JSON inspection. The table below deliberately remains the v0.0.5-alpha.1 baseline until all older references and 11 original fixtures undergo a reviewed version migration.
 
+**Migration readiness:** The [alpha.1 → alpha.2 compiler upgrade gate](/reference/upgrade-readiness) re-tests all **11 original alpha.1 programs** unchanged on the published alpha.2 executable. This is a separate compatibility check, not a declaration that all alpha.1 source code or the main reference has migrated.
+
 We use these terms consistently:
 
 - **Shipped (experimental):** present in the published prerelease and exercised in compiler examples or tests.

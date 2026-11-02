@@ -8,6 +8,10 @@ This site targets the **published v0.0.5-alpha.1 Scarp prerelease**. We treat co
 
 The published [alpha.2 errors and repairs tutorial](/tutorials/alpha2-diagnostics-and-repairs) adds **six intentionally failing programs** and **14 additional pinned test-fixture files** (source, stderr and required module dependencies). `npm run check:alpha2-errors` verifies their upstream Git blob SHA-1 identifiers and requires full source/expected-stderr code fences in both English and Hindi, including imported support files. The independent `alpha2-conformance` job additionally compares each fixture to the published compiler test checkout and runs `check` and `run`, expecting exit code 1, empty stdout and published diagnostic stderr (with only absolute imported-module filesystem path labels normalized to the snapshot filenames). These are **negative** conformance cases—not additional successful examples, and they do not change the twelve successful alpha.2 or eleven alpha.1 cases.
 
+## Upgrade readiness verification
+
+The [alpha.1 → alpha.2 upgrade gate](/reference/upgrade-readiness) runs the original **11 source/output fixtures** on the released alpha.2 compiler, independently of the alpha.1 baseline job and the 12 newer alpha.2 examples. It requires success for each `check`, byte-identical `run` stdout, and a tokenization smoke test. The old manifest and baseline remain pinned to alpha.1. This tests a defined set of examples rather than promising compatibility for arbitrary programs.
+
 ## Three independent validation layers
 
 1. **Markdown and navigation:** `npm run check:docs` detects missing local links/anchors, unsupported code-fence names, broken navigation targets and mismatched site configuration. It does not prove that external web links load.

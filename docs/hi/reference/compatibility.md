@@ -13,6 +13,10 @@ Scarp के शुरुआती prereleases में syntax और API ब�
 | **`v0.0.5-alpha.1`** | relative source modules, public symbols; मुख्य docs baseline |
 | **`v0.0.5-alpha.2`** | **2 नवंबर 2026 को प्रकाशित नवीनतम prerelease:** typed declarations, bitwise integers, Unicode और [जाँचे गए उदाहरण](/hi/releases/v0.0.5-alpha.2) |
 
+## Alpha.1 से alpha.2 में जाँचा हुआ अपग्रेड
+
+[Compiler-verified अपग्रेड परीक्षण](/hi/reference/upgrade-readiness) में पुराने **11 alpha.1 source programs** को बिना बदले नए प्रकाशित alpha.2 compiler पर चलाया जाता है। CI उनके stdout bytes तथा silent `check` की तुलना करती है। इससे सभी पुराने programs के compatible होने की गारंटी नहीं होती और मुख्य reference का alpha.1 baseline नहीं बदलता।
+
 ## पुराना स्रोत migrate करना
 
 नए source में अपरिवर्तनीय declaration `bind name = expr;`, mutable declaration `var name = expr;` है। पुराने `let`/`let mut` syntax को वर्तमान `bind`/`var` से बदलें। `print` और `println` alias हैं, लेकिन बहुत पुराने binaries इन्हें अलग तरह से समझते थे।

@@ -29,7 +29,8 @@
     "check:alpha2": "tsx scripts/check-alpha2.ts",
     "test:alpha2": "tsx scripts/test-alpha2.ts",
     "check:alpha2-errors": "tsx scripts/check-alpha2-errors.ts",
-    "test:alpha2-errors": "tsx scripts/test-alpha2-errors.ts"
+    "test:alpha2-errors": "tsx scripts/test-alpha2-errors.ts",
+    "test:alpha2-backcompat": "tsx scripts/test-alpha2-backcompat.ts"
   },
   "devDependencies": {
     "vitepress": "1.6.4",

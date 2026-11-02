@@ -2,6 +2,8 @@
 
 **Latest published release: [v0.0.5-alpha.2](/releases/v0.0.5-alpha.2) (November 2, 2026).** This page retains the tested **alpha.1** installation instructions and their pinned example references until the main documentation baseline is migrated. For new alpha.2 features, select the newer [official release archive](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.2) and verify its own checksum and version.
 
+If you already use alpha.1, the [alpha.1 → alpha.2 upgrade readiness checks](/reference/upgrade-readiness) document which original examples have been re-tested with the newer compiler. They do not replace the tagged archive and checksum checks here.
+
 Scarp v0.0.5-alpha.1 is a **prerelease**. You can use a published binary package or build the interpreter with Rust. This does not install a native-code compiler for `.srp` files.
 
 ## Option A: download a published package

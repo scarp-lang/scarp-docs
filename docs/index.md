@@ -47,11 +47,14 @@ features:
   - title: Alpha.2 collections and numeric learning
     details: Run verified integer collections, deterministic score-selection, softmax and explicit loss-gradient programs.
     link: /tutorials/alpha2-collections-and-learning
+  - title: Alpha.1 to alpha.2 upgrade evidence
+    details: Eleven original compiler programs are retested unchanged against the published newer interpreter, with byte-exact outputs.
+    link: /reference/upgrade-readiness
   - title: Official Scarp community
     details: Find the project's verified social channels, news, and ways to contribute.
     link: /community/social
 ---
 
 ::: warning Experimental language
-Scarp v0.0.5-alpha.1 is a **prerelease**, not a stable language specification. Syntax and APIs may change. See the [feature status](/reference/status) before adopting a feature.
+The newest published compiler is **[v0.0.5-alpha.2](/releases/v0.0.5-alpha.2)**, while much of the main reference still targets the separately verified **v0.0.5-alpha.1** baseline. Both are experimental prereleases. Before upgrading older code, check [alpha.1 → alpha.2 upgrade readiness](/reference/upgrade-readiness) and the [feature status](/reference/status).
 :::

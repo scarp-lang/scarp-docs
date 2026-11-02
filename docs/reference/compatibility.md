@@ -16,6 +16,10 @@ The language is **prerelease and evolving**. Use the exact executable version ma
 
 Exact intermediate feature staging and archive details are recorded in the [compiler's getting-started guide](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/docs/getting-started.md) and [releases](https://github.com/scarp-lang/scarp/releases).
 
+## Verified alpha.1 → alpha.2 migration gate
+
+The [compiler-tested upgrade readiness guide](/reference/upgrade-readiness) re-runs **all 11 unchanged alpha.1 example programs** using the exact published alpha.2 interpreter. GitHub Actions compares their stdout byte-for-byte and checks that `check` remains silent. This is focused evidence for the example set—not a general backward-compatibility promise, and it does not change the pinned alpha.1 main-reference baseline.
+
 ## Source migration
 
 Some early Scarp examples used `let`, `let mut`, and `println`; current v0.0.5-alpha.1 uses `bind`, `var`, and `print` while retaining `println` as an alias. Do not assume a snippet written for one prerelease runs unchanged on another. Refer to the compiler's [syntax migration guide](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/docs/syntax-migration.md).

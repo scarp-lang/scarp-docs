@@ -8,6 +8,10 @@
 
 [Alpha.2 diagnostics और सुधार](/hi/tutorials/alpha2-diagnostics-and-repairs) में **छह जानबूझकर असफल प्रोग्राम** और **14 pinned source/stderr/support फ़ाइलें** हैं। `npm run check:alpha2-errors` published Git blob hashes तथा दोनों भाषाओं के पूरे source/stderr blocks जाँचता है। अलग `alpha2-conformance` CI में `check`/`run` से exit status 1, खाली stdout और प्रकाशित stderr की तुलना होती है। Native CLI के absolute imported-module path labels को published snapshot के छोटे filenames से मिलाकर शेष stderr की exact जाँच होती है। ये **negative cases** हैं, इसलिए 12 सफल alpha.2 या 11 सफल alpha.1 programs की गिनती में नहीं जोड़ने चाहिए।
 
+## संस्करण अपग्रेड के लिए जाँच
+
+[Alpha.1 → alpha.2 upgrade readiness](/hi/reference/upgrade-readiness) में पुराने **11 source/output examples** को नए प्रकाशित alpha.2 interpreter से दोबारा चलाकर `check`, सटीक stdout तथा lexer tokens का सत्यापन होता है। यह मूल alpha.1 suite, नए 12 alpha.2 programs और छह negative error examples से **अलग परीक्षण** है। यह arbitrary programs के सभी मामलों में backward compatibility की गारंटी नहीं देता।
+
 ## तीन स्तरों की जाँच
 
 1. **Markdown/लिंक:** `npm run check:docs` से pages, navigation, anchors और आवश्यक metadata जाँचें।
