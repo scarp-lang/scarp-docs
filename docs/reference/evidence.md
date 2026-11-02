@@ -12,6 +12,10 @@ The published [alpha.2 errors and repairs tutorial](/tutorials/alpha2-diagnostic
 
 The [alpha.1 → alpha.2 upgrade gate](/reference/upgrade-readiness) runs the original **11 source/output fixtures** on the released alpha.2 compiler, independently of the alpha.1 baseline job and the 12 newer alpha.2 examples. It requires success for each `check`, byte-identical `run` stdout, and a tokenization smoke test. The old manifest and baseline remain pinned to alpha.1. This tests a defined set of examples rather than promising compatibility for arbitrary programs.
 
+## Newest published alpha.3 evidence
+
+The [v0.0.5-alpha.3 release guide](/releases/v0.0.5-alpha.3) is a **third independent release track**, pinned to compiler commit `7715c28df09c7703b39e14fddb963275b25df476`. `npm run check:alpha3` verifies four full bilingual source/stdout examples, their imported module, the published E0015 diagnostic JSON fixture and **11 upstream Git blob hashes**. The `alpha3-conformance` GitHub Actions job additionally builds that exact compiler and runs `verify` (static), `exec` (runtime), legacy `run` and new inspection/diagnostic commands. This does **not** rename the original 11 alpha.1 or 12 alpha.2 cases, nor assert universal compatibility with the newest release.
+
 ## Three independent validation layers
 
 1. **Markdown and navigation:** `npm run check:docs` detects missing local links/anchors, unsupported code-fence names, broken navigation targets and mismatched site configuration. It does not prove that external web links load.

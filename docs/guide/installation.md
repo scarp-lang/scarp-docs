@@ -1,5 +1,7 @@
 # Installation
 
+**New latest published release:** [v0.0.5-alpha.3](/releases/v0.0.5-alpha.3), November 2, 2026, adds new CLI commands and text built-ins. Choose its matching [official archive and SHA-256 checksum](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.3), and verify `scarp --version`. The existing step-by-step material below remains specifically **v0.0.5-alpha.1** until a complete verified migration; do not use old executable versions with the new alpha.3 commands.
+
 **Latest published release: [v0.0.5-alpha.2](/releases/v0.0.5-alpha.2) (November 2, 2026).** This page retains the tested **alpha.1** installation instructions and their pinned example references until the main documentation baseline is migrated. For new alpha.2 features, select the newer [official release archive](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.2) and verify its own checksum and version.
 
 If you already use alpha.1, the [alpha.1 → alpha.2 upgrade readiness checks](/reference/upgrade-readiness) document which original examples have been re-tested with the newer compiler. They do not replace the tagged archive and checksum checks here.

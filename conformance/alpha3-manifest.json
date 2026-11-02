@@ -1,0 +1,50 @@
+{
+  "compilerRepository": "scarp-lang/scarp",
+  "compilerRef": "v0.0.5-alpha.3",
+  "compilerCommit": "7715c28df09c7703b39e14fddb963275b25df476",
+  "published": "2026-11-02",
+  "cases": [
+    {
+      "name": "unicode-text-construction",
+      "source": "text_construction.srp",
+      "expected": "text_construction.stdout"
+    },
+    {
+      "name": "float-refinement",
+      "source": "float_refinement.srp",
+      "expected": "float_refinement.stdout"
+    },
+    {
+      "name": "typed-integer-module",
+      "source": "collection_module.srp",
+      "expected": "collection_module.stdout",
+      "supportingSources": [
+        "modules/integer_series.srp"
+      ]
+    },
+    {
+      "name": "explicit-coefficient-fitting",
+      "source": "coefficient_fit.srp",
+      "expected": "coefficient_fit.stdout"
+    }
+  ],
+  "diagnostic": {
+    "source": "diagnostics/type_error.srp",
+    "expected": "diagnostics/type_error.diagnostic.json",
+    "code": "E0015"
+  },
+  "upstreamGitBlobs": {
+    "text_construction.srp": "5ec0e7e412e1140e4cfba92255d2b97dea126710",
+    "text_construction.stdout": "273800b78a2e33b686cbba5dc2cb1afa3b1ed3e0",
+    "float_refinement.srp": "fc7033edb2fc06bdbf8b7362d8a0c05d06aa165e",
+    "float_refinement.stdout": "6cfbaf4b1026f63edb0bf69afb11d7a29f27af3d",
+    "collection_module.srp": "ccab20a2e6e4650296fbd7ec921628e1de418aee",
+    "collection_module.stdout": "51173662b0dd6b5849bf971411558dae84d5d289",
+    "modules/integer_series.srp": "91fa47e1107992104202e72032fdee5aad4e4c2a",
+    "coefficient_fit.srp": "0cdc1aa9e1213420aaa209a6b5e53f1f492b324c",
+    "coefficient_fit.stdout": "bb101b641b9bd8575e3f9813b83abaa7bb616890",
+    "diagnostics/type_error.srp": "7abe35a86f4bbd1eb84bf914e233505479877ba0",
+    "diagnostics/type_error.diagnostic.json": "13b6a806c2b73836efbffe7ad670caf8d68239c0"
+  },
+  "guide": "releases/v0.0.5-alpha.3.md"
+}

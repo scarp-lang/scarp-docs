@@ -33,6 +33,8 @@ jobs:
         run: npm run check:fixtures
       - name: Verify published alpha.2 example provenance and bilingual snippets
         run: npm run check:alpha2
+      - name: Verify newest alpha.3 source provenance, JSON and bilingual examples
+        run: npm run check:alpha3
       - name: Verify tagged alpha.2 negative diagnostics and bilingual repair guide
         run: npm run check:alpha2-errors
       - name: Verify tutorials reproduce pinned compiler fixtures
@@ -75,8 +77,13 @@ jobs:
           repository: scarp-lang/scarp
           ref: e4db8e191cd7ea623123cae7348450ca6c95b170
           path: .compiler-alpha2
-      - name: Validate compiler-evidence links across both published tags
-        run: npm run check:evidence -- .compiler .compiler-alpha2
+      - uses: actions/checkout@v4
+        with:
+          repository: scarp-lang/scarp
+          ref: 7715c28df09c7703b39e14fddb963275b25df476
+          path: .compiler-alpha3
+      - name: Validate compiler-evidence links across three published tags
+        run: npm run check:evidence -- .compiler .compiler-alpha2 .compiler-alpha3
       - name: Build released Scarp interpreter
         run: cargo build --manifest-path .compiler/Cargo.toml --locked --offline
       - name: Execute all documented conformance examples
@@ -110,3 +117,26 @@ jobs:
         run: npm run test:alpha2 -- .compiler-alpha2/target/debug/scarp
       - name: Verify six published failure diagnostics on check and run
         run: npm run test:alpha2-errors -- .compiler-alpha2/target/debug/scarp
+
+  alpha3-conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: scarp-lang/scarp
+          ref: 7715c28df09c7703b39e14fddb963275b25df476
+          path: .compiler-alpha3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install TypeScript automation
+        run: npm install --no-audit --no-fund
+      - name: Verify exact published alpha.3 compiler commit
+        run: test "$(git -C .compiler-alpha3 rev-parse HEAD)" = "7715c28df09c7703b39e14fddb963275b25df476"
+      - name: Validate all published alpha.3 sources, expected outputs and diagnostic JSON
+        run: npm run check:alpha3 -- .compiler-alpha3/examples
+      - name: Build tagged alpha.3 compiler
+        run: cargo build --manifest-path .compiler-alpha3/Cargo.toml --locked --offline
+      - name: Verify new Scarp-first CLI and four byte-exact release programs
+        run: npm run test:alpha3 -- .compiler-alpha3/target/debug/scarp

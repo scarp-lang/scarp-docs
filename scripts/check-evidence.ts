@@ -8,11 +8,12 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const baseline = JSON.parse(readFileSync(resolve(root, 'data/compiler-baseline.json'), 'utf8')) as { repository: string; release: string }
 const checkouts = new Map([
   [baseline.release, process.argv[2] ? resolve(process.argv[2]) : ''],
-  ['v0.0.5-alpha.2', process.argv[3] ? resolve(process.argv[3]) : '']
+  ['v0.0.5-alpha.2', process.argv[3] ? resolve(process.argv[3]) : ''],
+  ['v0.0.5-alpha.3', process.argv[4] ? resolve(process.argv[4]) : '']
 ])
 for (const [version, checkout] of checkouts) {
   if (!checkout || !existsSync(resolve(checkout, 'Cargo.toml'))) {
-    console.error('Usage: npm run check:evidence -- <alpha1-compiler-checkout> <alpha2-compiler-checkout>')
+    console.error('Usage: npm run check:evidence -- <alpha1-checkout> <alpha2-checkout> <alpha3-checkout>')
     console.error(`Missing published release checkout: ${version}`)
     process.exit(2)
   }

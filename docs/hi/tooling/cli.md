@@ -1,5 +1,7 @@
 # कमांड-लाइन इंटरफ़ेस (CLI)
 
+**नवीनतम प्रकाशित CLI:** [Scarp v0.0.5-alpha.3](/hi/releases/v0.0.5-alpha.3) में `exec`, static `verify`, `inspect tokens/ast/modules`, offline `diagnose`, `guide` और `version` commands उपलब्ध हैं। पुराने commands अभी चलेंगे। नीचे का table केवल **alpha.1 baseline** का है। `verify` static source/type जाँचता है; legacy `check` runtime paths भी जाँचता है।
+
 **नया संस्करण:** [v0.0.5-alpha.2 module और diagnostic commands](/hi/tooling/alpha2-inspection) में static inventory, JSON inspection तथा error explanation उपलब्ध हैं। नीचे की command सूची अभी पुराने **alpha.1** के लिए है; इसे alpha.2 की पूरी CLI सूची न मानें।
 
 यह reference प्रकाशित Scarp **v0.0.5-alpha.1** पर आधारित है। पुराने versions में commands और syntax में अंतर हो सकता है।

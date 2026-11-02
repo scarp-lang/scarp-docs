@@ -10,6 +10,10 @@ The [alpha.2 diagnostic repairs tutorial](/tutorials/alpha2-diagnostics-and-repa
 
 Before changing the main documentation baseline, run `npm run test:alpha2-backcompat -- /path/to/alpha2/scarp` with the exact published **alpha.2** binary. The separate CI step runs all 11 unchanged original alpha.1 fixtures, checks their byte-exact output and tests `tokens`. It does not replace the alpha.1 fixture provenance check or prove compatibility beyond this sample set. See [upgrade readiness](/reference/upgrade-readiness).
 
+## Latest alpha.3 release evidence
+
+The [English alpha.3 release guide](/releases/v0.0.5-alpha.3) and matching Hindi page reproduce **four complete published programs and 11 upstream source/output/JSON Git blobs**. Run `npm run check:alpha3` to validate bilingual examples, or `npm run check:alpha3 -- /path/to/tagged-alpha3/examples` to compare the exact files with the published source checkout. The `alpha3-conformance` CI job builds source commit `7715c28df09c7703b39e14fddb963275b25df476` and runs `npm run test:alpha3 -- /path/to/alpha3/scarp`, checking new `exec` and static `verify` separately from the legacy commands. Alpha.1 and alpha.2 evidence stays pinned independently.
+
 ## Local quality gates
 
 ```sh

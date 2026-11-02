@@ -8,7 +8,7 @@ Official VitePress documentation for the experimental [Scarp Programming Languag
 
 **Compiler:** https://github.com/scarp-lang/scarp
 
-**Latest published prerelease:** [v0.0.5-alpha.2](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.2), November 2, 2026. [Alpha.2 release examples (English)](docs/releases/v0.0.5-alpha.2.md) and [हिन्दी संस्करण](docs/hi/releases/v0.0.5-alpha.2.md). The 11-program core documentation baseline remains intentionally pinned to v0.0.5-alpha.1; a separate **twelve-program** alpha.2 conformance suite checks newly published features across the [release guide](docs/releases/v0.0.5-alpha.2.md) and [verified collections and classification tutorial](docs/tutorials/alpha2-collections-and-learning.md), both translated into Hindi.
+**Previous published prerelease:** [v0.0.5-alpha.2](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.2), November 2, 2026. [Alpha.2 release examples (English)](docs/releases/v0.0.5-alpha.2.md) and [हिन्दी संस्करण](docs/hi/releases/v0.0.5-alpha.2.md). The 11-program core documentation baseline remains intentionally pinned to v0.0.5-alpha.1; a separate **twelve-program** alpha.2 conformance suite checks newly published features across the [release guide](docs/releases/v0.0.5-alpha.2.md) and [verified collections and classification tutorial](docs/tutorials/alpha2-collections-and-learning.md), both translated into Hindi.
 
 **License:** [MIT](LICENSE)
 
@@ -58,7 +58,11 @@ Six deliberately failing programs, including exact stderr snapshots and supporti
 
 A separate TypeScript test, `npm run test:alpha2-backcompat -- /path/to/alpha2/scarp`, builds on the existing manifests to run all **11 unchanged alpha.1 programs** against the published **alpha.2** interpreter, checking silent `check`, byte-exact `run` output and a `tokens` smoke test. The GitHub Actions `alpha2-conformance` job executes this gate using the exact tagged alpha.2 commit. Its [English migration-readiness guide](docs/reference/upgrade-readiness.md) and [हिन्दी अपग्रेड गाइड](docs/hi/reference/upgrade-readiness.md) explain the scope and limitations. This does not automatically repin the whole main reference or guarantee arbitrary backwards compatibility.
 
-## Two published compiler release tracks
+## Latest alpha.3 release evidence
+
+**Latest published prerelease:** [v0.0.5-alpha.3](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.3), November 2, 2026 (source commit `7715c28df09c7703b39e14fddb963275b25df476`). The [English guide](docs/releases/v0.0.5-alpha.3.md) and [हिन्दी संस्करण](docs/hi/releases/v0.0.5-alpha.3.md) include four complete published compiler programs, a supporting module and a structured diagnostic example. `conformance/alpha3-manifest.json` pins **11 exact upstream Git blobs**. Use `npm run check:alpha3` for source/text provenance and `npm run test:alpha3 -- /path/to/alpha3/scarp` to verify `exec`, static `verify`, legacy `run`, module/AST inspection and offline JSON diagnostics. The CI job uses the exact published release commit. The main documentation baseline is still alpha.1 and retains separate alpha.2 evidence.
+
+## Earlier published compiler release tracks
 
 The core reference, status matrix and existing 11 compiler examples remain pinned to **v0.0.5-alpha.1** until a comprehensive and separately reviewed update migrates those pages. Scarp **v0.0.5-alpha.2 is now publicly released**, with an independent evidence manifest at `conformance/alpha2-manifest.json` (twelve newer programs, 28 exact upstream Git blobs, including imported source modules and a JSON snapshot). `scripts/check-alpha2.ts` verifies the English/Hindi release guides, collection tutorials and the [multi-file constants/JSON walkthrough](docs/tutorials/alpha2-module-constants-and-inspection.md), fixture provenance and optional byte-for-byte checkout comparison. A distinct `alpha2-conformance` GitHub Actions job checks out the exact alpha.2 release source `e4db8e191cd7ea623123cae7348450ca6c95b170`, builds the tagged Rust interpreter and executes the twelve programs plus full text/JSON module inspection and diagnostic explanation checks. This separation prevents newer compiler behavior from being silently claimed as an alpha.1 feature.
 

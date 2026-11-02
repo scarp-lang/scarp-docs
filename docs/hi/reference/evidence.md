@@ -12,6 +12,10 @@
 
 [Alpha.1 → alpha.2 upgrade readiness](/hi/reference/upgrade-readiness) में पुराने **11 source/output examples** को नए प्रकाशित alpha.2 interpreter से दोबारा चलाकर `check`, सटीक stdout तथा lexer tokens का सत्यापन होता है। यह मूल alpha.1 suite, नए 12 alpha.2 programs और छह negative error examples से **अलग परीक्षण** है। यह arbitrary programs के सभी मामलों में backward compatibility की गारंटी नहीं देता।
 
+## नवीनतम alpha.3 का अलग सत्यापन
+
+[प्रकाशित v0.0.5-alpha.3 गाइड](/hi/releases/v0.0.5-alpha.3) तीसरा स्वतंत्र release track है, commit `7715c28df09c7703b39e14fddb963275b25df476` पर pinned। `npm run check:alpha3` दोनों भाषाओं के चार पूरे source/stdout programs, imported module, E0015 JSON diagnostic और **11 upstream Git blobs** जाँचता है। अलग `alpha3-conformance` CI job सही compiler build करके static `verify`, runtime `exec`, legacy `run` तथा inspection commands चलाता है। पुरानी 11 alpha.1 या 12 alpha.2 cases की गिनती इससे नहीं बदलती।
+
 ## तीन स्तरों की जाँच
 
 1. **Markdown/लिंक:** `npm run check:docs` से pages, navigation, anchors और आवश्यक metadata जाँचें।
