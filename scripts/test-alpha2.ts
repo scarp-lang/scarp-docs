@@ -38,5 +38,34 @@ for (const [label, args] of [
     console.error(`FAIL alpha.2 ${label}: ${response.error || response.stderr?.toString() || response.status}`)
   } else console.log(`PASS alpha.2 ${label}`)
 }
+// Verify both human-readable and machine-readable module inventories against
+// a single-file fixture in the published compiler. Unlike a help smoke test,
+// these calls exercise compilation, source spans, and JSON serialization.
+const inventory = execute(['modules', 'bit_fields.srp'])
+if (inventory.error || inventory.status !== 0 || inventory.stderr?.length ||
+    !inventory.stdout?.toString().includes('bit_fields.srp')) {
+  failures++
+  console.error(`FAIL alpha.2 text module inspection: ${inventory.error || inventory.stderr?.toString() || inventory.stdout?.toString()}`)
+} else console.log('PASS alpha.2 static module inventory')
+
+const jsonInventory = execute(['modules', '--json', 'bit_fields.srp'])
+if (jsonInventory.error || jsonInventory.status !== 0 || jsonInventory.stderr?.length) {
+  failures++
+  console.error(`FAIL alpha.2 JSON module inspection: ${jsonInventory.error || jsonInventory.stderr?.toString() || jsonInventory.status}`)
+} else {
+  try {
+    const parsed: unknown = JSON.parse(jsonInventory.stdout?.toString() ?? '')
+    if (!parsed || typeof parsed !== 'object') throw Error('expected a JSON object')
+    const report = parsed as Record<string, unknown>
+    if (report.schema_version !== 1 || report.entry !== 0 || !Array.isArray(report.modules) ||
+        report.modules.length !== 1 || !Array.isArray(report.constant_dependencies)) {
+      throw Error('expected schema version 1, entry 0, one module and constant dependency list')
+    }
+    console.log('PASS alpha.2 module JSON schema and single-file graph')
+  } catch (error) {
+    failures++
+    console.error(`FAIL alpha.2 module JSON schema: ${error instanceof Error ? error.message : String(error)}`)
+  }
+}
 if (failures) process.exit(1)
-console.log(`PASS: all ${manifest.cases.length} published alpha.2 programs and two CLI checks`)
+console.log(`PASS: all ${manifest.cases.length} published alpha.2 programs and four CLI/inspection checks`)

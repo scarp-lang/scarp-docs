@@ -44,6 +44,9 @@ features:
   - title: Newly published v0.0.5-alpha.2
     details: Explore five pinned, compiler-verified programs for bit operations, typed declarations, Unicode and numerical functions.
     link: /releases/v0.0.5-alpha.2
+  - title: Alpha.2 collections and numeric learning
+    details: Run verified integer collections, deterministic score-selection, softmax and explicit loss-gradient programs.
+    link: /tutorials/alpha2-collections-and-learning
   - title: Official Scarp community
     details: Find the project's verified social channels, news, and ways to contribute.
     link: /community/social

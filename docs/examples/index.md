@@ -45,6 +45,10 @@ scarp check examples/module_demo.srp
 
 The relative paths above assume you are at the compiler repository root or using its extracted release package. For a more extensive sample set, see the [official example directory](https://github.com/scarp-lang/scarp/tree/v0.0.5-alpha.1/examples). The Scarp source interpreter is prerelease software and its examples are version-dependent.
 
+## Latest published alpha.2 examples
+
+The [newer v0.0.5-alpha.2 release examples](/releases/v0.0.5-alpha.2) and [collections and learning tutorial](/tutorials/alpha2-collections-and-learning) add **nine separately pinned programs** with checked sources and stdout, plus tested module text/JSON inspection. These do **not** change the older release baseline for the examples below.
+
 ## Automatically checked documentation fixtures
 
 The official examples above are also mirrored in the documentation repository's [conformance fixtures](https://github.com/scarp-lang/scarp-docs/tree/main/conformance/programs). The CI conformance job checks out **exactly** the published compiler source commit, compiles that interpreter, and tests 11 `.srp` programs with `check` and byte-exact `run` output. It also performs a `tokens` smoke test. A changed example cannot pass merely because its code looks plausible.

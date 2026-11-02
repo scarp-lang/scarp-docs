@@ -18,6 +18,10 @@ Scarp की वर्तमान प्रायोगिक प्रणा�
 
 `[1.0, 2.0]` immutable floating-point vector है। `tile([...], rows, cols)` immutable 2D संरचना बनाता है। सामान्य-purpose arrays/maps या user-defined types अभी उपलब्ध नहीं हैं। विवरण [वैक्टर/टाइल](/hi/language/numerics) में है।
 
+## नए alpha.2 में integers और type annotations
+
+प्रकाशित [v0.0.5-alpha.2](/hi/releases/v0.0.5-alpha.2) में immutable **`integers`** collection और `bind`/`var` में optional checked type annotations उपलब्ध हैं। यह `float` वाले `vector` से अलग type है। [Compiler-verified collections tutorial](/hi/tutorials/alpha2-collections-and-learning) में range, window, replacement और स्पष्ट float-vector conversion के पूरे उदाहरण हैं। पुरानी alpha.1 सूची में इन्हें उपलब्ध न मानें।
+
 ## अंग्रेज़ी संदर्भ के अपरिवर्तित कोड उदाहरण
 
 नीचे दिए गए code snippets मूल अंग्रेज़ी संदर्भ से लिए गए हैं। Keywords, source strings और output expectations जानबूझकर अनुवादित नहीं किए गए हैं।

@@ -1,5 +1,7 @@
 # कमांड-लाइन इंटरफ़ेस (CLI)
 
+**नया संस्करण:** [v0.0.5-alpha.2 module और diagnostic commands](/hi/tooling/alpha2-inspection) में static inventory, JSON inspection तथा error explanation उपलब्ध हैं। नीचे की command सूची अभी पुराने **alpha.1** के लिए है; इसे alpha.2 की पूरी CLI सूची न मानें।
+
 यह reference प्रकाशित Scarp **v0.0.5-alpha.1** पर आधारित है। पुराने versions में commands और syntax में अंतर हो सकता है।
 
 | कमांड | क्या करता है? |

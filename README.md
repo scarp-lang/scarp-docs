@@ -8,7 +8,7 @@ Official VitePress documentation for the experimental [Scarp Programming Languag
 
 **Compiler:** https://github.com/scarp-lang/scarp
 
-**Latest published prerelease:** [v0.0.5-alpha.2](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.2), November 2, 2026. [Alpha.2 release examples (English)](docs/releases/v0.0.5-alpha.2.md) and [हिन्दी संस्करण](docs/hi/releases/v0.0.5-alpha.2.md). The 11-program core documentation baseline remains intentionally pinned to v0.0.5-alpha.1; a separate five-program alpha.2 conformance suite checks newly published features.
+**Latest published prerelease:** [v0.0.5-alpha.2](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.2), November 2, 2026. [Alpha.2 release examples (English)](docs/releases/v0.0.5-alpha.2.md) and [हिन्दी संस्करण](docs/hi/releases/v0.0.5-alpha.2.md). The 11-program core documentation baseline remains intentionally pinned to v0.0.5-alpha.1; a separate **nine-program** alpha.2 conformance suite checks newly published features across the [release guide](docs/releases/v0.0.5-alpha.2.md) and [verified collections and classification tutorial](docs/tutorials/alpha2-collections-and-learning.md), both translated into Hindi.
 
 **License:** [MIT](LICENSE)
 
@@ -52,7 +52,7 @@ The translation guard compares actual fenced-code blocks, including repeated sni
 
 ## Two published compiler release tracks
 
-The core reference, status matrix and existing 11 compiler examples remain pinned to **v0.0.5-alpha.1** until a comprehensive and separately reviewed update migrates those pages. Scarp **v0.0.5-alpha.2 is now publicly released**, with an independent evidence manifest at `conformance/alpha2-manifest.json` (five newer programs, ten exact upstream Git blobs). `scripts/check-alpha2.ts` verifies both English/Hindi release pages, fixture provenance and optional byte-for-byte checkout comparison. A distinct `alpha2-conformance` GitHub Actions job checks out the exact alpha.2 release source `e4db8e191cd7ea623123cae7348450ca6c95b170`, builds the tagged Rust interpreter and executes the five programs plus CLI inspection smoke tests. This separation prevents newer compiler behavior from being silently claimed as an alpha.1 feature.
+The core reference, status matrix and existing 11 compiler examples remain pinned to **v0.0.5-alpha.1** until a comprehensive and separately reviewed update migrates those pages. Scarp **v0.0.5-alpha.2 is now publicly released**, with an independent evidence manifest at `conformance/alpha2-manifest.json` (nine newer programs, 18 exact upstream Git blobs). `scripts/check-alpha2.ts` verifies the English/Hindi release guides and collection tutorials, fixture provenance and optional byte-for-byte checkout comparison. A distinct `alpha2-conformance` GitHub Actions job checks out the exact alpha.2 release source `e4db8e191cd7ea623123cae7348450ca6c95b170`, builds the tagged Rust interpreter and executes the nine programs plus full text/JSON module inspection and diagnostic explanation checks. This separation prevents newer compiler behavior from being silently claimed as an alpha.1 feature.
 
 ## Compiler-backed tutorial evidence
 
@@ -90,7 +90,7 @@ The `conformance/` directory contains 11 pinned source/output pairs copied from 
 
 ```sh
 npm run check:fixtures
-npm run check:alpha2 # validate five additional pinned alpha.2 examples and both release pages
+npm run check:alpha2 # validate nine alpha.2 fixtures across four bilingual page files
 npm run check:tutorial-evidence # match bilingual tutorial code + stdout against published fixtures
 npm run test:tutorial-evidence # unit-test source/output pairing and drift detection
 ```

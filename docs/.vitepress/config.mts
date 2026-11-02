@@ -14,7 +14,7 @@ const scarpGrammar = {
     { name: 'constant.numeric.scarp', match: '\\b(?:[0-9]+\\.[0-9]+(?:[eE][+-]?[0-9]+)?|[0-9]+[eE][+-]?[0-9]+|[0-9]+)\\b' },
     { name: 'constant.language.boolean.scarp', match: '\\b(?:true|false)\\b' },
     { name: 'keyword.control.scarp', match: '\\b(?:if|elif|else|while|repeat|break|continue|return|needs|ensures|import|as|pub)\\b' },
-    { name: 'storage.type.scarp', match: '\\b(?:integer|float|boolean|string|vector|tile|unit)\\b' },
+    { name: 'storage.type.scarp', match: '\\b(?:integer|float|boolean|string|vector|integers|tile|unit)\\b' },
     { name: 'storage.modifier.scarp', match: '\\b(?:bind|var|funcra|pure)\\b' },
     { name: 'support.function.output.scarp', match: '\\b(?:print|println|write|eprint|ewrite)\\b(?=\\s*\\()' },
     { name: 'keyword.operator.word.scarp', match: '\\b(?:and|or|not)\\b' }
@@ -70,6 +70,7 @@ export default defineConfig({
             { text: 'न्यूमेरिकल वैक्टर अभ्यास', link: '/hi/tutorials/verified-vectors' },
             { text: 'सत्यापित टाइल अभ्यास', link: '/hi/tutorials/verified-tiles' },
             { text: 'वर्गीकरण और संभावनाएँ', link: '/hi/tutorials/verified-classification' },
+            { text: 'Alpha.2 collections और learning', link: '/hi/tutorials/alpha2-collections-and-learning' },
             { text: 'मॉड्यूल ट्यूटोरियल', link: '/hi/tutorials/modules-walkthrough' }
           ] },
           { text: 'भाषा संदर्भ', items: [
@@ -86,6 +87,7 @@ export default defineConfig({
           ] },
           { text: 'टूलिंग और संदर्भ', items: [
             { text: 'CLI', link: '/hi/tooling/cli' },
+            { text: 'Alpha.2 modules और explain', link: '/hi/tooling/alpha2-inspection' },
             { text: 'समस्या निवारण', link: '/hi/tooling/troubleshooting' },
             { text: 'फीचर स्थिति', link: '/hi/reference/status' },
             { text: 'सत्यापन', link: '/hi/reference/evidence' },
@@ -176,6 +178,7 @@ export default defineConfig({
         { text: 'Verified vectors tutorial', link: '/tutorials/verified-vectors' },
         { text: 'Verified tiles tutorial', link: '/tutorials/verified-tiles' },
         { text: 'Verified classification tutorial', link: '/tutorials/verified-classification' },
+        { text: 'Alpha.2 collections and probabilities', link: '/tutorials/alpha2-collections-and-learning' },
         { text: 'Source modules tutorial', link: '/tutorials/modules-walkthrough' }
       ] },
       { text: 'Language', items: [
@@ -192,6 +195,7 @@ export default defineConfig({
       ] },
       { text: 'Tools and reference', items: [
         { text: 'Command-line interface', link: '/tooling/cli' },
+        { text: 'Alpha.2 module and diagnostic inspection', link: '/tooling/alpha2-inspection' },
         { text: 'Troubleshooting', link: '/tooling/troubleshooting' },
         { text: 'Feature status', link: '/reference/status' },
         { text: 'Evidence and testing', link: '/reference/evidence' },

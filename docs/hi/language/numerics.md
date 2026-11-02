@@ -30,6 +30,10 @@ print(matvec(weights, [2.0, 1.0])); // [4.0, 1.0]
 
 [वर्गीकरण और संभावनाओं का ट्यूटोरियल](/hi/tutorials/verified-classification) प्रकाशित कंपाइलर के **तीन पूरे उदाहरणों** में matrix scores, `argmax`, `softmax`, `crossentropy` और `onehot` target दिखाता है। हर प्रोग्राम और उसका stdout tagged release से लिया गया है तथा CI में जाँचा जाता है। इसे पूरा AI training framework न समझें।
 
+## नए alpha.2 का numerical अभ्यास
+
+[Alpha.2 collections और probability tutorial](/hi/tutorials/alpha2-collections-and-learning) में immutable integer collections, stable score selection, numerically stable probability और स्पष्ट loss gradient के चार पूरे tagged programs मिलते हैं। इन्हें नए alpha.2 compiler के विरुद्ध अलग CI job में सत्यापित किया जाता है। यह automatic differentiation या पूरा neural-network training loop नहीं है।
+
 ## आकार और संसाधन सीमा
 
 अधिकतम vector length 65,536 तत्व है। लंबाई/shape mismatch E0032, गलत numeric domain E0034, allocation E0035 और cumulative numeric payload quota E0036 दे सकते हैं। [numeric budget](/hi/reference/budgets) तथा [builtin reference](/hi/reference/library) देखें।

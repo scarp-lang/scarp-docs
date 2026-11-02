@@ -2,6 +2,10 @@
 
 **सामान्य-purpose standard library अभी प्रकाशित नहीं है।** लेकिन interpreter में कई विशिष्ट numerical built-ins उपलब्ध हैं। Built-ins को package manager या stable public library का विकल्प न समझें।
 
+## नई alpha.2 built-ins
+
+**2 नवंबर 2026** को प्रकाशित **v0.0.5-alpha.2** में immutable **integer collections** (`ints_range`, `ints_window`, `ints_set`, `ints_join`, `ints_to_vector`), स्पष्ट checked `to_float`/`to_integer` conversions, Unicode text queries, और `variance`, `stddev`, `relu`, `sigmoid`, `tanh` जैसे numerical functions शामिल हैं। इन्हें [सत्यापित alpha.2 ट्यूटोरियल](/hi/tutorials/alpha2-collections-and-learning) में वास्तविक source/output के साथ सीखें। नीचे के पुराने numerical संदर्भ को alpha.1 के लिए अलग रखा गया है।
+
 ## Numerical operations
 
 वैक्टर पर `len`, `sum`, `mean`, `dot`, `mse`, `fill`, `scale`, `clamp`, `softmax` आदि उपलब्ध हैं। कुछ अन्य operations compensated reductions, norms, log-space kernels, selection और classification loss से संबंधित हैं। Tile/matrix के लिए `tile`, `height`, `width`, `cell`, `lane`, `unroll`, `turn`, `matvec`, `matmul`, `tileadd`, `tilescale` उपलब्ध हैं।

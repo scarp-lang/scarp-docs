@@ -2,6 +2,10 @@
 
 **Scarp v0.0.5-alpha.1 does not have a general-purpose standard library or package manager.** What exists today is a set of interpreted built-in numerical operations, source-language output statements, and a **Rust embedding API**. They are not interchangeable.
 
+## Newer released alpha.2 built-ins
+
+**v0.0.5-alpha.2**, published November 2, adds immutable **integer collections** with operations such as `ints_range`, `ints_window`, `ints_set`, `ints_join`, `ints_to_vector`; explicit checked `to_float` and `to_integer` conversions; seven Unicode text queries; numerical `variance`, `stddev`, `relu`, `sigmoid` and `tanh`; and additional score/loss utilities. The [compiler-verified alpha.2 tutorial](/tutorials/alpha2-collections-and-learning) exercises these capabilities using real published programs. This section does **not** backport them into the alpha.1 table below, nor claim a full package system.
+
 ## Built-in numerical operations
 
 The following names appear in the compiler's current references and example fixtures. These are not a promise of a complete scientific-computing library; verify signatures and error behavior in the linked sources before use.
