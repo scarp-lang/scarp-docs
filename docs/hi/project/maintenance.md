@@ -18,7 +18,7 @@ npm run docs:build
 
 ## दो अलग compiler संस्करण
 
-[नया alpha.2 रिलीज़ पृष्ठ](/hi/releases/v0.0.5-alpha.2) नौ प्रकाशित source/output जोड़ों को अलग CI job में चलाता है। पुराने 11 उदाहरण अभी alpha.1 compiler से जुड़े हैं। `npm run check:alpha2` hashes और दोनों भाषाओं का प्रमाण जाँचता है; `npm run check:evidence -- /path/to/alpha1 /path/to/alpha2` से दोनों compiler tags की source-link paths जाँचें। सभी पुराने ट्यूटोरियल को समीक्षा के बिना alpha.2 पर न बदलें।
+[नया alpha.2 रिलीज़ पृष्ठ](/hi/releases/v0.0.5-alpha.2) 12 प्रकाशित source/output जोड़ों (module dependencies तथा JSON snapshot सहित) को अलग CI job में चलाता है। पुराने 11 उदाहरण अभी alpha.1 compiler से जुड़े हैं। `npm run check:alpha2` hashes और दोनों भाषाओं का प्रमाण जाँचता है; `npm run check:evidence -- /path/to/alpha1 /path/to/alpha2` से दोनों compiler tags की source-link paths जाँचें। सभी पुराने ट्यूटोरियल को समीक्षा के बिना alpha.2 पर न बदलें।
 
 ## नए compiler release पर
 
