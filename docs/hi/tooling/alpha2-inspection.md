@@ -23,6 +23,8 @@ JSON रूप एक compact object और अंत में newline दे�
 
 पूरी field definitions के लिए [tagged JSON reference](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.2/docs/module-json.md) और [module inspection](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.2/docs/module-inspection.md) देखें। Editor tools में schema version जाँचें और मशीन बदलने पर filesystem labels समान होने का अनुमान न लगाएँ।
 
+**E0044 और E0045 सहित छह tagged failures** के पूरे source और stderr के लिए [alpha.2 diagnostics और repairs](/hi/tutorials/alpha2-diagnostics-and-repairs) देखें। यह वास्तविक program त्रुटियों तथा बिना source वाली `explain` help में अंतर बताता है।
+
 ## बिना source file के diagnostic समझें
 
 `scarp explain E0044` numerical conversion की समस्या समझाता है। `E0045` गलत Unicode scalar index से संबंधित है। यह command source file खोले या चलाए बिना सामान्य guidance देता है; वास्तविक error के source-span और related notes अधिक विशिष्ट होते हैं।
