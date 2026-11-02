@@ -101,7 +101,7 @@ export default defineConfig({
             { text: 'सोशल लिंक', link: '/hi/community/social' },
             { text: 'योगदान करें', link: '/hi/community/contributing' },
             { text: 'Alpha.2 रिलीज़ और प्रमाण', link: '/hi/releases/v0.0.5-alpha.2' },
-            { text: 'मेंटेनर सूची', link: '/hi/project/maintenance' }
+            { text: 'मेंटेनर सूची', link: '/hi/project/maintenance' },
             { text: 'डिप्लॉयमेंट गिनती', link: '/hi/project/deployments' }
           ] }
         ]
@@ -207,7 +207,7 @@ export default defineConfig({
         { text: 'Official social channels', link: '/community/social' },
         { text: 'Contributing', link: '/community/contributing' },
         { text: 'Alpha.2 release evidence', link: '/releases/v0.0.5-alpha.2' },
-        { text: 'Docs maintainer checklist', link: '/project/maintenance' }
+        { text: 'Docs maintainer checklist', link: '/project/maintenance' },
         { text: 'Pages deployments', link: '/project/deployments' }
       ] }
     ],
