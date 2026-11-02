@@ -31,6 +31,10 @@ Expected output: `1.5 0 0.5` followed by a newline. `1` and `1.0` are **differen
 
 Strings retain Unicode contents. An actual line break inside a string is invalid; use `\n`. Supported escapes are `\\`, `\"`, `\n`, `\t`, and `\r`. Boolean operators require booleans; `and`/`or` short-circuit at runtime.
 
+## New in published alpha.2: integer collections and annotated bindings
+
+Published [v0.0.5-alpha.2](/releases/v0.0.5-alpha.2) adds an immutable **`integers`** collection type, as distinct from the floating-point `vector`, plus optional checked type annotations on `bind` and `var` declarations. The [compiler-verified integer collections tutorial](/tutorials/alpha2-collections-and-learning) shows ranges, windows, replacement and explicit conversion to float vectors. The older alpha.1 table above does not include these newer capabilities.
+
 ## Collections are specialized
 
 Scarp has numerical vectors and tiles, not a general-purpose list/map/set type system. Vector and tile values cannot be mutated by element assignment. See [numerical capabilities](/language/numerics) and [built-ins](/reference/library).
