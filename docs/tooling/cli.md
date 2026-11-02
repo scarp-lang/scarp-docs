@@ -1,5 +1,7 @@
 # Command-line interface
 
+**Newer published release:** [v0.0.5-alpha.2](/tooling/alpha2-inspection) adds module inventory, JSON module inspection, and source-free diagnostic explanations. The table below remains specific to the older **alpha.1** interpreter; do not treat it as the current command list for alpha.2.
+
 The shipped Scarp v0.0.5-alpha.1 interpreter provides exactly three **file commands** plus help/version. Some older design documents suggest additional CLI verbs; those are not shipped commands.
 
 | Command | Available? | Purpose |
