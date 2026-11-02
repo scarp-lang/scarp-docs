@@ -26,6 +26,10 @@ print(matvec(weights, [2.0, 1.0])); // [4.0, 1.0]
 
 `matvec(t, v)` के लिए `width(t) == len(v)` और `matmul(a, b)` के लिए `width(a) == height(b)` चाहिए। टाइल में अधिकतम 65,536 cells हैं; इसके rows/columns की भी अलग जाँच होती है। नया numerical output buffer बनाने पर cumulative `--max-vector-bytes` बजट खर्च हो सकता है। समस्याओं के लिए [डायग्नोस्टिक्स](/hi/reference/diagnostics) देखें।
 
+## Class scores और probabilities का सत्यापित अभ्यास
+
+[वर्गीकरण और संभावनाओं का ट्यूटोरियल](/hi/tutorials/verified-classification) प्रकाशित कंपाइलर के **तीन पूरे उदाहरणों** में matrix scores, `argmax`, `softmax`, `crossentropy` और `onehot` target दिखाता है। हर प्रोग्राम और उसका stdout tagged release से लिया गया है तथा CI में जाँचा जाता है। इसे पूरा AI training framework न समझें।
+
 ## आकार और संसाधन सीमा
 
 अधिकतम vector length 65,536 तत्व है। लंबाई/shape mismatch E0032, गलत numeric domain E0034, allocation E0035 और cumulative numeric payload quota E0036 दे सकते हैं। [numeric budget](/hi/reference/budgets) तथा [builtin reference](/hi/reference/library) देखें।
