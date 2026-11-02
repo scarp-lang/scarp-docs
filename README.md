@@ -8,7 +8,7 @@ Official VitePress documentation for the experimental [Scarp Programming Languag
 
 **Compiler:** https://github.com/scarp-lang/scarp
 
-**Latest published prerelease:** [v0.0.5-alpha.2](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.2), November 2, 2026. [Alpha.2 release examples (English)](docs/releases/v0.0.5-alpha.2.md) and [हिन्दी संस्करण](docs/hi/releases/v0.0.5-alpha.2.md). The 11-program core documentation baseline remains intentionally pinned to v0.0.5-alpha.1; a separate **twelve-program** alpha.2 conformance suite checks newly published features across the [release guide](docs/releases/v0.0.5-alpha.2.md) and [verified collections and classification tutorial](docs/tutorials/alpha2-collections-and-learning.md), both translated into Hindi.
+**Previous published prerelease:** [v0.0.5-alpha.2](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.2), November 2, 2026. [Alpha.2 release examples (English)](docs/releases/v0.0.5-alpha.2.md) and [हिन्दी संस्करण](docs/hi/releases/v0.0.5-alpha.2.md). The 11-program core documentation baseline remains intentionally pinned to v0.0.5-alpha.1; a separate **twelve-program** alpha.2 conformance suite checks newly published features across the [release guide](docs/releases/v0.0.5-alpha.2.md) and [verified collections and classification tutorial](docs/tutorials/alpha2-collections-and-learning.md), both translated into Hindi.
 
 **License:** [MIT](LICENSE)
 
