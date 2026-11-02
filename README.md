@@ -50,6 +50,10 @@ A syntax proposal is *not* evidence that a feature ships. A future feature shoul
 
 The translation guard compares actual fenced-code blocks, including repeated snippets, in the original English order. Hindi pages may contain additional explanation, but no original example may be silently changed or dropped. The parser itself has standalone TypeScript unit tests.
 
+## Published alpha.2 diagnostic regression tests
+
+Six deliberately failing programs, including exact stderr snapshots and supporting module source, are pinned separately in `conformance/alpha2-errors-manifest.json` (**14 upstream Git blobs**). The [English repair tutorial](docs/tutorials/alpha2-diagnostics-and-repairs.md) and [हिन्दी त्रुटि गाइड](docs/hi/tutorials/alpha2-diagnostics-and-repairs.md) reproduce complete source/stderr examples. TypeScript `check:alpha2-errors` validates their provenance; the alpha.2 compiler CI runs `check` and `run` on each fixture, verifying that they fail as published. These six negative cases are not included in the twelve successful alpha.2 programs.
+
 ## Two published compiler release tracks
 
 The core reference, status matrix and existing 11 compiler examples remain pinned to **v0.0.5-alpha.1** until a comprehensive and separately reviewed update migrates those pages. Scarp **v0.0.5-alpha.2 is now publicly released**, with an independent evidence manifest at `conformance/alpha2-manifest.json` (twelve newer programs, 28 exact upstream Git blobs, including imported source modules and a JSON snapshot). `scripts/check-alpha2.ts` verifies the English/Hindi release guides, collection tutorials and the [multi-file constants/JSON walkthrough](docs/tutorials/alpha2-module-constants-and-inspection.md), fixture provenance and optional byte-for-byte checkout comparison. A distinct `alpha2-conformance` GitHub Actions job checks out the exact alpha.2 release source `e4db8e191cd7ea623123cae7348450ca6c95b170`, builds the tagged Rust interpreter and executes the twelve programs plus full text/JSON module inspection and diagnostic explanation checks. This separation prevents newer compiler behavior from being silently claimed as an alpha.1 feature.
