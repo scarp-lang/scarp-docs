@@ -12,7 +12,9 @@ npm run check:i18n
 npm run docs:build
 ~~~
 
-`check:docs` internal links/navigation और `check:i18n` दोनों भाषाओं के page pairs तथा कोड-फेंस की संगति जाँचते हैं। Compiler CI सात copied examples का expected stdout से मिलान करता है।
+`check:docs` internal links/navigation और `check:i18n` दोनों भाषाओं के page pairs तथा कोड-फेंस की संगति जाँचते हैं। Compiler CI आठ copied examples का expected stdout से मिलान करता है।
+
+नए code examples के लिए `npm run check:snippets`, `npm run test:snippets` और `npm run check:tutorial-evidence` भी चलाएँ। ये परीक्षण पुराने syntax, अनुपलब्ध CLI commands और गलत compiler fixtures पकड़ते हैं।
 
 ## नए compiler release पर
 
