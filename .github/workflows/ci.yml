@@ -35,6 +35,10 @@ jobs:
         run: npm run check:tutorial-evidence
       - name: Unit-test tutorial evidence validator
         run: npm run test:tutorial-evidence
+      - name: Verify English/Hindi fixture statistics against manifest
+        run: npm run check:coverage-statistics
+      - name: Unit-test coverage statistics checks
+        run: npm run test:coverage-statistics
       - name: Unit-test SEO URL helpers
         run: npm run test:site-meta
       - name: Unit-test typed deployment API and fallbacks
