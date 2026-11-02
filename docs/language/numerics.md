@@ -40,6 +40,10 @@ The [verified matrix-forward lesson](/tutorials/verified-tiles) reproduces the *
 
 The [verified classification and probabilities tutorial](/tutorials/verified-classification) runs **three full published compiler examples** covering matrix scores, `argmax` tie-breaking, `softmax`, `crossentropy` and `onehot` targets. All source and expected output blocks are checked against the pinned release, including a separate compiler execution job. These examples demonstrate numerical primitives, not a training system.
 
+## Newly published alpha.2 statistics and training primitives
+
+The [alpha.2 collections and numeric-learning tutorial](/tutorials/alpha2-collections-and-learning) provides four additional compiler-verified complete programs: immutable integer collections, stable score selection, numerically stable probabilities, and explicit loss gradients. The separate alpha.2 fixture suite checks them against the newer release; the existing alpha.1 numerical examples remain independently pinned. These primitives do not provide automatic differentiation or a full training loop.
+
 ## Limits and errors
 
 Indexing is bounds-checked. Invalid shapes, nonfinite results, and numerical payload-budget exhaustion produce diagnostics rather than silently returning invalid data. Each vector/tile element is a finite 64-bit float; some operations materialize new buffers and consume the cumulative vector-byte budget.
