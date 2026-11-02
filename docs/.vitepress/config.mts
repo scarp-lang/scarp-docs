@@ -166,7 +166,8 @@ export default defineConfig({
         { text: 'Official channels', link: '/community/social' },
         { text: 'Contributing', link: '/community/contributing' }
       ] },
-      { text: 'v0.0.5-alpha.2 (latest)', items: [
+      { text: 'v0.0.5-alpha.3 (latest)', items: [
+        { text: 'Published alpha.3 and new CLI', link: '/releases/v0.0.5-alpha.3' },
         { text: 'Published alpha.2 examples', link: '/releases/v0.0.5-alpha.2' },
         { text: 'v0.0.5-alpha.1 documentation baseline', link: '/reference/status' },
         { text: 'Compiler releases', link: `${sourceRepo}/releases` }
