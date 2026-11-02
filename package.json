@@ -15,10 +15,11 @@
     "check:fixtures": "tsx scripts/check-fixtures.ts",
     "check:evidence": "tsx scripts/check-evidence.ts",
     "test:compiler": "tsx scripts/test-compiler.ts",
-    "check": "npm run typecheck && npm run check:tooling && npm run check:docs && npm run check:i18n && npm run check:fixtures && npm run test:site-meta && npm run test:pages-api && npm run docs:build && npm run check:site-build",
+    "check": "npm run typecheck && npm run check:tooling && npm run check:docs && npm run check:i18n && npm run test:code-fences && npm run check:fixtures && npm run test:site-meta && npm run test:pages-api && npm run docs:build && npm run check:site-build",
     "test:site-meta": "tsx scripts/test-site-meta.ts",
     "check:site-build": "tsx scripts/check-site-build.ts",
-    "test:pages-api": "tsx scripts/test-pages-api.ts"
+    "test:pages-api": "tsx scripts/test-pages-api.ts",
+    "test:code-fences": "tsx scripts/test-code-fences.ts"
   },
   "devDependencies": {
     "vitepress": "1.6.4",
