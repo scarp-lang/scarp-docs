@@ -55,7 +55,8 @@ export default defineConfig({
             { text: 'Discord #language-development', link: 'https://discord.com/channels/1566388621085253663/1566388870826827856' },
             { text: 'Reddit', link: 'https://www.reddit.com/r/ScarpLang/' }
           ] },
-          { text: 'नया: v0.0.5-alpha.2', link: '/hi/releases/v0.0.5-alpha.2' },
+          { text: 'नवीनतम: v0.0.5-alpha.3', link: '/hi/releases/v0.0.5-alpha.3' },
+          { text: 'Alpha.2 रिलीज़', link: '/hi/releases/v0.0.5-alpha.2' },
           { text: 'अपग्रेड जाँच: alpha.1 → alpha.2', link: '/hi/reference/upgrade-readiness' },
           { text: 'संदर्भ: v0.0.5-alpha.1', link: '/hi/reference/status' }
         ],
@@ -106,6 +107,7 @@ export default defineConfig({
             { text: 'उदाहरण', link: '/hi/examples/' },
             { text: 'सोशल लिंक', link: '/hi/community/social' },
             { text: 'योगदान करें', link: '/hi/community/contributing' },
+            { text: 'Alpha.3 रिलीज़ और नया CLI', link: '/hi/releases/v0.0.5-alpha.3' },
             { text: 'Alpha.2 रिलीज़ और प्रमाण', link: '/hi/releases/v0.0.5-alpha.2' },
             { text: 'मेंटेनर सूची', link: '/hi/project/maintenance' },
             { text: 'डिप्लॉयमेंट गिनती', link: '/hi/project/deployments' }
@@ -217,6 +219,7 @@ export default defineConfig({
         { text: 'Verified examples', link: '/examples/' },
         { text: 'Official social channels', link: '/community/social' },
         { text: 'Contributing', link: '/community/contributing' },
+        { text: 'Latest alpha.3 release and CLI', link: '/releases/v0.0.5-alpha.3' },
         { text: 'Alpha.2 release evidence', link: '/releases/v0.0.5-alpha.2' },
         { text: 'Docs maintainer checklist', link: '/project/maintenance' },
         { text: 'Pages deployments', link: '/project/deployments' }
