@@ -106,3 +106,5 @@ jobs:
         run: cargo build --manifest-path .compiler-alpha2/Cargo.toml --locked --offline
       - name: Execute alpha.2 conformance examples and inspection command smoke tests
         run: npm run test:alpha2 -- .compiler-alpha2/target/debug/scarp
+      - name: Verify six published failure diagnostics on check and run
+        run: npm run test:alpha2-errors -- .compiler-alpha2/target/debug/scarp
