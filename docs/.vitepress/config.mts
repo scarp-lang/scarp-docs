@@ -59,6 +59,7 @@ export default defineConfig({
             { text: 'इंस्टॉलेशन', link: '/hi/guide/installation' },
             { text: 'पहला प्रोग्राम', link: '/hi/guide/first-program' },
             { text: 'सरल शब्दावली', link: '/hi/guide/glossary' },
+            { text: 'फ़ंक्शन अभ्यास (सत्यापित)', link: '/hi/tutorials/verified-functions' },
             { text: 'लूप ट्यूटोरियल', link: '/hi/tutorials/repeat-and-loops' },
             { text: 'मॉड्यूल ट्यूटोरियल', link: '/hi/tutorials/modules-walkthrough' }
           ] },
@@ -151,6 +152,7 @@ export default defineConfig({
         { text: 'Installation', link: '/guide/installation' },
         { text: 'Your first program', link: '/guide/first-program' },
         { text: 'Glossary for beginners', link: '/guide/glossary' },
+        { text: 'Verified functions tutorial', link: '/tutorials/verified-functions' },
         { text: 'Repeat and while tutorial', link: '/tutorials/repeat-and-loops' },
         { text: 'Source modules tutorial', link: '/tutorials/modules-walkthrough' }
       ] },
