@@ -4,6 +4,7 @@ The language is **prerelease and evolving**. Use the exact executable version ma
 
 | Version | Distinguishing features |
 | --- | --- |
+| **v0.0.5-alpha.3** | **Latest published prerelease (Nov 2):** Scarp-first `exec`/static `verify`/`inspect`, offline `diagnose`, bounded text construction; [four verified examples](/releases/v0.0.5-alpha.3) |
 | **v0.0.5-alpha.2** | **Earlier published prerelease (Nov 2):** typed declarations, integer bit operations, Unicode queries, checked conversions, integer collections, vector statistics, source-module inspection; [verified release guide](/releases/v0.0.5-alpha.2) |
 | **v0.0.5-alpha.1** | Relative source modules, public functions and scalar constants; current main-reference baseline |
 | v0.0.4-alpha.4 | Immutable numerical tiles and matrix operations; **no source imports** |
