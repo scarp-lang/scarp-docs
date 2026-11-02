@@ -73,7 +73,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Please propose focused changes backed by
 
 ## Official community channels
 
-The [community page](docs/community/social.md) lists Scarp's verified public GitHub, X, YouTube, Instagram, Threads, and Bluesky profiles, plus the public contact address. Navigation icons link directly to those channels. Do not add unverified social handles or link personal developer profiles as official Scarp accounts.
+The [community page](docs/community/social.md) lists Scarp's public GitHub, X, Facebook, YouTube, Instagram, Threads, Bluesky, DEV and Reddit profiles, plus the public contact address. Navigation icons link directly to those channels. Use maintainer-provided or independently confirmed official project URLs; never link personal developer profiles as Scarp accounts.
 
 ## Compiler-backed conformance checks
 

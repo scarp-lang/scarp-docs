@@ -1,11 +1,12 @@
 # Scarp से जुड़ें
 
-Scarp Programming Language के सार्वजनिक खातों और आधिकारिक community links यहाँ हैं। इनका उपयोग release जानकारी, compiler updates, tutorials और योगदान के लिए करें। शुरुआती accounts पर अभी posts न भी हों।
+Scarp Programming Language के सार्वजनिक खातों और आधिकारिक community links यहाँ हैं। इनका उपयोग release जानकारी, compiler updates, tutorials और योगदान के लिए करें। शुरुआती accounts पर अभी posts न भी हों। Facebook लिंक 2 नवंबर 2026 को Scarp प्रोजेक्ट के maintainer ने उपलब्ध कराया।
 
 | मंच | Scarp खाता |
 | --- | --- |
 | GitHub | [scarp-lang](https://github.com/scarp-lang) |
 | X | [@ScarpLang](https://x.com/ScarpLang) |
+| Facebook | [ScarpLang](https://facebook.com/ScarpLang) |
 | YouTube | [Scarp Programming Language](https://www.youtube.com/@ScarpLang) |
 | Instagram | [@scarplang](https://www.instagram.com/scarplang/) |
 | Threads | [@scarplang](https://www.threads.net/@scarplang) |
