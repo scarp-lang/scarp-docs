@@ -1,5 +1,7 @@
 # समस्या निवारण
 
+**प्रकाशित v0.0.5-alpha.2 में:** [छह वास्तविक compiler त्रुटियाँ और सुधार](/hi/tutorials/alpha2-diagnostics-and-repairs) देखकर E0044/E0045, module constant calls, private imports और import cycles समझें। ये published test fixtures से लिए गए हैं और CI में चलाए जाते हैं। नीचे सामान्य troubleshooting नियम हैं।
+
 ## `scarp: command not found`
 
 पहले `scarp --version` आज़माएँ। यदि कमांड न मिले तो archive में executable का पूरा path लिखें या Cargo के binary folder को `PATH` में जोड़ें। Source checkout में `cargo run -- --version` से सही build पहचानें।
