@@ -71,6 +71,7 @@ export default defineConfig({
             { text: 'सत्यापित टाइल अभ्यास', link: '/hi/tutorials/verified-tiles' },
             { text: 'वर्गीकरण और संभावनाएँ', link: '/hi/tutorials/verified-classification' },
             { text: 'Alpha.2 collections और learning', link: '/hi/tutorials/alpha2-collections-and-learning' },
+            { text: 'Alpha.2 module constants और JSON', link: '/hi/tutorials/alpha2-module-constants-and-inspection' },
             { text: 'मॉड्यूल ट्यूटोरियल', link: '/hi/tutorials/modules-walkthrough' }
           ] },
           { text: 'भाषा संदर्भ', items: [
