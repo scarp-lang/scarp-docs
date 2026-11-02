@@ -13,9 +13,9 @@ const example = [
   '```',
   '````',
   '',
-  '    ~~~text',
+  '   ~~~text',
   '    42',
-  '    ~~~',
+  '   ~~~',
   ''
 ].join('\r\n')
 const fences = extractCodeFences(example)
