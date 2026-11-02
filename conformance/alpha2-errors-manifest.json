@@ -1,0 +1,67 @@
+{
+  "compilerRepository": "scarp-lang/scarp",
+  "compilerRef": "v0.0.5-alpha.2",
+  "compilerCommit": "e4db8e191cd7ea623123cae7348450ca6c95b170",
+  "origin": "tests/fixtures/",
+  "cases": [
+    {
+      "name": "inexact-integer-to-float",
+      "source": "scalar_text/conversion.srp",
+      "expected": "scalar_text/conversion.stderr",
+      "code": "E0044"
+    },
+    {
+      "name": "fractional-float-to-integer",
+      "source": "scalar_text/fraction.srp",
+      "expected": "scalar_text/fraction.stderr",
+      "code": "E0044"
+    },
+    {
+      "name": "unicode-scalar-index-out-of-range",
+      "source": "scalar_text/index.srp",
+      "expected": "scalar_text/index.stderr",
+      "code": "E0045"
+    },
+    {
+      "name": "forbidden-module-constant-call",
+      "source": "constants/call.srp",
+      "expected": "constants/call.stderr",
+      "code": "E0037"
+    },
+    {
+      "name": "private-imported-member",
+      "source": "modules/private.srp",
+      "expected": "modules/private.stderr",
+      "code": "E0041",
+      "supportingSources": [
+        "modules/library.srp"
+      ]
+    },
+    {
+      "name": "cyclic-module-import",
+      "source": "modules/cycle.srp",
+      "expected": "modules/cycle.stderr",
+      "code": "E0039",
+      "supportingSources": [
+        "modules/loop.srp"
+      ]
+    }
+  ],
+  "upstreamGitBlobs": {
+    "scalar_text/conversion.srp": "68f5fb2353bd8d7a36e09064a393ccac539dbefd",
+    "scalar_text/conversion.stderr": "ecd9942651b807a9bbcc762555578452a2dd7017",
+    "scalar_text/fraction.srp": "ea760ab54b0d7f95c78b2f200844b8f7da085b91",
+    "scalar_text/fraction.stderr": "e759d792f5f0819d7e6c7d3749f898997aa0105d",
+    "scalar_text/index.srp": "6413ff002c2f93edadc72167606fb911fd1ddf5a",
+    "scalar_text/index.stderr": "f49456c09cdc59d968137595e6f626fcfe0d4580",
+    "constants/call.srp": "dfa887d2fb4e8b455a376879caeafefcc5369c4b",
+    "constants/call.stderr": "0534484b0c788380434699171a2c8f189472b732",
+    "modules/private.srp": "925010e302ce8d4a843a11babedae0639ecbf9e2",
+    "modules/private.stderr": "9e412c1809f3152a750e179eafb93173d4387ab7",
+    "modules/library.srp": "9bb68808b710e8628d96e74bbb12f55285abac03",
+    "modules/cycle.srp": "4bf3a78291ec97f0a73a67a63748851f1b6d760a",
+    "modules/cycle.stderr": "2379a1976e9358364babb2d98cdf9de3d2b4f6ed",
+    "modules/loop.srp": "34ab5f321d4de6e949b8a489792538ac2f6c013d"
+  },
+  "page": "tutorials/alpha2-diagnostics-and-repairs.md"
+}
