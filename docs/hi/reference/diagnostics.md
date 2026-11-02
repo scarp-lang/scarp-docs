@@ -1,5 +1,7 @@
 # Diagnostics और त्रुटि कोड
 
+**प्रकाशित alpha.2 के नए diagnostics:** [सत्यापित त्रुटियाँ और सुधार](/hi/tutorials/alpha2-diagnostics-and-repairs) में checked conversions (E0044), Unicode scalar index (E0045), module constant calls (E0037), private imports (E0041) और cycles (E0039) के **छह पूरे source/stderr examples** हैं। CI प्रकाशित compiler में इनके failure behavior को सत्यापित करता है। नीचे की पुरानी सूची मुख्यतः **alpha.1** के लिए है।
+
 Scarp त्रुटि होने पर आमतौर पर `error[E000X]`, स्रोत फ़ाइल, लाइन/कॉलम, caret और सुधार का संकेत दिखाता है। स्रोत/गणना त्रुटि में प्रोग्राम का pending output नहीं लिखा जाता।
 
 ## कुछ महत्वपूर्ण त्रुटियाँ

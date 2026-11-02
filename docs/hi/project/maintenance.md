@@ -2,6 +2,10 @@
 
 Documentation changes compiler के वास्तविक व्यवहार, नाम और रिलीज़ के साथ मेल खाने चाहिए। English और Hindi दोनों भाषाओं के पृष्ठ मिलकर ही एक पूर्ण documentation update हैं।
 
+## Compiler त्रुटि fixtures
+
+[Alpha.2 error repairs](/hi/tutorials/alpha2-diagnostics-and-repairs) में छह जानबूझकर असफल प्रकाशित tests हैं, जो बारह सफल examples से अलग हैं। `npm run check:alpha2-errors` source/stderr blobs, दोनों translations और supporting modules जाँचता है। `npm run check:alpha2-errors -- /path/to/alpha2/tests/fixtures` से tagged checkout तथा `npm run test:alpha2-errors -- /path/to/alpha2/scarp` से वास्तविक error output जाँचें। Error messages version-specific हैं।
+
 ## Local quality checks
 
 ~~~sh

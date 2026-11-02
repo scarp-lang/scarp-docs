@@ -1,5 +1,7 @@
 # Diagnostics and error codes
 
+**Published alpha.2 diagnostic evidence:** [Six compiler-verified failure cases and repairs](/tutorials/alpha2-diagnostics-and-repairs) cover conversions (E0044), Unicode indexing (E0045), module constants (E0037), private imports (E0041) and import cycles (E0039). Their source/stderr fixtures are pinned to the alpha.2 release and checked by CI. The selected table below remains tied to the older **alpha.1** baseline.
+
 Scarp uses compiler diagnostics with error identifiers, source locations and contextual help. Status code **1** indicates source/runtime/file/output errors; status code **2** indicates invalid CLI usage. A successful `check` returns 0 silently.
 
 ## Selected errors

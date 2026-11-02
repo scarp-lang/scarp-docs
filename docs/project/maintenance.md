@@ -2,6 +2,10 @@
 
 This is the contributor-maintainer process for Scarp Docs. Documentation must describe the **published compiler**, not design proposals or unmerged work. The current baseline is [v0.0.5-alpha.1](/reference/status).
 
+## Compiler failure fixtures
+
+The [alpha.2 diagnostic repairs tutorial](/tutorials/alpha2-diagnostics-and-repairs) has six intentionally failing, release-tagged tests, distinct from the twelve passing alpha.2 examples. `npm run check:alpha2-errors` validates source/stderr Git blobs, both locale pages and supporting modules. In the pinned alpha.2 checkout, `npm run check:alpha2-errors -- /path/to/alpha2/tests/fixtures` compares source bytes; `npm run test:alpha2-errors -- /path/to/alpha2/scarp` executes both `run` and `check` and verifies failures. Error output is version-specific.
+
 ## Local quality gates
 
 ```sh

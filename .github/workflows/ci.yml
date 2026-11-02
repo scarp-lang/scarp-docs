@@ -33,6 +33,8 @@ jobs:
         run: npm run check:fixtures
       - name: Verify published alpha.2 example provenance and bilingual snippets
         run: npm run check:alpha2
+      - name: Verify tagged alpha.2 negative diagnostics and bilingual repair guide
+        run: npm run check:alpha2-errors
       - name: Verify tutorials reproduce pinned compiler fixtures
         run: npm run check:tutorial-evidence
       - name: Unit-test tutorial evidence validator
@@ -98,7 +100,11 @@ jobs:
         run: test "$(git -C .compiler-alpha2 rev-parse HEAD)" = "e4db8e191cd7ea623123cae7348450ca6c95b170"
       - name: Compare all alpha.2 source/output bytes with published examples
         run: npm run check:alpha2 -- .compiler-alpha2/examples
+      - name: Verify published alpha.2 negative diagnostic fixture bytes
+        run: npm run check:alpha2-errors -- .compiler-alpha2/tests/fixtures
       - name: Build published alpha.2 interpreter
         run: cargo build --manifest-path .compiler-alpha2/Cargo.toml --locked --offline
       - name: Execute alpha.2 conformance examples and inspection command smoke tests
         run: npm run test:alpha2 -- .compiler-alpha2/target/debug/scarp
+      - name: Verify six published failure diagnostics on check and run
+        run: npm run test:alpha2-errors -- .compiler-alpha2/target/debug/scarp

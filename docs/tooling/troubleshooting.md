@@ -1,5 +1,7 @@
 # Troubleshooting
 
+**On the published v0.0.5-alpha.2 compiler:** use the [six verified failing examples and repairs](/tutorials/alpha2-diagnostics-and-repairs) to identify E0044/E0045 conversion and Unicode errors, restricted module constants, private imports and cycles. The examples are reproduced from published compiler test fixtures and run in CI. The advice below otherwise applies to the versioned general interpreter behavior.
+
 ## `scarp: command not found`
 
 Run the executable directly from its extracted directory (`./scarp` or `.\scarp.exe` in PowerShell), or check whether the Cargo binary directory is on your `PATH`. Verify with `scarp --version` before running a tutorial.
