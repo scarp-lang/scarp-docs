@@ -34,6 +34,7 @@ if (!Array.isArray(mapping.tutorials) || mapping.tutorials.length < 1) fail('no 
 const cases = new Map(fixtureManifest.cases.map(item => [item.name, item]))
 if (cases.size !== fixtureManifest.cases.length) fail('duplicate conformance case names')
 const seenPages = new Set<string>()
+const coveredCases = new Set<string>()
 let verifiedCases = 0
 const failures: string[] = []
 
@@ -45,6 +46,10 @@ for (const entry of mapping.tutorials) {
   seenPages.add(entry.page)
   if (!Array.isArray(entry.cases) || !entry.cases.length) fail(`missing fixture cases for ${entry.page}`)
   if (new Set(entry.cases).size !== entry.cases.length) fail(`duplicate fixture cases for ${entry.page}`)
+  for (const name of entry.cases) {
+    if (coveredCases.has(name)) fail(`fixture ${name} is mapped to multiple tutorial pages`)
+    coveredCases.add(name)
+  }
 
   const supportPaths = entry.supportFiles ?? []
   if (!Array.isArray(supportPaths) || new Set(supportPaths).size !== supportPaths.length) {
@@ -89,9 +94,12 @@ for (const entry of mapping.tutorials) {
   verifiedCases += evidence.length
 }
 
+const uncoveredCases = [...cases.keys()].filter(name => !coveredCases.has(name))
+if (uncoveredCases.length) failures.push(`missing tutorial coverage for compiler fixtures: ${uncoveredCases.join(', ')}`)
+
 if (failures.length) {
   console.error(`FAIL: ${failures.length} tutorial evidence problems:\n${failures.join('\n')}`)
   process.exitCode = 1
 } else {
-  console.log(`PASS: ${mapping.tutorials.length} bilingual tutorial(s), ${verifiedCases} pinned compiler source/output fixture pairs in each language`)
+  console.log(`PASS: ${mapping.tutorials.length} bilingual tutorial(s), all ${verifiedCases} pinned compiler source/output fixture pairs in each language`)
 }
