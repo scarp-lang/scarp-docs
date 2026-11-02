@@ -2,7 +2,7 @@
 
 **Reference baseline:** published Scarp **v0.0.5-alpha.1** (released 2026-11-01), verified against the [official compiler repository](https://github.com/scarp-lang/scarp). This is a prerelease: **no language capability is designated stable** as a compatibility guarantee.
 
-**Newer published prerelease:** [v0.0.5-alpha.2](/releases/v0.0.5-alpha.2) was published **November 2, 2026** from compiler commit `e4db8e191cd7ea623123cae7348450ca6c95b170`. Its new language features and inspection commands are documented in the **five-program release guide** and the [four-program collections tutorial](/tutorials/alpha2-collections-and-learning), with a separate alpha.2 compiler conformance job checking **nine** published source/output cases. The table below deliberately remains the v0.0.5-alpha.1 baseline until all older references and 11 original fixtures undergo a reviewed version migration.
+**Newer published prerelease:** [v0.0.5-alpha.2](/releases/v0.0.5-alpha.2) was published **November 2, 2026** from compiler commit `e4db8e191cd7ea623123cae7348450ca6c95b170`. Its new language features and inspection commands are documented in the **five-program release guide** and the [four-program collections tutorial](/tutorials/alpha2-collections-and-learning), with a separate alpha.2 compiler conformance job checking **12** published source/output cases, including cross-file module constant evaluation and JSON inspection. The table below deliberately remains the v0.0.5-alpha.1 baseline until all older references and 11 original fixtures undergo a reviewed version migration.
 
 We use these terms consistently:
 
