@@ -23,6 +23,8 @@ The JSON variant produces a compact object followed by a newline. Its top-level 
 
 Use the [tagged JSON inspection reference](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.2/docs/module-json.md) for the exact schema and [tagged module inspection reference](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.2/docs/module-inspection.md) for output ordering. Client tools should check schema version and avoid assuming source labels are stable across machines.
 
+For the full source and expected stderr of **six released compiler failures**, including E0044 and E0045, follow the [alpha.2 errors and repairs tutorial](/tutorials/alpha2-diagnostics-and-repairs). It contrasts real program errors with the source-free `explain` help command.
+
 ## Explain a diagnostic without loading a program
 
 `scarp explain E0044` describes a numeric conversion error and suggests repairs. `E0045` denotes an invalid Unicode scalar index. The command does not load or run a source file and cannot replace source-specific spans and related diagnostic notes. Code spellings must be canonical uppercase identifiers.
