@@ -47,6 +47,9 @@ features:
   - title: Alpha.1 से alpha.2 अपग्रेड का प्रमाण
     details: पुराने 11 compiler examples को नए प्रकाशित interpreter पर बिना बदले चलाकर stdout की सटीक जाँच।
     link: /hi/reference/upgrade-readiness
+  - title: नवीनतम alpha.3 रिलीज़ और CLI
+    details: चार नए compiler-verified उदाहरण, exec/verify/inspect commands और प्रकाशित JSON diagnostic।
+    link: /hi/releases/v0.0.5-alpha.3
   - title: Scarp समुदाय
     details: आधिकारिक GitHub, DEV, Reddit और अन्य सार्वजनिक चैनल।
     link: /hi/community/social
