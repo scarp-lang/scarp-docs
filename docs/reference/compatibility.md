@@ -4,7 +4,8 @@ The language is **prerelease and evolving**. Use the exact executable version ma
 
 | Version | Distinguishing features |
 | --- | --- |
-| **v0.0.5-alpha.1** | Relative source modules, public functions and scalar constants; current documentation baseline |
+| **v0.0.5-alpha.2** | **Latest published prerelease (Nov 2):** typed declarations, integer bit operations, Unicode queries, checked conversions, integer collections, vector statistics, source-module inspection; [verified release guide](/releases/v0.0.5-alpha.2) |
+| **v0.0.5-alpha.1** | Relative source modules, public functions and scalar constants; current main-reference baseline |
 | v0.0.4-alpha.4 | Immutable numerical tiles and matrix operations; **no source imports** |
 | v0.0.4-alpha.2 | Numerical vectors and related kernels |
 | v0.0.4-alpha.1 | Finite binary64 floating-point values |
