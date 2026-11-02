@@ -36,6 +36,10 @@ The [verified matrix-forward lesson](/tutorials/verified-tiles) reproduces the *
 
 `matvec(t, v)` requires `width(t) == len(v)`; `matmul(a, b)` requires `width(a) == height(b)`. A tile's cell count is at most 65,536, with row/column dimensions checked separately; row-major elements cannot be changed in place. Each new materialized output can charge the cumulative `--max-vector-bytes` budget, so successful type checks do not guarantee unlimited computation. Consult [numerical diagnostics](/reference/diagnostics) before increasing limits.
 
+## Classification and probability kernels
+
+The [verified classification and probabilities tutorial](/tutorials/verified-classification) runs **three full published compiler examples** covering matrix scores, `argmax` tie-breaking, `softmax`, `crossentropy` and `onehot` targets. All source and expected output blocks are checked against the pinned release, including a separate compiler execution job. These examples demonstrate numerical primitives, not a training system.
+
 ## Limits and errors
 
 Indexing is bounds-checked. Invalid shapes, nonfinite results, and numerical payload-budget exhaustion produce diagnostics rather than silently returning invalid data. Each vector/tile element is a finite 64-bit float; some operations materialize new buffers and consume the cumulative vector-byte budget.
