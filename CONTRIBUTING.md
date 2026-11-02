@@ -17,6 +17,12 @@ cd scarp-docs
 npm install
 npm run docs:dev
 npm run check:docs
+npm run check:i18n
+npm run check:snippets
+npm run check:fixtures
+npm run check:tutorial-evidence
+npm run check:coverage-statistics
+npm run test:coverage-statistics
 npm run docs:build
 ~~~
 
@@ -29,6 +35,8 @@ Use Markdown for prose and TypeScript for VitePress configuration. Avoid custom 
 - Make sure CI is green, including link validation and static build.
 - Do not paste secrets, private data, or unreviewed third-party logos.
 - The documentation is MIT licensed; the compiler's separate Apache-2.0 license is unaffected.
+
+The repository's [pull request template](.github/PULL_REQUEST_TEMPLATE.md) asks for bilingual parity, pinned compiler evidence, manifest consistency, and test results. When you add new release-backed examples, update both tutorial languages and the fixture manifest; the TypeScript coverage-statistics check rejects outdated published counts without requiring manual arithmetic.
 
 Small, coherent PRs are easier to review than arbitrarily split changes. Issues can track deferred language documentation as compiler releases land.
 
