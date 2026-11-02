@@ -4,6 +4,10 @@
 
 **नया प्रकाशित संस्करण:** [v0.0.5-alpha.2](/hi/releases/v0.0.5-alpha.2) 2 नवंबर को जारी हुआ। इसके **12 अलग प्रोग्राम और 28 प्रकाशित source/output/module/JSON फ़ाइलें** प्रकाशित टैग से लिए गए हैं। ये [रिलीज़ गाइड](/hi/releases/v0.0.5-alpha.2) तथा [collection tutorial](/hi/tutorials/alpha2-collections-and-learning) में मिलते हैं। `npm run check:alpha2` hash और द्विभाषी code/output जाँचता है; अलग `alpha2-conformance` CI job commit `e4db8e191cd7ea623123cae7348450ca6c95b170` पर compiler build करके प्रोग्राम वास्तव में चलाती है। नीचे की पुरानी 11-case suite अलग **alpha.1** baseline के लिए है।
 
+## असफल compiler programs की जाँच
+
+[Alpha.2 diagnostics और सुधार](/hi/tutorials/alpha2-diagnostics-and-repairs) में **छह जानबूझकर असफल प्रोग्राम** और **14 pinned source/stderr/support फ़ाइलें** हैं। `npm run check:alpha2-errors` published Git blob hashes तथा दोनों भाषाओं के पूरे source/stderr blocks जाँचता है। अलग `alpha2-conformance` CI में `check`/`run` से exit status 1, खाली stdout और प्रकाशित stderr की तुलना होती है। ये **negative cases** हैं, इसलिए 12 सफल alpha.2 या 11 सफल alpha.1 programs की गिनती में नहीं जोड़ने चाहिए।
+
 ## तीन स्तरों की जाँच
 
 1. **Markdown/लिंक:** `npm run check:docs` से pages, navigation, anchors और आवश्यक metadata जाँचें।
