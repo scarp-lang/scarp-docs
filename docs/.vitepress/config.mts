@@ -182,6 +182,7 @@ export default defineConfig({
         { text: 'Verified classification tutorial', link: '/tutorials/verified-classification' },
         { text: 'Alpha.2 collections and probabilities', link: '/tutorials/alpha2-collections-and-learning' },
         { text: 'Alpha.2 module constants and JSON', link: '/tutorials/alpha2-module-constants-and-inspection' },
+        { text: 'Alpha.2 diagnostics and repairs', link: '/tutorials/alpha2-diagnostics-and-repairs' },
         { text: 'Source modules tutorial', link: '/tutorials/modules-walkthrough' }
       ] },
       { text: 'Language', items: [
