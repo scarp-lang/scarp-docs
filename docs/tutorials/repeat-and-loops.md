@@ -1,22 +1,13 @@
-# Repeat and while loops
+# Repeat and while loops: verified examples
 
-Scarp **v0.0.5-alpha.1 (experimental)** has two looping constructs. `while` repeats while a boolean condition is true; `repeat` runs a body a saved number of times. Neither is an iterable `for` loop.
+**Scarp v0.0.5-alpha.1 (experimental)** supports two different loops: `repeat` executes a saved integer count, while `while` checks a boolean condition before each iteration. These examples reproduce complete compiler-owned fixtures and expected stdout, not hypothetical syntax.
 
-## Counted iteration with `repeat`
+## 1. Counted iteration with `repeat`
 
-```scarp
-var total = 0;
-repeat 5 as index {
-    total += index;
-}
-print(total); // 10
-```
+Save this entire program as `repeat.srp`:
 
-The `repeat` count is an integer evaluated **once** before the loop. The index is immutable, starts at zero and ends at count minus one. A count of zero executes no iterations; a negative count produces **E0019**. The count and body must still be well-typed even if the count is zero.
-
-In this real [compiler test fixture](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/examples/repeat.srp), modifying `count` inside the loop does not change the initial count:
-
-```scarp
+~~~scarp
+// The count is saved once; changing count does not shorten this loop.
 var count = 5;
 var total = 0;
 repeat count as index {
@@ -26,20 +17,27 @@ repeat count as index {
 }
 print(total);
 print(count);
-```
+~~~
 
-Expected stdout:
+Run `scarp check repeat.srp` first, followed by `scarp run repeat.srp`. Expected stdout:
 
-```text
+~~~text
 8
 0
-```
+~~~
 
-The same source and exact expected output are mirrored in the [local conformance suite](https://github.com/scarp-lang/scarp-docs/tree/main/conformance/programs).
+The compiler captures `count` **once**, before the loop. Inside the body, `count = 0` changes the variable but does **not** shorten the already scheduled five iterations (indices 0–4). The `continue;` at index 2 skips that addition. Therefore `0 + 1 + 3 + 4 = 8`, and the final `count` is `0`.
 
-## Condition-based iteration with `while`
+The loop index declared by `as index` is immutable and local to the loop. A repeat count of zero runs the body zero times; a negative count produces error **E0019**. The body must still be well-typed.
 
-```scarp
+**Compiler evidence:** [repeat.srp](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/examples/repeat.srp) and [repeat.stdout](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/examples/repeat.stdout).
+
+## 2. Condition-based iteration with `while`
+
+Create `loops.srp` using this second complete fixture:
+
+~~~scarp
+// Iteration with nearest-loop control and checked accumulator arithmetic.
 var index = 0;
 var total = 0;
 while index < 10 {
@@ -48,20 +46,34 @@ while index < 10 {
     if index > 5 { break; }
     total += index;
 }
-print(total); // 12
-```
+print(total);
+~~~
 
-A `while` guard **must** evaluate to a boolean; Scarp has no implicit truthiness. `break;` exits the nearest enclosing loop; `continue;` moves to its next iteration, which reevaluates `while` or advances the `repeat` counter. Both require semicolons.
+Run `scarp check loops.srp` followed by `scarp run loops.srp`. Expected stdout:
 
-## Validate bounded execution
+~~~text
+12
+~~~
 
-The interpreter limits execution work, including loops and selected calls. For example:
+`index` counts upward from zero. `continue;` skips index 3, while `break;` exits the loop when the index exceeds 5. Thus the accumulator receives 1, 2, 4 and 5: **12**.
 
-```sh
+A `while` guard must have boolean type; unlike some languages, integers are not automatically truthy. Both `break;` and `continue;` affect the nearest enclosing loop and require their semicolons.
+
+**Compiler evidence:** [loops.srp](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/examples/loops.srp) and [loops.stdout](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/examples/loops.stdout).
+
+## 3. Use bounded execution
+
+If you are working from a checkout of the Scarp compiler, its `examples/` directory already contains both programs:
+
+~~~sh
 scarp check --max-steps 2000000 examples/repeat.srp
 scarp run --max-steps 2000000 examples/loops.srp
-```
+~~~
 
-`check` evaluates the selected path but discards output. It can detect reachable runtime errors, and it stops work that exhausts a budget. It is not a proof that every possible path terminates, nor a wall-clock timeout.
+`check` evaluates the selected execution path while discarding output; a work budget protects the interpreter from excessive execution. This is **not** a proof that every possible path terminates or a wall-clock deadline. See [runtime budgets](/reference/budgets), [error diagnostics](/reference/diagnostics), and the [verified functions tutorial](/tutorials/verified-functions).
 
-**Compiler evidence:** [iteration reference](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/docs/iteration.md), [repeat fixture](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/examples/repeat.srp), [while fixture](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/examples/loops.srp).
+The full source and output pairs on this page are mirrored in the [documentation conformance fixtures](https://github.com/scarp-lang/scarp-docs/tree/main/conformance/programs) and must pass the bilingual TypeScript tutorial-evidence check before deployment.
+
+::: warning Release scope
+These examples describe the published v0.0.5-alpha.1 interpreter, not features assumed for other releases. Read the [feature status](/reference/status) before relying on a newer syntax.
+:::
