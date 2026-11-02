@@ -1,52 +1,10 @@
-# Source modules के साथ प्रोग्राम बनाना
+# Source modules से प्रोग्राम बनाना
 
-Scarp **v0.0.5-alpha.1** में अलग-अलग `.srp` फ़ाइलों से मॉड्यूल आयात किए जा सकते हैं। पुराने alpha.4 रिलीज़ में यह सुविधा उपलब्ध नहीं थी।
+यह उदाहरण प्रकाशित **Scarp v0.0.5-alpha.1** इंटरप्रेटर के लिए है। पुराने `v0.0.4-alpha.4` में `import` सुविधा नहीं थी। यहाँ दिखाई गई तीनों फ़ाइलों का पूरा कोड और वास्तविक stdout pinned compiler fixtures के अनुसार जाँचा जाता है।
 
-## 1. फ़ोल्डर संरचना
+## 1. प्रोजेक्ट का फ़ोल्डर बनाएँ
 
-एक मुख्य `main.srp` और `modules/` के अंदर `settings.srp`, `linear.srp` बनाएँ। Imports हमेशा आयात करने वाली फ़ाइल के स्थान से relative होते हैं।
-
-## 2. सेटिंग मॉड्यूल
-
-~~~scarp
-// modules/settings.srp
-pub bind title = "Modular inference";
-pub bind gain = 1.0;
-~~~
-
-`pub bind` केवल immutable scalar constant को दूसरे मॉड्यूल में उपलब्ध कराता है। रनटाइम module globals अभी नहीं हैं।
-
-## 3. गणना वाला मॉड्यूल
-
-~~~scarp
-// modules/linear.srp
-import "settings.srp" as settings;
-pub pure funcra predict(features: vector) -> vector {
-    bind weights = tile([1.0, 2.0, -1.0, 3.0], 2, 2);
-    return scale(matvec(weights, features), settings.gain);
-}
-~~~
-
-Library में फ़ाइल-स्तर के `print`, `var` या गणना वाले constants नहीं लिख सकते; गणना फ़ंक्शन में करें।
-
-## 4. मुख्य प्रोग्राम
-
-~~~scarp
-import "modules/linear.srp" as linear;
-import "modules/settings.srp" as settings;
-print(settings.title);
-print(linear.predict([2.0, 1.0]));
-~~~
-
-मुख्य फ़ाइल को `scarp run main.srp` से चलाएँ और `scarp check main.srp` से जाँचें।
-
-## 5. सीमाएँ
-
-मॉड्यूल import में `as` alias अनिवार्य है। Wildcard imports, re-exports, network imports और चक्रीय imports उपलब्ध नहीं हैं। पथ project की trusted root से बाहर नहीं जा सकता। अधिक जानकारी [मॉड्यूल संदर्भ](/hi/language/modules) में है।
-
-## अंग्रेज़ी संदर्भ के अपरिवर्तित कोड उदाहरण
-
-नीचे दिए गए code snippets मूल अंग्रेज़ी संदर्भ से लिए गए हैं। Keywords, source strings और output expectations जानबूझकर अनुवादित नहीं किए गए हैं।
+इस संरचना में `main.srp` मुख्य प्रोग्राम है और `modules/` में दो लाइब्रेरी फ़ाइलें हैं:
 
 ```text
 my-program/
@@ -56,10 +14,22 @@ my-program/
     linear.srp
 ```
 
+`import` वाले पथ को import करने वाली फ़ाइल के स्थान से समझा जाता है। फ़ाइलें UTF-8 में सेव करें।
+
+## 2. सेटिंग्स मॉड्यूल बनाएँ
+
+`modules/settings.srp` में यह **पूरा और बिना बदला** उदाहरण लिखें:
+
 ```scarp
 pub bind title = "Modular inference";
 pub bind gain = 1.0;
 ```
+
+`pub bind` से केवल समर्थित immutable scalar constants दूसरे मॉड्यूल को दिखाई देते हैं। रनटाइम पर mutable global values बनाने की सुविधा अभी उपलब्ध नहीं है।
+
+## 3. गणना वाला फ़ंक्शन मॉड्यूल बनाएँ
+
+`modules/linear.srp` में यह कोड लिखें:
 
 ```scarp
 import "settings.srp" as settings;
@@ -73,6 +43,12 @@ pub pure funcra predict(features: vector) -> vector
 }
 ```
 
+इसमें `settings.srp` का पथ `linear.srp` के सापेक्ष है। `pure` फ़ंक्शन के प्रभाव सीमित करता है। `needs` और `ensures` वास्तविक runtime checks हैं; ये गणितीय शुद्धता का औपचारिक प्रमाण नहीं हैं। `tile` और `matvec` का उपयोग मैट्रिक्स और वैक्टर की गणना में होता है।
+
+## 4. मुख्य प्रोग्राम बनाएँ
+
+`main.srp` में निम्न पूरा कोड सेव करें:
+
 ```scarp
 import "modules/linear.srp" as linear;
 import "modules/settings.srp" as settings;
@@ -83,13 +59,27 @@ print(scores);
 print(argmax(scores), onehot(len(scores), argmax(scores)));
 ```
 
+प्रोजेक्ट के मूल फ़ोल्डर से पहले `check` और फिर `run` करें:
+
 ```sh
 scarp check main.srp
 scarp run main.srp
 ```
+
+`run` का अपेक्षित stdout बिल्कुल यही है:
 
 ```text
 Modular inference
 [4.0, 1.0]
 0 [1.0, 0.0]
 ```
+
+परीक्षणों में इन तीनों Scarp फ़ाइलों का पूरा सोर्स और इस stdout का मिलान प्रकाशित रिलीज़ के fixtures से होता है। केवल ऐसा दिखने वाला कोड पर्याप्त नहीं माना जाता जो सही हो सकता है।
+
+## 5. सीमाएँ और सुरक्षा समझें
+
+Main फ़ाइल के parent directory से trusted import root तय होता है। Imports के नाम relative `.srp` पथ होते हैं; absolute paths, root से बाहर जाने वाले paths, network imports, wildcard imports, cycles और re-exports अभी समर्थित नहीं हैं। Library में top-level `print` या `var` की जगह सही `pub` फ़ंक्शन या सीमित constants का इस्तेमाल करें।
+
+[मॉड्यूल संदर्भ](/hi/language/modules), [सोर्स सुरक्षा](/hi/reference/source-loading) और [न्यूमेरिकल वैक्टर अभ्यास](/hi/tutorials/verified-vectors) देखें।
+
+**Compiler प्रमाण:** [मॉड्यूल नियम](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/docs/modules.md), [main fixture](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/examples/module_demo.srp), [linear.srp](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/examples/modules/linear.srp), [settings.srp](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/examples/modules/settings.srp)।
