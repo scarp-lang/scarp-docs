@@ -1,5 +1,7 @@
 # Operators and expressions
 
+**Published alpha.2 extension:** [bitwise integers and typed declarations](/releases/v0.0.5-alpha.2) add binary/hex integer literals, bit operators and compound assignments. See the full, compiler-verified bit-field example there. The precedence table below remains tied to the **alpha.1** expression grammar and deliberately omits these newer operators.
+
 Scarp's operator rules in v0.0.5-alpha.1 are checked at runtime and during validation. Operands must have compatible kinds, and there are **no implicit numeric conversions**.
 
 | Precedence (high to low) | Syntax | Behavior |
