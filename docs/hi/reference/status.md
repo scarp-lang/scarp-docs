@@ -6,6 +6,8 @@
 
 **अपग्रेड की जाँच:** [Alpha.1 → alpha.2 compiler compatibility gate](/hi/reference/upgrade-readiness) पुराने **11 पूरे alpha.1 programs** को बिना बदले प्रकाशित alpha.2 executable पर सत्यापित करती है। इससे पूरा main reference migrate नहीं होता और हर पुराना source compatible होने का दावा नहीं है।
 
+**नवीनतम प्रकाशित prerelease:** [v0.0.5-alpha.3](/hi/releases/v0.0.5-alpha.3), **2 नवंबर 2026, 19:41 IST**, compiler commit `7715c28df09c7703b39e14fddb963275b25df476`। इसके नए CLI commands, JSON diagnostics और bounded Unicode text construction के **चार पूरे published examples** अलग CI में जाँचे जाते हैं। नीचे का मुख्य feature table अभी भी **alpha.1** baseline का है; alpha.3 के बाद compiler `main` के बदलाव इस tag का हिस्सा नहीं हैं।
+
 - **प्रकाशित — प्रयोगात्मक:** tagged release और tests/examples में उपलब्ध सुविधा।
 - **विकास शाखा:** केवल unshipped source में दिखने वाली सुविधा; उसे प्रकाशित नहीं माना जाता।
 - **नियोजित/अनुपलब्ध:** proposal या भविष्य की योजना, वर्तमान रिलीज़ में नहीं।
