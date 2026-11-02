@@ -17,6 +17,10 @@ Scarp के शुरुआती prereleases में syntax और API ब�
 
 [Compiler-verified अपग्रेड परीक्षण](/hi/reference/upgrade-readiness) में पुराने **11 alpha.1 source programs** को बिना बदले नए प्रकाशित alpha.2 compiler पर चलाया जाता है। CI उनके stdout bytes तथा silent `check` की तुलना करती है। इससे सभी पुराने programs के compatible होने की गारंटी नहीं होती और मुख्य reference का alpha.1 baseline नहीं बदलता।
 
+## नया प्रकाशित alpha.3 और CLI migration
+
+**नवीनतम संस्करण [v0.0.5-alpha.3](/hi/releases/v0.0.5-alpha.3)** 2 नवंबर 2026 को जारी हुआ। इसका source commit `7715c28df09c7703b39e14fddb963275b25df476` है। इसमें `exec`, static `verify`, `inspect`, offline `diagnose` तथा Unicode text construction जुड़ते हैं। पुराने `run`/`check`/`tokens`/`modules` अभी समर्थित हैं। **Alpha.1 → alpha.2 परीक्षण से alpha.3 के हर पुराने program की compatibility सिद्ध नहीं होती।** चार alpha.3 प्रोग्राम नए guide में अलग जाँचे जाते हैं।
+
 ## पुराना स्रोत migrate करना
 
 नए source में अपरिवर्तनीय declaration `bind name = expr;`, mutable declaration `var name = expr;` है। पुराने `let`/`let mut` syntax को वर्तमान `bind`/`var` से बदलें। `print` और `println` alias हैं, लेकिन बहुत पुराने binaries इन्हें अलग तरह से समझते थे।
