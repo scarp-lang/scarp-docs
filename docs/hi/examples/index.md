@@ -28,7 +28,7 @@ print("Hello from Scarp!");
 
 ## नवीनतम प्रकाशित alpha.2 उदाहरण
 
-[Alpha.2 रिलीज़ गाइड](/hi/releases/v0.0.5-alpha.2) और [collections तथा learning tutorial](/hi/tutorials/alpha2-collections-and-learning) में **नौ नए pinned programs** हैं। इनके वास्तविक stdout और नए module text/JSON inspection की अलग CI जाँच होती है। नीचे के 11 पुराने उदाहरण अभी अलग alpha.1 baseline के हैं।
+[Alpha.2 रिलीज़ गाइड](/hi/releases/v0.0.5-alpha.2) और [collections तथा learning tutorial](/hi/tutorials/alpha2-collections-and-learning) में **12 नए pinned programs** ([module constants और JSON tutorial](/hi/tutorials/alpha2-module-constants-and-inspection) सहित) हैं। इनके वास्तविक stdout और नए module text/JSON inspection की अलग CI जाँच होती है। नीचे के 11 पुराने उदाहरण अभी अलग alpha.1 baseline के हैं।
 
 ## अंग्रेज़ी संदर्भ के अपरिवर्तित कोड उदाहरण
 
