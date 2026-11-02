@@ -61,6 +61,7 @@ export default defineConfig({
             { text: 'सरल शब्दावली', link: '/hi/guide/glossary' },
             { text: 'फ़ंक्शन अभ्यास (सत्यापित)', link: '/hi/tutorials/verified-functions' },
             { text: 'लूप ट्यूटोरियल', link: '/hi/tutorials/repeat-and-loops' },
+            { text: 'न्यूमेरिकल वैक्टर अभ्यास', link: '/hi/tutorials/verified-vectors' },
             { text: 'मॉड्यूल ट्यूटोरियल', link: '/hi/tutorials/modules-walkthrough' }
           ] },
           { text: 'भाषा संदर्भ', items: [
@@ -154,6 +155,7 @@ export default defineConfig({
         { text: 'Glossary for beginners', link: '/guide/glossary' },
         { text: 'Verified functions tutorial', link: '/tutorials/verified-functions' },
         { text: 'Repeat and while tutorial', link: '/tutorials/repeat-and-loops' },
+        { text: 'Verified vectors tutorial', link: '/tutorials/verified-vectors' },
         { text: 'Source modules tutorial', link: '/tutorials/modules-walkthrough' }
       ] },
       { text: 'Language', items: [

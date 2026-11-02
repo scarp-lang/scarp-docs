@@ -1,16 +1,16 @@
 import { readFileSync, existsSync } from 'node:fs'
 import { resolve, dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { verifyTutorialExamples, type ExecutableExample } from './lib/tutorial-evidence.ts'
+import { verifyTutorialExamples, type ExecutableExample, type SupportingSource } from './lib/tutorial-evidence.ts'
 
 interface CompilerBaseline { repository: string; release: string; releaseSourceCommit: string }
 interface ConformanceCase { name: string; source: string; expected: string }
-interface FixtureManifest { compilerRepository: string; compilerRef: string; compilerCommit: string; cases: ConformanceCase[] }
+interface FixtureManifest { compilerRepository: string; compilerRef: string; compilerCommit: string; cases: ConformanceCase[]; upstreamGitBlobs: Record<string, string> }
 interface TutorialManifest {
   compilerRepository: string
   compilerRelease: string
   compilerCommit: string
-  tutorials: Array<{ page: string; cases: string[] }>
+  tutorials: Array<{ page: string; cases: string[]; supportFiles?: string[] }>
 }
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
@@ -46,6 +46,23 @@ for (const entry of mapping.tutorials) {
   if (!Array.isArray(entry.cases) || !entry.cases.length) fail(`missing fixture cases for ${entry.page}`)
   if (new Set(entry.cases).size !== entry.cases.length) fail(`duplicate fixture cases for ${entry.page}`)
 
+  const supportPaths = entry.supportFiles ?? []
+  if (!Array.isArray(supportPaths) || new Set(supportPaths).size !== supportPaths.length) {
+    fail(`duplicate/invalid supporting files in ${entry.page}`)
+  }
+  if (supportPaths.length && (entry.cases.length !== 1 || entry.cases[0] !== 'modules')) {
+    fail(`supporting source files currently require the pinned modules case in ${entry.page}`)
+  }
+  const supportingSources: SupportingSource[] = supportPaths.map(name => {
+    if (typeof name !== 'string' || !/^modules\/[a-z0-9_-]+\.srp$/.test(name)) {
+      return fail(`invalid module source path ${String(name)}`)
+    }
+    if (!fixtureManifest.upstreamGitBlobs?.[name]) {
+      return fail(`unverified source file ${name} is absent from the pinned compiler manifest`)
+    }
+    return { name, source: readFileSync(join(programs, name), 'utf8') }
+  })
+
   const evidence: ExecutableExample[] = entry.cases.map(name => {
     const item = cases.get(name)
     if (!item) return fail(`unknown conformance case ${name} in ${entry.page}`)
@@ -55,7 +72,8 @@ for (const entry of mapping.tutorials) {
     return {
       name,
       source: readFileSync(join(programs, item.source), 'utf8'),
-      expected: readFileSync(join(programs, item.expected), 'utf8')
+      expected: readFileSync(join(programs, item.expected), 'utf8'),
+      supportingSources
     }
   })
   for (const locale of ['en', 'hi'] as const) {
