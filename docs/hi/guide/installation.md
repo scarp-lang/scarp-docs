@@ -1,5 +1,7 @@
 # Scarp इंस्टॉल करें
 
+**नवीनतम प्रकाशित रिलीज़: [v0.0.5-alpha.2](/hi/releases/v0.0.5-alpha.2) (2 नवंबर 2026)।** इस पृष्ठ का विस्तृत installation क्रम अभी सत्यापित **alpha.1** baseline का है। Alpha.2 की नई सुविधाएँ चलाने के लिए [नए रिलीज़ archives](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.2) और उसी release का checksum व version चुनें।
+
 इस मार्गदर्शिका का आधार प्रकाशित **v0.0.5-alpha.1 prerelease** है। Scarp इस समय `.srp` से native executable नहीं बनाता। इसे interpreter की तरह चलाएँ।
 
 ## विकल्प A: प्रकाशित बाइनरी डाउनलोड करें
