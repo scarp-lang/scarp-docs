@@ -26,6 +26,10 @@ print("Hello from Scarp!");
 
 `conformance/manifest.json` में 11 कार्यक्रमों और उनके expected outputs का प्रमाण है: `hello`, `functions`, `loops`, `repeat`, `output`, `vectors`, `module_demo`, `matrix_forward`, `matrix_classification`, `matrix_probabilities`, `matrix_targets`। `npm run check:fixtures` identities जाँचता है; `npm run test:compiler -- /path/to/scarp` वास्तविक interpreter output जाँचता है। [सत्यापन नीति](/hi/reference/evidence) पढ़ें। [फ़ंक्शन](/hi/tutorials/verified-functions), [लूप](/hi/tutorials/repeat-and-loops), [आउटपुट और newline](/hi/tutorials/verified-output), [न्यूमेरिकल वैक्टर](/hi/tutorials/verified-vectors) तथा [मॉड्यूल](/hi/tutorials/modules-walkthrough) और [टाइल](/hi/tutorials/verified-tiles) तथा [वर्गीकरण](/hi/tutorials/verified-classification) के पूरे प्रोग्राम चरणबद्ध चलाएँ। प्रकाशित compiler के 11 conformance उदाहरण दोनों भाषाओं में शामिल हैं।
 
+## नवीनतम प्रकाशित alpha.2 उदाहरण
+
+[Alpha.2 रिलीज़ गाइड](/hi/releases/v0.0.5-alpha.2) और [collections तथा learning tutorial](/hi/tutorials/alpha2-collections-and-learning) में **नौ नए pinned programs** हैं। इनके वास्तविक stdout और नए module text/JSON inspection की अलग CI जाँच होती है। नीचे के 11 पुराने उदाहरण अभी अलग alpha.1 baseline के हैं।
+
 ## अंग्रेज़ी संदर्भ के अपरिवर्तित कोड उदाहरण
 
 नीचे दिए गए code snippets मूल अंग्रेज़ी संदर्भ से लिए गए हैं। Keywords, source strings और output expectations जानबूझकर अनुवादित नहीं किए गए हैं।
