@@ -182,6 +182,6 @@ scarp explain E0044
 
 ## ये जाँचें क्या सिद्ध करती हैं?
 
-Documentation validator दोनों भाषाओं में पूरे source/stderr fences, tagged Git blob hashes और supporting files का क्रम जाँचता है। Compiler CI सभी छह negative programs के `run` और `check` पर status **1**, खाली stdout तथा अपेक्षित पूरे stderr की जाँच करती है। ये [12 सफल alpha.2 programs](/hi/tutorials/alpha2-module-constants-and-inspection) से अलग हैं। भविष्य के releases में वही error wording रहने की गारंटी नहीं है।
+Documentation validator दोनों भाषाओं में पूरे source/stderr fences, tagged Git blob hashes और supporting files का क्रम जाँचता है। Compiler CI सभी छह negative programs के `run` और `check` पर status **1**, खाली stdout तथा अपेक्षित पूरे stderr की जाँच करती है। Native CLI में imported module के **absolute paths** आ सकते हैं, जबकि published test snapshots में छोटे filenames हैं; केवल इन विशेष path labels को समान करने के बाद बाकी stderr की exact तुलना होती है। ये [12 सफल alpha.2 programs](/hi/tutorials/alpha2-module-constants-and-inspection) से अलग हैं। भविष्य के releases में वही error wording रहने की गारंटी नहीं है।
 
 आगे [alpha.2 diagnostic CLI](/hi/tooling/alpha2-inspection), [compatibility](/hi/reference/compatibility) और [verification policy](/hi/reference/evidence) पढ़ें।
