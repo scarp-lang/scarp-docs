@@ -56,7 +56,7 @@ export default defineConfig({
             { text: 'Reddit', link: 'https://www.reddit.com/r/ScarpLang/' }
           ] },
           { text: 'नया: v0.0.5-alpha.2', link: '/hi/releases/v0.0.5-alpha.2' },
-          { text: 'संदर्भ: alpha.1', link: '/hi/reference/status' }
+          { text: 'संदर्भ: v0.0.5-alpha.1', link: '/hi/reference/status' }
         ],
         sidebar: [
           { text: 'स्वागत', items: [
@@ -160,7 +160,7 @@ export default defineConfig({
       ] },
       { text: 'v0.0.5-alpha.2 (latest)', items: [
         { text: 'Published alpha.2 examples', link: '/releases/v0.0.5-alpha.2' },
-        { text: 'Alpha.1 documentation baseline', link: '/reference/status' },
+        { text: 'v0.0.5-alpha.1 documentation baseline', link: '/reference/status' },
         { text: 'Compiler releases', link: `${sourceRepo}/releases` }
       ] }
     ],
