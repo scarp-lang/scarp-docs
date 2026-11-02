@@ -44,6 +44,9 @@ features:
   - title: Alpha.2 collections और learning
     details: प्रकाशित integer collections, score selection, softmax और loss gradient के पूरे जाँचे हुए प्रोग्राम।
     link: /hi/tutorials/alpha2-collections-and-learning
+  - title: Alpha.1 से alpha.2 अपग्रेड का प्रमाण
+    details: पुराने 11 compiler examples को नए प्रकाशित interpreter पर बिना बदले चलाकर stdout की सटीक जाँच।
+    link: /hi/reference/upgrade-readiness
   - title: Scarp समुदाय
     details: आधिकारिक GitHub, DEV, Reddit और अन्य सार्वजनिक चैनल।
     link: /hi/community/social
