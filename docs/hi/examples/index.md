@@ -24,7 +24,7 @@ print("Hello from Scarp!");
 
 ## स्वचालित जाँच
 
-`conformance/manifest.json` में आठ कार्यक्रमों और उनके expected outputs का प्रमाण है: `hello`, `functions`, `loops`, `repeat`, `output`, `vectors`, `module_demo`, `matrix_forward`। `npm run check:fixtures` identities जाँचता है; `npm run test:compiler -- /path/to/scarp` वास्तविक interpreter output जाँचता है। [सत्यापन नीति](/hi/reference/evidence) पढ़ें। [फ़ंक्शन](/hi/tutorials/verified-functions), [लूप](/hi/tutorials/repeat-and-loops), [आउटपुट और newline](/hi/tutorials/verified-output), [न्यूमेरिकल वैक्टर](/hi/tutorials/verified-vectors) तथा [मॉड्यूल](/hi/tutorials/modules-walkthrough) और [टाइल](/hi/tutorials/verified-tiles) के पूरे प्रोग्राम चरणबद्ध चलाएँ। प्रकाशित compiler के आठों conformance उदाहरण दोनों भाषाओं में शामिल हैं।
+`conformance/manifest.json` में 11 कार्यक्रमों और उनके expected outputs का प्रमाण है: `hello`, `functions`, `loops`, `repeat`, `output`, `vectors`, `module_demo`, `matrix_forward`, `matrix_classification`, `matrix_probabilities`, `matrix_targets`। `npm run check:fixtures` identities जाँचता है; `npm run test:compiler -- /path/to/scarp` वास्तविक interpreter output जाँचता है। [सत्यापन नीति](/hi/reference/evidence) पढ़ें। [फ़ंक्शन](/hi/tutorials/verified-functions), [लूप](/hi/tutorials/repeat-and-loops), [आउटपुट और newline](/hi/tutorials/verified-output), [न्यूमेरिकल वैक्टर](/hi/tutorials/verified-vectors) तथा [मॉड्यूल](/hi/tutorials/modules-walkthrough) और [टाइल](/hi/tutorials/verified-tiles) के पूरे प्रोग्राम चरणबद्ध चलाएँ। प्रकाशित compiler के 11 conformance उदाहरण दोनों भाषाओं में शामिल हैं।
 
 ## अंग्रेज़ी संदर्भ के अपरिवर्तित कोड उदाहरण
 
