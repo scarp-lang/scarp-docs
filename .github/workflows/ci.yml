@@ -23,6 +23,8 @@ jobs:
         run: npm run check:docs
       - name: Check Hindi translation parity
         run: npm run check:i18n
+      - name: Unit-test Markdown fenced-code scanner
+        run: npm run test:code-fences
       - name: Check verified example fixtures
         run: npm run check:fixtures
       - name: Unit-test SEO URL helpers
