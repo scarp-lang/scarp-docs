@@ -3,13 +3,29 @@
   "compilerRepository": "scarp-lang/scarp",
   "compilerRelease": "v0.0.5-alpha.1",
   "compilerCommit": "afe8b5380c9d6c4774162e51c6c9bc8b90901671",
-  "description": "Documented source/output pairs must match the compiler-owned conformance fixtures and preserve source-before-output order in both locales.",
+  "description": "Every bilingual tutorial shows complete pinned executable source and expected stdout; multi-file examples also reproduce the imported module files in order.",
   "tutorials": [
     {
       "page": "tutorials/verified-functions.md",
       "cases": [
         "hello",
         "functions"
+      ]
+    },
+    {
+      "page": "tutorials/verified-vectors.md",
+      "cases": [
+        "vectors"
+      ]
+    },
+    {
+      "page": "tutorials/modules-walkthrough.md",
+      "cases": [
+        "modules"
+      ],
+      "supportFiles": [
+        "modules/settings.srp",
+        "modules/linear.srp"
       ]
     }
   ]
