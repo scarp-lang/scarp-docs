@@ -56,6 +56,7 @@ export default defineConfig({
             { text: 'Reddit', link: 'https://www.reddit.com/r/ScarpLang/' }
           ] },
           { text: 'नया: v0.0.5-alpha.2', link: '/hi/releases/v0.0.5-alpha.2' },
+          { text: 'अपग्रेड जाँच: alpha.1 → alpha.2', link: '/hi/reference/upgrade-readiness' }
           { text: 'संदर्भ: v0.0.5-alpha.1', link: '/hi/reference/status' }
         ],
         sidebar: [
@@ -98,7 +99,8 @@ export default defineConfig({
             { text: 'Built-ins', link: '/hi/reference/library' },
             { text: 'सोर्स सुरक्षा', link: '/hi/reference/source-loading' },
             { text: 'Rust embedding', link: '/hi/reference/rust-embedding' },
-            { text: 'Compatibility', link: '/hi/reference/compatibility' }
+            { text: 'Compatibility', link: '/hi/reference/compatibility' },
+            { text: 'Alpha.2 अपग्रेड परीक्षण', link: '/hi/reference/upgrade-readiness' }
           ] },
           { text: 'उदाहरण और समुदाय', items: [
             { text: 'उदाहरण', link: '/hi/examples/' },
@@ -208,7 +210,8 @@ export default defineConfig({
         { text: 'Built-ins and standard library', link: '/reference/library' },
         { text: 'Module loading and security', link: '/reference/source-loading' },
         { text: 'Embed in Rust', link: '/reference/rust-embedding' },
-        { text: 'Compatibility', link: '/reference/compatibility' }
+        { text: 'Compatibility', link: '/reference/compatibility' },
+        { text: 'Alpha.2 upgrade readiness', link: '/reference/upgrade-readiness' }
       ] },
       { text: 'Learn and contribute', items: [
         { text: 'Verified examples', link: '/examples/' },
