@@ -8,6 +8,8 @@ Official VitePress documentation for the experimental [Scarp Programming Languag
 
 **Compiler:** https://github.com/scarp-lang/scarp
 
+**Latest published prerelease:** [v0.0.5-alpha.2](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.2), November 2, 2026. [Alpha.2 release examples (English)](docs/releases/v0.0.5-alpha.2.md) and [हिन्दी संस्करण](docs/hi/releases/v0.0.5-alpha.2.md). The 11-program core documentation baseline remains intentionally pinned to v0.0.5-alpha.1; a separate five-program alpha.2 conformance suite checks newly published features.
+
 **License:** [MIT](LICENSE)
 
 ## Development
@@ -19,6 +21,7 @@ npm install
 npm run docs:dev       # local VitePress server
 npm run typecheck      # strict TypeScript / Vue static analysis
 npm run check:tooling  # enforce TS-only authored tooling
+npm run check:alpha2    # verify published alpha.2 source hashes and bilingual release examples
 npm run check:snippets # reject unsupported runnable Scarp/CLI syntax
 npm run test:snippets # exercise current-version sample policy
 npm run check:docs     # internal pages, links, content policy, navigation
@@ -46,6 +49,10 @@ The compiler **repository is `scarp-lang/scarp`** (not `scarp-lang/scarp-lang`).
 A syntax proposal is *not* evidence that a feature ships. A future feature should remain marked **planned** until verified in a published compiler version. Documentation examples should be copied from or checked against compiler fixtures whenever possible.
 
 The translation guard compares actual fenced-code blocks, including repeated snippets, in the original English order. Hindi pages may contain additional explanation, but no original example may be silently changed or dropped. The parser itself has standalone TypeScript unit tests.
+
+## Two published compiler release tracks
+
+The core reference, status matrix and existing 11 compiler examples remain pinned to **v0.0.5-alpha.1** until a comprehensive and separately reviewed update migrates those pages. Scarp **v0.0.5-alpha.2 is now publicly released**, with an independent evidence manifest at `conformance/alpha2-manifest.json` (five newer programs, ten exact upstream Git blobs). `scripts/check-alpha2.ts` verifies both English/Hindi release pages, fixture provenance and optional byte-for-byte checkout comparison. A distinct `alpha2-conformance` GitHub Actions job checks out the exact alpha.2 release source `e4db8e191cd7ea623123cae7348450ca6c95b170`, builds the tagged Rust interpreter and executes the five programs plus CLI inspection smoke tests. This separation prevents newer compiler behavior from being silently claimed as an alpha.1 feature.
 
 ## Compiler-backed tutorial evidence
 
@@ -83,6 +90,7 @@ The `conformance/` directory contains 11 pinned source/output pairs copied from 
 
 ```sh
 npm run check:fixtures
+npm run check:alpha2 # validate five additional pinned alpha.2 examples and both release pages
 npm run check:tutorial-evidence # match bilingual tutorial code + stdout against published fixtures
 npm run test:tutorial-evidence # unit-test source/output pairing and drift detection
 ```
