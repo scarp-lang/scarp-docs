@@ -46,6 +46,14 @@
       "cases": [
         "matrix-forward"
       ]
+    },
+    {
+      "page": "tutorials/verified-classification.md",
+      "cases": [
+        "matrix-classification",
+        "matrix-probabilities",
+        "matrix-targets"
+      ]
     }
   ]
 }
