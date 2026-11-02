@@ -10,6 +10,10 @@ Documentation changes compiler के वास्तविक व्यवह�
 
 मुख्य baseline बदलने से पहले `npm run test:alpha2-backcompat -- /path/to/alpha2/scarp` को प्रकाशित **alpha.2** interpreter पर चलाएँ। CI पुराने 11 alpha.1 fixtures बिना बदले चलाकर stdout bytes और `tokens` जाँचती है। यह सभी programs के लिए backward compatibility की गारंटी नहीं है। [अपग्रेड गाइड](/hi/reference/upgrade-readiness) देखें।
 
+## नई alpha.3 रिलीज़ के प्रमाण
+
+[Alpha.3 release guide](/hi/releases/v0.0.5-alpha.3) तथा उसका English page **चार पूरे published source/output programs और 11 Git blobs** दिखाते हैं। `npm run check:alpha3` bilingual snippets जाँचता है। `npm run check:alpha3 -- /path/to/tagged-alpha3/examples` से source files की byte comparison होती है। `alpha3-conformance` CI release commit `7715c28df09c7703b39e14fddb963275b25df476` का compiler build करके `npm run test:alpha3 -- /path/to/alpha3/scarp` चलाता है। पुरानी alpha.1 और alpha.2 verification suites अलग रहती हैं।
+
 ## Local quality checks
 
 ~~~sh
