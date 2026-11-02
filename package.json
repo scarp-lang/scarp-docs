@@ -15,7 +15,7 @@
     "check:fixtures": "tsx scripts/check-fixtures.ts",
     "check:evidence": "tsx scripts/check-evidence.ts",
     "test:compiler": "tsx scripts/test-compiler.ts",
-    "check": "npm run typecheck && npm run check:tooling && npm run check:docs && npm run check:i18n && npm run check:snippets && npm run test:snippets && npm run test:code-fences && npm run check:fixtures && npm run check:alpha2 && npm run check:alpha2-errors && npm run check:tutorial-evidence && npm run check:coverage-statistics && npm run test:coverage-statistics && npm run test:tutorial-evidence && npm run test:site-meta && npm run test:pages-api && npm run docs:build && npm run check:site-build",
+    "check": "npm run typecheck && npm run check:tooling && npm run check:docs && npm run check:i18n && npm run check:snippets && npm run test:snippets && npm run test:code-fences && npm run check:fixtures && npm run check:alpha2 && npm run check:alpha2-errors && npm run check:alpha3 && npm run check:tutorial-evidence && npm run check:coverage-statistics && npm run test:coverage-statistics && npm run test:tutorial-evidence && npm run test:site-meta && npm run test:pages-api && npm run docs:build && npm run check:site-build",
     "test:site-meta": "tsx scripts/test-site-meta.ts",
     "check:site-build": "tsx scripts/check-site-build.ts",
     "test:pages-api": "tsx scripts/test-pages-api.ts",
@@ -30,7 +30,9 @@
     "test:alpha2": "tsx scripts/test-alpha2.ts",
     "check:alpha2-errors": "tsx scripts/check-alpha2-errors.ts",
     "test:alpha2-errors": "tsx scripts/test-alpha2-errors.ts",
-    "test:alpha2-backcompat": "tsx scripts/test-alpha2-backcompat.ts"
+    "test:alpha2-backcompat": "tsx scripts/test-alpha2-backcompat.ts",
+    "check:alpha3": "tsx scripts/check-alpha3.ts",
+    "test:alpha3": "tsx scripts/test-alpha3.ts"
   },
   "devDependencies": {
     "vitepress": "1.6.4",
