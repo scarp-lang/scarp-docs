@@ -182,6 +182,6 @@ The first two commands fail on purpose. The `explain` command succeeds and offer
 
 ## What the checks establish
 
-The documentation checker verifies complete source/stderr fences in **English and Hindi**, pinned Git blob hashes and supporting-file order. Compiler CI executes all six negative programs, checking status **1**, empty stdout, and the full expected stderr for both `run` and `check` on a pinned Ubuntu runner. The tests complement the [12 successful alpha.2 conformance programs](/tutorials/alpha2-module-constants-and-inspection). They do not guarantee identical wording in future releases.
+The documentation checker verifies complete source/stderr fences in **English and Hindi**, pinned Git blob hashes and supporting-file order. Compiler CI executes all six negative programs, checking status **1**, empty stdout, and the expected stderr for both `run` and `check` on a pinned Ubuntu runner. The CLI can display **absolute imported-module paths** where the compiler test snapshots display short filenames; only those known path labels are normalized before an otherwise exact diagnostic comparison. The tests complement the [12 successful alpha.2 conformance programs](/tutorials/alpha2-module-constants-and-inspection). They do not guarantee identical wording in future releases.
 
 Read the [alpha.2 diagnostic CLI](/tooling/alpha2-inspection), [compatibility guide](/reference/compatibility) and [versioned evidence policy](/reference/evidence).
