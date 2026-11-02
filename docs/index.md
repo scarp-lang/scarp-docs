@@ -35,9 +35,9 @@ features:
   - title: Functions, verified from the compiler
     details: Follow real typed-function examples with outputs checked against the published Scarp interpreter.
     link: /tutorials/verified-functions
-  - title: Numerical vectors and source modules
-    details: Run pinned vector calculations and a three-file program with verified output.
-    link: /tutorials/verified-vectors
+  - title: Verified vectors, tiles and modules
+    details: Run pinned numerical calculations, matrix inference and a three-file source program.
+    link: /tutorials/verified-tiles
   - title: Developer-friendly navigation
     details: Local search, code highlighting, accessible mobile navigation, and light/dark appearances.
     link: /guide/first-program
