@@ -49,6 +49,29 @@
       "name": "explicit-loss-gradient",
       "source": "classification_training.srp",
       "expected": "classification_training.stdout"
+    },
+    {
+      "name": "compile-time-module-constants",
+      "source": "constant_expressions.srp",
+      "expected": "constant_expressions.stdout",
+      "supportingSources": [
+        "modules/constant_base.srp",
+        "modules/constants.srp"
+      ]
+    },
+    {
+      "name": "static-module-introspection",
+      "source": "module_inspection.srp",
+      "expected": "module_inspection.stdout",
+      "supportingSources": [
+        "modules/inspection.srp"
+      ]
+    },
+    {
+      "name": "inspection-json-schema",
+      "source": "inspection_json.srp",
+      "expected": "inspection_json.stdout",
+      "inspectionSnapshot": "inspection_json.modules.json"
     }
   ],
   "upstreamGitBlobs": {
@@ -69,7 +92,17 @@
     "vector_probabilities.srp": "8e8be1da7929fd67518948ba6d55d8bea41ca0c1",
     "vector_probabilities.stdout": "9d18fad36753cd8275ea6a167a74f8197d4411d9",
     "classification_training.srp": "5a2a14705684a83d9326bcc27cf98f24fe26a0e2",
-    "classification_training.stdout": "52f1309f18655aa4cd5a7b287c6966bbfbf7ec29"
+    "classification_training.stdout": "52f1309f18655aa4cd5a7b287c6966bbfbf7ec29",
+    "constant_expressions.srp": "f93190172bec0684ed22bd29a09e04430c8773dc",
+    "constant_expressions.stdout": "90905109043700fef79db022b78d9f30de03da10",
+    "modules/constant_base.srp": "ce61cc86dd4e861653e53c86847468a456436f0f",
+    "modules/constants.srp": "03b3addb34fd42723b521fccac1b5003378abfc2",
+    "module_inspection.srp": "2dfb3b4f71ed4762bb9ffeabfb970a79b37835d4",
+    "module_inspection.stdout": "2c60de8529e6531e5070ebc93b369181960ab5c9",
+    "modules/inspection.srp": "a07522e99dcfee02195472dbd69a114b5f676192",
+    "inspection_json.srp": "f3733f61725830e8f1d0e697ee222283e2077b0a",
+    "inspection_json.stdout": "d81cc0710eb6cf9efd5b920a8453e1e07157b6cd",
+    "inspection_json.modules.json": "a163cd3b0106992c94d1b8fb6600bc3a975dcd5b"
   },
   "pages": [
     {
@@ -89,6 +122,14 @@
         "stable-score-selection",
         "verified-vector-probabilities",
         "explicit-loss-gradient"
+      ]
+    },
+    {
+      "page": "tutorials/alpha2-module-constants-and-inspection.md",
+      "cases": [
+        "compile-time-module-constants",
+        "static-module-introspection",
+        "inspection-json-schema"
       ]
     }
   ]
