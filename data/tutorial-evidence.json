@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "compilerRepository": "scarp-lang/scarp",
+  "compilerRelease": "v0.0.5-alpha.1",
+  "compilerCommit": "afe8b5380c9d6c4774162e51c6c9bc8b90901671",
+  "description": "Documented source/output pairs must match the compiler-owned conformance fixtures and preserve source-before-output order in both locales.",
+  "tutorials": [
+    {
+      "page": "tutorials/verified-functions.md",
+      "cases": [
+        "hello",
+        "functions"
+      ]
+    }
+  ]
+}
