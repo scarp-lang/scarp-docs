@@ -49,6 +49,7 @@ export default defineConfig({
             { text: 'आधिकारिक लिंक', link: '/hi/community/social' },
             { text: 'योगदान', link: '/hi/community/contributing' },
             { text: 'DEV Community', link: 'https://dev.to/scarplang' },
+            { text: 'Facebook', link: 'https://facebook.com/ScarpLang' },
             { text: 'Reddit', link: 'https://www.reddit.com/r/ScarpLang/' }
           ] },
           { text: 'v0.0.5-alpha.1', link: '/hi/reference/status' }
@@ -131,6 +132,7 @@ export default defineConfig({
       { icon: 'x', link: 'https://x.com/ScarpLang', ariaLabel: 'Scarp on X' },
       { icon: 'youtube', link: 'https://www.youtube.com/@ScarpLang', ariaLabel: 'Scarp on YouTube' },
       { icon: 'instagram', link: 'https://www.instagram.com/scarplang/', ariaLabel: 'Scarp on Instagram' },
+      { icon: 'facebook', link: 'https://facebook.com/ScarpLang', ariaLabel: 'Scarp on Facebook' },
       { icon: 'bluesky', link: 'https://bsky.app/profile/scarplang.bsky.social', ariaLabel: 'Scarp on Bluesky' },
       { icon: 'threads', link: 'https://www.threads.net/@scarplang', ariaLabel: 'Scarp on Threads' }
     ],
@@ -141,6 +143,7 @@ export default defineConfig({
       { text: 'Examples', link: '/examples/' },
       { text: 'Community', items: [
         { text: 'DEV Community', link: 'https://dev.to/scarplang' },
+        { text: 'Scarp on Facebook', link: 'https://facebook.com/ScarpLang' },
         { text: 'Scarp on Reddit', link: 'https://www.reddit.com/r/ScarpLang/' },
         { text: 'Official channels', link: '/community/social' },
         { text: 'Contributing', link: '/community/contributing' }
