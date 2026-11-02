@@ -5,12 +5,12 @@
 ## तीन स्तरों की जाँच
 
 1. **Markdown/लिंक:** `npm run check:docs` से pages, navigation, anchors और आवश्यक metadata जाँचें।
-2. **Fixture पहचान:** `npm run check:fixtures` 8 प्रकाशित Scarp उदाहरणों की 18 source/output फ़ाइलों की pinned Git blob hashes जाँचता है।
+2. **Fixture पहचान:** `npm run check:fixtures` 11 प्रकाशित Scarp उदाहरणों की 24 source/output फ़ाइलों की pinned Git blob hashes जाँचता है।
 3. **वास्तविक execution:** CI में compiler को exact tagged commit से build करके source और expected stdout byte-by-byte जाँचे जाते हैं।
 
 VitePress का सफल build यह प्रमाण नहीं कि `.srp` कोड चलता है। केवल source proposal से किसी नई सुविधा की घोषणा नहीं करें।
 
-`npm run check:snippets` पुराना Scarp syntax और अनुपलब्ध CLI commands वाले runnable code fences पकड़ता है। `npm run check:tutorial-evidence` सभी आठ स्रोत-आउटपुट जोड़ों की हिन्दी और अंग्रेज़ी पृष्ठों से तुलना करता है। ये static checks हैं; वास्तविक compiler execution अलग CI job में होता है।
+`npm run check:snippets` पुराना Scarp syntax और अनुपलब्ध CLI commands वाले runnable code fences पकड़ता है। `npm run check:tutorial-evidence` सभी 11 स्रोत-आउटपुट जोड़ों की हिन्दी और अंग्रेज़ी पृष्ठों से तुलना करता है। ये static checks हैं; वास्तविक compiler execution अलग CI job में होता है।
 
 ## अपने कंप्यूटर पर दोहराएँ
 
