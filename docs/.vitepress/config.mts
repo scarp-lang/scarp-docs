@@ -125,7 +125,7 @@ export default defineConfig({
     outline: { level: [2, 3], label: 'On this page' },
     docFooter: { prev: 'Previous', next: 'Next' },
     editLink: { pattern: `${docsRepo}/edit/main/docs/:path`, text: 'Improve this page on GitHub' },
-    // Public Scarp accounts verified against their published profile descriptions.
+    // Official project accounts confirmed through public profiles or maintainer-provided URLs.
     // Add other platforms only after confirming their exact official URLs.
     socialLinks: [
       { icon: 'github', link: 'https://github.com/scarp-lang', ariaLabel: 'Scarp on GitHub' },
