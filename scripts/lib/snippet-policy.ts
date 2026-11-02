@@ -18,6 +18,9 @@ function withoutStringsAndComments(source: string): string {
  */
 export function checkSnippetPolicy(markdown: string): SnippetIssue[] {
   const issues: SnippetIssue[] = []
+  // Only explicitly version-pinned release tutorials may show the new alpha.3 commands.
+  // Generic and older-version examples must continue to reject these spellings.
+  const alpha3Cli = markdown.includes('<!-- scarp-cli-release: v0.0.5-alpha.3 -->')
   for (const fence of extractCodeFences(markdown)) {
     const code = fence.code.replace(/\r\n?/g, '\n')
     if (fence.language === 'scarp') {
@@ -33,8 +36,9 @@ export function checkSnippetPolicy(markdown: string): SnippetIssue[] {
     }
     if (['sh', 'shell', 'bash'].includes(fence.language)) {
       for (const [i, line] of code.split('\n').entries()) {
-        if (/^\s*(?:\$\s*)?scarp\s+(?:build|compile|exec|verify|inspect)\b/.test(line)) {
-          issues.push({ line: fence.line + i + 1, message: 'unsupported Scarp CLI command in a runnable shell example' })
+        const command = /^\s*(?:\$\s*)?scarp\s+(build|compile|exec|verify|inspect)\b/.exec(line)
+        if (command && (!alpha3Cli || !['exec', 'verify', 'inspect'].includes(command[1]))) {
+          issues.push({ line: fence.line + i + 1, message: 'unsupported Scarp CLI command for this documented release' })
         }
       }
     }
