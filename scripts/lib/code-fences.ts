@@ -14,7 +14,7 @@ export function extractCodeFences(markdown: string): CodeFence[] {
   let opened: { marker: '`' | '~'; size: number; language: string; line: number } | null = null
   let body: string[] = []
 
-  lines.forEach((line, index) => {
+  for (const [index, line] of lines.entries()) {
     if (opened !== null) {
       const close = /^ {0,3}(`{3,}|~{3,})[ \t]*$/.exec(line)
       if (close && close[1][0] === opened.marker && close[1].length >= opened.size) {
@@ -28,22 +28,22 @@ export function extractCodeFences(markdown: string): CodeFence[] {
       } else {
         body.push(line)
       }
-      return
+      continue
     }
 
     const start = /^ {0,3}(`{3,}|~{3,})([^\n]*)$/.exec(line)
-    if (!start) return
+    if (!start) continue
     const marker = start[1][0] as '`' | '~'
     const info = start[2].trim()
     // Backticks inside the info string invalidate a backtick-fenced opener.
-    if (marker === '`' && info.includes('`')) return
+    if (marker === '`' && info.includes('`')) continue
     opened = {
       marker,
       size: start[1].length,
       language: info.split(/\s+/)[0] ?? '',
       line: index + 1
     }
-  })
+  }
 
   if (opened !== null) throw new Error(`Unclosed code fence at line ${opened.line}`)
   return blocks
