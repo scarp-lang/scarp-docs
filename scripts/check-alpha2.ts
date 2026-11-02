@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url'
 import { verifyTutorialExamples } from './lib/tutorial-evidence.ts'
 
 type Fixture = { name: string; source: string; expected: string }
-type Manifest = { compilerRepository: string; compilerRef: string; compilerCommit: string; cases: Fixture[]; upstreamGitBlobs: Record<string, string> }
+type Manifest = { compilerRepository: string; compilerRef: string; compilerCommit: string; cases: Fixture[]; pages: Array<{ page: string; cases: string[] }>; upstreamGitBlobs: Record<string, string> }
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const folder = join(root, 'conformance/alpha2')
 const manifest = JSON.parse(readFileSync(join(root, 'conformance/alpha2-manifest.json'), 'utf8')) as Manifest
@@ -14,8 +14,8 @@ if (manifest.compilerRepository !== 'scarp-lang/scarp' || manifest.compilerRef !
     manifest.compilerCommit !== 'e4db8e191cd7ea623123cae7348450ca6c95b170') {
   failures.push('release identity differs from the published alpha.2 tag')
 }
-if (manifest.cases.length < 5 || new Set(manifest.cases.map(c => c.name)).size !== manifest.cases.length) {
-  failures.push('expected at least five unique published alpha.2 cases')
+if (manifest.cases.length < 9 || new Set(manifest.cases.map(c => c.name)).size !== manifest.cases.length) {
+  failures.push('expected at least nine unique published alpha.2 cases')
 }
 const recordedFiles = readdirSync(folder).sort()
 const declaredFiles = Object.keys(manifest.upstreamGitBlobs).sort()
@@ -38,12 +38,40 @@ const evidence = manifest.cases.flatMap(item => {
   }
   return [{ name: item.name, source: readFileSync(join(folder, item.source), 'utf8'), expected: readFileSync(join(folder, item.expected), 'utf8') }]
 })
-for (const path of ['docs/releases/v0.0.5-alpha.2.md','docs/hi/releases/v0.0.5-alpha.2.md']) {
-  failures.push(...verifyTutorialExamples(readFileSync(join(root, path), 'utf8'), evidence).map(problem => `${path}: ${problem}`))
+const caseByName = new Map(evidence.map(item => [item.name, item]))
+const seenPages = new Set<string>()
+const covered = new Set<string>()
+if (!Array.isArray(manifest.pages) || manifest.pages.length < 2) failures.push('missing page mapping for both alpha.2 tutorials')
+for (const entry of manifest.pages ?? []) {
+  if (typeof entry.page !== 'string' || !/^(?:releases|tutorials)\/[a-z0-9.-]+\.md$/.test(entry.page)) {
+    failures.push(`invalid alpha.2 page path: ${entry.page}`)
+    continue
+  }
+  if (seenPages.has(entry.page)) failures.push(`repeated alpha.2 page: ${entry.page}`)
+  seenPages.add(entry.page)
+  if (!Array.isArray(entry.cases) || entry.cases.length < 1) {
+    failures.push(`empty case mapping for ${entry.page}`)
+    continue
+  }
+  const grouped = []
+  for (const name of entry.cases) {
+    if (typeof name !== 'string' || !caseByName.has(name)) {
+      failures.push(`unknown alpha.2 fixture: ${String(name)}`)
+      continue
+    }
+    if (covered.has(name)) failures.push(`duplicate alpha.2 fixture coverage: ${name}`)
+    covered.add(name)
+    grouped.push(caseByName.get(name)!)
+  }
+  for (const locale of ['en', 'hi'] as const) {
+    const path = join(root, 'docs', locale === 'hi' ? 'hi' : '', entry.page)
+    failures.push(...verifyTutorialExamples(readFileSync(path, 'utf8'), grouped).map(problem => `${locale}/${entry.page}: ${problem}`))
+  }
 }
+for (const name of caseByName.keys()) if (!covered.has(name)) failures.push(`unmapped alpha.2 case: ${name}`)
 const legacy = JSON.parse(readFileSync(join(root, 'data/compiler-baseline.json'), 'utf8')) as { release: string }
 if (legacy.release !== 'v0.0.5-alpha.1') failures.push('legacy compiler baseline changed without full migration')
 if (failures.length) {
   console.error(failures.map(problem => `FAIL alpha.2 evidence: ${problem}`).join('\n'))
   process.exitCode = 1
-} else console.log(`PASS: ${manifest.cases.length} published alpha.2 programs and ${declaredFiles.length} pinned Git blobs have full bilingual source/output evidence`)
+} else console.log(`PASS: ${manifest.cases.length} published alpha.2 programs and ${declaredFiles.length} pinned Git blobs have full bilingual source/output evidence across mapped pages`)
