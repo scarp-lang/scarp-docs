@@ -23,6 +23,8 @@ npm run check:fixtures
 npm run docs:build
 ~~~
 
+दोनों प्रकाशित tag के linked reference paths देखने के लिए `npm run check:evidence -- /path/to/alpha1 /path/to/alpha2` चलाएँ।
+
 Compiler conformance test के लिए tag `afe8b5380c9d6c4774162e51c6c9bc8b90901671` का interpreter build करें, फिर `npm run test:compiler -- /path/to/scarp` चलाएँ।
 
 ## नए release के समय
