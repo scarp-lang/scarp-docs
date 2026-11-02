@@ -15,7 +15,7 @@ Node.js 22 or a runtime satisfying the declared `engines` entry is required. The
 
 ## Separate release-track gates
 
-The [newly published alpha.2 guide](/releases/v0.0.5-alpha.2) has nine exact source/output program pairs across two bilingual pages checked by `npm run check:alpha2` and the separate `alpha2-conformance` CI job. The main 11-program reference remains pinned to alpha.1. Maintain both released source commits and their own fixture Git blobs; do not re-label old tests as proof of alpha.2 behavior. When validating compiler source links locally, supply **both** source checkouts to `npm run check:evidence -- /path/to/alpha1 /path/to/alpha2`.
+The [newly published alpha.2 guide](/releases/v0.0.5-alpha.2) has twelve exact source/output program pairs across three bilingual pages, including multi-file module dependencies and a pinned JSON snapshot checked by `npm run check:alpha2` and the separate `alpha2-conformance` CI job. The main 11-program reference remains pinned to alpha.1. Maintain both released source commits and their own fixture Git blobs; do not re-label old tests as proof of alpha.2 behavior. When validating compiler source links locally, supply **both** source checkouts to `npm run check:evidence -- /path/to/alpha1 /path/to/alpha2`.
 
 ## Updating to a new compiler release
 

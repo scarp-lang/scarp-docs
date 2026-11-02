@@ -15,6 +15,8 @@ scarp modules --help
 
 The ordinary module command emits a **static source inventory** of modules, dependencies and visible/private declarations. It validates the source graph but does not execute ordinary statements, defaults or function bodies. A program can be statically inspectable even when its runtime execution would fail. Imported module constants are a special case: restricted scalar expressions are checked and evaluated during compilation.
 
+The [compiler-verified module constants and JSON tutorial](/tutorials/alpha2-module-constants-and-inspection) includes two complete imported-source graphs and the exact published schema-version-1 JSON snapshot. Its CI conformance checks the published source and expected outputs without confusing static inventory with runtime printing.
+
 ## JSON schema and source locations
 
 The JSON variant produces a compact object followed by a newline. Its top-level fields include `schema_version` (currently **1**), `entry`, `modules`, and `constant_dependencies`. Each module provides paths, imports, relationships and symbols. Source spans are **half-open file-local UTF-8 byte offsets**, not display columns or universal path identities.

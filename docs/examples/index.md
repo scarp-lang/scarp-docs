@@ -47,7 +47,7 @@ The relative paths above assume you are at the compiler repository root or using
 
 ## Latest published alpha.2 examples
 
-The [newer v0.0.5-alpha.2 release examples](/releases/v0.0.5-alpha.2) and [collections and learning tutorial](/tutorials/alpha2-collections-and-learning) add **nine separately pinned programs** with checked sources and stdout, plus tested module text/JSON inspection. These do **not** change the older release baseline for the examples below.
+The [newer v0.0.5-alpha.2 release examples](/releases/v0.0.5-alpha.2) and [collections and learning tutorial](/tutorials/alpha2-collections-and-learning) add **12 separately pinned programs** across the release, collection and [multi-file module tutorial](/tutorials/alpha2-module-constants-and-inspection) with checked sources and stdout, plus tested module text/JSON inspection. These do **not** change the older release baseline for the examples below.
 
 ## Automatically checked documentation fixtures
 

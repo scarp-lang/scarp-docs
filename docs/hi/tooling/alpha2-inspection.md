@@ -15,6 +15,8 @@ scarp modules --help
 
 सामान्य module command modules, dependencies तथा public/private declarations का **static inventory** दिखाता है। Source graph का validation होता है, पर सामान्य runtime statements, default values या function bodies execute नहीं होते। कुछ scalar module constant expressions का compile-time evaluation अलग नियम है।
 
+[प्रकाशित compiler का module constants और JSON ट्यूटोरियल](/hi/tutorials/alpha2-module-constants-and-inspection) दो पूरे imported-source graphs तथा tagged JSON snapshot दिखाता है। अलग CI में compiler वास्तविक source/output चलाता और static inventory जाँचता है।
+
 ## JSON schema और source location
 
 JSON रूप एक compact object और अंत में newline देता है। इसके प्रमुख fields `schema_version` (अभी **1**), `entry`, `modules` तथा `constant_dependencies` हैं। एक module में path, imports, relations और symbols की जानकारी होती है। Source spans **file-local UTF-8 byte offsets** हैं: `[start,end)` अर्थात आरंभ शामिल और अंत बाहर।

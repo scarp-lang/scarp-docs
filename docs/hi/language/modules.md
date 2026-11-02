@@ -2,6 +2,8 @@
 
 **v0.0.5-alpha.1** से `.srp` फ़ाइलें अन्य फ़ाइलों के public symbols उपयोग कर सकती हैं।
 
+**नए प्रकाशित [v0.0.5-alpha.2](/hi/tutorials/alpha2-module-constants-and-inspection) में:** सीमित compile-time scalar constant expressions और `scarp modules` से static import/metadata inspection उपलब्ध हैं। नए ट्यूटोरियल में import की तीन फ़ाइलें तथा सही stdout हैं। नीचे दिया मूल alpha.1 विवरण केवल literal module constants के लिए है।
+
 ## मॉड्यूल आयात
 
 ~~~scarp
