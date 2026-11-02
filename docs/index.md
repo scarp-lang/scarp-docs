@@ -32,6 +32,9 @@ features:
   - title: Honest compatibility guidance
     details: Understand what shipped in v0.0.5-alpha.1, what changed since earlier prereleases, and what remains planned.
     link: /reference/compatibility
+  - title: Functions, verified from the compiler
+    details: Follow real typed-function examples with outputs checked against the published Scarp interpreter.
+    link: /tutorials/verified-functions
   - title: Developer-friendly navigation
     details: Local search, code highlighting, accessible mobile navigation, and light/dark appearances.
     link: /guide/first-program
