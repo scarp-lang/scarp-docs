@@ -6,10 +6,16 @@ import { fileURLToPath } from 'node:url'
 // reachability. Use only a checkout of the exact pinned release commit.
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const baseline = JSON.parse(readFileSync(resolve(root, 'data/compiler-baseline.json'), 'utf8')) as { repository: string; release: string }
-const checkout = process.argv[2] ? resolve(process.argv[2]) : null
-if (!checkout || !existsSync(resolve(checkout, 'Cargo.toml'))) {
-  console.error('Usage: npm run check:evidence -- <pinned-compiler-checkout>')
-  process.exit(2)
+const checkouts = new Map([
+  [baseline.release, process.argv[2] ? resolve(process.argv[2]) : ''],
+  ['v0.0.5-alpha.2', process.argv[3] ? resolve(process.argv[3]) : '']
+])
+for (const [version, checkout] of checkouts) {
+  if (!checkout || !existsSync(resolve(checkout, 'Cargo.toml'))) {
+    console.error('Usage: npm run check:evidence -- <alpha1-compiler-checkout> <alpha2-compiler-checkout>')
+    console.error(`Missing published release checkout: ${version}`)
+    process.exit(2)
+  }
 }
 const docs = resolve(root, 'docs')
 const files = [resolve(root, 'README.md'), resolve(root, 'CONTRIBUTING.md')]
@@ -33,7 +39,8 @@ for (const page of files) {
     const parts = parsed.pathname.split('/').filter(Boolean)
     if (parts[0] !== 'scarp-lang' || parts[1] !== 'scarp') continue
     const [kind, tag, ...segments] = parts.slice(2)
-    if (tag !== baseline.release) { failures.push(`${relative(root, page)}: unexpected pinned compiler release ${tag}`); continue }
+    const checkout = checkouts.get(tag)
+    if (!checkout) { failures.push(`${relative(root, page)}: unsupported compiler evidence tag ${tag}`); continue }
     let rel: string
     try { rel = decodeURIComponent(segments.join('/')) } catch { failures.push(`${relative(root, page)}: invalid encoded evidence path`); continue }
     const target = resolve(checkout, rel)

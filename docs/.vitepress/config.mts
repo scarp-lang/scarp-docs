@@ -55,7 +55,8 @@ export default defineConfig({
             { text: 'Discord #language-development', link: 'https://discord.com/channels/1566388621085253663/1566388870826827856' },
             { text: 'Reddit', link: 'https://www.reddit.com/r/ScarpLang/' }
           ] },
-          { text: 'v0.0.5-alpha.1', link: '/hi/reference/status' }
+          { text: 'नया: v0.0.5-alpha.2', link: '/hi/releases/v0.0.5-alpha.2' },
+          { text: 'संदर्भ: v0.0.5-alpha.1', link: '/hi/reference/status' }
         ],
         sidebar: [
           { text: 'स्वागत', items: [
@@ -99,6 +100,7 @@ export default defineConfig({
             { text: 'उदाहरण', link: '/hi/examples/' },
             { text: 'सोशल लिंक', link: '/hi/community/social' },
             { text: 'योगदान करें', link: '/hi/community/contributing' },
+            { text: 'Alpha.2 रिलीज़ और प्रमाण', link: '/hi/releases/v0.0.5-alpha.2' },
             { text: 'मेंटेनर सूची', link: '/hi/project/maintenance' },
             { text: 'डिप्लॉयमेंट गिनती', link: '/hi/project/deployments' }
           ] }
@@ -156,8 +158,9 @@ export default defineConfig({
         { text: 'Official channels', link: '/community/social' },
         { text: 'Contributing', link: '/community/contributing' }
       ] },
-      { text: 'v0.0.5-alpha.1', items: [
-        { text: 'Feature status', link: '/reference/status' },
+      { text: 'v0.0.5-alpha.2 (latest)', items: [
+        { text: 'Published alpha.2 examples', link: '/releases/v0.0.5-alpha.2' },
+        { text: 'v0.0.5-alpha.1 documentation baseline', link: '/reference/status' },
         { text: 'Compiler releases', link: `${sourceRepo}/releases` }
       ] }
     ],
@@ -203,6 +206,7 @@ export default defineConfig({
         { text: 'Verified examples', link: '/examples/' },
         { text: 'Official social channels', link: '/community/social' },
         { text: 'Contributing', link: '/community/contributing' },
+        { text: 'Alpha.2 release evidence', link: '/releases/v0.0.5-alpha.2' },
         { text: 'Docs maintainer checklist', link: '/project/maintenance' },
         { text: 'Pages deployments', link: '/project/deployments' }
       ] }

@@ -41,6 +41,9 @@ features:
   - title: Developer-friendly navigation
     details: Local search, code highlighting, accessible mobile navigation, and light/dark appearances.
     link: /guide/first-program
+  - title: Newly published v0.0.5-alpha.2
+    details: Explore five pinned, compiler-verified programs for bit operations, typed declarations, Unicode and numerical functions.
+    link: /releases/v0.0.5-alpha.2
   - title: Official Scarp community
     details: Find the project's verified social channels, news, and ways to contribute.
     link: /community/social

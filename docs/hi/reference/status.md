@@ -2,6 +2,8 @@
 
 **आधार:** प्रकाशित **Scarp v0.0.5-alpha.1** (1 नवंबर 2026)। कोई भी language capability स्थिर compatibility guarantee नहीं है।
 
+**नया प्रकाशित prerelease:** [v0.0.5-alpha.2](/hi/releases/v0.0.5-alpha.2) **2 नवंबर 2026** को जारी हुआ। इसका published source commit `e4db8e191cd7ea623123cae7348450ca6c95b170` है। पाँच नए प्रोग्राम अलग compiler CI job में सत्यापित होते हैं। नीचे की फीचर सूची अभी जानबूझकर **alpha.1 baseline** की है; सभी पुराने संदर्भों का जाँचा हुआ migration बाद में होगा।
+
 - **प्रकाशित — प्रयोगात्मक:** tagged release और tests/examples में उपलब्ध सुविधा।
 - **विकास शाखा:** केवल unshipped source में दिखने वाली सुविधा; उसे प्रकाशित नहीं माना जाता।
 - **नियोजित/अनुपलब्ध:** proposal या भविष्य की योजना, वर्तमान रिलीज़ में नहीं।

@@ -2,6 +2,8 @@
 
 **Reference baseline:** published Scarp **v0.0.5-alpha.1** (released 2026-11-01), verified against the [official compiler repository](https://github.com/scarp-lang/scarp). This is a prerelease: **no language capability is designated stable** as a compatibility guarantee.
 
+**Newer published prerelease:** [v0.0.5-alpha.2](/releases/v0.0.5-alpha.2) was published **November 2, 2026** from compiler commit `e4db8e191cd7ea623123cae7348450ca6c95b170`. Its new language features and inspection commands are documented in a **separate five-program, compiler-verified release guide**. The table below deliberately remains the v0.0.5-alpha.1 baseline until all older references and 11 original fixtures undergo a reviewed version migration.
+
 We use these terms consistently:
 
 - **Shipped (experimental):** present in the published prerelease and exercised in compiler examples or tests.

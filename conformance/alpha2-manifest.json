@@ -1,0 +1,46 @@
+{
+  "compilerRepository": "scarp-lang/scarp",
+  "compilerRef": "v0.0.5-alpha.2",
+  "compilerCommit": "e4db8e191cd7ea623123cae7348450ca6c95b170",
+  "published": "2026-11-02",
+  "status": "separate-release-evidence-not-site-baseline",
+  "cases": [
+    {
+      "name": "integer-bit-operations",
+      "source": "bit_fields.srp",
+      "expected": "bit_fields.stdout"
+    },
+    {
+      "name": "exact-scalar-conversions",
+      "source": "scalar_conversions.srp",
+      "expected": "scalar_conversions.stdout"
+    },
+    {
+      "name": "typed-declarations",
+      "source": "typed_declarations.srp",
+      "expected": "typed_declarations.stdout"
+    },
+    {
+      "name": "unicode-text-queries",
+      "source": "unicode_text.srp",
+      "expected": "unicode_text.stdout"
+    },
+    {
+      "name": "numeric-statistics-and-activations",
+      "source": "numerical_kernels.srp",
+      "expected": "numerical_kernels.stdout"
+    }
+  ],
+  "upstreamGitBlobs": {
+    "bit_fields.srp": "80b08f3d4bc61927c75a8c49816748207f8ac951",
+    "bit_fields.stdout": "06df0d8a3490b79649eb4c705a270f68d1c318e5",
+    "scalar_conversions.srp": "eeb7e78b58586c9c84f86c3f40766f2f5190487c",
+    "scalar_conversions.stdout": "55f9fbd1c8acf74828283c47e7fd03dddb5eb6cf",
+    "typed_declarations.srp": "c8bc19d4324b4963e4fae57ad49c2fc82d8c6d1d",
+    "typed_declarations.stdout": "726d76a39c5cdfa5edf272d72df09fe026bfc05c",
+    "unicode_text.srp": "1c7294e08312ff30e91b28e049c79564740bf10a",
+    "unicode_text.stdout": "c0e222567de954693f9a07f09c8511718ae2e307",
+    "numerical_kernels.srp": "a18cbfc6e2a2847bbc3296ed257795ed65864a3f",
+    "numerical_kernels.stdout": "14dfaecc0b73ca9612c4dee2d29bd978bfaaa9b8"
+  }
+}

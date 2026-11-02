@@ -10,7 +10,8 @@ Scarp के शुरुआती prereleases में syntax और API ब�
 | `v0.0.3-beta.3` | typed `funcra` functions और contracts |
 | `v0.0.4-alpha.1` | finite scalar floats |
 | `v0.0.4-alpha.4` | vectors और tiles के साथ संख्यात्मक milestone |
-| **`v0.0.5-alpha.1`** | relative source modules, public symbols |
+| **`v0.0.5-alpha.1`** | relative source modules, public symbols; मुख्य docs baseline |
+| **`v0.0.5-alpha.2`** | **2 नवंबर 2026 को प्रकाशित नवीनतम prerelease:** typed declarations, bitwise integers, Unicode और [जाँचे गए उदाहरण](/hi/releases/v0.0.5-alpha.2) |
 
 ## पुराना स्रोत migrate करना
 

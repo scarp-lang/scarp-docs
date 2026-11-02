@@ -38,6 +38,9 @@ features:
   - title: सीखने के उदाहरण
     details: लूप, फ़ंक्शन और module-based प्रोग्राम चरणबद्ध सीखें।
     link: /hi/examples/
+  - title: नया प्रकाशित v0.0.5-alpha.2
+    details: bit operations, typed declarations, Unicode और numerical kernels के पाँच compiler-verified उदाहरण पढ़ें।
+    link: /hi/releases/v0.0.5-alpha.2
   - title: Scarp समुदाय
     details: आधिकारिक GitHub, DEV, Reddit और अन्य सार्वजनिक चैनल।
     link: /hi/community/social

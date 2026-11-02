@@ -16,6 +16,10 @@ npm run docs:build
 
 नए code examples के लिए `npm run check:snippets`, `npm run test:snippets` और `npm run check:tutorial-evidence` भी चलाएँ। ये परीक्षण पुराने syntax, अनुपलब्ध CLI commands और गलत compiler fixtures पकड़ते हैं।
 
+## दो अलग compiler संस्करण
+
+[नया alpha.2 रिलीज़ पृष्ठ](/hi/releases/v0.0.5-alpha.2) पाँच नए प्रकाशित source/output जोड़ों को अलग CI job में चलाता है। पुराने 11 उदाहरण अभी alpha.1 compiler से जुड़े हैं। `npm run check:alpha2` hashes और दोनों भाषाओं का प्रमाण जाँचता है; `npm run check:evidence -- /path/to/alpha1 /path/to/alpha2` से दोनों compiler tags की source-link paths जाँचें। सभी पुराने ट्यूटोरियल को समीक्षा के बिना alpha.2 पर न बदलें।
+
 ## नए compiler release पर
 
 पहले प्रकाशित tag, source SHA, compiler tests और release artifacts की पुष्टि करें। इसके बाद `data/compiler-baseline.json`, code fixtures, language/status/CLI references और दोनों भाषाओं के pages अपडेट करें। Development proposal को released सुविधा न बताएं।
