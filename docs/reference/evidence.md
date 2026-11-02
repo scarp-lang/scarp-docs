@@ -25,7 +25,7 @@ For compiler-backed checks, obtain a local checkout of exactly the pinned commit
 
 ```sh
 npm run check:fixtures -- /path/to/scarp/examples
-npm run check:evidence -- /path/to/scarp
+npm run check:evidence -- /path/to/alpha1 /path/to/alpha2
 npm run test:compiler -- /path/to/scarp/target/debug/scarp
 ```
 
