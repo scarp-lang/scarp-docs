@@ -1,12 +1,13 @@
 # Connect with Scarp
 
-Follow the official **Scarp Programming Language** accounts for project announcements, compiler updates, tutorials, and community news. The previously listed accounts were checked against public Scarp profiles on **November 1, 2026**. The Facebook URL was supplied directly by the project maintainer on **November 2, 2026**.
+Follow the official **Scarp Programming Language** accounts for project announcements, compiler updates, tutorials, and community news. According to the project maintainer, Scarp's social profiles were created on **November 1, 2026**. The Facebook and LinkedIn URLs were supplied directly by the maintainer on **November 2, 2026**; their addition to these docs is not a claim of separate platform ownership verification.
 
 | Platform | Official Scarp account | What you can find |
 | --- | --- | --- |
 | GitHub | [scarp-lang](https://github.com/scarp-lang) | Compiler source, documentation, issues, and releases |
 | X | [@ScarpLang](https://x.com/ScarpLang) | Short development and release updates |
 | Facebook | [ScarpLang](https://facebook.com/ScarpLang) | Project announcements and community posts |
+| LinkedIn | [ScarpLang](https://linkedin.com/company/ScarpLang) | Project information and professional updates |
 | YouTube | [Scarp Programming Language](https://www.youtube.com/@ScarpLang) | Official video channel for upcoming compiler demonstrations and tutorials |
 | Instagram | [@scarplang](https://www.instagram.com/scarplang/) | Scarp project profile and visual updates |
 | Threads | [@scarplang](https://www.threads.net/@scarplang) | Scarp project profile and community posts |
@@ -24,6 +25,6 @@ For project correspondence, contact [scarplang@gmail.com](mailto:scarplang@gmail
 
 ## Keep the links accurate
 
-Before adding a new social channel, confirm its profile is publicly accessible and identifies the Scarp Programming Language project. Do not link unverified lookalike accounts or assume a handle is available simply because the name matches. In particular, a public Discord invitation or LinkedIn company page URL is not listed here until its official destination is confirmed.
+Before adding a new social channel, confirm its profile is publicly accessible and identifies the Scarp Programming Language project. Do not link unverified lookalike accounts or assume a handle is available simply because the name matches. In particular, a public Discord invitation is not listed here until its official destination is confirmed.
 
-The official DEV and Reddit pages have been inspected publicly. The LinkedIn company link is intentionally not included until its exact ownership and URL can be confirmed.
+The LinkedIn and Facebook URLs are supplied by the project maintainer. The official DEV and Reddit pages were inspected publicly when they were originally added.
