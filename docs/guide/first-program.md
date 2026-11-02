@@ -1,6 +1,6 @@
 # Your first Scarp program
 
-This tutorial targets **v0.0.5-alpha.1**. Confirm `scarp --version` before you begin.
+This tutorial targets **v0.0.5-alpha.1**. Confirm `scarp --version` before you begin. To evaluate upgrading to the published **alpha.2**, see the [compiler-tested compatibility guide](/reference/upgrade-readiness): it runs all 11 original alpha.1 fixtures unchanged on alpha.2, but does not claim every older source program remains compatible.
 
 ## Create a file
 
