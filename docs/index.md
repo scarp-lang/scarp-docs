@@ -47,6 +47,9 @@ features:
   - title: Alpha.2 collections and numeric learning
     details: Run verified integer collections, deterministic score-selection, softmax and explicit loss-gradient programs.
     link: /tutorials/alpha2-collections-and-learning
+  - title: Alpha.1 to alpha.2 upgrade evidence
+    details: Eleven original compiler programs are retested unchanged against the published newer interpreter, with byte-exact outputs.
+    link: /reference/upgrade-readiness
   - title: Official Scarp community
     details: Find the project's verified social channels, news, and ways to contribute.
     link: /community/social
