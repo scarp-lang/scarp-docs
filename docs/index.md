@@ -56,5 +56,5 @@ features:
 ---
 
 ::: warning Experimental language
-Scarp v0.0.5-alpha.1 is a **prerelease**, not a stable language specification. Syntax and APIs may change. See the [feature status](/reference/status) before adopting a feature.
+The newest published compiler is **[v0.0.5-alpha.2](/releases/v0.0.5-alpha.2)**, while much of the main reference still targets the separately verified **v0.0.5-alpha.1** baseline. Both are experimental prereleases. Before upgrading older code, check [alpha.1 → alpha.2 upgrade readiness](/reference/upgrade-readiness) and the [feature status](/reference/status).
 :::
