@@ -6,6 +6,10 @@ This is the contributor-maintainer process for Scarp Docs. Documentation must de
 
 The [alpha.2 diagnostic repairs tutorial](/tutorials/alpha2-diagnostics-and-repairs) has six intentionally failing, release-tagged tests, distinct from the twelve passing alpha.2 examples. `npm run check:alpha2-errors` validates source/stderr Git blobs, both locale pages and supporting modules. In the pinned alpha.2 checkout, `npm run check:alpha2-errors -- /path/to/alpha2/tests/fixtures` compares source bytes; `npm run test:alpha2-errors -- /path/to/alpha2/scarp` executes both `run` and `check` and verifies failures. Error output is version-specific.
 
+## Upgrade gate: alpha.1 to alpha.2
+
+Before changing the main documentation baseline, run `npm run test:alpha2-backcompat -- /path/to/alpha2/scarp` with the exact published **alpha.2** binary. The separate CI step runs all 11 unchanged original alpha.1 fixtures, checks their byte-exact output and tests `tokens`. It does not replace the alpha.1 fixture provenance check or prove compatibility beyond this sample set. See [upgrade readiness](/reference/upgrade-readiness).
+
 ## Local quality gates
 
 ```sh
