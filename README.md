@@ -90,7 +90,7 @@ The `conformance/` directory contains 11 pinned source/output pairs copied from 
 
 ```sh
 npm run check:fixtures
-npm run check:alpha2 # validate nine alpha.2 fixtures across four bilingual page files
+npm run check:alpha2 # validate twelve alpha.2 examples across three bilingual page pairs
 npm run check:tutorial-evidence # match bilingual tutorial code + stdout against published fixtures
 npm run test:tutorial-evidence # unit-test source/output pairing and drift detection
 ```
