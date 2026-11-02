@@ -100,6 +100,8 @@ jobs:
         run: test "$(git -C .compiler-alpha2 rev-parse HEAD)" = "e4db8e191cd7ea623123cae7348450ca6c95b170"
       - name: Compare all alpha.2 source/output bytes with published examples
         run: npm run check:alpha2 -- .compiler-alpha2/examples
+      - name: Verify published alpha.2 negative diagnostic fixture bytes
+        run: npm run check:alpha2-errors -- .compiler-alpha2/tests/fixtures
       - name: Build published alpha.2 interpreter
         run: cargo build --manifest-path .compiler-alpha2/Cargo.toml --locked --offline
       - name: Execute alpha.2 conformance examples and inspection command smoke tests
