@@ -64,6 +64,7 @@ export default defineConfig({
             { text: 'आउटपुट और नई लाइन', link: '/hi/tutorials/verified-output' },
             { text: 'न्यूमेरिकल वैक्टर अभ्यास', link: '/hi/tutorials/verified-vectors' },
             { text: 'सत्यापित टाइल अभ्यास', link: '/hi/tutorials/verified-tiles' },
+            { text: 'वर्गीकरण और संभावनाएँ', link: '/hi/tutorials/verified-classification' },
             { text: 'मॉड्यूल ट्यूटोरियल', link: '/hi/tutorials/modules-walkthrough' }
           ] },
           { text: 'भाषा संदर्भ', items: [
@@ -160,6 +161,7 @@ export default defineConfig({
         { text: 'Verified output tutorial', link: '/tutorials/verified-output' },
         { text: 'Verified vectors tutorial', link: '/tutorials/verified-vectors' },
         { text: 'Verified tiles tutorial', link: '/tutorials/verified-tiles' },
+        { text: 'Verified classification tutorial', link: '/tutorials/verified-classification' },
         { text: 'Source modules tutorial', link: '/tutorials/modules-walkthrough' }
       ] },
       { text: 'Language', items: [
