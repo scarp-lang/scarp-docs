@@ -29,6 +29,26 @@
       "name": "numeric-statistics-and-activations",
       "source": "numerical_kernels.srp",
       "expected": "numerical_kernels.stdout"
+    },
+    {
+      "name": "integer-collections",
+      "source": "integer_collections.srp",
+      "expected": "integer_collections.stdout"
+    },
+    {
+      "name": "stable-score-selection",
+      "source": "score_selection.srp",
+      "expected": "score_selection.stdout"
+    },
+    {
+      "name": "verified-vector-probabilities",
+      "source": "vector_probabilities.srp",
+      "expected": "vector_probabilities.stdout"
+    },
+    {
+      "name": "explicit-loss-gradient",
+      "source": "classification_training.srp",
+      "expected": "classification_training.stdout"
     }
   ],
   "upstreamGitBlobs": {
@@ -41,6 +61,35 @@
     "unicode_text.srp": "1c7294e08312ff30e91b28e049c79564740bf10a",
     "unicode_text.stdout": "c0e222567de954693f9a07f09c8511718ae2e307",
     "numerical_kernels.srp": "a18cbfc6e2a2847bbc3296ed257795ed65864a3f",
-    "numerical_kernels.stdout": "14dfaecc0b73ca9612c4dee2d29bd978bfaaa9b8"
-  }
+    "numerical_kernels.stdout": "14dfaecc0b73ca9612c4dee2d29bd978bfaaa9b8",
+    "integer_collections.srp": "18e95bcfbe18e2ce61ddc022e340790be84f9234",
+    "integer_collections.stdout": "1732495bad8f250f1195c89cb1ae0e5a75fa5d9f",
+    "score_selection.srp": "9084cc7617e86ce96c29d286d0cf54018aab8162",
+    "score_selection.stdout": "9ed6c44b9acb70216a993b2cfbe82c6b60d3c502",
+    "vector_probabilities.srp": "8e8be1da7929fd67518948ba6d55d8bea41ca0c1",
+    "vector_probabilities.stdout": "9d18fad36753cd8275ea6a167a74f8197d4411d9",
+    "classification_training.srp": "5a2a14705684a83d9326bcc27cf98f24fe26a0e2",
+    "classification_training.stdout": "52f1309f18655aa4cd5a7b287c6966bbfbf7ec29"
+  },
+  "pages": [
+    {
+      "page": "releases/v0.0.5-alpha.2.md",
+      "cases": [
+        "integer-bit-operations",
+        "exact-scalar-conversions",
+        "typed-declarations",
+        "unicode-text-queries",
+        "numeric-statistics-and-activations"
+      ]
+    },
+    {
+      "page": "tutorials/alpha2-collections-and-learning.md",
+      "cases": [
+        "integer-collections",
+        "stable-score-selection",
+        "verified-vector-probabilities",
+        "explicit-loss-gradient"
+      ]
+    }
+  ]
 }
