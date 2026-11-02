@@ -4,6 +4,8 @@
 
 **नया प्रकाशित prerelease:** [v0.0.5-alpha.2](/hi/releases/v0.0.5-alpha.2) **2 नवंबर 2026** को जारी हुआ। इसका published source commit `e4db8e191cd7ea623123cae7348450ca6c95b170` है। पाँच रिलीज़-गाइड उदाहरण और [चार collection/learning उदाहरण](/hi/tutorials/alpha2-collections-and-learning) सहित **12 प्रोग्राम** (अलग module/JSON ट्यूटोरियल के तीन उदाहरण सहित) alpha.2 compiler CI job में सत्यापित होते हैं। नीचे की फीचर सूची अभी जानबूझकर **alpha.1 baseline** की है; सभी पुराने संदर्भों का जाँचा हुआ migration बाद में होगा।
 
+**अपग्रेड की जाँच:** [Alpha.1 → alpha.2 compiler compatibility gate](/hi/reference/upgrade-readiness) पुराने **11 पूरे alpha.1 programs** को बिना बदले प्रकाशित alpha.2 executable पर सत्यापित करती है। इससे पूरा main reference migrate नहीं होता और हर पुराना source compatible होने का दावा नहीं है।
+
 - **प्रकाशित — प्रयोगात्मक:** tagged release और tests/examples में उपलब्ध सुविधा।
 - **विकास शाखा:** केवल unshipped source में दिखने वाली सुविधा; उसे प्रकाशित नहीं माना जाता।
 - **नियोजित/अनुपलब्ध:** proposal या भविष्य की योजना, वर्तमान रिलीज़ में नहीं।
