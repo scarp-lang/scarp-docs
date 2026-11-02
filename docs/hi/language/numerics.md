@@ -20,6 +20,12 @@ print(matvec(weights, [2.0, 1.0])); // [4.0, 1.0]
 
 `tile` row-major, immutable, दो-अक्ष वाला numeric value है। `height`, `width`, `cell`, `lane`, `unroll`, `turn`, `matvec`, `matmul`, `tileadd`, `tilescale` जैसे operations लागू होते हैं। Arbitrary broadcasting और mutable indexing उपलब्ध नहीं हैं।
 
+## दो-अक्ष वाली गणना का सत्यापित उदाहरण
+
+[टाइल और matrix ट्यूटोरियल](/hi/tutorials/verified-tiles) में प्रकाशित compiler का **पूरा `matrix_forward.srp` प्रोग्राम** और उसका सही stdout मिलता है। यह केवल संभावित syntax नहीं है: CI pinned compiler से इस उदाहरण को चलाकर परिणाम की तुलना करता है। पहले [वैक्टर ट्यूटोरियल](/hi/tutorials/verified-vectors) भी पढ़ सकते हैं।
+
+`matvec(t, v)` के लिए `width(t) == len(v)` और `matmul(a, b)` के लिए `width(a) == height(b)` चाहिए। टाइल में अधिकतम 65,536 cells हैं; इसके rows/columns की भी अलग जाँच होती है। नया numerical output buffer बनाने पर cumulative `--max-vector-bytes` बजट खर्च हो सकता है। समस्याओं के लिए [डायग्नोस्टिक्स](/hi/reference/diagnostics) देखें।
+
 ## आकार और संसाधन सीमा
 
 अधिकतम vector length 65,536 तत्व है। लंबाई/shape mismatch E0032, गलत numeric domain E0034, allocation E0035 और cumulative numeric payload quota E0036 दे सकते हैं। [numeric budget](/hi/reference/budgets) तथा [builtin reference](/hi/reference/library) देखें।

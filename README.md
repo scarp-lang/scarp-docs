@@ -19,6 +19,8 @@ npm install
 npm run docs:dev       # local VitePress server
 npm run typecheck      # strict TypeScript / Vue static analysis
 npm run check:tooling  # enforce TS-only authored tooling
+npm run check:snippets # reject unsupported runnable Scarp/CLI syntax
+npm run test:snippets # exercise current-version sample policy
 npm run check:docs     # internal pages, links, content policy, navigation
 npm run check:i18n     # all pages have Hindi equivalents and ordered matching code fences
 npm run test:code-fences # unit-test the TypeScript Markdown fence scanner
@@ -47,9 +49,11 @@ The translation guard compares actual fenced-code blocks, including repeated sni
 
 ## Compiler-backed tutorial evidence
 
-The [verified functions tutorial](docs/tutorials/verified-functions.md), [loops tutorial](docs/tutorials/repeat-and-loops.md), [output tutorial](docs/tutorials/verified-output.md), [numerical vectors tutorial](docs/tutorials/verified-vectors.md), and [three-file source modules walkthrough](docs/tutorials/modules-walkthrough.md) all have matching Hindi editions, including [हिन्दी फ़ंक्शन ट्यूटोरियल](docs/hi/tutorials/verified-functions.md), [हिन्दी लूप ट्यूटोरियल](docs/hi/tutorials/repeat-and-loops.md), [हिन्दी आउटपुट ट्यूटोरियल](docs/hi/tutorials/verified-output.md), [हिन्दी वैक्टर ट्यूटोरियल](docs/hi/tutorials/verified-vectors.md), and [हिन्दी मॉड्यूल ट्यूटोरियल](docs/hi/tutorials/modules-walkthrough.md). All examples reproduce source/output pairs from the pinned released interpreter. `data/tutorial-evidence.json` explicitly maps tutorial pages to the pinned `conformance/manifest.json` cases. `scripts/check-tutorial-evidence.ts` requires all seven pinned examples to be covered exactly once and rejects missing, modified, misplaced or reordered examples in either language, including the two imported `.srp` source files needed by the module demo. Supporting files must exist in the pinned compiler fixture manifest. `scripts/test-tutorial-evidence.ts` regression-tests the matcher, including CLI command fences between a complete program and its expected stdout. `npm run check:tutorial-evidence` requires no network or Rust toolchain; actual program execution is still covered separately by the compiler-conformance GitHub Actions job.
+The [verified tiles tutorial](docs/tutorials/verified-tiles.md) and [हिन्दी टाइल ट्यूटोरियल](docs/hi/tutorials/verified-tiles.md) provide the published matrix-forward compiler fixture alongside diagnostics and shape guidance. The [verified functions tutorial](docs/tutorials/verified-functions.md), [loops tutorial](docs/tutorials/repeat-and-loops.md), [output tutorial](docs/tutorials/verified-output.md), [numerical vectors tutorial](docs/tutorials/verified-vectors.md), and [three-file source modules walkthrough](docs/tutorials/modules-walkthrough.md) all have matching Hindi editions, including [हिन्दी फ़ंक्शन ट्यूटोरियल](docs/hi/tutorials/verified-functions.md), [हिन्दी लूप ट्यूटोरियल](docs/hi/tutorials/repeat-and-loops.md), [हिन्दी आउटपुट ट्यूटोरियल](docs/hi/tutorials/verified-output.md), [हिन्दी वैक्टर ट्यूटोरियल](docs/hi/tutorials/verified-vectors.md), and [हिन्दी मॉड्यूल ट्यूटोरियल](docs/hi/tutorials/modules-walkthrough.md). All examples reproduce source/output pairs from the pinned released interpreter. `data/tutorial-evidence.json` explicitly maps tutorial pages to the pinned `conformance/manifest.json` cases. `scripts/check-tutorial-evidence.ts` requires all eight pinned examples to be covered exactly once and rejects missing, modified, misplaced or reordered examples in either language, including the two imported `.srp` source files needed by the module demo. Supporting files must exist in the pinned compiler fixture manifest. `scripts/test-tutorial-evidence.ts` regression-tests the matcher, including CLI command fences between a complete program and its expected stdout. `npm run check:tutorial-evidence` requires no network or Rust toolchain; actual program execution is still covered separately by the compiler-conformance GitHub Actions job.
 
 The `output` program intentionally emits **no newline after the final word**: the Markdown output fence demonstrates visible text but does not encode this byte detail; the compiler-conformance job verifies actual stdout including trailing newline behavior. Tutorial evidence checks compare normalized visible fence contents; they are not substitutes for executing the compiler.
+
+The TypeScript snippet-policy gate checks all runnable `scarp` and shell Markdown fences for known legacy declarations and unavailable CLI commands. Historical syntax in prose and text fences is allowed; this is a narrow syntax smoke test, **not a full compiler/parser replacement**. The conformance job remains responsible for actually running the pinned source and verifying stdout.
 
 A future version is not promoted automatically: change the pinned baseline only after reviewing a published release, updating the fixtures, and re-running compiler conformance.
 
@@ -71,7 +75,7 @@ The [community page](docs/community/social.md) lists Scarp's verified public Git
 
 ## Compiler-backed conformance checks
 
-The `conformance/` directory contains seven pinned source/output pairs copied from the released Scarp compiler examples. To verify fixture integrity locally (does not require Rust):
+The `conformance/` directory contains eight pinned source/output pairs copied from the released Scarp compiler examples. To verify fixture integrity locally (does not require Rust):
 
 ```sh
 npm run check:fixtures

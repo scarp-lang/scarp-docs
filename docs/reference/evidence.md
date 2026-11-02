@@ -5,10 +5,12 @@ This site targets the **published v0.0.5-alpha.1 Scarp prerelease**. We treat co
 ## Three independent validation layers
 
 1. **Markdown and navigation:** `npm run check:docs` detects missing local links/anchors, unsupported code-fence names, broken navigation targets and mismatched site configuration. It does not prove that external web links load.
-2. **Published fixture provenance:** `npm run check:fixtures` validates the source/output pairs and checks the Git blob SHA-1 of **all 16 mirrored files** against IDs from the published compiler tag's tree. CI additionally compares each mirrored byte sequence to the checked-out compiler examples.
-3. **Compiler execution:** GitHub Actions checks out commit `afe8b5380c9d6c4774162e51c6c9bc8b90901671`, builds the released Rust interpreter, then runs `check` and `run` on seven examples and verifies their stdout byte-for-byte. It also exercises `tokens`.
+2. **Published fixture provenance:** `npm run check:fixtures` validates the source/output pairs and checks the Git blob SHA-1 of **all 18 mirrored files** against IDs from the published compiler tag's tree. CI additionally compares each mirrored byte sequence to the checked-out compiler examples.
+3. **Compiler execution:** GitHub Actions checks out commit `afe8b5380c9d6c4774162e51c6c9bc8b90901671`, builds the released Rust interpreter, then runs `check` and `run` on eight examples and verifies their stdout byte-for-byte. It also exercises `tokens`.
 
 The CI job additionally checks that published-tag compiler source links in these pages correspond to paths present in that pinned checkout. It does **not** claim that arbitrary external URLs have been checked over HTTP or that every Markdown code block is executed.
+
+The separate `npm run check:snippets` and `npm run test:snippets` steps reject common deprecated syntax in executable Markdown examples. They do not attempt to parse or run arbitrary Scarp programs. The `npm run check:tutorial-evidence` gate requires all eight compiler programs to appear unchanged in bilingual tutorials, while compiler conformance independently verifies byte-exact runtime output.
 
 ## Reproduce the checks
 

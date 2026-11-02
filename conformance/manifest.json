@@ -37,6 +37,11 @@
       "name": "modules",
       "source": "module_demo.srp",
       "expected": "module_demo.stdout"
+    },
+    {
+      "name": "matrix-forward",
+      "source": "matrix_forward.srp",
+      "expected": "matrix_forward.stdout"
     }
   ],
   "upstreamGitBlobs": {
@@ -55,6 +60,8 @@
     "repeat.srp": "d19b37f0c7454e64f7c8a093782c01c8cdc05711",
     "repeat.stdout": "9807191ab0a725715beff8f74c1b49fe8dd17e59",
     "vectors.srp": "cad3456d6c2ba83a3199e726a36de84d7ed5aade",
-    "vectors.stdout": "e566db6eb486a97d50c41d48770e1e44972a0bb2"
+    "vectors.stdout": "e566db6eb486a97d50c41d48770e1e44972a0bb2",
+    "matrix_forward.srp": "58f182f412e511dc3e0218e28faa446295973901",
+    "matrix_forward.stdout": "5ba14f73a1981ce4e235dc7e1c3f8eca319fde18"
   }
 }

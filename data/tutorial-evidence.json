@@ -3,7 +3,7 @@
   "compilerRepository": "scarp-lang/scarp",
   "compilerRelease": "v0.0.5-alpha.1",
   "compilerCommit": "afe8b5380c9d6c4774162e51c6c9bc8b90901671",
-  "description": "Every pinned executable fixture is presented in at least one English/Hindi tutorial with complete source and displayed stdout. Multi-file programs also reproduce imported source files in order; the compiler CI checks output bytes, including final newline semantics.",
+  "description": "Every published compiler fixture is reproduced in at least one bilingual tutorial with exact source and expected stdout. Multi-file examples include dependencies; compiler CI compares actual output bytes.",
   "tutorials": [
     {
       "page": "tutorials/verified-functions.md",
@@ -39,6 +39,12 @@
       "page": "tutorials/verified-output.md",
       "cases": [
         "output"
+      ]
+    },
+    {
+      "page": "tutorials/verified-tiles.md",
+      "cases": [
+        "matrix-forward"
       ]
     }
   ]

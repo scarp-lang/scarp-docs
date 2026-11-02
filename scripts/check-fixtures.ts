@@ -24,7 +24,7 @@ if (manifest.compilerRepository !== baseline.repository ||
     manifest.compilerCommit !== baseline.releaseSourceCommit) {
   fail('manifest compiler identity differs from the documentation baseline')
 }
-if (!Array.isArray(manifest.cases) || manifest.cases.length < 7) fail('expected seven conformance cases')
+if (!Array.isArray(manifest.cases) || manifest.cases.length < 8) fail('expected at least eight conformance cases')
 for (const entry of manifest.cases) {
   if (!entry.name || names.has(entry.name)) fail(`duplicate/missing case name: ${entry.name}`)
   names.add(entry.name)

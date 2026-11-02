@@ -30,6 +30,12 @@ print(matvec(weights, [2.0, 1.0])); // [4.0, 1.0]
 
 The currently implemented tile API includes `height`, `width`, `cell`, `lane`, `unroll`, `turn`, `matvec`, `matmul`, `tileadd`, and `tilescale`. There is no automatic broadcasting, mutable cell indexing, or general N-dimensional tensor type.
 
+## Build a real two-axis numerical example
+
+The [verified matrix-forward lesson](/tutorials/verified-tiles) reproduces the **complete published `matrix_forward.srp` file** and its expected stdout. Unlike a short illustrative snippet, its source/output pair is included in the documentation's pinned compiler conformance suite and executed in CI. Start with [verified vectors](/tutorials/verified-vectors) if `vector` is unfamiliar.
+
+`matvec(t, v)` requires `width(t) == len(v)`; `matmul(a, b)` requires `width(a) == height(b)`. A tile's cell count is at most 65,536, with row/column dimensions checked separately; row-major elements cannot be changed in place. Each new materialized output can charge the cumulative `--max-vector-bytes` budget, so successful type checks do not guarantee unlimited computation. Consult [numerical diagnostics](/reference/diagnostics) before increasing limits.
+
 ## Limits and errors
 
 Indexing is bounds-checked. Invalid shapes, nonfinite results, and numerical payload-budget exhaustion produce diagnostics rather than silently returning invalid data. Each vector/tile element is a finite 64-bit float; some operations materialize new buffers and consume the cumulative vector-byte budget.
