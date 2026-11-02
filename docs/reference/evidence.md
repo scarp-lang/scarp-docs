@@ -4,6 +4,10 @@ This site targets the **published v0.0.5-alpha.1 Scarp prerelease**. We treat co
 
 **New release:** Scarp [v0.0.5-alpha.2](/releases/v0.0.5-alpha.2) was published on November 2. It now has **12 additional, separately pinned programs and 28 upstream Git blob hashes** across the [release guide](/releases/v0.0.5-alpha.2) and [collections tutorial](/tutorials/alpha2-collections-and-learning). `npm run check:alpha2` checks the complete bilingual release-page code/output fences and byte-for-byte fixture provenance; the `alpha2-conformance` CI job checks out exact source commit `e4db8e191cd7ea623123cae7348450ca6c95b170`, builds the published compiler, and tests those programs. The 11-case suite below remains tied only to alpha.1—these are **two distinct release suites**, not a claim that the main docs baseline was already migrated.
 
+## Negative diagnostic conformance
+
+The published [alpha.2 errors and repairs tutorial](/tutorials/alpha2-diagnostics-and-repairs) adds **six intentionally failing programs** and **14 additional pinned test-fixture files** (source, stderr and required module dependencies). `npm run check:alpha2-errors` verifies their upstream Git blob SHA-1 identifiers and requires full source/expected-stderr code fences in both English and Hindi, including imported support files. The independent `alpha2-conformance` job additionally compares each fixture to the published compiler test checkout and runs `check` and `run`, expecting exit code 1, empty stdout and the published diagnostic stderr. These are **negative** conformance cases—not additional successful examples, and they do not change the twelve successful alpha.2 or eleven alpha.1 cases.
+
 ## Three independent validation layers
 
 1. **Markdown and navigation:** `npm run check:docs` detects missing local links/anchors, unsupported code-fence names, broken navigation targets and mismatched site configuration. It does not prove that external web links load.
