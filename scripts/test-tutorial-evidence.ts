@@ -22,6 +22,6 @@ const missingOutput = page.replace(outputFence(examples[0].expected), '')
 assert.match(verifyTutorialExamples(missingOutput, examples)[0] ?? '', /hello: missing, modified, or misplaced expected stdout/)
 const outOfOrder = [...examples].reverse().map(item => `${sourceFence(item.source)}\n${outputFence(item.expected)}`).join('\n')
 assert.notDeepEqual(verifyTutorialExamples(outOfOrder, examples), [])
-assert.match(verifyTutorialExamples('~~~scarp\nno closing fence', examples)[0] ?? '', /Unclosed code fence/)
+assert.throws(() => verifyTutorialExamples('~~~scarp\nno closing fence', examples), /Unclosed code fence/)
 
 console.log('PASS: bilingual evidence checker accepts exact fixtures and rejects drift, missing output, reordered pairs and malformed Markdown')
