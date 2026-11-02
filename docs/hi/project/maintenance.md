@@ -6,6 +6,10 @@ Documentation changes compiler के वास्तविक व्यवह�
 
 [Alpha.2 error repairs](/hi/tutorials/alpha2-diagnostics-and-repairs) में छह जानबूझकर असफल प्रकाशित tests हैं, जो बारह सफल examples से अलग हैं। `npm run check:alpha2-errors` source/stderr blobs, दोनों translations और supporting modules जाँचता है। `npm run check:alpha2-errors -- /path/to/alpha2/tests/fixtures` से tagged checkout तथा `npm run test:alpha2-errors -- /path/to/alpha2/scarp` से वास्तविक error output जाँचें। Error messages version-specific हैं।
 
+## Alpha.1 → alpha.2 माइग्रेशन जाँच
+
+मुख्य baseline बदलने से पहले `npm run test:alpha2-backcompat -- /path/to/alpha2/scarp` को प्रकाशित **alpha.2** interpreter पर चलाएँ। CI पुराने 11 alpha.1 fixtures बिना बदले चलाकर stdout bytes और `tokens` जाँचती है। यह सभी programs के लिए backward compatibility की गारंटी नहीं है। [अपग्रेड गाइड](/hi/reference/upgrade-readiness) देखें।
+
 ## Local quality checks
 
 ~~~sh
