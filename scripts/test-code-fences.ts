@@ -23,7 +23,7 @@ assert.equal(fences.length, 3)
 assert.deepEqual(fences.map(f => f.language), ['scarp', 'sh', 'text'])
 assert.deepEqual(fences.map(f => f.line), [2, 7, 12])
 assert.equal(fences[0].code, 'bind answer = 42;\nprint(answer);')
-assert.equal(fences[1].code, 'scarp run hello.srp')
+assert.equal(fences[1].code, 'scarp run hello.srp\\n```')
 assert.equal(fences[2].code, '42')
 
 // Additional translated demonstrations are allowed, but not reordered examples.
