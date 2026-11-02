@@ -2,6 +2,8 @@
 
 **Available in v0.0.5-alpha.1.** Earlier v0.0.4-alpha.4 binaries did **not** have imports. Source modules are local `.srp` files with explicit aliases and a constrained public declaration model.
 
+**New in published [v0.0.5-alpha.2](/tutorials/alpha2-module-constants-and-inspection):** module constant initializers now support restricted compile-time scalar expressions, and `scarp modules` can display static import/declaration metadata or schema-version-1 JSON. The tutorial includes complete multi-file source and checked stdout. Below, the original alpha.1 behavior and examples remain version-specific; alpha.1 supported only scalar literal module constants.
+
 ## Importing a module
 
 A top-level entry file may use:
