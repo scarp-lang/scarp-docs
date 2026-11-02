@@ -6,7 +6,7 @@
 
 ## असफल compiler programs की जाँच
 
-[Alpha.2 diagnostics और सुधार](/hi/tutorials/alpha2-diagnostics-and-repairs) में **छह जानबूझकर असफल प्रोग्राम** और **14 pinned source/stderr/support फ़ाइलें** हैं। `npm run check:alpha2-errors` published Git blob hashes तथा दोनों भाषाओं के पूरे source/stderr blocks जाँचता है। अलग `alpha2-conformance` CI में `check`/`run` से exit status 1, खाली stdout और प्रकाशित stderr की तुलना होती है। ये **negative cases** हैं, इसलिए 12 सफल alpha.2 या 11 सफल alpha.1 programs की गिनती में नहीं जोड़ने चाहिए।
+[Alpha.2 diagnostics और सुधार](/hi/tutorials/alpha2-diagnostics-and-repairs) में **छह जानबूझकर असफल प्रोग्राम** और **14 pinned source/stderr/support फ़ाइलें** हैं। `npm run check:alpha2-errors` published Git blob hashes तथा दोनों भाषाओं के पूरे source/stderr blocks जाँचता है। अलग `alpha2-conformance` CI में `check`/`run` से exit status 1, खाली stdout और प्रकाशित stderr की तुलना होती है। Native CLI के absolute imported-module path labels को published snapshot के छोटे filenames से मिलाकर शेष stderr की exact जाँच होती है। ये **negative cases** हैं, इसलिए 12 सफल alpha.2 या 11 सफल alpha.1 programs की गिनती में नहीं जोड़ने चाहिए।
 
 ## तीन स्तरों की जाँच
 
