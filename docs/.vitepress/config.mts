@@ -56,7 +56,7 @@ export default defineConfig({
             { text: 'Reddit', link: 'https://www.reddit.com/r/ScarpLang/' }
           ] },
           { text: 'नया: v0.0.5-alpha.2', link: '/hi/releases/v0.0.5-alpha.2' },
-          { text: 'अपग्रेड जाँच: alpha.1 → alpha.2', link: '/hi/reference/upgrade-readiness' }
+          { text: 'अपग्रेड जाँच: alpha.1 → alpha.2', link: '/hi/reference/upgrade-readiness' },
           { text: 'संदर्भ: v0.0.5-alpha.1', link: '/hi/reference/status' }
         ],
         sidebar: [
