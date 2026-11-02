@@ -3,7 +3,7 @@ import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { spawnSync } from 'node:child_process'
 
-interface Case { name: string; source: string; expected: string }
+interface Case { name: string; source: string; expected: string; inspectionSnapshot?: string }
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const manifest = JSON.parse(readFileSync(resolve(root, 'conformance/alpha2-manifest.json'), 'utf8')) as { compilerRef: string; cases: Case[] }
 const binary = process.argv[2]
@@ -67,5 +67,34 @@ if (jsonInventory.error || jsonInventory.status !== 0 || jsonInventory.stderr?.l
     console.error(`FAIL alpha.2 module JSON schema: ${error instanceof Error ? error.message : String(error)}`)
   }
 }
+// The published JSON snapshot comes from an in-memory loader. A CLI filesystem
+// loader may emit an absolute module path, while everything else must match.
+const jsonCase = manifest.cases.find(item => item.inspectionSnapshot)
+if (!jsonCase?.inspectionSnapshot) throw Error('published alpha.2 JSON inspection fixture missing')
+const inspectJson = execute(['modules', '--json', jsonCase.source])
+if (inspectJson.error || inspectJson.status !== 0 || inspectJson.stderr?.length) {
+  failures++
+  console.error(`FAIL alpha.2 published JSON inspection: ${inspectJson.error || inspectJson.stderr?.toString() || inspectJson.status}`)
+} else {
+  try {
+    const actual = JSON.parse(inspectJson.stdout!.toString()) as { schema_version: number; modules: Array<{ path: string }> }
+    const expected = JSON.parse(readFileSync(resolve(workdir, jsonCase.inspectionSnapshot), 'utf8')) as typeof actual
+    if (actual.schema_version !== 1 || actual.modules?.length !== 1 ||
+        !actual.modules[0]?.path.endsWith(jsonCase.source)) throw Error('unexpected module schema or filesystem entry path')
+    actual.modules[0].path = expected.modules[0].path
+    if (JSON.stringify(actual) !== JSON.stringify(expected)) throw Error('published JSON metadata/UTF-8 spans do not match snapshot')
+    console.log('PASS alpha.2 published JSON metadata and byte offsets match tagged source (filesystem label normalized)')
+  } catch (error) {
+    failures++
+    console.error(`FAIL alpha.2 published JSON metadata: ${error instanceof Error ? error.message : String(error)}`)
+  }
+}
+const importedInventory = execute(['modules', 'module_inspection.srp'])
+if (importedInventory.error || importedInventory.status !== 0 || importedInventory.stderr?.length ||
+    !importedInventory.stdout?.toString().includes('module_inspection.srp') ||
+    !importedInventory.stdout?.toString().includes('inspection.srp')) {
+  failures++
+  console.error(`FAIL alpha.2 multi-file module inventory: ${importedInventory.error || importedInventory.stderr?.toString() || importedInventory.stdout?.toString()}`)
+} else console.log('PASS alpha.2 multi-file module inventory includes imported module')
 if (failures) process.exit(1)
-console.log(`PASS: all ${manifest.cases.length} published alpha.2 programs and four CLI/inspection checks`)
+console.log(`PASS: all ${manifest.cases.length} published alpha.2 programs and six CLI/inspection checks`)
