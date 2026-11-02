@@ -2,6 +2,8 @@
 
 This site targets the **published v0.0.5-alpha.1 Scarp prerelease**. We treat compiler source, tests, actual release fixtures, and published artifacts as evidence. Design proposals and open pull requests are **not** proof that a feature shipped.
 
+**New release:** Scarp [v0.0.5-alpha.2](/releases/v0.0.5-alpha.2) was published on November 2. It has **five additional, separately pinned programs and ten upstream Git blob hashes**. `npm run check:alpha2` checks the complete bilingual release-page code/output fences and byte-for-byte fixture provenance; the `alpha2-conformance` CI job checks out exact source commit `e4db8e191cd7ea623123cae7348450ca6c95b170`, builds the published compiler, and tests those programs. The 11-case suite below remains tied only to alpha.1—these are **two distinct release suites**, not a claim that the main docs baseline was already migrated.
+
 ## Three independent validation layers
 
 1. **Markdown and navigation:** `npm run check:docs` detects missing local links/anchors, unsupported code-fence names, broken navigation targets and mismatched site configuration. It does not prove that external web links load.
