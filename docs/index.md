@@ -50,6 +50,9 @@ features:
   - title: Alpha.1 to alpha.2 upgrade evidence
     details: Eleven original compiler programs are retested unchanged against the published newer interpreter, with byte-exact outputs.
     link: /reference/upgrade-readiness
+  - title: Latest alpha.3 release and new CLI
+    details: Four new compiler-verified examples, Scarp-first exec/verify/inspect workflows, and a pinned JSON diagnostic.
+    link: /releases/v0.0.5-alpha.3
   - title: Official Scarp community
     details: Find the project's verified social channels, news, and ways to contribute.
     link: /community/social
