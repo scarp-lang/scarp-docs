@@ -20,13 +20,16 @@ npm run docs:dev       # local VitePress server
 npm run typecheck      # strict TypeScript / Vue static analysis
 npm run check:tooling  # enforce TS-only authored tooling
 npm run check:docs     # internal pages, links, content policy, navigation
-npm run check:i18n     # all pages have Hindi equivalents and matching code snippets
+npm run check:i18n     # all pages have Hindi equivalents and ordered matching code fences
+npm run test:code-fences # unit-test the TypeScript Markdown fence scanner
 npm run test:site-meta  # unit tests for bilingual canonical and hreflang URLs
 npm run check:site-build # inspect generated English/Hindi HTML after docs:build
 npm run check          # typecheck, content, i18n, fixtures, SEO and production build
 npm run docs:build     # static production build
 npm run docs:preview   # preview the build
 ~~~
+
+For new contributors, the [English glossary](docs/guide/glossary.md) and [हिन्दी शब्दावली](docs/hi/guide/glossary.md) explain Scarp terminology before the language reference.
 
 Pages are under `docs/` and are written in Markdown. Navigation, theme, code grammar, and canonical `/scarp-docs/` base path are configured in `docs/.vitepress/config.mts`. Small style overrides are in `docs/.vitepress/theme/`.
 
@@ -39,6 +42,8 @@ All project-maintained **executable tooling** under `scripts/` uses `.ts` files:
 The compiler **repository is `scarp-lang/scarp`** (not `scarp-lang/scarp-lang`). Language facts are checked against compiler source, its executable tests, and its published documentation for v0.0.5-alpha.1. Each technical page links to the corresponding compiler reference. Status distinctions are described in [Feature status](docs/reference/status.md).
 
 A syntax proposal is *not* evidence that a feature ships. A future feature should remain marked **planned** until verified in a published compiler version. Documentation examples should be copied from or checked against compiler fixtures whenever possible.
+
+The translation guard compares actual fenced-code blocks, including repeated snippets, in the original English order. Hindi pages may contain additional explanation, but no original example may be silently changed or dropped. The parser itself has standalone TypeScript unit tests.
 
 ## Bilingual SEO and production quality gates
 
