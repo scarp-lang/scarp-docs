@@ -104,6 +104,8 @@ jobs:
         run: npm run check:alpha2-errors -- .compiler-alpha2/tests/fixtures
       - name: Build published alpha.2 interpreter
         run: cargo build --manifest-path .compiler-alpha2/Cargo.toml --locked --offline
+      - name: Verify original alpha.1 programs remain compatible with released alpha.2
+        run: npm run test:alpha2-backcompat -- .compiler-alpha2/target/debug/scarp
       - name: Execute alpha.2 conformance examples and inspection command smoke tests
         run: npm run test:alpha2 -- .compiler-alpha2/target/debug/scarp
       - name: Verify six published failure diagnostics on check and run
