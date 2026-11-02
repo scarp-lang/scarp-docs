@@ -42,6 +42,21 @@
       "name": "matrix-forward",
       "source": "matrix_forward.srp",
       "expected": "matrix_forward.stdout"
+    },
+    {
+      "name": "matrix-classification",
+      "source": "matrix_classification.srp",
+      "expected": "matrix_classification.stdout"
+    },
+    {
+      "name": "matrix-probabilities",
+      "source": "matrix_probabilities.srp",
+      "expected": "matrix_probabilities.stdout"
+    },
+    {
+      "name": "matrix-targets",
+      "source": "matrix_targets.srp",
+      "expected": "matrix_targets.stdout"
     }
   ],
   "upstreamGitBlobs": {
@@ -62,6 +77,12 @@
     "vectors.srp": "cad3456d6c2ba83a3199e726a36de84d7ed5aade",
     "vectors.stdout": "e566db6eb486a97d50c41d48770e1e44972a0bb2",
     "matrix_forward.srp": "58f182f412e511dc3e0218e28faa446295973901",
-    "matrix_forward.stdout": "5ba14f73a1981ce4e235dc7e1c3f8eca319fde18"
+    "matrix_forward.stdout": "5ba14f73a1981ce4e235dc7e1c3f8eca319fde18",
+    "matrix_classification.srp": "e85923ed8fa1c012393aa8b3761080e4702b4f2f",
+    "matrix_classification.stdout": "aa1754492c67ae8b377a4e9973b57ca1b55345cb",
+    "matrix_probabilities.srp": "2fbabd699a4d5d19b40e3dfd046a95b299420700",
+    "matrix_probabilities.stdout": "cd6ebfa1f9d3cc5f91d91e2b063155ccf8f1ee67",
+    "matrix_targets.srp": "d4cd1a760fae235d63c5cea9d20ee33df1ae5ee9",
+    "matrix_targets.stdout": "2cc3a4e11cbfb492980d29c26e783fb189115729"
   }
 }
