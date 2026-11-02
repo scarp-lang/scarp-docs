@@ -6,6 +6,8 @@
 
 **Migration readiness:** The [alpha.1 → alpha.2 compiler upgrade gate](/reference/upgrade-readiness) re-tests all **11 original alpha.1 programs** unchanged on the published alpha.2 executable. This is a separate compatibility check, not a declaration that all alpha.1 source code or the main reference has migrated.
 
+**Newest published prerelease:** [v0.0.5-alpha.3](/releases/v0.0.5-alpha.3), published November 2, 2026 at **19:41 IST** from compiler commit `7715c28df09c7703b39e14fddb963275b25df476`. It includes Scarp-first command paths, structured diagnostics and new text construction. Its **four exact published programs** are tested by an independent release-specific conformance job. The main feature table below **remains explicitly alpha.1**; work merged to compiler `main` after alpha.3 publication is not in that release.
+
 We use these terms consistently:
 
 - **Shipped (experimental):** present in the published prerelease and exercised in compiler examples or tests.
