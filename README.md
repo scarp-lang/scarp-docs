@@ -46,6 +46,10 @@ Pages are under `docs/` and are written in Markdown. Navigation, theme, code gra
 
 The [English published-feature matrix](docs/reference/status.md) and [हिन्दी फीचर स्थिति](docs/hi/reference/status.md) distinguish the main alpha.1 reference baseline from all **12 alpha.2** and **4 alpha.3** release-backed examples. A TypeScript manifest checker prevents either locale from silently changing the version, compiler commit, example source, or evidence count. Run `npm run check:release-status` and `npm run test:release-status` before changing release status claims. These checks supplement—not replace—the tagged compiler execution jobs.
 
+## Verified typed declarations and numeric conversions
+
+The bilingual [alpha.2 typed-binding lesson](docs/language/typed-bindings-alpha2.md) and [हिन्दी पाठ](docs/hi/language/typed-bindings-alpha2.md) walk through two full tagged programs. Source, stdout, release identity, code-fence parity and CLI availability are checked with `npm run check:typed-bindings` and `npm run test:typed-bindings`. The original alpha.1 language-reference pages retain their version-specific evidence; alpha.2 features are not silently backported into that baseline.
+
 ## TypeScript-first architecture
 
 All project-maintained **executable tooling** under `scripts/` uses `.ts` files: navigation validation, Hindi parity, pinned compiler evidence, fixture checks, compiler smoke tests, and tooling rules. TypeScript is checked in CI with `vue-tsc`, including the VitePress config, Vue components and client scripts. This is a **TypeScript-first application**, not a claim that the whole repository can be 100% TS files: documentation stays in Markdown, Vue SFC templates and CSS remain for presentation, and `.srp` fixtures remain actual Scarp source. No authored `.js`/`.mjs` tooling is required.
