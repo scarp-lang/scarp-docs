@@ -42,7 +42,7 @@ typed true 6.5
 - `grid: tile` में numerical tile है। `ready: boolean` जाँचता है कि उसकी width तीन है।
 - `label: string` में `"typed"` text है। `print` तीनों values एक लाइन में लिखता है।
 
-इस उदाहरण में **integer, float, boolean, string, vector और tile** annotations की सुविधा दिखाई जाती है; इससे classes, custom structs या सामान्य generics उपलब्ध नहीं हो जाते।
+इन दोनों उदाहरणों में **integer, float, boolean, string, vector और tile** annotations की सुविधा दिखाई जाती है; इससे classes, custom structs या सामान्य generics उपलब्ध नहीं हो जाते।
 
 ## 2. Conversion स्पष्ट क्यों लिखते हैं?
 
