@@ -15,7 +15,7 @@ const check = (english: string, hindi: string, expected = stdout): string[] =>
 assert.deepEqual(check(en, hi), [])
 assert.ok(check(en.replace('<!-- scarp-cli-release: v0.0.5-alpha.3 -->', ''), hi)
   .some(problem => problem.includes('release marker')))
-assert.ok(check(en.replace('7715c28df09c7703b39e14fddb963275b25df476', 'unreleased'), hi)
+assert.ok(check(en.replaceAll('7715c28df09c7703b39e14fddb963275b25df476', 'unreleased'), hi)
   .some(problem => problem.includes('exact compiler commit')))
 assert.ok(check(en, hi.replace('scarp verify text_construction.srp', 'scarp verify missing.srp'))
   .some(problem => problem.includes('missing published command')))
