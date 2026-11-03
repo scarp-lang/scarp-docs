@@ -89,6 +89,7 @@ export default defineConfig({
             { text: 'कंट्रोल फ्लो', link: '/hi/language/control-flow' },
             { text: 'फ़ंक्शन', link: '/hi/language/functions' },
             { text: 'मॉड्यूल', link: '/hi/language/modules' },
+            { text: 'Modules और public API (alpha.1–alpha.2)', link: '/hi/language/modules-and-visibility' },
             { text: 'आउटपुट', link: '/hi/language/output' },
             { text: 'मेमोरी', link: '/hi/language/memory' },
             { text: 'वैक्टर और टाइल', link: '/hi/language/numerics' }
@@ -207,6 +208,7 @@ export default defineConfig({
         { text: 'Control flow', link: '/language/control-flow' },
         { text: 'Functions', link: '/language/functions' },
         { text: 'Source modules', link: '/language/modules' },
+        { text: 'Modules, visibility and inspection (alpha.1–alpha.2)', link: '/language/modules-and-visibility' },
         { text: 'Output streams', link: '/language/output' },
         { text: 'Memory and lifetimes', link: '/language/memory' },
         { text: 'Vectors and tiles', link: '/language/numerics' }
