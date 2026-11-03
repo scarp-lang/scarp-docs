@@ -1,5 +1,7 @@
 # Scarp source modules
 
+**पूरी compiler-verified guide:** [Modules, public API और static inspection](/hi/language/modules-and-visibility) में alpha.1 की तीन फ़ाइलें, alpha.2 के public/private symbols, JSON schema और E0041/E0039 के वास्तविक diagnostic examples हैं।
+
 **v0.0.5-alpha.1** से `.srp` फ़ाइलें अन्य फ़ाइलों के public symbols उपयोग कर सकती हैं।
 
 **नए प्रकाशित [v0.0.5-alpha.2](/hi/tutorials/alpha2-module-constants-and-inspection) में:** सीमित compile-time scalar constant expressions और `scarp modules` से static import/metadata inspection उपलब्ध हैं। नए ट्यूटोरियल में import की तीन फ़ाइलें तथा सही stdout हैं। नीचे दिया मूल alpha.1 विवरण केवल literal module constants के लिए है।
