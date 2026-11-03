@@ -50,7 +50,7 @@ Published [`bit_fields.stdout`](https://github.com/scarp-lang/scarp/blob/v0.0.5-
 | Operator | अर्थ | व्यवहार |
 | --- | --- | --- |
 | `a & b` | Bitwise AND | दोनों में set bit |
-| `a | b` | Bitwise OR | किसी एक में set bit |
+| `a \| b` | Bitwise OR | किसी एक में set bit |
 | `a ^ b` | Bitwise XOR | केवल एक operand में set bit |
 | `~a` | Bitwise NOT | सभी 64 bits उलट देता है |
 | `a << count` | Left shift | 64 bits के बाहर की bits हटती हैं |
