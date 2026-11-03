@@ -58,6 +58,10 @@ The [English Unicode guide](docs/language/unicode-text.md) and [हिन्द�
 
 The [English bitwise guide](docs/language/bitwise-operators-alpha2.md) and [हिन्दी bitwise पाठ](docs/hi/language/bitwise-operators-alpha2.md) explain published alpha.2 integer masks, shifts, remainder and radix literals. They reproduce one complete release example plus two exact failure fixtures (`E0046` and `E0006`). New TypeScript checks (`npm run check:bitwise`, `npm run test:bitwise`) enforce bilingual evidence and tagged Git blob provenance; the alpha.2 compiler job additionally runs `npm run test:bitwise-alpha2 -- /path/to/scarp` to verify failure exit codes, empty stdout and stderr byte-for-byte.
 
+## Verified modules, public APIs and static inspection
+
+The [English modules and visibility guide](docs/language/modules-and-visibility.md) and [हिन्दी module guide](docs/hi/language/modules-and-visibility.md) connect a three-file **alpha.1** source graph with **alpha.2** public/private metadata, JSON inspection, and exact E0041/E0039 failure diagnostics. The TypeScript-only `npm run check:modules-guide` and `npm run test:modules-guide` commands validate the full source and stdout/stderr fixtures, release markers, commands, and translation parity. `npm run test:module-inspection-alpha2 -- /absolute/path/to/scarp` runs a tagged alpha.2 compiler to confirm inspection does not execute program output, verifies private visibility in text/JSON metadata and rejects invalid import graphs with empty stdout.
+
 ## TypeScript-first architecture
 
 All project-maintained **executable tooling** under `scripts/` uses `.ts` files: navigation validation, Hindi parity, pinned compiler evidence, fixture checks, compiler smoke tests, and tooling rules. TypeScript is checked in CI with `vue-tsc`, including the VitePress config, Vue components and client scripts. This is a **TypeScript-first application**, not a claim that the whole repository can be 100% TS files: documentation stays in Markdown, Vue SFC templates and CSS remain for presentation, and `.srp` fixtures remain actual Scarp source. No authored `.js`/`.mjs` tooling is required.
