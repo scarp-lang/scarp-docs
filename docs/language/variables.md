@@ -2,6 +2,8 @@
 
 In v0.0.5-alpha.1, Scarp uses **`bind`** for immutable values and **`var`** for mutable values. Earlier prereleases used different declaration syntax; see [compatibility](/reference/compatibility).
 
+**New since published alpha.2:** Optional checked annotations such as `bind count: integer = 42;` are covered in the [verified typed-bindings and conversions lesson](/language/typed-bindings-alpha2). This page's examples and original implementation references remain pinned to **alpha.1**; do not infer that alpha.1 accepts declaration annotations.
+
 ## Immutable bindings
 
 ~~~scarp
