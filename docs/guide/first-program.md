@@ -1,5 +1,7 @@
 # Your first Scarp program
 
+**New to Scarp?** Start with the [published alpha.3 quickstart](/guide/quickstart-alpha3) for a current executable, checksum verification, and the static `verify` command. This older tutorial deliberately uses alpha.1 semantics.
+
 This tutorial targets **v0.0.5-alpha.1**. Confirm `scarp --version` before you begin. To evaluate upgrading to the published **alpha.2**, see the [compiler-tested compatibility guide](/reference/upgrade-readiness): it runs all 11 original alpha.1 fixtures unchanged on alpha.2, but does not claim every older source program remains compatible.
 
 ## Create a file
