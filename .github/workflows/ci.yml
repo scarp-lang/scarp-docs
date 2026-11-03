@@ -110,8 +110,15 @@ jobs:
           repository: scarp-lang/scarp
           ref: 7715c28df09c7703b39e14fddb963275b25df476
           path: .compiler-alpha3
-      - name: Validate compiler-evidence links across three published tags
-        run: npm run check:evidence -- .compiler .compiler-alpha2 .compiler-alpha3
+      - uses: actions/checkout@v4
+        with:
+          repository: scarp-lang/scarp
+          ref: 79141329176f5dce51457e90a6652902f6432135
+          path: .compiler-alpha4
+      - name: Check additional published alpha.4 source commit
+        run: test "$(git -C .compiler-alpha4 rev-parse HEAD)" = "79141329176f5dce51457e90a6652902f6432135"
+      - name: Validate compiler-evidence links across four published tags
+        run: npm run check:evidence -- .compiler .compiler-alpha2 .compiler-alpha3 .compiler-alpha4
       - name: Build released Scarp interpreter
         run: cargo build --manifest-path .compiler/Cargo.toml --locked --offline
       - name: Execute all documented conformance examples
