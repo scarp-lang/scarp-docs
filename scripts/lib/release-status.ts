@@ -45,10 +45,13 @@ export function validateReleaseStatusPages(english: string, hindi: string, sourc
     if (!page.includes('<!-- scarp-main-reference-baseline: v0.0.5-alpha.1 -->')) {
       problems.push(language + ': historical-reference marker is missing')
     }
-    for (const [version, sha, count] of [
-      [baseline.release, baseline.releaseSourceCommit, 11],
-      ...releases.map(release => [release.compilerRef, release.compilerCommit, release.cases.length])
-    ] as const) {
+    const evidence: Array<{ version: string; sha: string; count: number }> = [
+      { version: baseline.release, sha: baseline.releaseSourceCommit, count: 11 },
+      ...releases.map(release => ({
+        version: release.compilerRef, sha: release.compilerCommit, count: release.cases.length
+      }))
+    ]
+    for (const { version, sha, count } of evidence) {
       if (!page.includes(version) || !page.includes(sha)) {
         problems.push(language + ': release identifier / source commit missing for ' + version)
       }
