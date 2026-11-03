@@ -1,0 +1,16 @@
+{
+  "compilerRepository": "scarp-lang/scarp",
+  "compilerRef": "v0.0.5-alpha.4",
+  "compilerCommit": "79141329176f5dce51457e90a6652902f6432135",
+  "releasePublished": "2026-11-03T13:16:44Z",
+  "upstream": "src/project.rs",
+  "generatedName": "hello-world",
+  "manifest": "Scarp.project",
+  "entry": "src/main.srp",
+  "stdout": "starter.stdout",
+  "fixtures": {
+    "manifest": "Scarp.project",
+    "entry": "starter.srp",
+    "output": "starter.stdout"
+  }
+}
