@@ -34,7 +34,8 @@ try {
 
   const project = join(folder, 'hello-world')
   const created = invoke(['create', project])
-  check(success(created), 'create project without overwriting existing paths')
+  check(!created.error && created.status === 0 && !created.stderr?.length,
+    'create project without overwriting existing paths (may report created path on stdout)')
   const manifest = join(project, 'Scarp.project')
   const entry = join(project, 'src', 'main.srp')
   check(readFileSync(manifest).equals(expectedManifest), 'generated manifest matches pinned exact bytes')
