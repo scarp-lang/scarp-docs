@@ -20,7 +20,7 @@ Scarp की वर्तमान प्रायोगिक प्रणा�
 
 ## नए alpha.2 में integers और type annotations
 
-प्रकाशित [v0.0.5-alpha.2](/hi/releases/v0.0.5-alpha.2) में immutable **`integers`** collection और `bind`/`var` में optional checked type annotations उपलब्ध हैं। यह `float` वाले `vector` से अलग type है। [Compiler-verified collections tutorial](/hi/tutorials/alpha2-collections-and-learning) में range, window, replacement और स्पष्ट float-vector conversion के पूरे उदाहरण हैं। पुरानी alpha.1 सूची में इन्हें उपलब्ध न मानें।
+प्रकाशित [v0.0.5-alpha.2](/hi/releases/v0.0.5-alpha.2) में immutable **`integers`** collection और `bind`/`var` में optional checked type annotations उपलब्ध हैं। [प्रमाणित typed bindings और numeric conversions पाठ](/hi/language/typed-bindings-alpha2) में दोनों पूरे published programs तथा उनकी exact output हैं। यह `float` वाले `vector` से अलग type है। [Compiler-verified collections tutorial](/hi/tutorials/alpha2-collections-and-learning) में range, window, replacement और स्पष्ट float-vector conversion के पूरे उदाहरण हैं। पुरानी alpha.1 सूची में इन्हें उपलब्ध न मानें।
 
 ## अंग्रेज़ी संदर्भ के अपरिवर्तित कोड उदाहरण
 
