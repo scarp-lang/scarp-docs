@@ -54,6 +54,10 @@ The bilingual [alpha.2 typed-binding lesson](docs/language/typed-bindings-alpha2
 
 The [English Unicode guide](docs/language/unicode-text.md) and [हिन्दी Unicode पाठ](docs/hi/language/unicode-text.md) teach alpha.2 Unicode scalar queries and alpha.3 string creation using **two complete published programs**. `npm run check:unicode-text` and `npm run test:unicode-text` ensure the source, output, pinned compiler versions, CLI commands and bilingual examples remain synchronized. Release-specific CI independently executes both tagged compiler examples.
 
+## Verified bitwise operators and signed 64-bit semantics
+
+The [English bitwise guide](docs/language/bitwise-operators-alpha2.md) and [हिन्दी bitwise पाठ](docs/hi/language/bitwise-operators-alpha2.md) explain published alpha.2 integer masks, shifts, remainder and radix literals. They reproduce one complete release example plus two exact failure fixtures (`E0046` and `E0006`). New TypeScript checks (`npm run check:bitwise`, `npm run test:bitwise`) enforce bilingual evidence and tagged Git blob provenance; the alpha.2 compiler job additionally runs `npm run test:bitwise-alpha2 -- /path/to/scarp` to verify failure exit codes, empty stdout and stderr byte-for-byte.
+
 ## TypeScript-first architecture
 
 All project-maintained **executable tooling** under `scripts/` uses `.ts` files: navigation validation, Hindi parity, pinned compiler evidence, fixture checks, compiler smoke tests, and tooling rules. TypeScript is checked in CI with `vue-tsc`, including the VitePress config, Vue components and client scripts. This is a **TypeScript-first application**, not a claim that the whole repository can be 100% TS files: documentation stays in Markdown, Vue SFC templates and CSS remain for presentation, and `.srp` fixtures remain actual Scarp source. No authored `.js`/`.mjs` tooling is required.

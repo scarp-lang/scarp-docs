@@ -1,0 +1,27 @@
+{
+  "compilerRepository": "scarp-lang/scarp",
+  "compilerRef": "v0.0.5-alpha.2",
+  "compilerCommit": "e4db8e191cd7ea623123cae7348450ca6c95b170",
+  "origin": "tests/fixtures/bits/",
+  "cases": [
+    {
+      "name": "shift-count-out-of-range",
+      "source": "shift.srp",
+      "expected": "shift.stderr",
+      "code": "E0046"
+    },
+    {
+      "name": "invalid-binary-radix",
+      "source": "radix.srp",
+      "expected": "radix.stderr",
+      "code": "E0006"
+    }
+  ],
+  "upstreamGitBlobs": {
+    "shift.srp": "d9f88915a4ed9f02b088f52966272e6f4b23ac3f",
+    "shift.stderr": "9767a1f7d5cca6f9f8801e61e242d022800d9937",
+    "radix.srp": "a77ef9f218b083831c6f597803d20a1bc077af1a",
+    "radix.stderr": "e585140fe3087b1f97ce3483529708a2bac87e54"
+  },
+  "guide": "language/bitwise-operators-alpha2.md"
+}
