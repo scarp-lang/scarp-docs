@@ -31,6 +31,8 @@ Expected output: `1.5 0 0.5` followed by a newline. `1` and `1.0` are **differen
 
 Strings retain Unicode contents. An actual line break inside a string is invalid; use `\n`. Supported escapes are `\\`, `\"`, `\n`, `\t`, and `\r`. Boolean operators require booleans; `and`/`or` short-circuit at runtime.
 
+**Newer published text capabilities:** [the version-pinned Unicode guide](/language/unicode-text) covers Unicode scalar/UTF-8 byte queries from **alpha.2** and explicit text concatenation, slicing and repetition from **alpha.3**. The restrictions in the historical alpha.1 values table above describe only that older baseline; they do not override later shipped built-ins.
+
 ## New in published alpha.2: integer collections and annotated bindings
 
 Published [v0.0.5-alpha.2](/releases/v0.0.5-alpha.2) adds an immutable **`integers`** collection type, as distinct from the floating-point `vector`, plus optional checked type annotations on `bind` and `var` declarations. The [typed bindings and explicit numeric conversion lesson](/language/typed-bindings-alpha2) reproduces two complete tagged programs and shows why annotations do not perform casts. The [compiler-verified integer collections tutorial](/tutorials/alpha2-collections-and-learning) shows ranges, windows, replacement and explicit conversion to float vectors. The older alpha.1 table above does not include these newer capabilities.
