@@ -42,7 +42,7 @@ Read it from top to bottom:
 - `grid: tile` stores a tiled numerical value, while `ready: boolean` checks that its width is three.
 - `label: string` keeps the text `"typed"`. `print` writes all three selected values on one line.
 
-The published example demonstrates **integer, float, boolean, string, vector and tile** type annotations; it does not introduce classes, user-defined structures, a generic type system, or a general-purpose list.
+Together, the two published examples demonstrate **integer, float, boolean, string, vector and tile** type annotations; it does not introduce classes, user-defined structures, a generic type system, or a general-purpose list.
 
 ## 2. Why are conversions explicit?
 
