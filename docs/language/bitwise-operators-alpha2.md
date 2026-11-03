@@ -50,7 +50,7 @@ Step-by-step: `0xA0` is decimal 160. `flags |= 0b0011` sets its two low bits, ma
 | Syntax | Meaning | Important behavior |
 | --- | --- | --- |
 | `a & b` | Bitwise AND | Bits set in both operands |
-| `a | b` | Bitwise OR | Bits set in either operand |
+| `a \| b` | Bitwise OR | Bits set in either operand |
 | `a ^ b` | Bitwise XOR | Bits set in exactly one operand |
 | `~a` | Bitwise NOT | Inverts all 64 bits |
 | `a << count` | Left shift | Retains the low 64 bits; shifted-out bits are discarded |
