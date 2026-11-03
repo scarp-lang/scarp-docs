@@ -47,6 +47,10 @@ jobs:
         run: npm run check:typed-bindings
       - name: Test typed bindings evidence and translation drift detection
         run: npm run test:typed-bindings
+      - name: Verify bilingual Unicode queries and string construction against release fixtures
+        run: npm run check:unicode-text
+      - name: Regression-test Unicode lesson source and CLI version boundaries
+        run: npm run test:unicode-text
       - name: Verify tagged alpha.2 negative diagnostics and bilingual repair guide
         run: npm run check:alpha2-errors
       - name: Verify tutorials reproduce pinned compiler fixtures

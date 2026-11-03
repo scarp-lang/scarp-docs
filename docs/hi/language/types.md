@@ -12,7 +12,7 @@ Scarp की वर्तमान प्रायोगिक प्रणा�
 
 ## स्ट्रिंग और boolean
 
-डबल कोट्स में UTF-8 text रखें। `true`, `false` boolean हैं; `and`, `or`, `not` boolean operands लेते हैं। स्ट्रिंग जोड़ना, indexing और interpolation वर्तमान में समर्थित नहीं हैं। आउटपुट के लिए `print("count:", 3);` लिख सकते हैं।
+डबल कोट्स में UTF-8 text रखें। `true`, `false` boolean हैं; `and`, `or`, `not` boolean operands लेते हैं। **पुराने alpha.1 baseline** में string जोड़ने, indexing और interpolation के built-ins उपलब्ध नहीं थे। प्रकाशित **alpha.2** में Unicode queries और **alpha.3** में `text_concat`, `text_slice` तथा `text_repeat` जोड़े गए; [सत्यापित Unicode पाठ](/hi/language/unicode-text) देखें। सामान्य string mutation या interpolation अभी समर्थित नहीं है। आउटपुट के लिए `print("count:", 3);` लिख सकते हैं।
 
 ## विशेष संख्यात्मक संग्रह
 
