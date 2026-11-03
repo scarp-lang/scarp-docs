@@ -42,6 +42,10 @@ For new contributors, the [English glossary](docs/guide/glossary.md) and [हि
 
 Pages are under `docs/` and are written in Markdown. Navigation, theme, code grammar, and canonical `/scarp-docs/` base path are configured in `docs/.vitepress/config.mts`. Small style overrides are in `docs/.vitepress/theme/`.
 
+## Published feature status
+
+The [English published-feature matrix](docs/reference/status.md) and [हिन्दी फीचर स्थिति](docs/hi/reference/status.md) distinguish the main alpha.1 reference baseline from all **12 alpha.2** and **4 alpha.3** release-backed examples. A TypeScript manifest checker prevents either locale from silently changing the version, compiler commit, example source, or evidence count. Run `npm run check:release-status` and `npm run test:release-status` before changing release status claims. These checks supplement—not replace—the tagged compiler execution jobs.
+
 ## TypeScript-first architecture
 
 All project-maintained **executable tooling** under `scripts/` uses `.ts` files: navigation validation, Hindi parity, pinned compiler evidence, fixture checks, compiler smoke tests, and tooling rules. TypeScript is checked in CI with `vue-tsc`, including the VitePress config, Vue components and client scripts. This is a **TypeScript-first application**, not a claim that the whole repository can be 100% TS files: documentation stays in Markdown, Vue SFC templates and CSS remain for presentation, and `.srp` fixtures remain actual Scarp source. No authored `.js`/`.mjs` tooling is required.

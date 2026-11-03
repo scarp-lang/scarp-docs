@@ -15,7 +15,7 @@
     "check:fixtures": "tsx scripts/check-fixtures.ts",
     "check:evidence": "tsx scripts/check-evidence.ts",
     "test:compiler": "tsx scripts/test-compiler.ts",
-    "check": "npm run typecheck && npm run check:tooling && npm run check:docs && npm run check:i18n && npm run check:snippets && npm run test:snippets && npm run test:code-fences && npm run check:fixtures && npm run check:alpha2 && npm run check:alpha2-errors && npm run check:alpha3 && npm run check:cli-reference && npm run test:cli-reference && npm run check:tutorial-evidence && npm run check:coverage-statistics && npm run test:coverage-statistics && npm run test:tutorial-evidence && npm run test:site-meta && npm run test:pages-api && npm run docs:build && npm run check:site-build",
+    "check": "npm run typecheck && npm run check:tooling && npm run check:docs && npm run check:i18n && npm run check:snippets && npm run test:snippets && npm run test:code-fences && npm run check:fixtures && npm run check:alpha2 && npm run check:alpha2-errors && npm run check:alpha3 && npm run check:cli-reference && npm run test:cli-reference && npm run check:release-status && npm run test:release-status && npm run check:tutorial-evidence && npm run check:coverage-statistics && npm run test:coverage-statistics && npm run test:tutorial-evidence && npm run test:site-meta && npm run test:pages-api && npm run docs:build && npm run check:site-build",
     "test:site-meta": "tsx scripts/test-site-meta.ts",
     "check:site-build": "tsx scripts/check-site-build.ts",
     "test:pages-api": "tsx scripts/test-pages-api.ts",
@@ -34,7 +34,9 @@
     "check:alpha3": "tsx scripts/check-alpha3.ts",
     "test:alpha3": "tsx scripts/test-alpha3.ts",
     "check:cli-reference": "tsx scripts/check-cli-reference.ts",
-    "test:cli-reference": "tsx scripts/test-cli-reference.ts"
+    "test:cli-reference": "tsx scripts/test-cli-reference.ts",
+    "check:release-status": "tsx scripts/check-release-status.ts",
+    "test:release-status": "tsx scripts/test-release-status.ts"
   },
   "devDependencies": {
     "vitepress": "1.6.4",

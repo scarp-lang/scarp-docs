@@ -39,6 +39,10 @@ jobs:
         run: npm run check:cli-reference
       - name: Test CLI documentation drift detection
         run: npm run test:cli-reference
+      - name: Compare bilingual feature status with all published release manifests
+        run: npm run check:release-status
+      - name: Test feature status release-drift detection
+        run: npm run test:release-status
       - name: Verify tagged alpha.2 negative diagnostics and bilingual repair guide
         run: npm run check:alpha2-errors
       - name: Verify tutorials reproduce pinned compiler fixtures

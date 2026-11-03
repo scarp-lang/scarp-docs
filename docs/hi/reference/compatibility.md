@@ -1,6 +1,6 @@
 # वर्ज़न अनुकूलता
 
-Scarp के शुरुआती prereleases में syntax और API बदले हैं। यहाँ प्रकाशित रिलीज़ के आधार पर सही व्यवहार चुनें।
+Scarp के शुरुआती prereleases में syntax और API बदले हैं। यहाँ प्रकाशित रिलीज़ के आधार पर सही व्यवहार चुनें। नए और पुराने features की साक्ष्य-आधारित सूची [प्रकाशित फीचर स्थिति](/hi/reference/status) में है।
 
 | संस्करण | प्रमुख प्रकाशित सुविधा |
 | --- | --- |
@@ -11,8 +11,8 @@ Scarp के शुरुआती prereleases में syntax और API ब�
 | `v0.0.4-alpha.1` | finite scalar floats |
 | `v0.0.4-alpha.4` | vectors और tiles के साथ संख्यात्मक milestone |
 | **`v0.0.5-alpha.1`** | relative source modules, public symbols; मुख्य docs baseline |
-| **`v0.0.5-alpha.3`** | **नवीनतम प्रकाशित prerelease:** Scarp-first CLI, static `verify`, `inspect`, offline `diagnose`, bounded text construction; [चार पूरे उदाहरण](/hi/releases/v0.0.5-alpha.3) |
 | **`v0.0.5-alpha.2`** | **2 नवंबर 2026 को प्रकाशित पिछला prerelease:** typed declarations, bitwise integers, Unicode और [जाँचे गए उदाहरण](/hi/releases/v0.0.5-alpha.2) |
+| **`v0.0.5-alpha.3`** | **नवीनतम प्रकाशित prerelease:** Scarp-first CLI, static `verify`, `inspect`, offline `diagnose`, bounded text construction; [चार पूरे उदाहरण](/hi/releases/v0.0.5-alpha.3) |
 
 ## Alpha.1 से alpha.2 में जाँचा हुआ अपग्रेड
 

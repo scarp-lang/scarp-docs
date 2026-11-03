@@ -1,5 +1,7 @@
 # Version compatibility
 
+For an evidence-backed inventory of alpha.1, alpha.2 and alpha.3 features, consult the [published feature status](/reference/status).
+
 The language is **prerelease and evolving**. Use the exact executable version matching the tutorial, not a mix of snippets taken from older release notes.
 
 | Version | Distinguishing features |
