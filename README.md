@@ -50,6 +50,10 @@ The [English published-feature matrix](docs/reference/status.md) and [हिन�
 
 The bilingual [alpha.2 typed-binding lesson](docs/language/typed-bindings-alpha2.md) and [हिन्दी पाठ](docs/hi/language/typed-bindings-alpha2.md) walk through two full tagged programs. Source, stdout, release identity, code-fence parity and CLI availability are checked with `npm run check:typed-bindings` and `npm run test:typed-bindings`. The original alpha.1 language-reference pages retain their version-specific evidence; alpha.2 features are not silently backported into that baseline.
 
+## Compiler-backed Unicode text guide
+
+The [English Unicode guide](docs/language/unicode-text.md) and [हिन्दी Unicode पाठ](docs/hi/language/unicode-text.md) teach alpha.2 Unicode scalar queries and alpha.3 string creation using **two complete published programs**. `npm run check:unicode-text` and `npm run test:unicode-text` ensure the source, output, pinned compiler versions, CLI commands and bilingual examples remain synchronized. Release-specific CI independently executes both tagged compiler examples.
+
 ## TypeScript-first architecture
 
 All project-maintained **executable tooling** under `scripts/` uses `.ts` files: navigation validation, Hindi parity, pinned compiler evidence, fixture checks, compiler smoke tests, and tooling rules. TypeScript is checked in CI with `vue-tsc`, including the VitePress config, Vue components and client scripts. This is a **TypeScript-first application**, not a claim that the whole repository can be 100% TS files: documentation stays in Markdown, Vue SFC templates and CSS remain for presentation, and `.srp` fixtures remain actual Scarp source. No authored `.js`/`.mjs` tooling is required.
