@@ -2,9 +2,11 @@
 
 <!-- scarp-cli-release: v0.0.5-alpha.3 -->
 
-**Current published CLI:** Scarp [v0.0.5-alpha.3](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.3), released **November 2, 2026**, from [pinned commit `7715c28df09c7703b39e14fddb963275b25df476`](https://github.com/scarp-lang/scarp/commit/7715c28df09c7703b39e14fddb963275b25df476). These commands are **shipped in that prerelease**, not just proposed in the compiler's development documentation. Scarp is still experimental; the CLI interprets `.srp` programs and does **not** emit a native executable.
+**Published alpha.3 CLI (historical reference):** Scarp [v0.0.5-alpha.3](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.3), released **November 2, 2026**, from [pinned commit `7715c28df09c7703b39e14fddb963275b25df476`](https://github.com/scarp-lang/scarp/commit/7715c28df09c7703b39e14fddb963275b25df476). These commands are **shipped in that prerelease**, not just proposed in the compiler's development documentation. Scarp is still experimental; the CLI interprets `.srp` programs and does **not** emit a native executable.
 
-For first-time users, follow the [alpha.3 quickstart](/guide/quickstart-alpha3). An [archived alpha.1 command reference](/tooling/cli-alpha1) remains available for maintaining old scripts.
+**Newer published release:** [v0.0.5-alpha.4](/releases/v0.0.5-alpha.4) now ships project `create`, `verify DIRECTORY` and `launch`. For new work, follow the [alpha.4 project quickstart](/guide/quickstart-alpha4). This page remains an exact **alpha.3** reference, and does not claim alpha.4 commands were available in alpha.3.
+
+For standalone-file alpha.3 examples, follow the [alpha.3 quickstart](/guide/quickstart-alpha3). An [archived alpha.1 command reference](/tooling/cli-alpha1) remains available for maintaining old scripts.
 
 ## Available commands
 
@@ -68,7 +70,7 @@ scarp exec --max-steps 2000000 text_construction.srp
 scarp guide inspect modules
 ~~~
 
-See [runtime limits and defaults](/reference/budgets). `verify`, `inspect tokens` and `inspect ast` do not execute the source and should not be given runtime-budget flags. The CLI does **not** forward arbitrary program arguments, implement project-mode execution, or offer `compile`, `build`, `create`, `launch`, package management or a native-code generator.
+See [runtime limits and defaults](/reference/budgets). `verify`, `inspect tokens` and `inspect ast` do not execute the source and should not be given runtime-budget flags. **In alpha.3**, the CLI did **not** implement project-mode execution or offer `create` or `launch`. The **published alpha.4** release adds explicit project creation and launch. Neither release forwards arbitrary program arguments, provides package management, or offers `compile`, `build` or native code generation.
 
 Relative source filenames are resolved against the terminal's working directory. Quote paths containing spaces; a filename beginning with `-` can be separated from options using `--`. Source files must contain valid UTF-8 text. Imports are restricted to local relative module paths; see [source-loading security](/reference/source-loading).
 

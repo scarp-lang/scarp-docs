@@ -2,9 +2,11 @@
 
 <!-- scarp-cli-release: v0.0.5-alpha.3 -->
 
-**नया प्रकाशित CLI:** Scarp [v0.0.5-alpha.3](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.3) **2 नवंबर 2026** को [निश्चित source commit `7715c28df09c7703b39e14fddb963275b25df476`](https://github.com/scarp-lang/scarp/commit/7715c28df09c7703b39e14fddb963275b25df476) से जारी हुआ। यहाँ लिखी commands उस **प्रकाशित prerelease में मौजूद** हैं, केवल future proposals नहीं हैं। Scarp अभी experimental interpreter है; इससे `.srp` प्रोग्राम का native executable नहीं बनता।
+**ऐतिहासिक alpha.3 CLI reference:** Scarp [v0.0.5-alpha.3](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.3) **2 नवंबर 2026** को [निश्चित source commit `7715c28df09c7703b39e14fddb963275b25df476`](https://github.com/scarp-lang/scarp/commit/7715c28df09c7703b39e14fddb963275b25df476) से जारी हुआ। यहाँ लिखी commands उस **प्रकाशित prerelease में मौजूद** हैं, केवल future proposals नहीं हैं। Scarp अभी experimental interpreter है; इससे `.srp` प्रोग्राम का native executable नहीं बनता।
 
-यदि आप पहली बार सीख रहे हैं, तो [alpha.3 quickstart](/hi/guide/quickstart-alpha3) पढ़ें। पुराने scripts के लिए [alpha.1 CLI का ऐतिहासिक संदर्भ](/hi/tooling/cli-alpha1) सुरक्षित रखा गया है।
+**नया प्रकाशित release:** [v0.0.5-alpha.4](/hi/releases/v0.0.5-alpha.4) में project `create`, directory `verify` और `launch` अब वास्तविक रूप से उपलब्ध हैं। नए project के लिए [alpha.4 quickstart](/hi/guide/quickstart-alpha4) पढ़ें। यह पुराना पृष्ठ सिर्फ **alpha.3** के exact CLI की जानकारी देता है।
+
+Alpha.3 के standalone programs सीखने हों तो [alpha.3 quickstart](/hi/guide/quickstart-alpha3) पढ़ें। पुराने scripts के लिए [alpha.1 CLI का ऐतिहासिक संदर्भ](/hi/tooling/cli-alpha1) सुरक्षित रखा गया है।
 
 ## उपलब्ध commands
 
@@ -68,7 +70,7 @@ scarp exec --max-steps 2000000 text_construction.srp
 scarp guide inspect modules
 ~~~
 
-बजट की सीमाएँ [runtime reference](/hi/reference/budgets) में हैं। `verify`, `inspect tokens` और `inspect ast` program चलाते नहीं हैं, इसलिए इनमें runtime-budget flags न दें। अभी arbitrary program arguments forward नहीं होते; project-mode execution, `compile`, `build`, `create`, `launch`, package manager तथा native-code generation उपलब्ध नहीं हैं।
+बजट की सीमाएँ [runtime reference](/hi/reference/budgets) में हैं। `verify`, `inspect tokens` और `inspect ast` program चलाते नहीं हैं, इसलिए इनमें runtime-budget flags न दें। **Alpha.3 में** project `create` और `launch` उपलब्ध नहीं थे; **प्रकाशित alpha.4 में ये अब उपलब्ध हैं**। दोनों versions में arbitrary program arguments forwarding, `compile`, `build`, package manager तथा native-code generation अभी उपलब्ध नहीं हैं।
 
 Relative path terminal के वर्तमान folder के आधार पर resolve होता है। Spaces वाले path को quotes में लिखें। `-` से शुरू होने वाले filename के पहले `--` separator लगा सकते हैं। Source UTF-8 होना चाहिए और imports स्थानीय relative modules तक सीमित हैं; [source सुरक्षा](/hi/reference/source-loading) देखें।
 

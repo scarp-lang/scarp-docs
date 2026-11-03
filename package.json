@@ -15,7 +15,7 @@
     "check:fixtures": "tsx scripts/check-fixtures.ts",
     "check:evidence": "tsx scripts/check-evidence.ts",
     "test:compiler": "tsx scripts/test-compiler.ts",
-    "check": "npm run typecheck && npm run check:tooling && npm run check:docs && npm run check:i18n && npm run check:snippets && npm run test:snippets && npm run test:code-fences && npm run check:fixtures && npm run check:alpha2 && npm run check:alpha2-errors && npm run check:alpha3 && npm run check:cli-reference && npm run test:cli-reference && npm run check:release-status && npm run test:release-status && npm run check:typed-bindings && npm run test:typed-bindings && npm run check:unicode-text && npm run test:unicode-text && npm run check:bitwise && npm run test:bitwise && npm run check:modules-guide && npm run test:modules-guide && npm run check:tutorial-evidence && npm run check:coverage-statistics && npm run test:coverage-statistics && npm run test:tutorial-evidence && npm run test:site-meta && npm run test:pages-api && npm run docs:build && npm run check:site-build",
+    "check": "npm run typecheck && npm run check:tooling && npm run check:docs && npm run check:i18n && npm run check:snippets && npm run test:snippets && npm run test:code-fences && npm run check:fixtures && npm run check:alpha2 && npm run check:alpha2-errors && npm run check:alpha3 && npm run check:cli-reference && npm run test:cli-reference && npm run check:release-status && npm run test:release-status && npm run check:typed-bindings && npm run test:typed-bindings && npm run check:unicode-text && npm run test:unicode-text && npm run check:bitwise && npm run test:bitwise && npm run check:modules-guide && npm run test:modules-guide && npm run check:alpha4-projects && npm run test:alpha4-projects && npm run check:tutorial-evidence && npm run check:coverage-statistics && npm run test:coverage-statistics && npm run test:tutorial-evidence && npm run test:site-meta && npm run test:pages-api && npm run docs:build && npm run check:site-build",
     "test:site-meta": "tsx scripts/test-site-meta.ts",
     "check:site-build": "tsx scripts/check-site-build.ts",
     "test:pages-api": "tsx scripts/test-pages-api.ts",
@@ -46,7 +46,10 @@
     "test:bitwise-alpha2": "tsx scripts/test-bitwise-alpha2.ts",
     "check:modules-guide": "tsx scripts/check-modules-guide.ts",
     "test:modules-guide": "tsx scripts/test-modules-guide.ts",
-    "test:module-inspection-alpha2": "tsx scripts/test-module-inspection-alpha2.ts"
+    "test:module-inspection-alpha2": "tsx scripts/test-module-inspection-alpha2.ts",
+    "check:alpha4-projects": "tsx scripts/check-alpha4-projects.ts",
+    "test:alpha4-projects": "tsx scripts/test-alpha4-projects.ts",
+    "test:alpha4-compiler": "tsx scripts/test-alpha4-compiler.ts"
   },
   "devDependencies": {
     "vitepress": "1.6.4",

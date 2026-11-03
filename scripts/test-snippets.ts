@@ -24,4 +24,9 @@ assert.deepEqual(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.5-alpha.3 -->\
 assert.equal(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.5-alpha.3 -->\n~~~sh\nscarp build hello.srp\nscarp compile hello.srp\n~~~').length, 2)
 assert.equal(checkSnippetPolicy('~~~sh\nscarp exec hello.srp\nscarp verify hello.srp\nscarp inspect ast hello.srp\n~~~').length, 3)
 
+assert.deepEqual(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.5-alpha.4 -->\n~~~sh\nscarp create hello-world\nscarp verify hello-world\nscarp launch hello-world\nscarp exec hello-world/src/main.srp\n~~~'), [])
+assert.equal(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.5-alpha.3 -->\n~~~sh\nscarp launch hello-world\nscarp create hello-world\n~~~').length, 2)
+assert.equal(checkSnippetPolicy('~~~sh\nscarp create hello-world\nscarp launch hello-world\n~~~').length, 2)
+assert.equal(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.5-alpha.4 -->\n~~~sh\nscarp build hello-world\n~~~').length, 1)
+
 console.log('PASS: executable Scarp and shell examples reject deprecated syntax without flagging prose, quotes or comments')

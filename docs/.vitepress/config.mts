@@ -41,7 +41,7 @@ export default defineConfig({
         docFooter: { prev: 'पिछला', next: 'अगला' },
         lastUpdated: { text: 'अंतिम अपडेट' },
         nav: [
-          { text: 'शुरुआत', link: '/hi/guide/quickstart-alpha3' },
+          { text: 'शुरुआत', link: '/hi/guide/quickstart-alpha4' },
           { text: 'भाषा', link: '/hi/language/overview' },
           { text: 'CLI (alpha.3)', link: '/hi/tooling/cli' },
           { text: 'उदाहरण', link: '/hi/examples/' },
@@ -55,7 +55,7 @@ export default defineConfig({
             { text: 'Discord #language-development', link: 'https://discord.com/channels/1566388621085253663/1566388870826827856' },
             { text: 'Reddit', link: 'https://www.reddit.com/r/ScarpLang/' }
           ] },
-          { text: 'नवीनतम: v0.0.5-alpha.3', link: '/hi/releases/v0.0.5-alpha.3' },
+          { text: 'नवीनतम: v0.0.5-alpha.4', link: '/hi/releases/v0.0.5-alpha.4' },
           { text: 'Alpha.2 रिलीज़', link: '/hi/releases/v0.0.5-alpha.2' },
           { text: 'अपग्रेड जाँच: alpha.1 → alpha.2', link: '/hi/reference/upgrade-readiness' },
           { text: 'संदर्भ: v0.0.5-alpha.1', link: '/hi/reference/status' }
@@ -63,7 +63,8 @@ export default defineConfig({
         sidebar: [
           { text: 'स्वागत', items: [
             { text: 'परिचय', link: '/hi/guide/introduction' },
-            { text: 'Alpha.3 तुरंत शुरुआत', link: '/hi/guide/quickstart-alpha3' },
+            { text: 'Alpha.4 project शुरुआत', link: '/hi/guide/quickstart-alpha4' },
+            { text: 'Alpha.3 file शुरुआत', link: '/hi/guide/quickstart-alpha3' },
             { text: 'इंस्टॉलेशन', link: '/hi/guide/installation' },
             { text: 'पहला प्रोग्राम', link: '/hi/guide/first-program' },
             { text: 'सरल शब्दावली', link: '/hi/guide/glossary' },
@@ -113,7 +114,8 @@ export default defineConfig({
             { text: 'उदाहरण', link: '/hi/examples/' },
             { text: 'सोशल लिंक', link: '/hi/community/social' },
             { text: 'योगदान करें', link: '/hi/community/contributing' },
-            { text: 'Alpha.3 रिलीज़ और नया CLI', link: '/hi/releases/v0.0.5-alpha.3' },
+            { text: 'Alpha.4 project workflow', link: '/hi/releases/v0.0.5-alpha.4' },
+            { text: 'Alpha.3 रिलीज़ और CLI', link: '/hi/releases/v0.0.5-alpha.3' },
             { text: 'Alpha.2 रिलीज़ और प्रमाण', link: '/hi/releases/v0.0.5-alpha.2' },
             { text: 'मेंटेनर सूची', link: '/hi/project/maintenance' },
             { text: 'डिप्लॉयमेंट गिनती', link: '/hi/project/deployments' }
@@ -158,7 +160,7 @@ export default defineConfig({
       { icon: 'threads', link: 'https://www.threads.net/@scarplang', ariaLabel: 'Scarp on Threads' }
     ],
     nav: [
-      { text: 'Guide', link: '/guide/quickstart-alpha3' },
+      { text: 'Guide', link: '/guide/quickstart-alpha4' },
       { text: 'Language', link: '/language/overview' },
       { text: 'CLI (alpha.3)', link: '/tooling/cli' },
       { text: 'Examples', link: '/examples/' },
@@ -172,17 +174,19 @@ export default defineConfig({
         { text: 'Official channels', link: '/community/social' },
         { text: 'Contributing', link: '/community/contributing' }
       ] },
-      { text: 'v0.0.5-alpha.3 (latest)', items: [
-        { text: 'Published alpha.3 and new CLI', link: '/releases/v0.0.5-alpha.3' },
+      { text: 'v0.0.5-alpha.4 (latest)', items: [
+        { text: 'Latest alpha.4 project workflow', link: '/releases/v0.0.5-alpha.4' },
+        { text: 'Published alpha.3 and Scarp-first CLI', link: '/releases/v0.0.5-alpha.3' },
         { text: 'Published alpha.2 examples', link: '/releases/v0.0.5-alpha.2' },
-        { text: 'Shipped feature matrix (alpha.1–alpha.3)', link: '/reference/status' },
+        { text: 'Shipped feature matrix (alpha.1–alpha.4)', link: '/reference/status' },
         { text: 'Compiler releases', link: `${sourceRepo}/releases` }
       ] }
     ],
     sidebar: [
       { text: 'Welcome', items: [
         { text: 'Introduction', link: '/guide/introduction' },
-        { text: 'Quickstart (alpha.3)', link: '/guide/quickstart-alpha3' },
+        { text: 'Quickstart: projects (alpha.4)', link: '/guide/quickstart-alpha4' },
+        { text: 'Quickstart: individual files (alpha.3)', link: '/guide/quickstart-alpha3' },
         { text: 'Installation', link: '/guide/installation' },
         { text: 'Your first program', link: '/guide/first-program' },
         { text: 'Glossary for beginners', link: '/guide/glossary' },
@@ -232,7 +236,8 @@ export default defineConfig({
         { text: 'Verified examples', link: '/examples/' },
         { text: 'Official social channels', link: '/community/social' },
         { text: 'Contributing', link: '/community/contributing' },
-        { text: 'Latest alpha.3 release and CLI', link: '/releases/v0.0.5-alpha.3' },
+        { text: 'Latest alpha.4 project workflow', link: '/releases/v0.0.5-alpha.4' },
+        { text: 'Published alpha.3 CLI', link: '/releases/v0.0.5-alpha.3' },
         { text: 'Alpha.2 release evidence', link: '/releases/v0.0.5-alpha.2' },
         { text: 'Docs maintainer checklist', link: '/project/maintenance' },
         { text: 'Pages deployments', link: '/project/deployments' }

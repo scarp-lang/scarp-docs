@@ -14,7 +14,7 @@ hero:
   actions:
     - theme: brand
       text: Get started
-      link: /guide/quickstart-alpha3
+      link: /guide/quickstart-alpha4
     - theme: alt
       text: Language reference
       link: /language/overview
@@ -23,9 +23,9 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
-  - title: Start with the published alpha.3 compiler
-    details: Download a verified archive, run a real Unicode program, and learn the difference between verify and exec.
-    link: /guide/quickstart-alpha3
+  - title: Start with the published alpha.4 compiler
+    details: Download a verified release archive, create a real project, and learn the difference between static verify and interpreter launch.
+    link: /guide/quickstart-alpha4
   - title: Verified language syntax
     details: Explore bind/var, typed funcra functions, branching, iteration, modules, and explicit output.
     link: /reference/status
@@ -53,14 +53,14 @@ features:
   - title: Alpha.1 to alpha.2 upgrade evidence
     details: Eleven original compiler programs are retested unchanged against the published newer interpreter, with byte-exact outputs.
     link: /reference/upgrade-readiness
-  - title: Latest alpha.3 release and new CLI
-    details: Four new compiler-verified examples, Scarp-first exec/verify/inspect workflows, and a pinned JSON diagnostic.
-    link: /releases/v0.0.5-alpha.3
+  - title: Latest alpha.4 release and project workflow
+    details: Create, statically verify, and launch a local project using the published compiler and pinned generator output.
+    link: /releases/v0.0.5-alpha.4
   - title: Official Scarp community
     details: Find the project's verified social channels, news, and ways to contribute.
     link: /community/social
 ---
 
 ::: warning Experimental language
-The newest published compiler is **[v0.0.5-alpha.3](/releases/v0.0.5-alpha.3)**, while much of the main reference still targets the separately verified **v0.0.5-alpha.1** baseline. Both are experimental prereleases. Before upgrading older code, check [alpha.1 → alpha.2 upgrade readiness](/reference/upgrade-readiness) and the [feature status](/reference/status).
+The newest published compiler is **[v0.0.5-alpha.4](/releases/v0.0.5-alpha.4)**, while much of the main reference still targets the separately verified **v0.0.5-alpha.1** baseline. Both are experimental prereleases. Before upgrading older code, check [alpha.1 → alpha.2 upgrade readiness](/reference/upgrade-readiness) and the [feature status](/reference/status).
 :::

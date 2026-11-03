@@ -39,8 +39,14 @@ export function validateReleaseStatusPages(english: string, hindi: string, sourc
     ['English', english, ''],
     ['Hindi', hindi, 'hi/']
   ] as const) {
-    if (!page.includes('<!-- scarp-release-status: v0.0.5-alpha.3 -->')) {
+    if (!page.includes('<!-- scarp-release-status: v0.0.5-alpha.4 -->')) {
       problems.push(language + ': current-release marker is missing')
+    }
+    if (!page.includes('v0.0.5-alpha.4') ||
+        !page.includes('79141329176f5dce51457e90a6652902f6432135') ||
+        !page.includes('](/' + prefix + 'guide/quickstart-alpha4)') ||
+        !page.includes('](/' + prefix + 'releases/v0.0.5-alpha.4)')) {
+      problems.push(language + ': latest alpha.4 published project evidence or links missing')
     }
     if (!page.includes('<!-- scarp-main-reference-baseline: v0.0.5-alpha.1 -->')) {
       problems.push(language + ': historical-reference marker is missing')

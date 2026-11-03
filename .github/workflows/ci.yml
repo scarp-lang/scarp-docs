@@ -59,6 +59,10 @@ jobs:
         run: npm run check:modules-guide
       - name: Regression-test modules visibility, source/output and versioned CLI drift
         run: npm run test:modules-guide
+      - name: Validate published alpha.4 project source, manifest and English/Hindi release guides
+        run: npm run check:alpha4-projects
+      - name: Regression-test alpha.4 release, CLI and generated project evidence
+        run: npm run test:alpha4-projects
       - name: Verify tagged alpha.2 negative diagnostics and bilingual repair guide
         run: npm run check:alpha2-errors
       - name: Verify tutorials reproduce pinned compiler fixtures
@@ -106,8 +110,15 @@ jobs:
           repository: scarp-lang/scarp
           ref: 7715c28df09c7703b39e14fddb963275b25df476
           path: .compiler-alpha3
-      - name: Validate compiler-evidence links across three published tags
-        run: npm run check:evidence -- .compiler .compiler-alpha2 .compiler-alpha3
+      - uses: actions/checkout@v4
+        with:
+          repository: scarp-lang/scarp
+          ref: 79141329176f5dce51457e90a6652902f6432135
+          path: .compiler-alpha4
+      - name: Check additional published alpha.4 source commit
+        run: test "$(git -C .compiler-alpha4 rev-parse HEAD)" = "79141329176f5dce51457e90a6652902f6432135"
+      - name: Validate compiler-evidence links across four published tags
+        run: npm run check:evidence -- .compiler .compiler-alpha2 .compiler-alpha3 .compiler-alpha4
       - name: Build released Scarp interpreter
         run: cargo build --manifest-path .compiler/Cargo.toml --locked --offline
       - name: Execute all documented conformance examples
@@ -170,3 +181,26 @@ jobs:
         run: cargo build --manifest-path .compiler-alpha3/Cargo.toml --locked --offline
       - name: Verify new Scarp-first CLI and four byte-exact release programs
         run: npm run test:alpha3 -- .compiler-alpha3/target/debug/scarp
+
+  alpha4-project-conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: scarp-lang/scarp
+          ref: 79141329176f5dce51457e90a6652902f6432135
+          path: .compiler-alpha4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install TypeScript conformance dependencies
+        run: npm install --no-audit --no-fund
+      - name: Check exact published alpha.4 compiler commit
+        run: test "$(git -C .compiler-alpha4 rev-parse HEAD)" = "79141329176f5dce51457e90a6652902f6432135"
+      - name: Validate tagged alpha.4 bilingual project quickstart and generator evidence
+        run: npm run check:alpha4-projects
+      - name: Build exact tagged alpha.4 interpreter
+        run: cargo build --manifest-path .compiler-alpha4/Cargo.toml --locked --offline
+      - name: Run published alpha.4 project create, verify, launch and security lifecycle
+        run: npm run test:alpha4-compiler -- .compiler-alpha4/target/debug/scarp

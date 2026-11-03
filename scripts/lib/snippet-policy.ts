@@ -18,9 +18,10 @@ function withoutStringsAndComments(source: string): string {
  */
 export function checkSnippetPolicy(markdown: string): SnippetIssue[] {
   const issues: SnippetIssue[] = []
-  // Only explicitly version-pinned release tutorials may show the new alpha.3 commands.
-  // Generic and older-version examples must continue to reject these spellings.
+  // Only explicitly tagged release pages can teach commands introduced in alpha.3/alpha.4.
+  // Generic or older-release source examples must not silently advertise new CLI verbs.
   const alpha3Cli = markdown.includes('<!-- scarp-cli-release: v0.0.5-alpha.3 -->')
+  const alpha4Cli = markdown.includes('<!-- scarp-cli-release: v0.0.5-alpha.4 -->')
   for (const fence of extractCodeFences(markdown)) {
     const code = fence.code.replace(/\r\n?/g, '\n')
     if (fence.language === 'scarp') {
@@ -36,8 +37,11 @@ export function checkSnippetPolicy(markdown: string): SnippetIssue[] {
     }
     if (['sh', 'shell', 'bash'].includes(fence.language)) {
       for (const [i, line] of code.split('\n').entries()) {
-        const command = /^\s*(?:\$\s*)?scarp\s+(build|compile|exec|verify|inspect)\b/.exec(line)
-        if (command && (!alpha3Cli || !['exec', 'verify', 'inspect'].includes(command[1]))) {
+        const command = /^\s*(?:\$\s*)?scarp\s+(build|compile|create|launch|exec|verify|inspect)\b/.exec(line)
+        if (command && (!(
+          (['exec', 'verify', 'inspect'].includes(command[1]) && (alpha3Cli || alpha4Cli)) ||
+          (['create', 'launch'].includes(command[1]) && alpha4Cli)
+        ))) {
           issues.push({ line: fence.line + i + 1, message: 'unsupported Scarp CLI command for this documented release' })
         }
       }

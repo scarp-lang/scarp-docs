@@ -8,7 +8,9 @@ Official VitePress documentation for the experimental [Scarp Programming Languag
 
 **Compiler:** https://github.com/scarp-lang/scarp
 
-**Latest published prerelease:** [v0.0.5-alpha.3](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.3), November 2, 2026. The [current English CLI reference](docs/tooling/cli.md) and [हिन्दी CLI संदर्भ](docs/hi/tooling/cli.md) document the released Scarp-first commands with a compiler-backed check. [Historical alpha.1 CLI](docs/tooling/cli-alpha1.md) is retained for older scripts.
+**Latest published prerelease:** [v0.0.5-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.4), November 3, 2026. The new [English project quickstart](docs/guide/quickstart-alpha4.md) and [हिन्दी project guide](docs/hi/guide/quickstart-alpha4.md) reproduce the real `create` / `verify DIRECTORY` / `launch` workflow. The [English release details](docs/releases/v0.0.5-alpha.4.md) and [हिन्दी विवरण](docs/hi/releases/v0.0.5-alpha.4.md) cover manifest safety, version bounds, and source provenance. Dedicated CI builds the tagged alpha.4 Rust interpreter and exercises project lifecycle and failure behavior.
+
+**Previous v0.0.5-alpha.3:** The [current English CLI reference](docs/tooling/cli.md) and [हिन्दी CLI संदर्भ](docs/hi/tooling/cli.md) document the released Scarp-first commands with a compiler-backed check. [Historical alpha.1 CLI](docs/tooling/cli-alpha1.md) is retained for older scripts.
 
 **Previous published prerelease:** [v0.0.5-alpha.2](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.2), November 2, 2026. [Alpha.2 release examples (English)](docs/releases/v0.0.5-alpha.2.md) and [हिन्दी संस्करण](docs/hi/releases/v0.0.5-alpha.2.md). The 11-program core documentation baseline remains intentionally pinned to v0.0.5-alpha.1; a separate **twelve-program** alpha.2 conformance suite checks newly published features across the [release guide](docs/releases/v0.0.5-alpha.2.md) and [verified collections and classification tutorial](docs/tutorials/alpha2-collections-and-learning.md), both translated into Hindi.
 

@@ -15,7 +15,7 @@ const en = read('docs/reference/status.md')
 const hi = read('docs/hi/reference/status.md')
 const check = (e: string, h: string, s = sources): string[] => validateReleaseStatusPages(e, h, s)
 assert.deepEqual(check(en, hi), [])
-assert.ok(check(en.replace('<!-- scarp-release-status: v0.0.5-alpha.3 -->', ''), hi)
+assert.ok(check(en.replace('<!-- scarp-release-status: v0.0.5-alpha.4 -->', ''), hi)
   .some(problem => problem.includes('current-release marker')))
 assert.ok(check(en.replaceAll(sources.alpha3.compilerCommit, 'not-published'), hi)
   .some(problem => problem.includes('source commit')))
@@ -32,4 +32,8 @@ const extended: StatusSources = {
   alpha3: { ...sources.alpha3, cases: [...sources.alpha3.cases, {name: 'future',source:'not-released.srp'}] }
 }
 assert.ok(check(en, hi, extended).some(problem => problem.includes('not-released.srp')))
+assert.ok(check(en.replaceAll('79141329176f5dce51457e90a6652902f6432135', 'unreleased'), hi)
+  .some(problem => problem.includes('alpha.4 published project evidence')))
+assert.ok(check(en, hi.replaceAll('/hi/guide/quickstart-alpha4', '/hi/guide/quickstart-old'))
+  .some(problem => problem.includes('alpha.4 published project evidence')))
 console.log('PASS: release-status validator detects source, version, row, translation and count drift')
