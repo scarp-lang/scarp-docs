@@ -73,6 +73,6 @@ Published alpha.3 still accepts older `scarp run` and `scarp check` commands for
 
 ## 5. Learn more
 
-Next, explore [the full alpha.3 release guide](/releases/v0.0.5-alpha.3) for four verified programs, the CLI and structured errors. For the longer installation/build-from-source workflow, read [installation](/guide/installation), noting its **separately pinned alpha.1 steps**. Read the [language status](/reference/status) before relying on an experimental feature.
+Next, use the [published alpha.3 CLI reference](/tooling/cli) for command syntax and error codes, then explore [the full alpha.3 release guide](/releases/v0.0.5-alpha.3) for four verified programs, the CLI and structured errors. For the longer installation/build-from-source workflow, read [installation](/guide/installation), noting its **separately pinned alpha.1 steps**. Read the [language status](/reference/status) before relying on an experimental feature.
 
 **Evidence:** the source and output above are checked against the exact [alpha.3 conformance fixture](https://github.com/scarp-lang/scarp-docs/tree/main/conformance/alpha3) by the site's TypeScript validation and CI.
