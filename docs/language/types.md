@@ -33,7 +33,7 @@ Strings retain Unicode contents. An actual line break inside a string is invalid
 
 ## New in published alpha.2: integer collections and annotated bindings
 
-Published [v0.0.5-alpha.2](/releases/v0.0.5-alpha.2) adds an immutable **`integers`** collection type, as distinct from the floating-point `vector`, plus optional checked type annotations on `bind` and `var` declarations. The [compiler-verified integer collections tutorial](/tutorials/alpha2-collections-and-learning) shows ranges, windows, replacement and explicit conversion to float vectors. The older alpha.1 table above does not include these newer capabilities.
+Published [v0.0.5-alpha.2](/releases/v0.0.5-alpha.2) adds an immutable **`integers`** collection type, as distinct from the floating-point `vector`, plus optional checked type annotations on `bind` and `var` declarations. The [typed bindings and explicit numeric conversion lesson](/language/typed-bindings-alpha2) reproduces two complete tagged programs and shows why annotations do not perform casts. The [compiler-verified integer collections tutorial](/tutorials/alpha2-collections-and-learning) shows ranges, windows, replacement and explicit conversion to float vectors. The older alpha.1 table above does not include these newer capabilities.
 
 ## Collections are specialized
 
