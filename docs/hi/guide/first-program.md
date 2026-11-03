@@ -1,5 +1,7 @@
 # अपना पहला Scarp प्रोग्राम
 
+**पहली बार Scarp सीख रहे हैं?** नए compiler, checksum जाँच और static `verify` command के लिए [प्रकाशित alpha.3 quickstart](/hi/guide/quickstart-alpha3) से शुरू करें। यह पुरानी guide जानबूझकर alpha.1 पर आधारित है।
+
 यह मुख्य शुरुआती गाइड **v0.0.5-alpha.1** के लिए है। प्रकाशित **alpha.2** पर पुराने 11 compiler examples को बिना बदले चलाने वाली [सत्यापित अपग्रेड गाइड](/hi/reference/upgrade-readiness) पढ़ें। इससे हर अन्य program के compatible होने की गारंटी नहीं है।
 
 ## फ़ाइल बनाएँ

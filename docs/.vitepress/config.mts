@@ -41,7 +41,7 @@ export default defineConfig({
         docFooter: { prev: 'पिछला', next: 'अगला' },
         lastUpdated: { text: 'अंतिम अपडेट' },
         nav: [
-          { text: 'शुरुआत', link: '/hi/guide/installation' },
+          { text: 'शुरुआत', link: '/hi/guide/quickstart-alpha3' },
           { text: 'भाषा', link: '/hi/language/overview' },
           { text: 'CLI', link: '/hi/tooling/cli' },
           { text: 'उदाहरण', link: '/hi/examples/' },
@@ -63,6 +63,7 @@ export default defineConfig({
         sidebar: [
           { text: 'स्वागत', items: [
             { text: 'परिचय', link: '/hi/guide/introduction' },
+            { text: 'Alpha.3 तुरंत शुरुआत', link: '/hi/guide/quickstart-alpha3' },
             { text: 'इंस्टॉलेशन', link: '/hi/guide/installation' },
             { text: 'पहला प्रोग्राम', link: '/hi/guide/first-program' },
             { text: 'सरल शब्दावली', link: '/hi/guide/glossary' },
@@ -152,7 +153,7 @@ export default defineConfig({
       { icon: 'threads', link: 'https://www.threads.net/@scarplang', ariaLabel: 'Scarp on Threads' }
     ],
     nav: [
-      { text: 'Guide', link: '/guide/installation' },
+      { text: 'Guide', link: '/guide/quickstart-alpha3' },
       { text: 'Language', link: '/language/overview' },
       { text: 'CLI', link: '/tooling/cli' },
       { text: 'Examples', link: '/examples/' },
@@ -176,6 +177,7 @@ export default defineConfig({
     sidebar: [
       { text: 'Welcome', items: [
         { text: 'Introduction', link: '/guide/introduction' },
+        { text: 'Quickstart (alpha.3)', link: '/guide/quickstart-alpha3' },
         { text: 'Installation', link: '/guide/installation' },
         { text: 'Your first program', link: '/guide/first-program' },
         { text: 'Glossary for beginners', link: '/guide/glossary' },

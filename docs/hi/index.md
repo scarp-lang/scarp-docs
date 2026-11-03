@@ -14,7 +14,7 @@ hero:
   actions:
     - theme: brand
       text: शुरुआत करें
-      link: /hi/guide/installation
+      link: /hi/guide/quickstart-alpha3
     - theme: alt
       text: भाषा संदर्भ
       link: /hi/language/overview
@@ -23,6 +23,9 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
+  - title: नवीनतम alpha.3 से शुरुआत
+    details: सही archive और checksum जाँचकर सत्यापित Unicode प्रोग्राम चलाएँ तथा verify और exec का अंतर समझें।
+    link: /hi/guide/quickstart-alpha3
   - title: हिन्दी में पूरी दस्तावेज़ संरचना
     details: स्थापना, वेरिएबल, फ़ंक्शन, मॉड्यूल, मेमोरी और CLI को हिन्दी में समझें।
     link: /hi/guide/introduction
@@ -38,7 +41,7 @@ features:
   - title: सीखने के उदाहरण
     details: लूप, फ़ंक्शन और module-based प्रोग्राम चरणबद्ध सीखें।
     link: /hi/examples/
-  - title: नया प्रकाशित v0.0.5-alpha.2
+  - title: पिछला v0.0.5-alpha.2 रिलीज़
     details: bit operations, typed declarations, Unicode और numerical kernels के पाँच compiler-verified उदाहरण पढ़ें।
     link: /hi/releases/v0.0.5-alpha.2
   - title: Alpha.2 collections और learning

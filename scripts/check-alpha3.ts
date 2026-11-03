@@ -84,6 +84,35 @@ for (const locale of ['', 'hi/']) {
     problems.push(path + ': missing exact tagged source/JSON diagnostic')
   }
 }
+// The first-run guide must use the SAME published program and output as CI's
+// exact upstream blob evidence. A translated example must not silently drift.
+const quickstartSource = readFileSync(join(folder, 'text_construction.srp'), 'utf8').trim()
+const quickstartOutput = readFileSync(join(folder, 'text_construction.stdout'), 'utf8').trim()
+for (const locale of ['', 'hi/']) {
+  const page = join(root, 'docs', locale, 'guide/quickstart-alpha3.md')
+  const markdown = readFileSync(page, 'utf8')
+  const fences = extractCodeFences(markdown)
+  if (!markdown.includes('<!-- scarp-cli-release: v0.0.5-alpha.3 -->')) {
+    problems.push(page + ': missing release-scoped CLI marker')
+  }
+  if (!fences.some(f => f.language === 'scarp' && f.code === quickstartSource)) {
+    problems.push(page + ': introductory program differs from published alpha.3')
+  }
+  if (!fences.some(f => f.language === 'text' && f.code === quickstartOutput)) {
+    problems.push(page + ': expected stdout differs from published alpha.3')
+  }
+  for (const command of [
+    'scarp version',
+    'scarp verify text_construction.srp',
+    'scarp exec text_construction.srp'
+  ]) {
+    if (!fences.some(f => ['sh', 'bash', 'shell'].includes(f.language) &&
+      f.code.split(String.fromCharCode(10)).includes(command))) {
+      problems.push(page + ': missing published alpha.3 command ' + command)
+    }
+  }
+}
+
 const legacy = JSON.parse(readFileSync(join(root, 'data/compiler-baseline.json'), 'utf8')) as { release: string }
 if (legacy.release !== 'v0.0.5-alpha.1') problems.push('older verified main documentation baseline was changed silently')
 if (problems.length) {
