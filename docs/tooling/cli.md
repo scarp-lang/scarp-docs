@@ -1,54 +1,103 @@
-# Command-line interface
+# Command-line interface — v0.0.5-alpha.3
 
-**Latest published CLI:** [Scarp v0.0.5-alpha.3](/releases/v0.0.5-alpha.3) adds the Scarp-first `exec`, static-only `verify`, `inspect tokens/ast/modules`, offline `diagnose`, contextual `guide`, and `version` commands. The released interpreter continues accepting the original legacy commands. The table below documents the **older pinned alpha.1 behavior only**, not the latest release. Do not confuse static `verify` with execution-backed legacy `check`.
+<!-- scarp-cli-release: v0.0.5-alpha.3 -->
 
-**Newer published release:** [v0.0.5-alpha.2](/tooling/alpha2-inspection) adds module inventory, JSON module inspection, and source-free diagnostic explanations. The table below remains specific to the older **alpha.1** interpreter; do not treat it as the current command list for alpha.2.
+**Current published CLI:** Scarp [v0.0.5-alpha.3](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.3), released **November 2, 2026**, from [pinned commit `7715c28df09c7703b39e14fddb963275b25df476`](https://github.com/scarp-lang/scarp/commit/7715c28df09c7703b39e14fddb963275b25df476). These commands are **shipped in that prerelease**, not just proposed in the compiler's development documentation. Scarp is still experimental; the CLI interprets `.srp` programs and does **not** emit a native executable.
 
-The shipped Scarp v0.0.5-alpha.1 interpreter provides exactly three **file commands** plus help/version. Some older design documents suggest additional CLI verbs; those are not shipped commands.
+For first-time users, follow the [alpha.3 quickstart](/guide/quickstart-alpha3). An [archived alpha.1 command reference](/tooling/cli-alpha1) remains available for maintaining old scripts.
 
-| Command | Available? | Purpose |
+## Available commands
+
+| Command | Behavior | Executes program statements? |
 | --- | --- | --- |
-| `scarp run <file>` | Yes | Check and execute a source graph |
-| `scarp check <file>` | Yes | Validate and evaluate the selected path without output |
-| `scarp tokens <file>` | Yes | Tokenize a single source file without parsing or execution |
-| `scarp --help`, `-h` | Yes | Print usage |
-| `scarp --version`, `-V` | Yes | Print executable version |
-| `scarp build` / `compile` | **No** | No native `.srp` compilation command |
-| `scarp exec` / `verify` / `inspect` | **No** | Not implemented CLI verbs |
+| `scarp version` / `scarp --version` | Print the installed package version | No |
+| `scarp guide` / `scarp guide exec` | Show built-in CLI guidance; topics include `inspect tokens` and `inspect modules` | No |
+| `scarp diagnose --json` | Report the real compiler version, platform and available capabilities offline | No |
+| `scarp exec FILE` | Validate imports and execute a source graph using the interpreter | **Yes** |
+| `scarp verify FILE` | Statically resolve source, names, types and modules | **No** |
+| `scarp inspect tokens FILE` | Lex the entry file and display tokens/source positions | No |
+| `scarp inspect ast FILE` | Parse the entry file and print an unstable, human-readable tree | No |
+| `scarp inspect modules --json FILE` | Check modules and emit schema-version-1 module metadata | No |
+| `scarp explain E0015` | Explain an existing diagnostic code without loading source | No |
 
-## Working with a compiler source checkout
+`scarp` without arguments displays command guidance. Older `run`, `check`, `tokens` and `modules` invocations remain available **for migration compatibility**. Their old names are not recommended for new documentation.
 
-~~~sh
-cargo run --locked -- run examples/hello.srp
-cargo run --locked -- check examples/scopes.srp
-cargo run --locked -- tokens examples/hello.srp
-~~~
+## Start with the right executable
 
-Cargo's `--` separates Cargo arguments from Scarp arguments. When installed, run the equivalent `scarp` command directly.
-
-## Runtime options
-
-`run` and `check` accept seven decimal limits **before** the file path, each at most once:
+First verify that the executable you are using reports `0.0.5-alpha.3`:
 
 ~~~sh
-scarp run --max-steps 2000000 --max-prints 10 examples/loops.srp
-scarp check --max-vector-bytes 8388608 examples/vectors.srp
+scarp version
+scarp guide
+scarp diagnose --json
 ~~~
 
-See [the complete limits and defaults](/reference/budgets). `tokens` rejects these runtime limits. Use `--` to separate a dash-prefixed filename:
+Use `.\scarp.exe` (PowerShell) or `./scarp` (Linux/macOS) if the executable has not been added to `PATH`. The [installation guide](/guide/quickstart-alpha3) covers official archives, SHA-256 checksums and platform differences.
+
+## Verify, execute and inspect
+
+Run the following from a directory containing the tagged release examples, including `text_construction.srp` and `collection_module.srp` with its `modules/` dependency:
 
 ~~~sh
-scarp run -- -example.srp
+scarp verify text_construction.srp
+scarp exec text_construction.srp
+scarp inspect tokens text_construction.srp
+scarp inspect ast text_construction.srp
+scarp inspect modules --json collection_module.srp
+scarp explain E0015
 ~~~
 
-## Validation and status codes
+The published `text_construction.srp` fixture produces this output when executed:
 
-- **0**: successful run/check/tokens/help/version.
-- **1**: source, runtime, file-read, resource-budget, or output I/O error (except broken pipe behavior).
-- **2**: invalid command-line usage, invalid options, or wrong argument count.
+~~~text
+Hello, 🌍
+🌍🌍🌍
+8 11
+~~~
 
-A successful `check` writes neither program stdout nor program stderr. It evaluates selected loops, assignments, and arithmetic: it is not solely a static syntax checker. `tokens` does not parse or follow imports.
+**`verify` is not `check`.** `verify` performs static validation without running ordinary program statements, runtime arithmetic or function contracts. It may evaluate restricted compile-time scalar module constants. The legacy `check` command can evaluate selected runtime paths while suppressing program output, so it is not a substitute for static verification.
 
-Scarp resolves relative paths from the process working directory. File contents must be UTF-8; `.srp` is conventional but not enforced for an entry file. Since v0.0.5-alpha.1, imports load from local relative `.srp` paths with root boundaries.
+`inspect tokens` only lexes source; it does not check imports, syntax trees or types. `inspect ast` parses the entry file but does **not** type-check, resolve imports or promise a stable machine-readable AST schema. Use `verify` when you need static source/type validation.
 
-**Verified against:** [official CLI reference](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/docs/reference/cli.md), [CLI implementation](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/src/main.rs).
+## Runtime budgets and help
+
+`exec` accepts supported runtime budget options **before** its single source path, as does the historical `run` command. For example:
+
+~~~sh
+scarp exec --max-steps 2000000 text_construction.srp
+scarp guide inspect modules
+~~~
+
+See [runtime limits and defaults](/reference/budgets). `verify`, `inspect tokens` and `inspect ast` do not execute the source and should not be given runtime-budget flags. The CLI does **not** forward arbitrary program arguments, implement project-mode execution, or offer `compile`, `build`, `create`, `launch`, package management or a native-code generator.
+
+Relative source filenames are resolved against the terminal's working directory. Quote paths containing spaces; a filename beginning with `-` can be separated from options using `--`. Source files must contain valid UTF-8 text. Imports are restricted to local relative module paths; see [source-loading security](/reference/source-loading).
+
+## Machine-readable output: three different contracts
+
+| Request | What JSON means |
+| --- | --- |
+| `diagnose --json` | Offline compiler/platform/capability report (schema version 1 in alpha.3) |
+| `inspect modules --json FILE` | Successful **module inventory** (schema version 1) |
+| `--diagnostic-format=json` on a source command | **Failure diagnostics** written to stderr (schema version 1) |
+
+The following command deliberately fails against the release's typed-error fixture. It returns a structured `E0015` diagnostic on **stderr**, without executing the program:
+
+~~~sh
+scarp verify --diagnostic-format=json diagnostics/type_error.srp
+~~~
+
+On a failed `verify`, inspect the exit code and stderr. **`inspect ast --json` is not supported** for successful tree output, and `--diagnostic-format=json` does not transform a successful AST into JSON. Details: [diagnostic reference](/reference/diagnostics) and [published alpha.3 JSON snapshot](/releases/v0.0.5-alpha.3#structured-compiler-diagnostic-schema-version-1).
+
+## Exit status and compatibility
+
+| Exit status | Meaning |
+| --- | --- |
+| `0` | Successful command |
+| `1` | Source/read/runtime/budget or output error |
+| `2` | Invalid CLI usage, unsupported option or missing argument |
+
+Successful `verify` is silent, whereas `exec` may write selected user output to stdout and stderr. Invalid source produces a diagnostic; it does not produce partial user-program output. A downstream output I/O failure may occur after output bytes were emitted.
+
+See [alpha.3 compiler release evidence](/releases/v0.0.5-alpha.3), [earlier alpha.2 module inspection](/tooling/alpha2-inspection), or [historical alpha.1 commands](/tooling/cli-alpha1).
+
+**Verification:** This page's command availability is checked against the tagged compiler release in GitHub CI, and the documented example output is pinned in [`conformance/alpha3/`](https://github.com/scarp-lang/scarp-docs/tree/main/conformance/alpha3).
