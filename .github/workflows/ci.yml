@@ -51,6 +51,10 @@ jobs:
         run: npm run check:unicode-text
       - name: Regression-test Unicode lesson source and CLI version boundaries
         run: npm run test:unicode-text
+      - name: Verify tagged bitwise positive and negative fixture evidence in both languages
+        run: npm run check:bitwise
+      - name: Regression-test binary operators, commands and bilingual output
+        run: npm run test:bitwise
       - name: Verify tagged alpha.2 negative diagnostics and bilingual repair guide
         run: npm run check:alpha2-errors
       - name: Verify tutorials reproduce pinned compiler fixtures
@@ -125,6 +129,8 @@ jobs:
         run: npm run check:alpha2 -- .compiler-alpha2/examples
       - name: Verify published alpha.2 negative diagnostic fixture bytes
         run: npm run check:alpha2-errors -- .compiler-alpha2/tests/fixtures
+      - name: Verify two bitwise failure fixture files against tagged compiler sources
+        run: npm run check:bitwise -- .compiler-alpha2/tests/fixtures/bits
       - name: Build published alpha.2 interpreter
         run: cargo build --manifest-path .compiler-alpha2/Cargo.toml --locked --offline
       - name: Verify original alpha.1 programs remain compatible with released alpha.2
@@ -133,6 +139,8 @@ jobs:
         run: npm run test:alpha2 -- .compiler-alpha2/target/debug/scarp
       - name: Verify six published failure diagnostics on check and run
         run: npm run test:alpha2-errors -- .compiler-alpha2/target/debug/scarp
+      - name: Verify exact alpha.2 shift and radix errors on check and run
+        run: npm run test:bitwise-alpha2 -- .compiler-alpha2/target/debug/scarp
 
   alpha3-conformance:
     runs-on: ubuntu-latest
