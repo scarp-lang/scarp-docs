@@ -107,7 +107,7 @@ for (const locale of ['', 'hi/']) {
     'scarp exec text_construction.srp'
   ]) {
     if (!fences.some(f => ['sh', 'bash', 'shell'].includes(f.language) &&
-      f.code.split('\\n').includes(command))) {
+      f.code.split(String.fromCharCode(10)).includes(command))) {
       problems.push(page + ': missing published alpha.3 command ' + command)
     }
   }
