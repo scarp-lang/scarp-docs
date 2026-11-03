@@ -95,7 +95,7 @@ export default defineConfig({
             { text: 'पुराना CLI (alpha.1)', link: '/hi/tooling/cli-alpha1' },
             { text: 'Alpha.2 modules और explain', link: '/hi/tooling/alpha2-inspection' },
             { text: 'समस्या निवारण', link: '/hi/tooling/troubleshooting' },
-            { text: 'फीचर स्थिति', link: '/hi/reference/status' },
+            { text: 'प्रकाशित फीचर और रिलीज़ स्थिति', link: '/hi/reference/status' },
             { text: 'सत्यापन', link: '/hi/reference/evidence' },
             { text: 'रनटाइम बजट', link: '/hi/reference/budgets' },
             { text: 'त्रुटि कोड', link: '/hi/reference/diagnostics' },
@@ -171,7 +171,7 @@ export default defineConfig({
       { text: 'v0.0.5-alpha.3 (latest)', items: [
         { text: 'Published alpha.3 and new CLI', link: '/releases/v0.0.5-alpha.3' },
         { text: 'Published alpha.2 examples', link: '/releases/v0.0.5-alpha.2' },
-        { text: 'v0.0.5-alpha.1 documentation baseline', link: '/reference/status' },
+        { text: 'Shipped feature matrix (alpha.1–alpha.3)', link: '/reference/status' },
         { text: 'Compiler releases', link: `${sourceRepo}/releases` }
       ] }
     ],
@@ -210,7 +210,7 @@ export default defineConfig({
         { text: 'Historical CLI (alpha.1)', link: '/tooling/cli-alpha1' },
         { text: 'Alpha.2 module and diagnostic inspection', link: '/tooling/alpha2-inspection' },
         { text: 'Troubleshooting', link: '/tooling/troubleshooting' },
-        { text: 'Feature status', link: '/reference/status' },
+        { text: 'Published feature status', link: '/reference/status' },
         { text: 'Evidence and testing', link: '/reference/evidence' },
         { text: 'Runtime budgets', link: '/reference/budgets' },
         { text: 'Diagnostics', link: '/reference/diagnostics' },
