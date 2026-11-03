@@ -63,6 +63,8 @@ Hello, 🌍
 8 11
 ~~~
 
+If Scarp is not on `PATH`, save `text_construction.srp` beside the extracted executable and substitute `.\scarp.exe` (Windows PowerShell) or `./scarp` (Linux/macOS) for `scarp` in the commands above. Alternatively, call the executable using its absolute path; filenames are resolved from the terminal's current directory.
+
 Why `8 11`? The text has **8 Unicode scalar values** but **11 UTF-8 bytes**: 🌍 counts as one scalar value and four bytes.
 
 ::: warning Do not confuse the older commands
