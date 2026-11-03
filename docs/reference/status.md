@@ -1,11 +1,11 @@
 # Scarp feature and release status
 
-<!-- scarp-release-status: v0.0.5-alpha.3 -->
+<!-- scarp-release-status: v0.0.5-alpha.4 -->
 <!-- scarp-main-reference-baseline: v0.0.5-alpha.1 -->
 
-**Latest published compiler: [v0.0.5-alpha.3](/releases/v0.0.5-alpha.3), November 2, 2026.** The general language-reference chapters remain **intentionally pinned to v0.0.5-alpha.1**; separately verified alpha.2 and alpha.3 features are documented in their own release guides. **All versions are experimental prereleases.** No stable language-compatibility promise is implied.
+**Latest published compiler: [v0.0.5-alpha.4](/releases/v0.0.5-alpha.4), November 3, 2026.** The general language-reference chapters remain **intentionally pinned to v0.0.5-alpha.1**. Separately verified alpha.2, alpha.3 and alpha.4 features are documented in release-specific guides. **All versions are experimental prereleases**, without guaranteed language compatibility.
 
-Start with the [current alpha.3 quickstart](/guide/quickstart-alpha3) or the [current CLI reference](/tooling/cli) for new work. Use the [version compatibility guide](/reference/compatibility) before migrating existing projects.
+Start new projects with the [published alpha.4 quickstart](/guide/quickstart-alpha4). The [alpha.3 CLI reference](/tooling/cli) remains useful for individual file commands. Use the [version compatibility guide](/reference/compatibility) before migrating existing projects.
 
 ## Published compiler evidence by version
 
@@ -14,12 +14,13 @@ Start with the [current alpha.3 quickstart](/guide/quickstart-alpha3) or the [cu
 | **[v0.0.5-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.1)** (Nov 1, 2026) | `afe8b5380c9d6c4774162e51c6c9bc8b90901671` | **11** original runnable examples form the main-reference baseline | [Evidence](/reference/evidence) |
 | **[v0.0.5-alpha.2](/releases/v0.0.5-alpha.2)** (Nov 2, 2026) | `e4db8e191cd7ea623123cae7348450ca6c95b170` | **12** tagged runnable examples in a separate compiler-backed suite | [Alpha.2 guide](/releases/v0.0.5-alpha.2) |
 | **[v0.0.5-alpha.3](/releases/v0.0.5-alpha.3)** (Nov 2, 2026) | `7715c28df09c7703b39e14fddb963275b25df476` | **4** complete tagged programs, a JSON diagnostic and CLI smoke tests | [Alpha.3 guide](/releases/v0.0.5-alpha.3) |
+| **[v0.0.5-alpha.4](/releases/v0.0.5-alpha.4)** (Nov 3, 2026) | `79141329176f5dce51457e90a6652902f6432135` | Compiler-generated project manifest, source and stdout verified by new alpha.4 lifecycle tests | [Alpha.4 guide](/releases/v0.0.5-alpha.4) |
 
 The numbers count **examples in their individual release-specific suites**; they are not a count of all language features, nor a proof that every existing program works in every later compiler. The [alpha.1 → alpha.2 upgrade test](/reference/upgrade-readiness) separately re-runs 11 original programs unchanged with alpha.2; it does **not** establish general alpha.3 backward compatibility.
 
 ## Main reference: shipped in v0.0.5-alpha.1
 
-The following table describes the **alpha.1 baseline only**, not a complete inventory of the current alpha.3 release:
+The following table describes the **alpha.1 baseline only**, not a complete inventory of the current alpha.4 release:
 
 | Capability | Baseline evidence |
 | --- | --- |
@@ -67,12 +68,16 @@ These **4 source programs** are pinned to **[v0.0.5-alpha.3](https://github.com/
 
 Alpha.3 also ships the **Scarp-first CLI**: `exec`, static-only `verify`, `inspect tokens`, `inspect ast`, `inspect modules`, `guide`, `version` and offline `diagnose --json`. The older `run`, `check`, `tokens` and `modules` commands remain for migration. **`verify` never executes ordinary runtime statements; legacy `check` may evaluate selected runtime paths.** The AST inspector is parser-only, with no stable JSON AST format. See the [published alpha.3 CLI reference](/tooling/cli).
 
-## Still unavailable in the latest published alpha.3
+## Independently verified in published alpha.4
+
+**New project workflow:** `scarp create DIRECTORY` scaffolds a new project, `scarp verify DIRECTORY` statically validates its manifest and contained entrypoint, and `scarp launch DIRECTORY` executes that entry through the interpreter. The tagged source commit is `79141329176f5dce51457e90a6652902f6432135`. The [alpha.4 quickstart](/guide/quickstart-alpha4) and [published release guide](/releases/v0.0.5-alpha.4) reproduce the exact generated `Scarp.project`, `src/main.srp` and stdout. A dedicated CI suite builds the tagged compiler and tests creation, refusal to overwrite, static verification, interpreter launch, invalid manifests and runtime-only failures. This is **project scaffolding and execution, not native compilation or package management**.
+
+## Still unavailable in the latest published alpha.4
 
 These capabilities are **not shipped** by the published compiler, even though design proposals or newer development work may exist:
 
 - Native compilation of `.srp` into an executable; `scarp build` and `scarp compile` are not available CLI commands.
-- Package registry/manager, general-purpose standard library or project-mode application argument forwarding.
+- Package registry/manager, general-purpose standard library, workspace discovery, or project-mode arbitrary application argument forwarding.
 - User-defined classes, structs, traits, generic functions or closures as general language features.
 - Arbitrary tensors and general-purpose heterogeneous collections; alpha.2 **does** include the distinct, bounded `integers` collection type.
 - Network imports, wildcard imports, module re-exports and arbitrary runtime module globals.
