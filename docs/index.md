@@ -14,7 +14,7 @@ hero:
   actions:
     - theme: brand
       text: Get started
-      link: /guide/installation
+      link: /guide/quickstart-alpha3
     - theme: alt
       text: Language reference
       link: /language/overview
@@ -23,6 +23,9 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
+  - title: Start with the published alpha.3 compiler
+    details: Download a verified archive, run a real Unicode program, and learn the difference between verify and exec.
+    link: /guide/quickstart-alpha3
   - title: Verified language syntax
     details: Explore bind/var, typed funcra functions, branching, iteration, modules, and explicit output.
     link: /reference/status
@@ -41,7 +44,7 @@ features:
   - title: Developer-friendly navigation
     details: Local search, code highlighting, accessible mobile navigation, and light/dark appearances.
     link: /guide/first-program
-  - title: Newly published v0.0.5-alpha.2
+  - title: Previous v0.0.5-alpha.2 release
     details: Explore five pinned, compiler-verified programs for bit operations, typed declarations, Unicode and numerical functions.
     link: /releases/v0.0.5-alpha.2
   - title: Alpha.2 collections and numeric learning
