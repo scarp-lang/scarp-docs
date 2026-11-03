@@ -1,11 +1,11 @@
 # Scarp की फीचर और रिलीज़ स्थिति
 
-<!-- scarp-release-status: v0.0.5-alpha.3 -->
+<!-- scarp-release-status: v0.0.5-alpha.4 -->
 <!-- scarp-main-reference-baseline: v0.0.5-alpha.1 -->
 
-**नवीनतम प्रकाशित compiler: [v0.0.5-alpha.3](/hi/releases/v0.0.5-alpha.3), 2 नवंबर 2026।** मुख्य language-reference अध्याय जानबूझकर **v0.0.5-alpha.1** पर आधारित हैं। Alpha.2 और alpha.3 में सत्यापित सुविधाएँ उनके अलग release guides में हैं। **तीनों experimental prereleases हैं।** स्थिर compatibility की कोई गारंटी नहीं है।
+**नवीनतम प्रकाशित compiler: [v0.0.5-alpha.4](/hi/releases/v0.0.5-alpha.4), 3 नवंबर 2026।** मुख्य language-reference अध्याय जानबूझकर **v0.0.5-alpha.1** पर आधारित हैं। Alpha.2, alpha.3 और alpha.4 की सत्यापित सुविधाओं के अलग release guides हैं। **सभी experimental prereleases हैं।** Stable compatibility की गारंटी नहीं है।
 
-नए programs के लिए [alpha.3 quickstart](/hi/guide/quickstart-alpha3) और [वर्तमान CLI](/hi/tooling/cli) पढ़ें। पुराने programs migrate करने से पहले [version compatibility](/hi/reference/compatibility) जाँचें।
+नए project के लिए [alpha.4 quickstart](/hi/guide/quickstart-alpha4) पढ़ें। पुराने individual file commands के लिए [alpha.3 CLI reference](/hi/tooling/cli) उपलब्ध है। पुराने programs migrate करने से पहले [version compatibility](/hi/reference/compatibility) जाँचें।
 
 ## प्रकाशित releases का compiler प्रमाण
 
@@ -14,12 +14,13 @@
 | **[v0.0.5-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.1)** (1 नवंबर 2026) | `afe8b5380c9d6c4774162e51c6c9bc8b90901671` | **11** मूल runnable examples, मुख्य reference का आधार | [परीक्षण प्रमाण](/hi/reference/evidence) |
 | **[v0.0.5-alpha.2](/hi/releases/v0.0.5-alpha.2)** (2 नवंबर 2026) | `e4db8e191cd7ea623123cae7348450ca6c95b170` | **12** tagged programs का अलग compiler-tested suite | [Alpha.2 guide](/hi/releases/v0.0.5-alpha.2) |
 | **[v0.0.5-alpha.3](/hi/releases/v0.0.5-alpha.3)** (2 नवंबर 2026) | `7715c28df09c7703b39e14fddb963275b25df476` | **4** पूरे tagged programs, JSON diagnostic और CLI tests | [Alpha.3 guide](/hi/releases/v0.0.5-alpha.3) |
+| **[v0.0.5-alpha.4](/hi/releases/v0.0.5-alpha.4)** (3 नवंबर 2026) | `79141329176f5dce51457e90a6652902f6432135` | Generated project manifest, source और stdout का अलग alpha.4 lifecycle test | [Alpha.4 guide](/hi/releases/v0.0.5-alpha.4) |
 
 यह संख्या प्रत्येक release के **अलग सत्यापित examples** की है; पूरे language features की संख्या या हर पुराने program की compatibility का प्रमाण नहीं। [Alpha.1 → alpha.2 upgrade gate](/hi/reference/upgrade-readiness) में मूल 11 programs को alpha.2 पर दोबारा चलाया जाता है; इससे alpha.3 की सामान्य backward compatibility सिद्ध नहीं होती।
 
 ## मुख्य संदर्भ: v0.0.5-alpha.1 में उपलब्ध सुविधाएँ
 
-यह table **केवल alpha.1 baseline** का है, नवीनतम alpha.3 की पूरी सूची नहीं:
+यह table **केवल alpha.1 baseline** का है, नवीनतम alpha.4 की पूरी सूची नहीं:
 
 | उपलब्ध सुविधा | Alpha.1 का प्रकाशित प्रमाण |
 | --- | --- |
@@ -67,12 +68,16 @@ Module-based examples के लिए `modules/` में अतिरिक�
 
 Alpha.3 में **Scarp-first CLI** के `exec`, static-only `verify`, `inspect tokens`, `inspect ast`, `inspect modules`, `guide`, `version` और offline `diagnose --json` उपलब्ध हैं। पुराने `run`, `check`, `tokens`, `modules` compatibility के लिए बचे हैं। **`verify` सामान्य runtime statements नहीं चलाता; पुराना `check` कुछ runtime paths चला सकता है।** AST inspection केवल parser output है, स्थिर JSON नहीं। [वर्तमान CLI guide](/hi/tooling/cli) देखें।
 
-## नए alpha.3 में भी अनुपलब्ध सुविधाएँ
+## प्रकाशित alpha.4 की सत्यापित project सुविधाएँ
 
-नीचे की क्षमताएँ प्रकाशित alpha.3 compiler में **अभी उपलब्ध नहीं** हैं; development branches या proposals अलग हो सकते हैं:
+अब `scarp create DIRECTORY` नया offline project बनाता है, `scarp verify DIRECTORY` manifest और entrypoint की **static जाँच** करता है, तथा `scarp launch DIRECTORY` वास्तविक interpreter से entry चलाता है। Tagged compiler source commit `79141329176f5dce51457e90a6652902f6432135` है। [Alpha.4 quickstart](/hi/guide/quickstart-alpha4) और [release guide](/hi/releases/v0.0.5-alpha.4) में generated `Scarp.project`, `src/main.srp` और सही stdout मौजूद हैं। अलग compiler CI project बनाना, existing folder अस्वीकार करना, static verify, launch, गलत manifest और runtime error जाँचती है। **यह native compilation या package management नहीं है।**
+
+## नए alpha.4 में भी अनुपलब्ध सुविधाएँ
+
+नीचे की क्षमताएँ प्रकाशित alpha.4 compiler में **अभी उपलब्ध नहीं** हैं; development branches या proposals अलग हो सकते हैं:
 
 - `.srp` से native executable बनाना, `scarp build` या `scarp compile` commands।
-- Package manager/registry, पूरी general-purpose standard library और arbitrary application arguments का forwarding।
+- Package manager/registry, पूरी general-purpose standard library, workspace discovery और arbitrary application arguments का forwarding।
 - User-defined classes, structs, traits, general generics तथा closures।
 - Arbitrary tensors या general heterogeneous collections। लेकिन alpha.2 से सीमित `integers` collection **उपलब्ध है**।
 - Network imports, wildcard imports, module re-exports और arbitrary runtime globals।
