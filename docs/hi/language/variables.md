@@ -1,5 +1,7 @@
 # वेरिएबल और स्कोप
 
+**संस्करण नोट:** यह पुराना मुख्य reference **v0.0.5-alpha.1** पर आधारित है। प्रकाशित **alpha.2** से `bind count: integer = 42;` जैसे optional type annotations समर्थित हैं। इनकी पूरी [English/Hindi compiler-verified typed-binding guide](/hi/language/typed-bindings-alpha2) अलग release-specific पाठ में है। नीचे पुराने alpha.1 नियम और उदाहरण उसी संस्करण के लिए हैं।
+
 ## अपरिवर्तनीय `bind`
 
 ~~~scarp
@@ -27,7 +29,7 @@ print(count, saved); // 7 2
 
 ## प्रतिबंध और त्रुटियाँ
 
-अघोषित नाम E0010, duplicate नाम E0011, reserved नाम E0012, immutable पर assignment E0013 तथा type mismatch E0015 देता है। Local bindings में अलग type annotation या uninitialized घोषणा अभी नहीं है।
+अघोषित नाम E0010, duplicate नाम E0011, reserved नाम E0012, immutable पर assignment E0013 तथा type mismatch E0015 देता है। **Alpha.1** में local bindings का अलग type annotation समर्थित नहीं था। **Alpha.2 और उसके बाद के रिलीज़ में optional checked annotation उपलब्ध है**, लेकिन uninitialized घोषणा इस पाठ में समर्थित नहीं है।
 
 ## अंग्रेज़ी संदर्भ के अपरिवर्तित कोड उदाहरण
 
