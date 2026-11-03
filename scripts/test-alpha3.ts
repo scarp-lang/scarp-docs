@@ -60,6 +60,36 @@ if (modules) {
     }
   } catch (err) { failures++; console.error('FAIL alpha.3 module JSON inspection: ' + String(err)) }
 }
+// Current documentation exercises the published CLI's migration boundary,
+// so test the advertised good paths and explicitly rejected command shapes.
+good('general CLI guide', ['guide'], 'scarp')
+good('module-inspection help', ['guide', 'inspect', 'modules'], 'scarp inspect modules')
+const budgetExpected = readFileSync(resolve(workdir, 'text_construction.stdout'))
+const budgetExec = good('budgeted new exec', ['exec', '--max-steps', '2000000', 'text_construction.srp'])
+if (!budgetExec || !budgetExec.equals(budgetExpected)) {
+  failures++
+  console.error('FAIL alpha.3 budgeted exec output differs from published source')
+}
+const legacyCheck = run(['check', 'text_construction.srp'])
+if (legacyCheck.error || legacyCheck.status !== 0 || legacyCheck.stdout?.length || legacyCheck.stderr?.length) {
+  failures++
+  console.error('FAIL alpha.3 legacy check should be silent on success')
+}
+for (const [label, args] of [
+  ['unimplemented compile', ['compile', 'text_construction.srp']],
+  ['unsupported AST --json', ['inspect', 'ast', '--json', 'text_construction.srp']],
+  ['runtime budget rejected by verify', ['verify', '--max-steps', '1', 'text_construction.srp']],
+  ['no arbitrary program argument forwarding', ['exec', 'text_construction.srp', 'extra_argument']]
+] as const) {
+  const result = run([...args])
+  if (result.error || result.status !== 2 || result.stdout?.length) {
+    failures++
+    console.error('FAIL alpha.3 ' + label + ': expected exit 2, got ' + result.status)
+  } else {
+    console.log('PASS alpha.3 rejects ' + label)
+  }
+}
+
 const diag = manifest.diagnostic
 const diagnosticsDir = resolve(workdir, 'diagnostics')
 const typedError = run(['verify', '--diagnostic-format=json', 'type_error.srp'], diagnosticsDir)

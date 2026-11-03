@@ -8,6 +8,8 @@ Official VitePress documentation for the experimental [Scarp Programming Languag
 
 **Compiler:** https://github.com/scarp-lang/scarp
 
+**Latest published prerelease:** [v0.0.5-alpha.3](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.3), November 2, 2026. The [current English CLI reference](docs/tooling/cli.md) and [हिन्दी CLI संदर्भ](docs/hi/tooling/cli.md) document the released Scarp-first commands with a compiler-backed check. [Historical alpha.1 CLI](docs/tooling/cli-alpha1.md) is retained for older scripts.
+
 **Previous published prerelease:** [v0.0.5-alpha.2](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.2), November 2, 2026. [Alpha.2 release examples (English)](docs/releases/v0.0.5-alpha.2.md) and [हिन्दी संस्करण](docs/hi/releases/v0.0.5-alpha.2.md). The 11-program core documentation baseline remains intentionally pinned to v0.0.5-alpha.1; a separate **twelve-program** alpha.2 conformance suite checks newly published features across the [release guide](docs/releases/v0.0.5-alpha.2.md) and [verified collections and classification tutorial](docs/tutorials/alpha2-collections-and-learning.md), both translated into Hindi.
 
 **License:** [MIT](LICENSE)
@@ -22,6 +24,8 @@ npm run docs:dev       # local VitePress server
 npm run typecheck      # strict TypeScript / Vue static analysis
 npm run check:tooling  # enforce TS-only authored tooling
 npm run check:alpha2    # verify published alpha.2 source hashes and bilingual release examples
+npm run check:cli-reference # published alpha.3 CLI identity and bilingual command examples
+npm run test:cli-reference  # regression tests for CLI documentation drift
 npm run check:snippets # reject unsupported runnable Scarp/CLI syntax
 npm run test:snippets # exercise current-version sample policy
 npm run check:docs     # internal pages, links, content policy, navigation
@@ -44,7 +48,7 @@ All project-maintained **executable tooling** under `scripts/` uses `.ts` files:
 
 ## Source-of-truth policy
 
-The compiler **repository is `scarp-lang/scarp`** (not `scarp-lang/scarp-lang`). Language facts are checked against compiler source, its executable tests, and its published documentation for v0.0.5-alpha.1. Each technical page links to the corresponding compiler reference. Status distinctions are described in [Feature status](docs/reference/status.md).
+The compiler **repository is `scarp-lang/scarp`** (not `scarp-lang/scarp-lang`). Core language-reference facts are checked against compiler source, executable tests and published documentation for v0.0.5-alpha.1. Release-scoped alpha.2 and alpha.3 pages have separate compiler-pinned evidence and verification. Each technical page links to the corresponding compiler reference. Status distinctions are described in [Feature status](docs/reference/status.md).
 
 A syntax proposal is *not* evidence that a feature ships. A future feature should remain marked **planned** until verified in a published compiler version. Documentation examples should be copied from or checked against compiler fixtures whenever possible.
 
