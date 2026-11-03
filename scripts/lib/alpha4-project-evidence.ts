@@ -89,12 +89,6 @@ export function validateAlpha4Docs(
           problems.push(error(label, 'missing versioned related link ' + link))
         }
       }
-      if (!page.includes('4,096') || !page.includes('96 UTF-8') ||
-          !page.includes('512 UTF-8') ||
-          !page.includes('E0039') && false) {
-        // The length limits are explained in the full reference, not required
-        // in the compact beginner quickstart.
-      }
       const unsafe = shell.flat().filter(command => /\bscarp (?:build|compile|install|polish)\b/.test(command))
       if (unsafe.length) problems.push(error(label, 'documents unsupported executable commands'))
     }
