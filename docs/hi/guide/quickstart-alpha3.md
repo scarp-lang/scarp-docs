@@ -63,6 +63,8 @@ Hello, 🌍
 8 11
 ~~~
 
+यदि Scarp `PATH` में नहीं है, तो `text_construction.srp` को extracted executable वाले folder में रखें और ऊपर लिखे `scarp` की जगह Windows PowerShell में `.\scarp.exe` या Linux/macOS पर `./scarp` उपयोग करें। वैकल्पिक रूप से executable का पूरा path दें; source फ़ाइल का नाम terminal के वर्तमान folder से resolve होता है।
+
 यहाँ **8** Unicode scalar values की संख्या है, और **11** UTF-8 bytes की। 🌍 एक Unicode scalar value है लेकिन चार bytes लेता है।
 
 ::: warning पुरानी CLI से अंतर
