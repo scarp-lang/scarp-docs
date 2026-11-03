@@ -55,6 +55,10 @@ jobs:
         run: npm run check:bitwise
       - name: Regression-test binary operators, commands and bilingual output
         run: npm run test:bitwise
+      - name: Check complete alpha.1 and alpha.2 bilingual module guide against published fixtures
+        run: npm run check:modules-guide
+      - name: Regression-test modules visibility, source/output and versioned CLI drift
+        run: npm run test:modules-guide
       - name: Verify tagged alpha.2 negative diagnostics and bilingual repair guide
         run: npm run check:alpha2-errors
       - name: Verify tutorials reproduce pinned compiler fixtures
@@ -141,6 +145,8 @@ jobs:
         run: npm run test:alpha2-errors -- .compiler-alpha2/target/debug/scarp
       - name: Verify exact alpha.2 shift and radix errors on check and run
         run: npm run test:bitwise-alpha2 -- .compiler-alpha2/target/debug/scarp
+      - name: Verify static module text and JSON inventory, visibility, and import failure semantics
+        run: npm run test:module-inspection-alpha2 -- .compiler-alpha2/target/debug/scarp
 
   alpha3-conformance:
     runs-on: ubuntu-latest
