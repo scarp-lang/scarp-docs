@@ -43,7 +43,7 @@ export default defineConfig({
         nav: [
           { text: 'शुरुआत', link: '/hi/guide/quickstart-alpha3' },
           { text: 'भाषा', link: '/hi/language/overview' },
-          { text: 'CLI', link: '/hi/tooling/cli' },
+          { text: 'CLI (alpha.3)', link: '/hi/tooling/cli' },
           { text: 'उदाहरण', link: '/hi/examples/' },
           { text: 'समुदाय', items: [
             { text: 'आधिकारिक लिंक', link: '/hi/community/social' },
@@ -91,7 +91,8 @@ export default defineConfig({
             { text: 'वैक्टर और टाइल', link: '/hi/language/numerics' }
           ] },
           { text: 'टूलिंग और संदर्भ', items: [
-            { text: 'CLI', link: '/hi/tooling/cli' },
+            { text: 'CLI (alpha.3)', link: '/hi/tooling/cli' },
+            { text: 'पुराना CLI (alpha.1)', link: '/hi/tooling/cli-alpha1' },
             { text: 'Alpha.2 modules और explain', link: '/hi/tooling/alpha2-inspection' },
             { text: 'समस्या निवारण', link: '/hi/tooling/troubleshooting' },
             { text: 'फीचर स्थिति', link: '/hi/reference/status' },
@@ -155,7 +156,7 @@ export default defineConfig({
     nav: [
       { text: 'Guide', link: '/guide/quickstart-alpha3' },
       { text: 'Language', link: '/language/overview' },
-      { text: 'CLI', link: '/tooling/cli' },
+      { text: 'CLI (alpha.3)', link: '/tooling/cli' },
       { text: 'Examples', link: '/examples/' },
       { text: 'Community', items: [
         { text: 'DEV Community', link: 'https://dev.to/scarplang' },
@@ -205,7 +206,8 @@ export default defineConfig({
         { text: 'Vectors and tiles', link: '/language/numerics' }
       ] },
       { text: 'Tools and reference', items: [
-        { text: 'Command-line interface', link: '/tooling/cli' },
+        { text: 'Command-line interface (alpha.3)', link: '/tooling/cli' },
+        { text: 'Historical CLI (alpha.1)', link: '/tooling/cli-alpha1' },
         { text: 'Alpha.2 module and diagnostic inspection', link: '/tooling/alpha2-inspection' },
         { text: 'Troubleshooting', link: '/tooling/troubleshooting' },
         { text: 'Feature status', link: '/reference/status' },
