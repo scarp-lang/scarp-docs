@@ -81,7 +81,7 @@ export default defineConfig({
           { text: 'भाषा संदर्भ', items: [
             { text: 'अवलोकन', link: '/hi/language/overview' },
             { text: 'वेरिएबल और स्कोप', link: '/hi/language/variables' },
-            { text: 'Typed bindings और conversions (alpha.2)', link: '/hi/language/typed-bindings-alpha2' }
+            { text: 'Typed bindings और conversions (alpha.2)', link: '/hi/language/typed-bindings-alpha2' },
             { text: 'डेटा प्रकार', link: '/hi/language/types' },
             { text: 'ऑपरेटर', link: '/hi/language/operators' },
             { text: 'कंट्रोल फ्लो', link: '/hi/language/control-flow' },
@@ -197,7 +197,7 @@ export default defineConfig({
       { text: 'Language', items: [
         { text: 'Overview', link: '/language/overview' },
         { text: 'Variables and scopes', link: '/language/variables' },
-        { text: 'Typed bindings and conversions (alpha.2)', link: '/language/typed-bindings-alpha2' }
+        { text: 'Typed bindings and conversions (alpha.2)', link: '/language/typed-bindings-alpha2' },
         { text: 'Types and values', link: '/language/types' },
         { text: 'Operators', link: '/language/operators' },
         { text: 'Control flow', link: '/language/control-flow' },
