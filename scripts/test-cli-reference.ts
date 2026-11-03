@@ -21,7 +21,7 @@ assert.ok(check(en, hi.replace('scarp verify text_construction.srp', 'scarp veri
   .some(problem => problem.includes('missing published command')))
 assert.ok(check(en.replace('Hello, 🌍', 'Hello, world'), hi)
   .some(problem => problem.includes('code fences differ')))
-assert.ok(check(en, hi.replace('](/hi/tooling/cli-alpha1)', '](broken-link)'))
+assert.ok(check(en, hi.replaceAll('](/hi/tooling/cli-alpha1)', '](broken-link)'))
   .some(problem => problem.includes('historical alpha.1 CLI')))
 assert.ok(check(en, hi, 'wrong expected output')
   .some(problem => problem.includes('expected stdout')))
