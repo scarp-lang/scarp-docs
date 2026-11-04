@@ -1,7 +1,7 @@
 {
   "name": "@scarp-lang/docs",
   "private": true,
-  "version": "0.2.0-alpha.1",
+  "version": "0.1.0-alpha.1",
   "type": "module",
   "description": "Official documentation website for the Scarp Programming Language",
   "scripts": {
