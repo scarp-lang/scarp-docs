@@ -14,7 +14,7 @@ hero:
   actions:
     - theme: brand
       text: शुरुआत करें
-      link: /hi/guide/quickstart-alpha4
+      link: /hi/guide/installation-alpha5
     - theme: alt
       text: भाषा संदर्भ
       link: /hi/language/overview
@@ -23,7 +23,7 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
-  - title: नवीनतम alpha.4 से project शुरुआत
+  - title: नवीनतम alpha.5 compiler से शुरुआत
     details: सही archive और checksum जाँचें, नया project बनाएँ और static verify तथा launch का अंतर समझें।
     link: /hi/guide/quickstart-alpha4
   - title: हिन्दी में पूरी दस्तावेज़ संरचना
@@ -50,14 +50,14 @@ features:
   - title: Alpha.1 से alpha.2 अपग्रेड का प्रमाण
     details: पुराने 11 compiler examples को नए प्रकाशित interpreter पर बिना बदले चलाकर stdout की सटीक जाँच।
     link: /hi/reference/upgrade-readiness
-  - title: नवीनतम alpha.4 project workflow
-    details: सत्यापित create/verify/launch commands, manifest और interpreter output के पूरे प्रमाण।
-    link: /hi/releases/v0.0.5-alpha.4
+  - title: नवीनतम alpha.5 module inspection और C11 API
+    details: प्रकाशित alpha.5 में project module inspection तथा प्रयोगात्मक Rust-only C11 emitter; interpreter अभी native compiler नहीं है।
+    link: /hi/releases/v0.0.5-alpha.5
   - title: Scarp समुदाय
     details: आधिकारिक GitHub, DEV, Reddit और अन्य सार्वजनिक चैनल।
     link: /hi/community/social
 ---
 
 ::: warning प्रयोगात्मक रिलीज़
-नवीनतम प्रकाशित compiler **[v0.0.5-alpha.4](/hi/releases/v0.0.5-alpha.4)** है, जबकि अधिकतर मुख्य reference अभी अलग से सत्यापित **v0.0.5-alpha.1** पर आधारित है। दोनों experimental prereleases हैं। पुराने code के लिए [अपग्रेड की जाँच](/hi/reference/upgrade-readiness) और [फ़ीचर स्थिति](/hi/reference/status) पढ़ें।
+नवीनतम प्रकाशित compiler **[v0.0.5-alpha.5](/hi/releases/v0.0.5-alpha.5)** है, जबकि अधिकतर मुख्य reference अभी अलग से सत्यापित **v0.0.5-alpha.1** पर आधारित है। सभी experimental prereleases हैं। पुराने code के लिए [अपग्रेड की जाँच](/hi/reference/upgrade-readiness) और [फ़ीचर स्थिति](/hi/reference/status) पढ़ें।
 :::

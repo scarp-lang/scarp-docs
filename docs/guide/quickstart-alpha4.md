@@ -1,9 +1,13 @@
 # Quickstart: your first Scarp project (v0.0.5-alpha.4)
+::: tip Latest published compiler
+New installs should use [v0.0.5-alpha.5 installation](/guide/installation-alpha5) and the [alpha.5 CLI guide](/tooling/cli-alpha5). This alpha.4 page is intentionally pinned to its original generator, binary and stdout.
+:::
+
 
 <!-- scarp-project-release: v0.0.5-alpha.4 -->
 <!-- scarp-cli-release: v0.0.5-alpha.4 -->
 
-This is the **recommended new-project start** for the latest published [v0.0.5-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.4) (November 3, 2026). It is pinned to official source commit `79141329176f5dce51457e90a6652902f6432135`. Scarp is experimental, and **runs through an interpreter**.
+This is the **historically verified alpha.4 project quickstart** for [v0.0.5-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.4) (November 3, 2026). It is pinned to official source commit `79141329176f5dce51457e90a6652902f6432135`. Scarp is experimental, and **runs through an interpreter**.
 
 ## 1. Download and check your compiler
 

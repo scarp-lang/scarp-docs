@@ -1,0 +1,20 @@
+{
+  "compilerRepository": "scarp-lang/scarp",
+  "compilerRef": "v0.0.5-alpha.5",
+  "compilerCommit": "2eeed0aa52ccb59523307841ad8ffbd83f8911a8",
+  "releasedAt": "2026-11-04T11:59:57Z",
+  "source": "examples/native_scalar_repeat.srp",
+  "stdout": "examples/native_scalar_repeat.stdout",
+  "projectInspection": true,
+  "cBackend": {
+    "availability": "rust-embedding-only",
+    "cli": false,
+    "api": "scarp::c_backend::emit_c",
+    "unsupportedDiagnostic": "E0049"
+  },
+  "platformArchives": [
+    "scarp-0.0.5-alpha.5-x86_64-pc-windows-msvc.zip",
+    "scarp-0.0.5-alpha.5-x86_64-unknown-linux-gnu.tar.gz",
+    "scarp-0.0.5-alpha.5-aarch64-apple-darwin.tar.gz"
+  ]
+}

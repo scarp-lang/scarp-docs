@@ -41,8 +41,9 @@ export default defineConfig({
         docFooter: { prev: 'पिछला', next: 'अगला' },
         lastUpdated: { text: 'अंतिम अपडेट' },
         nav: [
-          { text: 'शुरुआत', link: '/hi/guide/quickstart-alpha4' },
+          { text: 'शुरुआत', link: '/hi/guide/installation-alpha5' },
           { text: 'भाषा', link: '/hi/language/overview' },
+          { text: 'CLI (alpha.5)', link: '/hi/tooling/cli-alpha5' },
           { text: 'CLI (alpha.4)', link: '/hi/tooling/cli-alpha4' },
           { text: 'उदाहरण', link: '/hi/examples/' },
           { text: 'समुदाय', items: [
@@ -55,7 +56,7 @@ export default defineConfig({
             { text: 'Discord #language-development', link: 'https://discord.com/channels/1566388621085253663/1566388870826827856' },
             { text: 'Reddit', link: 'https://www.reddit.com/r/ScarpLang/' }
           ] },
-          { text: 'नवीनतम: v0.0.5-alpha.4', link: '/hi/releases/v0.0.5-alpha.4' },
+          { text: 'नवीनतम: v0.0.5-alpha.5', link: '/hi/releases/v0.0.5-alpha.5' },
           { text: 'Alpha.2 रिलीज़', link: '/hi/releases/v0.0.5-alpha.2' },
           { text: 'अपग्रेड जाँच: alpha.1 → alpha.2', link: '/hi/reference/upgrade-readiness' },
           { text: 'संदर्भ: v0.0.5-alpha.1', link: '/hi/reference/status' }
@@ -66,6 +67,7 @@ export default defineConfig({
             { text: 'Alpha.4 project शुरुआत', link: '/hi/guide/quickstart-alpha4' },
             { text: 'Alpha.3 file शुरुआत', link: '/hi/guide/quickstart-alpha3' },
             { text: 'Alpha.3 से alpha.4 माइग्रेशन', link: '/hi/guide/migrate-alpha3-to-alpha4' },
+            { text: 'नवीनतम इंस्टॉलेशन (alpha.5)', link: '/hi/guide/installation-alpha5' },
             { text: 'इंस्टॉलेशन (alpha.4)', link: '/hi/guide/installation' },
             { text: 'पहला प्रोग्राम', link: '/hi/guide/first-program' },
             { text: 'सरल शब्दावली', link: '/hi/guide/glossary' },
@@ -97,6 +99,7 @@ export default defineConfig({
             { text: 'वैक्टर और टाइल', link: '/hi/language/numerics' }
           ] },
           { text: 'टूलिंग और संदर्भ', items: [
+            { text: 'CLI संदर्भ (alpha.5)', link: '/hi/tooling/cli-alpha5' },
             { text: 'CLI संदर्भ (alpha.4)', link: '/hi/tooling/cli-alpha4' },
             { text: 'ऐतिहासिक CLI (alpha.3)', link: '/hi/tooling/cli' },
             { text: 'पुराना CLI (alpha.1)', link: '/hi/tooling/cli-alpha1' },
@@ -109,6 +112,7 @@ export default defineConfig({
             { text: 'Built-ins', link: '/hi/reference/library' },
             { text: 'सोर्स सुरक्षा', link: '/hi/reference/source-loading' },
             { text: 'Rust embedding', link: '/hi/reference/rust-embedding' },
+            { text: 'C11 API (alpha.5)', link: '/hi/reference/c11-backend-alpha5' },
             { text: 'Compatibility', link: '/hi/reference/compatibility' },
             { text: 'Alpha.2 अपग्रेड परीक्षण', link: '/hi/reference/upgrade-readiness' }
           ] },
@@ -116,6 +120,7 @@ export default defineConfig({
             { text: 'उदाहरण', link: '/hi/examples/' },
             { text: 'सोशल लिंक', link: '/hi/community/social' },
             { text: 'योगदान करें', link: '/hi/community/contributing' },
+            { text: 'Alpha.5 प्रकाशित बदलाव', link: '/hi/releases/v0.0.5-alpha.5' },
             { text: 'Alpha.4 project workflow', link: '/hi/releases/v0.0.5-alpha.4' },
             { text: 'Alpha.3 रिलीज़ और CLI', link: '/hi/releases/v0.0.5-alpha.3' },
             { text: 'Alpha.2 रिलीज़ और प्रमाण', link: '/hi/releases/v0.0.5-alpha.2' },
@@ -162,8 +167,9 @@ export default defineConfig({
       { icon: 'threads', link: 'https://www.threads.net/@scarplang', ariaLabel: 'Scarp on Threads' }
     ],
     nav: [
-      { text: 'Guide', link: '/guide/quickstart-alpha4' },
+      { text: 'Guide', link: '/guide/installation-alpha5' },
       { text: 'Language', link: '/language/overview' },
+      { text: 'CLI (alpha.5)', link: '/tooling/cli-alpha5' },
       { text: 'CLI (alpha.4)', link: '/tooling/cli-alpha4' },
       { text: 'Examples', link: '/examples/' },
       { text: 'Community', items: [
@@ -176,11 +182,14 @@ export default defineConfig({
         { text: 'Official channels', link: '/community/social' },
         { text: 'Contributing', link: '/community/contributing' }
       ] },
-      { text: 'v0.0.5-alpha.4 (latest)', items: [
-        { text: 'Latest alpha.4 project workflow', link: '/releases/v0.0.5-alpha.4' },
+      { text: 'v0.0.5-alpha.5 (latest)', items: [
+        { text: 'Published alpha.5 changes', link: '/releases/v0.0.5-alpha.5' },
+        { text: 'Experimental C11 Rust API', link: '/reference/c11-backend-alpha5' },
+        { text: 'Published alpha.5 changes', link: '/releases/v0.0.5-alpha.5' },
+        { text: 'Historical alpha.4 project workflow', link: '/releases/v0.0.5-alpha.4' },
         { text: 'Published alpha.3 and Scarp-first CLI', link: '/releases/v0.0.5-alpha.3' },
         { text: 'Published alpha.2 examples', link: '/releases/v0.0.5-alpha.2' },
-        { text: 'Shipped feature matrix (alpha.1–alpha.4)', link: '/reference/status' },
+        { text: 'Shipped feature matrix (alpha.1–alpha.5)', link: '/reference/status' },
         { text: 'Compiler releases', link: `${sourceRepo}/releases` }
       ] }
     ],
@@ -190,6 +199,7 @@ export default defineConfig({
         { text: 'Quickstart: projects (alpha.4)', link: '/guide/quickstart-alpha4' },
         { text: 'Quickstart: individual files (alpha.3)', link: '/guide/quickstart-alpha3' },
         { text: 'Upgrade: alpha.3 to alpha.4', link: '/guide/migrate-alpha3-to-alpha4' },
+        { text: 'Current installation (alpha.5)', link: '/guide/installation-alpha5' },
         { text: 'Installation (alpha.4)', link: '/guide/installation' },
         { text: 'Your first program', link: '/guide/first-program' },
         { text: 'Glossary for beginners', link: '/guide/glossary' },
@@ -221,6 +231,7 @@ export default defineConfig({
         { text: 'Vectors and tiles', link: '/language/numerics' }
       ] },
       { text: 'Tools and reference', items: [
+        { text: 'Command-line interface (alpha.5)', link: '/tooling/cli-alpha5' },
         { text: 'Command-line interface (alpha.4)', link: '/tooling/cli-alpha4' },
         { text: 'Historical CLI (alpha.3)', link: '/tooling/cli' },
         { text: 'Historical CLI (alpha.1)', link: '/tooling/cli-alpha1' },
@@ -233,6 +244,7 @@ export default defineConfig({
         { text: 'Built-ins and standard library', link: '/reference/library' },
         { text: 'Module loading and security', link: '/reference/source-loading' },
         { text: 'Embed in Rust', link: '/reference/rust-embedding' },
+        { text: 'Experimental C11 API (alpha.5)', link: '/reference/c11-backend-alpha5' },
         { text: 'Compatibility', link: '/reference/compatibility' },
         { text: 'Alpha.2 upgrade readiness', link: '/reference/upgrade-readiness' }
       ] },

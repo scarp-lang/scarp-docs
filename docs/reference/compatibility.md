@@ -1,12 +1,14 @@
 # Version compatibility
 
-For an evidence-backed inventory of alpha.1, alpha.2 and alpha.3 features, consult the [published feature status](/reference/status).
+For an evidence-backed inventory of alpha.1 through alpha.5 features, consult the [published feature status](/reference/status).
 
 The language is **prerelease and evolving**. Use the exact executable version matching the tutorial, not a mix of snippets taken from older release notes.
 
 | Version | Distinguishing features |
 | --- | --- |
-| **v0.0.5-alpha.3** | **Latest published prerelease (Nov 2):** Scarp-first `exec`/static `verify`/`inspect`, offline `diagnose`, bounded text construction; [four verified examples](/releases/v0.0.5-alpha.3) |
+| **v0.0.5-alpha.5** | **Latest published prerelease (Nov 4):** explicit project module inspection and experimental Rust-only scalar C11 emitter; [release guide](/releases/v0.0.5-alpha.5) |
+| **v0.0.5-alpha.4** | Published Nov 3: new create/verify DIRECTORY/launch project workflow; [release guide](/releases/v0.0.5-alpha.4) |
+| **v0.0.5-alpha.3** | **Historical prerelease (Nov 2):** Scarp-first `exec`/static `verify`/`inspect`, offline `diagnose`, bounded text construction; [four verified examples](/releases/v0.0.5-alpha.3) |
 | **v0.0.5-alpha.2** | **Earlier published prerelease (Nov 2):** typed declarations, integer bit operations, Unicode queries, checked conversions, integer collections, vector statistics, source-module inspection; [verified release guide](/releases/v0.0.5-alpha.2) |
 | **v0.0.5-alpha.1** | Relative source modules, public functions and scalar constants; current main-reference baseline |
 | v0.0.4-alpha.4 | Immutable numerical tiles and matrix operations; **no source imports** |
@@ -25,7 +27,13 @@ The [compiler-tested upgrade readiness guide](/reference/upgrade-readiness) re-r
 
 ## Published alpha.3 compiler and command migration
 
-**Newest published prerelease:** [v0.0.5-alpha.3](/releases/v0.0.5-alpha.3), November 2, 2026, source commit `7715c28df09c7703b39e14fddb963275b25df476`. It adds Scarp-first `exec` / `verify` / `inspect` / offline `diagnose` along with bounded Unicode text construction. Older `run`, `check`, `tokens`, `modules` still work. **The alpha.1-to-alpha.2 compatibility gate does not prove automatic compatibility with alpha.3.** The newer release guide includes four independent compiler-backed programs.
+**Historical published prerelease:** [v0.0.5-alpha.3](/releases/v0.0.5-alpha.3), November 2, 2026, source commit `7715c28df09c7703b39e14fddb963275b25df476`. It adds Scarp-first `exec` / `verify` / `inspect` / offline `diagnose` along with bounded Unicode text construction. Older `run`, `check`, `tokens`, `modules` still work. **The alpha.1-to-alpha.2 compatibility gate does not prove automatic compatibility with alpha.3.** The newer release guide includes four independent compiler-backed programs.
+
+## Current published alpha.5 compatibility boundary
+
+The [v0.0.5-alpha.5 release](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.5) is source-pinned to `2eeed0aa52ccb59523307841ad8ffbd83f8911a8`. Alpha.5 introduces `scarp inspect modules --json DIRECTORY`, unavailable in published alpha.4. It also introduces a restricted **Rust embedding C11 emitter**, not a `scarp compile` CLI. See the [alpha.5 CLI reference](/tooling/cli-alpha5), [C11 API limits](/reference/c11-backend-alpha5), and [platform installation](/guide/installation-alpha5).
+
+This does not prove that **every** old program works unchanged on the latest prerelease. Preserve tagged test fixtures and check exact versions when diagnosing a regression.
 
 ## Source migration
 

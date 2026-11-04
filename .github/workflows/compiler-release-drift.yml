@@ -1,0 +1,32 @@
+name: Check published compiler release drift
+
+on:
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: scarp-docs-compiler-release-drift
+  cancel-in-progress: false
+
+jobs:
+  compare-published-compiler:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install TypeScript release-policy tooling
+        run: npm install --no-audit --no-fund
+      - name: Test release drift guard offline
+        run: npm run test:compiler-release-drift
+      - name: Compare current docs with official published compiler and annotated tag
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: npm run check:compiler-release-remote

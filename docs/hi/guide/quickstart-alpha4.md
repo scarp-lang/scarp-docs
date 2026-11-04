@@ -1,9 +1,13 @@
 # Scarp में पहला project बनाएँ (v0.0.5-alpha.4)
+::: tip नवीनतम प्रकाशित compiler
+नए उपयोगकर्ताओं के लिए [alpha.5 इंस्टॉलेशन](/hi/guide/installation-alpha5) और [alpha.5 CLI](/hi/tooling/cli-alpha5) हैं। इस पुराने alpha.4 guide का source, binary और stdout जानबूझकर बदला नहीं गया है।
+:::
+
 
 <!-- scarp-project-release: v0.0.5-alpha.4 -->
 <!-- scarp-cli-release: v0.0.5-alpha.4 -->
 
-यह सबसे नई प्रकाशित [v0.0.5-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.4) (3 नवंबर 2026) के लिए **नए project की शुरुआती guide** है। आधिकारिक compiler source commit `79141329176f5dce51457e90a6652902f6432135` है। Scarp अभी प्रयोगात्मक है और **interpreter** से program चलाता है।
+यह पुराने प्रकाशित [v0.0.5-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.4) (3 नवंबर 2026) के लिए **नए project की शुरुआती guide** है। आधिकारिक compiler source commit `79141329176f5dce51457e90a6652902f6432135` है। Scarp अभी प्रयोगात्मक है और **interpreter** से program चलाता है।
 
 ## 1. आधिकारिक compiler डाउनलोड और verify करें
 

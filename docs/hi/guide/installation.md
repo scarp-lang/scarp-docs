@@ -1,9 +1,12 @@
 # Scarp v0.0.5-alpha.4 कैसे इंस्टॉल करें
+::: warning नया प्रकाशित alpha.5 उपलब्ध है
+नए इंस्टॉलेशन के लिए [alpha.5 installer](/hi/guide/installation-alpha5) इस्तेमाल करें। यह पृष्ठ पुराने alpha.4 binaries के लिए सुरक्षित रखा गया है।
+:::
 
 <!-- scarp-cli-release: v0.0.5-alpha.4 -->
 <!-- scarp-install-release: v0.0.5-alpha.4 -->
 
-यह मार्गदर्शिका सबसे नई प्रकाशित Scarp compiler prerelease [v0.0.5-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.4) (3 नवंबर 2026) इंस्टॉल करने के लिए है। इसका source commit `79141329176f5dce51457e90a6652902f6432135` है। Scarp अभी **प्रयोगात्मक interpreter** है; यह स्थिर भाषा या `.srp` से native executable बनाने वाला compiler नहीं है।
+यह **पुरानी alpha.4 release के लिए संग्रहीत इंस्टॉलेशन** मार्गदर्शिका Scarp compiler prerelease [v0.0.5-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.4) (3 नवंबर 2026) इंस्टॉल करने के लिए है। इसका source commit `79141329176f5dce51457e90a6652902f6432135` है। Scarp अभी **प्रयोगात्मक interpreter** है; यह स्थिर भाषा या `.srp` से native executable बनाने वाला compiler नहीं है।
 
 ::: tip पहली बार Scarp इस्तेमाल कर रहे हैं?
 इंस्टॉल करने के बाद [पहला project tutorial](/hi/guide/quickstart-alpha4) पढ़ें। Alpha.3 से आ रहे हैं तो [migration guide](/hi/guide/migrate-alpha3-to-alpha4) देखें। पुराना [alpha.1 release](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.1) केवल ऐतिहासिक संदर्भ है, नए इंस्टॉलेशन की सलाह नहीं।

@@ -39,7 +39,7 @@ export function validateReleaseStatusPages(english: string, hindi: string, sourc
     ['English', english, ''],
     ['Hindi', hindi, 'hi/']
   ] as const) {
-    if (!page.includes('<!-- scarp-release-status: v0.0.5-alpha.4 -->')) {
+    if (!page.includes('<!-- scarp-release-status: v0.0.5-alpha.5 -->')) {
       problems.push(language + ': current-release marker is missing')
     }
     if (!page.includes('v0.0.5-alpha.4') ||
@@ -47,6 +47,14 @@ export function validateReleaseStatusPages(english: string, hindi: string, sourc
         !page.includes('](/' + prefix + 'guide/quickstart-alpha4)') ||
         !page.includes('](/' + prefix + 'releases/v0.0.5-alpha.4)')) {
       problems.push(language + ': latest alpha.4 published project evidence or links missing')
+    }
+    if (!page.includes('v0.0.5-alpha.5') ||
+        !page.includes('2eeed0aa52ccb59523307841ad8ffbd83f8911a8') ||
+        !page.includes('](/' + prefix + 'releases/v0.0.5-alpha.5)') ||
+        !page.includes('](/' + prefix + 'tooling/cli-alpha5)') ||
+        !page.includes('](/' + prefix + 'reference/c11-backend-alpha5)') ||
+        !page.includes('](/' + prefix + 'guide/installation-alpha5)')) {
+      problems.push(language + ': latest published alpha.5 release, source, or navigation missing')
     }
     if (!page.includes('<!-- scarp-main-reference-baseline: v0.0.5-alpha.1 -->')) {
       problems.push(language + ': historical-reference marker is missing')

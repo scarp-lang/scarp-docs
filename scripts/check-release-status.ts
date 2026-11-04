@@ -18,5 +18,5 @@ if (problems.length) {
   for (const problem of problems) console.error('FAIL released feature status: ' + problem)
   process.exitCode = 1
 } else {
-  console.log('PASS: alpha.1 baseline, all 12 alpha.2 and 4 alpha.3 tagged examples, English/Hindi feature-status parity')
+  console.log('PASS: alpha.1 reference, 12 alpha.2 and 4 alpha.3 fixtures plus alpha.4 and published alpha.5 evidence in both locales')
 }

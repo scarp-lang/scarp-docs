@@ -1,5 +1,7 @@
 # Troubleshooting
 
+**Current release guides:** [alpha.5 installation](/guide/installation-alpha5), [alpha.5 CLI](/tooling/cli-alpha5), and [experimental Rust-only C11 emitter](/reference/c11-backend-alpha5). Historical alpha.2 error fixtures below remain version-specific.
+
 **On the published v0.0.5-alpha.2 compiler:** use the [six verified failing examples and repairs](/tutorials/alpha2-diagnostics-and-repairs) to identify E0044/E0045 conversion and Unicode errors, restricted module constants, private imports and cycles. The examples are reproduced from published compiler test fixtures and run in CI. The advice below otherwise applies to the versioned general interpreter behavior.
 
 ## `scarp: command not found`
@@ -8,11 +10,11 @@ Run the executable directly from its extracted directory (`./scarp` or `.\scarp.
 
 ## `unknown command` or old syntax errors
 
-Use `scarp run`, `scarp check`, or `scarp tokens`. `scarp build` and `scarp compile` are **not** supported commands. Older beta executables may require `println` and `let` rather than the current `print` and `bind` syntax. Read [compatibility](/reference/compatibility).
+For the **published alpha.5 compiler**, use `scarp exec FILE.srp` to run a file, `scarp verify FILE.srp` to validate statically, and `scarp create DIRECTORY` / `scarp verify DIRECTORY` / `scarp launch DIRECTORY` for project work. Project module inspection is `scarp inspect modules --json DIRECTORY`. Historical `run`, `check`, and `tokens` remain for old scripts. `scarp build` and `scarp compile` are **not** supported commands. Older beta executables may require `println` and `let` rather than the current `print` and `bind` syntax. Read [compatibility](/reference/compatibility).
 
 ## A successful `check` prints nothing
 
-That is intentional. `check` evaluates the selected execution path without replaying output. Use `scarp run` to see program output, or `scarp tokens` to see lexical tokens.
+That is intentional. `check` evaluates the selected execution path without replaying output. Use `scarp exec FILE.srp` to see output. The newer **static-only** `scarp verify FILE.srp` checks without executing normal statements; legacy `check` is different. Use `scarp inspect tokens FILE.srp` to inspect lexical tokens.
 
 ## Arithmetic fails unexpectedly
 
