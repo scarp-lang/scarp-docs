@@ -1,9 +1,12 @@
 # Install Scarp v0.0.5-alpha.4
+::: warning New alpha.5 release available
+For a fresh installation, follow the [published alpha.5 installer](/guide/installation-alpha5). This page is archived for alpha.4 binaries and checksums.
+:::
 
 <!-- scarp-cli-release: v0.0.5-alpha.4 -->
 <!-- scarp-install-release: v0.0.5-alpha.4 -->
 
-This guide installs the **latest published Scarp compiler prerelease**: [v0.0.5-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.4) (November 3, 2026), from source commit `79141329176f5dce51457e90a6652902f6432135`. Scarp is an **experimental interpreter**, not a stable language or native `.srp` executable compiler.
+This historical guide installs the **published alpha.4 compiler prerelease**: [v0.0.5-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.4) (November 3, 2026), from source commit `79141329176f5dce51457e90a6652902f6432135`. Scarp is an **experimental interpreter**, not a stable language or native `.srp` executable compiler.
 
 ::: tip New here?
 After installation, follow the [first project quickstart](/guide/quickstart-alpha4). If you used alpha.3, consult the [migration guide](/guide/migrate-alpha3-to-alpha4). The old [alpha.1 release](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.1) is historical, **not** the recommended new install.
