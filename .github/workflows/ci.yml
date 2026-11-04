@@ -72,6 +72,10 @@ jobs:
         run: npm run check:alpha4-installation
       - name: Regression-test installation checksum, release identity and translation drift
         run: npm run test:alpha4-installation
+      - name: Validate published alpha.4 CLI commands and bilingual reference
+        run: npm run check:alpha4-cli
+      - name: Detect command drift and unreleased CLI references
+        run: npm run test:alpha4-cli
       - name: Validate docs-only prerelease metadata and version
         run: npm run check:docs-prerelease
       - name: Regression-test prerelease-only publication safety
@@ -217,3 +221,5 @@ jobs:
         run: cargo build --manifest-path .compiler-alpha4/Cargo.toml --locked --offline
       - name: Run published alpha.4 project create, verify, launch and security lifecycle
         run: npm run test:alpha4-compiler -- .compiler-alpha4/target/debug/scarp
+      - name: Verify alpha.4 CLI help, offline capability schema and project error contracts
+        run: npm run test:alpha4-cli-compiler -- .compiler-alpha4/target/debug/scarp
