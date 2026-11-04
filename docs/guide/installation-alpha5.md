@@ -10,7 +10,7 @@ Project-directory module inspection is now shipped. See the [alpha.5 CLI referen
 This guide installs the **latest published Scarp compiler prerelease**: [v0.0.5-alpha.5](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.5) (November 4, 2026), from source commit `2eeed0aa52ccb59523307841ad8ffbd83f8911a8`. Scarp is an **experimental interpreter**, not a stable language or native `.srp` executable compiler.
 
 ::: tip New here?
-After installation, follow the [first project quickstart](/guide/quickstart-alpha5). If you used alpha.3, consult the [migration guide](/guide/migrate-alpha3-to-alpha5). The old [alpha.1 release](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.1) is historical, **not** the recommended new install.
+After installation, follow the [first project quickstart](/guide/quickstart-alpha4). If you used alpha.3, consult the [migration guide](/guide/migrate-alpha3-to-alpha4). The old [alpha.1 release](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.1) is historical, **not** the recommended new install.
 :::
 
 ## 1. Choose your official download
@@ -117,6 +117,6 @@ cargo build --locked
 | `verify` succeeds but `launch` fails | Static verification does not execute runtime statements; inspect the runtime error |
 | No native binary for your platform | Consider a tagged source build with an appropriate supported Rust target |
 
-After the first successful launch, see the [alpha.5 project tutorial](/guide/quickstart-alpha5), [CLI reference](/tooling/cli), [compatibility guide](/reference/compatibility), and [troubleshooting](/tooling/troubleshooting).
+After the first successful launch, see the [alpha.5 project tutorial](/guide/quickstart-alpha4), [CLI reference](/tooling/cli), [compatibility guide](/reference/compatibility), and [troubleshooting](/tooling/troubleshooting).
 
 **Evidence:** [published release assets](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.5), [tagged packaging script](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.5/scripts/package.ps1), [tagged release verifier](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.5/scripts/verify-release.py) and [compiler source at the release tag](https://github.com/scarp-lang/scarp/tree/v0.0.5-alpha.5). The documentation CI checks the exact commands and bilingual parity, while tagged compiler CI validates project behavior.
