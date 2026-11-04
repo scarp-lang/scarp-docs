@@ -88,6 +88,13 @@ export function validateAlpha4Installation(
     for (const marker of mustInclude) {
       if (!content.includes(marker)) errors.push(locale + ': missing source-pinned install requirement ' + marker)
     }
+    // The visible release identity must be correct even if an unchanged
+    // source-build example still mentions the pinned compiler commit.
+    const firstCodeFence = content.search(/^~~~[a-z]+/m)
+    const introduction = firstCodeFence < 0 ? content : content.slice(0, firstCodeFence)
+    if (!introduction.includes('`' + publishedInstallation.commit + '`')) {
+      errors.push(locale + ': introductory release source commit is stale or missing')
+    }
     if (!content.includes('not') && locale === 'English') errors.push('English: clarify interpreter, not native compiler')
     if (locale === 'Hindi' && (content.match(/[\u0900-\u097f]/gu)?.length ?? 0) < 250) {
       errors.push('Hindi: substantial translated installation prose required')
