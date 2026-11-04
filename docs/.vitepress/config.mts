@@ -99,7 +99,7 @@ export default defineConfig({
           { text: 'टूलिंग और संदर्भ', items: [
             { text: 'CLI संदर्भ (alpha.4)', link: '/hi/tooling/cli-alpha4' },
             { text: 'ऐतिहासिक CLI (alpha.3)', link: '/hi/tooling/cli' },
-            { text: 'पुराना CLI (alpha.1)', link: '/hi/tooling/cli-alpha1' }
+            { text: 'पुराना CLI (alpha.1)', link: '/hi/tooling/cli-alpha1' },
             { text: 'Alpha.2 modules और explain', link: '/hi/tooling/alpha2-inspection' },
             { text: 'समस्या निवारण', link: '/hi/tooling/troubleshooting' },
             { text: 'प्रकाशित फीचर और रिलीज़ स्थिति', link: '/hi/reference/status' },
