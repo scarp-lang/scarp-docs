@@ -3,6 +3,7 @@ on:
   pull_request:
   push:
     branches: [main]
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
@@ -212,30 +213,3 @@ jobs:
         run: cargo build --manifest-path .compiler-alpha4/Cargo.toml --locked --offline
       - name: Run published alpha.4 project create, verify, launch and security lifecycle
         run: npm run test:alpha4-compiler -- .compiler-alpha4/target/debug/scarp
-
-  # One-time recovery for PR #41: GitHub's synchronous merge endpoint reported
-  # "Merge already in progress" despite successful required conformance checks.
-  # Use the documented asynchronous endpoint; it still respects branch rules.
-  merge-first-docs-prerelease-correction:
-    needs: [validate, compiler-conformance, alpha2-conformance, alpha3-conformance, alpha4-project-conformance]
-    if: >-
-      github.event_name == 'pull_request' &&
-      github.event.pull_request.number == 41 &&
-      github.event.pull_request.head.repo.full_name == 'scarp-lang/scarp-docs' &&
-      github.event.pull_request.head.ref == 'fix/first-docs-prerelease-version'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - name: Merge tested correction using GitHub's asynchronous PR merge API
-        env:
-          GH_TOKEN: ${{ github.token }}
-          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-        run: |
-          set -euo pipefail
-          gh api -X PUT \
-            -H "X-GitHub-Api-Version: 2026-03-10" \
-            "repos/$GITHUB_REPOSITORY/pulls/41/merge-async" \
-            -f sha="$HEAD_SHA" \
-            -f merge_method=squash \
-            -f merge_action=direct_merge
