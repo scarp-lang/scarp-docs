@@ -67,6 +67,10 @@ jobs:
         run: npm run check:alpha4-migration
       - name: Test release-aware migration and source safety regressions
         run: npm run test:alpha4-migration
+      - name: Validate docs-only prerelease metadata and version
+        run: npm run check:docs-prerelease
+      - name: Regression-test prerelease-only publication safety
+        run: npm run test:docs-prerelease
       - name: Verify tagged alpha.2 negative diagnostics and bilingual repair guide
         run: npm run check:alpha2-errors
       - name: Verify tutorials reproduce pinned compiler fixtures
