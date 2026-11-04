@@ -21,7 +21,7 @@ const check = (changes: Partial<Record<number, string>> = {}) =>
   ])
 assert.deepEqual(check(), [])
 
-const mutations: Array<[string, number, string, string]> = [
+const mutations: Array<[string, number, string | RegExp, string]> = [
   ['release marker', 0, '<!-- scarp-install-release: v0.0.5-alpha.4 -->', '<!-- no release -->'],
   ['wrong compiler commit', 0, '79141329176f5dce51457e90a6652902f6432135', 'incorrect-commit'],
   ['lost Windows archive', 0, 'scarp-0.0.5-alpha.4-x86_64-pc-windows-msvc.zip', 'scarp-windows.zip'],
@@ -38,7 +38,7 @@ const mutations: Array<[string, number, string, string]> = [
   ['outdated Hindi first-program entry', 5, '/hi/guide/quickstart-alpha4', '/hi/guide/quickstart-alpha3']
 ]
 for (const [name, index, before, after] of mutations) {
-  const next = pages[index].replace(before as string, after)
+  const next = pages[index].replace(before, after)
   assert.notEqual(next, pages[index], name + ': test mutation must actually change the page')
   assert.ok(check({ [index]: next }).length > 0, name + ': validation must reject version or command drift')
 }
