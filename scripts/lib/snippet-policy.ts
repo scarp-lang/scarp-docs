@@ -23,7 +23,9 @@ export function checkSnippetPolicy(markdown: string): SnippetIssue[] {
   const alpha3Cli = markdown.includes('<!-- scarp-cli-release: v0.0.5-alpha.3 -->')
   // The bilingual upgrade guide spans alpha.3 and alpha.4, but only the
   // published alpha.4 side demonstrates new project verbs.
-  const alpha4Cli = markdown.includes('<!-- scarp-cli-release: v0.0.5-alpha.4 -->') ||
+  const alpha5Cli = markdown.includes('<!-- scarp-cli-release: v0.0.5-alpha.5 -->')
+  const alpha4Cli = alpha5Cli ||
+    markdown.includes('<!-- scarp-cli-release: v0.0.5-alpha.4 -->') ||
     markdown.includes('<!-- scarp-migration: v0.0.5-alpha.3 -> v0.0.5-alpha.4 -->')
   for (const fence of extractCodeFences(markdown)) {
     const code = fence.code.replace(/\r\n?/g, '\n')
@@ -40,6 +42,13 @@ export function checkSnippetPolicy(markdown: string): SnippetIssue[] {
     }
     if (['sh', 'shell', 'bash'].includes(fence.language)) {
       for (const [i, line] of code.split('\n').entries()) {
+        // A project directory is an alpha.5-only target for static module
+        // inspection; alpha.4 exposes inspection of individual source files.
+        if (!alpha5Cli &&
+            /^\s*(?:\$\s*)?scarp inspect modules --json (?:hello-scarp|hello-world|DIRECTORY)\s*$/.test(line)) {
+          issues.push({ line: fence.line + i + 1, message: 'project module inspection requires published alpha.5' })
+          continue
+        }
         const command = /^\s*(?:\$\s*)?scarp\s+(build|compile|create|launch|exec|verify|inspect)\b/.exec(line)
         if (command && (!(
           (['exec', 'verify', 'inspect'].includes(command[1]) && (alpha3Cli || alpha4Cli)) ||
