@@ -1,9 +1,13 @@
 # Command-line interface — published Scarp v0.0.5-alpha.4
+::: tip Latest CLI reference
+The current published compiler is [v0.0.5-alpha.5](/releases/v0.0.5-alpha.5); use the [alpha.5 CLI](/tooling/cli-alpha5) for project-directory module inspection. The commands below remain alpha.4-only.
+:::
+
 
 <!-- scarp-cli-release: v0.0.5-alpha.4 -->
 <!-- scarp-project-release: v0.0.5-alpha.4 -->
 <!-- scarp-alpha4-cli-reference: 79141329176f5dce51457e90a6652902f6432135 -->
-**Current published Scarp CLI:** [v0.0.5-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.4), released November 3, 2026 from [source `79141329176f5dce51457e90a6652902f6432135`](https://github.com/scarp-lang/scarp/commit/79141329176f5dce51457e90a6652902f6432135). These commands are in the tagged **interpreter prerelease**, not just proposals. The language and project manifest are still experimental. For downloaded native packages and SHA-256 verification use [Installation](/guide/installation).
+**Historical, release-pinned Scarp alpha.4 CLI:** [v0.0.5-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.4), released November 3, 2026 from [source `79141329176f5dce51457e90a6652902f6432135`](https://github.com/scarp-lang/scarp/commit/79141329176f5dce51457e90a6652902f6432135). These commands are in the tagged **interpreter prerelease**, not just proposals. The language and project manifest are still experimental. For downloaded native packages and SHA-256 verification use [Installation](/guide/installation).
 
 This page covers alpha.4. Preserve the separate [historical alpha.3 file CLI](/tooling/cli) and [alpha.1 CLI](/tooling/cli-alpha1) for their actual command boundaries.
 
