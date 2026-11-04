@@ -70,8 +70,8 @@ export function validateAlpha4Installation(
       publishedInstallation.commit,
       releaseUrl + 'SHA256SUMS',
       ...publishedInstallation.archives.flatMap(asset => [
-        releaseUrl + asset,
-        releaseUrl + asset + '.sha256'
+        '[`' + asset + '`](' + releaseUrl + asset + ')',
+        '[`' + asset + '.sha256`](' + releaseUrl + asset + '.sha256)'
       ]),
       ...requiredPaths.map(p => 'https://github.com/scarp-lang/scarp/blob/' + tag + '/' + p),
       '](' + prefix + '/guide/quickstart-alpha4)',
