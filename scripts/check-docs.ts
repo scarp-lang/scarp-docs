@@ -22,7 +22,7 @@ let linkCount = 0
 let fenceCount = 0
 const configured = readFileSync(config, 'utf8')
 const baseline = JSON.parse(readFileSync(resolve(root, 'data/compiler-baseline.json'), 'utf8')) as { repository: string; release: string }
-const supportedFences = new Set(['scarp', 'rust', 'sh', 'bash', 'shell', 'text', 'json', 'ts', 'js', 'yaml'])
+const supportedFences = new Set(['scarp', 'rust', 'sh', 'bash', 'shell', 'powershell', 'text', 'json', 'ts', 'js', 'yaml'])
 
 function error(file: string, problem: string): void {
   failures.push(`${relative(root, file)}: ${problem}`)
