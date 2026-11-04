@@ -83,8 +83,7 @@ export function validateAlpha4Installation(
       'Expand-Archive',
       'git checkout ' + tag,
       'git rev-parse HEAD',
-      'cargo build --locked',
-      '4' // a deliberately simple marker is supplemented by exact pinned code checks
+      'cargo build --locked'
     ]
     for (const marker of mustInclude) {
       if (!content.includes(marker)) errors.push(locale + ': missing source-pinned install requirement ' + marker)
