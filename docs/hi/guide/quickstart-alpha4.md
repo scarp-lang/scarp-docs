@@ -87,3 +87,5 @@ scarp launch hello-world
 | `create` या `launch` पहचानी नहीं गई | **v0.0.5-alpha.4** compiler version जाँचें, alpha.3 या पुराने नहीं |
 
 Flags, manifest limits और error formats के लिए [पूरा alpha.4 release guide](/hi/releases/v0.0.5-alpha.4), [feature status](/hi/reference/status) और पुराना [alpha.3 CLI reference](/hi/tooling/cli) पढ़ें।
+
+**Alpha.3 से आ रहे हैं?** मौजूदा files को बदलने से पहले [migration checklist](/hi/guide/migrate-alpha3-to-alpha4) देखें। Standalone `exec` और `verify FILE.srp` commands अब भी समर्थित हैं।
