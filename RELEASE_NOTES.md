@@ -1,6 +1,8 @@
-# Scarp Docs v0.2.0-alpha.1 — prerelease notes
+# Scarp Docs v0.1.0-alpha.1 — prerelease notes
 
 **Documentation prerelease, November 4, 2026. This is not a stable release and does not publish a new Scarp compiler.**
+
+This is the **first official Scarp Docs prerelease**. Its release version was corrected from an initial `docs-v0.2.0-alpha.1` label; the documentation content remains the same release milestone.
 
 This website source snapshot documents the separately published **Scarp compiler v0.0.5-alpha.4** prerelease.
 

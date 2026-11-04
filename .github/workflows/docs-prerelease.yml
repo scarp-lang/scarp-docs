@@ -38,23 +38,8 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Refuse stable or mismatched documentation releases
         run: npm run check:docs-prerelease
-      - name: Publish or verify a documentation-only GitHub prerelease
+      - name: Correct first prerelease tag, preserving its original GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
           TESTED_SHA: ${{ github.event.workflow_run.head_sha }}
-        run: |
-          set -euo pipefail
-          tag="$(node -p "require('./data/docs-prerelease.json').tag")"
-          title="$(node -p "require('./data/docs-prerelease.json').title")"
-          notes="$(node -p "require('./data/docs-prerelease.json').notesFile")"
-          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            echo "Existing GitHub docs release $tag; no duplicate publication."
-            exit 0
-          fi
-          gh release create "$tag" \
-            --repo "$GITHUB_REPOSITORY" \
-            --title "$title" \
-            --notes-file "$notes" \
-            --target "$TESTED_SHA" \
-            --prerelease
-          gh release view "$tag" --repo "$GITHUB_REPOSITORY" --json tagName,isPrerelease,url
+        run: npx tsx scripts/publish-docs-prerelease.ts
