@@ -1,9 +1,13 @@
 # कमांड-लाइन इंटरफ़ेस — प्रकाशित Scarp v0.0.5-alpha.4
+::: tip नवीनतम CLI
+नया compiler [v0.0.5-alpha.5](/hi/releases/v0.0.5-alpha.5) है। Project-directory module inspection के लिए [alpha.5 CLI](/hi/tooling/cli-alpha5) पढ़ें। नीचे के commands alpha.4 पर आधारित हैं।
+:::
+
 
 <!-- scarp-cli-release: v0.0.5-alpha.4 -->
 <!-- scarp-project-release: v0.0.5-alpha.4 -->
 <!-- scarp-alpha4-cli-reference: 79141329176f5dce51457e90a6652902f6432135 -->
-यह [v0.0.5-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.4) का **वर्तमान प्रकाशित CLI संदर्भ** है। यह 3 नवंबर 2026 को [source commit `79141329176f5dce51457e90a6652902f6432135`](https://github.com/scarp-lang/scarp/commit/79141329176f5dce51457e90a6652902f6432135) से जारी हुआ। ये commands **वास्तविक प्रकाशित interpreter** में उपलब्ध हैं, केवल प्रस्तावित सुविधाएँ नहीं। भाषा और project manifest अभी प्रयोगात्मक हैं। सही native package और SHA-256 जाँच के लिए [इंस्टॉलेशन](/hi/guide/installation) देखें।
+यह [v0.0.5-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.4) का **alpha.4 का ऐतिहासिक CLI संदर्भ** है। यह 3 नवंबर 2026 को [source commit `79141329176f5dce51457e90a6652902f6432135`](https://github.com/scarp-lang/scarp/commit/79141329176f5dce51457e90a6652902f6432135) से जारी हुआ। ये commands **वास्तविक प्रकाशित interpreter** में उपलब्ध हैं, केवल प्रस्तावित सुविधाएँ नहीं। भाषा और project manifest अभी प्रयोगात्मक हैं। सही native package और SHA-256 जाँच के लिए [इंस्टॉलेशन](/hi/guide/installation) देखें।
 
 यह alpha.4 का पृष्ठ है। [ऐतिहासिक alpha.3 file CLI](/hi/tooling/cli) और [alpha.1 CLI](/hi/tooling/cli-alpha1) को अलग रखा गया है, ताकि पुराने versions में मौजूद commands की जानकारी सही रहे।
 
