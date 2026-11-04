@@ -1,11 +1,11 @@
 # Scarp की फीचर और रिलीज़ स्थिति
 
-<!-- scarp-release-status: v0.0.5-alpha.4 -->
+<!-- scarp-release-status: v0.0.5-alpha.5 -->
 <!-- scarp-main-reference-baseline: v0.0.5-alpha.1 -->
 
-**नवीनतम प्रकाशित compiler: [v0.0.5-alpha.4](/hi/releases/v0.0.5-alpha.4), 3 नवंबर 2026।** मुख्य language-reference अध्याय जानबूझकर **v0.0.5-alpha.1** पर आधारित हैं। Alpha.2, alpha.3 और alpha.4 की सत्यापित सुविधाओं के अलग release guides हैं। **सभी experimental prereleases हैं।** Stable compatibility की गारंटी नहीं है।
+**नवीनतम प्रकाशित compiler: [v0.0.5-alpha.5](/hi/releases/v0.0.5-alpha.5), 4 नवंबर 2026।** मुख्य language-reference अध्याय जानबूझकर **v0.0.5-alpha.1** पर आधारित हैं। Alpha.2, alpha.3, alpha.4 तथा alpha.5 की सत्यापित सुविधाओं के अलग release guides हैं। **सभी experimental prereleases हैं।** Stable compatibility की गारंटी नहीं है।
 
-नए project के लिए [alpha.4 quickstart](/hi/guide/quickstart-alpha4) पढ़ें। पुराने individual file commands के लिए [alpha.3 CLI reference](/hi/tooling/cli) उपलब्ध है। पुराने programs migrate करने से पहले [version compatibility](/hi/reference/compatibility) जाँचें।
+नए उपयोग के लिए [प्रकाशित alpha.5 इंस्टॉलेशन](/hi/guide/installation-alpha5) और [alpha.5 CLI](/hi/tooling/cli-alpha5) पढ़ें। पुरानी project-generation प्रक्रिया [alpha.4 quickstart](/hi/guide/quickstart-alpha4) में है। पुराने individual file commands के लिए [alpha.3 CLI reference](/hi/tooling/cli) उपलब्ध है। पुराने programs migrate करने से पहले [version compatibility](/hi/reference/compatibility) जाँचें।
 
 ## प्रकाशित releases का compiler प्रमाण
 
@@ -15,12 +15,13 @@
 | **[v0.0.5-alpha.2](/hi/releases/v0.0.5-alpha.2)** (2 नवंबर 2026) | `e4db8e191cd7ea623123cae7348450ca6c95b170` | **12** tagged programs का अलग compiler-tested suite | [Alpha.2 guide](/hi/releases/v0.0.5-alpha.2) |
 | **[v0.0.5-alpha.3](/hi/releases/v0.0.5-alpha.3)** (2 नवंबर 2026) | `7715c28df09c7703b39e14fddb963275b25df476` | **4** पूरे tagged programs, JSON diagnostic और CLI tests | [Alpha.3 guide](/hi/releases/v0.0.5-alpha.3) |
 | **[v0.0.5-alpha.4](/hi/releases/v0.0.5-alpha.4)** (3 नवंबर 2026) | `79141329176f5dce51457e90a6652902f6432135` | Generated project manifest, source और stdout का अलग alpha.4 lifecycle test | [Alpha.4 guide](/hi/releases/v0.0.5-alpha.4) |
+| **[v0.0.5-alpha.5](/hi/releases/v0.0.5-alpha.5)** (4 नवंबर 2026) | `2eeed0aa52ccb59523307841ad8ffbd83f8911a8` | **1** प्रकाशित scalar-repeat source तथा project-directory module inspection और Rust-only C11 backend की जाँच | [Alpha.5 guide](/hi/releases/v0.0.5-alpha.5) |
 
 यह संख्या प्रत्येक release के **अलग सत्यापित examples** की है; पूरे language features की संख्या या हर पुराने program की compatibility का प्रमाण नहीं। [Alpha.1 → alpha.2 upgrade gate](/hi/reference/upgrade-readiness) में मूल 11 programs को alpha.2 पर दोबारा चलाया जाता है; इससे alpha.3 की सामान्य backward compatibility सिद्ध नहीं होती।
 
 ## मुख्य संदर्भ: v0.0.5-alpha.1 में उपलब्ध सुविधाएँ
 
-यह table **केवल alpha.1 baseline** का है, नवीनतम alpha.4 की पूरी सूची नहीं:
+यह table **केवल alpha.1 baseline** का है, नवीनतम alpha.5 की पूरी सूची नहीं:
 
 | उपलब्ध सुविधा | Alpha.1 का प्रकाशित प्रमाण |
 | --- | --- |
@@ -72,7 +73,15 @@ Alpha.3 में **Scarp-first CLI** के `exec`, static-only `verify`, `insp
 
 अब `scarp create DIRECTORY` नया offline project बनाता है, `scarp verify DIRECTORY` manifest और entrypoint की **static जाँच** करता है, तथा `scarp launch DIRECTORY` वास्तविक interpreter से entry चलाता है। Tagged compiler source commit `79141329176f5dce51457e90a6652902f6432135` है। [Alpha.4 quickstart](/hi/guide/quickstart-alpha4) और [release guide](/hi/releases/v0.0.5-alpha.4) में generated `Scarp.project`, `src/main.srp` और सही stdout मौजूद हैं। अलग compiler CI project बनाना, existing folder अस्वीकार करना, static verify, launch, गलत manifest और runtime error जाँचती है। **यह native compilation या package management नहीं है।**
 
-## नए alpha.4 में भी अनुपलब्ध सुविधाएँ
+## प्रकाशित alpha.5 में सत्यापित नई सुविधाएँ
+
+**Project module inspection:** `scarp inspect modules --json DIRECTORY` तथा पुराना `scarp modules --json DIRECTORY` स्पष्ट Scarp.project entrypoint को static रूप से inspect कर **schema-version-1 JSON** देते हैं। सामान्य program statements नहीं चलते। यह published **alpha.5 में नया** है; पुराने alpha.4 में केवल file inspection उपलब्ध था। [alpha.5 CLI](/hi/tooling/cli-alpha5) और [release evidence](/hi/releases/v0.0.5-alpha.5) देखें।
+
+**Rust embedding हेतु सीमित C11 emitter:** `scarp::c_backend::emit_c` और `emit_program` experimental freestanding C11 source लौटाते हैं; Scarp CLI से native executable नहीं बनाते। इसका समर्थन integers, booleans और सीमित scalar loops तक है। Unsupported forms पर `E0049` आता है। [C11 API सीमाएँ](/hi/reference/c11-backend-alpha5) पढ़ें।
+
+Compiler के प्रकाशित `native_scalar_repeat.srp` तथा exact stdout को docs में रखा गया है और अलग tagged-compiler CI में चलाया जाता है। **इंटरप्रेटर और C emitter की क्षमताएँ समान नहीं हैं।**
+
+## नवीनतम alpha.5 में भी अनुपलब्ध सुविधाएँ
 
 नीचे की क्षमताएँ प्रकाशित alpha.4 compiler में **अभी उपलब्ध नहीं** हैं; development branches या proposals अलग हो सकते हैं:
 
