@@ -10,7 +10,7 @@
 यह मार्गदर्शिका सबसे नई प्रकाशित Scarp compiler prerelease [v0.0.5-alpha.5](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.5) (4 नवंबर 2026) इंस्टॉल करने के लिए है। इसका source commit `2eeed0aa52ccb59523307841ad8ffbd83f8911a8` है। Scarp अभी **प्रयोगात्मक interpreter** है; यह स्थिर भाषा या `.srp` से native executable बनाने वाला compiler नहीं है।
 
 ::: tip पहली बार Scarp इस्तेमाल कर रहे हैं?
-इंस्टॉल करने के बाद [पहला project tutorial](/hi/guide/quickstart-alpha5) पढ़ें। Alpha.3 से आ रहे हैं तो [migration guide](/hi/guide/migrate-alpha3-to-alpha5) देखें। पुराना [alpha.1 release](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.1) केवल ऐतिहासिक संदर्भ है, नए इंस्टॉलेशन की सलाह नहीं।
+इंस्टॉल करने के बाद [पहला project tutorial](/hi/guide/quickstart-alpha4) पढ़ें। Alpha.3 से आ रहे हैं तो [migration guide](/hi/guide/migrate-alpha3-to-alpha4) देखें। पुराना [alpha.1 release](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.1) केवल ऐतिहासिक संदर्भ है, नए इंस्टॉलेशन की सलाह नहीं।
 :::
 
 ## 1. अपने सिस्टम का आधिकारिक पैकेज चुनें
@@ -117,6 +117,6 @@ cargo build --locked
 | `verify` सफल लेकिन `launch` विफल | Static जाँच runtime statements नहीं चलाती; runtime diagnostic देखें |
 | आपके platform का native package नहीं है | उपयुक्त Rust target मिलने पर tagged source से build करने पर विचार करें |
 
-पहला project सफल चलने के बाद [alpha.5 project tutorial](/hi/guide/quickstart-alpha5), [CLI संदर्भ](/hi/tooling/cli), [compatibility](/hi/reference/compatibility) और [समस्या निवारण](/hi/tooling/troubleshooting) पढ़ें।
+पहला project सफल चलने के बाद [alpha.5 project tutorial](/hi/guide/quickstart-alpha4), [CLI संदर्भ](/hi/tooling/cli), [compatibility](/hi/reference/compatibility) और [समस्या निवारण](/hi/tooling/troubleshooting) पढ़ें।
 
 **प्रमाण:** [published release assets](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.5), [tagged packaging script](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.5/scripts/package.ps1), [release verifier](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.5/scripts/verify-release.py) तथा [release source](https://github.com/scarp-lang/scarp/tree/v0.0.5-alpha.5)। Documentation CI commands और दोनों भाषाओं के code examples की समानता जाँचती है; compiler CI वास्तविक project व्यवहार जाँचता है।
