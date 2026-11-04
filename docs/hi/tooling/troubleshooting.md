@@ -1,5 +1,7 @@
 # समस्या निवारण
 
+**नया प्रकाशित संस्करण:** [alpha.5 इंस्टॉलेशन](/hi/guide/installation-alpha5), [alpha.5 CLI](/hi/tooling/cli-alpha5), और [C11 Rust-only backend](/hi/reference/c11-backend-alpha5) देखें। पुराने alpha.2 diagnostic tests जानबूझकर version-pinned हैं।
+
 **प्रकाशित v0.0.5-alpha.2 में:** [छह वास्तविक compiler त्रुटियाँ और सुधार](/hi/tutorials/alpha2-diagnostics-and-repairs) देखकर E0044/E0045, module constant calls, private imports और import cycles समझें। ये published test fixtures से लिए गए हैं और CI में चलाए जाते हैं। नीचे सामान्य troubleshooting नियम हैं।
 
 ## `scarp: command not found`
@@ -8,11 +10,11 @@
 
 ## Unknown command या पुराना syntax
 
-`scarp build` वर्तमान CLI का command नहीं है; Rust interpreter बनाने के लिए `cargo build` है। पुराने उदाहरणों में `let` बनाम नए `bind`/`var` और `println` बनाम `print` का अंतर हो सकता है। [वर्ज़न तुलना](/hi/reference/compatibility) देखें।
+**प्रकाशित alpha.5 में** file चलाने के लिए `scarp exec FILE.srp`, static जाँच के लिए `scarp verify FILE.srp`, और project के लिए `scarp create DIRECTORY`, `scarp verify DIRECTORY`, `scarp launch DIRECTORY` उपलब्ध हैं। पहली बार project module inspection भी `scarp inspect modules --json DIRECTORY` से चलती है। `scarp build` और `scarp compile` **उपलब्ध नहीं**; `cargo build` केवल Rust interpreter बनाता है। पुराने उदाहरणों में `let` बनाम नए `bind`/`var` और `println` बनाम `print` का अंतर हो सकता है। [वर्ज़न तुलना](/hi/reference/compatibility) देखें।
 
 ## सफल `check` पर कुछ नहीं दिखता
 
-यह सामान्य है। `check` चुने हुए execution path के मानों का सत्यापन करता है लेकिन user output रोकता है। आउटपुट चाहिए तो `run` उपयोग करें।
+पुराना `check` चुने हुए execution paths चलाकर output रोकता है; यह **static-only** command नहीं है। नए compiler में बिना statements चलाए जाँच के लिए `scarp verify FILE.srp` या `scarp verify DIRECTORY` और वास्तविक output के लिए `scarp exec FILE.srp` या `scarp launch DIRECTORY` उपयोग करें।
 
 ## अंकगणित त्रुटि
 
