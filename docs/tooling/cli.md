@@ -6,6 +6,8 @@
 
 **Newer published release:** [v0.0.5-alpha.4](/releases/v0.0.5-alpha.4) now ships project `create`, `verify DIRECTORY` and `launch`. For new work, follow the [alpha.4 project quickstart](/guide/quickstart-alpha4). This page remains an exact **alpha.3** reference, and does not claim alpha.4 commands were available in alpha.3.
 
+For the **current full CLI command reference**, use [published alpha.4 CLI](/tooling/cli-alpha4), which documents file and project operations, budgets and diagnostic boundaries. This page intentionally remains pinned to alpha.3.
+
 For standalone-file alpha.3 examples, follow the [alpha.3 quickstart](/guide/quickstart-alpha3). An [archived alpha.1 command reference](/tooling/cli-alpha1) remains available for maintaining old scripts.
 
 ## Available commands
