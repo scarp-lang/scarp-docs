@@ -32,7 +32,7 @@ const mutations: Array<[string, number, string, string]> = [
   ['changed source verification', 1, 'git checkout v0.0.5-alpha.4', 'git checkout main'],
   ['unsupported Windows startup', 0, '.\\scarp.exe launch hello-world', 'scarp build hello-world'],
   ['removed Hindi translation', 1, /[\u0900-\u097f]/gu, ''],
-  ['stale English introduction', 2, 'v0.0.5-alpha.4', 'v0.0.5-alpha.3'],
+  ['stale English introduction', 2, 'https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.4', 'https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.3'],
   ['stale Hindi introduction', 3, 'v0.0.5-alpha.4', 'v0.0.5-alpha.3'],
   ['outdated first-program entry', 4, '/guide/quickstart-alpha4', '/guide/quickstart-alpha3'],
   ['outdated Hindi first-program entry', 5, '/hi/guide/quickstart-alpha4', '/hi/guide/quickstart-alpha3']
