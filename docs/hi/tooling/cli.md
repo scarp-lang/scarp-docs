@@ -6,6 +6,8 @@
 
 **नया प्रकाशित release:** [v0.0.5-alpha.4](/hi/releases/v0.0.5-alpha.4) में project `create`, directory `verify` और `launch` अब वास्तविक रूप से उपलब्ध हैं। नए project के लिए [alpha.4 quickstart](/hi/guide/quickstart-alpha4) पढ़ें। यह पुराना पृष्ठ सिर्फ **alpha.3** के exact CLI की जानकारी देता है।
 
+वर्तमान सभी CLI commands के लिए [प्रकाशित alpha.4 CLI संदर्भ](/hi/tooling/cli-alpha4) पढ़ें। इसमें file और project commands, budgets तथा JSON error semantics दिए गए हैं। यह पुराना पृष्ठ जानबूझकर alpha.3 पर ही आधारित है।
+
 Alpha.3 के standalone programs सीखने हों तो [alpha.3 quickstart](/hi/guide/quickstart-alpha3) पढ़ें। पुराने scripts के लिए [alpha.1 CLI का ऐतिहासिक संदर्भ](/hi/tooling/cli-alpha1) सुरक्षित रखा गया है।
 
 ## उपलब्ध commands
