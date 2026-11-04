@@ -21,7 +21,10 @@ export function checkSnippetPolicy(markdown: string): SnippetIssue[] {
   // Only explicitly tagged release pages can teach commands introduced in alpha.3/alpha.4.
   // Generic or older-release source examples must not silently advertise new CLI verbs.
   const alpha3Cli = markdown.includes('<!-- scarp-cli-release: v0.0.5-alpha.3 -->')
-  const alpha4Cli = markdown.includes('<!-- scarp-cli-release: v0.0.5-alpha.4 -->')
+  // The bilingual upgrade guide spans alpha.3 and alpha.4, but only the
+  // published alpha.4 side demonstrates new project verbs.
+  const alpha4Cli = markdown.includes('<!-- scarp-cli-release: v0.0.5-alpha.4 -->') ||
+    markdown.includes('<!-- scarp-migration: v0.0.5-alpha.3 -> v0.0.5-alpha.4 -->')
   for (const fence of extractCodeFences(markdown)) {
     const code = fence.code.replace(/\r\n?/g, '\n')
     if (fence.language === 'scarp') {
