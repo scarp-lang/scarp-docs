@@ -76,6 +76,12 @@ jobs:
         run: npm run check:alpha4-cli
       - name: Detect command drift and unreleased CLI references
         run: npm run test:alpha4-cli
+      - name: Validate published alpha.5 release and bilingual compiler references
+        run: npm run check:alpha5
+      - name: Reject wrong alpha.5 source, capabilities, downloads and translation drift
+        run: npm run test:alpha5
+      - name: Test latest compiler release detection without network
+        run: npm run test:compiler-release-drift
       - name: Validate docs-only prerelease metadata and version
         run: npm run check:docs-prerelease
       - name: Regression-test prerelease-only publication safety
@@ -223,3 +229,29 @@ jobs:
         run: npm run test:alpha4-compiler -- .compiler-alpha4/target/debug/scarp
       - name: Verify alpha.4 CLI help, offline capability schema and project error contracts
         run: npm run test:alpha4-cli-compiler -- .compiler-alpha4/target/debug/scarp
+
+  alpha5-conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: scarp-lang/scarp
+          ref: 2eeed0aa52ccb59523307841ad8ffbd83f8911a8
+          path: .compiler-alpha5
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install TypeScript conformance dependencies
+        run: npm install --no-audit --no-fund
+      - name: Verify exact released alpha.5 source commit
+        run: test "$(git -C .compiler-alpha5 rev-parse HEAD)" = "2eeed0aa52ccb59523307841ad8ffbd83f8911a8"
+      - name: Check tagged release fixture bytes and bilingual alpha.5 docs
+        run: npm run check:alpha5 -- .compiler-alpha5/examples
+      - name: Build the exact published alpha.5 interpreter
+        run: cargo build --manifest-path .compiler-alpha5/Cargo.toml --locked --offline
+      - name: Execute tagged interpreter and inspect project versus file JSON
+        run: npm run test:alpha5-compiler -- .compiler-alpha5/target/debug/scarp
+      - name: Test the shipped experimental C11 Rust embedding backend
+        run: cargo test --manifest-path .compiler-alpha5/Cargo.toml --locked --offline --test c_backend
