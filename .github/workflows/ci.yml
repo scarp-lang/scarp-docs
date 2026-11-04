@@ -140,8 +140,15 @@ jobs:
           path: .compiler-alpha4
       - name: Check additional published alpha.4 source commit
         run: test "$(git -C .compiler-alpha4 rev-parse HEAD)" = "79141329176f5dce51457e90a6652902f6432135"
-      - name: Validate compiler-evidence links across four published tags
-        run: npm run check:evidence -- .compiler .compiler-alpha2 .compiler-alpha3 .compiler-alpha4
+      - uses: actions/checkout@v4
+        with:
+          repository: scarp-lang/scarp
+          ref: 2eeed0aa52ccb59523307841ad8ffbd83f8911a8
+          path: .compiler-alpha5
+      - name: Check exact published alpha.5 source commit
+        run: test "$(git -C .compiler-alpha5 rev-parse HEAD)" = "2eeed0aa52ccb59523307841ad8ffbd83f8911a8"
+      - name: Validate compiler-evidence links across five published tags
+        run: npm run check:evidence -- .compiler .compiler-alpha2 .compiler-alpha3 .compiler-alpha4 .compiler-alpha5
       - name: Build released Scarp interpreter
         run: cargo build --manifest-path .compiler/Cargo.toml --locked --offline
       - name: Execute all documented conformance examples
