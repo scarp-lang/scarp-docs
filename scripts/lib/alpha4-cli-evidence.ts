@@ -66,6 +66,13 @@ export function validatePublishedAlpha4Cli(
     ]) {
       if (!page.includes(expected)) errors.push(label + ': missing published alpha.4 CLI evidence ' + expected)
     }
+    // A later evidence footnote cannot compensate for a stale current-release
+    // link at the very top of a beginner-facing command reference.
+    const introduction = page.split(/^## /m, 1)[0]
+    if (!introduction.includes('https://github.com/scarp-lang/scarp/releases/tag/' + tag) ||
+        !introduction.includes('https://github.com/scarp-lang/scarp/commit/' + sha)) {
+      errors.push(label + ': primary release reference is stale')
+    }
     const commands = fences.filter(f => f.language === 'sh')
       .flatMap(f => f.code.split(/\r?\n/).map(x => x.trim()))
     for (const command of publishedAlpha4Cli.shell) {
