@@ -14,6 +14,8 @@ Official VitePress documentation for the experimental [Scarp Programming Languag
 
 **Previous published prerelease:** [v0.0.5-alpha.2](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.2), November 2, 2026. [Alpha.2 release examples (English)](docs/releases/v0.0.5-alpha.2.md) and [हिन्दी संस्करण](docs/hi/releases/v0.0.5-alpha.2.md). The 11-program core documentation baseline remains intentionally pinned to v0.0.5-alpha.1; a separate **twelve-program** alpha.2 conformance suite checks newly published features across the [release guide](docs/releases/v0.0.5-alpha.2.md) and [verified collections and classification tutorial](docs/tutorials/alpha2-collections-and-learning.md), both translated into Hindi.
 
+**Migrating from alpha.3 to alpha.4:** The [English file-to-project migration guide](docs/guide/migrate-alpha3-to-alpha4.md) and [हिन्दी माइग्रेशन मार्गदर्शिका](docs/hi/guide/migrate-alpha3-to-alpha4.md) distinguish retained single-file commands from new project-directory commands. Exact command examples, published release identities, directory overwrite safety, versioned manifests and bilingual parity are guarded by `npm run check:alpha4-migration` and `npm run test:alpha4-migration`. Compiler execution is independently tested by the tagged alpha.4 conformance CI job.
+
 **License:** [MIT](LICENSE)
 
 ## Development

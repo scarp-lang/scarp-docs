@@ -87,3 +87,5 @@ scarp launch hello-world
 | Commands are unrecognized | Check that you are using **v0.0.5-alpha.4**, not alpha.3 or older |
 
 For flags, manifest size/path limitations, and error handling, continue to the [full alpha.4 release guide](/releases/v0.0.5-alpha.4), [feature status](/reference/status), and [original alpha.3 CLI reference](/tooling/cli).
+
+**Coming from alpha.3?** Follow the [migration checklist](/guide/migrate-alpha3-to-alpha4) before moving existing sources. You can keep using standalone `exec` and `verify FILE.srp` commands.
