@@ -76,3 +76,5 @@ Hello, 🌍
 [प्रकाशित alpha.3 CLI reference](/hi/tooling/cli) में commands तथा exit codes और [Alpha.3 release guide](/hi/releases/v0.0.5-alpha.3) में चार जाँचे गए programs, नई CLI और structured diagnostics पढ़ें। लंबे installation और source-build चरणों के लिए [इंस्टॉलेशन](/hi/guide/installation) पृष्ठ देखें, जिसका विस्तृत आधार अभी **alpha.1** है। किसी भी feature को स्थिर मानने से पहले [भाषा की स्थिति](/hi/reference/status) देखें।
 
 **सत्यापन:** इस पृष्ठ का program और output [alpha.3 conformance fixtures](https://github.com/scarp-lang/scarp-docs/tree/main/conformance/alpha3) से TypeScript checks तथा CI में मिलाए जाते हैं।
+
+**Alpha.4 में जाएँ?** [File से project workflow के migration guide](/hi/guide/migrate-alpha3-to-alpha4) में नई और पुरानी commands का अंतर देखें। File commands अब भी चलती हैं; directory commands के लिए alpha.4 आवश्यक है।
