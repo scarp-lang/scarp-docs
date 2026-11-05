@@ -2,7 +2,7 @@
 
 **New installations:** Follow the [release-aware learning path](/guide/learning-path) and [published alpha.6 download/checksum guide](/releases/v0.0.6-alpha.1). This page is a **historical alpha.1 file tutorial**: use its own published compiler to reproduce its verified results.
 
-**Want a current project instead?** Use the [published alpha.6 project lab](/tutorials/project-symbol-navigation-alpha6) with the exact alpha.6 interpreter. The [alpha.4 project quickstart](/guide/quickstart-alpha4) is a separate historical reference. This file tutorial deliberately uses alpha.1 semantics.
+**Want a current project instead?** Use the [published alpha.6 project lab](/tutorials/project-symbol-navigation-alpha6) with the exact alpha.6 interpreter. The [alpha.4 installation guide](/guide/installation) and [alpha.4 project quickstart](/guide/quickstart-alpha4) are separate historical references. This file tutorial deliberately uses alpha.1 semantics.
 
 This tutorial targets **v0.0.5-alpha.1**. Confirm `scarp --version` before you begin. To evaluate upgrading to the published **alpha.2**, see the [compiler-tested compatibility guide](/reference/upgrade-readiness): it runs all 11 original alpha.1 fixtures unchanged on alpha.2, but does not claim every older source program remains compatible.
 
