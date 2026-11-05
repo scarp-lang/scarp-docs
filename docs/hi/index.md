@@ -23,6 +23,9 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
+  - title: पहला पूरा alpha.6 project बनाएँ
+    details: दो असली source files से module, symbols और references समझें, फिर प्रकाशित interpreter से सही output चलाएँ।
+    link: /hi/tutorials/project-symbol-navigation-alpha6
   - title: नवीनतम प्रकाशित alpha.6 compiler
     details: सही archive और checksum की जाँच, static symbols और references तथा RMS के प्रकाशित उदाहरण सीखें।
     link: /hi/releases/v0.0.6-alpha.1

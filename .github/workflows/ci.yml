@@ -84,6 +84,10 @@ jobs:
         run: npm run check:alpha6
       - name: Regression-test alpha.6 release evidence and translation drift
         run: npm run test:alpha6
+      - name: Check complete bilingual alpha.6 project tutorial against the tagged sources
+        run: npm run check:alpha6-project
+      - name: Mutation-test project syntax, exact output, translator parity and navigation
+        run: npm run test:alpha6-project
       - name: Test latest compiler release detection without network
         run: npm run test:compiler-release-drift
       - name: Validate docs-only prerelease metadata and version
@@ -298,3 +302,5 @@ jobs:
         run: cargo build --manifest-path .compiler-alpha6/Cargo.toml --locked --offline
       - name: Exercise alpha.6 CLI, RMS, static symbols and references
         run: npm run test:alpha6-compiler -- .compiler-alpha6/target/debug/scarp .compiler-alpha6/examples
+      - name: Execute bilingual tutorial project with the exact published compiler
+        run: npm run test:alpha6-project-compiler -- .compiler-alpha6/target/debug/scarp

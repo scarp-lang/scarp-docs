@@ -2,6 +2,10 @@
 
 The official [compiler examples directory](https://github.com/scarp-lang/scarp/tree/v0.0.5-alpha.1/examples) contains `.srp` files paired with expected `.stdout` files. These are compiler-owned fixtures, not invented syntax samples.
 
+## Current alpha.6 project tutorial
+
+Follow the [complete, verified two-file project and symbol-navigation lab](/tutorials/project-symbol-navigation-alpha6). It recreates the published alpha.6 source under a real `Scarp.project`, checks symbols and references without executing, and confirms the exact interpreter output. The older examples below remain pinned to the alpha.1 baseline.
+
 ## Hello, Scarp
 
 Source: [examples/hello.srp](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/examples/hello.srp).

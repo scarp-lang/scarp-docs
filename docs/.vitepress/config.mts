@@ -66,6 +66,7 @@ export default defineConfig({
         sidebar: [
           { text: 'स्वागत', items: [
             { text: 'परिचय', link: '/hi/guide/introduction' },
+            { text: 'पहला Alpha.6 project और symbols', link: '/hi/tutorials/project-symbol-navigation-alpha6' },
             { text: 'Alpha.4 project शुरुआत', link: '/hi/guide/quickstart-alpha4' },
             { text: 'Alpha.3 file शुरुआत', link: '/hi/guide/quickstart-alpha3' },
             { text: 'Alpha.3 से alpha.4 माइग्रेशन', link: '/hi/guide/migrate-alpha3-to-alpha4' },
@@ -205,6 +206,7 @@ export default defineConfig({
     sidebar: [
       { text: 'Welcome', items: [
         { text: 'Introduction', link: '/guide/introduction' },
+        { text: 'First alpha.6 project and symbols', link: '/tutorials/project-symbol-navigation-alpha6' },
         { text: 'Quickstart: projects (alpha.4)', link: '/guide/quickstart-alpha4' },
         { text: 'Quickstart: individual files (alpha.3)', link: '/guide/quickstart-alpha3' },
         { text: 'Upgrade: alpha.3 to alpha.4', link: '/guide/migrate-alpha3-to-alpha4' },

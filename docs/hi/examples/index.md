@@ -2,6 +2,10 @@
 
 ये उदाहरण प्रकाशित compiler `v0.0.5-alpha.1` की fixtures से जुड़े हैं। केवल सिंटैक्स दिखाने के बजाय CI इनके अपेक्षित stdout की **byte-by-byte** तुलना करता है।
 
+## नवीनतम alpha.6 का पूरा project पाठ
+
+[दो files वाला, compiler-tested project और symbol-navigation tutorial](/hi/tutorials/project-symbol-navigation-alpha6) शुरू से करें। इसमें प्रकाशित alpha.6 source से `Scarp.project` बनाना, execution के बिना symbols/references जाँचना और सही interpreter output चलाना सिखाया गया है। नीचे के पुराने उदाहरण alpha.1 baseline के हैं।
+
 ## Hello Scarp
 
 ~~~scarp

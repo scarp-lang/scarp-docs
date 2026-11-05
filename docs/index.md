@@ -23,6 +23,9 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
+  - title: Build your first real alpha.6 project
+    details: Follow a complete two-file program, learn how to inspect symbols and references, then run it with the released interpreter.
+    link: /tutorials/project-symbol-navigation-alpha6
   - title: Start with the published alpha.6 compiler
     details: Download a verified prerelease archive, learn static symbol navigation, and run the tagged RMS examples.
     link: /releases/v0.0.6-alpha.1
