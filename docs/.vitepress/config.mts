@@ -174,7 +174,7 @@ export default defineConfig({
       { icon: 'threads', link: 'https://www.threads.net/@scarplang', ariaLabel: 'Scarp on Threads' }
     ],
     nav: [
-      { text: 'Guide', link: '/releases/v0.0.6-alpha.1' },
+      { text: 'Learn', link: '/guide/learning-path' },
       { text: 'Language', link: '/language/overview' },
       { text: 'CLI (alpha.6)', link: '/tooling/cli-alpha6' },
       { text: 'CLI (alpha.5)', link: '/tooling/cli-alpha5' },

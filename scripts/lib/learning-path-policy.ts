@@ -142,6 +142,14 @@ export function validateLearningPath(pages: LearningPathPages, release: Alpha6Ma
   ] as const) {
     if (!page.includes(expected)) fail(name + ': missing discoverable learning-path link')
   }
+  // The learning path must be reachable from *both* top navigation and sidebar.
+  // Requiring two occurrences catches accidental removal from either location.
+  for (const prefix of ['', '/hi']) {
+    const navLink = "link: '" + prefix + "/guide/learning-path'"
+    if (pages.config.split(navLink).length - 1 < 2) {
+      fail((prefix ? 'Hindi' : 'English') + ': primary nav and sidebar must both expose the course')
+    }
+  }
   for (const [locale,compat,intro,first,quick] of [
     ['English',pages.compatibilityEnglish,pages.introEnglish,pages.firstEnglish,pages.quickEnglish],
     ['Hindi',pages.compatibilityHindi,pages.introHindi,pages.firstHindi,pages.quickHindi]
