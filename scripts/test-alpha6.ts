@@ -26,11 +26,11 @@ const fixtures = Object.fromEntries(Object.entries(manifest.fixtures)
 const validate = (p=pages,m=manifest,f=fixtures) => validateAlpha6Docs(p,m,f)
 assert.deepEqual(validate(),[])
 const change = (key: keyof Alpha6Pages,from: string,to: string): void => {
-  const edited = pages[key].replace(from,to)
+  const edited = pages[key].replaceAll(from,to)
   assert.notEqual(edited,pages[key],key+' mutation must change its target')
   assert.ok(validate({...pages,[key]:edited}).length > 0,key+' drift must fail')
 }
-change('releaseEn','scarp inspect symbols --json','scarp inspect wrong-topic --json')
+change('releaseEn','scarp inspect symbols --json examples/symbol_navigation.srp','scarp inspect wrong-topic --json examples/symbol_navigation.srp')
 change('releaseHi','true true\n2.0','false true\n2.0')
 change('cliEn','E0050','E9999')
 change('cliHi','scarp.references','scarp.wrong')
