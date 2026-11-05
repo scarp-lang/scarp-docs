@@ -112,11 +112,11 @@ export function validateAlpha6Docs(
     }
   }
   for (const [locale,prefix] of [['En',''],['Hi','/hi']] as const) {
-    const release = pages['release'+locale]
-    const cli = pages['cli'+locale]
-    const rms = pages['rms'+locale]
-    const status = pages['status'+locale]
-    const home = pages['home'+locale]
+    const release = locale === 'En' ? pages.releaseEn : pages.releaseHi
+    const cli = locale === 'En' ? pages.cliEn : pages.cliHi
+    const rms = locale === 'En' ? pages.rmsEn : pages.rmsHi
+    const status = locale === 'En' ? pages.statusEn : pages.statusHi
+    const home = locale === 'En' ? pages.homeEn : pages.homeHi
     for (const [label,page] of [['release',release],['CLI',cli],['RMS',rms]] as const) {
       hasAll(page, ['<!-- scarp-cli-release: '+ALPHA6_REF+' -->',
         '<!-- scarp-alpha6-release: '+ALPHA6_SHA+' -->', ALPHA6_SHA, releaseUrl],
@@ -124,6 +124,7 @@ export function validateAlpha6Docs(
     }
     hasAll(release, [
       blobBase+'symbol_navigation.srp', blobBase+'root_mean_square.srp',
+      'scarp inspect symbols --json examples/symbol_navigation.srp',
       ']('+prefix+'/tooling/cli-alpha6)', ']('+prefix+'/language/rms-alpha6)',
       downloadBase+'SHA256SUMS', ...archives.flatMap(a=>[
         downloadBase+a, downloadBase+a+'.sha256'
