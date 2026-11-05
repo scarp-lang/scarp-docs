@@ -65,7 +65,8 @@ export function validateLearningPath(pages: LearningPathPages, release: Alpha6Ma
     ['Hindi',hi,'/hi']
   ] as const) {
     if (!page.startsWith('# ')) fail(locale + ': missing learning-page heading')
-    if (!page.includes('<!-- scarp-learning-release: ' + ALPHA6_REF + ' -->') ||
+    if (!page.includes('<!-- scarp-cli-release: ' + ALPHA6_REF + ' -->') ||
+        !page.includes('<!-- scarp-learning-release: ' + ALPHA6_REF + ' -->') ||
         !page.includes('<!-- scarp-learning-compiler: ' + ALPHA6_SHA + ' -->')) {
       fail(locale + ': wrong current compiler release or commit markers')
     }

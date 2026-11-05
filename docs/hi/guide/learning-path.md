@@ -1,6 +1,7 @@
 # Scarp सीखने का पूरा रास्ता: पहला प्रोग्राम से project tooling तक
 
 <!-- scarp-learning-release: v0.0.6-alpha.1 -->
+<!-- scarp-cli-release: v0.0.6-alpha.1 -->
 <!-- scarp-learning-compiler: aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8 -->
 
 **Scarp पहली बार सीख रहे हैं तो यहाँ से शुरुआत करें।** यह मार्गदर्शिका शुरुआती प्रोग्राम से numerical examples, source modules, project और **[प्रकाशित v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1)** में आए symbol-navigation tools तक पहुँचाती है। हर पाठ के examples compiler के वास्तविक परीक्षणों पर आधारित हैं।

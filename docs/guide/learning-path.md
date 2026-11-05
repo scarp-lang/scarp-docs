@@ -1,6 +1,7 @@
 # Learn Scarp: a release-aware path from first program to project tooling
 
 <!-- scarp-learning-release: v0.0.6-alpha.1 -->
+<!-- scarp-cli-release: v0.0.6-alpha.1 -->
 <!-- scarp-learning-compiler: aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8 -->
 
 **Start here if you are new to Scarp.** This track connects complete, compiler-backed lessons from the first program through numerical modeling, project modules, and the symbol-navigation tools introduced in the **[published v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1)** prerelease.
