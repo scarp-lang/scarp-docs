@@ -20,7 +20,13 @@ navigation-lab/
       navigation_values.srp
 ~~~
 
-जिस जगह project बनाना है, उसके **parent directory** से `scarp create navigation-lab` चलाएँ। `navigation-lab` पहले से मौजूद **नहीं** होना चाहिए—खाली folder पर भी create overwrite नहीं करता। Command `Scarp.project` तथा `src/main.srp` बनाता है। इसके बाद `src/modules/` directory खुद बनाएँ और नीचे दिए पूरे code से generated `main.srp` को बदलें।
+जिस जगह project बनाना है, उसके **parent directory** से पहले scaffold बनाएँ:
+
+~~~sh
+scarp create navigation-lab
+~~~
+
+`navigation-lab` `navigation-lab` पहले से मौजूद **नहीं** होना चाहिए—खाली folder पर भी create overwrite नहीं करता। Command `Scarp.project` तथा `src/main.srp` बनाता है। इसके बाद `src/modules/` directory खुद बनाएँ और नीचे दिए पूरे code से generated `main.srp` को बदलें।
 
 बनने वाली manifest का exact format:
 
@@ -77,7 +83,6 @@ Import का path **`src/main.srp` के स्थान से** तय ह�
 
 ~~~sh
 scarp version
-scarp create navigation-lab
 scarp verify navigation-lab
 scarp inspect modules --json navigation-lab
 scarp inspect symbols --json navigation-lab

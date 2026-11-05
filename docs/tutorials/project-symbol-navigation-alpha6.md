@@ -20,7 +20,13 @@ navigation-lab/
       navigation_values.srp
 ~~~
 
-From the **parent directory** where you want this project, run `scarp create navigation-lab`. Choose a location where `navigation-lab` does **not already exist**. The command refuses to adopt or overwrite an existing directory, even an empty one. It generates `Scarp.project` and `src/main.srp`. Create the additional `src/modules/` directory yourself and replace the generated `main.srp` with the full source below.
+From the **parent directory** where you want this project, create the scaffold first:
+
+~~~sh
+scarp create navigation-lab
+~~~
+
+Choose a location where `navigation-lab` does **not already exist**. The command refuses to adopt or overwrite an existing directory, even an empty one. It generates `Scarp.project` and `src/main.srp`. Create the additional `src/modules/` directory yourself and replace the generated `main.srp` with the full source below.
 
 The compiler's generated manifest is exactly:
 
@@ -77,7 +83,6 @@ Run the following commands from the **parent** of `navigation-lab`, using the pu
 
 ~~~sh
 scarp version
-scarp create navigation-lab
 scarp verify navigation-lab
 scarp inspect modules --json navigation-lab
 scarp inspect symbols --json navigation-lab
