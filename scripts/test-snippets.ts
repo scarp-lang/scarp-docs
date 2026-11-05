@@ -38,4 +38,8 @@ assert.ok(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.5-alpha.4 -->\n~~~sh\
   .some(issue => issue.message.includes('requires published alpha.5')))
 assert.equal(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.5-alpha.5 -->\n~~~sh\nscarp compile file.srp\n~~~').length, 1)
 
+assert.deepEqual(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.1 -->\\n~~~sh\\nscarp inspect symbols --json demo.srp\\nscarp inspect references --json demo.srp\\nscarp create sample\\nscarp exec demo.srp\\n~~~'.replaceAll('\\n','\n')), [])
+assert.ok(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.5-alpha.5 -->\\n~~~sh\\nscarp inspect symbols --json demo.srp\\n~~~'.replaceAll('\\n','\n'))
+  .some(x => x.message.includes('requires published alpha.6')))
+
 console.log('PASS: executable Scarp and shell examples reject deprecated syntax without flagging prose, quotes or comments')
