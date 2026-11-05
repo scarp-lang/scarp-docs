@@ -26,7 +26,7 @@ navigation-lab/
 scarp create navigation-lab
 ~~~
 
-`navigation-lab` `navigation-lab` पहले से मौजूद **नहीं** होना चाहिए—खाली folder पर भी create overwrite नहीं करता। Command `Scarp.project` तथा `src/main.srp` बनाता है। इसके बाद `src/modules/` directory खुद बनाएँ और नीचे दिए पूरे code से generated `main.srp` को बदलें।
+`navigation-lab` पहले से मौजूद **नहीं** होना चाहिए—खाली folder पर भी create overwrite नहीं करता। Command `Scarp.project` तथा `src/main.srp` बनाता है। इसके बाद `src/modules/` directory खुद बनाएँ और नीचे दिए पूरे code से generated `main.srp` को बदलें।
 
 बनने वाली manifest का exact format:
 

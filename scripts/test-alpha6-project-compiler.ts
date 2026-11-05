@@ -29,17 +29,23 @@ success(['verify',source],'')
 success(['launch',project],expected)
 success(['exec',source],expected)
 for (const kind of ['modules','symbols','references'] as const) {
-  const projectView = JSON.parse(success(['inspect',kind,'--json',project],
-    execute(['inspect',kind,'--json',project]).stdout).stdout) as Record<string,unknown>
+  const projectResult = execute(['inspect',kind,'--json',project])
+  assert.equal(projectResult.status,0,'project inspection must succeed: '+projectResult.stderr)
+  assert.equal(projectResult.stderr,'')
+  const projectView = JSON.parse(projectResult.stdout) as Record<string,unknown>
   assert.equal(projectView.schema_version,1)
-  assert.ok(Array.isArray(projectView.files) && projectView.files.length >= 2)
   const fileResult = execute(['inspect',kind,'--json',source])
   assert.equal(fileResult.status,0,'file inspection must succeed: '+fileResult.stderr)
   assert.equal(fileResult.stderr,'')
   const fileView = JSON.parse(fileResult.stdout) as Record<string,unknown>
   assert.equal(fileView.schema_version,1)
   assert.deepEqual(projectView.kind,fileView.kind)
-  if (kind === 'modules') continue
+  if (kind === 'modules') {
+    assert.equal(projectResult.stdout,fileResult.stdout,
+      'module inspection should be byte-identical for project and canonical entry')
+    continue
+  }
+  assert.ok(Array.isArray(projectView.files) && projectView.files.length >= 2)
   assert.equal(projectView.kind,'scarp.'+kind)
   assert.equal(projectView.span_encoding,'utf-8-bytes')
   assert.equal(projectView.column_encoding,'unicode-scalar')
