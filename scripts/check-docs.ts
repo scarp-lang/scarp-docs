@@ -1,6 +1,7 @@
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
 import { resolve, relative, dirname, extname } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { documentationHeadingSlug } from './lib/docs-slug.ts'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const docs = resolve(root, 'docs')
@@ -50,23 +51,13 @@ function withoutCode(text: string): string {
   }).join('\n')
 }
 
-function slugify(str: string): string {
-  return str
-    .toLowerCase()
-    .replace(/<[^>]*>/g, '')
-    .replace(/[`*_~]/g, '')
-    .replace(/[^\p{L}\p{N}\s-]/gu, '')
-    .trim()
-    .replace(/\s+/g, '-')
-}
-
 function anchors(path: string): Set<string> {
   const raw = readFileSync(path, 'utf8')
   const headings = withoutCode(raw).split('\n').filter(line => /^#{1,6}\s+/.test(line))
   const set = new Set<string>()
   const counts = new Map<string, number>()
   for (const line of headings) {
-    const base = slugify(line.replace(/^#{1,6}\s+/, '').replace(/\s+#+$/, ''))
+    const base = documentationHeadingSlug(line.replace(/^#{1,6}\s+/, '').replace(/\s+#+$/, ''))
     const used = counts.get(base) || 0
     counts.set(base, used + 1)
     set.add(used ? `${base}-${used}` : base)

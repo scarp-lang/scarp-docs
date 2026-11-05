@@ -22,6 +22,8 @@ jobs:
         run: npm run check:tooling
       - name: Check pages and local links
         run: npm run check:docs
+      - name: Regression-test Unicode Markdown link anchors
+        run: npm run test:docs-slug
       - name: Check Hindi translation parity
         run: npm run check:i18n
       - name: Detect unsupported runnable Scarp and CLI syntax
