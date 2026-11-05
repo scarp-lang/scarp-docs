@@ -1,8 +1,8 @@
 # अपना पहला Scarp प्रोग्राम
 
-**नई शुरुआत के लिए:** [नवीनतम alpha.5 इंस्टॉलेशन](/hi/guide/installation-alpha5) तथा [alpha.5 CLI](/hi/tooling/cli-alpha5) चुनें। यह पृष्ठ पुरानी alpha.1 semantics तथा पहले alpha.4 onboarding links को इतिहास के लिए बनाए रखता है।
+**नई शुरुआत के लिए:** [सभी stages वाला सीखने का मार्ग](/hi/guide/learning-path) तथा [प्रकाशित alpha.6 release और checksum](/hi/releases/v0.0.6-alpha.1) देखें। यह पृष्ठ **पुराने alpha.1 file tutorial** के प्रमाणित code को इतिहास के लिए सुरक्षित रखता है।
 
-**पहली बार Scarp सीख रहे हैं?** वर्तमान interpreter, SHA-256 जाँच, project बनाने और static `verify` के लिए [प्रकाशित alpha.4 इंस्टॉलेशन](/hi/guide/installation) और [alpha.4 project quickstart](/hi/guide/quickstart-alpha4) देखें। यह पुरानी file guide जानबूझकर alpha.1 पर आधारित है।
+**नया पूरा project चाहिए?** [प्रकाशित alpha.6 project lab](/hi/tutorials/project-symbol-navigation-alpha6) को उसी release के interpreter से चलाएँ। [Alpha.4 project quickstart](/hi/guide/quickstart-alpha4) एक अलग ऐतिहासिक reference है। यह पुरानी file guide जानबूझकर alpha.1 पर आधारित है।
 
 यह मुख्य शुरुआती गाइड **v0.0.5-alpha.1** के लिए है। प्रकाशित **alpha.2** पर पुराने 11 compiler examples को बिना बदले चलाने वाली [सत्यापित अपग्रेड गाइड](/hi/reference/upgrade-readiness) पढ़ें। इससे हर अन्य program के compatible होने की गारंटी नहीं है।
 

@@ -1,6 +1,6 @@
 # Quickstart: your first Scarp project (v0.0.5-alpha.4)
 ::: tip Latest published compiler
-New installs should use [v0.0.5-alpha.5 installation](/guide/installation-alpha5) and the [alpha.5 CLI guide](/tooling/cli-alpha5). This alpha.4 page is intentionally pinned to its original generator, binary and stdout.
+New installs should use the [published v0.0.6-alpha.1 release and checksums](/releases/v0.0.6-alpha.1) and [release-aware learning path](/guide/learning-path). This alpha.4 page is intentionally pinned to its original generator, binary and stdout.
 :::
 
 

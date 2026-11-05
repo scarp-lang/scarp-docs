@@ -14,7 +14,7 @@ hero:
   actions:
     - theme: brand
       text: Get started
-      link: /guide/installation-alpha5
+      link: /guide/learning-path
     - theme: alt
       text: Language reference
       link: /language/overview
@@ -23,6 +23,9 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
+  - title: Choose your release-aware Scarp learning path
+    details: Follow seven verified stages from first program and numerical functions to real projects, static analysis and RMS, with per-release guidance.
+    link: /guide/learning-path
   - title: Build your first real alpha.6 project
     details: Follow a complete two-file program, learn how to inspect symbols and references, then run it with the released interpreter.
     link: /tutorials/project-symbol-navigation-alpha6

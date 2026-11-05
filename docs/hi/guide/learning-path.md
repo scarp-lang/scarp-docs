@@ -11,13 +11,13 @@ Scarp अभी **experimental prerelease** है। ऐसा **कोई प�
 
 | आपका लक्ष्य | कौन सा चरण शुरू करें? | कौन सा release चाहिए? |
 | --- | --- | --- |
-| Scarp बिलकुल नया है | [चरण 1: बुनियाद](#stage-1-foundations) | पुराने fixtures चलाने के लिए **alpha.1** |
-| `bind`, `var`, `funcra` समझते हैं | [चरण 2: modules और गणित](#stage-2-modules-and-numerical-examples) | प्रमाणित **alpha.1** |
-| Collections और नए data tools चाहिए | [चरण 3: alpha.2](#stage-3-typed-values-collections-and-diagnostics) | **v0.0.5-alpha.2** |
-| Compiler से file की static जाँच चाहिए | [चरण 4: CLI](#stage-4-static-compiler-cli) | **v0.0.5-alpha.3** |
-| पूरा project directory बनाना है | [चरण 5: project](#stage-5-verified-project-workflow) | **v0.0.5-alpha.4** |
-| Project modules को inspect करना है | [चरण 6: inspection](#stage-6-project-module-inspection) | **v0.0.5-alpha.5** |
-| नवीनतम प्रकाशित सुविधाएँ सीखनी हैं | [चरण 7: symbols और RMS](#stage-7-source-navigation-and-rms) | **v0.0.6-alpha.1** |
+| Scarp बिलकुल नया है | [चरण 1: बुनियाद](#stage-1-foundations-बुनियाद) | पुराने fixtures चलाने के लिए **alpha.1** |
+| `bind`, `var`, `funcra` समझते हैं | [चरण 2: modules और गणित](#stage-2-modules-and-numerical-examples-मॉड्यूल-और-गणना) | प्रमाणित **alpha.1** |
+| Collections और नए data tools चाहिए | [चरण 3: alpha.2](#stage-3-typed-values-collections-and-diagnostics-नए-data-प्रकार) | **v0.0.5-alpha.2** |
+| Compiler से file की static जाँच चाहिए | [चरण 4: CLI](#stage-4-static-compiler-cli-बिना-execute-किए-जाँच) | **v0.0.5-alpha.3** |
+| पूरा project directory बनाना है | [चरण 5: project](#stage-5-verified-project-workflow-पूरा-project-बनाएँ) | **v0.0.5-alpha.4** |
+| Project modules को inspect करना है | [चरण 6: inspection](#stage-6-project-module-inspection-मॉड्यूल-की-static-सूची) | **v0.0.5-alpha.5** |
+| नवीनतम प्रकाशित सुविधाएँ सीखनी हैं | [चरण 7: symbols और RMS](#stage-7-source-navigation-and-rms-नवीनतम-compiler-tools) | **v0.0.6-alpha.1** |
 
 **नए alpha.6 installation** के लिए [प्रकाशित alpha.6 release](/hi/releases/v0.0.6-alpha.1) से Windows x64, Linux x64 या macOS ARM64 archive और उसका checksum लें। डाउनलोड की गई file चलाने **से पहले SHA-256** मिलाएँ। [Alpha.5 की पुरानी installation guide](/hi/guide/installation-alpha5) के archive नाम alpha.6 के लिए नहीं हैं। Terminal में वास्तव में कौन सा compiler चल रहा है, यह जाँचें:
 

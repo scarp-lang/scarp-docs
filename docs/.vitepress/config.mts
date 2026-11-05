@@ -41,7 +41,7 @@ export default defineConfig({
         docFooter: { prev: 'पिछला', next: 'अगला' },
         lastUpdated: { text: 'अंतिम अपडेट' },
         nav: [
-          { text: 'शुरुआत', link: '/hi/releases/v0.0.6-alpha.1' },
+          { text: 'शुरुआत', link: '/hi/guide/learning-path' },
           { text: 'भाषा', link: '/hi/language/overview' },
           { text: 'CLI (alpha.6)', link: '/hi/tooling/cli-alpha6' },
           { text: 'CLI (alpha.5)', link: '/hi/tooling/cli-alpha5' },
@@ -66,11 +66,12 @@ export default defineConfig({
         sidebar: [
           { text: 'स्वागत', items: [
             { text: 'परिचय', link: '/hi/guide/introduction' },
+            { text: 'सात चरणों वाला Learning Path', link: '/hi/guide/learning-path' },
             { text: 'पहला Alpha.6 project और symbols', link: '/hi/tutorials/project-symbol-navigation-alpha6' },
             { text: 'Alpha.4 project शुरुआत', link: '/hi/guide/quickstart-alpha4' },
             { text: 'Alpha.3 file शुरुआत', link: '/hi/guide/quickstart-alpha3' },
             { text: 'Alpha.3 से alpha.4 माइग्रेशन', link: '/hi/guide/migrate-alpha3-to-alpha4' },
-            { text: 'नवीनतम इंस्टॉलेशन (alpha.5)', link: '/hi/guide/installation-alpha5' },
+            { text: 'पुराना इंस्टॉलेशन (alpha.5)', link: '/hi/guide/installation-alpha5' },
             { text: 'इंस्टॉलेशन (alpha.4)', link: '/hi/guide/installation' },
             { text: 'पहला प्रोग्राम', link: '/hi/guide/first-program' },
             { text: 'सरल शब्दावली', link: '/hi/guide/glossary' },
@@ -199,18 +200,19 @@ export default defineConfig({
         { text: 'Historical alpha.4 project workflow', link: '/releases/v0.0.5-alpha.4' },
         { text: 'Published alpha.3 and Scarp-first CLI', link: '/releases/v0.0.5-alpha.3' },
         { text: 'Published alpha.2 examples', link: '/releases/v0.0.5-alpha.2' },
-        { text: 'Shipped feature matrix (alpha.1–alpha.5)', link: '/reference/status' },
+        { text: 'Shipped feature matrix (alpha.1–alpha.6)', link: '/reference/status' },
         { text: 'Compiler releases', link: `${sourceRepo}/releases` }
       ] }
     ],
     sidebar: [
       { text: 'Welcome', items: [
         { text: 'Introduction', link: '/guide/introduction' },
+        { text: 'Learn Scarp: seven stages', link: '/guide/learning-path' },
         { text: 'First alpha.6 project and symbols', link: '/tutorials/project-symbol-navigation-alpha6' },
         { text: 'Quickstart: projects (alpha.4)', link: '/guide/quickstart-alpha4' },
         { text: 'Quickstart: individual files (alpha.3)', link: '/guide/quickstart-alpha3' },
         { text: 'Upgrade: alpha.3 to alpha.4', link: '/guide/migrate-alpha3-to-alpha4' },
-        { text: 'Current installation (alpha.5)', link: '/guide/installation-alpha5' },
+        { text: 'Historical installation (alpha.5)', link: '/guide/installation-alpha5' },
         { text: 'Installation (alpha.4)', link: '/guide/installation' },
         { text: 'Your first program', link: '/guide/first-program' },
         { text: 'Glossary for beginners', link: '/guide/glossary' },

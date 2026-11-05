@@ -4,7 +4,8 @@ Scarp के शुरुआती prereleases में syntax और API ब�
 
 | संस्करण | प्रमुख प्रकाशित सुविधा |
 | --- | --- |
-| **`v0.0.5-alpha.5`** | **नवीनतम, 4 नवंबर 2026:** project-directory module inspection; केवल Rust embedding के लिए सीमित C11 emitter; [release](/hi/releases/v0.0.5-alpha.5) |
+| **`v0.0.6-alpha.1`** | **नवीनतम, 5 नवंबर 2026:** static symbols/references JSON inspection तथा `rms(vector)`; [release](/hi/releases/v0.0.6-alpha.1), [पूरा project lab](/hi/tutorials/project-symbol-navigation-alpha6) |
+| **`v0.0.5-alpha.5`** | पिछला, 4 नवंबर 2026: project-directory module inspection; केवल Rust embedding के लिए सीमित C11 emitter; [release](/hi/releases/v0.0.5-alpha.5) |
 | **`v0.0.5-alpha.4`** | 3 नवंबर: नया project create, static verify DIRECTORY, launch; [project guide](/hi/releases/v0.0.5-alpha.4) |
 | `v0.0.1` | integer arithmetic, शुरुआती printing |
 | `v0.0.2` | bindings, scopes, strings, boolean, branching |
@@ -22,13 +23,19 @@ Scarp के शुरुआती prereleases में syntax और API ब�
 
 ## नया प्रकाशित alpha.3 और CLI migration
 
-**नवीनतम संस्करण [v0.0.5-alpha.3](/hi/releases/v0.0.5-alpha.3)** 2 नवंबर 2026 को जारी हुआ। इसका source commit `7715c28df09c7703b39e14fddb963275b25df476` है। इसमें `exec`, static `verify`, `inspect`, offline `diagnose` तथा Unicode text construction जुड़ते हैं। पुराने `run`/`check`/`tokens`/`modules` अभी समर्थित हैं। **Alpha.1 → alpha.2 परीक्षण से alpha.3 के हर पुराने program की compatibility सिद्ध नहीं होती।** चार alpha.3 प्रोग्राम नए guide में अलग जाँचे जाते हैं।
+**ऐतिहासिक संस्करण [v0.0.5-alpha.3](/hi/releases/v0.0.5-alpha.3)** 2 नवंबर 2026 को जारी हुआ। इसका source commit `7715c28df09c7703b39e14fddb963275b25df476` है। इसमें `exec`, static `verify`, `inspect`, offline `diagnose` तथा Unicode text construction जुड़ते हैं। पुराने `run`/`check`/`tokens`/`modules` अभी समर्थित हैं। **Alpha.1 → alpha.2 परीक्षण से alpha.3 के हर पुराने program की compatibility सिद्ध नहीं होती।** चार alpha.3 प्रोग्राम नए guide में अलग जाँचे जाते हैं।
 
-## नवीनतम प्रकाशित alpha.5 की compatibility सीमा
+## पिछले प्रकाशित alpha.5 की compatibility सीमा
 
 आधिकारिक [v0.0.5-alpha.5](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.5) का exact commit `2eeed0aa52ccb59523307841ad8ffbd83f8911a8` है। Alpha.5 में पहली बार `scarp inspect modules --json DIRECTORY` उपलब्ध है; alpha.4 में केवल file inspection समर्थित था। C11 scalar emitter सिर्फ **Rust embedding API** में है, `scarp compile` CLI नहीं। [alpha.5 CLI](/hi/tooling/cli-alpha5), [C11 सीमाएँ](/hi/reference/c11-backend-alpha5) और [इंस्टॉलेशन](/hi/guide/installation-alpha5) देखें।
 
 पुराने version की syntax की सामान्य compatibility **सिद्ध नहीं** है। पुराने examples को उसी tagged version से जाँचें; version-specific tutorials और manifests को बदलकर नया tag न दें।
+
+## नवीनतम प्रकाशित alpha.6 की compatibility सीमा
+
+वर्तमान प्रकाशित compiler [v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1) का source commit `aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8` है। इसमें `scarp inspect symbols --json` तथा `scarp inspect references --json` से file या explicit project directory के definitions/references देख सकते हैं। साथ में `rms(vector)` भी प्रकाशित हुआ है। Symbol IDs केवल **एक compilation snapshot** के लिए हैं; कोई तैयार LSP, rename या incremental cache उपलब्ध नहीं है। [Alpha.6 CLI](/hi/tooling/cli-alpha6), [RMS पाठ](/hi/language/rms-alpha6) और [project lab](/hi/tutorials/project-symbol-navigation-alpha6) पढ़ें।
+
+[सात चरणों वाला learning path](/hi/guide/learning-path) हर पुराने tutorial के लिए **सही compiler release** बताता है। नए features के आने से सभी पुराने source files के compatible होने का प्रमाण नहीं मिलता। Native `.srp` executable compiler CLI और general tensor runtime अभी नहीं हैं।
 
 ## पुराना स्रोत migrate करना
 
