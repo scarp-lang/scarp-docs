@@ -151,8 +151,16 @@ jobs:
           path: .compiler-alpha5
       - name: Check exact published alpha.5 source commit
         run: test "$(git -C .compiler-alpha5 rev-parse HEAD)" = "2eeed0aa52ccb59523307841ad8ffbd83f8911a8"
-      - name: Validate compiler-evidence links across five published tags
-        run: npm run check:evidence -- .compiler .compiler-alpha2 .compiler-alpha3 .compiler-alpha4 .compiler-alpha5
+      - uses: actions/checkout@v4
+        with:
+          repository: scarp-lang/scarp
+          ref: aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8
+          path: .compiler-alpha6
+          persist-credentials: false
+      - name: Verify exact published alpha.6 source commit
+        run: test "$(git -C .compiler-alpha6 rev-parse HEAD)" = "aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8"
+      - name: Validate compiler-evidence links across six published tags
+        run: npm run check:evidence -- .compiler .compiler-alpha2 .compiler-alpha3 .compiler-alpha4 .compiler-alpha5 .compiler-alpha6
       - name: Build released Scarp interpreter
         run: cargo build --manifest-path .compiler/Cargo.toml --locked --offline
       - name: Execute all documented conformance examples
