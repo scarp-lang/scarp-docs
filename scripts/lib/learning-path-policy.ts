@@ -177,7 +177,7 @@ export function validateLearningPath(pages: LearningPathPages, release: Alpha6Ma
       ? '[प्रकाशित v0.0.6-alpha.1 release और checksum]'
       : '[published v0.0.6-alpha.1 release and checksums]'
     if (!quick.includes(exactLatestQuickstart)) {
-      fail(locale + ': historical quickstart's visible latest-release guidance is stale')
+      fail(locale + ': visible latest-release guidance in the historical quickstart is stale')
     }
     if (!compat.includes(']('+(locale==='Hindi'?'/hi':'')+'/guide/learning-path)')) {
       fail(locale + ': compatibility page does not link to learner journey')
