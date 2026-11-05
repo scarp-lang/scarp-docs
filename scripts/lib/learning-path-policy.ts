@@ -142,6 +142,20 @@ export function validateLearningPath(pages: LearningPathPages, release: Alpha6Ma
   ] as const) {
     if (!page.includes(expected)) fail(name + ': missing discoverable learning-path link')
   }
+  // The primary home action + feature card and introductory overview + study
+  // instructions should each retain a visible learning-path entry in both locales.
+  for (const [locale,home,intro,prefix] of [
+    ['English',pages.homeEnglish,pages.introEnglish,''],
+    ['Hindi',pages.homeHindi,pages.introHindi,'/hi']
+  ] as const) {
+    const course = prefix + '/guide/learning-path'
+    if (home.split('link: ' + course).length - 1 < 2) {
+      fail(locale + ': both homepage hero and feature card must link to learning path')
+    }
+    if (intro.split('](' + course + ')').length - 1 < 2) {
+      fail(locale + ': both introduction onboarding and guide section must link to course')
+    }
+  }
   // The learning path must be reachable from *both* top navigation and sidebar.
   // Requiring two occurrences catches accidental removal from either location.
   for (const prefix of ['', '/hi']) {
