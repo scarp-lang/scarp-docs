@@ -14,7 +14,7 @@ hero:
   actions:
     - theme: brand
       text: शुरुआत करें
-      link: /hi/guide/installation-alpha5
+      link: /hi/guide/learning-path
     - theme: alt
       text: भाषा संदर्भ
       link: /hi/language/overview
@@ -23,6 +23,9 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
+  - title: सात चरणों में Scarp सीखें
+    details: शुरुआती प्रोग्राम से numerical examples, modules, projects और symbols तक सही compiler release के साथ पूरा रास्ता।
+    link: /hi/guide/learning-path
   - title: पहला पूरा alpha.6 project बनाएँ
     details: दो असली source files से module, symbols और references समझें, फिर प्रकाशित interpreter से सही output चलाएँ।
     link: /hi/tutorials/project-symbol-navigation-alpha6

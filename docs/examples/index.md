@@ -6,6 +6,10 @@ The official [compiler examples directory](https://github.com/scarp-lang/scarp/t
 
 Follow the [complete, verified two-file project and symbol-navigation lab](/tutorials/project-symbol-navigation-alpha6). It recreates the published alpha.6 source under a real `Scarp.project`, checks symbols and references without executing, and confirms the exact interpreter output. The older examples below remain pinned to the alpha.1 baseline.
 
+## Learn from first program to compiler tooling
+
+Start with the [seven-stage, release-aware learning path](/guide/learning-path), then return here for complete compiler-owned examples. Different stages use **different published compiler versions**; do not assume all historical examples work with the latest prerelease.
+
 ## Hello, Scarp
 
 Source: [examples/hello.srp](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/examples/hello.srp).

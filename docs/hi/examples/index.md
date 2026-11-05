@@ -6,6 +6,10 @@
 
 [दो files वाला, compiler-tested project और symbol-navigation tutorial](/hi/tutorials/project-symbol-navigation-alpha6) शुरू से करें। इसमें प्रकाशित alpha.6 source से `Scarp.project` बनाना, execution के बिना symbols/references जाँचना और सही interpreter output चलाना सिखाया गया है। नीचे के पुराने उदाहरण alpha.1 baseline के हैं।
 
+## पहले प्रोग्राम से compiler tools तक सीखें
+
+[सात चरणों वाला, हर release के अनुसार learning path](/hi/guide/learning-path) पढ़ें। उसके बाद यहाँ compiler के पूरे और प्रमाणित examples देखें। अलग चरणों के लिए **अलग प्रकाशित compiler versions** तय हैं; सभी पुराने examples को नवीनतम compiler में बिना जाँच न चलाएँ।
+
 ## Hello Scarp
 
 ~~~scarp

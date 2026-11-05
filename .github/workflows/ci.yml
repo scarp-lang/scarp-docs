@@ -22,6 +22,8 @@ jobs:
         run: npm run check:tooling
       - name: Check pages and local links
         run: npm run check:docs
+      - name: Regression-test Unicode Markdown link anchors
+        run: npm run test:docs-slug
       - name: Check Hindi translation parity
         run: npm run check:i18n
       - name: Detect unsupported runnable Scarp and CLI syntax
@@ -88,6 +90,10 @@ jobs:
         run: npm run check:alpha6-project
       - name: Mutation-test project syntax, exact output, translator parity and navigation
         run: npm run test:alpha6-project
+      - name: Check bilingual learning path, staged release boundaries and current onboarding
+        run: npm run check:learning-path
+      - name: Mutation-test release-aware learning and outdated latest-version claims
+        run: npm run test:learning-path
       - name: Test latest compiler release detection without network
         run: npm run test:compiler-release-drift
       - name: Validate docs-only prerelease metadata and version
