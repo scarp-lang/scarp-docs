@@ -41,8 +41,9 @@ export default defineConfig({
         docFooter: { prev: 'पिछला', next: 'अगला' },
         lastUpdated: { text: 'अंतिम अपडेट' },
         nav: [
-          { text: 'शुरुआत', link: '/hi/guide/installation-alpha5' },
+          { text: 'शुरुआत', link: '/hi/releases/v0.0.6-alpha.1' },
           { text: 'भाषा', link: '/hi/language/overview' },
+          { text: 'CLI (alpha.6)', link: '/hi/tooling/cli-alpha6' },
           { text: 'CLI (alpha.5)', link: '/hi/tooling/cli-alpha5' },
           { text: 'CLI (alpha.4)', link: '/hi/tooling/cli-alpha4' },
           { text: 'उदाहरण', link: '/hi/examples/' },
@@ -56,7 +57,8 @@ export default defineConfig({
             { text: 'Discord #language-development', link: 'https://discord.com/channels/1566388621085253663/1566388870826827856' },
             { text: 'Reddit', link: 'https://www.reddit.com/r/ScarpLang/' }
           ] },
-          { text: 'नवीनतम: v0.0.5-alpha.5', link: '/hi/releases/v0.0.5-alpha.5' },
+          { text: 'नवीनतम: v0.0.6-alpha.1', link: '/hi/releases/v0.0.6-alpha.1' },
+          { text: 'पिछला: v0.0.5-alpha.5', link: '/hi/releases/v0.0.5-alpha.5' },
           { text: 'Alpha.2 रिलीज़', link: '/hi/releases/v0.0.5-alpha.2' },
           { text: 'अपग्रेड जाँच: alpha.1 → alpha.2', link: '/hi/reference/upgrade-readiness' },
           { text: 'संदर्भ: v0.0.5-alpha.1', link: '/hi/reference/status' }
@@ -96,9 +98,11 @@ export default defineConfig({
             { text: 'Modules और public API (alpha.1–alpha.2)', link: '/hi/language/modules-and-visibility' },
             { text: 'आउटपुट', link: '/hi/language/output' },
             { text: 'मेमोरी', link: '/hi/language/memory' },
-            { text: 'वैक्टर और टाइल', link: '/hi/language/numerics' }
+            { text: 'वैक्टर और टाइल', link: '/hi/language/numerics' },
+            { text: 'RMS (alpha.6)', link: '/hi/language/rms-alpha6' }
           ] },
           { text: 'टूलिंग और संदर्भ', items: [
+            { text: 'CLI (alpha.6) — symbols', link: '/hi/tooling/cli-alpha6' },
             { text: 'CLI संदर्भ (alpha.5)', link: '/hi/tooling/cli-alpha5' },
             { text: 'CLI संदर्भ (alpha.4)', link: '/hi/tooling/cli-alpha4' },
             { text: 'ऐतिहासिक CLI (alpha.3)', link: '/hi/tooling/cli' },
@@ -120,6 +124,7 @@ export default defineConfig({
             { text: 'उदाहरण', link: '/hi/examples/' },
             { text: 'सोशल लिंक', link: '/hi/community/social' },
             { text: 'योगदान करें', link: '/hi/community/contributing' },
+            { text: 'Alpha.6 symbols और RMS', link: '/hi/releases/v0.0.6-alpha.1' },
             { text: 'Alpha.5 प्रकाशित बदलाव', link: '/hi/releases/v0.0.5-alpha.5' },
             { text: 'Alpha.4 project workflow', link: '/hi/releases/v0.0.5-alpha.4' },
             { text: 'Alpha.3 रिलीज़ और CLI', link: '/hi/releases/v0.0.5-alpha.3' },
@@ -167,8 +172,9 @@ export default defineConfig({
       { icon: 'threads', link: 'https://www.threads.net/@scarplang', ariaLabel: 'Scarp on Threads' }
     ],
     nav: [
-      { text: 'Guide', link: '/guide/installation-alpha5' },
+      { text: 'Guide', link: '/releases/v0.0.6-alpha.1' },
       { text: 'Language', link: '/language/overview' },
+      { text: 'CLI (alpha.6)', link: '/tooling/cli-alpha6' },
       { text: 'CLI (alpha.5)', link: '/tooling/cli-alpha5' },
       { text: 'CLI (alpha.4)', link: '/tooling/cli-alpha4' },
       { text: 'Examples', link: '/examples/' },
@@ -182,7 +188,10 @@ export default defineConfig({
         { text: 'Official channels', link: '/community/social' },
         { text: 'Contributing', link: '/community/contributing' }
       ] },
-      { text: 'v0.0.5-alpha.5 (latest)', items: [
+      { text: 'v0.0.6-alpha.1 (latest)', items: [
+        { text: 'Published alpha.6 release', link: '/releases/v0.0.6-alpha.1' },
+        { text: 'Symbol navigation', link: '/tooling/cli-alpha6' },
+        { text: 'Numerical RMS', link: '/language/rms-alpha6' },
         { text: 'Published alpha.5 changes', link: '/releases/v0.0.5-alpha.5' },
         { text: 'Experimental C11 Rust API', link: '/reference/c11-backend-alpha5' },
         { text: 'Published alpha.5 changes', link: '/releases/v0.0.5-alpha.5' },
@@ -228,9 +237,11 @@ export default defineConfig({
         { text: 'Modules, visibility and inspection (alpha.1–alpha.2)', link: '/language/modules-and-visibility' },
         { text: 'Output streams', link: '/language/output' },
         { text: 'Memory and lifetimes', link: '/language/memory' },
-        { text: 'Vectors and tiles', link: '/language/numerics' }
+        { text: 'Vectors and tiles', link: '/language/numerics' },
+        { text: 'RMS numerics (alpha.6)', link: '/language/rms-alpha6' }
       ] },
       { text: 'Tools and reference', items: [
+        { text: 'Command-line interface (alpha.6)', link: '/tooling/cli-alpha6' },
         { text: 'Command-line interface (alpha.5)', link: '/tooling/cli-alpha5' },
         { text: 'Command-line interface (alpha.4)', link: '/tooling/cli-alpha4' },
         { text: 'Historical CLI (alpha.3)', link: '/tooling/cli' },
@@ -252,7 +263,8 @@ export default defineConfig({
         { text: 'Verified examples', link: '/examples/' },
         { text: 'Official social channels', link: '/community/social' },
         { text: 'Contributing', link: '/community/contributing' },
-        { text: 'Latest alpha.4 project workflow', link: '/releases/v0.0.5-alpha.4' },
+        { text: 'Current alpha.6 release and symbols', link: '/releases/v0.0.6-alpha.1' },
+        { text: 'Historical alpha.4 project workflow', link: '/releases/v0.0.5-alpha.4' },
         { text: 'Published alpha.3 CLI', link: '/releases/v0.0.5-alpha.3' },
         { text: 'Alpha.2 release evidence', link: '/releases/v0.0.5-alpha.2' },
         { text: 'Docs maintainer checklist', link: '/project/maintenance' },

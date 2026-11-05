@@ -3,9 +3,9 @@
 <!-- scarp-release-status: v0.0.5-alpha.5 -->
 <!-- scarp-main-reference-baseline: v0.0.5-alpha.1 -->
 
-**नवीनतम प्रकाशित compiler: [v0.0.5-alpha.5](/hi/releases/v0.0.5-alpha.5), 4 नवंबर 2026।** मुख्य language-reference अध्याय जानबूझकर **v0.0.5-alpha.1** पर आधारित हैं। Alpha.2, alpha.3, alpha.4 तथा alpha.5 की सत्यापित सुविधाओं के अलग release guides हैं। **सभी experimental prereleases हैं।** Stable compatibility की गारंटी नहीं है।
+**नवीनतम प्रकाशित compiler: [v0.0.6-alpha.1](/hi/releases/v0.0.6-alpha.1), 5 नवंबर 2026।** मुख्य language-reference अध्याय जानबूझकर **v0.0.5-alpha.1** पर आधारित हैं। Alpha.2, alpha.3, alpha.4, alpha.5 तथा alpha.6 की सत्यापित सुविधाओं के अलग release guides हैं। **सभी experimental prereleases हैं।** Stable compatibility की गारंटी नहीं है।
 
-नए उपयोग के लिए [प्रकाशित alpha.5 इंस्टॉलेशन](/hi/guide/installation-alpha5) और [alpha.5 CLI](/hi/tooling/cli-alpha5) पढ़ें। पुरानी project-generation प्रक्रिया [alpha.4 quickstart](/hi/guide/quickstart-alpha4) में है। पुराने individual file commands के लिए [alpha.3 CLI reference](/hi/tooling/cli) उपलब्ध है। पुराने programs migrate करने से पहले [version compatibility](/hi/reference/compatibility) जाँचें।
+नए alpha.6 के लिए [रिलीज़ archive और checksum जाँच](/hi/releases/v0.0.6-alpha.1) पढ़ें। पुराने alpha.5 के लिए [प्रकाशित alpha.5 इंस्टॉलेशन](/hi/guide/installation-alpha5) और [alpha.5 CLI](/hi/tooling/cli-alpha5) पढ़ें। पुरानी project-generation प्रक्रिया [alpha.4 quickstart](/hi/guide/quickstart-alpha4) में है। पुराने individual file commands के लिए [alpha.3 CLI reference](/hi/tooling/cli) उपलब्ध है। पुराने programs migrate करने से पहले [version compatibility](/hi/reference/compatibility) जाँचें।
 
 ## प्रकाशित releases का compiler प्रमाण
 
@@ -16,12 +16,13 @@
 | **[v0.0.5-alpha.3](/hi/releases/v0.0.5-alpha.3)** (2 नवंबर 2026) | `7715c28df09c7703b39e14fddb963275b25df476` | **4** पूरे tagged programs, JSON diagnostic और CLI tests | [Alpha.3 guide](/hi/releases/v0.0.5-alpha.3) |
 | **[v0.0.5-alpha.4](/hi/releases/v0.0.5-alpha.4)** (3 नवंबर 2026) | `79141329176f5dce51457e90a6652902f6432135` | Generated project manifest, source और stdout का अलग alpha.4 lifecycle test | [Alpha.4 guide](/hi/releases/v0.0.5-alpha.4) |
 | **[v0.0.5-alpha.5](/hi/releases/v0.0.5-alpha.5)** (4 नवंबर 2026) | `2eeed0aa52ccb59523307841ad8ffbd83f8911a8` | **1** प्रकाशित scalar-repeat source तथा project-directory module inspection और Rust-only C11 backend की जाँच | [Alpha.5 guide](/hi/releases/v0.0.5-alpha.5) |
+| **[v0.0.6-alpha.1](/hi/releases/v0.0.6-alpha.1)** (5 नवंबर 2026) | `aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8` | **2** प्रकाशित executable examples, symbols/references JSON schema, static source navigation तथा सुरक्षित RMS गणना | [Alpha.6 guide](/hi/releases/v0.0.6-alpha.1) |
 
 यह संख्या प्रत्येक release के **अलग सत्यापित examples** की है; पूरे language features की संख्या या हर पुराने program की compatibility का प्रमाण नहीं। [Alpha.1 → alpha.2 upgrade gate](/hi/reference/upgrade-readiness) में मूल 11 programs को alpha.2 पर दोबारा चलाया जाता है; इससे alpha.3 की सामान्य backward compatibility सिद्ध नहीं होती।
 
 ## मुख्य संदर्भ: v0.0.5-alpha.1 में उपलब्ध सुविधाएँ
 
-यह table **केवल alpha.1 baseline** का है, नवीनतम alpha.5 की पूरी सूची नहीं:
+यह table **केवल alpha.1 baseline** का है, नवीनतम alpha.6 की पूरी सूची नहीं:
 
 | उपलब्ध सुविधा | Alpha.1 का प्रकाशित प्रमाण |
 | --- | --- |

@@ -1,0 +1,51 @@
+{
+  "compilerRepository": "scarp-lang/scarp",
+  "compilerRef": "v0.0.6-alpha.1",
+  "compilerCommit": "aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8",
+  "releasedAt": "2026-11-05T11:39:49Z",
+  "status": "published-prerelease",
+  "schemaVersion": 1,
+  "assets": [
+    "scarp-0.0.6-alpha.1-x86_64-pc-windows-msvc.zip",
+    "scarp-0.0.6-alpha.1-x86_64-unknown-linux-gnu.tar.gz",
+    "scarp-0.0.6-alpha.1-aarch64-apple-darwin.tar.gz",
+    "SHA256SUMS"
+  ],
+  "fixtures": {
+    "root_mean_square.srp": {
+      "path": "conformance/alpha6/root_mean_square.srp",
+      "compilerPath": "examples/root_mean_square.srp",
+      "gitBlobSha": "d5d973bfec1614c67474dd70ef727728af5b8db3"
+    },
+    "root_mean_square.stdout": {
+      "path": "conformance/alpha6/root_mean_square.stdout",
+      "compilerPath": "examples/root_mean_square.stdout",
+      "gitBlobSha": "61aa0adb780e6a3518a337a978b85a4d3bfedfc8"
+    },
+    "symbol_navigation.srp": {
+      "path": "conformance/alpha6/symbol_navigation.srp",
+      "compilerPath": "examples/symbol_navigation.srp",
+      "gitBlobSha": "478b5cbf45009a6671bfde6bbf480121af32b49f"
+    },
+    "symbol_navigation.stdout": {
+      "path": "conformance/alpha6/symbol_navigation.stdout",
+      "compilerPath": "examples/symbol_navigation.stdout",
+      "gitBlobSha": "64bb6b746dceaf12b0ba8c08f310b0426babde44"
+    },
+    "symbol_navigation.symbols.json": {
+      "path": "conformance/alpha6/symbol_navigation.symbols.json",
+      "compilerPath": "examples/symbol_navigation.symbols.json",
+      "gitBlobSha": "f7085e8d0140ce5615d121c1afd673bb488e1503"
+    },
+    "symbol_navigation.references.json": {
+      "path": "conformance/alpha6/symbol_navigation.references.json",
+      "compilerPath": "examples/symbol_navigation.references.json",
+      "gitBlobSha": "a0d0b8c4e0c5523234ca0491191a2b7e7d968b14"
+    },
+    "modules/navigation_values.srp": {
+      "path": "conformance/alpha6/modules/navigation_values.srp",
+      "compilerPath": "examples/modules/navigation_values.srp",
+      "gitBlobSha": "07c02962872609afc3d55264f273fddb21a437d2"
+    }
+  }
+}

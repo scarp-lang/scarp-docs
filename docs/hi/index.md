@@ -23,9 +23,9 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
-  - title: नवीनतम alpha.5 compiler से शुरुआत
-    details: सही archive और checksum जाँचें, नया project बनाएँ और static verify तथा launch का अंतर समझें।
-    link: /hi/guide/quickstart-alpha4
+  - title: नवीनतम प्रकाशित alpha.6 compiler
+    details: सही archive और checksum की जाँच, static symbols और references तथा RMS के प्रकाशित उदाहरण सीखें।
+    link: /hi/releases/v0.0.6-alpha.1
   - title: हिन्दी में पूरी दस्तावेज़ संरचना
     details: स्थापना, वेरिएबल, फ़ंक्शन, मॉड्यूल, मेमोरी और CLI को हिन्दी में समझें।
     link: /hi/guide/introduction
@@ -50,14 +50,20 @@ features:
   - title: Alpha.1 से alpha.2 अपग्रेड का प्रमाण
     details: पुराने 11 compiler examples को नए प्रकाशित interpreter पर बिना बदले चलाकर stdout की सटीक जाँच।
     link: /hi/reference/upgrade-readiness
-  - title: नवीनतम alpha.5 module inspection और C11 API
+  - title: पुराना alpha.5 module inspection और C11 API
     details: प्रकाशित alpha.5 में project module inspection तथा प्रयोगात्मक Rust-only C11 emitter; interpreter अभी native compiler नहीं है।
     link: /hi/releases/v0.0.5-alpha.5
+  - title: Source code symbols और references
+    details: प्रकाशित alpha.6 में definitions, references, versioned JSON और static inspection की सीमाएँ जानें।
+    link: /hi/tooling/cli-alpha6
+  - title: RMS और numerical उदाहरण
+    details: Tag के असली compiler output के साथ RMS formula, floating-point सावधानियाँ और बजट समझें।
+    link: /hi/language/rms-alpha6
   - title: Scarp समुदाय
     details: आधिकारिक GitHub, DEV, Reddit और अन्य सार्वजनिक चैनल।
     link: /hi/community/social
 ---
 
 ::: warning प्रयोगात्मक रिलीज़
-नवीनतम प्रकाशित compiler **[v0.0.5-alpha.5](/hi/releases/v0.0.5-alpha.5)** है, जबकि अधिकतर मुख्य reference अभी अलग से सत्यापित **v0.0.5-alpha.1** पर आधारित है। सभी experimental prereleases हैं। पुराने code के लिए [अपग्रेड की जाँच](/hi/reference/upgrade-readiness) और [फ़ीचर स्थिति](/hi/reference/status) पढ़ें।
+नवीनतम प्रकाशित compiler **[v0.0.6-alpha.1](/hi/releases/v0.0.6-alpha.1)** है, जबकि अधिकतर मुख्य reference अभी अलग से सत्यापित **v0.0.5-alpha.1** पर आधारित है। सभी experimental prereleases हैं। पुराने code के लिए [अपग्रेड की जाँच](/hi/reference/upgrade-readiness) और [फ़ीचर स्थिति](/hi/reference/status) पढ़ें।
 :::
