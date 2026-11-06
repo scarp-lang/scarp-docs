@@ -22,7 +22,7 @@ jobs:
         run: npm run scarp:test
       - name: Ensure documentation tooling uses TypeScript
         run: npm run check:tooling
-      - name: Verify supported Vue/TypeScript toolchain and dependency-update policy
+      - name: Verify Scarp-owned TypeScript renderer, parsing libraries and update policy
         run: npm run check:toolchain && npm run test:toolchain
       - name: Check pages and local links
         run: npm run check:docs
