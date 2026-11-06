@@ -8,6 +8,8 @@
 
 पहले `scarp --version` आज़माएँ। यदि कमांड न मिले तो archive में executable का पूरा path लिखें या Cargo के binary folder को `PATH` में जोड़ें। Source checkout में `cargo run -- --version` से सही build पहचानें।
 
+चल रहे binary का version, host और सुविधाएँ समझने के लिए [`scarp diagnose --json`](/hi/tooling/diagnose-alpha6) पढ़ें। यह offline जानकारी है; native compiler होने का दावा नहीं।
+
 ## Unknown command या पुराना syntax
 
 **प्रकाशित alpha.6** (और पुराने alpha.5 project workflow) में file चलाने के लिए `scarp exec FILE.srp`, static जाँच के लिए `scarp verify FILE.srp`, और project के लिए `scarp create DIRECTORY`, `scarp verify DIRECTORY`, `scarp launch DIRECTORY` उपलब्ध हैं। Project module inspection `scarp inspect modules --json DIRECTORY` से चलती है। Alpha.6 में `scarp inspect symbols --json FILE.srp` तथा `scarp inspect references --json FILE.srp` भी हैं। `scarp build` और `scarp compile` **उपलब्ध नहीं**; `cargo build` केवल Rust interpreter बनाता है। पुराने उदाहरणों में `let` बनाम नए `bind`/`var` और `println` बनाम `print` का अंतर हो सकता है। [वर्ज़न तुलना](/hi/reference/compatibility) देखें।
