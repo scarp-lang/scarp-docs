@@ -13,7 +13,7 @@
     "scarp:browser-test": "tsx scripts/scarp-site/browser-test.ts",
     "package:offline": "tsx scripts/package-offline.ts",
     "test:offline": "tsx scripts/test-offline.ts",
-    "test:browser-offline": "tsx scripts/test-browser-offline.ts",
+    "test:browser-offline": "tsx scripts/test-scarp-offline-browser.ts",
     "typecheck": "vue-tsc --noEmit -p tsconfig.json",
     "check:tooling": "tsx scripts/check-tooling.ts",
     "check:toolchain": "tsx scripts/check-toolchain.ts",
