@@ -44,7 +44,7 @@ jobs:
       - name: Build and test downloadable offline documentation archive
         run: npm run package:offline && npm run test:offline
       - name: Upload versioned offline snapshot and SHA-256 checksum
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: scarp-docs-offline-${{ github.sha }}
           path: |
