@@ -36,13 +36,13 @@ The offline browser job now runs **axe-core 4.14.0** from the pinned local npm d
 
 The checks run automatically within `npm run test:browser-offline` after `npm run docs:build && npm run package:offline`. If an audit reports a violation, inspect its concrete rule ID, offending selector and remediation in the uploaded JSON rather than excluding the rule. Review `incomplete` manual-review signals as well. These tests catch common machine-detectable accessibility issues but **cannot establish WCAG compliance**, screen-reader compatibility, color differentiation perception, or real-user navigation quality. Manual assistive-technology review remains tracked under [Issue #65](https://github.com/scarp-lang/scarp-docs/issues/65).
 
-## Supported TypeScript and Vue toolchain
+## Scarp-owned TypeScript toolchain
 
-The docs run strict Vue SFC checks through `vue-tsc`. The tested compatibility line is **TypeScript 6.0.x** with **vue-tsc 3.3.x**. TypeScript 7.0 removes the programmatic TypeScript API expected by Vue's checker, causing `ERR_PACKAGE_PATH_NOT_EXPORTED` before actual document diagnostics run. This is an **upstream integration limitation**, not evidence that the TypeScript 7 compiler itself is defective.
+The documentation site is generated with Scarp-owned TypeScript and the separately pinned `markdown-it` and `yaml` parsers. The browser UI is compiled from standalone TypeScript and does not load VitePress or Vue. Type-check with `npm run typecheck`; it uses `tsc` directly, not a Vue-specific checker.
 
-**Known patch regression:** `vue-tsc` **3.3.14** has a [reported URL-in-template code-generation bug](https://github.com/vuejs/language-tools/issues/6322) that can introduce false TS2339/TS7006 errors when a Vue template contains a literal URL. The project remains pinned to **3.3.13** and Dependabot ignores **3.3.14 specifically**; it can propose a later patch after an upstream fix. An existing passing CI run is not proof that every future Vue template pattern is safe.
+The TypeScript 6.0.x pin and Dependabot major-version review remain in place because the build calls the TypeScript `transpileModule` API directly. Review TypeScript 7 compiler API compatibility and all compiler/browser checks before changing the major version. `npm run check:toolchain` and `npm run test:toolchain` guard these constraints.
 
-Until Vue tooling supports TypeScript 7, the npm Dependabot configuration ignores TypeScript **major** upgrades. It still permits compatible fixes. `npm run check:toolchain` verifies the dependency and ignore-policy contract, `npm run test:toolchain` mutation-tests it, and `npm run typecheck` checks real .ts and .vue sources. Reconsider this hold only after a new Vue toolchain supports the relevant TypeScript API **and** all GitHub CI and Pages checks pass; do not merge a major dependency PR merely because its diff is small.
+Published compiler-release data, SEO URL pairing, and deployment-count policy are in canonical `scripts/lib/` modules. `npm run test:neutral-libraries` verifies that temporary historical imports only forward to those canonical modules, so the old tree cannot silently fork compiler facts or public URLs.
 
 ## Local quality gates
 
