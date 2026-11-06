@@ -162,6 +162,13 @@ function installSearch():void {
   })
   input.addEventListener('input',()=>{void refresh()})
   document.addEventListener('keydown',event=>{
+    // Search inputs may consume Escape to clear their own value. The explicit
+    // handler guarantees the dialog always closes and restores trigger focus.
+    if(event.key==='Escape'&&dialog.open){
+      event.preventDefault()
+      dialog.close()
+      return
+    }
     const target=event.target as HTMLElement
     const typing=target.closest('input,textarea,select,[contenteditable="true"]')
     if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='k'){
