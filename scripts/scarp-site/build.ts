@@ -168,7 +168,7 @@ export async function buildSite():Promise<{pages:number;assets:number}>{
   assert.equal(routes.size,views.length,'Generated public routes must be unique')
   const searchIndex:IndexEntry[]=views.map(view=>({
     route:view.route,title:view.page.title,locale:view.locale,
-    section:groupFor(view.source),excerpt:view.page.bodyText.slice(0,2500)
+    section:groupFor(view.source),excerpt:view.page.bodyText
   }))
   for(const view of views){
     const dest=join(siteRoot,htmlPath(view.source))
