@@ -58,6 +58,8 @@ The included server binds only to **127.0.0.1** (this computer). Stop with **Ctr
 
 ## What works offline?
 
+**Automated accessibility checks:** The offline test suite scans a selection of actual English/Hindi pages and interactive states with locally bundled axe-core WCAG A/AA rules and checks 320px-wide reflow. These checks find common machine-detectable problems; they **do not replace** manual keyboard, screen-reader or contrast perception reviews.
+
 **Automated browser verification:** the documentation CI now starts the extracted local server in headless Chromium and checks English/Hindi Command Finder interaction, real clipboard success and denied permissions, keyboard-activated local search and its empty-results state, language switching, skip-to-content, persisted dark/light appearance, mobile navigation, reduced-motion operation and the absence of external requests. The browser runs locally against the packaged archive, not the hosted GitHub Pages site. This does not constitute a complete WCAG audit.
 
 The snapshot includes **all generated English and Hindi pages**, their local CSS/JavaScript, and the assets used by VitePress local search and the version-aware [Command Finder](/tooling/command-finder). Regular internal navigation runs against your local server. Links to GitHub, official releases, social profiles, or other external sites **still require internet**. The browser's actual keyboard/search behavior is being tracked separately in [accessibility test issue #65](https://github.com/scarp-lang/scarp-docs/issues/65); static asset checks are not equivalent to a full browser accessibility audit.
