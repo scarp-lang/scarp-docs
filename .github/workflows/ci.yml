@@ -114,6 +114,8 @@ jobs:
         run: npm run test:site-meta
       - name: Unit-test typed deployment API and fallbacks
         run: npm run test:pages-api
+      - name: Unit-test live Pages routes and failure diagnostics without network
+        run: npm run test:live-site
       - name: Build VitePress site
         run: npm run docs:build
       - name: Verify bilingual generated HTML and SEO metadata
