@@ -200,6 +200,9 @@ async function emptySearchAndFocus(base: string, locale: typeof pages[number]): 
       .waitFor({ state: 'visible', timeout: 15000 })
     await page.keyboard.press('Escape')
     await input.waitFor({ state: 'hidden' })
+    await page.waitForFunction(() =>
+      document.activeElement === document.querySelector('.VPNavBarSearch button.DocSearch-Button'),
+      undefined, { timeout: 5000 })
     assert.equal(await trigger.evaluate(element => element === document.activeElement), true,
       locale.locale + ': search close must return focus to original trigger')
     assert.deepEqual(external, [], locale.locale + ': no-results lookup accessed external network')
