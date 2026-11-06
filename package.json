@@ -14,7 +14,7 @@
     "package:offline": "tsx scripts/package-offline.ts",
     "test:offline": "tsx scripts/test-offline.ts",
     "test:browser-offline": "tsx scripts/test-scarp-offline-browser.ts",
-    "typecheck": "vue-tsc --noEmit -p tsconfig.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
     "check:tooling": "tsx scripts/check-tooling.ts",
     "check:toolchain": "tsx scripts/check-toolchain.ts",
     "test:toolchain": "tsx scripts/test-toolchain.ts",
@@ -98,11 +98,9 @@
     "test:docs-slug": "tsx scripts/test-docs-slug.ts"
   },
   "devDependencies": {
-    "vitepress": "1.6.4",
     "@types/node": "26.6.6",
     "typescript": "6.0.3",
     "tsx": "4.23.15",
-    "vue-tsc": "3.3.13",
     "playwright": "1.64.1",
     "axe-core": "4.14.0",
     "markdown-it": "14.1.0",
