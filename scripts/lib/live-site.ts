@@ -11,6 +11,8 @@ export const LIVE_PAGE_SOURCES = [
   'hi/index.md',
   'guide/learning-path.md',
   'hi/guide/learning-path.md',
+  'guide/installation-alpha6.md',
+  'hi/guide/installation-alpha6.md',
   'releases/v0.0.6-alpha.1.md',
   'hi/releases/v0.0.6-alpha.1.md',
   'tutorials/project-symbol-navigation-alpha6.md',
@@ -75,7 +77,7 @@ export async function verifyLiveSite(fetcher: SiteFetcher): Promise<LiveSiteResu
   const sitemap = SITE_ORIGIN + DOCS_BASE + 'sitemap.xml'
   const sitemapResponse = await request(fetcher, sitemap)
   const xml = await sitemapResponse.text()
-  for (const source of ['index.md', 'hi/index.md', 'guide/learning-path.md', 'hi/guide/learning-path.md']) {
+  for (const source of ['index.md', 'hi/index.md', 'guide/learning-path.md', 'hi/guide/learning-path.md', 'guide/installation-alpha6.md', 'hi/guide/installation-alpha6.md']) {
     assert.ok(xml.includes(urlForPage(source)), sitemap + ': missing route ' + source)
   }
   return { pages: LIVE_PAGE_SOURCES.length, assets: 2, sitemap }
