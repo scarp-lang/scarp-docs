@@ -65,6 +65,7 @@ export default defineConfig({
             { text: 'Alpha.3 CLI', link: '/hi/releases/v0.0.5-alpha.3' },
             { text: 'Alpha.2 examples', link: '/hi/releases/v0.0.5-alpha.2' },
             { text: 'प्रकाशित features', link: '/hi/reference/status' },
+            { text: 'मुख्य reference: v0.0.5-alpha.1', link: '/hi/reference/status' },
             { text: 'अपग्रेड जाँच: alpha.1 → alpha.2', link: '/hi/reference/upgrade-readiness' }
           ] },
           { text: 'समुदाय', items: [
@@ -208,6 +209,7 @@ export default defineConfig({
         { text: 'Published alpha.3 and Scarp-first CLI', link: '/releases/v0.0.5-alpha.3' },
         { text: 'Published alpha.2 examples', link: '/releases/v0.0.5-alpha.2' },
         { text: 'Shipped feature matrix (alpha.1–alpha.6)', link: '/reference/status' },
+        { text: 'Core reference: v0.0.5-alpha.1', link: '/reference/status' },
         { text: 'Compiler releases', link: `${sourceRepo}/releases` }
       ] },
       { text: 'Community', items: [
