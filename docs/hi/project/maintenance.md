@@ -18,6 +18,8 @@ Documentation changes compiler के वास्तविक व्यवह�
 
 Scarp Docs के .ts और .vue sources की जाँच `vue-tsc` करता है। अभी जाँचा गया समर्थित संयोजन **TypeScript 6.0.x** और **vue-tsc 3.3.x** है। TypeScript 7 में Vue SFC checker के लिए आवश्यक programmatic API अभी उपलब्ध नहीं है, इसलिए `ERR_PACKAGE_PATH_NOT_EXPORTED` आता है। यह upstream integration की सीमा है; TypeScript भाषा को सामान्य रूप से खराब बताने का दावा नहीं।
 
+**विशिष्ट Vue patch समस्या:** `vue-tsc` **3.3.14** में [template URL code-generation bug](https://github.com/vuejs/language-tools/issues/6322) की रिपोर्ट है। Template attribute में सीधे URL होने पर गलत TS2339/TS7006 error आ सकता है। इसलिए अभी **3.3.13** pinned है और Dependabot केवल **3.3.14 version** को ignore करता है; सुधार आने पर बाद वाला patch अपडेट हो सकेगा। मौजूदा CI पास होने से हर भविष्य का Vue template सही होने की गारंटी नहीं मिलती।
+
 इस कारण npm Dependabot, TypeScript के **major upgrades** फिलहाल रोकता है, लेकिन compatible updates की अनुमति है। `npm run check:toolchain` version और configuration जाँचता है; `npm run test:toolchain` regression cases चलाता है; `npm run typecheck` असली TypeScript तथा Vue sources की जाँच करता है। Vue tooling के आधिकारिक समर्थन और पूरे CI/Pages परीक्षण के बाद ही TypeScript 7 का नया PR स्वीकार करें।
 
 ## Local quality checks
