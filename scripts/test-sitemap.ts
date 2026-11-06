@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { urlForPage } from '../docs/.vitepress/site-meta.ts'
+import { urlForPage } from './lib/site-meta.ts'
 import { documentationPages } from './lib/docs-pages.ts'
 import { validateSitemap } from './lib/sitemap-policy.ts'
 
