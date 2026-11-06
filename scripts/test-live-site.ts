@@ -4,11 +4,11 @@ import { LIVE_PAGE_SOURCES, verifyLiveSite, type SiteFetcher } from './lib/live-
 
 const htmlRouteByUrl = new Map(LIVE_PAGE_SOURCES.map(source => [urlForPage(source), source]))
 
-function fakeSite(options: { wrongCanonical?: boolean; missingHindi?: boolean; missingCss?: boolean } = {}): SiteFetcher {
+function fakeSite(options: { wrongCanonical?: boolean; missingHindi?: boolean; missingInstaller?: boolean; missingCss?: boolean } = {}): SiteFetcher {
   return async url => {
     if (url === SITE_ORIGIN + DOCS_BASE + 'sitemap.xml') {
       return new Response(
-        ['index.md', 'hi/index.md', 'guide/learning-path.md', 'hi/guide/learning-path.md']
+        ['index.md', 'hi/index.md', 'guide/learning-path.md', 'hi/guide/learning-path.md', 'guide/installation-alpha6.md', 'hi/guide/installation-alpha6.md']
           .map(source => '<loc>' + urlForPage(source) + '</loc>').join(''),
         { status: 200, headers: { 'content-type': 'application/xml' } }
       )
@@ -19,6 +19,9 @@ function fakeSite(options: { wrongCanonical?: boolean; missingHindi?: boolean; m
     const source = htmlRouteByUrl.get(url)
     if (!source) return new Response('Not found', { status: 404 })
     if (options.missingHindi && source === 'hi/guide/learning-path.md') {
+      return new Response('Not found', { status: 404 })
+    }
+    if (options.missingInstaller && source === 'hi/guide/installation-alpha6.md') {
       return new Response('Not found', { status: 404 })
     }
     const links = pairedUrls(source)
@@ -45,6 +48,7 @@ assert.equal(healthy.assets, 2)
 assert.equal(healthy.sitemap, SITE_ORIGIN + DOCS_BASE + 'sitemap.xml')
 await assert.rejects(() => verifyLiveSite(fakeSite({ wrongCanonical: true })), /canonical mismatch/)
 await assert.rejects(() => verifyLiveSite(fakeSite({ missingHindi: true })), /HTTP 200, got 404/)
+await assert.rejects(() => verifyLiveSite(fakeSite({ missingInstaller: true })), /HTTP 200, got 404/)
 await assert.rejects(() => verifyLiveSite(fakeSite({ missingCss: true })), /missing its versioned CSS bundle/)
 await assert.rejects(() => verifyLiveSite(async () => { throw new Error('Network unavailable') }), /Network unavailable/)
 console.log('PASS: bilingual live-site URL, SEO, assets, sitemap and negative-path smoke checks')
