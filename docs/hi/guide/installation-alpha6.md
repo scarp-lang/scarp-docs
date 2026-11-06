@@ -101,6 +101,8 @@ cargo build --locked --offline
 
 इससे Rust-आधारित Scarp **interpreter/CLI** बनेगा, किसी `.srp` program की native executable नहीं। नया folder इस्तेमाल करें और पहले Rust toolchain install करें। Offline build स्वयं Rust install नहीं करता।
 
+इंस्टॉल होने के बाद [compiler capability check](/hi/tooling/diagnose-alpha6) में `scarp diagnose --json` द्वारा सही executable की read-only जाँच समझाई गई है। इससे project files नहीं बदलतीं।
+
 ## 6. स्थापना जाँचें और आगे सीखें
 
 Version तथा नए project के परीक्षण के बाद इसी **alpha.6 executable** से [पूरा source-navigation project](/hi/tutorials/project-symbol-navigation-alpha6) चलाएँ। इसमें `scarp inspect symbols --json` और `scarp inspect references --json` समझाए गए हैं; ये अभी LSP या automatic rename engine नहीं हैं। [प्रकाशित release](/hi/releases/v0.0.6-alpha.1) और [सात-चरण सीखने का रास्ता](/hi/guide/learning-path) भी देखें।
