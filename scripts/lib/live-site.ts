@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { DOCS_BASE, SITE_ORIGIN, pairedUrls, urlForPage } from '../../docs/.vitepress/site-meta.ts'
+import { DOCS_BASE, SITE_ORIGIN, pairedUrls, urlForPage } from './site-meta.ts'
 import { validateSitemap } from './sitemap-policy.ts'
 
 /**
