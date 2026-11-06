@@ -23,7 +23,8 @@ export function installAccessibleSearchTrigger(): void {
       const placeholder = button.querySelector<HTMLElement>(
         '.DocSearch-Button-Placeholder'
       )
-      const text = placeholder?.textContent?.trim()
+      if (!placeholder) continue
+      const text = placeholder.textContent?.trim()
       if (!text) continue
 
       const visible = placeholder.getClientRects().length > 0 &&
