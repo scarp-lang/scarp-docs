@@ -194,7 +194,13 @@ async function emptySearchAndFocus(base: string, locale: typeof pages[number]): 
       locale.locale + ': search input should receive keyboard focus')
     await input.fill('xx-sc4rp-no-resu1t-9z8y7x6w5v4-xx')
     const noResults = locale.locale === 'hi' ? 'कोई परिणाम नहीं मिला' : 'No results for'
-    await page.locator('.VPLocalSearchBox').getByText(noResults, { exact: false })
+    const searchModal = page.locator('.VPLocalSearchBox')
+    await page.waitForTimeout(1200)
+    console.log('SEARCH_DIAGNOSTIC '+locale.locale+': '+JSON.stringify({
+      content: (await searchModal.innerText()).slice(0,1200),
+      html: (await searchModal.innerHTML()).slice(0,1000)
+    }))
+    await searchModal.getByText(noResults, { exact: false })
       .waitFor({ state: 'visible', timeout: 15000 })
     await page.keyboard.press('Escape')
     await input.waitFor({ state: 'hidden' })
