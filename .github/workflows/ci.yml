@@ -30,6 +30,8 @@ jobs:
         run: npm run check:i18n
       - name: Validate localized VitePress search and accessibility text
         run: npm run check:hindi-search && npm run test:hindi-search
+      - name: Test version-aware bilingual command finder and historical release boundaries
+        run: npm run check:command-finder && npm run test:command-finder
       - name: Detect unsupported runnable Scarp and CLI syntax
         run: npm run check:snippets
       - name: Unit-test documented syntax policy
