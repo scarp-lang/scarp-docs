@@ -33,7 +33,7 @@ jobs:
         run: npm run check:alpha6-ast && npm run test:alpha6-ast
       - name: Validate bilingual compiler host and capability diagnostics
         run: npm run check:alpha6-diagnose && npm run test:alpha6-diagnose
-      - name: Keep Vue/TypeScript and Dependabot compatible
+      - name: Retain transitional compiler/toolchain compatibility checks
         run: npm run check:toolchain && npm run test:toolchain
       - name: Regression-test complete bilingual sitemap coverage
         run: npm run test:sitemap
@@ -54,7 +54,7 @@ jobs:
           retention-days: 30
       - uses: actions/upload-pages-artifact@v5
         with:
-          path: docs/.vitepress/dist
+          path: docs/.scarp/dist
   deploy:
     needs: build
     environment:
