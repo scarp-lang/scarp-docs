@@ -1,9 +1,9 @@
 # Scarp Documentation
 
 
-**Migration underway:** Scarp Docs is developing a framework-free TypeScript documentation engine. See [architecture and migration gates](SCARP-DOCS-ENGINE.md) and [Issue #70](https://github.com/scarp-lang/scarp-docs/issues/70). The independent build and browser checks are in CI; VitePress remains the current published-site generator until the migration gate passes. No stable release is implied.
+**Custom documentation engine:** Scarp Docs now builds from the Scarp-owned TypeScript generator, with bilingual HTML, local search, responsive layout and offline-browser tests. See [architecture and migration gates](SCARP-DOCS-ENGINE.md) and [Issue #70](https://github.com/scarp-lang/scarp-docs/issues/70). Legacy VitePress/Vue validation code and dependencies are transitional and will be removed after the new Pages deployment is verified. No stable release is implied.
 
-Official VitePress documentation for the experimental [Scarp Programming Language](https://github.com/scarp-lang/scarp).
+Official TypeScript-generated documentation for the experimental [Scarp Programming Language](https://github.com/scarp-lang/scarp).
 
 **Website (English):** https://scarp-lang.github.io/scarp-docs/
 
@@ -13,7 +13,7 @@ Official VitePress documentation for the experimental [Scarp Programming Languag
 
 **Latest published compiler:** [v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1), November 5, 2026, source commit `aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8`. Read the [English release guide](docs/releases/v0.0.6-alpha.1.md) and [हिन्दी release guide](docs/hi/releases/v0.0.6-alpha.1.md). The [symbol navigation and CLI reference](docs/tooling/cli-alpha6.md), [हिन्दी symbols guide](docs/hi/tooling/cli-alpha6.md), [RMS tutorial](docs/language/rms-alpha6.md) and [हिन्दी RMS पाठ](docs/hi/language/rms-alpha6.md) document features **actually published** in alpha.6. The docs pin tagged compiler examples/JSON fixtures, track release drift and run the tagged CLI in CI. Native `.srp` compilation and LSP integrations remain unavailable.
 
-**Find documentation in your language:** [Search and navigation](docs/guide/search-and-navigation.md) · [हिन्दी में खोजें](docs/hi/guide/search-and-navigation.md). The built-in VitePress search now offers Hindi labels, accessible keyboard hints and a translated no-results state; English remains unchanged. Search is client-side and does not depend on an external hosted search provider.
+**Find documentation in your language:** [Search and navigation](docs/guide/search-and-navigation.md) · [हिन्दी में खोजें](docs/hi/guide/search-and-navigation.md). The Scarp-owned local search offers Hindi labels, accessible keyboard hints and a translated no-results state; English remains unchanged. Search is client-side and does not depend on an external hosted search provider.
 
 **Start learning in order:** [English: seven-stage learning path](docs/guide/learning-path.md) · [हिन्दी: सात चरणों में Scarp](docs/hi/guide/learning-path.md). Historical compiler examples retain their versioned baselines; the learning path explains which release to use, from alpha.1 through the latest alpha.6, without claiming universal compatibility.
 
