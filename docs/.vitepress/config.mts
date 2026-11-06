@@ -107,6 +107,7 @@ export default defineConfig({
           ] },
           { text: 'टूलिंग और संदर्भ', items: [
             { text: 'CLI (alpha.6) — symbols', link: '/hi/tooling/cli-alpha6' },
+            { text: 'AST debugging (alpha.6)', link: '/hi/tooling/inspect-ast-alpha6' },
             { text: 'CLI संदर्भ (alpha.5)', link: '/hi/tooling/cli-alpha5' },
             { text: 'CLI संदर्भ (alpha.4)', link: '/hi/tooling/cli-alpha4' },
             { text: 'ऐतिहासिक CLI (alpha.3)', link: '/hi/tooling/cli' },
@@ -249,6 +250,7 @@ export default defineConfig({
       ] },
       { text: 'Tools and reference', items: [
         { text: 'Command-line interface (alpha.6)', link: '/tooling/cli-alpha6' },
+        { text: 'AST source inspection (alpha.6)', link: '/tooling/inspect-ast-alpha6' },
         { text: 'Command-line interface (alpha.5)', link: '/tooling/cli-alpha5' },
         { text: 'Command-line interface (alpha.4)', link: '/tooling/cli-alpha4' },
         { text: 'Historical CLI (alpha.3)', link: '/tooling/cli' },
