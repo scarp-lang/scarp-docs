@@ -10,6 +10,7 @@
     "docs:preview": "tsx scripts/scarp-site/serve-dev.ts --preview",
     "scarp:build": "tsx scripts/scarp-site/build.ts",
     "scarp:test": "tsx scripts/scarp-site/test.ts",
+    "test:neutral-libraries": "tsx scripts/test-neutral-libraries.ts",
     "scarp:browser-test": "tsx scripts/scarp-site/browser-test.ts",
     "package:offline": "tsx scripts/package-offline.ts",
     "test:offline": "tsx scripts/test-offline.ts",
