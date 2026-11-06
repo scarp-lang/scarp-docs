@@ -83,7 +83,7 @@
     "@types/node": "26.6.6",
     "typescript": "6.0.3",
     "tsx": "4.20.5",
-    "vue-tsc": "2.2.12"
+    "vue-tsc": "3.3.13"
   },
   "engines": {
     "node": ">=20.19.0"
