@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
       - name: Install dependencies
@@ -136,7 +136,7 @@ jobs:
           repository: scarp-lang/scarp
           ref: afe8b5380c9d6c4774162e51c6c9bc8b90901671
           path: .compiler
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
       - name: Install TypeScript automation dependencies
@@ -193,7 +193,7 @@ jobs:
           repository: scarp-lang/scarp
           ref: e4db8e191cd7ea623123cae7348450ca6c95b170
           path: .compiler-alpha2
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
       - name: Install TypeScript automation dependencies
@@ -228,7 +228,7 @@ jobs:
           repository: scarp-lang/scarp
           ref: 7715c28df09c7703b39e14fddb963275b25df476
           path: .compiler-alpha3
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
       - name: Install TypeScript automation
@@ -251,7 +251,7 @@ jobs:
           repository: scarp-lang/scarp
           ref: 79141329176f5dce51457e90a6652902f6432135
           path: .compiler-alpha4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
       - name: Install TypeScript conformance dependencies
@@ -277,7 +277,7 @@ jobs:
           ref: 2eeed0aa52ccb59523307841ad8ffbd83f8911a8
           path: .compiler-alpha5
           persist-credentials: false
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
       - name: Install TypeScript conformance dependencies
@@ -303,7 +303,7 @@ jobs:
           ref: aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8
           path: .compiler-alpha6
           persist-credentials: false
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
       - name: Install TypeScript conformance dependencies
