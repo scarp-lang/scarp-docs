@@ -20,6 +20,14 @@ const pages: SearchLocalizationSources = {
   hindiIntro: read('docs/hi/guide/introduction.md')
 }
 assert.deepEqual(validateHindiLocalSearch(localSearchOptions, pages), [])
+const searchTrigger = read('docs/.vitepress/theme/search-trigger-accessibility.ts')
+const themeIndex = read('docs/.vitepress/theme/index.ts')
+assert.ok(themeIndex.includes('installAccessibleSearchTrigger()'),
+  'Theme must install responsive search trigger semantics')
+assert.ok(searchTrigger.includes("button.removeAttribute('aria-label')") &&
+  searchTrigger.includes("button.setAttribute('aria-label', text)"),
+  'Search button must derive its desktop accessible name from visible content and keep mobile name')
+
 
 function mutateOptions(name: string, change: (config: SearchLocalizationOptions) => void): void {
   const copy = JSON.parse(JSON.stringify(localSearchOptions)) as SearchLocalizationOptions
@@ -34,12 +42,9 @@ mutateOptions('English-only search button',x=>{
 mutateOptions('missing accessible label',x=>{
   if(x.locales?.hi?.translations?.button) x.locales.hi.translations.button.buttonAriaLabel=''
 })
-mutateOptions('English search keycap missing from accessible name',x=>{
-  if(x.translations?.button) x.translations.button.buttonAriaLabel='Search'
-})
-mutateOptions('Hindi search keycap missing from accessible name',x=>{
+mutateOptions('Hindi mobile label diverges from visible translation',x=>{
   if(x.locales?.hi?.translations?.button) {
-    x.locales.hi.translations.button.buttonAriaLabel='दस्तावेज़ खोजें'
+    x.locales.hi.translations.button.buttonAriaLabel='असंबंधित नाम'
   }
 })
 mutateOptions('English-only empty-result text',x=>{
@@ -67,4 +72,4 @@ mutatePage('missing Hindi intro link','hindiIntro','](/hi/guide/search-and-navig
 mutatePage('missing README Hindi path','readme','docs/hi/guide/search-and-navigation.md','docs/hi/guide/not-found.md')
 assert.ok(validateHindiLocalSearch(localSearchOptions,{...pages,hindi:pages.hindi.replace(/[\u0900-\u097f]/gu,'')}).length,
   'Hindi locale cannot silently become untranslated')
-console.log('PASS: 18 negative regressions for Hindi search UI, locale navigation, language parity and keyboard access')
+console.log('PASS: 17 negative regressions for Hindi search UI, locale navigation, language parity and keyboard access')
