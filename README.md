@@ -36,7 +36,7 @@ Official VitePress documentation for the experimental [Scarp Programming Languag
 
 ## Development
 
-Requires Node.js 20.19+ and npm. Type checking deliberately uses **TypeScript 6.0.x + vue-tsc 3.3.x**; TypeScript 7 cannot currently run the project's Vue SFC checker, so Dependabot ignores major TypeScript upgrades pending upstream support. Run `npm run check:toolchain` and `npm run test:toolchain` before reviewing toolchain changes. Documentation automation is written in **TypeScript** using `tsx`; the site is VitePress/Vue with Markdown source pages. From the root:
+Requires Node.js 20.19+ and npm. Type checking deliberately uses **TypeScript 6.0.x + vue-tsc 3.3.x**; TypeScript 7 cannot currently run the project's Vue SFC checker, so Dependabot ignores major TypeScript upgrades pending upstream support. The known [`vue-tsc` 3.3.14 template URL regression](https://github.com/vuejs/language-tools/issues/6322) is also blocked specifically; later fixed patches remain eligible. Run `npm run check:toolchain` and `npm run test:toolchain` before reviewing toolchain changes. Documentation automation is written in **TypeScript** using `tsx`; the site is VitePress/Vue with Markdown source pages. From the root:
 
 ~~~sh
 npm install
