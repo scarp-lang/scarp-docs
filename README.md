@@ -16,6 +16,8 @@ Official VitePress documentation for the experimental [Scarp Programming Languag
 
 **Install the latest published compiler:** [English: Scarp v0.0.6-alpha.1](docs/guide/installation-alpha6.md) · [हिन्दी: alpha.6 इंस्टॉलेशन](docs/hi/guide/installation-alpha6.md). Windows x64, Linux x64 GNU, and Apple Silicon archives are paired with official SHA-256 checksums; the guides also provide commands for building the immutable source tag. Earlier installation walkthroughs remain historically scoped.
 
+**Automated accessibility auditing:** The extracted offline site is checked with pinned local axe-core in 10 bilingual light/dark/search/mobile states; CI attaches per-state WCAG A/AA findings on failures. Manual screen-reader verification remains separately tracked in [Issue #65](https://github.com/scarp-lang/scarp-docs/issues/65).
+
 **Real browser checks:** The `browser-offline` CI job runs a pinned Chromium browser against the extracted offline archive, checking keyboard navigation and search focus return, translated page switching, dark/light preference, reduced motion, mobile layout and both English/Hindi Command Finder flows. See `npm run test:browser-offline` and [maintainer guidance](docs/project/maintenance.md).
 
 **Read the bilingual site offline:** [English offline download instructions](docs/guide/offline-docs.md) · [हिन्दी offline documentation](docs/hi/guide/offline-docs.md). A tested GitHub Actions artifact contains reproducible bundled docs, a Node.js loopback server and SHA-256 checksums. Offline docs are not compiler releases.
