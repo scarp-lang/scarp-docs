@@ -1,6 +1,6 @@
 # दस्तावेज़ रखरखाव और रिलीज़ जाँच
 
-Documentation changes compiler के वास्तविक व्यवहार, नाम और रिलीज़ के साथ मेल खाने चाहिए। English और Hindi दोनों भाषाओं के पृष्ठ मिलकर ही एक पूर्ण documentation update हैं।
+Documentation changes compiler के वास्तविक व्यवहार, नाम और रिलीज़ के साथ मेल खाने चाहिए। English और Hindi दोनों भाषाओं के पृष्ठ मिलकर ही एक पूर्ण documentation update हैं। मुख्य language-reference baseline अभी [v0.0.5-alpha.1](/hi/reference/status) पर स्थिर है। अलग से सत्यापित नवीनतम प्रकाशित version [v0.0.6-alpha.1](/hi/releases/v0.0.6-alpha.1) है। नए इंस्टॉलेशन के लिए [alpha.6 guide](/hi/guide/installation-alpha6) इस्तेमाल करें।
 
 ## Compiler त्रुटि fixtures
 
@@ -13,6 +13,12 @@ Documentation changes compiler के वास्तविक व्यवह�
 ## नई alpha.3 रिलीज़ के प्रमाण
 
 [Alpha.3 release guide](/hi/releases/v0.0.5-alpha.3) तथा उसका English page **चार पूरे published source/output programs और 11 Git blobs** दिखाते हैं। `npm run check:alpha3` bilingual snippets जाँचता है। `npm run check:alpha3 -- /path/to/tagged-alpha3/examples` से source files की byte comparison होती है। `alpha3-conformance` CI release commit `7715c28df09c7703b39e14fddb963275b25df476` का compiler build करके `npm run test:alpha3 -- /path/to/alpha3/scarp` चलाता है। पुरानी alpha.1 और alpha.2 verification suites अलग रहती हैं।
+
+## TypeScript तथा Vue compatibility
+
+Scarp Docs के .ts और .vue sources की जाँच `vue-tsc` करता है। अभी जाँचा गया समर्थित संयोजन **TypeScript 6.0.x** और **vue-tsc 3.3.x** है। TypeScript 7 में Vue SFC checker के लिए आवश्यक programmatic API अभी उपलब्ध नहीं है, इसलिए `ERR_PACKAGE_PATH_NOT_EXPORTED` आता है। यह upstream integration की सीमा है; TypeScript भाषा को सामान्य रूप से खराब बताने का दावा नहीं।
+
+इस कारण npm Dependabot, TypeScript के **major upgrades** फिलहाल रोकता है, लेकिन compatible updates की अनुमति है। `npm run check:toolchain` version और configuration जाँचता है; `npm run test:toolchain` regression cases चलाता है; `npm run typecheck` असली TypeScript तथा Vue sources की जाँच करता है। Vue tooling के आधिकारिक समर्थन और पूरे CI/Pages परीक्षण के बाद ही TypeScript 7 का नया PR स्वीकार करें।
 
 ## Local quality checks
 
@@ -34,7 +40,7 @@ npm run docs:build
 
 ## नए compiler release पर
 
-पहले प्रकाशित tag, source SHA, compiler tests और release artifacts की पुष्टि करें। इसके बाद `data/compiler-baseline.json`, code fixtures, language/status/CLI references और दोनों भाषाओं के pages अपडेट करें। Development proposal को released सुविधा न बताएं।
+पहले प्रकाशित tag, source SHA, compiler tests और release artifacts की पुष्टि करें। नए compiler release के लिए **अलग release-specific manifest**, सटीक source/output fixtures, CI pin और English/Hindi language/status/CLI pages एक ही PR में अपडेट करें। **`data/compiler-baseline.json` को बिना अलग compatibility और fixture validation के नवीनतम release पर न बदलें**; पुराने alpha.1 tutorials उसी baseline से जुड़े रहते हैं। नए features को केवल अपने सत्यापित release में दिखाएँ। Development proposal को published सुविधा न बताएं।
 
 ## GitHub Actions और Pages
 

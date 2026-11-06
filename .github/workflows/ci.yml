@@ -20,6 +20,8 @@ jobs:
         run: npm run typecheck
       - name: Ensure documentation tooling uses TypeScript
         run: npm run check:tooling
+      - name: Verify supported Vue/TypeScript toolchain and dependency-update policy
+        run: npm run check:toolchain && npm run test:toolchain
       - name: Check pages and local links
         run: npm run check:docs
       - name: Regression-test Unicode Markdown link anchors
