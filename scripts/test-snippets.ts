@@ -39,6 +39,8 @@ assert.ok(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.5-alpha.4 -->\n~~~sh\
 assert.equal(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.5-alpha.5 -->\n~~~sh\nscarp compile file.srp\n~~~').length, 1)
 
 assert.deepEqual(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.1 -->\\n~~~sh\\nscarp inspect symbols --json demo.srp\\nscarp inspect references --json demo.srp\\nscarp create sample\\nscarp exec demo.srp\\n~~~'.replaceAll('\\n','\n')), [])
+assert.deepEqual(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.2 -->\\n~~~sh\\nscarp verify examples/hello.srp\\nscarp exec examples/hello.srp\\n~~~'.replaceAll('\\n','\n')), [])
+assert.equal(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.2 -->\\n~~~sh\\nscarp compile demo.srp\\n~~~'.replaceAll('\\n','\n')).length, 1)
 assert.ok(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.5-alpha.5 -->\\n~~~sh\\nscarp inspect symbols --json demo.srp\\n~~~'.replaceAll('\\n','\n'))
   .some(x => x.message.includes('requires published alpha.6')))
 
