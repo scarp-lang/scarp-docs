@@ -6,7 +6,7 @@ import { buildSite, previewRoot } from './build.ts'
 import { renderMarkdown, splitFrontMatter } from './markdown.ts'
 import { escapeHtml, localLink, htmlPath, pairedRoutes, sourceRoute } from './routes.ts'
 import { documentationPages } from '../lib/docs-pages.ts'
-import { urlForPage } from '../../docs/.vitepress/site-meta.ts'
+import { urlForPage } from '../lib/site-meta.ts'
 import { validateSitemap } from '../lib/sitemap-policy.ts'
 
 const root=resolve(fileURLToPath(new URL('../..',import.meta.url)))
