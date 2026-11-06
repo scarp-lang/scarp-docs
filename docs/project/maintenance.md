@@ -70,7 +70,7 @@ The [newly published alpha.2 guide](/releases/v0.0.5-alpha.2) has twelve exact s
 
 ## GitHub Actions and Pages
 
-The `Documentation CI` workflow validates docs and runs compiler conformance for pull requests and main pushes. The `Deploy official documentation` workflow builds the static site on main, uploads `docs/.vitepress/dist`, and requests a Pages deployment with `pages: write` and `id-token: write`. Repository administrators must select **Settings → Pages → Build and deployment → GitHub Actions** once. A successful workflow is needed before calling the site deployed.
+The `Documentation CI` workflow validates docs and runs compiler conformance for pull requests and main pushes. The `Deploy official documentation` workflow builds the static site on main, uploads `docs/.scarp/dist`, and requests a Pages deployment with `pages: write` and `id-token: write`. Repository administrators must select **Settings → Pages → Build and deployment → GitHub Actions** once. A successful workflow is needed before calling the site deployed.
 
 ## Scope and safety notes
 
