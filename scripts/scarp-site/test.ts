@@ -8,6 +8,8 @@ import { escapeHtml, localLink, htmlPath, pairedRoutes, sourceRoute } from './ro
 import { documentationPages } from '../lib/docs-pages.ts'
 import { urlForPage } from '../../docs/.vitepress/site-meta.ts'
 import { validateSitemap } from '../lib/sitemap-policy.ts'
+import { LATEST_RELEASE } from '../../docs/.vitepress/theme/lib/command-finder.ts'
+import { currentPublishedCompilerTag, currentCompilerReleaseRoute } from './current-release.ts'
 
 const root=resolve(fileURLToPath(new URL('../..',import.meta.url)))
 const docs=join(root,'docs')
@@ -74,6 +76,26 @@ check(fixture.html.includes('class="table-scroll" tabindex="0"'),
   'Wide Markdown tables must be keyboard scrollable')
 check(fixture.html.includes('tabindex="0"'),'Scrollable code must be keyboard focusable')
 
+const latest = JSON.parse(readFileSync(join(root,'data/compiler-latest-release.json'),'utf8')) as Record<string,unknown>
+check(currentPublishedCompilerTag(latest)===LATEST_RELEASE,'Current manifest and CLI release table must agree')
+assert.equal(currentCompilerReleaseRoute(LATEST_RELEASE,'en'),
+  '/scarp-docs/releases/'+LATEST_RELEASE)
+assert.equal(currentCompilerReleaseRoute(LATEST_RELEASE,'hi'),
+  '/scarp-docs/hi/releases/'+LATEST_RELEASE)
+for(const [key,invalid] of [
+  ['compilerRef','v0.0.6-alpha.1'],
+  ['compilerRef','../../release'],
+  ['compilerCommit','0'.repeat(40)],
+  ['compilerRepository','unknown/compiler'],
+  ['status','planned'],
+  ['releasedAt','not-a-timestamp'],
+  ['assets',[]]
+] as const) {
+  assert.throws(()=>currentPublishedCompilerTag({...latest,[key]:invalid}),undefined,
+    'Invalid current compiler metadata escaped guard: '+key)
+}
+assert.throws(()=>currentCompilerReleaseRoute('v0.0.6-alpha.1','en'))
+
 const sources=documentationPages(docs)
 check(sources.length===140,'Published docs count changed: update migration baseline with evidence')
 for(const source of sources){
@@ -108,6 +130,14 @@ const hindiHome=readFileSync(join(site,'hi/index.html'),'utf8')
 check(homeHtml.includes('Build Beyond Boundaries.'),'English homepage hero missing')
 check(hindiHome.includes('सीमाओं से आगे'),'Hindi homepage hero missing')
 check(homeHtml.includes('class="features"'),'Feature cards missing')
+check(homeHtml.includes('href="'+currentCompilerReleaseRoute(LATEST_RELEASE,'en')+'">Install</a>'),
+  'English Install menu must open the current published archive/checksum guide')
+check(hindiHome.includes('href="'+currentCompilerReleaseRoute(LATEST_RELEASE,'hi')+'">इंस्टॉल</a>'),
+  'Hindi Install menu must open the same published compiler release')
+check(homeHtml.includes('href="/scarp-docs/reference/status">Releases</a>'),
+  'English releases menu must display the historical version matrix')
+check(hindiHome.includes('href="/scarp-docs/hi/reference/status">रिलीज़</a>'),
+  'Hindi releases menu must display the historical version matrix')
 const finder=readFileSync(join(site,'tooling/command-finder.html'),'utf8')
 check(finder.includes('id="scarp-command-data"'),'Release-scoped CLI model missing')
 check(finder.includes('v0.0.6-alpha.2'),'Latest published release missing')

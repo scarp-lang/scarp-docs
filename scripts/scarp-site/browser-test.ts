@@ -5,6 +5,7 @@ import { resolve, extname, sep, join } from 'node:path'
 import { chromium, type BrowserContext, type Page } from 'playwright'
 import { auditOfflineAccessibility } from '../lib/offline-a11y.ts'
 import { previewRoot } from './build.ts'
+import { LATEST_RELEASE } from '../../docs/.vitepress/theme/lib/command-finder.ts'
 
 const root=process.argv[2]?resolve(process.argv[2]):resolve(previewRoot,'scarp-docs')
 const base='/scarp-docs/'
@@ -77,6 +78,8 @@ async function testLocale(
     assert.equal(await page.locator('main').count(),1)
     assert.equal(await page.locator('.features .feature').count()>8,true)
     assert.equal(await page.locator('.hero h1').count(),1)
+    const install=page.locator('.top-nav a').filter({hasText:lang==='hi'?'इंस्टॉल':'Install'})
+    assert.equal(await install.getAttribute('href'),prefix+'releases/'+LATEST_RELEASE)
     assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'),
       'https://scarp-lang.github.io'+prefix)
     assertions++
@@ -84,6 +87,7 @@ async function testLocale(
     await page.goto(origin+prefix+'tooling/command-finder',{waitUntil:'networkidle'})
     const widget=page.locator('[data-command-finder]')
     await widget.locator('#scarp-release').waitFor({state:'visible'})
+    assert.equal(await widget.locator('#scarp-release').inputValue(),LATEST_RELEASE)
     await widget.locator('#scarp-task').selectOption('inspect-symbols')
     await widget.locator('.finder-result pre').waitFor({state:'visible'})
     assert.match(await widget.locator('pre').innerText(),
@@ -92,7 +96,7 @@ async function testLocale(
     await widget.locator('#scarp-release').selectOption('v0.0.5-alpha.1')
     assert.equal(await widget.locator('pre').count(),0)
     assert.match(await widget.locator('.finder-result').innerText(),/v0\.0\.6-alpha\.1/)
-    await widget.locator('#scarp-release').selectOption('v0.0.6-alpha.1')
+    await widget.locator('#scarp-release').selectOption(LATEST_RELEASE)
     await widget.locator('pre').waitFor({state:'visible'})
     assertions++
 
