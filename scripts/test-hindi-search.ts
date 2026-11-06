@@ -34,6 +34,14 @@ mutateOptions('English-only search button',x=>{
 mutateOptions('missing accessible label',x=>{
   if(x.locales?.hi?.translations?.button) x.locales.hi.translations.button.buttonAriaLabel=''
 })
+mutateOptions('English search keycap missing from accessible name',x=>{
+  if(x.translations?.button) x.translations.button.buttonAriaLabel='Search'
+})
+mutateOptions('Hindi search keycap missing from accessible name',x=>{
+  if(x.locales?.hi?.translations?.button) {
+    x.locales.hi.translations.button.buttonAriaLabel='दस्तावेज़ खोजें'
+  }
+})
 mutateOptions('English-only empty-result text',x=>{
   if(x.locales?.hi?.translations?.modal) x.locales.hi.translations.modal.noResultsText='No results'
 })
@@ -59,4 +67,4 @@ mutatePage('missing Hindi intro link','hindiIntro','](/hi/guide/search-and-navig
 mutatePage('missing README Hindi path','readme','docs/hi/guide/search-and-navigation.md','docs/hi/guide/not-found.md')
 assert.ok(validateHindiLocalSearch(localSearchOptions,{...pages,hindi:pages.hindi.replace(/[\u0900-\u097f]/gu,'')}).length,
   'Hindi locale cannot silently become untranslated')
-console.log('PASS: 16 negative regressions for Hindi search UI, locale navigation, language parity and keyboard access')
+console.log('PASS: 18 negative regressions for Hindi search UI, locale navigation, language parity and keyboard access')
