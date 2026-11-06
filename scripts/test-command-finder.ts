@@ -5,8 +5,10 @@ import { fileURLToPath } from 'node:url'
 import {
   commandAdvice, FINDER_TEXT, LATEST_RELEASE, RELEASES, TASKS,
   type CommandTask, type ReleaseTag
-} from '../docs/.vitepress/theme/lib/command-finder.ts'
+} from './lib/command-finder.ts'
 import { validateCommandFinder, type FinderLabels, type FinderSources } from './lib/command-finder-evidence.ts'
+
+import * as legacyCommandFinder from '../docs/.vitepress/theme/lib/command-finder.ts'
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)))
 const read = (path: string): string => readFileSync(resolve(root, path), 'utf8')
@@ -22,6 +24,10 @@ const sources: FinderSources = {
   compatEn: read('docs/reference/compatibility.md'),
   compatHi: read('docs/hi/reference/compatibility.md')
 }
+assert.strictEqual(legacyCommandFinder.RELEASES, RELEASES,
+  'Legacy Vue compatibility export must reuse the single framework-neutral release table')
+assert.strictEqual(legacyCommandFinder.commandAdvice, commandAdvice,
+  'Legacy Vue compatibility export must reuse the single framework-neutral selector')
 assert.deepEqual(validateCommandFinder(sources), [])
 assert.equal(LATEST_RELEASE, RELEASES[6]?.tag)
 const expected = new Map<CommandTask,number>([

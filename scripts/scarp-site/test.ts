@@ -8,7 +8,7 @@ import { escapeHtml, localLink, htmlPath, pairedRoutes, sourceRoute } from './ro
 import { documentationPages } from '../lib/docs-pages.ts'
 import { urlForPage } from '../../docs/.vitepress/site-meta.ts'
 import { validateSitemap } from '../lib/sitemap-policy.ts'
-import { LATEST_RELEASE } from '../../docs/.vitepress/theme/lib/command-finder.ts'
+import { LATEST_RELEASE } from '../lib/command-finder.ts'
 import { currentPublishedCompilerTag, currentCompilerReleaseRoute } from './current-release.ts'
 
 const root=resolve(fileURLToPath(new URL('../..',import.meta.url)))
