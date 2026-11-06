@@ -35,9 +35,9 @@ features:
   - title: Verified language syntax
     details: Explore bind/var, typed funcra functions, branching, iteration, modules, and explicit output.
     link: /reference/status
-  - title: Clear installation paths
-    details: Use verified prerelease binaries, or build the interpreter from the official Rust source.
-    link: /guide/installation
+  - title: Install the current alpha.6 compiler
+    details: Verify official Windows, Linux or Apple Silicon archives before extraction, or build the immutable Rust tag.
+    link: /guide/installation-alpha6
   - title: Honest compatibility guidance
     details: Understand what shipped in v0.0.5-alpha.1, what changed since earlier prereleases, and what remains planned.
     link: /reference/compatibility

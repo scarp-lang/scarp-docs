@@ -1,4 +1,7 @@
 # Install Scarp v0.0.5-alpha.5
+::: warning Historical alpha.5 release
+The newest published installer is now [v0.0.6-alpha.1](/guide/installation-alpha6). Use this page only when you specifically need the older alpha.5 release.
+:::
 ::: tip New in the published alpha.5 release
 Project-directory module inspection is now shipped. See the [alpha.5 CLI reference](/tooling/cli-alpha5) and [C11 Rust embedding limits](/reference/c11-backend-alpha5). The C11 emitter is **not** a native compilation CLI.
 :::
@@ -7,7 +10,7 @@ Project-directory module inspection is now shipped. See the [alpha.5 CLI referen
 <!-- scarp-cli-release: v0.0.5-alpha.5 -->
 <!-- scarp-install-release: v0.0.5-alpha.5 -->
 
-This guide installs the **latest published Scarp compiler prerelease**: [v0.0.5-alpha.5](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.5) (November 4, 2026), from source commit `2eeed0aa52ccb59523307841ad8ffbd83f8911a8`. Scarp is an **experimental interpreter**, not a stable language or native `.srp` executable compiler.
+This guide installs the **historical published Scarp compiler prerelease**: [v0.0.5-alpha.5](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.5) (November 4, 2026), from source commit `2eeed0aa52ccb59523307841ad8ffbd83f8911a8`. Scarp is an **experimental interpreter**, not a stable language or native `.srp` executable compiler.
 
 ::: tip New here?
 After installation, follow the [first project quickstart](/guide/quickstart-alpha4). If you used alpha.3, consult the [migration guide](/guide/migrate-alpha3-to-alpha4). The old [alpha.1 release](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.1) is historical, **not** the recommended new install.

@@ -1,6 +1,6 @@
 # Scarp v0.0.5-alpha.4 कैसे इंस्टॉल करें
-::: warning नया प्रकाशित alpha.5 उपलब्ध है
-नए इंस्टॉलेशन के लिए [alpha.5 installer](/hi/guide/installation-alpha5) इस्तेमाल करें। यह पृष्ठ पुराने alpha.4 binaries के लिए सुरक्षित रखा गया है।
+::: warning पुराना alpha.4 release
+नए इंस्टॉलेशन के लिए [प्रकाशित alpha.6 installer](/hi/guide/installation-alpha6) प्रयोग करें। यह पृष्ठ पुराने alpha.4 binaries और checksums का ऐतिहासिक संदर्भ है।
 :::
 
 <!-- scarp-cli-release: v0.0.5-alpha.4 -->

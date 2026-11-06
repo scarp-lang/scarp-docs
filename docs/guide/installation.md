@@ -1,6 +1,6 @@
 # Install Scarp v0.0.5-alpha.4
-::: warning New alpha.5 release available
-For a fresh installation, follow the [published alpha.5 installer](/guide/installation-alpha5). This page is archived for alpha.4 binaries and checksums.
+::: warning Historical alpha.4 release
+For a new installation, use the [published alpha.6 installer](/guide/installation-alpha6). These alpha.4 archives and checksums remain available only for reproducing historical behavior.
 :::
 
 <!-- scarp-cli-release: v0.0.5-alpha.4 -->

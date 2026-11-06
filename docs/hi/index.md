@@ -32,6 +32,9 @@ features:
   - title: नवीनतम प्रकाशित alpha.6 compiler
     details: सही archive और checksum की जाँच, static symbols और references तथा RMS के प्रकाशित उदाहरण सीखें।
     link: /hi/releases/v0.0.6-alpha.1
+  - title: Scarp alpha.6 की सुरक्षित स्थापना
+    details: Windows, Linux और Apple Silicon के लिए आधिकारिक पैकेज, SHA-256 जाँच और tagged source build चरणबद्ध सीखें।
+    link: /hi/guide/installation-alpha6
   - title: हिन्दी में पूरी दस्तावेज़ संरचना
     details: स्थापना, वेरिएबल, फ़ंक्शन, मॉड्यूल, मेमोरी और CLI को हिन्दी में समझें।
     link: /hi/guide/introduction
