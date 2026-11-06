@@ -168,7 +168,11 @@ export function validateLearningPath(pages: LearningPathPages, release: Alpha6Ma
     ['English',pages.compatibilityEnglish,pages.introEnglish,pages.firstEnglish,pages.quickEnglish],
     ['Hindi',pages.compatibilityHindi,pages.introHindi,pages.firstHindi,pages.quickHindi]
   ] as const) {
-    if (!compat.includes(ALPHA6_REF) || !compat.includes(ALPHA6_SHA) ||
+    const currentReleaseRow = locale === 'Hindi'
+      ? '| **[v0.0.6-alpha.2](/hi/releases/v0.0.6-alpha.2)** |'
+      : '| **[v0.0.6-alpha.2](/releases/v0.0.6-alpha.2)** |'
+    if (!compat.includes(currentReleaseRow) ||
+        !compat.includes(ALPHA6_REF) || !compat.includes(ALPHA6_SHA) ||
         !compat.includes('v0.0.6-alpha.2') ||
         !intro.includes(ALPHA6_REF) || !first.includes(ALPHA6_REF) ||
         !quick.includes('v0.0.6-alpha.2')) {
