@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { existsSync, readFileSync } from 'node:fs'
 import { join, resolve, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { pairedUrls } from '../docs/.vitepress/site-meta.ts'
+import { pairedUrls } from './lib/site-meta.ts'
 import { documentationPages } from './lib/docs-pages.ts'
 import { validateSitemap } from './lib/sitemap-policy.ts'
 
