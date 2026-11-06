@@ -20,7 +20,7 @@ Scarp अभी **experimental prerelease** है। ऐसा **कोई प�
 | Project modules को inspect करना है | [चरण 6: inspection](#stage-6-project-module-inspection-मॉड्यूल-की-static-सूची) | **v0.0.5-alpha.5** |
 | नवीनतम प्रकाशित सुविधाएँ सीखनी हैं | [चरण 7: symbols और RMS](#stage-7-source-navigation-and-rms-नवीनतम-compiler-tools) | **v0.0.6-alpha.1** |
 
-**नए alpha.6 installation** के लिए [प्रकाशित alpha.6 release](/hi/releases/v0.0.6-alpha.1) से Windows x64, Linux x64 या macOS ARM64 archive और उसका checksum लें। डाउनलोड की गई file चलाने **से पहले SHA-256** मिलाएँ। [Alpha.5 की पुरानी installation guide](/hi/guide/installation-alpha5) के archive नाम alpha.6 के लिए नहीं हैं। Terminal में वास्तव में कौन सा compiler चल रहा है, यह जाँचें:
+पूरी Windows/Linux/macOS प्रक्रिया के लिए [नया alpha.6 installation guide](/hi/guide/installation-alpha6) पढ़ें। **नए alpha.6 installation** के लिए [प्रकाशित alpha.6 release](/hi/releases/v0.0.6-alpha.1) से Windows x64, Linux x64 या macOS ARM64 archive और उसका checksum लें। डाउनलोड की गई file चलाने **से पहले SHA-256** मिलाएँ। [Alpha.5 की पुरानी installation guide](/hi/guide/installation-alpha5) के archive नाम alpha.6 के लिए नहीं हैं। Terminal में वास्तव में कौन सा compiler चल रहा है, यह जाँचें:
 
 ~~~sh
 scarp version
