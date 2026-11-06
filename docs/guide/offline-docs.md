@@ -18,10 +18,11 @@ On Linux, from the folder containing the archive and checksum:
 
 ~~~sh
 sha256sum -c scarp-docs-offline.tar.gz.sha256
+mkdir -p scarp-docs-extracted
 tar -xzf scarp-docs-offline.tar.gz -C scarp-docs-extracted
 ~~~
 
-Create `scarp-docs-extracted` first, or use `mkdir -p scarp-docs-extracted`. On macOS, where `sha256sum` may not be installed, display the SHA-256 and compare it to the text in the `.sha256` file:
+On macOS, where `sha256sum` may not be installed, display the SHA-256 and compare it to the text in the `.sha256` file:
 
 ~~~sh
 shasum -a 256 scarp-docs-offline.tar.gz
