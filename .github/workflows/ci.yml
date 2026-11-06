@@ -28,6 +28,8 @@ jobs:
         run: npm run test:docs-slug
       - name: Check Hindi translation parity
         run: npm run check:i18n
+      - name: Validate localized VitePress search and accessibility text
+        run: npm run check:hindi-search && npm run test:hindi-search
       - name: Detect unsupported runnable Scarp and CLI syntax
         run: npm run check:snippets
       - name: Unit-test documented syntax policy

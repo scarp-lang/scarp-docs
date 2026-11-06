@@ -18,6 +18,8 @@ The program prints `Hello, Scarp!` followed by a newline. `bind` creates an immu
 
 The interpreter supports checked `integer`, finite `float`, `string`, `boolean`, numerical vectors, tiles, typed `funcra` functions, loops, and source modules. It does **not** have a general-purpose standard library, user-defined types, a package manager, native code generation, or a stable language specification. Review the [feature status](/reference/status) before relying on a capability.
 
+For quick topic discovery, open [search and navigation](/guide/search-and-navigation); the search works within English/Hindi locale documents and keeps release-specific tutorials distinguishable.
+
 ## How to use these docs
 
 For current onboarding, choose the [learning path](/guide/learning-path), [published alpha.6 release](/releases/v0.0.6-alpha.1), and [alpha.6 project tutorial](/tutorials/project-symbol-navigation-alpha6). The [historical first-program reference](/guide/first-program) remains pinned to alpha.1. The [language reference](/language/overview) explains implemented syntax; the [CLI guide](/tooling/cli) explains how to run and validate files. The [compiler repository](https://github.com/scarp-lang/scarp) remains the source of truth when experimental syntax changes.

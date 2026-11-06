@@ -10,6 +10,8 @@ Scarp प्रोग्राम सामान्यतः UTF-8 `.srp` फ�
 
 `bind` और `var`, 64-बिट पूर्णांक, सीमित `float`, `string`, `boolean`, `if`/`elif`/`else`, `while`, `repeat`, `funcra` फ़ंक्शन, वैक्टर, टाइल तथा source modules उपलब्ध हैं। सभी सुविधाएँ **प्रयोगात्मक** हैं। Native-code compiler, package manager, सामान्य standard library और user-defined classes अभी उपलब्ध नहीं हैं।
 
+किसी keyword या CLI command को ढूँढने के लिए [हिन्दी search और navigation मार्गदर्शिका](/hi/guide/search-and-navigation) खोलें। Search का interface भी हिन्दी में है और पुराने releases के tutorials अलग रहते हैं।
+
 ## दस्तावेज़ कैसे पढ़ें?
 
 नए सीखने वालों को पहले [पूरा learning path](/hi/guide/learning-path), फिर [alpha.6 release](/hi/releases/v0.0.6-alpha.1) और [alpha.6 project lab](/hi/tutorials/project-symbol-navigation-alpha6) पढ़ना चाहिए। [पुराना पहला प्रोग्राम](/hi/guide/first-program) alpha.1 संदर्भ के लिए उपलब्ध है। फिर [वेरिएबल](/hi/language/variables), [फ़ंक्शन](/hi/language/functions), [CLI](/hi/tooling/cli) और [फीचर की स्थिति](/hi/reference/status) देखें। अंग्रेज़ी और हिन्दी पृष्ठों में compiler की वास्तविक भाषा और कोड समान रखे जाते हैं।

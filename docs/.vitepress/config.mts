@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
 import { pageSeoHead } from './site-meta'
+import { localSearchOptions } from './local-search'
 
 /** Scarp source-language grammar; deliberately limited to implemented syntax. */
 const scarpGrammar = {
@@ -37,6 +38,14 @@ export default defineConfig({
       title: 'Scarp दस्तावेज़',
       description: 'Scarp प्रोग्रामिंग लैंग्वेज के आधिकारिक हिन्दी दस्तावेज़',
       themeConfig: {
+        // Accessible labels on mobile, theme switcher and language navigation.
+        sidebarMenuLabel: 'मेनू',
+        returnToTopLabel: 'ऊपर लौटें',
+        langMenuLabel: 'भाषा बदलें',
+        skipToContentLabel: 'मुख्य सामग्री पर जाएँ',
+        darkModeSwitchLabel: 'रंग योजना',
+        lightModeSwitchTitle: 'हल्के रंगों में बदलें',
+        darkModeSwitchTitle: 'गहरे रंगों में बदलें',
         outline: { label: 'इस पृष्ठ पर' },
         docFooter: { prev: 'पिछला', next: 'अगला' },
         lastUpdated: { text: 'अंतिम अपडेट' },
@@ -67,6 +76,7 @@ export default defineConfig({
         sidebar: [
           { text: 'स्वागत', items: [
             { text: 'परिचय', link: '/hi/guide/introduction' },
+            { text: 'दस्तावेज़ खोजें', link: '/hi/guide/search-and-navigation' },
             { text: 'इंस्टॉलेशन (alpha.6)', link: '/hi/guide/installation-alpha6' },
             { text: 'सात चरणों वाला Learning Path', link: '/hi/guide/learning-path' },
             { text: 'पहला Alpha.6 project और symbols', link: '/hi/tutorials/project-symbol-navigation-alpha6' },
@@ -159,7 +169,7 @@ export default defineConfig({
   themeConfig: {
     logo: 'https://avatars.githubusercontent.com/u/350973173?v=4',
     siteTitle: 'Scarp',
-    search: { provider: 'local' },
+    search: { provider: 'local', options: localSearchOptions },
     outline: { level: [2, 3], label: 'On this page' },
     docFooter: { prev: 'Previous', next: 'Next' },
     editLink: { pattern: `${docsRepo}/edit/main/docs/:path`, text: 'Improve this page on GitHub' },
@@ -210,6 +220,7 @@ export default defineConfig({
     sidebar: [
       { text: 'Welcome', items: [
         { text: 'Introduction', link: '/guide/introduction' },
+        { text: 'Search and navigation', link: '/guide/search-and-navigation' },
         { text: 'Install the current alpha.6 release', link: '/guide/installation-alpha6' },
         { text: 'Learn Scarp: seven stages', link: '/guide/learning-path' },
         { text: 'First alpha.6 project and symbols', link: '/tutorials/project-symbol-navigation-alpha6' },
