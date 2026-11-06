@@ -3,6 +3,7 @@ interface SearchTranslationBlock {
   [key: string]: string | Record<string, string> | undefined
 }
 export interface SearchLocalizationOptions {
+  translations?: { button?: Record<string, string> }
   locales?: Record<string, {
     translations?: {
       button?: Record<string, string>
@@ -35,6 +36,19 @@ export function validateHindiLocalSearch(
   const failures: string[] = []
   const translations = options.locales?.hi?.translations
   const button = translations?.button ?? {}
+  const englishButton = options.translations?.button ?? {}
+  // The VitePress search trigger displays a keycap "K" next to its label.
+  // Both localized ARIA names must contain all user-visible text in order.
+  for (const [name, values] of [
+    ['English',englishButton],
+    ['Hindi',button]
+  ] as const) {
+    const visible = values.buttonText
+    const accessible = values.buttonAriaLabel
+    if (!visible || accessible !== visible + ' K') {
+      failures.push(name + ' search accessible name must contain visible label and shortcut K')
+    }
+  }
   const modal = translations?.modal ?? {}
   const footerCandidate = modal.footer
   const footer = footerCandidate && typeof footerCandidate === 'object'
