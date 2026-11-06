@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 import { comparePublishedCompiler, type CompilerReleaseRecord } from './lib/compiler-release-drift.ts'
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const manifest = JSON.parse(readFileSync(resolve(root, 'conformance/alpha6-manifest.json'), 'utf8')) as {
+const manifest = JSON.parse(readFileSync(resolve(root, 'data/compiler-latest-release.json'), 'utf8')) as {
   compilerRef: string
   compilerCommit: string
 }

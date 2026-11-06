@@ -23,7 +23,7 @@ const sources: FinderSources = {
   compatHi: read('docs/hi/reference/compatibility.md')
 }
 assert.deepEqual(validateCommandFinder(sources), [])
-assert.equal(LATEST_RELEASE, RELEASES[5]?.tag)
+assert.equal(LATEST_RELEASE, RELEASES[6]?.tag)
 const expected = new Map<CommandTask,number>([
   ['run-file',0], ['static-verify',2], ['create-project',3],
   ['inspect-project',4], ['inspect-symbols',5], ['diagnose-host',2], ['inspect-ast',2]
@@ -55,7 +55,7 @@ for (const [index,release] of RELEASES.entries()) {
     }
   }
 }
-assert.equal(combinations,42)
+assert.equal(combinations,49)
 assert.equal(unavailable,18,'release-sensitive unsupported capabilities must stay explicit')
 assert.deepEqual(commandAdvice('v0.0.5-alpha.1','run-file').commands,['scarp run FILE.srp'])
 assert.deepEqual(commandAdvice('v0.0.5-alpha.2','run-file').commands,['scarp run FILE.srp'])
@@ -71,6 +71,8 @@ assert.deepEqual(commandAdvice('v0.0.6-alpha.1','diagnose-host').commands,
   ['scarp diagnose --json'])
 assert.deepEqual(commandAdvice('v0.0.6-alpha.1','inspect-ast').commands,
   ['scarp inspect ast FILE.srp'])
+assert.deepEqual(commandAdvice('v0.0.6-alpha.2','inspect-symbols').commands,
+  ['scarp inspect symbols --json FILE.srp','scarp inspect references --json FILE.srp'])
 assert.throws(()=>commandAdvice('v0.0.7-alpha.1' as ReleaseTag,'run-file'),TypeError)
 assert.throws(()=>commandAdvice(LATEST_RELEASE,'native-compile' as CommandTask),TypeError)
 
@@ -103,7 +105,7 @@ for (const [key,needle,replacement] of mutations) {
 const released = JSON.parse(JSON.stringify(RELEASES)) as Array<{
   tag:string;source:string;label:string
 }>
-released[5]!.source='0'.repeat(40)
+released[6]!.source='0'.repeat(40)
 assert.ok(validateCommandFinder(sources,released).length>0,'wrong alpha.6 commit must fail')
 const tasks = JSON.parse(JSON.stringify(TASKS)) as Array<{
   id:string;first:number;en:string;hi:string;reference:string
@@ -120,5 +122,5 @@ assert.ok(validateCommandFinder(sources,RELEASES,TASKS,languages as unknown as F
 assert.ok(validateCommandFinder({...sources,hindi:sources.hindi.replace(/[\u0900-\u097f]/gu,'')}).length>0,
   'untranslated Hindi guide must not pass')
 
-console.log('PASS: 42 release/task combinations, '+unavailable+
+console.log('PASS: 49 release/task combinations, '+unavailable+
   ' unavailable states, exact commands, input validation and 21 negative regressions')

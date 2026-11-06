@@ -75,12 +75,12 @@ check(fixture.html.includes('class="table-scroll" tabindex="0"'),
 check(fixture.html.includes('tabindex="0"'),'Scrollable code must be keyboard focusable')
 
 const sources=documentationPages(docs)
-check(sources.length===138,'Published docs count changed: update migration baseline with evidence')
+check(sources.length===140,'Published docs count changed: update migration baseline with evidence')
 for(const source of sources){
   assert.equal(pairedRoutes(source).canonical,urlForPage(source),
     'Own engine must preserve canonical route for '+source)
 }
-assert.deepEqual(await buildSite(),{pages:138,assets:4})
+assert.deepEqual(await buildSite(),{pages:140,assets:4})
 const htmlPaths=new Set<string>()
 for(const source of sources) {
   const dest=join(site,htmlPath(source))
@@ -102,7 +102,7 @@ for(const source of sources) {
     'Unrendered historical widget in '+source)
   htmlPaths.add(htmlPath(source))
 }
-assert.equal(htmlPaths.size,138)
+assert.equal(htmlPaths.size,140)
 const homeHtml=readFileSync(join(site,'index.html'),'utf8')
 const hindiHome=readFileSync(join(site,'hi/index.html'),'utf8')
 check(homeHtml.includes('Build Beyond Boundaries.'),'English homepage hero missing')
@@ -110,18 +110,18 @@ check(hindiHome.includes('सीमाओं से आगे'),'Hindi homepage 
 check(homeHtml.includes('class="features"'),'Feature cards missing')
 const finder=readFileSync(join(site,'tooling/command-finder.html'),'utf8')
 check(finder.includes('id="scarp-command-data"'),'Release-scoped CLI model missing')
-check(finder.includes('v0.0.6-alpha.1'),'Latest published release missing')
+check(finder.includes('v0.0.6-alpha.2'),'Latest published release missing')
 const dev=readFileSync(join(site,'project/deployments.html'),'utf8')
 check(dev.includes('data-load-deployments'),'Deployment widget missing')
 const search=JSON.parse(readFileSync(join(site,'assets/search-index.json'),'utf8')) as Array<{
   locale:string;title:string;route:string;excerpt:string
 }>
-check(search.length===138,'All docs must be in local search index')
-check(search.filter(x=>x.locale==='hi').length===69,'Hindi search parity')
+check(search.length===140,'All docs must be in local search index')
+check(search.filter(x=>x.locale==='hi').length===70,'Hindi search parity')
 check(search.some(x=>x.excerpt.includes('funcra')),'Scarp syntax must be searchable')
 check(search.every(x=>x.route.startsWith('/scarp-docs/')),'Search routes must use correct base')
 check(existsSync(join(site,'assets/scarp-site.js')),'Browser TypeScript did not compile')
 check(existsSync(join(site,'assets/scarp-site.css')),'Own CSS missing')
 const sitemap=readFileSync(join(site,'sitemap.xml'),'utf8')
 assert.deepEqual(validateSitemap(sitemap,sources).errors,[],'Sitemap must precisely cover published sources')
-console.log('PASS: '+assertions+' Scarp-owned engine assertions, 138 paired routes, bilingual SEO, safe Markdown, offline search, home layout, release-aware CLI and sitemap')
+console.log('PASS: '+assertions+' Scarp-owned engine assertions, 140 paired routes, bilingual SEO, safe Markdown, offline search, home layout, release-aware CLI and sitemap')

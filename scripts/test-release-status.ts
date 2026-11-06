@@ -17,6 +17,8 @@ const check = (e: string, h: string, s = sources): string[] => validateReleaseSt
 assert.deepEqual(check(en, hi), [])
 assert.ok(check(en.replace('<!-- scarp-release-status: v0.0.5-alpha.5 -->', ''), hi)
   .some(problem => problem.includes('current-release marker')))
+assert.ok(check(en.replaceAll('398b8ff705154a02423fe458ce3a427401e81e31', 'unverified'), hi)
+  .some(problem => problem.includes('current alpha.2 publication evidence')))
 assert.ok(check(en.replaceAll(sources.alpha3.compilerCommit, 'not-published'), hi)
   .some(problem => problem.includes('source commit')))
 assert.ok(check(en.replaceAll('**12**', '**13**'), hi)

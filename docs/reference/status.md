@@ -3,7 +3,7 @@
 <!-- scarp-release-status: v0.0.5-alpha.5 -->
 <!-- scarp-main-reference-baseline: v0.0.5-alpha.1 -->
 
-**Latest published compiler: [v0.0.6-alpha.1](/releases/v0.0.6-alpha.1), November 5, 2026.** The general language-reference chapters remain **intentionally pinned to v0.0.5-alpha.1**. Separately verified alpha.2, alpha.3, alpha.4, alpha.5 and alpha.6 features are documented in release-specific guides. **All versions are experimental prereleases**, without guaranteed language compatibility.
+**Latest published compiler: [v0.0.6-alpha.2](/releases/v0.0.6-alpha.2), November 6, 2026.** The general language-reference chapters remain **intentionally pinned to v0.0.5-alpha.1**. Separately verified alpha.2, alpha.3, alpha.4, alpha.5 and alpha.6 features are documented in release-specific guides. **All versions are experimental prereleases**, without guaranteed language compatibility.
 
 For alpha.6 installation, use the [published release archive and checksum pairs](/releases/v0.0.6-alpha.1). For the older alpha.5 release, start with [published alpha.5 installation](/guide/installation-alpha5) and [alpha.5 CLI](/tooling/cli-alpha5). The earlier [alpha.4 project quickstart](/guide/quickstart-alpha4) remains useful for the unchanged creation workflow. The [alpha.3 CLI reference](/tooling/cli) remains useful for individual file commands. Use the [version compatibility guide](/reference/compatibility) before migrating existing projects.
 
@@ -17,6 +17,7 @@ For alpha.6 installation, use the [published release archive and checksum pairs]
 | **[v0.0.5-alpha.4](/releases/v0.0.5-alpha.4)** (Nov 3, 2026) | `79141329176f5dce51457e90a6652902f6432135` | Compiler-generated project manifest, source and stdout verified by new alpha.4 lifecycle tests | [Alpha.4 guide](/releases/v0.0.5-alpha.4) |
 | **[v0.0.5-alpha.5](/releases/v0.0.5-alpha.5)** (Nov 4, 2026) | `2eeed0aa52ccb59523307841ad8ffbd83f8911a8` | **1** release-pinned scalar-repeat program plus project-directory module inspection and Rust-only C11 backend | [Alpha.5 guide](/releases/v0.0.5-alpha.5) |
 | **[v0.0.6-alpha.1](/releases/v0.0.6-alpha.1)** (Nov 5, 2026) | `aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8` | **2** published executable examples, source-reference JSON schemas, and static symbol navigation with checked RMS calculations | [Alpha.6 guide](/releases/v0.0.6-alpha.1) |
+| **[v0.0.6-alpha.2](/releases/v0.0.6-alpha.2)** (Nov 6, 2026) | `398b8ff705154a02423fe458ce3a427401e81e31` | Optional bounded Rust caching and dependency invalidation APIs; **no new Scarp CLI commands or syntax** | [Alpha.2 cache guide](/releases/v0.0.6-alpha.2) |
 
 The numbers count **examples in their individual release-specific suites**; they are not a count of all language features, nor a proof that every existing program works in every later compiler. The [alpha.1 → alpha.2 upgrade test](/reference/upgrade-readiness) separately re-runs 11 original programs unchanged with alpha.2; it does **not** establish general alpha.3 backward compatibility.
 
@@ -82,7 +83,7 @@ Alpha.3 also ships the **Scarp-first CLI**: `exec`, static-only `verify`, `inspe
 
 The published `native_scalar_repeat.srp` and byte-exact stdout are copied into a dedicated fixture and tested in the alpha.5 tagged compiler CI job. **The native C subset is smaller than the interpreter's language support.**
 
-## Still unavailable in the latest published alpha.5
+## Still unavailable in the latest published alpha.2
 
 These capabilities are **not shipped** by the published compiler, even though design proposals or newer development work may exist:
 
