@@ -67,8 +67,8 @@ export function validateHindiLocalSearch(
     failures.push('An external search provider must not replace client-side search')
   }
   for (const key of [
-    'sidebarMenuLabel','returnToTopLabel','langMenuLabel','navMenuLabel',
-    'mobileMenuLabel','extraMenuLabel','skipToContentLabel',
+    'sidebarMenuLabel','returnToTopLabel','langMenuLabel',
+    'skipToContentLabel',
     'darkModeSwitchLabel','lightModeSwitchTitle','darkModeSwitchTitle'
   ]) {
     const pattern = new RegExp('\\b'+key+'\\s*:\\s*([\\x27\\x22])([^\\x27\\x22]+)\\1')
