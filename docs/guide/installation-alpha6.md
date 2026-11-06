@@ -101,6 +101,8 @@ cargo build --locked --offline
 
 The result is the Rust-based Scarp **interpreter/CLI**. Source-build commands should be run in a fresh directory. The offline build expects the Rust toolchain to be installed; it does not install Rust automatically.
 
+After installing, the optional [read-only compiler capability check](/tooling/diagnose-alpha6) explains `scarp diagnose --json` and how to confirm the actual executable without changing project files.
+
 ## 6. Verify the installed compiler and continue learning
 
 After the version and starter-project test, use the **published alpha.6 executable** to work through [the source-navigation project](/tutorials/project-symbol-navigation-alpha6). Its commands explain `scarp inspect symbols --json` and `scarp inspect references --json` without pretending they are an LSP or rename engine. See the [alpha.6 release notes](/releases/v0.0.6-alpha.1) and [learning path](/guide/learning-path).

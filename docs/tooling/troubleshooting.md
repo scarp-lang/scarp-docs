@@ -8,6 +8,8 @@
 
 Run the executable directly from its extracted directory (`./scarp` or `.\scarp.exe` in PowerShell), or check whether the Cargo binary directory is on your `PATH`. Verify with `scarp --version` before running a tutorial.
 
+For an offline version and host-capability report, use [`scarp diagnose --json`](/tooling/diagnose-alpha6). This checks the interpreter you actually invoked, not the presence of a native compiler.
+
 ## `unknown command` or old syntax errors
 
 For the **published alpha.6 compiler** (and the older alpha.5 project workflow), use `scarp exec FILE.srp` to run a file, `scarp verify FILE.srp` to validate statically, and `scarp create DIRECTORY` / `scarp verify DIRECTORY` / `scarp launch DIRECTORY` for project work. Project module inspection is `scarp inspect modules --json DIRECTORY`. Alpha.6 also supports `scarp inspect symbols --json FILE.srp` and `scarp inspect references --json FILE.srp`. Historical `run`, `check`, and `tokens` remain for old scripts. `scarp build` and `scarp compile` are **not** supported commands. Older beta executables may require `println` and `let` rather than the current `print` and `bind` syntax. Read [compatibility](/reference/compatibility).

@@ -5,6 +5,8 @@
 
 **Published in [v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1)**, from source commit `aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8`. The existing [alpha.5 CLI guide](/tooling/cli-alpha5) is the historical reference for project module inspection. The new commands are **not available** in alpha.5.
 
+For verifying the executable, its host architecture and available features, see [compiler diagnose and capabilities](/tooling/diagnose-alpha6). `scarp diagnose --json` reports **the installed interpreter**, not native code generation.
+
 For parser-level inspection, use the [published alpha.6 AST debugging walkthrough](/tooling/inspect-ast-alpha6). Its human-readable debug tree is **not** the versioned JSON produced by symbols and references.
 
 ## Commands

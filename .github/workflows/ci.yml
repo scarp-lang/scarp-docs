@@ -92,6 +92,8 @@ jobs:
         run: npm run test:alpha6-installation
       - name: Check published alpha.6 bilingual AST debugging and commands
         run: npm run check:alpha6-ast && npm run test:alpha6-ast
+      - name: Check published alpha.6 host diagnosis, JSON fields and translations
+        run: npm run check:alpha6-diagnose && npm run test:alpha6-diagnose
       - name: Validate published alpha.6 source and bilingual guides
         run: npm run check:alpha6
       - name: Regression-test alpha.6 release evidence and translation drift
@@ -326,3 +328,5 @@ jobs:
         run: npm run test:alpha6-project-compiler -- .compiler-alpha6/target/debug/scarp
       - name: Exercise published alpha.6 AST parser-only behavior and errors
         run: npm run test:alpha6-ast-compiler -- .compiler-alpha6/target/debug/scarp .compiler-alpha6/examples
+      - name: Verify actual alpha.6 diagnose JSON and read-only behavior
+        run: npm run test:alpha6-diagnose-compiler -- .compiler-alpha6/target/debug/scarp
