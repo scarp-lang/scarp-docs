@@ -42,6 +42,7 @@ export default defineConfig({
         lastUpdated: { text: 'अंतिम अपडेट' },
         nav: [
           { text: 'शुरुआत', link: '/hi/guide/learning-path' },
+          { text: 'इंस्टॉल (alpha.6)', link: '/hi/guide/installation-alpha6' },
           { text: 'भाषा', link: '/hi/language/overview' },
           { text: 'CLI (alpha.6)', link: '/hi/tooling/cli-alpha6' },
           { text: 'CLI (alpha.5)', link: '/hi/tooling/cli-alpha5' },
@@ -66,6 +67,7 @@ export default defineConfig({
         sidebar: [
           { text: 'स्वागत', items: [
             { text: 'परिचय', link: '/hi/guide/introduction' },
+            { text: 'इंस्टॉलेशन (alpha.6)', link: '/hi/guide/installation-alpha6' },
             { text: 'सात चरणों वाला Learning Path', link: '/hi/guide/learning-path' },
             { text: 'पहला Alpha.6 project और symbols', link: '/hi/tutorials/project-symbol-navigation-alpha6' },
             { text: 'Alpha.4 project शुरुआत', link: '/hi/guide/quickstart-alpha4' },
@@ -175,6 +177,7 @@ export default defineConfig({
     ],
     nav: [
       { text: 'Learn', link: '/guide/learning-path' },
+      { text: 'Install (alpha.6)', link: '/guide/installation-alpha6' },
       { text: 'Language', link: '/language/overview' },
       { text: 'CLI (alpha.6)', link: '/tooling/cli-alpha6' },
       { text: 'CLI (alpha.5)', link: '/tooling/cli-alpha5' },
@@ -196,7 +199,6 @@ export default defineConfig({
         { text: 'Numerical RMS', link: '/language/rms-alpha6' },
         { text: 'Published alpha.5 changes', link: '/releases/v0.0.5-alpha.5' },
         { text: 'Experimental C11 Rust API', link: '/reference/c11-backend-alpha5' },
-        { text: 'Published alpha.5 changes', link: '/releases/v0.0.5-alpha.5' },
         { text: 'Historical alpha.4 project workflow', link: '/releases/v0.0.5-alpha.4' },
         { text: 'Published alpha.3 and Scarp-first CLI', link: '/releases/v0.0.5-alpha.3' },
         { text: 'Published alpha.2 examples', link: '/releases/v0.0.5-alpha.2' },
@@ -207,6 +209,7 @@ export default defineConfig({
     sidebar: [
       { text: 'Welcome', items: [
         { text: 'Introduction', link: '/guide/introduction' },
+        { text: 'Install the current alpha.6 release', link: '/guide/installation-alpha6' },
         { text: 'Learn Scarp: seven stages', link: '/guide/learning-path' },
         { text: 'First alpha.6 project and symbols', link: '/tutorials/project-symbol-navigation-alpha6' },
         { text: 'Quickstart: projects (alpha.4)', link: '/guide/quickstart-alpha4' },
