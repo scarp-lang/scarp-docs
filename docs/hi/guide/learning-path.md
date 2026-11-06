@@ -6,6 +6,8 @@
 
 **आपके compiler में कौन सा command उपलब्ध है?** [Version-aware CLI Command Finder](/hi/tooling/command-finder) में installed release और काम चुनें। पुरानी `run` / `check` commands को नए static `verify` या project inspection से न मिलाएँ।
 
+**नवीनतम compiler:** प्रकाशित [v0.0.6-alpha.2](/hi/releases/v0.0.6-alpha.2) में वैकल्पिक Rust caching APIs आई हैं, नया Scarp syntax या CLI command नहीं। नीचे का alpha.1 symbol-navigation पाठ अपने मूल परीक्षण किए हुए examples पर आधारित है।
+
 **Scarp पहली बार सीख रहे हैं तो यहाँ से शुरुआत करें।** यह मार्गदर्शिका शुरुआती प्रोग्राम से numerical examples, source modules, project और **[प्रकाशित v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1)** में आए symbol-navigation tools तक पहुँचाती है। हर पाठ के examples compiler के वास्तविक परीक्षणों पर आधारित हैं।
 
 Scarp अभी **experimental prerelease** है। ऐसा **कोई प्रमाण नहीं** कि हर पुराने tutorial का code एक ही नए binary में बिना बदलाव चलेगा। इसलिए **पढ़ाई इसी क्रम में करें**, लेकिन code चलाते समय **उस tutorial का बताया हुआ exact release** प्रयोग करें या दूसरे release पर स्वयं जाँचें। मुख्य भाषा-संदर्भ अभी v0.0.5-alpha.1 से सत्यापित है; नए features अलग release-specific पाठ में लिखे हैं।

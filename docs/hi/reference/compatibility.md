@@ -6,7 +6,8 @@ Scarp के शुरुआती prereleases में syntax और API ब�
 
 | संस्करण | प्रमुख प्रकाशित सुविधा |
 | --- | --- |
-| **`v0.0.6-alpha.1`** | **नवीनतम, 5 नवंबर 2026:** static symbols/references JSON inspection तथा `rms(vector)`; [release](/hi/releases/v0.0.6-alpha.1), [पूरा project lab](/hi/tutorials/project-symbol-navigation-alpha6) |
+| **[v0.0.6-alpha.2](/hi/releases/v0.0.6-alpha.2)** | **वर्तमान प्रकाशित prerelease (6 नवंबर):** वैकल्पिक Rust caching और dependency invalidation APIs; नया Scarp CLI command या syntax नहीं |
+| **`v0.0.6-alpha.1`** | **पिछला प्रकाशित, 5 नवंबर 2026:** static symbols/references JSON inspection तथा `rms(vector)`; [release](/hi/releases/v0.0.6-alpha.1), [पूरा project lab](/hi/tutorials/project-symbol-navigation-alpha6) |
 | **`v0.0.5-alpha.5`** | पिछला, 4 नवंबर 2026: project-directory module inspection; केवल Rust embedding के लिए सीमित C11 emitter; [release](/hi/releases/v0.0.5-alpha.5) |
 | **`v0.0.5-alpha.4`** | 3 नवंबर: नया project create, static verify DIRECTORY, launch; [project guide](/hi/releases/v0.0.5-alpha.4) |
 | `v0.0.1` | integer arithmetic, शुरुआती printing |
@@ -33,11 +34,15 @@ Scarp के शुरुआती prereleases में syntax और API ब�
 
 पुराने version की syntax की सामान्य compatibility **सिद्ध नहीं** है। पुराने examples को उसी tagged version से जाँचें; version-specific tutorials और manifests को बदलकर नया tag न दें।
 
-## नवीनतम प्रकाशित alpha.6 की compatibility सीमा
+## प्रकाशित alpha.6 symbols और CLI की compatibility सीमा
 
-वर्तमान प्रकाशित compiler [v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1) का source commit `aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8` है। इसमें `scarp inspect symbols --json` तथा `scarp inspect references --json` से file या explicit project directory के definitions/references देख सकते हैं। साथ में `rms(vector)` भी प्रकाशित हुआ है। Symbol IDs केवल **एक compilation snapshot** के लिए हैं; कोई तैयार LSP, rename या incremental cache उपलब्ध नहीं है। [Alpha.6 CLI](/hi/tooling/cli-alpha6), [RMS पाठ](/hi/language/rms-alpha6) और [project lab](/hi/tutorials/project-symbol-navigation-alpha6) पढ़ें।
+पहले प्रकाशित alpha.6 compiler [v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1) का source commit `aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8` है। इसमें `scarp inspect symbols --json` तथा `scarp inspect references --json` से file या explicit project directory के definitions/references देख सकते हैं। साथ में `rms(vector)` भी प्रकाशित हुआ है। Symbol IDs केवल **एक compilation snapshot** के लिए हैं; कोई तैयार LSP, rename या user-facing incremental compilation service नहीं है; बाद के alpha.2 में अलग Rust cache APIs आई हैं। [Alpha.6 CLI](/hi/tooling/cli-alpha6), [RMS पाठ](/hi/language/rms-alpha6) और [project lab](/hi/tutorials/project-symbol-navigation-alpha6) पढ़ें।
 
 [सात चरणों वाला learning path](/hi/guide/learning-path) हर पुराने tutorial के लिए **सही compiler release** बताता है। नए features के आने से सभी पुराने source files के compatible होने का प्रमाण नहीं मिलता। Native `.srp` executable compiler CLI और general tensor runtime अभी नहीं हैं।
+
+## नवीनतम alpha.2 में Rust caching की सीमा
+
+[6 नवंबर की प्रकाशित prerelease](/hi/releases/v0.0.6-alpha.2) में whole-graph resolution, tokens और AST के लिए सीमित, वैकल्पिक Rust cache APIs, dependency invalidation तथा source eviction शामिल हैं। **नया Scarp syntax या CLI command नहीं आया है।** पुराने alpha.1 examples अपने मूल compiler version पर सत्यापित रहते हैं। Cache hit से import, syntax, type और resource checks नहीं छोड़ी जातीं।
 
 ## पुराना स्रोत migrate करना
 
