@@ -14,6 +14,12 @@ Before changing the main documentation baseline, run `npm run test:alpha2-backco
 
 The [English alpha.3 release guide](/releases/v0.0.5-alpha.3) and matching Hindi page reproduce **four complete published programs and 11 upstream source/output/JSON Git blobs**. Run `npm run check:alpha3` to validate bilingual examples, or `npm run check:alpha3 -- /path/to/tagged-alpha3/examples` to compare the exact files with the published source checkout. The `alpha3-conformance` CI job builds source commit `7715c28df09c7703b39e14fddb963275b25df476` and runs `npm run test:alpha3 -- /path/to/alpha3/scarp`, checking new `exec` and static `verify` separately from the legacy commands. Alpha.1 and alpha.2 evidence stays pinned independently.
 
+## Offline Chromium browser acceptance
+
+The dedicated `browser-offline` Documentation CI job installs pinned Playwright/Chromium, builds the VitePress site, packages the full English/Hindi offline archive and runs `npm run test:browser-offline` against the **extracted** standalone Node server. This validates release-aware Command Finder availability, keyboard-only version selection, copy-button success and denied-permission fallback, English/Hindi local search, a mobile-width menu, keyboard shortcuts and the restriction that no external resource is requested.
+
+For a local repeat, install dependencies with `npm install`, install Chromium with `npx playwright install chromium` (Linux CI also uses `--with-deps`), run `npm run docs:build && npm run package:offline`, then `npm run test:browser-offline`. Failure screenshots, when possible, are saved under ignored `artifacts/browser-failures/` and uploaded on CI failure. These tests exercise selected interactive controls, not every screen-reader combination or a full WCAG conformance audit; track broader access testing in [Issue #65](https://github.com/scarp-lang/scarp-docs/issues/65). The offline distribution remains pinned to the tested docs commit, and the browser suite has no external-search backend.
+
 ## Supported TypeScript and Vue toolchain
 
 The docs run strict Vue SFC checks through `vue-tsc`. The tested compatibility line is **TypeScript 6.0.x** with **vue-tsc 3.3.x**. TypeScript 7.0 removes the programmatic TypeScript API expected by Vue's checker, causing `ERR_PACKAGE_PATH_NOT_EXPORTED` before actual document diagnostics run. This is an **upstream integration limitation**, not evidence that the TypeScript 7 compiler itself is defective.

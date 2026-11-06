@@ -10,6 +10,7 @@
     "docs:preview": "vitepress preview docs",
     "package:offline": "tsx scripts/package-offline.ts",
     "test:offline": "tsx scripts/test-offline.ts",
+    "test:browser-offline": "tsx scripts/test-browser-offline.ts",
     "typecheck": "vue-tsc --noEmit -p tsconfig.json",
     "check:tooling": "tsx scripts/check-tooling.ts",
     "check:toolchain": "tsx scripts/check-toolchain.ts",
@@ -98,7 +99,8 @@
     "@types/node": "26.6.6",
     "typescript": "6.0.3",
     "tsx": "4.23.15",
-    "vue-tsc": "3.3.13"
+    "vue-tsc": "3.3.13",
+    "playwright": "1.64.1"
   },
   "engines": {
     "node": ">=20.19.0"

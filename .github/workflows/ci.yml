@@ -139,6 +139,32 @@ jobs:
       - name: Package and verify reproducible offline English/Hindi documentation
         run: npm run package:offline && npm run test:offline
 
+  browser-offline:
+    name: browser-offline
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Install website and pinned Playwright test dependencies
+        run: npm install --no-audit --no-fund
+      - name: Install headless Chromium and Linux browser dependencies
+        run: npx playwright install --with-deps chromium
+      - name: Build and package real bilingual offline documentation
+        run: npm run docs:build && npm run package:offline
+      - name: Check English/Hindi accessibility, CLI selector, offline search and mobile navigation in Chromium
+        run: npm run test:browser-offline
+      - name: Attach browser failure screenshot
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scarp-docs-browser-failures
+          path: artifacts/browser-failures/
+          if-no-files-found: ignore
+          retention-days: 7
+
   compiler-conformance:
     runs-on: ubuntu-latest
     steps:
