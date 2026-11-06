@@ -20,7 +20,7 @@ The official website is now authored and rendered by the independent generator i
 
 The same generator can build an isolated comparison copy using npm run scarp:build, verified by npm run scarp:test and npm run scarp:browser-test. The offline package contains this new production output and must pass npm run package:offline, npm run test:offline and npm run test:browser-offline before release.
 
-VitePress/Vue checker dependencies and earlier theme/config source may remain temporarily to preserve historical compiler/docs policy tests. They are no longer used to render Pages; move pure release evidence into neutral modules and update those policy checks before uninstalling the old dependencies. See Issue #70.
+VitePress and Vue checker packages have been removed from the running site and build. Canonical release commands, language-paired SEO URLs, and the Pages counter now live in independent TypeScript libraries under scripts/lib/. Unused old theme/config files remain only as evidence for historical checks. See Issue #70.
 
 ## Offline Chromium browser acceptance
 
