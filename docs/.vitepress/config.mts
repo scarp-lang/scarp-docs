@@ -49,14 +49,21 @@ export default defineConfig({
         outline: { label: 'इस पृष्ठ पर' },
         docFooter: { prev: 'पिछला', next: 'अगला' },
         lastUpdated: { text: 'अंतिम अपडेट' },
+        // Keep the top bar narrow enough for the language, search and theme controls.
+        // Historic releases, CLI reference and the remaining guides live in sidebar.
         nav: [
-          { text: 'शुरुआत', link: '/hi/guide/learning-path' },
-          { text: 'इंस्टॉल (alpha.6)', link: '/hi/guide/installation-alpha6' },
-          { text: 'भाषा', link: '/hi/language/overview' },
-          { text: 'CLI (alpha.6)', link: '/hi/tooling/cli-alpha6' },
-          { text: 'CLI (alpha.5)', link: '/hi/tooling/cli-alpha5' },
-          { text: 'CLI (alpha.4)', link: '/hi/tooling/cli-alpha4' },
+          { text: 'सीखें', link: '/hi/guide/learning-path' },
+          { text: 'इंस्टॉल', link: '/hi/guide/installation-alpha6' },
           { text: 'उदाहरण', link: '/hi/examples/' },
+          { text: 'रिलीज़', items: [
+            { text: 'नवीनतम: v0.0.6-alpha.1', link: '/hi/releases/v0.0.6-alpha.1' },
+            { text: 'पिछला: v0.0.5-alpha.5', link: '/hi/releases/v0.0.5-alpha.5' },
+            { text: 'Alpha.4 project workflow', link: '/hi/releases/v0.0.5-alpha.4' },
+            { text: 'Alpha.3 CLI', link: '/hi/releases/v0.0.5-alpha.3' },
+            { text: 'Alpha.2 examples', link: '/hi/releases/v0.0.5-alpha.2' },
+            { text: 'प्रकाशित features', link: '/hi/reference/status' },
+            { text: 'अपग्रेड जाँच: alpha.1 → alpha.2', link: '/hi/reference/upgrade-readiness' }
+          ] },
           { text: 'समुदाय', items: [
             { text: 'आधिकारिक लिंक', link: '/hi/community/social' },
             { text: 'योगदान', link: '/hi/community/contributing' },
@@ -66,12 +73,7 @@ export default defineConfig({
             { text: 'Discord #welcome', link: 'https://discord.com/channels/1566388621085253663/1566389853531152454' },
             { text: 'Discord #language-development', link: 'https://discord.com/channels/1566388621085253663/1566388870826827856' },
             { text: 'Reddit', link: 'https://www.reddit.com/r/ScarpLang/' }
-          ] },
-          { text: 'नवीनतम: v0.0.6-alpha.1', link: '/hi/releases/v0.0.6-alpha.1' },
-          { text: 'पिछला: v0.0.5-alpha.5', link: '/hi/releases/v0.0.5-alpha.5' },
-          { text: 'Alpha.2 रिलीज़', link: '/hi/releases/v0.0.5-alpha.2' },
-          { text: 'अपग्रेड जाँच: alpha.1 → alpha.2', link: '/hi/reference/upgrade-readiness' },
-          { text: 'संदर्भ: v0.0.5-alpha.1', link: '/hi/reference/status' }
+          ] }
         ],
         sidebar: [
           { text: 'स्वागत', items: [
@@ -178,36 +180,20 @@ export default defineConfig({
     editLink: { pattern: `${docsRepo}/edit/main/docs/:path`, text: 'Improve this page on GitHub' },
     // Official project accounts confirmed through public profiles or maintainer-provided URLs.
     // Add other platforms only after confirming their exact official URLs.
+    // Prominent icons stay short; all official accounts remain linked from
+    // Community menus and /community/social in both locales.
     socialLinks: [
       { icon: 'github', link: 'https://github.com/scarp-lang', ariaLabel: 'Scarp on GitHub' },
       { icon: 'x', link: 'https://x.com/ScarpLang', ariaLabel: 'Scarp on X' },
-      { icon: 'youtube', link: 'https://www.youtube.com/@ScarpLang', ariaLabel: 'Scarp on YouTube' },
-      { icon: 'instagram', link: 'https://www.instagram.com/scarplang/', ariaLabel: 'Scarp on Instagram' },
-      { icon: 'facebook', link: 'https://facebook.com/ScarpLang', ariaLabel: 'Scarp on Facebook' },
-      { icon: 'linkedin', link: 'https://linkedin.com/company/ScarpLang', ariaLabel: 'Scarp on LinkedIn' },
-      { icon: 'discord', link: 'https://discord.com/channels/1566388621085253663/1566389853531152454', ariaLabel: 'Scarp Discord welcome channel (server membership may be required)' },
-      { icon: 'bluesky', link: 'https://bsky.app/profile/scarplang.bsky.social', ariaLabel: 'Scarp on Bluesky' },
-      { icon: 'threads', link: 'https://www.threads.net/@scarplang', ariaLabel: 'Scarp on Threads' }
+      { icon: 'discord', link: 'https://discord.com/channels/1566388621085253663/1566389853531152454', ariaLabel: 'Scarp Discord welcome channel (server membership may be required)' }
     ],
+    // Five short top-level entries leave room for responsive locale and search.
+    // Every long-form guide and historical reference stays in the sidebar.
     nav: [
       { text: 'Learn', link: '/guide/learning-path' },
-      { text: 'Install (alpha.6)', link: '/guide/installation-alpha6' },
-      { text: 'Language', link: '/language/overview' },
-      { text: 'CLI (alpha.6)', link: '/tooling/cli-alpha6' },
-      { text: 'CLI (alpha.5)', link: '/tooling/cli-alpha5' },
-      { text: 'CLI (alpha.4)', link: '/tooling/cli-alpha4' },
+      { text: 'Install', link: '/guide/installation-alpha6' },
       { text: 'Examples', link: '/examples/' },
-      { text: 'Community', items: [
-        { text: 'DEV Community', link: 'https://dev.to/scarplang' },
-        { text: 'Scarp on Facebook', link: 'https://facebook.com/ScarpLang' },
-        { text: 'Scarp on LinkedIn', link: 'https://linkedin.com/company/ScarpLang' },
-        { text: 'Discord #welcome', link: 'https://discord.com/channels/1566388621085253663/1566389853531152454' },
-        { text: 'Discord #language-development', link: 'https://discord.com/channels/1566388621085253663/1566388870826827856' },
-        { text: 'Scarp on Reddit', link: 'https://www.reddit.com/r/ScarpLang/' },
-        { text: 'Official channels', link: '/community/social' },
-        { text: 'Contributing', link: '/community/contributing' }
-      ] },
-      { text: 'v0.0.6-alpha.1 (latest)', items: [
+      { text: 'Releases', items: [
         { text: 'Published alpha.6 release', link: '/releases/v0.0.6-alpha.1' },
         { text: 'Symbol navigation', link: '/tooling/cli-alpha6' },
         { text: 'Numerical RMS', link: '/language/rms-alpha6' },
@@ -218,6 +204,16 @@ export default defineConfig({
         { text: 'Published alpha.2 examples', link: '/releases/v0.0.5-alpha.2' },
         { text: 'Shipped feature matrix (alpha.1–alpha.6)', link: '/reference/status' },
         { text: 'Compiler releases', link: `${sourceRepo}/releases` }
+      ] },
+      { text: 'Community', items: [
+        { text: 'DEV Community', link: 'https://dev.to/scarplang' },
+        { text: 'Scarp on Facebook', link: 'https://facebook.com/ScarpLang' },
+        { text: 'Scarp on LinkedIn', link: 'https://linkedin.com/company/ScarpLang' },
+        { text: 'Discord #welcome', link: 'https://discord.com/channels/1566388621085253663/1566389853531152454' },
+        { text: 'Discord #language-development', link: 'https://discord.com/channels/1566388621085253663/1566388870826827856' },
+        { text: 'Scarp on Reddit', link: 'https://www.reddit.com/r/ScarpLang/' },
+        { text: 'Official channels', link: '/community/social' },
+        { text: 'Contributing', link: '/community/contributing' }
       ] }
     ],
     sidebar: [
