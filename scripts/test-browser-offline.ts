@@ -235,8 +235,12 @@ async function languageSwitch(base: string, locale: typeof pages[number]): Promi
     await link.focus()
     await link.press('Enter')
     await page.waitForURL(url => url.pathname === target)
-    assert.equal(await page.locator('html').getAttribute('lang'),
-      locale.locale === 'en' ? 'hi-IN' : 'en-US')
+    // VitePress updates the URL before Vue applies the translated document
+    // language and renders the next route. Wait for actual semantics.
+    const targetLang = locale.locale === 'en' ? 'hi-IN' : 'en-US'
+    await page.waitForFunction(lang => document.documentElement.lang === lang,
+      targetLang, { timeout: 10000 })
+    assert.equal(await page.locator('html').getAttribute('lang'), targetLang)
     await page.locator('.scarp-command-finder select').first().waitFor({ state: 'visible' })
     assert.deepEqual(external, [], locale.locale + ': language switching accessed external network')
     checked++
