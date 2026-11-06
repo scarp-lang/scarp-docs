@@ -158,6 +158,8 @@ jobs:
         run: npm run docs:build && npm run package:offline
       - name: Check English/Hindi accessibility, CLI selector, offline search and mobile navigation in Chromium
         run: npm run test:browser-offline
+      - name: Test Scarp-owned static engine in Chromium independently of VitePress
+        run: npm run scarp:test && npm run scarp:browser-test
       - name: Upload accessibility audit evidence on failure
         if: failure()
         uses: actions/upload-artifact@v4
