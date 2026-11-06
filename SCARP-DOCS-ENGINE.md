@@ -34,7 +34,7 @@ The engine's test build is generated under artifacts/scarp-engine-preview/scarp-
 
 ## Acceptance gates for replacing production
 
-1. **138 pages**: preserve all 69 English and 69 Hindi source routes, local links, home features, heading anchors, code samples, callouts and both embedded interactive widgets.
+1. **140 pages**: preserve all 70 English and 70 Hindi source routes, local links, home features, heading anchors, code samples, callouts and both embedded interactive widgets.
 2. **Search and releases**: use a full local index with no external provider; verify correct pinned compiler versions and do not invent unshipped commands.
 3. **Accessible UI**: test keyboard, focus return, language switching, appearance persistence, 320px reflow, mobile navigation and code/table scrolling. Run axe WCAG A/AA on representative states. Automated tests are not manual screen-reader certification; see Issue #65.
 4. **Deploy and offline**: change production build, archive generation, Pages upload, sitemap/live smoke and downloaded offline browser checks together. Confirm complete URL continuity.
@@ -43,6 +43,6 @@ The engine's test build is generated under artifacts/scarp-engine-preview/scarp-
 
 ## Content security and provenance
 
-The renderer escapes unreviewed raw Markdown HTML. It explicitly recognizes only the project's callouts and named widgets; future embedded content must be implemented and tested rather than bypassing HTML safety. The core language reference remains pinned to v0.0.5-alpha.1. The latest published compiler verified at migration start is v0.0.6-alpha.1, not the changing compiler main branch.
+The renderer escapes unreviewed raw Markdown HTML. It explicitly recognizes only the project's callouts and named widgets; future embedded content must be implemented and tested rather than bypassing HTML safety. The core language reference remains pinned to v0.0.5-alpha.1. The published compiler at migration start was v0.0.6-alpha.1; v0.0.6-alpha.2 was published November 6, 2026. Neither is the changing compiler main branch.
 
 The Scarp-owned renderer is now the production-build candidate. The VitePress and vue-tsc npm dependencies have been removed; old theme/config source fixtures and some evidence checks remain temporarily to protect compiler and bilingual regression coverage. None of these remaining files render or serve Pages. Remove them after live Pages, offline archive, and release CI have independently confirmed the new output. Track completion in Issue #70.

@@ -132,7 +132,7 @@ function htmlDocument(view:PageView, views:PageView[]):string{
       localized('Learn','सीखें',locale)+'</a>'+
     '<a '+attrs(locale==='hi'?BASE+'hi/guide/installation-alpha6':BASE+'guide/installation-alpha6')+'>'+
       localized('Install','इंस्टॉल',locale)+'</a>'+
-    '<a '+attrs(locale==='hi'?BASE+'hi/releases/v0.0.6-alpha.1':BASE+'releases/v0.0.6-alpha.1')+'>'+
+    '<a '+attrs(locale==='hi'?BASE+'hi/releases/v0.0.6-alpha.2':BASE+'releases/v0.0.6-alpha.2')+'>'+
       localized('Releases','रिलीज़',locale)+'</a></nav>'+
     '<div class="header-actions"><a '+attrs(target,'language-link')+' lang="'+(locale==='en'?'hi':'en')+'">'+
       localeText+'</a><button type="button" id="search-open" aria-haspopup="dialog" aria-controls="search-panel">'+
@@ -165,8 +165,8 @@ export async function buildSite():Promise<{pages:number;assets:number}>{
     const page=renderMarkdown(readFileSync(join(docsRoot,source),'utf8'),source)
     return {page,source,route:pairedRoutes(source).route,locale:pairedRoutes(source).locale}
   })
-  assert.equal(views.length,138,'Migration must preserve all 138 paired source pages')
-  assert.equal(views.filter(v=>v.locale==='hi').length,69,'Hindi page parity')
+  assert.equal(views.length,140,'Migration must preserve all 140 paired source pages')
+  assert.equal(views.filter(v=>v.locale==='hi').length,70,'Hindi page parity')
   const routes=new Set(views.map(v=>v.route))
   assert.equal(routes.size,views.length,'Generated public routes must be unique')
   const searchIndex:IndexEntry[]=views.map(view=>({

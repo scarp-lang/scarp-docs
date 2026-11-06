@@ -99,7 +99,7 @@ writeFileSync(join(stage,'serve.mjs'),compiled.outputText,'utf8')
 const instructions = `Scarp Docs — Offline English/Hindi website
 Docs version: ${packageJson.version}
 Docs source commit: ${commit}
-Latest documented published compiler: v0.0.6-alpha.1
+Latest documented published compiler: v0.0.6-alpha.2
 Core language-reference baseline: v0.0.5-alpha.1
 
 Requires Node.js 20.19+ (Node 22 recommended). No npm install needed.

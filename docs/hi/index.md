@@ -23,6 +23,9 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
+  - title: नवीनतम प्रकाशित v0.0.6-alpha.2 compiler
+    details: नई वैकल्पिक Rust cache APIs, पुराने CLI commands और आधिकारिक checksum के साथ प्रकाशित release पढ़ें।
+    link: /hi/releases/v0.0.6-alpha.2
   - title: सात चरणों में Scarp सीखें
     details: शुरुआती प्रोग्राम से numerical examples, modules, projects और symbols तक सही compiler release के साथ पूरा रास्ता।
     link: /hi/guide/learning-path

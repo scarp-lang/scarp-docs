@@ -23,6 +23,9 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
+  - title: Latest published compiler v0.0.6-alpha.2
+    details: Learn what the new opt-in Rust caches do, with exact release assets and retained interpreter commands.
+    link: /releases/v0.0.6-alpha.2
   - title: Choose your release-aware Scarp learning path
     details: Follow seven verified stages from first program and numerical functions to real projects, static analysis and RMS, with per-release guidance.
     link: /guide/learning-path
