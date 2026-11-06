@@ -1,4 +1,4 @@
-import { urlForPage } from '../../docs/.vitepress/site-meta.ts'
+import { urlForPage } from './site-meta.ts'
 
 /**
  * Validate the complete generated sitemap against all English/Hindi source
