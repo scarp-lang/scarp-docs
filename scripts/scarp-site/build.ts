@@ -189,7 +189,13 @@ export async function buildSite():Promise<{pages:number;assets:number}>{
     compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.None},
     reportDiagnostics:true
   })
-  if(browserScript.diagnostics?.length)throw new Error('Client TypeScript compilation failed')
+  if(browserScript.diagnostics?.length) {
+    const details=ts.formatDiagnosticsWithColorAndContext(browserScript.diagnostics,{
+      getCanonicalFileName:name=>name,getCurrentDirectory:()=>root,
+      getNewLine:()=> '\n'
+    })
+    throw new Error('Client TypeScript compilation failed: '+details)
+  }
   writeFileSync(join(siteRoot,'assets','scarp-site.js'),browserScript.outputText)
   writeFileSync(join(siteRoot,'404.html'),'<!doctype html><html lang="en"><title>Not found · Scarp Docs</title>'+
     '<main><h1>Documentation page not found</h1><a href="'+BASE+'">Scarp Docs</a></main></html>')
