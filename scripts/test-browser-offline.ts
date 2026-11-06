@@ -219,13 +219,21 @@ async function languageSwitch(base: string, locale: typeof pages[number]): Promi
     await page.goto(base + locale.path, { waitUntil: 'networkidle' })
     const dropdown = page.locator('.VPNavBarTranslations')
     await dropdown.waitFor({ state: 'visible' })
-    await dropdown.hover()
+    const bounds = await dropdown.boundingBox()
+    assert.ok(bounds && bounds.x >= 0 && bounds.x + bounds.width <= 1280,
+      locale.locale + ': language control must fit within the 1280px viewport')
+    const trigger = dropdown.locator('button').first()
+    await trigger.focus()
+    assert.equal(await trigger.evaluate(el => document.activeElement === el), true,
+      locale.locale + ': locale switcher must accept keyboard focus')
+    await trigger.press('Enter')
     const target = locale.locale === 'en'
       ? '/scarp-docs/hi/tooling/command-finder'
       : '/scarp-docs/tooling/command-finder'
     const link = dropdown.locator('a[href="' + target + '"]')
     await link.waitFor({ state: 'visible', timeout: 10000 })
-    await link.click()
+    await link.focus()
+    await link.press('Enter')
     await page.waitForURL(url => url.pathname === target)
     assert.equal(await page.locator('html').getAttribute('lang'),
       locale.locale === 'en' ? 'hi-IN' : 'en-US')
