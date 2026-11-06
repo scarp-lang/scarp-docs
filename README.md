@@ -16,6 +16,8 @@ Official VitePress documentation for the experimental [Scarp Programming Languag
 
 **Install the latest published compiler:** [English: Scarp v0.0.6-alpha.1](docs/guide/installation-alpha6.md) · [हिन्दी: alpha.6 इंस्टॉलेशन](docs/hi/guide/installation-alpha6.md). Windows x64, Linux x64 GNU, and Apple Silicon archives are paired with official SHA-256 checksums; the guides also provide commands for building the immutable source tag. Earlier installation walkthroughs remain historically scoped.
 
+**Verify your running Scarp compiler and host:** [English `diagnose --json` guide](docs/tooling/diagnose-alpha6.md) · [हिन्दी `diagnose --json` मार्गदर्शिका](docs/hi/tooling/diagnose-alpha6.md). Covers the tagged alpha.6 capability JSON and the distinction between interpreter execution and unsupported native binaries.
+
 **Inspect parser output without execution:** [English AST debugging guide](docs/tooling/inspect-ast-alpha6.md) · [हिन्दी AST debugging पाठ](docs/hi/tooling/inspect-ast-alpha6.md). Based on the released alpha.6 compiler's actual parser CLI; successful AST output is experimental human-readable debug text, not a stable JSON API.
 
 **Start with a complete alpha.6 project:** [English beginner lab](docs/tutorials/project-symbol-navigation-alpha6.md) · [हिन्दी शुरुआती मार्गदर्शिका](docs/hi/tutorials/project-symbol-navigation-alpha6.md). Create a project with `Scarp.project`, add a verified source module, statically inspect definitions/references, and run the exact tagged entrypoint. The project fixtures are tested with the published compiler in CI.
