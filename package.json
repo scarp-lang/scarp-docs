@@ -8,6 +8,8 @@
     "docs:dev": "vitepress dev docs --host 127.0.0.1",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
+    "package:offline": "tsx scripts/package-offline.ts",
+    "test:offline": "tsx scripts/test-offline.ts",
     "typecheck": "vue-tsc --noEmit -p tsconfig.json",
     "check:tooling": "tsx scripts/check-tooling.ts",
     "check:toolchain": "tsx scripts/check-toolchain.ts",
