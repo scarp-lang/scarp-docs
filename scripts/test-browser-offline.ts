@@ -5,6 +5,7 @@ import { tmpdir } from 'node:os'
 import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { chromium, type Browser, type BrowserContext, type Page } from 'playwright'
+import { auditOfflineAccessibility } from './lib/offline-a11y.ts'
 
 /**
  * Browser acceptance tests of the EXTRACTED distribution, not a dev server.
@@ -162,6 +163,19 @@ async function searchOffline(base:string,locale:typeof pages[number],mobile:bool
     await input.waitFor({state:'visible',timeout:15000})
     await input.fill(locale.search)
     const results=page.locator('.VPLocalSearchBox')
+    await page.waitForFunction(() =>
+      document.querySelector('.VPLocalSearchBox')?.getAttribute('role') === 'dialog')
+    assert.equal(await results.getAttribute('aria-modal'), 'true',
+      locale.locale + ': search overlay must be modal')
+    assert.equal(await results.getAttribute('aria-label'),
+      locale.locale === 'hi' ? 'दस्तावेज़ खोजें' : 'Search documentation',
+      locale.locale + ': modal accessible name must match locale')
+    assert.equal(await results.getAttribute('aria-haspopup'), null,
+      'Search dialog must not claim to be a listbox trigger')
+    assert.ok((await results.locator('kbd[aria-label]').count()) >= 3,
+      'Search dialog should describe its keyboard navigation keycaps')
+    assert.equal(await results.locator('kbd[aria-label]:not([role="img"])').count(), 0,
+      'Labelled key pictograms require a semantically permitted ARIA role')
     await results.locator('a[href]').first().waitFor({state:'visible',timeout:15000})
     const href=await results.locator('a[href]').first().getAttribute('href')
     assert.ok(href?.startsWith(locale.locale==='hi'?'/scarp-docs/hi/':'/scarp-docs/'),
@@ -311,6 +325,64 @@ async function reducedMotionNavigation(base: string, locale: typeof pages[number
   } finally { await context.close(); activePage = undefined }
 }
 
+
+/**
+ * Test actual generated English/Hindi HTML with locally injected axe-core,
+ * including content/CLI UI, search dialog, dark theme and narrow reflow.
+ * The same network firewall used by behavioral checks remains in force.
+ */
+async function auditOfflineSite(base: string, locale: typeof pages[number]): Promise<void> {
+  const output = join(root, 'artifacts', 'browser-a11y')
+  const variants = [
+    { id: 'page-light', route: locale.path, width: 1280, dark: false, search: false },
+    { id: 'page-dark', route: locale.path, width: 1280, dark: true, search: false },
+    { id: 'narrow-reflow', route: locale.path, width: 320, dark: false, search: false },
+    { id: 'search-dialog', route: locale.path, width: 1280, dark: false, search: true },
+    { id: 'homepage', route: locale.locale === 'hi' ? '/scarp-docs/hi/' : '/scarp-docs/',
+      width: 1280, dark: false, search: false }
+  ] as const
+
+  for (const variant of variants) {
+    const { context, external } = await isolatedContext(base, variant.width, 850)
+    const label = locale.locale + '-' + variant.id
+    try {
+      activePage = await context.newPage()
+      const page = activePage
+      await page.goto(base + variant.route, {waitUntil:'networkidle'})
+
+      if (variant.dark) {
+        const toggle = page.locator('.VPNavBarAppearance button').first()
+        await toggle.waitFor({state:'visible'})
+        const previouslyDark = await page.locator('html').evaluate(el => el.classList.contains('dark'))
+        if (!previouslyDark) await toggle.click()
+        await page.waitForFunction(() => document.documentElement.classList.contains('dark'))
+      }
+      if (variant.search) {
+        await page.keyboard.press('Control+k')
+        await page.locator('.VPLocalSearchBox input[type="search"]')
+          .waitFor({state:'visible'})
+      }
+      if (variant.width === 320) {
+        // 320 CSS pixels approximates the content viewport at 200% zoom
+        // on a 640 CSS-pixel display; this is NOT a native browser zoom test.
+        const overflow = await page.evaluate(() =>
+          document.documentElement.scrollWidth - window.innerWidth)
+        assert.ok(overflow <= 2, label + ': unscrollable page overflows by ' + overflow + 'px')
+        await page.locator('.scarp-command-finder #scarp-task').selectOption('inspect-symbols')
+        assert.equal(await page.locator('.scarp-command-finder pre').count(), 1)
+      }
+
+      const result = await auditOfflineAccessibility(page, label, output)
+      assert.ok(result.passes > 0, label + ': no accessibility rule was evaluated')
+      assert.deepEqual(external, [], label + ': external request attempted during audit')
+      checked++
+    } finally {
+      await context.close()
+      activePage = undefined
+    }
+  }
+}
+
 try {
   execFileSync('tar',['-xzf',join(root,'artifacts/scarp-docs-offline.tar.gz'),'-C',extracted])
   const base=await serve()
@@ -329,9 +401,10 @@ try {
     await languageSwitch(base,locale)
     await themeAndSkip(base,locale)
     await reducedMotionNavigation(base,locale)
+    await auditOfflineSite(base,locale)
   }
   console.log('PASS: '+checked+
-    ' real Chromium offline checks across English/Hindi desktop/mobile: keyboard, release gates, copy/failure, localized search/no-results, language switch, skip link, theme persistence, reduced-motion and zero external requests')
+    ' real Chromium offline checks across English/Hindi desktop/mobile: keyboard, release gates, copy/failure, localized search/no-results, language switch, skip link, theme persistence, reduced-motion, axe-core WCAG A/AA audit and zero external requests')
 }catch(err){
   if(activePage) {
     try {await activePage.screenshot({path:join(shots,'last-failure.png'),fullPage:true,timeout:3000})}

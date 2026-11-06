@@ -82,6 +82,7 @@ const mutations: Array<[keyof FinderSources,string,string]> = [
   ['component','aria-live="polite"','aria-live="off"'],
   ['component','navigator.clipboard.writeText','console.log'],
   ['component','v-if="current.supported"','v-if="true"'],
+  ['component','<pre tabindex="0">','<pre>'],
   ['component','withBase(', 'notBased('],
   ['theme',"ctx.app.component('ScarpCommandFinder', ScarpCommandFinder)","// not registered"],
   ['config',"link: '/hi/tooling/command-finder'","link: '/hi/tooling/missing'"],
@@ -120,4 +121,4 @@ assert.ok(validateCommandFinder({...sources,hindi:sources.hindi.replace(/[\u0900
   'untranslated Hindi guide must not pass')
 
 console.log('PASS: 42 release/task combinations, '+unavailable+
-  ' unavailable states, exact commands, input validation and 20 negative regressions')
+  ' unavailable states, exact commands, input validation and 21 negative regressions')

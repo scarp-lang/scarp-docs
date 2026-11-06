@@ -35,6 +35,12 @@ export function validateHindiLocalSearch(
   const failures: string[] = []
   const translations = options.locales?.hi?.translations
   const button = translations?.button ?? {}
+  // On mobile the search placeholder is visually hidden, so the translated
+  // aria-label must name the actual button. Desktop uses its visible DOM text
+  // directly; the locally installed theme performs this responsive switch.
+  if (button.buttonText && button.buttonAriaLabel !== button.buttonText) {
+    failures.push('Hindi mobile search accessible name differs from its translated button')
+  }
   const modal = translations?.modal ?? {}
   const footerCandidate = modal.footer
   const footer = footerCandidate && typeof footerCandidate === 'object'

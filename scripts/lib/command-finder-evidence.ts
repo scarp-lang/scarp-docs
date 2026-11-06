@@ -123,7 +123,8 @@ export function validateCommandFinder(
     'withBase(', 'useData()', 'v-model="selectedVersion"', 'v-model="selectedTask"',
     'v-if="current.supported"', 'aria-live="polite"', 'aria-atomic="true"',
     'navigator.clipboard.writeText', 'role="status"', 'focus-visible',
-    'prefers-reduced-motion', 'current.commands.join', 'current.firstRelease'
+    'prefers-reduced-motion', 'current.commands.join', 'current.firstRelease',
+    '<pre tabindex="0">', 'pre:focus-visible'
   ]) expect('Accessible Vue widget',component,marker)
   if (/\bfetch\s*\(|\bXMLHttpRequest\b|\baxios\b/.test(component)) {
     errors.push('The offline selector must not send a network request')

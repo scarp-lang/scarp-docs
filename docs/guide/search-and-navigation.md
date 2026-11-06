@@ -9,7 +9,7 @@ Find an implemented feature, an exact CLI command or a release-specific example 
 3. Use the arrow keys to move through results and **Enter** to open one. Press **Esc** to close search.
 4. Choose the **English / हिन्दी** language switcher to search the other translated set of pages.
 
-The search dialog follows the current documentation locale. The **Hindi** interface includes translated search buttons, results messages and keyboard hints. It indexes Hindi documents directly; it is not automatic translation of English answers. Code identifiers and release tags remain written as in the published compiler.
+The keyboard shortcut shown in the search trigger is part of its accessible name, so its text remains consistent for keyboard and screen-reader users. The search dialog follows the current documentation locale. The **Hindi** interface includes translated search buttons, results messages and keyboard hints. It indexes Hindi documents directly; it is not automatic translation of English answers. Code identifiers and release tags remain written as in the published compiler.
 
 ## Find the right version
 

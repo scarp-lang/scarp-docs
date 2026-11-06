@@ -9,7 +9,7 @@ Scarp के सही keyword, compiler command या किसी प्र�
 3. Arrow keys से परिणाम बदलें और **Enter** से संबंधित पृष्ठ खोलें। Search बंद करने के लिए **Esc** दबाएँ।
 4. **English / हिन्दी** language switcher से दूसरी भाषा के दस्तावेज़ चुनें और फिर खोजें।
 
-हिन्दी पृष्ठों में search button, परिणाम न मिलने का संदेश और keyboard सहायता हिन्दी में दिखाई जाती है। Search हिन्दी दस्तावेज़ों को सीधे index करती है; यह English उत्तरों का अपने-आप **अनुवाद नहीं** करती। Scarp code के keywords तथा release tags मूल लिखावट में ही रहते हैं।
+Search button के साथ दिखाई देने वाला **K** shortcut, उसके accessible name में भी शामिल है, ताकि screen-reader और keyboard users को एक-समान जानकारी मिले। हिन्दी पृष्ठों में search button, परिणाम न मिलने का संदेश और keyboard सहायता हिन्दी में दिखाई जाती है। Search हिन्दी दस्तावेज़ों को सीधे index करती है; यह English उत्तरों का अपने-आप **अनुवाद नहीं** करती। Scarp code के keywords तथा release tags मूल लिखावट में ही रहते हैं।
 
 ## सही compiler version चुनें
 

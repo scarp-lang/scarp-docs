@@ -58,6 +58,8 @@ Server केवल **127.0.0.1** अर्थात आपके अपने �
 
 ## Offline में क्या उपलब्ध है?
 
+**Automated accessibility जाँच:** Offline test suite, local axe-core के WCAG A/AA नियमों के अनुसार English/Hindi पृष्ठों तथा interactive स्थितियों की जाँच करती है। 320px viewport पर reflow भी जाँचा जाता है। ये परीक्षण कुछ सामान्य समस्याएँ पकड़ते हैं; **manual keyboard, screen-reader और contrast जाँच का विकल्प नहीं** हैं।
+
 **असल browser परीक्षण:** Documentation CI extracted local server को headless Chromium में चलाकर English/Hindi Command Finder, clipboard success या permission failure, keyboard से local search तथा zero-results, भाषा बदलना, skip-to-content, dark/light mode की preference, mobile navigation, reduced-motion और बाहरी network requests न होने की पुष्टि करती है। यह जाँच packaged offline archive पर होती है, hosted GitHub Pages पर नहीं। इसे सम्पूर्ण WCAG accessibility audit **नहीं** मानें।
 
 इस package में सभी English/Hindi HTML पृष्ठ, उनके स्थानीय CSS/JavaScript, VitePress search assets और [Command Finder](/hi/tooling/command-finder) शामिल हैं। पृष्ठों के अंदर के links स्थानीय server पर खुलते हैं। **बाहरी GitHub, social profiles तथा download links** के लिए फिर भी इंटरनेट चाहिए। असली browser में keyboard, search और accessibility परीक्षण का अलग काम [Issue #65](https://github.com/scarp-lang/scarp-docs/issues/65) पर रखा गया है; static assets की पुष्टि को पूरी browser accessibility जाँच न समझें।

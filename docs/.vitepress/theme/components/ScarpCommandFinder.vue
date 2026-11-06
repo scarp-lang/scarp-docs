@@ -69,7 +69,7 @@ async function copyCommands(): Promise<void> {
       <template v-if="current.supported">
         <p>{{ labels.notes[current.note] }}</p>
         <p class="scarp-command-finder-code-label">{{ labels.command }}</p>
-        <pre><code>{{ current.commands.join('\n') }}</code></pre>
+        <pre tabindex="0"><code>{{ current.commands.join('\n') }}</code></pre>
         <button type="button" class="scarp-command-finder-copy" @click="copyCommands">
           {{ copied ? labels.copied : labels.copy }}
         </button>
@@ -125,6 +125,10 @@ async function copyCommands(): Promise<void> {
   border-radius: 6px;
   background: var(--vp-code-block-bg);
   color: var(--vp-code-block-color);
+}
+.scarp-command-finder-result pre:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: 2px;
 }
 .scarp-command-finder-copy {
   margin: .75rem 0 0;

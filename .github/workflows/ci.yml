@@ -156,6 +156,14 @@ jobs:
         run: npm run docs:build && npm run package:offline
       - name: Check English/Hindi accessibility, CLI selector, offline search and mobile navigation in Chromium
         run: npm run test:browser-offline
+      - name: Upload accessibility audit evidence on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scarp-docs-accessibility-audit
+          path: artifacts/browser-a11y/
+          if-no-files-found: ignore
+          retention-days: 14
       - name: Attach browser failure screenshot
         if: failure()
         uses: actions/upload-artifact@v4
