@@ -41,6 +41,17 @@ jobs:
         run: npm run docs:build
       - name: Verify generated bilingual HTML and SEO metadata
         run: npm run check:site-build
+      - name: Build and test downloadable offline documentation archive
+        run: npm run package:offline && npm run test:offline
+      - name: Upload versioned offline snapshot and SHA-256 checksum
+        uses: actions/upload-artifact@v4
+        with:
+          name: scarp-docs-offline-${{ github.sha }}
+          path: |
+            artifacts/scarp-docs-offline.tar.gz
+            artifacts/scarp-docs-offline.tar.gz.sha256
+          if-no-files-found: error
+          retention-days: 30
       - uses: actions/upload-pages-artifact@v5
         with:
           path: docs/.vitepress/dist

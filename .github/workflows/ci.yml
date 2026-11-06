@@ -136,6 +136,8 @@ jobs:
         run: npm run docs:build
       - name: Verify bilingual generated HTML and SEO metadata
         run: npm run check:site-build
+      - name: Package and verify reproducible offline English/Hindi documentation
+        run: npm run package:offline && npm run test:offline
 
   compiler-conformance:
     runs-on: ubuntu-latest
