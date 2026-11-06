@@ -6,21 +6,12 @@
  * VitePress already generates separate English/Hindi locale indexes.
  */
 export const localSearchOptions = {
-  // Visible VitePress 1.6 search-button text includes the keyboard key "K".
-  // Label-in-name WCAG checks require that visible character in the accessible
-  // label in both English and Hindi; otherwise axe reports a serious mismatch.
-  translations: {
-    button: {
-      buttonText: 'Search',
-      buttonAriaLabel: 'Search K'
-    }
-  },
   locales: {
     hi: {
       translations: {
         button: {
           buttonText: 'दस्तावेज़ खोजें',
-          buttonAriaLabel: 'दस्तावेज़ खोजें K'
+          buttonAriaLabel: 'दस्तावेज़ खोजें'
         },
         modal: {
           displayDetails: 'विस्तृत परिणाम दिखाएँ',
