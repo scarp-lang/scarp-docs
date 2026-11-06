@@ -1,6 +1,6 @@
 # Command-line interface — published Scarp v0.0.5-alpha.4
 ::: tip Latest CLI reference
-The current published compiler is [v0.0.5-alpha.5](/releases/v0.0.5-alpha.5); use the [alpha.5 CLI](/tooling/cli-alpha5) for project-directory module inspection. The commands below remain alpha.4-only.
+The latest published compiler is [v0.0.6-alpha.2](/releases/v0.0.6-alpha.2). For the historical alpha.5 module-inspection commands, see the [alpha.5 CLI](/tooling/cli-alpha5); alpha.2 adds Rust-only caching, not new CLI commands. The commands below remain alpha.4-only.
 :::
 
 

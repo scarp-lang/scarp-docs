@@ -2,7 +2,7 @@
 
 <!-- scarp-cli-release: v0.0.5-alpha.3 -->
 
-यह **नई प्रकाशित prerelease** [v0.0.5-alpha.3](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.3) (2 नवंबर 2026) के लिए शुरुआती मार्गदर्शिका है। Scarp अभी **प्रयोगात्मक interpreter** है। यह `.srp` से native executable नहीं बनाता और भाषा की स्थिर compatibility की गारंटी नहीं है। पुराने मुख्य संदर्भ का आधार अब भी [alpha.1](/hi/reference/status) है।
+यह **ऐतिहासिक, alpha.3 के लिए सत्यापित शुरुआती गाइड** [v0.0.5-alpha.3](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.3) (2 नवंबर 2026) के लिए शुरुआती मार्गदर्शिका है। Scarp अभी **प्रयोगात्मक interpreter** है। यह `.srp` से native executable नहीं बनाता और भाषा की स्थिर compatibility की गारंटी नहीं है। पुराने मुख्य संदर्भ का आधार अब भी [alpha.1](/hi/reference/status) है। **नई स्थापना के लिए [वर्तमान v0.0.6-alpha.2 release](/hi/releases/v0.0.6-alpha.2) देखें; नीचे के commands और source examples जानबूझकर alpha.3 पर आधारित हैं।**
 
 ## 1. सही archive चुनें और checksum मिलाएँ
 

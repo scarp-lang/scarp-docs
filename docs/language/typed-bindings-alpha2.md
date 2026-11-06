@@ -5,7 +5,7 @@
 This practical lesson covers two capabilities **shipped in the published [v0.0.5-alpha.2](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.2) prerelease** on November 2, 2026: optional type annotations in `bind` / `var` declarations and explicit, checked numeric conversions. The source is pinned to compiler commit [`e4db8e191cd7ea623123cae7348450ca6c95b170`](https://github.com/scarp-lang/scarp/commit/e4db8e191cd7ea623123cae7348450ca6c95b170). It is a **release-specific addition**; the older [variables](/language/variables) and [types](/language/types) references retain their independent alpha.1 evidence.
 
 ::: tip Version boundary
-Use an **alpha.2 compiler** for the exact commands below. The latest released compiler is [alpha.3](/releases/v0.0.5-alpha.3), which also adds newer CLI verbs; the older alpha.1 compiler does **not** implement these annotations or conversion built-ins. This lesson's programs have been executed and verified **on the tagged alpha.2 compiler**; it does not claim an exhaustive cross-release compatibility guarantee.
+Use an **alpha.2 compiler** for the exact commands below. The latest released compiler is [v0.0.6-alpha.2](/releases/v0.0.6-alpha.2); the historical [alpha.3 release](/releases/v0.0.5-alpha.3) introduced newer CLI verbs; the older alpha.1 compiler does **not** implement these annotations or conversion built-ins. This lesson's programs have been executed and verified **on the tagged alpha.2 compiler**; it does not claim an exhaustive cross-release compatibility guarantee.
 :::
 
 ## 1. What is a type annotation?
