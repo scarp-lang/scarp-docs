@@ -8,7 +8,7 @@ import { validateSitemap } from './lib/sitemap-policy.ts'
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)))
 const docs = join(root, 'docs')
-const dist = join(docs, '.vitepress', 'dist')
+const dist = join(docs, '.scarp', 'dist')
 
 function headTags(html: string, tag: string): Array<Record<string, string>> {
   const head = /<head\b[^>]*>([\s\S]*?)<\/head>/i.exec(html)?.[1] ?? ''

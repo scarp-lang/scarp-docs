@@ -11,7 +11,10 @@ import { renderMarkdown, type RenderedPage, type HomeAction, type HomeFeature } 
 const root=resolve(fileURLToPath(new URL('../..',import.meta.url)))
 const docsRoot=join(root,'docs')
 export const previewRoot=join(root,'artifacts','scarp-engine-preview')
-const siteRoot=join(previewRoot,'scarp-docs')
+const production=process.argv.includes('--production')
+const siteRoot=production
+  ?join(root,'docs','.scarp','dist')
+  :join(previewRoot,'scarp-docs')
 const styles=join(root,'scripts/scarp-site/site.css')
 const client=join(root,'scripts/scarp-site/client.ts')
 const groupOrder=['guide','tutorials','language','tooling','reference','examples','releases','community','project']
@@ -154,8 +157,8 @@ function htmlDocument(view:PageView, views:PageView[]):string{
 }
 
 export async function buildSite():Promise<{pages:number;assets:number}>{
-  // The engine preview NEVER overwrites VitePress production output.
-  rmSync(previewRoot,{recursive:true,force:true})
+  // Production output is an owned .scarp/dist directory, never VitePress assets.
+  rmSync(production?siteRoot:previewRoot,{recursive:true,force:true})
   mkdirSync(join(siteRoot,'assets'),{recursive:true})
   const sources=documentationPages(docsRoot)
   const views=sources.map(source=>{

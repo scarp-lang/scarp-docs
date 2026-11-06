@@ -54,7 +54,7 @@ Open the local addresses:
 - English: `http://127.0.0.1:8080/scarp-docs/`
 - हिन्दी: `http://127.0.0.1:8080/scarp-docs/hi/`
 
-The included server binds only to **127.0.0.1** (this computer). Stop with **Ctrl+C**. Do not open `index.html` with a `file://` URL: the site uses absolute `/scarp-docs/` asset paths and requires HTTP serving.
+The included server binds only to **127.0.0.1** (this computer). Stop with **Ctrl+C**. Do not open `index.html` with a `file://` URL: the generated site uses absolute `/scarp-docs/` asset paths and requires HTTP serving.
 
 ## What works offline?
 
@@ -62,7 +62,7 @@ The included server binds only to **127.0.0.1** (this computer). Stop with **Ctr
 
 **Automated browser verification:** the documentation CI now starts the extracted local server in headless Chromium and checks English/Hindi Command Finder interaction, real clipboard success and denied permissions, keyboard-activated local search and its empty-results state, language switching, skip-to-content, persisted dark/light appearance, mobile navigation, reduced-motion operation and the absence of external requests. The browser runs locally against the packaged archive, not the hosted GitHub Pages site. This does not constitute a complete WCAG audit.
 
-The snapshot includes **all generated English and Hindi pages**, their local CSS/JavaScript, and the assets used by VitePress local search and the version-aware [Command Finder](/tooling/command-finder). Regular internal navigation runs against your local server. Links to GitHub, official releases, social profiles, or other external sites **still require internet**. The browser's actual keyboard/search behavior is being tracked separately in [accessibility test issue #65](https://github.com/scarp-lang/scarp-docs/issues/65); static asset checks are not equivalent to a full browser accessibility audit.
+The snapshot includes **all generated English and Hindi pages**, their local CSS/JavaScript, and the assets used by Scarp Docs local search and the version-aware [Command Finder](/tooling/command-finder). Regular internal navigation runs against your local server. Links to GitHub, official releases, social profiles, or other external sites **still require internet**. The browser's actual keyboard/search behavior is being tracked separately in [accessibility test issue #65](https://github.com/scarp-lang/scarp-docs/issues/65); static asset checks are not equivalent to a full browser accessibility audit.
 
 Read `MANIFEST.json` inside the extracted archive for the documentation version, exact docs source commit, compiler release boundary and SHA-256 digest of every packaged file. The core reference remains pinned to alpha.1; the latest separately documented published compiler is [v0.0.6-alpha.1](/releases/v0.0.6-alpha.1). An offline snapshot does **not** upgrade the interpreter.
 

@@ -8,9 +8,9 @@ import { gzipSync } from 'node:zlib'
 import ts from 'typescript'
 import { documentationPages } from './lib/docs-pages.ts'
 
-/** Deterministic, offline-ready tar.gz of the already-built VitePress website. */
+/** Deterministic offline archive of the independently built Scarp documentation website. */
 export const root = resolve(fileURLToPath(new URL('..', import.meta.url)))
-export const dist = join(root, 'docs/.vitepress/dist')
+export const dist = join(root, 'docs/.scarp/dist')
 export const artifactDir = join(root, 'artifacts')
 const stage = join(artifactDir, '.offline-stage')
 export const archiveName = 'scarp-docs-offline.tar.gz'
@@ -34,7 +34,7 @@ const packageJson = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'))
 const docSources = documentationPages(join(root, 'docs'))
 for (const source of docSources) {
   assert.ok(existsSync(join(dist, source.replace(/\.md$/,'.html'))),
-    'VitePress build is incomplete: ' + source)
+    'Scarp-owned build is incomplete: ' + source)
 }
 assert.ok(docSources.some(page => page.startsWith('hi/')), 'Hindi site is absent')
 const commit = (process.env.GITHUB_SHA ??
@@ -72,8 +72,15 @@ for (const path of walk(join(stage, 'scarp-docs'))) {
     localizedAvatars += count
   }
 }
-assert.ok(localizedAvatars > 0,
-  'Offline snapshot must replace the hosted Scarp organization avatar locally')
+// New Scarp-owned output already ships a local SVG. Older VitePress builds
+// needed the hosted-avatar rewrite; retain compatibility but never require it.
+assert.ok(existsSync(join(stage,'scarp-docs/assets/scarp-mark.svg')),
+  'Scarp-owned offline documentation must include a local branded SVG')
+for (const path of walk(join(stage, 'scarp-docs'))) {
+  if (!/\.(?:html|js|css|json|xml)$/.test(path)) continue
+  assert.ok(!readFileSync(join(stage,path),'utf8').includes(hostedAvatar),
+    'Hosted organization avatar escaped local offline asset checks: ' + path)
+}
 
 const serverTs = readFileSync(join(root,'scripts/offline/serve.ts'),'utf8')
 const compiled = ts.transpileModule(serverTs, {
@@ -122,9 +129,9 @@ writeFileSync(join(stage,'README-OFFLINE.txt'),instructions,'utf8')
 
 const contents = walk(stage)
 assert.ok(contents.some(p => p.startsWith('scarp-docs/assets/') && p.endsWith('.js')),
-  'VitePress JavaScript bundle missing from offline package')
+  'Scarp JavaScript bundle missing from offline package')
 assert.ok(contents.some(p => p.startsWith('scarp-docs/assets/') && p.endsWith('.css')),
-  'VitePress stylesheet missing from offline package')
+  'Scarp stylesheet missing from offline package')
 const manifest = {
   format: 'scarp-docs-offline-v1',
   documentationVersion: packageJson.version,

@@ -154,9 +154,9 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Install pinned Playwright Chromium on the hosted Ubuntu runner
         run: npx playwright install chromium
-      - name: Build and package real bilingual offline documentation
-        run: npm run docs:build && npm run package:offline
-      - name: Check English/Hindi accessibility, CLI selector, offline search and mobile navigation in Chromium
+      - name: Build and verify Scarp-owned offline documentation archive
+        run: npm run docs:build && npm run package:offline && npm run test:offline
+      - name: Check extracted Scarp-owned offline archive in Chromium and axe
         run: npm run test:browser-offline
       - name: Test Scarp-owned static engine in Chromium independently of VitePress
         run: npm run scarp:test && npm run scarp:browser-test

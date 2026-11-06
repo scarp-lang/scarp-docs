@@ -6,7 +6,7 @@ import { chromium, type BrowserContext, type Page } from 'playwright'
 import { auditOfflineAccessibility } from '../lib/offline-a11y.ts'
 import { previewRoot } from './build.ts'
 
-const root=resolve(previewRoot,'scarp-docs')
+const root=process.argv[2]?resolve(process.argv[2]):resolve(previewRoot,'scarp-docs')
 const base='/scarp-docs/'
 let assertions=0
 const mime:Record<string,string>={

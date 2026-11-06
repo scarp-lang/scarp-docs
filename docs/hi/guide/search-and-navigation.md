@@ -1,6 +1,6 @@
 # Scarp Docs में खोजें और पृष्ठ खोलें
 
-Scarp के सही keyword, compiler command या किसी प्रकाशित release के example को आधिकारिक दस्तावेज़ में खोज सकते हैं। English और हिन्दी पृष्ठों के लिए **VitePress की local search** उपलब्ध है। Search queries किसी बाहरी search provider को नहीं भेजी जातीं।
+Scarp के सही keyword, compiler command या किसी प्रकाशित release के example को आधिकारिक दस्तावेज़ में खोज सकते हैं। English और हिन्दी पृष्ठों के लिए **Scarp Docs की अपनी local search** उपलब्ध है। Search queries किसी बाहरी search provider को नहीं भेजी जातीं।
 
 ## Search कैसे खोलें?
 
