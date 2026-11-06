@@ -1,4 +1,7 @@
 # Scarp v0.0.5-alpha.5 कैसे इंस्टॉल करें
+::: warning पुराना alpha.5 release
+अब नवीनतम प्रकाशित installer [v0.0.6-alpha.1](/hi/guide/installation-alpha6) है। यह पृष्ठ केवल पुराने alpha.5 version का ऐतिहासिक मार्गदर्शन है।
+:::
 ::: tip नया alpha.5 release
 इस प्रकाशित संस्करण में project-directory module inspection समर्थित है। [alpha.5 CLI](/hi/tooling/cli-alpha5) और [C11 Rust API की सीमाएँ](/hi/reference/c11-backend-alpha5) पढ़ें। C11 emitter **CLI native compiler नहीं** है।
 :::
@@ -7,7 +10,7 @@
 <!-- scarp-cli-release: v0.0.5-alpha.5 -->
 <!-- scarp-install-release: v0.0.5-alpha.5 -->
 
-यह मार्गदर्शिका सबसे नई प्रकाशित Scarp compiler prerelease [v0.0.5-alpha.5](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.5) (4 नवंबर 2026) इंस्टॉल करने के लिए है। इसका source commit `2eeed0aa52ccb59523307841ad8ffbd83f8911a8` है। Scarp अभी **प्रयोगात्मक interpreter** है; यह स्थिर भाषा या `.srp` से native executable बनाने वाला compiler नहीं है।
+यह मार्गदर्शिका पुरानी प्रकाशित Scarp compiler prerelease [v0.0.5-alpha.5](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.5) (4 नवंबर 2026) इंस्टॉल करने के लिए है। इसका source commit `2eeed0aa52ccb59523307841ad8ffbd83f8911a8` है। Scarp अभी **प्रयोगात्मक interpreter** है; यह स्थिर भाषा या `.srp` से native executable बनाने वाला compiler नहीं है।
 
 ::: tip पहली बार Scarp इस्तेमाल कर रहे हैं?
 इंस्टॉल करने के बाद [पहला project tutorial](/hi/guide/quickstart-alpha4) पढ़ें। Alpha.3 से आ रहे हैं तो [migration guide](/hi/guide/migrate-alpha3-to-alpha4) देखें। पुराना [alpha.1 release](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.1) केवल ऐतिहासिक संदर्भ है, नए इंस्टॉलेशन की सलाह नहीं।
