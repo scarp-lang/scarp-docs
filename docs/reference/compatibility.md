@@ -1,6 +1,6 @@
 # Version compatibility
 
-For an evidence-backed inventory of alpha.1 through alpha.6 features, consult the [published feature status](/reference/status).
+For an evidence-backed inventory of alpha.1 through alpha.6 features, consult the [published feature status](/reference/status). For specific commands, the [interactive version-aware Command Finder](/tooling/command-finder) shows shipped actions and unavailable features for each published compiler.
 
 The language is **prerelease and evolving**. Use the exact executable version matching the tutorial, not a mix of snippets taken from older release notes.
 
