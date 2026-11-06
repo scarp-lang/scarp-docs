@@ -1,5 +1,8 @@
 # Scarp Documentation
 
+
+**Migration underway:** Scarp Docs is developing a framework-free TypeScript documentation engine. See [architecture and migration gates](SCARP-DOCS-ENGINE.md) and [Issue #70](https://github.com/scarp-lang/scarp-docs/issues/70). The independent build and browser checks are in CI; VitePress remains the current published-site generator until the migration gate passes. No stable release is implied.
+
 Official VitePress documentation for the experimental [Scarp Programming Language](https://github.com/scarp-lang/scarp).
 
 **Website (English):** https://scarp-lang.github.io/scarp-docs/

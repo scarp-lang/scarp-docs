@@ -1,0 +1,181 @@
+import assert from 'node:assert/strict'
+import { createServer, type Server } from 'node:http'
+import { readFile, stat } from 'node:fs/promises'
+import { resolve, extname, sep, join } from 'node:path'
+import { chromium, type BrowserContext, type Page } from 'playwright'
+import { auditOfflineAccessibility } from '../lib/offline-a11y.ts'
+import { previewRoot } from './build.ts'
+
+const root=resolve(previewRoot,'scarp-docs')
+const base='/scarp-docs/'
+let assertions=0
+const mime:Record<string,string>={
+  '.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8',
+  '.css':'text/css; charset=utf-8','.json':'application/json',
+  '.xml':'application/xml; charset=utf-8','.svg':'image/svg+xml'
+}
+const server=createServer((req,res)=>{
+  const pathname=new URL(req.url??'/', 'http://127.0.0.1').pathname
+  if(!pathname.startsWith(base)||pathname.includes('\\')||
+    pathname.split('/').some(x=>x==='..')){
+    res.writeHead(404).end('Not found')
+    return
+  }
+  const tail=decodeURIComponent(pathname.slice(base.length))
+  const path=resolve(root,tail+(tail.endsWith('/')||!tail? 'index.html':
+    extname(tail)?'':'.html'))
+  if(path!==root&&!path.startsWith(root+sep)){
+    res.writeHead(404).end('Not found')
+    return
+  }
+  void (async()=>{
+    try{
+      if(!(await stat(path)).isFile())throw new Error('Not a file')
+      const data=await readFile(path)
+      res.writeHead(200,{
+        'Content-Type':mime[extname(path)]??'application/octet-stream',
+        'Content-Length':data.length,'Cache-Control':'no-store'
+      })
+      res.end(data)
+    }catch{res.writeHead(404).end('Not found')}
+  })()
+})
+const listen=():Promise<number>=>new Promise((yes,no)=>{
+  server.once('error',no)
+  server.listen(0,'127.0.0.1',()=>{
+    const address=server.address()
+    if(!address||typeof address==='string'){no(new Error('No local server port'));return}
+    yes(address.port)
+  })
+})
+
+async function context(browser:Awaited<ReturnType<typeof chromium.launch>>,baseUrl:string,
+  width:number):Promise<{ctx:BrowserContext;outside:string[]}>{
+  const ctx=await browser.newContext({viewport:{width,height:800},deviceScaleFactor:1})
+  const outside:string[]=[]
+  await ctx.route('**/*',route=>{
+    const requested=route.request().url()
+    if(requested.startsWith(baseUrl+'/'))return route.continue()
+    outside.push(requested)
+    return route.abort('blockedbyclient')
+  })
+  return {ctx,outside}
+}
+
+async function testLocale(
+  browser:Awaited<ReturnType<typeof chromium.launch>>,
+  origin:string,lang:'en'|'hi'
+):Promise<void>{
+  const {ctx,outside}=await context(browser,origin,1280)
+  let page:Page|undefined
+  try{
+    page=await ctx.newPage()
+    const prefix=lang==='hi'?base+'hi/':base
+    const homepage=await page.goto(origin+prefix,{waitUntil:'networkidle'})
+    assert.equal(homepage?.status(),200)
+    assert.equal(await page.locator('html').getAttribute('lang'),lang==='hi'?'hi-IN':'en-US')
+    assert.equal(await page.locator('main').count(),1)
+    assert.equal(await page.locator('.features .feature').count()>8,true)
+    assert.equal(await page.locator('.hero h1').count(),1)
+    assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'),
+      'https://scarp-lang.github.io'+prefix)
+    assertions++
+
+    await page.goto(origin+prefix+'tooling/command-finder',{waitUntil:'networkidle'})
+    const widget=page.locator('[data-command-finder]')
+    await widget.locator('#scarp-release').waitFor({state:'visible'})
+    await widget.locator('#scarp-task').selectOption('inspect-symbols')
+    await widget.locator('.finder-result pre').waitFor({state:'visible'})
+    assert.match(await widget.locator('pre').innerText(),
+      /scarp inspect symbols --json FILE\.srp/)
+    assert.equal(await widget.locator('pre').getAttribute('tabindex'),'0')
+    await widget.locator('#scarp-release').selectOption('v0.0.5-alpha.1')
+    assert.equal(await widget.locator('pre').count(),0)
+    assert.match(await widget.locator('.finder-result').innerText(),/v0\.0\.6-alpha\.1/)
+    await widget.locator('#scarp-release').selectOption('v0.0.6-alpha.1')
+    await widget.locator('pre').waitFor({state:'visible'})
+    assertions++
+
+    const theme=page.locator('#theme-toggle')
+    const before=await page.locator('html').evaluate(node=>node.classList.contains('dark'))
+    await theme.click()
+    assert.equal(await page.locator('html').evaluate(node=>node.classList.contains('dark')),!before)
+    await page.reload({waitUntil:'networkidle'})
+    assert.equal(await page.locator('html').evaluate(node=>node.classList.contains('dark')),!before)
+    assertions++
+
+    const searchTrigger=page.locator('#search-open')
+    await searchTrigger.focus()
+    await searchTrigger.press('Enter')
+    const dialog=page.locator('#search-panel')
+    await dialog.waitFor({state:'visible'})
+    assert.equal(await dialog.getAttribute('aria-labelledby'),'search-title')
+    const searchInput=page.locator('#search-query')
+    assert.equal(await searchInput.evaluate(node=>document.activeElement===node),true)
+    await searchInput.fill('funcra')
+    await page.locator('#search-results li a').first().waitFor({state:'visible',timeout:15000})
+    assert.ok((await page.locator('#search-results li a').first().getAttribute('href'))?.startsWith(prefix))
+    await searchInput.fill('zzqvkpwmntrxhfbjkldsrp9776')
+    await page.getByRole('status').getByText(
+      lang==='hi'?'कोई परिणाम नहीं मिला':'No results found',{exact:true}).waitFor()
+    await page.keyboard.press('Escape')
+    await dialog.waitFor({state:'hidden'})
+    await page.waitForFunction(()=>document.activeElement===document.querySelector('#search-open'))
+    assertions++
+
+    const translated=page.locator('a.language-link')
+    assert.equal(await translated.getAttribute('href'),
+      lang==='en'?base+'hi/tooling/command-finder':base+'tooling/command-finder')
+    const audit=await auditOfflineAccessibility(page!,lang+'-engine-page',
+      join(previewRoot,'audit-results'))
+    assert.ok(audit.passes>0)
+    assertions++
+    assert.deepEqual(outside,[],lang+': custom site attempted external requests')
+  }finally{await ctx.close()}
+}
+
+async function mobile(
+  browser:Awaited<ReturnType<typeof chromium.launch>>,origin:string,lang:'en'|'hi'
+):Promise<void>{
+  const {ctx,outside}=await context(browser,origin,375)
+  try{
+    const page=await ctx.newPage()
+    const route=lang==='hi'?base+'hi/guide/learning-path':base+'guide/learning-path'
+    await page.goto(origin+route,{waitUntil:'networkidle'})
+    const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-window.innerWidth)
+    assert.ok(overflow<=2,lang+': narrow layout overflow '+overflow)
+    const toggle=page.locator('#menu-toggle')
+    await toggle.click()
+    assert.equal(await toggle.getAttribute('aria-expanded'),'true')
+    assert.equal(await page.locator('#side-nav').evaluate(x=>x.classList.contains('open')),true)
+    await page.locator('#side-nav a').first().click()
+    assert.equal(await toggle.getAttribute('aria-expanded'),'false')
+    await page.keyboard.press('Control+k')
+    await page.locator('#search-query').waitFor({state:'visible'})
+    await page.keyboard.press('Escape')
+    assert.deepEqual(outside,[])
+    const audit=await auditOfflineAccessibility(page,lang+'-engine-mobile',
+      join(previewRoot,'audit-results'))
+    assert.ok(audit.passes>0)
+    assertions++
+  }finally{await ctx.close()}
+}
+
+let browser:Awaited<ReturnType<typeof chromium.launch>>|undefined
+try{
+  const port=await listen()
+  const origin='http://127.0.0.1:'+port
+  browser=await chromium.launch({headless:true})
+  for(const locale of ['en','hi'] as const){
+    await testLocale(browser,origin,locale)
+    await mobile(browser,origin,locale)
+  }
+  console.log('PASS: '+assertions+
+    ' Scarp-owned engine Chromium tests: translated routes, local search, theme, CLI, 375px navigation and axe WCAG A/AA scans')
+}catch(error){
+  console.error('FAIL: Scarp-owned engine Chromium: '+String(error))
+  process.exitCode=1
+}finally{
+  await browser?.close()
+  await new Promise<void>(resolveDone=>server.close(()=>resolveDone()))
+}
