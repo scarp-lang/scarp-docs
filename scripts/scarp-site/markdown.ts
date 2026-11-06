@@ -150,6 +150,12 @@ export function renderMarkdown(markdown: string, source: string): RenderedPage {
     headings.push({id,title,level:Number(token.tag.slice(1))})
     return self.renderToken(tokens,i,opts)
   }
+  renderer.renderer.rules.table_open=(tokens,i,opts,env,self)=>{
+    return '<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable documentation table">'+
+      self.renderToken(tokens,i,opts)
+  }
+  renderer.renderer.rules.table_close=(tokens,i,opts,env,self)=>
+    self.renderToken(tokens,i,opts)+'</div>'
   renderer.renderer.rules.fence=(tokens,i)=>{
     const token=tokens[i]
     const lang=token.info.trim().split(/\s+/)[0].replace(/[^a-zA-Z0-9_-]/g,'').toLowerCase()
@@ -157,7 +163,10 @@ export function renderMarkdown(markdown: string, source: string): RenderedPage {
       ?highlightScarp(token.content):escapeHtml(token.content)
     return '<pre class="code-block" tabindex="0"><code class="language-'+lang+'">'+rendered+'</code></pre>\n'
   }
-  const widgets=widgetPlaceholders(content)
+  // Compiler provenance markers remain in Markdown source for CI, but must
+  // not be exposed as escaped HTML comments in the rendered user page.
+  const visibleContent=content.replace(/<!--[\s\S]*?-->/g,'')
+  const widgets=widgetPlaceholders(visibleContent)
   const blocks=containers(widgets.markdown)
   let html=renderer.render(blocks.markdown)
   const placeholders=new Map([...widgets.trusted,...blocks.trusted])
