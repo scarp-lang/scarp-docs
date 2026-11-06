@@ -192,15 +192,11 @@ async function emptySearchAndFocus(base: string, locale: typeof pages[number]): 
     await input.waitFor({ state: 'visible' })
     assert.equal(await input.evaluate(element => element === document.activeElement), true,
       locale.locale + ': search input should receive keyboard focus')
-    await input.fill('xx-sc4rp-no-resu1t-9z8y7x6w5v4-xx')
+    // A single invented token avoids MiniSearch matching unrelated short
+    // tokens such as "no" from hyphen-separated negative-test strings.
+    await input.fill('zzqvkpwmntrxhfbjkldsrp9776')
     const noResults = locale.locale === 'hi' ? 'कोई परिणाम नहीं मिला' : 'No results for'
-    const searchModal = page.locator('.VPLocalSearchBox')
-    await page.waitForTimeout(1200)
-    console.log('SEARCH_DIAGNOSTIC '+locale.locale+': '+JSON.stringify({
-      content: (await searchModal.innerText()).slice(0,1200),
-      html: (await searchModal.innerHTML()).slice(0,1000)
-    }))
-    await searchModal.getByText(noResults, { exact: false })
+    await page.locator('.VPLocalSearchBox .no-results').getByText(noResults, { exact: false })
       .waitFor({ state: 'visible', timeout: 15000 })
     await page.keyboard.press('Escape')
     await input.waitFor({ state: 'hidden' })
