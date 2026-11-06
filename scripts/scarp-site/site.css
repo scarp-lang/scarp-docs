@@ -57,7 +57,9 @@ main { min-width:0; }
 .doc-content ul,.doc-content ol { padding-left:1.55rem; }
 .doc-content li { margin:.3rem 0; }
 .doc-content blockquote { margin:1.5rem 0; padding:.1rem 1.15rem; border-left:4px solid var(--accent); background:var(--surface); }
-.doc-content table { width:max-content; max-width:100%; border-spacing:0; border-collapse:collapse; display:block; overflow-x:auto; font-size:.9rem; }
+.table-scroll { width:100%; overflow-x:auto; margin:1rem 0; border-radius:.45rem; }
+.table-scroll:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+.doc-content table { width:max-content; min-width:min(100%,440px); border-spacing:0; border-collapse:collapse; font-size:.9rem; }
 .doc-content th,.doc-content td { border:1px solid var(--line); padding:.55rem .75rem; text-align:start; min-width:65px; }
 .doc-content th { background:var(--surface); }
 .doc-content img { max-width:100%; height:auto; }
