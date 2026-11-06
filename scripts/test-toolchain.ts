@@ -35,6 +35,9 @@ for (const [name, changed] of [
 ] as const) {
   mustFail(name,mutatePackage({devDependencies:changed}))
 }
+mustFail('obsolete markdown-it type package',mutatePackage({
+  devDependencies:{'@types/markdown-it':'14.1.2'}
+}),yaml,'@types/markdown-it')
 mustFail('missing Markdown parser',mutatePackage({
   devDependencies:{'markdown-it':undefined}
 }),yaml,'markdown-it')

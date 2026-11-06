@@ -16,7 +16,7 @@ The new engine lives in scripts/scarp-site/ and loads no VitePress or Vue websit
 | test.ts | Static route, Unicode, SEO, markup, search and release-evidence tests |
 | browser-test.ts | Real Chromium keyboard, mobile, search, Command Finder and axe WCAG A/AA tests |
 
-The build uses focused Markdown (markdown-it) and YAML (yaml) parsers, not a website framework. The browser code is standalone TypeScript compiled with TypeScript itself, without a JavaScript UI framework or bundler. Release command data now lives in the framework-neutral `scripts/lib/command-finder.ts` module used directly by the Scarp-owned renderer, browser tests and release validators. The old theme-tree import is a one-line compatibility export only for the historical Vue demo; it can be removed alongside the other legacy theme/config files after the remaining migration gates pass.
+The build uses focused Markdown (markdown-it 15 with its own TypeScript declarations) and YAML (yaml) parsers, not a website framework. The obsolete `@types/markdown-it` 14.x package is intentionally excluded and rejected by toolchain policy to prevent split parser types. The browser code is standalone TypeScript compiled with TypeScript itself, without a JavaScript UI framework or bundler. Release command data now lives in the framework-neutral `scripts/lib/command-finder.ts` module used directly by the Scarp-owned renderer, browser tests and release validators. The old theme-tree import is a one-line compatibility export only for the historical Vue demo; it can be removed alongside the other legacy theme/config files after the remaining migration gates pass.
 
 ## Commands
 

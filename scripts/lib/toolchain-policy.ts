@@ -28,6 +28,13 @@ export function validateToolchain(pkg: ToolchainPackage, dependabotYaml: string)
       errors.push(dependency + ' must be an explicitly pinned source-parsing dependency')
     }
   }
+  // markdown-it 15+ ships its own declarations. Stale DefinitelyTyped 14.x
+  // declarations would introduce duplicate, version-mismatched interfaces.
+  const parser = deps['markdown-it']
+  const parserMajor = typeof parser === 'string' ? Number.parseInt(parser.split('.')[0] ?? '', 10) : NaN
+  if (parserMajor >= 15 && '@types/markdown-it' in deps) {
+    errors.push('markdown-it 15+ bundles its own types: remove obsolete @types/markdown-it')
+  }
   for (const removed of ['vitepress','vue-tsc']) {
     if (removed in deps) errors.push('Removed framework/checker dependency must not return: ' + removed)
   }
