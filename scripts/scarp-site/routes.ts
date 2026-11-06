@@ -10,7 +10,7 @@ export type Locale = 'en' | 'hi'
 
 export function sourceRoute(source: string): string {
   if (!source.endsWith('.md') || source.startsWith('/') || source.includes('\\') ||
-      source.includes('?') || source.includes('#') ||
+      source.includes('?') || source.includes('#') || source.includes(':') ||
       source.split('/').some(s => s === '.' || s === '..' || !s)) {
     throw new TypeError('Invalid Scarp documentation path: ' + source)
   }
