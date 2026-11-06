@@ -35,7 +35,7 @@ const mutations: Array<[string, keyof Alpha6InstallPages, string, string]> = [
   ['missing Hindi release crosslink', 'releaseHindi', '](/hi/guide/installation-alpha6)', '](/hi/guide/installation-alpha5)']
 ]
 for (const [name, field, before, after] of mutations) {
-  const next = baseline[field].replace(before, after)
+  const next = baseline[field].replaceAll(before, after)
   assert.notEqual(next, baseline[field], name + ': test did not mutate the file')
   const changed = { ...baseline, [field]: next }
   assert.ok(validateAlpha6Installation(changed).length, name + ': validator accepted installation drift')
