@@ -1,20 +1,14 @@
 import assert from 'node:assert/strict'
-import { existsSync, readFileSync, readdirSync } from 'node:fs'
-import { join, resolve, relative, sep } from 'node:path'
+import { existsSync, readFileSync } from 'node:fs'
+import { join, resolve, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { pairedUrls } from '../docs/.vitepress/site-meta.ts'
+import { documentationPages } from './lib/docs-pages.ts'
+import { validateSitemap } from './lib/sitemap-policy.ts'
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)))
 const docs = join(root, 'docs')
 const dist = join(docs, '.vitepress', 'dist')
-
-function markdown(dir: string): string[] {
-  return readdirSync(dir, { withFileTypes: true }).flatMap(entry => {
-    if (entry.name.startsWith('.')) return []
-    const path = join(dir, entry.name)
-    return entry.isDirectory() ? markdown(path) : entry.name.endsWith('.md') ? [relative(docs, path).split(sep).join('/')] : []
-  })
-}
 
 function headTags(html: string, tag: string): Array<Record<string, string>> {
   const head = /<head\b[^>]*>([\s\S]*?)<\/head>/i.exec(html)?.[1] ?? ''
@@ -23,7 +17,7 @@ function headTags(html: string, tag: string): Array<Record<string, string>> {
 }
 
 assert.ok(existsSync(dist), `Missing site build at ${dist}: run npm run docs:build first`)
-const pages = markdown(docs)
+const pages = documentationPages(docs)
 let checked = 0
 const failures: string[] = []
 for (const path of pages) {
@@ -46,6 +40,14 @@ for (const path of pages) {
   const lang = path.startsWith('hi/') ? 'hi-IN' : 'en-US'
   if (!new RegExp(`<html\\b[^>]*\\blang="${lang}"`, 'i').test(html)) failures.push(`${path}: expected <html lang="${lang}">`)
   checked++
+}
+const sitemapFile = join(dist, 'sitemap.xml')
+if (!existsSync(sitemapFile)) {
+  failures.push('Missing generated sitemap.xml')
+} else {
+  const sitemap = validateSitemap(readFileSync(sitemapFile, 'utf8'), pages)
+  failures.push(...sitemap.errors.map(error => 'sitemap.xml: ' + error))
+  if (!sitemap.errors.length) console.log('PASS: sitemap contains all ' + sitemap.expected + ' English/Hindi source routes exactly once')
 }
 if (failures.length) {
   console.error(`FAIL: ${failures.length} static site errors:\n${failures.map(e => `  - ${e}`).join('\n')}`)
