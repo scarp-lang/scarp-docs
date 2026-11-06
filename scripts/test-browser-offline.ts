@@ -163,6 +163,15 @@ async function searchOffline(base:string,locale:typeof pages[number],mobile:bool
     await input.waitFor({state:'visible',timeout:15000})
     await input.fill(locale.search)
     const results=page.locator('.VPLocalSearchBox')
+    await page.waitForFunction(() =>
+      document.querySelector('.VPLocalSearchBox')?.getAttribute('role') === 'dialog')
+    assert.equal(await results.getAttribute('aria-modal'), 'true',
+      locale.locale + ': search overlay must be modal')
+    assert.equal(await results.getAttribute('aria-label'),
+      locale.locale === 'hi' ? 'दस्तावेज़ खोजें' : 'Search documentation',
+      locale.locale + ': modal accessible name must match locale')
+    assert.equal(await results.getAttribute('aria-haspopup'), null,
+      'Search dialog must not claim to be a listbox trigger')
     await results.locator('a[href]').first().waitFor({state:'visible',timeout:15000})
     const href=await results.locator('a[href]').first().getAttribute('href')
     assert.ok(href?.startsWith(locale.locale==='hi'?'/scarp-docs/hi/':'/scarp-docs/'),
