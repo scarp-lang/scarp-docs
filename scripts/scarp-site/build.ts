@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import ts from 'typescript'
@@ -7,6 +7,7 @@ import { documentationPages } from '../lib/docs-pages.ts'
 import { commandAdvice, FINDER_TEXT, RELEASES, TASKS } from '../../docs/.vitepress/theme/lib/command-finder.ts'
 import { escapeHtml, localLink, htmlPath, pairedRoutes, BASE } from './routes.ts'
 import { renderMarkdown, type RenderedPage, type HomeAction, type HomeFeature } from './markdown.ts'
+import { currentPublishedCompilerTag, currentCompilerReleaseRoute } from './current-release.ts'
 
 const root=resolve(fileURLToPath(new URL('../..',import.meta.url)))
 const docsRoot=join(root,'docs')
@@ -90,7 +91,7 @@ function finderData():string {
   return '<script id="scarp-command-data" type="application/json">'+json+'</script>'
 }
 
-function htmlDocument(view:PageView, views:PageView[]):string{
+function htmlDocument(view:PageView, views:PageView[], currentTag:string):string{
   const {page,source,route,locale}=view
   const meta=pairedRoutes(source)
   const other=locale==='en'?meta.hindi:meta.english
@@ -130,9 +131,9 @@ function htmlDocument(view:PageView, views:PageView[]):string{
     '<nav class="top-nav" aria-label="'+localized('Primary','मुख्य नेविगेशन',locale)+'">'+
     '<a '+attrs(locale==='hi'?BASE+'hi/guide/learning-path':BASE+'guide/learning-path')+'>'+
       localized('Learn','सीखें',locale)+'</a>'+
-    '<a '+attrs(locale==='hi'?BASE+'hi/guide/installation-alpha6':BASE+'guide/installation-alpha6')+'>'+
+    '<a '+attrs(currentCompilerReleaseRoute(currentTag,locale))+'>'+
       localized('Install','इंस्टॉल',locale)+'</a>'+
-    '<a '+attrs(locale==='hi'?BASE+'hi/releases/v0.0.6-alpha.2':BASE+'releases/v0.0.6-alpha.2')+'>'+
+    '<a '+attrs(locale==='hi'?BASE+'hi/reference/status':BASE+'reference/status')+'>'+
       localized('Releases','रिलीज़',locale)+'</a></nav>'+
     '<div class="header-actions"><a '+attrs(target,'language-link')+' lang="'+(locale==='en'?'hi':'en')+'">'+
       localeText+'</a><button type="button" id="search-open" aria-haspopup="dialog" aria-controls="search-panel">'+
@@ -157,6 +158,12 @@ function htmlDocument(view:PageView, views:PageView[]):string{
 }
 
 export async function buildSite():Promise<{pages:number;assets:number}>{
+  // Validate the published compiler before deleting any existing output.
+  const manifest = JSON.parse(readFileSync(join(root,'data/compiler-latest-release.json'),'utf8')) as unknown
+  const currentTag = currentPublishedCompilerTag(manifest)
+  for(const source of ['releases/'+currentTag+'.md','hi/releases/'+currentTag+'.md']) {
+    assert.ok(existsSync(join(docsRoot,source)), 'Missing bilingual current compiler guide: '+source)
+  }
   // Production output is an owned .scarp/dist directory, never VitePress assets.
   rmSync(production?siteRoot:previewRoot,{recursive:true,force:true})
   mkdirSync(join(siteRoot,'assets'),{recursive:true})
@@ -176,7 +183,7 @@ export async function buildSite():Promise<{pages:number;assets:number}>{
   for(const view of views){
     const dest=join(siteRoot,htmlPath(view.source))
     mkdirSync(resolve(dest,'..'),{recursive:true})
-    writeFileSync(dest,htmlDocument(view,views),'utf8')
+    writeFileSync(dest,htmlDocument(view,views,currentTag),'utf8')
   }
   const sitemap='<?xml version="1.0" encoding="UTF-8"?>\n'+
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+
