@@ -186,7 +186,7 @@ export async function buildSite():Promise<{pages:number;assets:number}>{
   // directly: no VitePress, Vite, Vue, esbuild or client framework.
   const browserScript=ts.transpileModule(readFileSync(client,'utf8'),{
     fileName:'client.ts',
-    compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.None},
+    compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext},
     reportDiagnostics:true
   })
   if(browserScript.diagnostics?.length) {
