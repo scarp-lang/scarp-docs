@@ -84,7 +84,7 @@
     "vitepress": "1.6.4",
     "@types/node": "26.6.6",
     "typescript": "6.0.3",
-    "tsx": "4.20.5",
+    "tsx": "4.23.15",
     "vue-tsc": "3.3.13"
   },
   "engines": {
