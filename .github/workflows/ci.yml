@@ -88,6 +88,8 @@ jobs:
         run: npm run check:alpha6-installation
       - name: Mutation-test bilingual installer version, source, checksum and navigation
         run: npm run test:alpha6-installation
+      - name: Check published alpha.6 bilingual AST debugging and commands
+        run: npm run check:alpha6-ast && npm run test:alpha6-ast
       - name: Validate published alpha.6 source and bilingual guides
         run: npm run check:alpha6
       - name: Regression-test alpha.6 release evidence and translation drift
@@ -320,3 +322,5 @@ jobs:
         run: npm run test:alpha6-compiler -- .compiler-alpha6/target/debug/scarp .compiler-alpha6/examples
       - name: Execute bilingual tutorial project with the exact published compiler
         run: npm run test:alpha6-project-compiler -- .compiler-alpha6/target/debug/scarp
+      - name: Exercise published alpha.6 AST parser-only behavior and errors
+        run: npm run test:alpha6-ast-compiler -- .compiler-alpha6/target/debug/scarp .compiler-alpha6/examples
