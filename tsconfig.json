@@ -20,9 +20,6 @@
     "allowImportingTsExtensions": true
   },
   "include": [
-    "scripts/**/*.ts",
-    "docs/.vitepress/site-meta.ts",
-    "docs/.vitepress/local-search.ts",
-    "docs/.vitepress/theme/lib/**/*.ts"
+    "scripts/**/*.ts"
   ]
 }
