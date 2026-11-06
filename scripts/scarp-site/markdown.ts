@@ -177,7 +177,7 @@ export function renderMarkdown(markdown: string, source: string): RenderedPage {
   // are ever injected AFTER markdown-it's HTML-escaping parse.
   const firstHeading=headings.find(h=>h.level===1)
   const title=matter.title??firstHeading?.title??'Scarp'
-  const bodyText=content.replace(/<[^>]+>/g,' ')
+  const bodyText=visibleContent.replace(/<[^>]+>/g,' ')
     .replace(/[#*_\x60~|]/g,' ').replace(/\s+/g,' ').trim()
   return {title,html,bodyText,headings,frontmatter:matter}
 }
