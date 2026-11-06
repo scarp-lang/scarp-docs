@@ -57,6 +57,9 @@ export default defineConfig({
           { text: 'उदाहरण', link: '/hi/examples/' },
           { text: 'रिलीज़', items: [
             { text: 'नवीनतम: v0.0.6-alpha.1', link: '/hi/releases/v0.0.6-alpha.1' },
+            { text: 'CLI (alpha.6)', link: '/hi/tooling/cli-alpha6' },
+            { text: 'CLI (alpha.5)', link: '/hi/tooling/cli-alpha5' },
+            { text: 'CLI (alpha.4)', link: '/hi/tooling/cli-alpha4' },
             { text: 'पिछला: v0.0.5-alpha.5', link: '/hi/releases/v0.0.5-alpha.5' },
             { text: 'Alpha.4 project workflow', link: '/hi/releases/v0.0.5-alpha.4' },
             { text: 'Alpha.3 CLI', link: '/hi/releases/v0.0.5-alpha.3' },
@@ -195,7 +198,9 @@ export default defineConfig({
       { text: 'Examples', link: '/examples/' },
       { text: 'Releases', items: [
         { text: 'Published alpha.6 release', link: '/releases/v0.0.6-alpha.1' },
-        { text: 'Symbol navigation', link: '/tooling/cli-alpha6' },
+        { text: 'CLI (alpha.6)', link: '/tooling/cli-alpha6' },
+        { text: 'CLI (alpha.5)', link: '/tooling/cli-alpha5' },
+        { text: 'CLI (alpha.4)', link: '/tooling/cli-alpha4' },
         { text: 'Numerical RMS', link: '/language/rms-alpha6' },
         { text: 'Published alpha.5 changes', link: '/releases/v0.0.5-alpha.5' },
         { text: 'Experimental C11 Rust API', link: '/reference/c11-backend-alpha5' },
