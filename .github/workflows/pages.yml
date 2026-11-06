@@ -29,6 +29,8 @@ jobs:
         run: npm run check:alpha6-installation && npm run test:alpha6-installation
       - name: Verify bilingual published alpha.6 AST debugger guide
         run: npm run check:alpha6-ast && npm run test:alpha6-ast
+      - name: Validate bilingual compiler host and capability diagnostics
+        run: npm run check:alpha6-diagnose && npm run test:alpha6-diagnose
       - name: Keep Vue/TypeScript and Dependabot compatible
         run: npm run check:toolchain && npm run test:toolchain
       - name: Regression-test complete bilingual sitemap coverage
