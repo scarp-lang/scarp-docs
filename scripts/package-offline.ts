@@ -45,6 +45,36 @@ assert.match(commit,/^[a-f0-9]{40}$/,'A complete tested Git commit SHA is requir
 rmSync(stage, {recursive:true,force:true})
 mkdirSync(stage, {recursive:true})
 cpSync(dist, join(stage, 'scarp-docs'), {recursive:true})
+
+/**
+ * The online documentation uses an organization avatar hosted by GitHub.
+ * For the offline snapshot only, replace it with a self-contained Scarp-blue
+ * geometric S fallback. Online Pages keeps the original brand avatar.
+ * This is deterministic, so packaging does not require downloading an image.
+ */
+const hostedAvatar = 'https://avatars.githubusercontent.com/u/350973173?v=4'
+const offlineLogo = '/scarp-docs/offline-logo.svg'
+writeFileSync(join(stage, 'scarp-docs', 'offline-logo.svg'), [
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Scarp">',
+  '<rect width="128" height="128" fill="#fff"/>',
+  '<path d="M97 28H50L30 47L48 64H79L97 82L77 101H30"',
+  ' fill="none" stroke="#2563eb" stroke-width="17" stroke-linecap="square" stroke-linejoin="bevel"/>',
+  '</svg>'
+].join(''), 'utf8')
+let localizedAvatars = 0
+for (const path of walk(join(stage, 'scarp-docs'))) {
+  if (!/\.(?:html|js|css|json|xml)$/.test(path)) continue
+  const file = join(stage,path)
+  const original = readFileSync(file, 'utf8')
+  const count = original.split(hostedAvatar).length-1
+  if (count) {
+    writeFileSync(file, original.replaceAll(hostedAvatar,offlineLogo),'utf8')
+    localizedAvatars += count
+  }
+}
+assert.ok(localizedAvatars > 0,
+  'Offline snapshot must replace the hosted Scarp organization avatar locally')
+
 const serverTs = readFileSync(join(root,'scripts/offline/serve.ts'),'utf8')
 const compiled = ts.transpileModule(serverTs, {
   compilerOptions: {
