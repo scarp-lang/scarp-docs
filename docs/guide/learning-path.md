@@ -20,7 +20,7 @@ Scarp is experimental. There is **no single compiler version guaranteed to run e
 | I want project-wide module inspection | [Stage 6: project module inspection](#stage-6-project-module-inspection) | **v0.0.5-alpha.5** |
 | I want the newest released tooling | [Stage 7: navigation and RMS](#stage-7-source-navigation-and-rms) | **v0.0.6-alpha.1** |
 
-For a **fresh alpha.6 installation**, select the Windows x64, Linux x64 or macOS ARM64 archive and its matching checksum from the [published alpha.6 release](/releases/v0.0.6-alpha.1). Compare the SHA-256 digest **before executing** the downloaded binary. The older [alpha.5 installation walkthrough](/guide/installation-alpha5) is historical and its archive names do not identify alpha.6 packages. Check the executable you actually invoke:
+Use the [step-by-step alpha.6 installer](/guide/installation-alpha6) for platform-specific download, checksum and source-build commands. For a **fresh alpha.6 installation**, select the Windows x64, Linux x64 or macOS ARM64 archive and its matching checksum from the [published alpha.6 release](/releases/v0.0.6-alpha.1). Compare the SHA-256 digest **before executing** the downloaded binary. The older [alpha.5 installation walkthrough](/guide/installation-alpha5) is historical and its archive names do not identify alpha.6 packages. Check the executable you actually invoke:
 
 ~~~sh
 scarp version
