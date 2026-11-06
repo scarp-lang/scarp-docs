@@ -1,5 +1,7 @@
 # वर्ज़न अनुकूलता
 
+[Interactive version-aware Command Finder](/hi/tooling/command-finder) से हर प्रकाशित compiler में उपलब्ध CLI commands और unavailable सुविधाएँ देखें।
+
 Scarp के शुरुआती prereleases में syntax और API बदले हैं। यहाँ प्रकाशित रिलीज़ के आधार पर सही व्यवहार चुनें। नए और पुराने features की साक्ष्य-आधारित सूची [प्रकाशित फीचर स्थिति](/hi/reference/status) में है।
 
 | संस्करण | प्रमुख प्रकाशित सुविधा |
