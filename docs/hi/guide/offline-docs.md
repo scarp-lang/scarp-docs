@@ -54,7 +54,7 @@ Browser में ये local पते खोलें:
 - English: `http://127.0.0.1:8080/scarp-docs/`
 - हिन्दी: `http://127.0.0.1:8080/scarp-docs/hi/`
 
-Server केवल **127.0.0.1** अर्थात आपके अपने कंप्यूटर पर सुनता है। इसे बंद करने के लिए **Ctrl+C** दबाएँ। `file://` के माध्यम से सीधे `index.html` न खोलें; VitePress की `/scarp-docs/` paths को स्थानीय HTTP server चाहिए।
+Server केवल **127.0.0.1** अर्थात आपके अपने कंप्यूटर पर सुनता है। इसे बंद करने के लिए **Ctrl+C** दबाएँ। `file://` के माध्यम से सीधे `index.html` न खोलें; Scarp Docs की `/scarp-docs/` paths को स्थानीय HTTP server चाहिए।
 
 ## Offline में क्या उपलब्ध है?
 
@@ -62,7 +62,7 @@ Server केवल **127.0.0.1** अर्थात आपके अपने �
 
 **असल browser परीक्षण:** Documentation CI extracted local server को headless Chromium में चलाकर English/Hindi Command Finder, clipboard success या permission failure, keyboard से local search तथा zero-results, भाषा बदलना, skip-to-content, dark/light mode की preference, mobile navigation, reduced-motion और बाहरी network requests न होने की पुष्टि करती है। यह जाँच packaged offline archive पर होती है, hosted GitHub Pages पर नहीं। इसे सम्पूर्ण WCAG accessibility audit **नहीं** मानें।
 
-इस package में सभी English/Hindi HTML पृष्ठ, उनके स्थानीय CSS/JavaScript, VitePress search assets और [Command Finder](/hi/tooling/command-finder) शामिल हैं। पृष्ठों के अंदर के links स्थानीय server पर खुलते हैं। **बाहरी GitHub, social profiles तथा download links** के लिए फिर भी इंटरनेट चाहिए। असली browser में keyboard, search और accessibility परीक्षण का अलग काम [Issue #65](https://github.com/scarp-lang/scarp-docs/issues/65) पर रखा गया है; static assets की पुष्टि को पूरी browser accessibility जाँच न समझें।
+इस package में सभी English/Hindi HTML पृष्ठ, उनके स्थानीय CSS/JavaScript, Scarp Docs search assets और [Command Finder](/hi/tooling/command-finder) शामिल हैं। पृष्ठों के अंदर के links स्थानीय server पर खुलते हैं। **बाहरी GitHub, social profiles तथा download links** के लिए फिर भी इंटरनेट चाहिए। असली browser में keyboard, search और accessibility परीक्षण का अलग काम [Issue #65](https://github.com/scarp-lang/scarp-docs/issues/65) पर रखा गया है; static assets की पुष्टि को पूरी browser accessibility जाँच न समझें।
 
 Archive का `MANIFEST.json` docs version, source commit, प्रकाशित compiler version तथा हर packaged file का SHA-256 बताता है। मुख्य language reference अभी alpha.1 पर है; नवीनतम अलग सत्यापित प्रकाशित compiler [v0.0.6-alpha.1](/hi/releases/v0.0.6-alpha.1) है। सिर्फ docs डाउनलोड करने से Scarp interpreter upgrade नहीं होता।
 
