@@ -1,4 +1,4 @@
-import { FINDER_TEXT, RELEASES, TASKS } from '../../docs/.vitepress/theme/lib/command-finder.ts'
+import { FINDER_TEXT, RELEASES, TASKS } from './published-command-finder.ts'
 
 export interface FinderSources {
   english: string
