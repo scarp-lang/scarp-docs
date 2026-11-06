@@ -59,6 +59,20 @@ export async function auditOfflineAccessibility(
   mkdirSync(output, { recursive: true })
   writeFileSync(join(output, label + '.json'), JSON.stringify(summary, null, 2) + '\n')
   if (results.violations.length) {
+    // Keep detailed browser evidence in CI even when the downloadable JSON
+    // artifact needs a GitHub sign-in. Helps diagnose visible-label mismatches.
+    const searchTrigger = page.locator('button.DocSearch-Button').first()
+    if (await searchTrigger.count()) {
+      const evidence = await searchTrigger.evaluate(button => ({
+        outerHTML: button.outerHTML.slice(0, 1700),
+        textContent: button.textContent,
+        innerText: (button as HTMLElement).innerText,
+        accessibleLabel: button.getAttribute('aria-label'),
+        placeholder: (button.querySelector('.DocSearch-Button-Placeholder') as HTMLElement | null)?.innerText,
+        keycaps: (button.querySelector('.DocSearch-Button-Keys') as HTMLElement | null)?.innerText
+      }))
+      console.error('A11Y_SEARCH_TRIGGER '+label+' '+JSON.stringify(evidence))
+    }
     const descriptions = results.violations.map(v =>
       v.id + ' (' + (v.impact ?? 'unspecified') + '): ' +
       v.nodes.slice(0, 3).map(n =>
