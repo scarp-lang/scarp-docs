@@ -93,7 +93,8 @@ function htmlDocument(view:PageView, views:PageView[]):string{
   const other=locale==='en'?meta.hindi:meta.english
   const home=page.frontmatter.layout==='home'
   const body=home?homeMarkup(page,source):page.html
-  const heading=home?'':('<h1 class="page-heading">'+escapeHtml(page.title)+'</h1>')
+  const heading=home||page.headings.some(item=>item.level===1)
+    ?'':'<h1 class="page-heading">'+escapeHtml(page.title)+'</h1>'
   const seoDescription=(home?page.frontmatter.hero?.tagline:page.bodyText)??page.bodyText
   const description=seoDescription.slice(0,185)
   const lang=locale==='hi'?'hi-IN':'en-US'
