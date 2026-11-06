@@ -30,7 +30,7 @@ npm run scarp:browser-test
 
 The engine's test build is generated under artifacts/scarp-engine-preview/scarp-docs/. Its assets use the existing /scarp-docs/ URL prefix; the browser test starts its own safe loopback HTTP server.
 
-**Do not confuse the shadow build with production.** The official npm run docs:build and GitHub Pages workflow still use VitePress until the final migration gate has passed.
+**Production build:** npm run docs:build now generates docs/.scarp/dist/ using the Scarp-owned renderer. npm run docs:dev starts its loopback-only watched Markdown server, and npm run docs:preview serves that production output. npm run scarp:build still creates an isolated comparison preview. Official GitHub Pages and the offline archive consume only the Scarp-owned output. Do not call the migration fully complete until deployment and the remaining legacy-tooling removal gates pass.
 
 ## Acceptance gates for replacing production
 
@@ -45,4 +45,4 @@ The engine's test build is generated under artifacts/scarp-engine-preview/scarp-
 
 The renderer escapes unreviewed raw Markdown HTML. It explicitly recognizes only the project's callouts and named widgets; future embedded content must be implemented and tested rather than bypassing HTML safety. The core language reference remains pinned to v0.0.5-alpha.1. The latest published compiler verified at migration start is v0.0.6-alpha.1, not the changing compiler main branch.
 
-This phase provides an **independent tested engine**, not the final VitePress removal. Complete the public-site switch in a follow-up PR tracked by Issue #70 after parity is proven.
+The Scarp-owned renderer is now the production-build candidate. The legacy VitePress/Vue dependencies, old theme/config and a few source-evidence checks remain temporarily for compatibility; they are no longer the website renderer or Pages build. Remove them after live Pages, offline archive, and release CI have independently confirmed the new output. Track completion in Issue #70.
