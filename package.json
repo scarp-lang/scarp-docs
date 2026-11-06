@@ -19,6 +19,8 @@
     "test:site-meta": "tsx scripts/test-site-meta.ts",
     "check:site-build": "tsx scripts/check-site-build.ts",
     "test:pages-api": "tsx scripts/test-pages-api.ts",
+    "test:live-site": "tsx scripts/test-live-site.ts",
+    "check:live-site": "tsx scripts/check-live-site.ts",
     "test:code-fences": "tsx scripts/test-code-fences.ts",
     "check:tutorial-evidence": "tsx scripts/check-tutorial-evidence.ts",
     "test:tutorial-evidence": "tsx scripts/test-tutorial-evidence.ts",
