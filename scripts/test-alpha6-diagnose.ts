@@ -46,7 +46,7 @@ const mutations: Array<[keyof DiagnosePages,string,string,string]> = [
  ['readme','docs/hi/tooling/diagnose-alpha6.md','docs/hi/tooling/missing.md','README locale']
 ]
 for(const [key,find,replacement,name] of mutations){
- const changed=pages[key].replace(find,replacement)
+ const changed=pages[key].replaceAll(find,replacement)
  assert.notEqual(changed,pages[key],name+' test mutation target missing')
  const errors=validateDiagnoseDocs({...pages,[key]:changed})
  assert.ok(errors.length>0,name+' drift was not detected')
