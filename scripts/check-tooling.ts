@@ -3,7 +3,7 @@ import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 // Guard the authored tooling against accidental regressions to JavaScript.
-// Markdown, Vue SFC templates and CSS are intentionally retained for VitePress.
+// Markdown and CSS are authored project content; old Vue SFC files are temporary legacy evidence, not a website runtime.
 const scripts = resolve(fileURLToPath(new URL('.', import.meta.url)))
 const files = readdirSync(scripts)
 const nonTs = files.filter(name => /\.(?:c?js|mjs|jsx|mts|cts)$/.test(name))
