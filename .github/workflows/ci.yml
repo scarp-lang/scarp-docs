@@ -20,6 +20,8 @@ jobs:
         run: npm run typecheck
       - name: Build and validate framework-free Scarp documentation engine preview
         run: npm run scarp:test
+      - name: Check canonical framework-neutral release, SEO and Pages data
+        run: npm run test:neutral-libraries
       - name: Ensure documentation tooling uses TypeScript
         run: npm run check:tooling
       - name: Verify Scarp-owned TypeScript renderer, parsing libraries and update policy
