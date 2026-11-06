@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { build as bundle } from 'esbuild'
+import ts from 'typescript'
 import { documentationPages } from '../lib/docs-pages.ts'
 import { commandAdvice, FINDER_TEXT, RELEASES, TASKS } from '../../docs/.vitepress/theme/lib/command-finder.ts'
 import { escapeHtml, localLink, htmlPath, pairedRoutes, BASE } from './routes.ts'
@@ -182,10 +182,15 @@ export async function buildSite():Promise<{pages:number;assets:number}>{
   writeFileSync(join(siteRoot,'assets','search-index.json'),JSON.stringify(searchIndex))
   writeFileSync(join(siteRoot,'assets','scarp-mark.svg'),logo)
   writeFileSync(join(siteRoot,'assets','scarp-site.css'),readFileSync(styles,'utf8'))
-  await bundle({
-    entryPoints:[client],outfile:join(siteRoot,'assets','scarp-site.js'),
-    bundle:true,platform:'browser',format:'iife',target:'es2022',minify:true,logLevel:'silent'
+  // Browser controller is a single import-free TypeScript file. Compile it
+  // directly: no VitePress, Vite, Vue, esbuild or client framework.
+  const browserScript=ts.transpileModule(readFileSync(client,'utf8'),{
+    fileName:'client.ts',
+    compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.None},
+    reportDiagnostics:true
   })
+  if(browserScript.diagnostics?.length)throw new Error('Client TypeScript compilation failed')
+  writeFileSync(join(siteRoot,'assets','scarp-site.js'),browserScript.outputText)
   writeFileSync(join(siteRoot,'404.html'),'<!doctype html><html lang="en"><title>Not found · Scarp Docs</title>'+
     '<main><h1>Documentation page not found</h1><a href="'+BASE+'">Scarp Docs</a></main></html>')
   console.log('PASS: independent Scarp TypeScript engine generated '+views.length+
