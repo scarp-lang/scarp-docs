@@ -172,6 +172,10 @@ async function searchOffline(base:string,locale:typeof pages[number],mobile:bool
       locale.locale + ': modal accessible name must match locale')
     assert.equal(await results.getAttribute('aria-haspopup'), null,
       'Search dialog must not claim to be a listbox trigger')
+    assert.ok((await results.locator('kbd[aria-label]').count()) >= 3,
+      'Search dialog should describe its keyboard navigation keycaps')
+    assert.equal(await results.locator('kbd[aria-label]:not([role="img"])').count(), 0,
+      'Labelled key pictograms require a semantically permitted ARIA role')
     await results.locator('a[href]').first().waitFor({state:'visible',timeout:15000})
     const href=await results.locator('a[href]').first().getAttribute('href')
     assert.ok(href?.startsWith(locale.locale==='hi'?'/scarp-docs/hi/':'/scarp-docs/'),
