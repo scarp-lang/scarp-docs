@@ -5,6 +5,8 @@
 
 यह सुविधा [प्रकाशित v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1) में source commit `aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8` से आई है। [Alpha.5 CLI guide](/hi/tooling/cli-alpha5) पुराने project module inspection के लिए है; उसमें **नए symbols/references commands उपलब्ध नहीं** थे।
 
+Parser की syntax tree देखनी हो तो [alpha.6 AST debugging मार्गदर्शिका](/hi/tooling/inspect-ast-alpha6) पढ़ें। इसका human-readable debug output symbols/references के versioned JSON से **अलग** है।
+
 ## Commands कैसे चलाएँ?
 
 [टैग किए हुए compiler repository](https://github.com/scarp-lang/scarp/tree/v0.0.6-alpha.1) से alpha.6 executable चलाएँ। उदाहरण में `examples/modules/navigation_values.srp` import होता है।
