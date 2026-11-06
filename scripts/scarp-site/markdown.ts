@@ -119,7 +119,8 @@ export function renderMarkdown(markdown: string, source: string): RenderedPage {
   renderer.renderer.rules.link_open=(tokens,i,opts,env,self)=>{
     const token=tokens[i]
     const raw=token.attrGet('href')
-    if (raw) {
+    // markdown-it 15 types attributes as string | number. Only URL strings are navigable.
+    if (typeof raw === 'string' && raw.length > 0) {
       const next=localLink(raw,source)
       token.attrSet('href',next)
       if (/^https?:\/\//.test(next)) {
@@ -133,7 +134,7 @@ export function renderMarkdown(markdown: string, source: string): RenderedPage {
   renderer.renderer.rules.image=(tokens,i,opts,env,self)=>{
     const token=tokens[i]
     const src=token.attrGet('src')
-    if (src) token.attrSet('src',localLink(src,source))
+    if (typeof src === 'string' && src.length > 0) token.attrSet('src',localLink(src,source))
     token.attrSet('loading','lazy')
     return self.renderToken(tokens,i,opts)
   }
