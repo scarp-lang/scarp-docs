@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { pairedUrls, pageSeoHead, urlForPage } from '../docs/.vitepress/site-meta.ts'
+import { pairedUrls, pageSeoHead, urlForPage } from './lib/site-meta.ts'
 
 const en = pairedUrls('guide/first-program.md')
 const hi = pairedUrls('hi/guide/first-program.md')
