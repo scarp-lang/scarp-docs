@@ -4,7 +4,7 @@ import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import ts from 'typescript'
 import { documentationPages } from '../lib/docs-pages.ts'
-import { commandAdvice, FINDER_TEXT, RELEASES, TASKS } from '../../docs/.vitepress/theme/lib/command-finder.ts'
+import { commandAdvice, FINDER_TEXT, RELEASES, TASKS } from '../lib/published-command-finder.ts'
 import { escapeHtml, localLink, htmlPath, pairedRoutes, BASE } from './routes.ts'
 import { renderMarkdown, type RenderedPage, type HomeAction, type HomeFeature } from './markdown.ts'
 
