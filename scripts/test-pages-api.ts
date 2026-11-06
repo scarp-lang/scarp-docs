@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import {
   deploymentLabels, getSuccessfulRunCount, readSuccessfulRunCount,
   SUCCESSFUL_RUNS_ENDPOINT, type Fetcher
-} from '../docs/.vitepress/theme/lib/pages-api.ts'
+} from './lib/pages-api.ts'
 
 assert.equal(readSuccessfulRunCount({ total_count: 5 }), 5)
 assert.equal(readSuccessfulRunCount({ total_count: 0 }), 0)
