@@ -1,7 +1,7 @@
 # Scarp Documentation
 
 
-**Custom documentation engine:** Scarp Docs now builds from the Scarp-owned TypeScript generator, with bilingual HTML, local search, responsive layout and offline-browser tests. See [architecture and migration gates](SCARP-DOCS-ENGINE.md) and [Issue #70](https://github.com/scarp-lang/scarp-docs/issues/70). Legacy VitePress/Vue validation code and dependencies are transitional and will be removed after the new Pages deployment is verified. No stable release is implied.
+**Custom documentation engine:** Scarp Docs now builds from the Scarp-owned TypeScript generator, with bilingual HTML, local search, responsive layout and offline-browser tests. See [architecture and migration gates](SCARP-DOCS-ENGINE.md) and [Issue #70](https://github.com/scarp-lang/scarp-docs/issues/70). The published site uses no VitePress/Vue package. Historical source evidence and configuration text are temporarily retained until all release-policy validators are migrated to the owned engine. No stable release is implied.
 
 Official TypeScript-generated documentation for the experimental [Scarp Programming Language](https://github.com/scarp-lang/scarp).
 

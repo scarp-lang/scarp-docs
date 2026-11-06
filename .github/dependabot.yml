@@ -5,15 +5,12 @@ updates:
     schedule:
       interval: monthly
     open-pull-requests-limit: 2
-    # TypeScript 7 lacks the programmatic API needed by vue-tsc.
-    # Reconsider after upstream Vue tooling explicitly supports the native compiler.
+    # TypeScript 6's transpileModule API is used to build the standalone
+    # browser controller and portable offline Node server. Review TS7 API
+    # changes and full browser/compiler CI before a major upgrade.
     ignore:
       - dependency-name: "typescript"
         update-types: ["version-update:semver-major"]
-      # vue-tsc 3.3.14 has a confirmed URL-in-template typecheck regression.
-      # Permit later patched versions once reviewed; block this one release only.
-      - dependency-name: "vue-tsc"
-        versions: ["3.3.14"]
   - package-ecosystem: github-actions
     directory: /
     schedule:

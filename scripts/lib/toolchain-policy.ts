@@ -1,7 +1,7 @@
 /**
- * Prevent accidental adoption of TypeScript 7 before Vue's embedded-language
- * checker can use its native compiler API. This is a deliberate compatibility
- * hold, not an assertion that TypeScript 7 is generally unusable.
+ * Guard the standalone TypeScript documentation build after VitePress removal.
+ * TS6 is pinned because the engine uses the programmatic transpileModule API;
+ * review TypeScript 7 API changes before lifting the major-upgrade hold.
  */
 export interface ToolchainPackage {
   devDependencies?: Record<string, unknown>
@@ -19,29 +19,41 @@ export function validateToolchain(pkg: ToolchainPackage, dependabotYaml: string)
   const errors: string[] = []
   const deps = pkg.devDependencies ?? {}
   const ts = deps.typescript
-  const vue = deps['vue-tsc']
-  // Stay on the supported TypeScript 6 line until Vue tooling supports TS7.
   if (typeof ts !== 'string' || !/^6\.0\.\d+$/.test(ts)) {
-    errors.push('TypeScript must remain pinned to the supported 6.0.x line')
+    errors.push('TypeScript must remain pinned to the supported 6.0.x transpilation line')
   }
-  if (typeof vue !== 'string' || !/^3\.3\.\d+$/.test(vue)) {
-    errors.push('Vue SFC type checking must use the reviewed vue-tsc 3.3.x line')
+  for (const dependency of ['markdown-it','yaml']) {
+    const version=deps[dependency]
+    if (typeof version !== 'string' || !/^\d+\.\d+\.\d+$/.test(version)) {
+      errors.push(dependency + ' must be an explicitly pinned source-parsing dependency')
+    }
   }
-  if (vue === '3.3.14') {
-    errors.push('vue-tsc 3.3.14 has an unresolved template URL codegen regression')
+  for (const removed of ['vitepress','vue-tsc']) {
+    if (removed in deps) errors.push('Removed framework/checker dependency must not return: ' + removed)
   }
-  if (pkg.scripts?.typecheck !== 'vue-tsc --noEmit -p tsconfig.json') {
-    errors.push('Vue and TypeScript sources must retain the vue-tsc typecheck gate')
+
+  const scripts = pkg.scripts ?? {}
+  if (scripts.typecheck !== 'tsc --noEmit -p tsconfig.json') {
+    errors.push('TypeScript-only source must be checked using tsc')
   }
+  if (scripts['docs:build'] !== 'tsx scripts/scarp-site/build.ts --production') {
+    errors.push('Production docs:build must use the Scarp-owned static site generator')
+  }
+  for (const script of ['docs:dev','docs:preview']) {
+    const value=scripts[script]
+    if (typeof value !== 'string' || !value.includes('scripts/scarp-site/serve-dev.ts')) {
+      errors.push(script + ' must use the Scarp-owned local preview server')
+    }
+  }
+
   const npm = npmDependabotBlock(dependabotYaml)
   if (!npm.includes('ignore:') ||
       !/dependency-name:\s*["']?typescript["']?/.test(npm) ||
       !npm.includes('version-update:semver-major')) {
-    errors.push('Dependabot npm updates must ignore TypeScript major versions')
+    errors.push('Dependabot must retain the TypeScript major-upgrade review gate')
   }
-  if (!/dependency-name:\s*["']?vue-tsc["']?/.test(npm) ||
-      !npm.includes('versions: ["3.3.14"]')) {
-    errors.push('Dependabot npm updates must hold vue-tsc 3.3.14 specifically')
+  if (/dependency-name:\s*["']?(?:vitepress|vue-tsc)["']?/.test(npm)) {
+    errors.push('Dependabot must not retain obsolete VitePress or vue-tsc rules')
   }
   return errors
 }

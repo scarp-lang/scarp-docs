@@ -11,5 +11,5 @@ if (errors.length) {
   for (const error of errors) console.error('FAIL toolchain: ' + error)
   process.exitCode = 1
 } else {
-  console.log('PASS: TypeScript 6, Vue SFC checker and Dependabot major-update guard')
+  console.log('PASS: framework-free Scarp renderer, TypeScript 6 and Dependabot major-update guard')
 }

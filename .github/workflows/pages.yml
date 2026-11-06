@@ -33,7 +33,7 @@ jobs:
         run: npm run check:alpha6-ast && npm run test:alpha6-ast
       - name: Validate bilingual compiler host and capability diagnostics
         run: npm run check:alpha6-diagnose && npm run test:alpha6-diagnose
-      - name: Retain transitional compiler/toolchain compatibility checks
+      - name: Validate independent TypeScript renderer and dependency update policy
         run: npm run check:toolchain && npm run test:toolchain
       - name: Regression-test complete bilingual sitemap coverage
         run: npm run test:sitemap
