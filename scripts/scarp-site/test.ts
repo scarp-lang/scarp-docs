@@ -52,6 +52,9 @@ const fixture=renderMarkdown([
   '  return 42;',
   '}',
   '~~~',
+  '| One | Two |',
+  '| --- | --- |',
+  '| first | second |',
   '::: warning ध्यान दें',
   'User content must be parsed safely.',
   ':::',
@@ -67,6 +70,8 @@ check(fixture.html.includes('&lt;script&gt;'),'Raw HTML must be escaped')
 check(fixture.html.includes('syntax-keyword'),'Scarp code highlighting must be independent')
 check(fixture.html.includes('data-command-finder'),'Interactive widget must be preserved')
 check(fixture.html.includes('scarp-callout'),'Admonitions must render as accessible callouts')
+check(fixture.html.includes('class="table-scroll" tabindex="0"'),
+  'Wide Markdown tables must be keyboard scrollable')
 check(fixture.html.includes('tabindex="0"'),'Scrollable code must be keyboard focusable')
 
 const sources=documentationPages(docs)
