@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { DOCS_BASE, SITE_ORIGIN, pairedUrls, urlForPage } from '../docs/.vitepress/site-meta.ts'
+import { DOCS_BASE, SITE_ORIGIN, pairedUrls, urlForPage } from './lib/site-meta.ts'
 import { LIVE_PAGE_SOURCES, verifyLiveSite, type SiteFetcher } from './lib/live-site.ts'
 
 const htmlRouteByUrl = new Map(LIVE_PAGE_SOURCES.map(source => [urlForPage(source), source]))
