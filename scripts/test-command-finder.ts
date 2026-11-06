@@ -56,7 +56,7 @@ for (const [index,release] of RELEASES.entries()) {
   }
 }
 assert.equal(combinations,42)
-assert.equal(unavailable,20,'release-sensitive unsupported capabilities must stay explicit')
+assert.equal(unavailable,18,'release-sensitive unsupported capabilities must stay explicit')
 assert.deepEqual(commandAdvice('v0.0.5-alpha.1','run-file').commands,['scarp run FILE.srp'])
 assert.deepEqual(commandAdvice('v0.0.5-alpha.2','run-file').commands,['scarp run FILE.srp'])
 assert.deepEqual(commandAdvice('v0.0.5-alpha.3','run-file').commands,['scarp exec FILE.srp'])
