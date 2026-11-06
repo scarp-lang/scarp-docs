@@ -85,7 +85,7 @@
     "@types/node": "26.6.6",
     "typescript": "6.0.3",
     "tsx": "4.23.15",
-    "vue-tsc": "3.3.13"
+    "vue-tsc": "3.3.14"
   },
   "engines": {
     "node": ">=20.19.0"
