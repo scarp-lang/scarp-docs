@@ -5,6 +5,11 @@ updates:
     schedule:
       interval: monthly
     open-pull-requests-limit: 2
+    # TypeScript 7 lacks the programmatic API needed by vue-tsc.
+    # Reconsider after upstream Vue tooling explicitly supports the native compiler.
+    ignore:
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: github-actions
     directory: /
     schedule:
