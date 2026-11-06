@@ -38,8 +38,8 @@ async function serve(): Promise<string> {
   const bin = resolve(extracted, 'serve.mjs')
   server = spawn(process.execPath, [bin], {
     cwd: extracted, env: { ...process.env, PORT: '0' },
-    stdio: ['ignore', 'pipe', 'pipe']
-  }) as ChildProcessWithoutNullStreams
+    stdio: ['pipe', 'pipe', 'pipe']
+  })
   let output = ''
   const started = new Promise<string>((resolveStarted, reject) => {
     server!.stdout.on('data', data => {
