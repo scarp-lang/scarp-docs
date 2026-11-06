@@ -27,6 +27,9 @@ export function validateToolchain(pkg: ToolchainPackage, dependabotYaml: string)
   if (typeof vue !== 'string' || !/^3\.3\.\d+$/.test(vue)) {
     errors.push('Vue SFC type checking must use the reviewed vue-tsc 3.3.x line')
   }
+  if (vue === '3.3.14') {
+    errors.push('vue-tsc 3.3.14 has an unresolved template URL codegen regression')
+  }
   if (pkg.scripts?.typecheck !== 'vue-tsc --noEmit -p tsconfig.json') {
     errors.push('Vue and TypeScript sources must retain the vue-tsc typecheck gate')
   }
@@ -35,6 +38,10 @@ export function validateToolchain(pkg: ToolchainPackage, dependabotYaml: string)
       !/dependency-name:\s*["']?typescript["']?/.test(npm) ||
       !npm.includes('version-update:semver-major')) {
     errors.push('Dependabot npm updates must ignore TypeScript major versions')
+  }
+  if (!/dependency-name:\s*["']?vue-tsc["']?/.test(npm) ||
+      !npm.includes('versions: ["3.3.14"]')) {
+    errors.push('Dependabot npm updates must hold vue-tsc 3.3.14 specifically')
   }
   return errors
 }

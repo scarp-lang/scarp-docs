@@ -10,6 +10,10 @@ updates:
     ignore:
       - dependency-name: "typescript"
         update-types: ["version-update:semver-major"]
+      # vue-tsc 3.3.14 has a confirmed URL-in-template typecheck regression.
+      # Permit later patched versions once reviewed; block this one release only.
+      - dependency-name: "vue-tsc"
+        versions: ["3.3.14"]
   - package-ecosystem: github-actions
     directory: /
     schedule:

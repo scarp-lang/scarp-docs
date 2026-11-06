@@ -18,6 +18,8 @@ The [English alpha.3 release guide](/releases/v0.0.5-alpha.3) and matching Hindi
 
 The docs run strict Vue SFC checks through `vue-tsc`. The tested compatibility line is **TypeScript 6.0.x** with **vue-tsc 3.3.x**. TypeScript 7.0 removes the programmatic TypeScript API expected by Vue's checker, causing `ERR_PACKAGE_PATH_NOT_EXPORTED` before actual document diagnostics run. This is an **upstream integration limitation**, not evidence that the TypeScript 7 compiler itself is defective.
 
+**Known patch regression:** `vue-tsc` **3.3.14** has a [reported URL-in-template code-generation bug](https://github.com/vuejs/language-tools/issues/6322) that can introduce false TS2339/TS7006 errors when a Vue template contains a literal URL. The project remains pinned to **3.3.13** and Dependabot ignores **3.3.14 specifically**; it can propose a later patch after an upstream fix. An existing passing CI run is not proof that every future Vue template pattern is safe.
+
 Until Vue tooling supports TypeScript 7, the npm Dependabot configuration ignores TypeScript **major** upgrades. It still permits compatible fixes. `npm run check:toolchain` verifies the dependency and ignore-policy contract, `npm run test:toolchain` mutation-tests it, and `npm run typecheck` checks real .ts and .vue sources. Reconsider this hold only after a new Vue toolchain supports the relevant TypeScript API **and** all GitHub CI and Pages checks pass; do not merge a major dependency PR merely because its diff is small.
 
 ## Local quality gates
