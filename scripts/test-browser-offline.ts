@@ -174,6 +174,143 @@ async function searchOffline(base:string,locale:typeof pages[number],mobile:bool
   } finally {await context.close();activePage=undefined}
 }
 
+
+/** Verify a zero-result search state and keyboard focus restoration. */
+async function emptySearchAndFocus(base: string, locale: typeof pages[number]): Promise<void> {
+  const { context, external } = await isolatedContext(base, 1280, 800)
+  try {
+    activePage = await context.newPage()
+    const page = activePage
+    await page.goto(base + locale.path, { waitUntil: 'networkidle' })
+    const trigger = page.locator('.VPNavBarSearch button').first()
+    await trigger.waitFor({ state: 'visible' })
+    await trigger.focus()
+    assert.equal(await trigger.evaluate(element => element === document.activeElement), true,
+      locale.locale + ': search trigger must be keyboard-focusable')
+    await trigger.press('Enter')
+    const input = page.locator('input[type="search"]').first()
+    await input.waitFor({ state: 'visible' })
+    assert.equal(await input.evaluate(element => element === document.activeElement), true,
+      locale.locale + ': search input should receive keyboard focus')
+    // A single invented token avoids MiniSearch matching unrelated short
+    // tokens such as "no" from hyphen-separated negative-test strings.
+    await input.fill('zzqvkpwmntrxhfbjkldsrp9776')
+    const noResults = locale.locale === 'hi' ? 'कोई परिणाम नहीं मिला' : 'No results for'
+    await page.locator('.VPLocalSearchBox .no-results').getByText(noResults, { exact: false })
+      .waitFor({ state: 'visible', timeout: 15000 })
+    await page.keyboard.press('Escape')
+    await input.waitFor({ state: 'hidden' })
+    await page.waitForFunction(() =>
+      document.activeElement === document.querySelector('.VPNavBarSearch button.DocSearch-Button'),
+      undefined, { timeout: 5000 })
+    assert.equal(await trigger.evaluate(element => element === document.activeElement), true,
+      locale.locale + ': search close must return focus to original trigger')
+    assert.deepEqual(external, [], locale.locale + ': no-results lookup accessed external network')
+    checked++
+  } finally { await context.close(); activePage = undefined }
+}
+
+/** A language-menu action must navigate to the translated local page. */
+async function languageSwitch(base: string, locale: typeof pages[number]): Promise<void> {
+  const { context, external } = await isolatedContext(base, 1280, 800)
+  try {
+    activePage = await context.newPage()
+    const page = activePage
+    await page.goto(base + locale.path, { waitUntil: 'networkidle' })
+    const dropdown = page.locator('.VPNavBarTranslations')
+    await dropdown.waitFor({ state: 'visible' })
+    const bounds = await dropdown.boundingBox()
+    assert.ok(bounds && bounds.x >= 0 && bounds.x + bounds.width <= 1280,
+      locale.locale + ': language control must fit within the 1280px viewport')
+    const trigger = dropdown.locator('button').first()
+    await trigger.focus()
+    assert.equal(await trigger.evaluate(el => document.activeElement === el), true,
+      locale.locale + ': locale switcher must accept keyboard focus')
+    await trigger.press('Enter')
+    const target = locale.locale === 'en'
+      ? '/scarp-docs/hi/tooling/command-finder'
+      : '/scarp-docs/tooling/command-finder'
+    const link = dropdown.locator('a[href="' + target + '"]')
+    await link.waitFor({ state: 'visible', timeout: 10000 })
+    await link.focus()
+    await link.press('Enter')
+    await page.waitForURL(url => url.pathname === target)
+    // VitePress updates the URL before Vue applies the translated document
+    // language and renders the next route. Wait for actual semantics.
+    const targetLang = locale.locale === 'en' ? 'hi-IN' : 'en-US'
+    await page.waitForFunction(lang => document.documentElement.lang === lang,
+      targetLang, { timeout: 10000 })
+    assert.equal(await page.locator('html').getAttribute('lang'), targetLang)
+    await page.locator('.scarp-command-finder select').first().waitFor({ state: 'visible' })
+    assert.deepEqual(external, [], locale.locale + ': language switching accessed external network')
+    checked++
+  } finally { await context.close(); activePage = undefined }
+}
+
+/** Check a real theme toggle and skip-to-content keyboard behavior. */
+async function themeAndSkip(base: string, locale: typeof pages[number]): Promise<void> {
+  const { context, external } = await isolatedContext(base, 1280, 800)
+  try {
+    activePage = await context.newPage()
+    const page = activePage
+    await page.goto(base + locale.path, { waitUntil: 'networkidle' })
+    const skip = page.locator('.VPSkipLink')
+    assert.equal(await skip.count(), 1, locale.locale + ': missing skip-to-content link')
+    const href = await skip.getAttribute('href')
+    assert.ok(href?.startsWith('#'), locale.locale + ': skip link must target a page section')
+    assert.equal(await page.locator(href!).count(), 1, locale.locale + ': skip target does not exist')
+    await skip.focus()
+    await skip.press('Enter')
+    await page.waitForFunction(hash => window.location.hash === hash, href)
+    checked++
+
+    const toggle = page.locator('.VPNavBarAppearance button').first()
+    await toggle.waitFor({ state: 'visible' })
+    const before = await page.locator('html').evaluate(el => el.classList.contains('dark'))
+    await toggle.click()
+    await page.waitForFunction(previous =>
+      document.documentElement.classList.contains('dark') !== previous, before)
+    const after = await page.locator('html').evaluate(el => el.classList.contains('dark'))
+    assert.notEqual(after, before, locale.locale + ': theme did not change')
+    await page.reload({ waitUntil: 'networkidle' })
+    assert.equal(await page.locator('html').evaluate(el => el.classList.contains('dark')),
+      after, locale.locale + ': theme preference should survive same-browser navigation')
+    assert.deepEqual(external, [], locale.locale + ': theme/skip controls accessed external network')
+    checked++
+  } finally { await context.close(); activePage = undefined }
+}
+
+/** Reduced motion must not disable the accessible command controls or search. */
+async function reducedMotionNavigation(base: string, locale: typeof pages[number]): Promise<void> {
+  const context = await browser!.newContext({
+    viewport: { width: 390, height: 844 },
+    reducedMotion: 'reduce'
+  })
+  const external: string[] = []
+  await context.route('**/*', route => {
+    const url = route.request().url()
+    if (url.startsWith(base + '/')) return route.continue()
+    external.push(url)
+    return route.abort('blockedbyclient')
+  })
+  try {
+    activePage = await context.newPage()
+    const page = activePage
+    await page.goto(base + locale.path, { waitUntil: 'networkidle' })
+    assert.equal(await page.evaluate(() =>
+      matchMedia('(prefers-reduced-motion: reduce)').matches), true)
+    const widget = page.locator('.scarp-command-finder')
+    await widget.locator('#scarp-release').selectOption('v0.0.5-alpha.1')
+    await widget.locator('#scarp-task').selectOption('inspect-symbols')
+    await widget.getByText(locale.old, { exact: true }).waitFor()
+    await widget.locator('#scarp-release').selectOption('v0.0.6-alpha.1')
+    await widget.getByText(locale.current, { exact: true }).waitFor()
+    assert.equal(await widget.locator('pre').count(), 1)
+    assert.deepEqual(external, [], locale.locale + ': reduced motion used external requests')
+    checked++
+  } finally { await context.close(); activePage = undefined }
+}
+
 try {
   execFileSync('tar',['-xzf',join(root,'artifacts/scarp-docs-offline.tar.gz'),'-C',extracted])
   const base=await serve()
@@ -188,9 +325,13 @@ try {
     await deniedClipboard(base,locale)
     await searchOffline(base,locale,false)
     await searchOffline(base,locale,true)
+    await emptySearchAndFocus(base,locale)
+    await languageSwitch(base,locale)
+    await themeAndSkip(base,locale)
+    await reducedMotionNavigation(base,locale)
   }
   console.log('PASS: '+checked+
-    ' real Chromium offline checks across English/Hindi desktop/mobile: accessible selector, keyboard, version gates, clipboard success/failure, local search and zero external requests')
+    ' real Chromium offline checks across English/Hindi desktop/mobile: keyboard, release gates, copy/failure, localized search/no-results, language switch, skip link, theme persistence, reduced-motion and zero external requests')
 }catch(err){
   if(activePage) {
     try {await activePage.screenshot({path:join(shots,'last-failure.png'),fullPage:true,timeout:3000})}

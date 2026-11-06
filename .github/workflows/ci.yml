@@ -150,8 +150,8 @@ jobs:
           node-version: '22'
       - name: Install website and pinned Playwright test dependencies
         run: npm install --no-audit --no-fund
-      - name: Install headless Chromium and Linux browser dependencies
-        run: npx playwright install --with-deps chromium
+      - name: Install pinned Playwright Chromium on the hosted Ubuntu runner
+        run: npx playwright install chromium
       - name: Build and package real bilingual offline documentation
         run: npm run docs:build && npm run package:offline
       - name: Check English/Hindi accessibility, CLI selector, offline search and mobile navigation in Chromium

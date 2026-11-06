@@ -19,4 +19,4 @@ For exact commands, compare the [alpha.6 CLI](/tooling/cli-alpha6), [AST inspect
 
 ## When search shows no results
 
-Check the spelling of Scarp keywords, use a shorter term, or switch locale using the language menu. Search is provided by VitePress's static site index and needs JavaScript enabled to display results. A failed local index load is not evidence that a compiler feature does not exist: use the [page navigation](/guide/learning-path) or the [compiler's published release notes](/releases/v0.0.6-alpha.1) instead.
+Check the spelling of Scarp keywords, use a shorter term, or switch locale using the language menu. Search is provided by VitePress's static site index and needs JavaScript enabled to display results. The offline Chromium suite also checks the no-results message and that **Esc** returns focus to the search trigger when opened from that button. A failed local index load is not evidence that a compiler feature does not exist: use the [page navigation](/guide/learning-path) or the [compiler's published release notes](/releases/v0.0.6-alpha.1) instead.
