@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url'
 import {
   commandAdvice, FINDER_TEXT, LATEST_RELEASE, RELEASES, TASKS,
   type CommandTask, type ReleaseTag
-} from '../docs/.vitepress/theme/lib/command-finder.ts'
+} from './lib/published-command-finder.ts'
 import { validateCommandFinder, type FinderLabels, type FinderSources } from './lib/command-finder-evidence.ts'
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)))
