@@ -21,7 +21,8 @@ function mutatePackage(changes: Partial<ToolchainPackage>): ToolchainPackage {
 for (const [name, changed] of [
   ['TypeScript 7', { typescript: '7.0.2' }],
   ['unsupported TypeScript prerelease', { typescript: '6.1.0-rc.1' }],
-  ['old Vue checker', { 'vue-tsc': '2.2.12' }]
+  ['old Vue checker', { 'vue-tsc': '2.2.12' }],
+  ['regressed Vue checker', { 'vue-tsc': '3.3.14' }]
 ] as const) {
   assert.ok(validateToolchain(mutatePackage({ devDependencies: changed }), yaml).length,
     name + ' must be rejected')
@@ -33,4 +34,6 @@ assert.ok(validateToolchain(pkg, yaml.replace('version-update:semver-major', 've
   .some(error => error.includes('Dependabot')), 'major-upgrade guard must stay enabled')
 assert.ok(validateToolchain(pkg, yaml.replace('dependency-name: "typescript"', 'dependency-name: "vitepress"'))
   .some(error => error.includes('Dependabot')), 'guard must target TypeScript')
-console.log('PASS: supported TypeScript and Vue versions, SFC checks and Dependabot guard with six negative tests')
+assert.ok(validateToolchain(pkg, yaml.replace('versions: ["3.3.14"]', 'versions: ["3.3.15"]'))
+  .some(error => error.includes('vue-tsc 3.3.14 specifically')), 'known-regression hold must target the exact release')
+console.log('PASS: supported TypeScript and Vue versions, SFC checks and Dependabot guard with eight negative tests')
