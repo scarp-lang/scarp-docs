@@ -61,7 +61,11 @@ export async function auditOfflineAccessibility(
   if (results.violations.length) {
     const descriptions = results.violations.map(v =>
       v.id + ' (' + (v.impact ?? 'unspecified') + '): ' +
-      v.nodes.slice(0, 3).map(n => n.target.join(' ')).join(', ')
+      v.nodes.slice(0, 3).map(n =>
+        n.target.join(' ') + ' [' +
+        (n.failureSummary ?? 'No failure summary').replace(/\\s+/g, ' ').slice(0, 450) +
+        '] ' + n.html.slice(0, 400)
+      ).join(', ')
     )
     throw new Error('Accessibility audit failed for ' + label +
       ': ' + descriptions.join(' | ') + '. See artifacts/browser-a11y/' + label + '.json')
