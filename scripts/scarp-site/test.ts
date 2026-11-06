@@ -32,7 +32,7 @@ assert.equal(localLink('../guide/first-program.md','tutorials/test.md'),
   '/scarp-docs/guide/first-program')
 assert.equal(escapeHtml('<script>&"\''),
   '&lt;script&gt;&amp;&quot;&#39;')
-for(const invalid of ['/index.md','hi/../index.md','hi\\index.md','bad?x.md']){
+for(const invalid of ['/index.md','hi/../index.md','hi\\index.md','bad?x.md','https://x.md']){
   assert.throws(()=>sourceRoute(invalid),TypeError,invalid)
 }
 assert.throws(()=>splitFrontMatter('---\nkey: value\n'),/Unclosed/)
