@@ -66,6 +66,15 @@ try {
   assert.ok(inventory.files.some(x=>x.path.endsWith('.js')&&x.path.startsWith('scarp-docs/assets/')))
   assert.ok(readFileSync(join(extract,'README-OFFLINE.txt'),'utf8').includes('हिन्दी'))
 
+  const fallbackLogo = readFileSync(join(extract,'scarp-docs/offline-logo.svg'),'utf8')
+  assert.match(fallbackLogo,/<svg\b[^>]*>/,'Offline branding must be served locally')
+  for (const entry of inventory.files.filter(x=>/\.(?:html|js|css|json|xml)$/.test(x.path))) {
+    const content=readFileSync(join(extract,entry.path),'utf8')
+    assert.ok(!content.includes('https://avatars.githubusercontent.com/u/350973173?v=4'),
+      'Hosted organization avatar leaked into offline file '+entry.path)
+  }
+
+
   const port=await new Promise<number>((resolvePort,reject)=>{
     server=spawn(process.execPath,[join(extract,'serve.mjs')],{
       cwd:extract,env:{...process.env,PORT:'0'},stdio:['pipe','pipe','pipe']
