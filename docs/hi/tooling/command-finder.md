@@ -10,7 +10,7 @@ Scarp के प्रयोगात्मक compiler releases में CLI �
 
 पहले असली binary का version जाँचें। Alpha.3 या नए compiler में `scarp version` और alpha.1/alpha.2 में `scarp --version` चलाएँ। `FILE.srp` की जगह अपनी source file का path दें। `PROJECT_DIRECTORY` की जगह `Scarp.project` manifest वाला स्पष्ट project folder दें। `scarp create demo` चलाने से **नया folder** बनता है; यह पुराने folder को overwrite नहीं करता।
 
-यह widget पेज लोड होने के बाद **browser में ही काम करता है**। यह GitHub से data नहीं माँगता, आपके कंप्यूटर का executable नहीं पहचानता, आपकी files नहीं पढ़ता और Scarp code execute नहीं करता। इसके links अलग-अलग प्रकाशित releases के जाँचे हुए संदर्भों तक ले जाते हैं। **नवीनतम प्रकाशित release [v0.0.6-alpha.1](/hi/releases/v0.0.6-alpha.1)** है; compiler की बदलती `main` branch नहीं।
+यह widget पेज लोड होने के बाद **browser में ही काम करता है**। यह GitHub से data नहीं माँगता, आपके कंप्यूटर का executable नहीं पहचानता, आपकी files नहीं पढ़ता और Scarp code execute नहीं करता। इसके links अलग-अलग प्रकाशित releases के जाँचे हुए संदर्भों तक ले जाते हैं। **नवीनतम प्रकाशित release [v0.0.6-alpha.2](/hi/releases/v0.0.6-alpha.2)** है; compiler की बदलती `main` branch नहीं।
 
 ## अलग-अलग commands पहली बार कब आए?
 
@@ -25,3 +25,7 @@ Scarp के प्रयोगात्मक compiler releases में CLI �
 Alpha.2 पुराने `run` command के लिए चुना जा सकता है। किसी नई सुविधा के आ जाने से सारे पुराने programs की compatibility **सिद्ध नहीं** होती। Source बदलने से पहले [release-aware learning path](/hi/guide/learning-path), [version compatibility](/hi/reference/compatibility) और [latest installation guide](/hi/guide/installation-alpha6) देखें।
 
 [English command finder](/tooling/command-finder) में वही commands, compiler releases और सुविधाएँ हैं। Browser में JavaScript बंद हो या clipboard अनुमति न मिले तो ऊपर दी table और जुड़े हुए CLI references से सही command पढ़ सकते हैं।
+
+## Alpha.2 version की सीमा
+
+प्रकाशित **v0.0.6-alpha.2** में सीमित Rust caching और dependency invalidation APIs जोड़ी गई हैं। नया `scarp` CLI command **नहीं** आया है। Alpha.1 के पुराने symbols और references commands अभी भी उपलब्ध हैं। [Alpha.2 रिलीज़ विवरण](/hi/releases/v0.0.6-alpha.2) पढ़ें।

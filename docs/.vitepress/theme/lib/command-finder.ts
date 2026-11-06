@@ -13,11 +13,12 @@ export const RELEASES = [
   { tag: 'v0.0.5-alpha.3', label: 'v0.0.5-alpha.3', source: '7715c28df09c7703b39e14fddb963275b25df476' },
   { tag: 'v0.0.5-alpha.4', label: 'v0.0.5-alpha.4', source: '79141329176f5dce51457e90a6652902f6432135' },
   { tag: 'v0.0.5-alpha.5', label: 'v0.0.5-alpha.5', source: '2eeed0aa52ccb59523307841ad8ffbd83f8911a8' },
-  { tag: 'v0.0.6-alpha.1', label: 'v0.0.6-alpha.1 (latest)', source: 'aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8' }
+  { tag: 'v0.0.6-alpha.1', label: 'v0.0.6-alpha.1', source: 'aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8' },
+  { tag: 'v0.0.6-alpha.2', label: 'v0.0.6-alpha.2 (latest)', source: '398b8ff705154a02423fe458ce3a427401e81e31' }
 ] as const
 
 export type ReleaseTag = (typeof RELEASES)[number]['tag']
-export const LATEST_RELEASE: ReleaseTag = 'v0.0.6-alpha.1'
+export const LATEST_RELEASE: ReleaseTag = 'v0.0.6-alpha.2'
 
 export const TASKS = [
   { id: 'run-file', en: 'Run a source file', hi: 'Source file चलाएँ', first: 0, reference: '/tooling/cli-alpha1' },
@@ -82,11 +83,11 @@ export function commandAdvice(release: ReleaseTag, task: CommandTask): CommandAd
       ], note: 'symbols' }
     case 'diagnose-host':
       return { ...result, commands: ['scarp diagnose --json'],
-        reference: versionIndex === 5 ? '/tooling/diagnose-alpha6' : '/tooling/cli',
+        reference: versionIndex >= 5 ? '/tooling/diagnose-alpha6' : '/tooling/cli',
         note: 'diagnose' }
     case 'inspect-ast':
       return { ...result, commands: ['scarp inspect ast FILE.srp'],
-        reference: versionIndex === 5 ? '/tooling/inspect-ast-alpha6' : '/tooling/cli',
+        reference: versionIndex >= 5 ? '/tooling/inspect-ast-alpha6' : '/tooling/cli',
         note: 'ast' }
   }
 }
