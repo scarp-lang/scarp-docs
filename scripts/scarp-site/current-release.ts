@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { LATEST_RELEASE, RELEASES } from '../../docs/.vitepress/theme/lib/command-finder.ts'
+import { LATEST_RELEASE, RELEASES } from '../lib/command-finder.ts'
 import { BASE, type Locale } from './routes.ts'
 
 /**

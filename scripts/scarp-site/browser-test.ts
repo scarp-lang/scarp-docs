@@ -5,7 +5,7 @@ import { resolve, extname, sep, join } from 'node:path'
 import { chromium, type BrowserContext, type Page } from 'playwright'
 import { auditOfflineAccessibility } from '../lib/offline-a11y.ts'
 import { previewRoot } from './build.ts'
-import { LATEST_RELEASE } from '../../docs/.vitepress/theme/lib/command-finder.ts'
+import { LATEST_RELEASE } from '../lib/command-finder.ts'
 
 const root=process.argv[2]?resolve(process.argv[2]):resolve(previewRoot,'scarp-docs')
 const base='/scarp-docs/'
