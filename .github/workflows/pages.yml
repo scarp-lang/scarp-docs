@@ -25,6 +25,8 @@ jobs:
         run: npm run typecheck && npm run check:docs && npm run check:i18n && npm run check:snippets && npm run test:snippets && npm run check:fixtures && npm run check:alpha2 && npm run check:alpha2-errors && npm run check:alpha3 && npm run check:tutorial-evidence && npm run test:tutorial-evidence && npm run check:coverage-statistics && npm run test:coverage-statistics && npm run test:pages-api && npm run test:site-meta
       - name: Validate release-pinned bilingual alpha.6 installation
         run: npm run check:alpha6-installation && npm run test:alpha6-installation
+      - name: Keep Vue/TypeScript and Dependabot compatible
+        run: npm run check:toolchain && npm run test:toolchain
       - name: Build static website
         run: npm run docs:build
       - name: Verify generated bilingual HTML and SEO metadata
