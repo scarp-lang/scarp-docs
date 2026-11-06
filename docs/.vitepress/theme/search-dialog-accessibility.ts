@@ -27,6 +27,13 @@ export function installAccessibleSearchDialog(): void {
       if (dialog.hasAttribute('aria-expanded')) dialog.removeAttribute('aria-expanded')
       if (dialog.hasAttribute('aria-haspopup')) dialog.removeAttribute('aria-haspopup')
       if (dialog.hasAttribute('aria-labelledby')) dialog.removeAttribute('aria-labelledby')
+
+      // VitePress applies aria-label to <kbd> arrow/Enter key glyphs.
+      // A bare kbd has a generic role where aria-label is prohibited;
+      // expose each pictogram as an explicitly labelled image instead.
+      for (const key of dialog.querySelectorAll<HTMLElement>('kbd[aria-label]')) {
+        if (key.getAttribute('role') !== 'img') key.setAttribute('role', 'img')
+      }
     }
   }
 
