@@ -13,3 +13,9 @@ The count above is fetched from the public GitHub Actions API and represents **s
 - [Live documentation](https://scarp-lang.github.io/scarp-docs/) and [Hindi documentation](https://scarp-lang.github.io/scarp-docs/hi/) — verify published content.
 
 Production builds and the independent compiler conformance check are handled by the [Documentation CI workflow](https://github.com/scarp-lang/scarp-docs/actions/workflows/ci.yml). A passing build does not imply that a compiler feature has shipped; the [feature status](/reference/status) remains tied to the compiler release.
+
+## Automated post-deployment check
+
+After the Pages deployment, the `smoke` job fetches **10 live English/Hindi URLs**, including nested clean URLs, the current alpha.6 guides and community pages. It checks HTTP 200, document language, canonical and reciprocal `hreflang` tags, the generated sitemap, and public JavaScript/CSS bundles. Temporary propagation delays are retried; persistent failures mark the workflow unsuccessful. The same assertions have **offline regression tests** in Documentation CI.
+
+This HTTP smoke test is **not a substitute for browser QA**. Before closing the [post-deployment QA issue](https://github.com/scarp-lang/scarp-docs/issues/3), manually verify mobile sidebar behavior, keyboard navigation, Ctrl/⌘+K local search, theme contrast, copy buttons and browser console errors.
