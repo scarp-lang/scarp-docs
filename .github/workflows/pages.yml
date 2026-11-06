@@ -27,6 +27,8 @@ jobs:
         run: npm run check:alpha6-installation && npm run test:alpha6-installation
       - name: Keep Vue/TypeScript and Dependabot compatible
         run: npm run check:toolchain && npm run test:toolchain
+      - name: Regression-test complete bilingual sitemap coverage
+        run: npm run test:sitemap
       - name: Build static website
         run: npm run docs:build
       - name: Verify generated bilingual HTML and SEO metadata

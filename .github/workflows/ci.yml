@@ -118,6 +118,8 @@ jobs:
         run: npm run test:coverage-statistics
       - name: Unit-test SEO URL helpers
         run: npm run test:site-meta
+      - name: Mutation-test all bilingual sitemap routes
+        run: npm run test:sitemap
       - name: Unit-test typed deployment API and fallbacks
         run: npm run test:pages-api
       - name: Unit-test live Pages routes and failure diagnostics without network

@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict'
 import { DOCS_BASE, SITE_ORIGIN, pairedUrls, urlForPage } from '../../docs/.vitepress/site-meta.ts'
+import { validateSitemap } from './sitemap-policy.ts'
 
 /**
  * Exercises real public GitHub Pages URLs after deployment, not just the
@@ -27,6 +28,7 @@ export interface LiveSiteResult {
   pages: number
   assets: number
   sitemap: string
+  sitemapPages: number
 }
 
 function tags(html: string, tag: string): Array<Record<string, string>> {
@@ -45,7 +47,7 @@ async function request(fetcher: SiteFetcher, url: string): Promise<Response> {
   return response
 }
 
-export async function verifyLiveSite(fetcher: SiteFetcher): Promise<LiveSiteResult> {
+export async function verifyLiveSite(fetcher: SiteFetcher, sitemapSources: readonly string[]): Promise<LiveSiteResult> {
   let home = ''
   for (const source of LIVE_PAGE_SOURCES) {
     const url = urlForPage(source)
@@ -77,8 +79,7 @@ export async function verifyLiveSite(fetcher: SiteFetcher): Promise<LiveSiteResu
   const sitemap = SITE_ORIGIN + DOCS_BASE + 'sitemap.xml'
   const sitemapResponse = await request(fetcher, sitemap)
   const xml = await sitemapResponse.text()
-  for (const source of ['index.md', 'hi/index.md', 'guide/learning-path.md', 'hi/guide/learning-path.md', 'guide/installation-alpha6.md', 'hi/guide/installation-alpha6.md']) {
-    assert.ok(xml.includes(urlForPage(source)), sitemap + ': missing route ' + source)
-  }
-  return { pages: LIVE_PAGE_SOURCES.length, assets: 2, sitemap }
+  const checked = validateSitemap(xml, sitemapSources)
+  assert.deepEqual(checked.errors, [], sitemap + ': incomplete or invalid sitemap: ' + checked.errors.join('; '))
+  return { pages: LIVE_PAGE_SOURCES.length, assets: 2, sitemap, sitemapPages: checked.expected }
 }
