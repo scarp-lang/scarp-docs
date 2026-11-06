@@ -1,6 +1,6 @@
 # समस्या निवारण
 
-**नया प्रकाशित संस्करण:** [alpha.5 इंस्टॉलेशन](/hi/guide/installation-alpha5), [alpha.5 CLI](/hi/tooling/cli-alpha5), और [C11 Rust-only backend](/hi/reference/c11-backend-alpha5) देखें। पुराने alpha.2 diagnostic tests जानबूझकर version-pinned हैं।
+**वर्तमान प्रकाशित संस्करण [v0.0.6-alpha.1](/hi/releases/v0.0.6-alpha.1) है।** नए उपयोगकर्ता [alpha.6 इंस्टॉलेशन](/hi/guide/installation-alpha6), [symbols और references CLI](/hi/tooling/cli-alpha6) तथा [AST debugging](/hi/tooling/inspect-ast-alpha6) पढ़ें। पुराने [alpha.5 CLI](/hi/tooling/cli-alpha5) और [C11 Rust-only API](/hi/reference/c11-backend-alpha5) ऐतिहासिक हैं। Alpha.2 diagnostic tests version-pinned रहते हैं।
 
 **प्रकाशित v0.0.5-alpha.2 में:** [छह वास्तविक compiler त्रुटियाँ और सुधार](/hi/tutorials/alpha2-diagnostics-and-repairs) देखकर E0044/E0045, module constant calls, private imports और import cycles समझें। ये published test fixtures से लिए गए हैं और CI में चलाए जाते हैं। नीचे सामान्य troubleshooting नियम हैं।
 
@@ -10,11 +10,15 @@
 
 ## Unknown command या पुराना syntax
 
-**प्रकाशित alpha.5 में** file चलाने के लिए `scarp exec FILE.srp`, static जाँच के लिए `scarp verify FILE.srp`, और project के लिए `scarp create DIRECTORY`, `scarp verify DIRECTORY`, `scarp launch DIRECTORY` उपलब्ध हैं। पहली बार project module inspection भी `scarp inspect modules --json DIRECTORY` से चलती है। `scarp build` और `scarp compile` **उपलब्ध नहीं**; `cargo build` केवल Rust interpreter बनाता है। पुराने उदाहरणों में `let` बनाम नए `bind`/`var` और `println` बनाम `print` का अंतर हो सकता है। [वर्ज़न तुलना](/hi/reference/compatibility) देखें।
+**प्रकाशित alpha.6** (और पुराने alpha.5 project workflow) में file चलाने के लिए `scarp exec FILE.srp`, static जाँच के लिए `scarp verify FILE.srp`, और project के लिए `scarp create DIRECTORY`, `scarp verify DIRECTORY`, `scarp launch DIRECTORY` उपलब्ध हैं। Project module inspection `scarp inspect modules --json DIRECTORY` से चलती है। Alpha.6 में `scarp inspect symbols --json FILE.srp` तथा `scarp inspect references --json FILE.srp` भी हैं। `scarp build` और `scarp compile` **उपलब्ध नहीं**; `cargo build` केवल Rust interpreter बनाता है। पुराने उदाहरणों में `let` बनाम नए `bind`/`var` और `println` बनाम `print` का अंतर हो सकता है। [वर्ज़न तुलना](/hi/reference/compatibility) देखें।
 
 ## सफल `check` पर कुछ नहीं दिखता
 
 पुराना `check` चुने हुए execution paths चलाकर output रोकता है; यह **static-only** command नहीं है। नए compiler में बिना statements चलाए जाँच के लिए `scarp verify FILE.srp` या `scarp verify DIRECTORY` और वास्तविक output के लिए `scarp exec FILE.srp` या `scarp launch DIRECTORY` उपयोग करें।
+
+## `inspect ast` सफल है, लेकिन `verify` विफल है
+
+यह संभव है: **parser** source file को पढ़ सकता है, लेकिन import resolve न हो या type error हो। `scarp inspect ast FILE.srp` केवल entry file parse करता है; modules validate और code execute नहीं करता। [प्रकाशित alpha.6 AST debugging](/hi/tooling/inspect-ast-alpha6) में tokens, syntax tree, checked modules और resolved symbols का अंतर समझाया गया है। `scarp inspect ast --json` उपलब्ध नहीं है। `--diagnostic-format=json` केवल **त्रुटि संदेश** JSON में देता है, successful AST output नहीं।
 
 ## अंकगणित त्रुटि
 
