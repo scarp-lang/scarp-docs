@@ -91,7 +91,7 @@ for(const [key,invalid] of [
   ['releasedAt','not-a-timestamp'],
   ['assets',[]]
 ] as const) {
-  assert.throws(()=>currentPublishedCompilerTag({...latest,[key]:invalid}),undefined,
+  assert.throws(()=>currentPublishedCompilerTag({...latest,[key]:invalid}),{name:'AssertionError'},
     'Invalid current compiler metadata escaped guard: '+key)
 }
 assert.throws(()=>currentCompilerReleaseRoute('v0.0.6-alpha.1','en'))
