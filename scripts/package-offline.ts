@@ -116,7 +116,7 @@ const tar = execFileSync('tar',[
   '--sort=name','--mtime=@0','--owner=0','--group=0','--numeric-owner',
   '--format=gnu','-cf','-','-C',stage,'.'
 ], {maxBuffer:128*1024*1024})
-const output=gzipSync(tar,{level:9,mtime:0})
+const output=gzipSync(tar,{level:9})
 writeFileSync(archiveFile,output)
 writeFileSync(checksumFile,sha256(output)+'  '+archiveName+'\n','utf8')
 console.log('PASS: packaged '+docSources.length+' English/Hindi HTML pages and '+
