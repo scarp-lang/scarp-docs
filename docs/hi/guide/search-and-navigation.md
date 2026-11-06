@@ -19,4 +19,4 @@ Search परिणाम में कोई **पुराना** tutorial �
 
 ## कोई परिणाम न मिले तो
 
-Keyword की spelling जाँचें, छोटा शब्द खोजें या भाषा बदलें। Local search को परिणाम दिखाने के लिए browser में JavaScript चाहिए, क्योंकि index static website से लोड होता है। Search विफल होने से यह सिद्ध **नहीं** होता कि compiler में कोई सुविधा नहीं है। ऐसे में [learning path](/hi/guide/learning-path) या [प्रकाशित compiler release](/hi/releases/v0.0.6-alpha.1) से सीधे आगे बढ़ें।
+Keyword की spelling जाँचें, छोटा शब्द खोजें या भाषा बदलें। Local search को परिणाम दिखाने के लिए browser में JavaScript चाहिए, क्योंकि index static website से लोड होता है। Offline Chromium परीक्षण में कोई परिणाम न मिलने वाला संदेश और search button से खोलने के बाद **Esc** दबाने पर keyboard focus वापस आने की भी जाँच होती है। Search विफल होने से यह सिद्ध **नहीं** होता कि compiler में कोई सुविधा नहीं है। ऐसे में [learning path](/hi/guide/learning-path) या [प्रकाशित compiler release](/hi/releases/v0.0.6-alpha.1) से सीधे आगे बढ़ें।
