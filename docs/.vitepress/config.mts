@@ -79,6 +79,7 @@ export default defineConfig({
         sidebar: [
           { text: 'स्वागत', items: [
             { text: 'परिचय', link: '/hi/guide/introduction' },
+            { text: 'दस्तावेज़ खोजें', link: '/hi/guide/search-and-navigation' },
             { text: 'इंस्टॉलेशन (alpha.6)', link: '/hi/guide/installation-alpha6' },
             { text: 'सात चरणों वाला Learning Path', link: '/hi/guide/learning-path' },
             { text: 'पहला Alpha.6 project और symbols', link: '/hi/tutorials/project-symbol-navigation-alpha6' },
@@ -222,6 +223,7 @@ export default defineConfig({
     sidebar: [
       { text: 'Welcome', items: [
         { text: 'Introduction', link: '/guide/introduction' },
+        { text: 'Search and navigation', link: '/guide/search-and-navigation' },
         { text: 'Install the current alpha.6 release', link: '/guide/installation-alpha6' },
         { text: 'Learn Scarp: seven stages', link: '/guide/learning-path' },
         { text: 'First alpha.6 project and symbols', link: '/tutorials/project-symbol-navigation-alpha6' },
