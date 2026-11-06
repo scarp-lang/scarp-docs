@@ -82,6 +82,10 @@ jobs:
         run: npm run check:alpha5
       - name: Reject wrong alpha.5 source, capabilities, downloads and translation drift
         run: npm run test:alpha5
+      - name: Verify alpha.6 Windows Linux macOS installer commands and SHA-256 safeguards
+        run: npm run check:alpha6-installation
+      - name: Mutation-test bilingual installer version, source, checksum and navigation
+        run: npm run test:alpha6-installation
       - name: Validate published alpha.6 source and bilingual guides
         run: npm run check:alpha6
       - name: Regression-test alpha.6 release evidence and translation drift
