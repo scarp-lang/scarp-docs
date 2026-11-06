@@ -117,6 +117,7 @@ export default defineConfig({
           ] },
           { text: 'टूलिंग और संदर्भ', items: [
             { text: 'CLI (alpha.6) — symbols', link: '/hi/tooling/cli-alpha6' },
+            { text: 'Compiler diagnose (alpha.6)', link: '/hi/tooling/diagnose-alpha6' },
             { text: 'AST debugging (alpha.6)', link: '/hi/tooling/inspect-ast-alpha6' },
             { text: 'CLI संदर्भ (alpha.5)', link: '/hi/tooling/cli-alpha5' },
             { text: 'CLI संदर्भ (alpha.4)', link: '/hi/tooling/cli-alpha4' },
@@ -261,6 +262,7 @@ export default defineConfig({
       ] },
       { text: 'Tools and reference', items: [
         { text: 'Command-line interface (alpha.6)', link: '/tooling/cli-alpha6' },
+        { text: 'Compiler host & capabilities (alpha.6)', link: '/tooling/diagnose-alpha6' },
         { text: 'AST source inspection (alpha.6)', link: '/tooling/inspect-ast-alpha6' },
         { text: 'Command-line interface (alpha.5)', link: '/tooling/cli-alpha5' },
         { text: 'Command-line interface (alpha.4)', link: '/tooling/cli-alpha4' },
