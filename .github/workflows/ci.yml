@@ -162,7 +162,7 @@ jobs:
         run: npm run scarp:test && npm run scarp:browser-test
       - name: Upload accessibility audit evidence on failure
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: scarp-docs-accessibility-audit
           path: artifacts/browser-a11y/
@@ -170,7 +170,7 @@ jobs:
           retention-days: 14
       - name: Attach browser failure screenshot
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: scarp-docs-browser-failures
           path: artifacts/browser-failures/
