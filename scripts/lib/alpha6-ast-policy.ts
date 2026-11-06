@@ -69,6 +69,13 @@ export function validateAstGuide(pages: AstGuidePages): string[] {
       }
     } catch(e) { failures.push(label + ': malformed code fences: ' + String(e)) }
     for (const command of [
+      'scarp inspect tokens FILE.srp',
+      'scarp inspect ast FILE.srp',
+      'scarp verify FILE.srp',
+      'scarp inspect modules --json FILE.srp',
+      'scarp inspect symbols --json FILE.srp',
+      'scarp inspect references --json FILE.srp',
+      'scarp exec FILE.srp',
       'scarp inspect ast --json',
       'scarp ast FILE.srp',
       '--diagnostic-format=json',
