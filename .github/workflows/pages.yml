@@ -40,3 +40,17 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+  smoke:
+    needs: deploy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install TypeScript smoke-check dependencies
+        run: npm install --no-audit --no-fund
+      - name: Verify public bilingual Pages, clean URLs, SEO, assets and sitemap
+        run: npm run check:live-site
