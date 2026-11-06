@@ -9,3 +9,4 @@ docs/.vitepress/dist/
 artifacts/
 test-results/
 playwright-report/
+browser-a11y/
