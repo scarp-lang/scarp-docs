@@ -34,7 +34,7 @@ Calling the extracted binary directly avoids accidentally inspecting an older ex
 
 ## 2. Read the actual JSON capability fields
 
-The alpha.6 output has these nine keys. The compiler supplies **`host_os`** and **`host_arch`** at runtime; they describe **the machine running the executable**, not a target that Scarp can compile for.
+The alpha.6 output has these **ten** keys. The compiler supplies **`host_os`** and **`host_arch`** at runtime; they describe **the machine running the executable**, not a target that Scarp can compile for.
 
 | JSON field | Type | Interpretation in published alpha.6 |
 | --- | --- | --- |
