@@ -4,7 +4,9 @@
 <!-- scarp-install-release: v0.0.6-alpha.1 -->
 <!-- scarp-install-compiler: aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8 -->
 
-यह **वर्तमान प्रकाशित Scarp compiler prerelease** [v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1) (5 नवंबर 2026) की installation guide है। इसका सही source commit `aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8` है। Scarp अभी **प्रयोगात्मक interpreter** है, न कि stable package manager या `.srp` को native executable में बदलने वाला compiler।
+यह **पुराने प्रकाशित Scarp compiler prerelease का version-specific guide** [v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1) (5 नवंबर 2026) की installation guide है। इसका सही source commit `aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8` है। Scarp अभी **प्रयोगात्मक interpreter** है, न कि stable package manager या `.srp` को native executable में बदलने वाला compiler।
+
+**नवीनतम प्रकाशित v0.0.6-alpha.2 packages और checksum के लिए [नई release guide](/hi/releases/v0.0.6-alpha.2) पढ़ें।** नीचे के archive नाम, hash और source commit जानबूझकर पुराने **alpha.1** के हैं; इन्हें alpha.2 की files से न मिलाएँ।
 
 इस संस्करण में [symbols और references की static जाँच](/hi/tooling/cli-alpha6), [RMS गणना](/hi/language/rms-alpha6), और [दो source files वाला पूरा project tutorial](/hi/tutorials/project-symbol-navigation-alpha6) उपलब्ध हैं।
 

@@ -4,7 +4,9 @@
 <!-- scarp-install-release: v0.0.6-alpha.1 -->
 <!-- scarp-install-compiler: aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8 -->
 
-This is the **current published Scarp compiler prerelease**, [v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1) (November 5, 2026), built from exact source commit `aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8`. Scarp is an **experimental interpreter**, not a stable package manager or a compiler that turns `.srp` programs into native executables.
+This is a **historical, version-pinned Scarp compiler prerelease**, [v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1) (November 5, 2026), built from exact source commit `aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8`. Scarp is an **experimental interpreter**, not a stable package manager or a compiler that turns `.srp` programs into native executables.
+
+**For the latest published v0.0.6-alpha.2 packages and checksums, use the [new release guide](/releases/v0.0.6-alpha.2).** The archive names, hashes and exact source commit below intentionally refer to **alpha.1**, and must not be mixed with alpha.2 artifacts.
 
 The release provides read-only [symbol and reference inspection](/tooling/cli-alpha6), [RMS numerics](/language/rms-alpha6), and a [complete two-file project tutorial](/tutorials/project-symbol-navigation-alpha6).
 

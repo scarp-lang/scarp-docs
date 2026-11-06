@@ -6,6 +6,8 @@
 
 **Unsure which command belongs to your installed compiler?** Use the [interactive version-aware CLI Command Finder](/tooling/command-finder) to avoid mixing older `run` / `check` with newer static `verify` or project inspection.
 
+**Current compiler:** The newest published prerelease is [v0.0.6-alpha.2](/releases/v0.0.6-alpha.2), which adds optional Rust caching APIs, not new Scarp syntax or CLI commands. The alpha.1 symbol-navigation lesson below remains tied to its original checked examples.
+
 **Start here if you are new to Scarp.** This track connects complete, compiler-backed lessons from the first program through numerical modeling, project modules, and the symbol-navigation tools introduced in the **[published v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1)** prerelease.
 
 Scarp is experimental. There is **no single compiler version guaranteed to run every example from every historical guide**. Each stage names the release used to verify its examples. Read the language concept in order, but **run a sample only with the release named by that lesson**, or test it yourself with another compiler. The general language reference remains pinned to v0.0.5-alpha.1; newer guides are separate release-specific evidence.

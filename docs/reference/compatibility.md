@@ -6,7 +6,8 @@ The language is **prerelease and evolving**. Use the exact executable version ma
 
 | Version | Distinguishing features |
 | --- | --- |
-| **v0.0.6-alpha.1** | **Latest published prerelease (Nov 5):** static symbols/references inspection, schema-v1 navigation JSON, pure `rms(vector)`; [release guide](/releases/v0.0.6-alpha.1) and [verified project tutorial](/tutorials/project-symbol-navigation-alpha6) |
+| **[v0.0.6-alpha.2](/releases/v0.0.6-alpha.2)** | **Current published prerelease (Nov 6):** optional bounded Rust embedding cache and dependency invalidation APIs; no new Scarp CLI commands or syntax |
+| **v0.0.6-alpha.1** | **Earlier published prerelease (Nov 5):** static symbols/references inspection, schema-v1 navigation JSON, pure `rms(vector)`; [release guide](/releases/v0.0.6-alpha.1) and [verified project tutorial](/tutorials/project-symbol-navigation-alpha6) |
 | **v0.0.5-alpha.5** | Previous prerelease (Nov 4): explicit project module inspection and experimental Rust-only scalar C11 emitter; [release guide](/releases/v0.0.5-alpha.5) |
 | **v0.0.5-alpha.4** | Published Nov 3: new create/verify DIRECTORY/launch project workflow; [release guide](/releases/v0.0.5-alpha.4) |
 | **v0.0.5-alpha.3** | **Historical prerelease (Nov 2):** Scarp-first `exec`/static `verify`/`inspect`, offline `diagnose`, bounded text construction; [four verified examples](/releases/v0.0.5-alpha.3) |
@@ -36,11 +37,15 @@ The [v0.0.5-alpha.5 release](https://github.com/scarp-lang/scarp/releases/tag/v0
 
 This does not prove that **every** old program works unchanged on the latest prerelease. Preserve tagged test fixtures and check exact versions when diagnosing a regression.
 
-## Current published alpha.6 compatibility boundary
+## Published alpha.6 symbol/CLI compatibility boundary
 
-The newest published compiler is [v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1), built from source commit `aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8`. It adds `scarp inspect symbols --json` and `scarp inspect references --json` for an explicit source file or project directory, plus `rms(vector)`. The alpha.6 inventory uses snapshot-local IDs: it is **not** an LSP, rename feature or incremental compilation service. See the [alpha.6 CLI](/tooling/cli-alpha6), [RMS guide](/language/rms-alpha6) and [end-to-end project lab](/tutorials/project-symbol-navigation-alpha6).
+The earlier alpha.6 language/CLI milestone is [v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1), built from source commit `aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8`. It adds `scarp inspect symbols --json` and `scarp inspect references --json` for an explicit source file or project directory, plus `rms(vector)`. The alpha.1 symbol inventory uses snapshot-local IDs: it is **not** an LSP, rename feature or user-facing incremental compilation service. The subsequent alpha.2 adds separate Rust-only caching APIs. See the [alpha.6 CLI](/tooling/cli-alpha6), [RMS guide](/language/rms-alpha6) and [end-to-end project lab](/tutorials/project-symbol-navigation-alpha6).
 
 The [seven-stage learning path](/guide/learning-path) names the **exact release required for each historical runnable lesson**. New published features do **not** imply universal binary/source compatibility across versions. There is no native `.srp` executable compiler CLI or general tensor runtime.
+
+## Latest alpha.2 Rust cache scope
+
+The [November 6 prerelease](/releases/v0.0.6-alpha.2) adds opt-in, bounded Rust-only caches for whole-graph resolution, tokens and parsed syntax, plus conservative dependency invalidation and source eviction. **These APIs are not new Scarp language constructs or CLI commands.** The released alpha.1 tutorials remain pinned to their original source tags. A cache hit does not override import, syntax, type or resource checks.
 
 ## Source migration
 

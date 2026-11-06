@@ -56,7 +56,7 @@ export function validateLearningPath(pages: LearningPathPages, release: Alpha6Ma
   const errors: string[] = []
   const fail = (what: string): void => { errors.push(what) }
   if (release.compilerRef !== ALPHA6_REF || release.compilerCommit !== ALPHA6_SHA ||
-      release.status !== 'published-prerelease') fail('latest release identity does not match published compiler')
+      release.status !== 'published-prerelease') fail('pinned capstone release identity does not match published compiler')
   const en = pages.english
   const hi = pages.hindi
   const expectedStages = learningStages.map(s => s.id + ' ' + s.release)
@@ -168,16 +168,21 @@ export function validateLearningPath(pages: LearningPathPages, release: Alpha6Ma
     ['English',pages.compatibilityEnglish,pages.introEnglish,pages.firstEnglish,pages.quickEnglish],
     ['Hindi',pages.compatibilityHindi,pages.introHindi,pages.firstHindi,pages.quickHindi]
   ] as const) {
-    if (!compat.includes(ALPHA6_REF) || !compat.includes(ALPHA6_SHA) ||
+    const currentReleaseRow = locale === 'Hindi'
+      ? '| **[v0.0.6-alpha.2](/hi/releases/v0.0.6-alpha.2)** |'
+      : '| **[v0.0.6-alpha.2](/releases/v0.0.6-alpha.2)** |'
+    if (!compat.includes(currentReleaseRow) ||
+        !compat.includes(ALPHA6_REF) || !compat.includes(ALPHA6_SHA) ||
+        !compat.includes('v0.0.6-alpha.2') ||
         !intro.includes(ALPHA6_REF) || !first.includes(ALPHA6_REF) ||
-        !quick.includes(ALPHA6_REF)) {
+        !quick.includes('v0.0.6-alpha.2')) {
       fail(locale + ': stale onboarding/compatibility release boundary')
     }
     const exactLatestQuickstart = locale === 'Hindi'
-      ? '[प्रकाशित v0.0.6-alpha.1 release और checksum]'
-      : '[published v0.0.6-alpha.1 release and checksums]'
+      ? '[प्रकाशित v0.0.6-alpha.2 release और checksum]'
+      : '[published v0.0.6-alpha.2 release and checksums]'
     if (!quick.includes(exactLatestQuickstart)) {
-      fail(locale + ': visible latest-release guidance in the historical quickstart is stale')
+      fail(locale + ': historical quickstart must link current published alpha.2 download')
     }
     if (!compat.includes(']('+(locale==='Hindi'?'/hi':'')+'/guide/learning-path)')) {
       fail(locale + ': compatibility page does not link to learner journey')

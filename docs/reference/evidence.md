@@ -1,12 +1,12 @@
 # How Scarp documentation is verified
 
-## Latest published alpha.5 compiler evidence
+## Historical published alpha.5 compiler evidence
 
 [Scarp v0.0.5-alpha.5](/releases/v0.0.5-alpha.5) was published November 4, 2026 from pinned source `2eeed0aa52ccb59523307841ad8ffbd83f8911a8`. The GitHub release contains three native archives, matching sidecar checksums, and SHA256SUMS. It is a prerelease, not stable.
 
 Docs carry the [scalar-repeat source](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.5/examples/native_scalar_repeat.srp) and **byte-exact** stdout. CI builds the tagged alpha.5 compiler and checks static verify, interpreter exec, identical file/project module JSON inventory, the legacy alias, and invalid-manifest diagnostics. Experimental C11 emission is a **Rust-only embedding API**; no native compile CLI has shipped. See [C11 limits](/reference/c11-backend-alpha5).
 
-This site targets the **published v0.0.5-alpha.1 Scarp prerelease**. We treat compiler source, tests, actual release fixtures, and published artifacts as evidence. Design proposals and open pull requests are **not** proof that a feature shipped.
+The **general language reference** is pinned to the published v0.0.5-alpha.1 Scarp prerelease. The separately published [v0.0.6-alpha.2 Rust cache guide](/releases/v0.0.6-alpha.2) documents newer library APIs without repinning older compiler tests. We treat compiler source, tests, actual release fixtures, and published artifacts as evidence. Design proposals and open pull requests are **not** proof that a feature shipped.
 
 **New release:** Scarp [v0.0.5-alpha.2](/releases/v0.0.5-alpha.2) was published on November 2. It now has **12 additional, separately pinned programs and 28 upstream Git blob hashes** across the [release guide](/releases/v0.0.5-alpha.2) and [collections tutorial](/tutorials/alpha2-collections-and-learning). `npm run check:alpha2` checks the complete bilingual release-page code/output fences and byte-for-byte fixture provenance; the `alpha2-conformance` CI job checks out exact source commit `e4db8e191cd7ea623123cae7348450ca6c95b170`, builds the published compiler, and tests those programs. The 11-case suite below remains tied only to alpha.1—these are **two distinct release suites**, not a claim that the main docs baseline was already migrated.
 
