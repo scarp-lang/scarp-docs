@@ -13,26 +13,31 @@ Rust-hosted scalar subset; this is **not** general native executable compilation
 There is no GPU tensor backend, automatic differentiation engine or neural
 network training framework.
 
-## Work in progress: sampled calculus
+## Source-only sampled calculus (unreleased)
 
 [Compiler PR #153](https://github.com/scarp-lang/scarp/pull/153)
-proposes two typed pure kernels:
+was **merged into main** after the published alpha.3 release. It adds two typed pure kernels:
 
 | Proposed call | Result | Purpose |
 | --- | --- | --- |
 | `sample_area(x, y)` | `float` | Integrate measurements using the composite trapezoidal rule |
 | `sample_slopes(x, y)` | `vector` | Estimate a secant derivative for each adjacent interval |
 
-This PR is **not part of alpha.3**. Do not copy its examples into projects
-built against the published compiler until a verified compatible release
-is identified. The [compiler's detailed implementation and tests](https://github.com/scarp-lang/scarp/pull/153/files)
-are reviewable, but the development branch can change.
+These calls are **not part of the published alpha.3 artifacts**. Do not
+copy them into projects built against that published compiler until a newer,
+compatible release is verified. Source code and tests are available in the
+[merged compiler PR](https://github.com/scarp-lang/scarp/pull/153/files).
 
 Both functions require equal-length finite-vector inputs with at least two
 entries and strictly increasing coordinates. They are not symbolic
-differentiation, spline fitting or exact integration. The branch checks
-numerical overflow, enforces bounded work and numerical output allocation,
-and uses finite binary64 arithmetic.
+differentiation, spline fitting or exact integration. The merged code checks numerical overflow, enforces bounded work and
+numerical output allocation, and uses finite binary64 arithmetic.
+
+[Compiler PR #155](https://github.com/scarp-lang/scarp/pull/155) additionally
+proposes `sample_cumulative_area(x, y) -> vector`, a time-series prefix
+integration kernel with one result per input coordinate. Its first value is
+zero and its final value matches the full sampled integral for representable
+results. **PR #155 is development work, not an alpha.3 feature.**
 
 ## Architecture and dependency order
 

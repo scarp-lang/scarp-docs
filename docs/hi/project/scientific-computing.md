@@ -16,10 +16,10 @@ stable `softmax`, score ranking और विशेष loss-gradient kernels ह
 सामान्य native compiler, GPU tensors और पूरा automatic differentiation
 framework अभी नहीं बने हैं।
 
-## नया विकास: sampled calculus
+## Source में उपलब्ध sampled calculus (अभी रिलीज़ नहीं हुआ)
 
 [Compiler PR #153](https://github.com/scarp-lang/scarp/pull/153)
-में दो नए, typed और pure functions का प्रस्ताव एवं implementation है:
+प्रकाशित alpha.3 के बाद **main में merge हो चुका है**। इसमें दो typed और pure functions जोड़े गए:
 
 | प्रस्तावित फ़ंक्शन | नतीजा | कार्य |
 | --- | --- | --- |
@@ -29,12 +29,18 @@ framework अभी नहीं बने हैं।
 **ये फ़ंक्शन प्रकाशित alpha.3 में उपलब्ध नहीं हैं।**
 किसी नए compatible compiler build के परीक्षण और आधिकारिक प्रकाशन
 के बाद ही इन्हें released APIs मानना चाहिए।
-[असली compiler branch का तकनीकी विवरण](https://github.com/scarp-lang/scarp/pull/153/files)
+[merged compiler के code और tests](https://github.com/scarp-lang/scarp/pull/153/files)
 देख सकते हैं।
 
 दोनों inputs की लंबाई बराबर और कम-से-कम 2 होनी चाहिए। Coordinates
 strictly increasing होने चाहिए। ये numerical estimates हैं, symbolic
 differentiation या बिल्कुल सही गणितीय integration का दावा नहीं करते।
+
+[Compiler PR #155](https://github.com/scarp-lang/scarp/pull/155) में
+`sample_cumulative_area(x, y) -> vector` पर काम हो रहा है। यह हर sample
+तक जमा हुआ integral देगा: पहला परिणाम शून्य और आख़िरी कुल integral होगा
+(जब परिणाम finite और representable हों)। **यह अभी विकास के चरण में है,
+प्रकाशित alpha.3 में उपलब्ध नहीं है।**
 
 ## आगे काम का सही क्रम
 
