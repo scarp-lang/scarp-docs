@@ -107,26 +107,23 @@ async function testLocale(
     assertions++
 
     // Deterministic in-page clipboard stubs: no OS permissions or external APIs.
-    await page.evaluate(()=>{
-      const view=window as Window & { __scarpCopied?:string }
-      Object.defineProperty(navigator,'clipboard',{
-        configurable:true,
-        value:{writeText:async (value:string)=>{view.__scarpCopied=value}}
-      })
-    })
+    // Literal browser-side JS avoids injecting tsx/esbuild __name helpers
+    // that do not exist inside Playwright's isolated page runtime.
+    await page.evaluate(`Object.defineProperty(navigator,'clipboard',{
+      configurable:true,
+      value:{writeText(value){window.__scarpCopied=value;return Promise.resolve()}}
+    })`)
     const copy=widget.locator('.finder-result button')
     await copy.focus()
     await page.keyboard.press('Enter')
-    await page.waitForFunction(()=>(window as Window & { __scarpCopied?:string })
-      .__scarpCopied?.includes('scarp inspect symbols'))
-    assert.match(await page.evaluate(()=>(window as Window & { __scarpCopied?:string })
-      .__scarpCopied??''),/scarp inspect symbols --json FILE\.srp/)
+    await page.waitForFunction("window.__scarpCopied?.includes('scarp inspect symbols')")
+    assert.match(await page.evaluate("window.__scarpCopied || ''"),
+      /scarp inspect symbols --json FILE\.srp/)
     await page.getByRole('button',{name:lang==='hi'?'कॉपी हो गया':'Copied'}).waitFor()
-    await page.evaluate(()=>{
-      Object.defineProperty(navigator,'clipboard',{
-        configurable:true,value:{writeText:async()=>{throw new DOMException('Denied','NotAllowedError')}}
-      })
-    })
+    await page.evaluate(`Object.defineProperty(navigator,'clipboard',{
+      configurable:true,
+      value:{writeText(){return Promise.reject(new DOMException('Denied','NotAllowedError'))}}
+    })`)
     await copy.click()
     await page.getByRole('button',{
       name:lang==='hi'
