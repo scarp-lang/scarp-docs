@@ -47,4 +47,6 @@ The renderer escapes unreviewed raw Markdown HTML. It explicitly recognizes only
 
 Source validators now resolve every Markdown link, English/Hindi partner, frontmatter action and published release from the **independent Scarp route and release contracts**; they do not read the obsolete VitePress navigation configuration. Full generated-site, sitemap and browser checks remain separate gates. This is one more prerequisite for deleting the unused legacy website sources.
 
+The independently authored SEO module is now the single source of canonical/hreflang/Open Graph tags for generated pages and legacy compatibility. Sitemap, live Pages smoke tests and build checks resolve all URLs through the Scarp-owned route contract; smoke tests also cover the latest published compiler release in both languages. The obsolete VitePress site-meta helper is no longer needed.
+
 The Scarp-owned renderer is now the production-build candidate. The VitePress and vue-tsc npm dependencies have been removed; old theme/config source fixtures and some evidence checks remain temporarily to protect compiler and bilingual regression coverage. None of these remaining files render or serve Pages. Remove them after live Pages, offline archive, and release CI have independently confirmed the new output. Track completion in Issue #70.

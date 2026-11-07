@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { urlForPage } from '../docs/.vitepress/site-meta.ts'
+import { urlForPage } from './scarp-site/routes.ts'
 import { documentationPages } from './lib/docs-pages.ts'
 import { validateSitemap } from './lib/sitemap-policy.ts'
 
@@ -41,7 +41,7 @@ mustReject('duplicate URL', sitemap([...urls, urls[indexHi]]), /Duplicate URLs/)
 mustReject('foreign host',
   sitemap(urls.map((url, index) => index === indexEn
     ? url.replace('scarp-lang.github.io', 'example.invalid') : url)), /Unexpected sitemap URL/)
-mustReject('wrong VitePress base',
+mustReject('wrong GitHub Pages base',
   sitemap(urls.map((url, index) => index === indexHi
     ? url.replace('/scarp-docs/', '/other-docs/') : url)), /Unexpected sitemap URL/)
 mustReject('HTML extension',

@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress'
-import { pageSeoHead } from './site-meta'
+import { pageSeoHead } from '../../scripts/scarp-site/seo'
 import { localSearchOptions } from './local-search'
 
 /** Scarp source-language grammar; deliberately limited to implemented syntax. */

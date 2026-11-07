@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict'
-import { pairedUrls, pageSeoHead, urlForPage } from '../docs/.vitepress/site-meta.ts'
+import { pairedRoutes, urlForPage } from './scarp-site/routes.ts'
+import { pageSeoHead, renderSeoHead } from './scarp-site/seo.ts'
 
-const en = pairedUrls('guide/first-program.md')
-const hi = pairedUrls('hi/guide/first-program.md')
+const en = pairedRoutes('guide/first-program.md')
+const hi = pairedRoutes('hi/guide/first-program.md')
 assert.equal(en.english, 'https://scarp-lang.github.io/scarp-docs/guide/first-program')
 assert.equal(en.hindi, 'https://scarp-lang.github.io/scarp-docs/hi/guide/first-program')
 assert.equal(en.canonical, en.english)
@@ -23,4 +24,8 @@ assert.deepEqual(enHead.filter(([tag, props]) => tag === 'link' && props.rel ===
 assert.deepEqual(hiHead.filter(([tag, props]) => tag === 'link' && props.rel === 'alternate').map(([, props]) => props.hreflang), ['en', 'hi', 'x-default'])
 assert.equal(hiHead.find(([tag, props]) => tag === 'meta' && props.property === 'og:locale')?.[1].content, 'hi_IN')
 assert.equal(pageSeoHead('404.md').length, 0)
+assert.match(renderSeoHead('hi/index.md'), /<meta property="og:locale" content="hi_IN"\/>/)
+assert.match(renderSeoHead('guide/first-program.md'), /<link rel="canonical" href="https:\/\/scarp-lang.github.io\/scarp-docs\/guide\/first-program"\/>/)
+assert.ok(!renderSeoHead('hi/index.md').includes('<script'))
+assert.equal(urlForPage('guide/कक्षा.md'), 'https://scarp-lang.github.io/scarp-docs/guide/%E0%A4%95%E0%A4%95%E0%A5%8D%E0%A4%B7%E0%A4%BE')
 console.log('PASS: canonical URL, paired hreflang, homepage, locale and invalid path checks')

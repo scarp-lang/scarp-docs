@@ -8,6 +8,7 @@ import { commandAdvice, FINDER_TEXT, RELEASES, TASKS } from '../lib/command-find
 import { escapeHtml, localLink, htmlPath, pairedRoutes, BASE } from './routes.ts'
 import { renderMarkdown, type RenderedPage, type HomeAction, type HomeFeature } from './markdown.ts'
 import { currentPublishedCompilerTag, currentCompilerReleaseRoute } from './current-release.ts'
+import { renderSeoHead } from './seo.ts'
 
 const root=resolve(fileURLToPath(new URL('../..',import.meta.url)))
 const docsRoot=join(root,'docs')
@@ -117,12 +118,7 @@ function htmlDocument(view:PageView, views:PageView[], currentTag:string):string
     '<meta name="viewport" content="width=device-width,initial-scale=1"/>'+
     '<meta name="description" content="'+htmlAttr(description)+'"/>'+
     '<title>'+escapeHtml(title)+'</title>'+
-    '<link rel="canonical" href="'+meta.canonical+'"/>'+
-    '<link rel="alternate" hreflang="en" href="'+meta.english+'"/>'+
-    '<link rel="alternate" hreflang="hi" href="'+meta.hindi+'"/>'+
-    '<link rel="alternate" hreflang="x-default" href="'+meta.english+'"/>'+
-    '<meta property="og:url" content="'+meta.canonical+'"/>'+
-    '<meta property="og:locale" content="'+(locale==='hi'?'hi_IN':'en_US')+'"/>'+
+    renderSeoHead(source)+
     '<link rel="icon" type="image/svg+xml" href="'+BASE+'assets/scarp-mark.svg"/>'+
     '<link rel="stylesheet" href="'+BASE+'assets/scarp-site.css"/>'+
     '<script defer src="'+BASE+'assets/scarp-site.js"></script></head><body>'+
