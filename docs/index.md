@@ -23,22 +23,22 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
-  - title: Latest published compiler v0.0.6-alpha.2
-    details: Learn what the new opt-in Rust caches do, with exact release assets and retained interpreter commands.
-    link: /releases/v0.0.6-alpha.2
+  - title: Latest published compiler v0.0.6-alpha.3
+    details: Learn deterministic Top-K and temperature-aware softmax with official release examples and archive checksums.
+    link: /releases/v0.0.6-alpha.3
   - title: Choose your release-aware Scarp learning path
     details: Follow seven verified stages from first program and numerical functions to real projects, static analysis and RMS, with per-release guidance.
     link: /guide/learning-path
   - title: Build your first real alpha.6 project
     details: Follow a complete two-file program, learn how to inspect symbols and references, then run it with the released interpreter.
     link: /tutorials/project-symbol-navigation-alpha6
-  - title: Start with the published alpha.6 compiler
+  - title: Explore the original alpha.6 symbol tooling
     details: Download a verified prerelease archive, learn static symbol navigation, and run the tagged RMS examples.
     link: /releases/v0.0.6-alpha.1
   - title: Verified language syntax
     details: Explore bind/var, typed funcra functions, branching, iteration, modules, and explicit output.
     link: /reference/status
-  - title: Install the current alpha.6 compiler
+  - title: Historical alpha.1 installation walkthrough
     details: Verify official Windows, Linux or Apple Silicon archives before extraction, or build the immutable Rust tag.
     link: /guide/installation-alpha6
   - title: Honest compatibility guidance
@@ -77,5 +77,5 @@ features:
 ---
 
 ::: warning Experimental language
-The newest published compiler is **[v0.0.6-alpha.1](/releases/v0.0.6-alpha.1)**, while much of the main reference still targets the separately verified **v0.0.5-alpha.1** baseline. Both are experimental prereleases. Before upgrading older code, check [alpha.1 → alpha.2 upgrade readiness](/reference/upgrade-readiness) and the [feature status](/reference/status).
+The newest published compiler is **[v0.0.6-alpha.3](/releases/v0.0.6-alpha.3)**, while much of the main reference still targets the separately verified **v0.0.5-alpha.1** baseline. Both are experimental prereleases. Before upgrading older code, check [alpha.1 → alpha.2 upgrade readiness](/reference/upgrade-readiness) and the [feature status](/reference/status).
 :::

@@ -5,7 +5,7 @@
 इस पाठ में 2 नवंबर 2026 को प्रकाशित **[v0.0.5-alpha.2](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.2)** की दो वास्तविक सुविधाएँ सीखेंगे: `bind` / `var` में स्पष्ट type annotation और जाँच के साथ numeric conversion। Source का सटीक compiler commit [`e4db8e191cd7ea623123cae7348450ca6c95b170`](https://github.com/scarp-lang/scarp/commit/e4db8e191cd7ea623123cae7348450ca6c95b170) है। यह **release-specific** पाठ है। पुराने [variables](/hi/language/variables) और [types](/hi/language/types) के सामान्य references अब भी अलग **alpha.1** प्रमाण पर आधारित हैं।
 
 ::: tip कौन-सा संस्करण?
-नीचे की commands **alpha.2 compiler** पर ही चलाएँ। नवीनतम प्रकाशित compiler [v0.0.6-alpha.2](/hi/releases/v0.0.6-alpha.2) है; पुराने [alpha.3 release](/hi/releases/v0.0.5-alpha.3) में नए CLI commands आए थे। Alpha.1 executable इन annotations और conversion functions को नहीं समझता। इस पाठ के पूरे programs वास्तविक **tagged alpha.2 compiler** पर जाँचे गए हैं; सभी versions के लिए compatibility की गारंटी नहीं दी गई है।
+नीचे की commands **alpha.2 compiler** पर ही चलाएँ। नवीनतम प्रकाशित compiler [v0.0.6-alpha.3](/hi/releases/v0.0.6-alpha.3) है; पुराने [alpha.3 release](/hi/releases/v0.0.5-alpha.3) में नए CLI commands आए थे। Alpha.1 executable इन annotations और conversion functions को नहीं समझता। इस पाठ के पूरे programs वास्तविक **tagged alpha.2 compiler** पर जाँचे गए हैं; सभी versions के लिए compatibility की गारंटी नहीं दी गई है।
 :::
 
 ## 1. Type annotation क्या होता है?

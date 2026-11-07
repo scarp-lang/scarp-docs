@@ -61,6 +61,11 @@ export function validateReleaseStatusPages(english: string, hindi: string, sourc
         !page.includes('](/' + prefix + 'releases/v0.0.6-alpha.2)')) {
       problems.push(language + ': current alpha.2 publication evidence missing')
     }
+    if (!page.includes('v0.0.6-alpha.3') ||
+        !page.includes('ceff07d9014f466974e0c9e02fc5d23573f55777') ||
+        !page.includes('](/' + prefix + 'releases/v0.0.6-alpha.3)')) {
+      problems.push(language + ': current alpha.3 publication evidence missing')
+    }
     if (!page.includes('<!-- scarp-main-reference-baseline: v0.0.5-alpha.1 -->')) {
       problems.push(language + ': historical-reference marker is missing')
     }

@@ -1,6 +1,6 @@
 # Command-line interface — published Scarp v0.0.5-alpha.4
 ::: tip Latest CLI reference
-The latest published compiler is [v0.0.6-alpha.2](/releases/v0.0.6-alpha.2). For the historical alpha.5 module-inspection commands, see the [alpha.5 CLI](/tooling/cli-alpha5); alpha.2 adds Rust-only caching, not new CLI commands. The commands below remain alpha.4-only.
+The latest published compiler is [v0.0.6-alpha.3](/releases/v0.0.6-alpha.3), which adds Top-K and temperature functions but no new CLI subcommand. For historical alpha.5 module inspection, see the [alpha.5 CLI](/tooling/cli-alpha5). Commands below remain specific to alpha.4.
 :::
 
 

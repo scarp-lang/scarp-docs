@@ -20,7 +20,8 @@ const publishedReleases = [
   ['v0.0.5-alpha.4', '79141329176f5dce51457e90a6652902f6432135'],
   ['v0.0.5-alpha.5', '2eeed0aa52ccb59523307841ad8ffbd83f8911a8'],
   ['v0.0.6-alpha.1', 'aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8'],
-  ['v0.0.6-alpha.2', '398b8ff705154a02423fe458ce3a427401e81e31']
+  ['v0.0.6-alpha.2', '398b8ff705154a02423fe458ce3a427401e81e31'],
+  ['v0.0.6-alpha.3', 'ceff07d9014f466974e0c9e02fc5d23573f55777']
 ]
 const firstSupported = [
   ['run-file', 0],
@@ -55,7 +56,7 @@ export function validateCommandFinder(
   }
 
   if (JSON.stringify(releases.map(r => [r.tag,r.source])) !== JSON.stringify(publishedReleases)) {
-    errors.push('Release list must match seven exact published compiler tag commits in order')
+    errors.push('Release list must match eight exact published compiler tag commits in order')
   }
   if (JSON.stringify(tasks.map(t => [t.id,t.first])) !== JSON.stringify(firstSupported)) {
     errors.push('Task availability boundaries differ from the published tagged CLI')
@@ -89,7 +90,8 @@ export function validateCommandFinder(
       '](' + prefix + '/guide/quickstart-alpha4)',
       '](' + prefix + '/tooling/cli-alpha5)',
       '](' + prefix + '/tooling/cli-alpha6)',
-      '](' + prefix + '/releases/v0.0.6-alpha.2)',
+      '](' + prefix + '/releases/v0.0.6-alpha.3)',
+      'v0.0.6-alpha.3',
       'v0.0.6-alpha.2',
       'v0.0.5-alpha.3',
       'v0.0.5-alpha.4',

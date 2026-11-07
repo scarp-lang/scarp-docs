@@ -52,3 +52,5 @@ The `test:compiler` step requires a built Scarp binary. Its version-string check
 ## Updating for a new release
 
 Change the pinned commit and feature claims only together with the compiler tag, a reviewed set of examples, and a passing CI run. If `main` gains a feature that is not yet released, mark it **development-only** or omit it from the shipped guide. See the [feature status](/reference/status) and [maintenance checklist](/project/maintenance).
+
+**Published November 7, 2026:** [Alpha.3 Top-K and temperature primitives](/releases/v0.0.6-alpha.3) are documented from the approved tag and upstream examples; private scalar IR remains internal, not a general native compiler.

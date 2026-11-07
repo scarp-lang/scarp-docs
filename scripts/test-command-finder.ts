@@ -29,7 +29,7 @@ assert.strictEqual(legacyCommandFinder.RELEASES, RELEASES,
 assert.strictEqual(legacyCommandFinder.commandAdvice, commandAdvice,
   'Legacy Vue compatibility export must reuse the single framework-neutral selector')
 assert.deepEqual(validateCommandFinder(sources), [])
-assert.equal(LATEST_RELEASE, RELEASES[6]?.tag)
+assert.equal(LATEST_RELEASE, RELEASES[7]?.tag)
 const expected = new Map<CommandTask,number>([
   ['run-file',0], ['static-verify',2], ['create-project',3],
   ['inspect-project',4], ['inspect-symbols',5], ['diagnose-host',2], ['inspect-ast',2]
@@ -61,7 +61,7 @@ for (const [index,release] of RELEASES.entries()) {
     }
   }
 }
-assert.equal(combinations,49)
+assert.equal(combinations,56)
 assert.equal(unavailable,18,'release-sensitive unsupported capabilities must stay explicit')
 assert.deepEqual(commandAdvice('v0.0.5-alpha.1','run-file').commands,['scarp run FILE.srp'])
 assert.deepEqual(commandAdvice('v0.0.5-alpha.2','run-file').commands,['scarp run FILE.srp'])

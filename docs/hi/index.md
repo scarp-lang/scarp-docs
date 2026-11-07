@@ -23,19 +23,19 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
-  - title: नवीनतम प्रकाशित v0.0.6-alpha.2 compiler
-    details: नई वैकल्पिक Rust cache APIs, पुराने CLI commands और आधिकारिक checksum के साथ प्रकाशित release पढ़ें।
-    link: /hi/releases/v0.0.6-alpha.2
+  - title: नवीनतम प्रकाशित v0.0.6-alpha.3 compiler
+    details: Top-K ranking, temperature softmax, सत्यापित उदाहरण और आधिकारिक checksum पढ़ें।
+    link: /hi/releases/v0.0.6-alpha.3
   - title: सात चरणों में Scarp सीखें
     details: शुरुआती प्रोग्राम से numerical examples, modules, projects और symbols तक सही compiler release के साथ पूरा रास्ता।
     link: /hi/guide/learning-path
   - title: पहला पूरा alpha.6 project बनाएँ
     details: दो असली source files से module, symbols और references समझें, फिर प्रकाशित interpreter से सही output चलाएँ।
     link: /hi/tutorials/project-symbol-navigation-alpha6
-  - title: नवीनतम प्रकाशित alpha.6 compiler
+  - title: पुराने alpha.6 symbols और references
     details: सही archive और checksum की जाँच, static symbols और references तथा RMS के प्रकाशित उदाहरण सीखें।
     link: /hi/releases/v0.0.6-alpha.1
-  - title: Scarp alpha.6 की सुरक्षित स्थापना
+  - title: पुराने alpha.1 की सुरक्षित स्थापना
     details: Windows, Linux और Apple Silicon के लिए आधिकारिक पैकेज, SHA-256 जाँच और tagged source build चरणबद्ध सीखें।
     link: /hi/guide/installation-alpha6
   - title: हिन्दी में पूरी दस्तावेज़ संरचना
@@ -77,5 +77,5 @@ features:
 ---
 
 ::: warning प्रयोगात्मक रिलीज़
-नवीनतम प्रकाशित compiler **[v0.0.6-alpha.1](/hi/releases/v0.0.6-alpha.1)** है, जबकि अधिकतर मुख्य reference अभी अलग से सत्यापित **v0.0.5-alpha.1** पर आधारित है। सभी experimental prereleases हैं। पुराने code के लिए [अपग्रेड की जाँच](/hi/reference/upgrade-readiness) और [फ़ीचर स्थिति](/hi/reference/status) पढ़ें।
+नवीनतम प्रकाशित compiler **[v0.0.6-alpha.3](/hi/releases/v0.0.6-alpha.3)** है, जबकि अधिकतर मुख्य reference अभी अलग से सत्यापित **v0.0.5-alpha.1** पर आधारित है। सभी experimental prereleases हैं। पुराने code के लिए [अपग्रेड की जाँच](/hi/reference/upgrade-readiness) और [फ़ीचर स्थिति](/hi/reference/status) पढ़ें।
 :::
