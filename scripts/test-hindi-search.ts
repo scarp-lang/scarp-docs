@@ -65,8 +65,12 @@ mutatePage('no local provider','config',"provider: 'local'","provider: 'algolia'
 mutatePage('no search options','config',"options: localSearchOptions","options: {}")
 mutatePage('missing Hindi sidebar','config',"link: '/hi/guide/search-and-navigation'","link: '/hi/guide/missing'")
 mutatePage('missing theme access label','config',"langMenuLabel: 'भाषा बदलें'","langMenuLabel: 'Language'")
-mutatePage('missing current compiler release link','english',
-  '](/releases/'+LATEST_RELEASE+')','](/releases/v0.0.5-alpha.1)')
+// Both the download link and release-notes fallback mention the latest tag.
+const withoutLatest=pages.english.replaceAll('](/releases/'+LATEST_RELEASE+')',
+  '](/releases/v0.0.5-alpha.1)')
+assert.notEqual(withoutLatest,pages.english,'latest release link must exist')
+assert.ok(validateHindiLocalSearch(localSearchOptions,{...pages,english:withoutLatest}).length>0,
+  'removing all current release links must fail the localized-search policy')
 mutatePage('missing Hindi shortcut','hindi','Ctrl+K','Alt+K')
 mutatePage('missing English shortcut','english','⌘+K','Ctrl+J')
 mutatePage('missing Hindi crosslink','hindi','](/guide/search-and-navigation)','](/hi/guide/search-and-navigation)')
