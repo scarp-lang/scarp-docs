@@ -2,7 +2,7 @@
 
 <!-- scarp-cli-release: v0.0.5-alpha.3 -->
 
-This is the **historically verified alpha.3 first-run guide**, [v0.0.5-alpha.3](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.3), published **November 2, 2026**. Scarp is experimental and runs programs through an interpreter: there is **no native executable builder or stable language guarantee**. Older reference pages remain pinned to [alpha.1](/reference/status). **For a new installation, see the [current v0.0.6-alpha.2 release](/releases/v0.0.6-alpha.2); the commands and files below are intentionally pinned to alpha.3.**
+This is the **historically verified alpha.3 first-run guide**, [v0.0.5-alpha.3](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.3), published **November 2, 2026**. Scarp is experimental and runs programs through an interpreter: there is **no native executable builder or stable language guarantee**. Older reference pages remain pinned to [alpha.1](/reference/status). **For a new installation, see the [current v0.0.6-alpha.3 release](/releases/v0.0.6-alpha.3); the commands and files below are intentionally pinned to alpha.3.**
 
 ## 1. Choose and verify the official download
 

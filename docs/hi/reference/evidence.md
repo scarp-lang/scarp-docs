@@ -63,3 +63,5 @@ npm run check:fixtures -- /path/to/scarp/examples
 npm run check:evidence -- /path/to/alpha1 /path/to/alpha2
 npm run test:compiler -- /path/to/scarp/target/debug/scarp
 ```
+
+**7 नवंबर 2026 का प्रकाशित alpha.3:** [Top-K और temperature functions](/hi/releases/v0.0.6-alpha.3) tagged compiler के उदाहरणों पर आधारित हैं; private scalar IR अभी general native compiler नहीं है.

@@ -43,6 +43,6 @@ The engine's test build is generated under artifacts/scarp-engine-preview/scarp-
 
 ## Content security and provenance
 
-The renderer escapes unreviewed raw Markdown HTML. It explicitly recognizes only the project's callouts and named widgets; future embedded content must be implemented and tested rather than bypassing HTML safety. The core language reference remains pinned to v0.0.5-alpha.1. The published compiler at migration start was v0.0.6-alpha.1; v0.0.6-alpha.2 was published November 6, 2026. Neither is the changing compiler main branch.
+The renderer escapes unreviewed raw Markdown HTML. It explicitly recognizes only the project's callouts and named widgets; future embedded content must be implemented and tested rather than bypassing HTML safety. The core language reference remains pinned to v0.0.5-alpha.1. The published compiler at migration start was v0.0.6-alpha.1; v0.0.6-alpha.2 was published November 6, 2026; v0.0.6-alpha.3 followed November 7 with Top-K and temperature softmax. These are pinned published tags, not the moving compiler main branch.
 
 The Scarp-owned renderer is now the production-build candidate. The VitePress and vue-tsc npm dependencies have been removed; old theme/config source fixtures and some evidence checks remain temporarily to protect compiler and bilingual regression coverage. None of these remaining files render or serve Pages. Remove them after live Pages, offline archive, and release CI have independently confirmed the new output. Track completion in Issue #70.
