@@ -29,7 +29,7 @@ framework अभी नहीं बने हैं।
 **ये फ़ंक्शन प्रकाशित alpha.3 में उपलब्ध नहीं हैं।**
 किसी नए compatible compiler build के परीक्षण और आधिकारिक प्रकाशन
 के बाद ही इन्हें released APIs मानना चाहिए।
-[असली compiler branch का तकनीकी विवरण](https://github.com/scarp-lang/scarp/blob/feature/scientific-sampled-calculus/docs/sampled-calculus.md)
+[असली compiler branch का तकनीकी विवरण](https://github.com/scarp-lang/scarp/pull/153/files)
 देख सकते हैं।
 
 दोनों inputs की लंबाई बराबर और कम-से-कम 2 होनी चाहिए। Coordinates
@@ -50,7 +50,7 @@ differentiation या बिल्कुल सही गणितीय integr
 केवल **प्रस्तावित नाम** हैं; उन्हें अभी import नहीं किया जा सकता।
 
 गहराई से योजना के लिए
-[compiler proposal 0038](https://github.com/scarp-lang/scarp/blob/feature/scientific-sampled-calculus/docs/proposals/0038-scientific-computing-ecosystem.md),
+[compiler proposal 0038](https://github.com/scarp-lang/scarp/pull/153/files),
 और आज उपलब्ध features के लिए
 [वेक्टर/टाइल](/hi/language/numerics) तथा
 [built-ins](/hi/reference/library) देखें।
