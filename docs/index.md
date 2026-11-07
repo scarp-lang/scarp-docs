@@ -32,13 +32,13 @@ features:
   - title: Build your first real alpha.6 project
     details: Follow a complete two-file program, learn how to inspect symbols and references, then run it with the released interpreter.
     link: /tutorials/project-symbol-navigation-alpha6
-  - title: Start with the published alpha.6 compiler
+  - title: Explore the original alpha.6 symbol tooling
     details: Download a verified prerelease archive, learn static symbol navigation, and run the tagged RMS examples.
     link: /releases/v0.0.6-alpha.1
   - title: Verified language syntax
     details: Explore bind/var, typed funcra functions, branching, iteration, modules, and explicit output.
     link: /reference/status
-  - title: Install the current alpha.6 compiler
+  - title: Historical alpha.1 installation walkthrough
     details: Verify official Windows, Linux or Apple Silicon archives before extraction, or build the immutable Rust tag.
     link: /guide/installation-alpha6
   - title: Honest compatibility guidance

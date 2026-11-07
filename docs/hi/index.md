@@ -32,10 +32,10 @@ features:
   - title: पहला पूरा alpha.6 project बनाएँ
     details: दो असली source files से module, symbols और references समझें, फिर प्रकाशित interpreter से सही output चलाएँ।
     link: /hi/tutorials/project-symbol-navigation-alpha6
-  - title: नवीनतम प्रकाशित alpha.6 compiler
+  - title: पुराने alpha.6 symbols और references
     details: सही archive और checksum की जाँच, static symbols और references तथा RMS के प्रकाशित उदाहरण सीखें।
     link: /hi/releases/v0.0.6-alpha.1
-  - title: Scarp alpha.6 की सुरक्षित स्थापना
+  - title: पुराने alpha.1 की सुरक्षित स्थापना
     details: Windows, Linux और Apple Silicon के लिए आधिकारिक पैकेज, SHA-256 जाँच और tagged source build चरणबद्ध सीखें।
     link: /hi/guide/installation-alpha6
   - title: हिन्दी में पूरी दस्तावेज़ संरचना

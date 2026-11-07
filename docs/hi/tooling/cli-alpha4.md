@@ -1,6 +1,6 @@
 # कमांड-लाइन इंटरफ़ेस — प्रकाशित Scarp v0.0.5-alpha.4
 ::: tip नवीनतम CLI
-नवीनतम प्रकाशित compiler [v0.0.6-alpha.2](/hi/releases/v0.0.6-alpha.2) है। इसमें नया CLI command नहीं, केवल वैकल्पिक Rust cache APIs हैं। पुराने project-directory module inspection के लिए [alpha.5 CLI](/hi/tooling/cli-alpha5) पढ़ें। नीचे के commands alpha.4 पर आधारित हैं।
+नवीनतम प्रकाशित compiler [v0.0.6-alpha.3](/hi/releases/v0.0.6-alpha.3) है; उसमें नए Top-K और temperature functions हैं, नया CLI command नहीं। पुराने project-directory module inspection के लिए [alpha.5 CLI](/hi/tooling/cli-alpha5) पढ़ें। नीचे के commands alpha.4 से संबंधित हैं।
 :::
 
 
