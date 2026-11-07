@@ -1,3 +1,5 @@
+import { LATEST_RELEASE } from './command-finder.ts'
+
 /** Guard user-facing language consistency without importing the VitePress app. */
 interface SearchTranslationBlock {
   [key: string]: string | Record<string, string> | undefined
@@ -89,7 +91,7 @@ export function validateHindiLocalSearch(
     for (const marker of [
       'Ctrl+K','⌘+K','Enter','Esc',
       ']('+localePrefix+'/guide/learning-path)',
-      ']('+localePrefix+'/guide/installation-alpha6)',
+      ']('+localePrefix+'/releases/'+LATEST_RELEASE+')',
       ']('+localePrefix+'/reference/status)',
       ']('+localePrefix+'/tooling/cli-alpha6)'
     ]) {

@@ -161,6 +161,21 @@ function installSearch():void {
     else open.focus({preventScroll:true})
   })
   input.addEventListener('input',()=>{void refresh()})
+  // Arrow navigation keeps search results reachable without a mouse. Ordinary
+  // Tab/Shift+Tab remain available, and Enter uses the native link behavior.
+  dialog.addEventListener('keydown', event=>{
+    if(event.key!=='ArrowDown'&&event.key!=='ArrowUp')return
+    const target=event.target
+    if(target!==input&&!(target instanceof Node&&output.contains(target)))return
+    const links=[...output.querySelectorAll<HTMLAnchorElement>('a[href]')]
+    if(!links.length)return
+    const index=links.findIndex(link=>link===target)
+    const direction=event.key==='ArrowDown'?1:-1
+    const next=index<0?(direction===1?0:links.length-1):
+      (index+direction+links.length)%links.length
+    event.preventDefault()
+    links[next]?.focus()
+  })
   document.addEventListener('keydown',event=>{
     // Search inputs may consume Escape to clear their own value. The explicit
     // handler guarantees the dialog always closes and restores trigger focus.
