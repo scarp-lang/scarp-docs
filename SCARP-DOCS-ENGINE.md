@@ -34,7 +34,7 @@ The engine's test build is generated under artifacts/scarp-engine-preview/scarp-
 
 ## Acceptance gates for replacing production
 
-1. **140 pages**: preserve all 70 English and 70 Hindi source routes, local links, home features, heading anchors, code samples, callouts and both embedded interactive widgets.
+1. **142 pages**: preserve at least 71 English and 71 Hindi source routes; new paired release pages may increase the count, local links, home features, heading anchors, code samples, callouts and both embedded interactive widgets.
 2. **Search and releases**: use a full local index with no external provider; verify correct pinned compiler versions and do not invent unshipped commands.
 3. **Accessible UI**: test keyboard, focus return, language switching, appearance persistence, 320px reflow, mobile navigation and code/table scrolling. Run axe WCAG A/AA on representative states. Automated tests are not manual screen-reader certification; see Issue #65.
 4. **Deploy and offline**: change production build, archive generation, Pages upload, sitemap/live smoke and downloaded offline browser checks together. Confirm complete URL continuity.
