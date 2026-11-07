@@ -93,11 +93,48 @@ async function testLocale(
     assert.match(await widget.locator('pre').innerText(),
       /scarp inspect symbols --json FILE\.srp/)
     assert.equal(await widget.locator('pre').getAttribute('tabindex'),'0')
-    await widget.locator('#scarp-release').selectOption('v0.0.5-alpha.1')
-    assert.equal(await widget.locator('pre').count(),0)
+    // Use the real keyboard to change release choices, not only selectOption.
+    const releaseChoice=widget.locator('#scarp-release')
+    await releaseChoice.focus()
+    await releaseChoice.press('Home')
+    assert.equal(await releaseChoice.inputValue(),'v0.0.5-alpha.1')
+    await widget.locator('pre').waitFor({state:'detached'})
     assert.match(await widget.locator('.finder-result').innerText(),/v0\.0\.6-alpha\.1/)
-    await widget.locator('#scarp-release').selectOption(LATEST_RELEASE)
+    await releaseChoice.press('End')
+    assert.equal(await releaseChoice.inputValue(),LATEST_RELEASE)
     await widget.locator('pre').waitFor({state:'visible'})
+    assert.equal(await widget.locator('.finder-result').getAttribute('aria-live'),'polite')
+    assertions++
+
+    // Deterministic in-page clipboard stubs: no OS permissions or external APIs.
+    await page.evaluate(()=>{
+      const view=window as Window & { __scarpCopied?:string }
+      Object.defineProperty(navigator,'clipboard',{
+        configurable:true,
+        value:{writeText:async (value:string)=>{view.__scarpCopied=value}}
+      })
+    })
+    const copy=widget.locator('.finder-result button')
+    await copy.focus()
+    await page.keyboard.press('Enter')
+    await page.waitForFunction(()=>(window as Window & { __scarpCopied?:string })
+      .__scarpCopied?.includes('scarp inspect symbols'))
+    assert.match(await page.evaluate(()=>(window as Window & { __scarpCopied?:string })
+      .__scarpCopied??''),/scarp inspect symbols --json FILE\.srp/)
+    await page.getByRole('button',{name:lang==='hi'?'कॉपी हो गया':'Copied'}).waitFor()
+    await page.evaluate(()=>{
+      Object.defineProperty(navigator,'clipboard',{
+        configurable:true,value:{writeText:async()=>{throw new DOMException('Denied','NotAllowedError')}}
+      })
+    })
+    await copy.click()
+    await page.getByRole('button',{
+      name:lang==='hi'
+        ?'कॉपी नहीं हो पाया। Command text चुनकर स्वयं कॉपी करें।'
+        :'Copy failed. Select the command text manually.'
+    }).waitFor()
+    assert.equal(await widget.locator('pre').getAttribute('tabindex'),'0',
+      lang+': command text must remain selectable after clipboard denial')
     assertions++
 
     const theme=page.locator('#theme-toggle')
@@ -117,8 +154,18 @@ async function testLocale(
     const searchInput=page.locator('#search-query')
     assert.equal(await searchInput.evaluate(node=>document.activeElement===node),true)
     await searchInput.fill('funcra')
-    await page.locator('#search-results li a').first().waitFor({state:'visible',timeout:15000})
-    assert.ok((await page.locator('#search-results li a').first().getAttribute('href'))?.startsWith(prefix))
+    const results=page.locator('#search-results li a')
+    await results.first().waitFor({state:'visible',timeout:15000})
+    assert.ok((await results.first().getAttribute('href'))?.startsWith(prefix))
+    await searchInput.press('ArrowDown')
+    assert.equal(await results.first().evaluate(node=>document.activeElement===node),true,
+      lang+': ArrowDown must focus the first search result')
+    await page.keyboard.press('ArrowUp')
+    assert.equal(await results.last().evaluate(node=>document.activeElement===node),true,
+      lang+': ArrowUp must cycle through search results')
+    await page.keyboard.press('ArrowDown')
+    assert.equal(await results.first().evaluate(node=>document.activeElement===node),true)
+    await searchInput.focus()
     await searchInput.fill('zzqvkpwmntrxhfbjkldsrp9776')
     await page.getByRole('status').getByText(
       lang==='hi'?'कोई परिणाम नहीं मिला':'No results found',{exact:true}).waitFor()
@@ -158,6 +205,11 @@ async function mobile(
     await page.locator('#search-query').waitFor({state:'visible'})
     await page.keyboard.press('Escape')
     assert.deepEqual(outside,[])
+    await page.setViewportSize({width:320,height:800})
+    await page.emulateMedia({reducedMotion:'reduce'})
+    assert.equal(await page.evaluate(()=>matchMedia('(prefers-reduced-motion: reduce)').matches),true)
+    const narrowOverflow=await page.evaluate(()=>document.documentElement.scrollWidth-window.innerWidth)
+    assert.ok(narrowOverflow<=2,lang+': 320px layout overflow '+narrowOverflow)
     const audit=await auditOfflineAccessibility(page,lang+'-engine-mobile',
       join(previewRoot,'audit-results'))
     assert.ok(audit.passes>0)
@@ -175,7 +227,7 @@ try{
     await mobile(browser,origin,locale)
   }
   console.log('PASS: '+assertions+
-    ' Scarp-owned engine Chromium tests: translated routes, local search, theme, CLI, 375px navigation and axe WCAG A/AA scans')
+    ' Scarp-owned engine Chromium tests: keyboard search, clipboard success/denial, release selector, bilingual UI, 320px reflow, reduced motion and axe A/AA scans')
 }catch(error){
   console.error('FAIL: Scarp-owned engine Chromium: '+String(error))
   process.exitCode=1
