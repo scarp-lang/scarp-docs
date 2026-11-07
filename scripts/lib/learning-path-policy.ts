@@ -169,20 +169,20 @@ export function validateLearningPath(pages: LearningPathPages, release: Alpha6Ma
     ['Hindi',pages.compatibilityHindi,pages.introHindi,pages.firstHindi,pages.quickHindi]
   ] as const) {
     const currentReleaseRow = locale === 'Hindi'
-      ? '| **[v0.0.6-alpha.2](/hi/releases/v0.0.6-alpha.2)** |'
-      : '| **[v0.0.6-alpha.2](/releases/v0.0.6-alpha.2)** |'
+      ? '| **[v0.0.6-alpha.3](/hi/releases/v0.0.6-alpha.3)** |'
+      : '| **[v0.0.6-alpha.3](/releases/v0.0.6-alpha.3)** |'
     if (!compat.includes(currentReleaseRow) ||
         !compat.includes(ALPHA6_REF) || !compat.includes(ALPHA6_SHA) ||
-        !compat.includes('v0.0.6-alpha.2') ||
+        !compat.includes('v0.0.6-alpha.3') ||
         !intro.includes(ALPHA6_REF) || !first.includes(ALPHA6_REF) ||
-        !quick.includes('v0.0.6-alpha.2')) {
+        !quick.includes('v0.0.6-alpha.3')) {
       fail(locale + ': stale onboarding/compatibility release boundary')
     }
     const exactLatestQuickstart = locale === 'Hindi'
-      ? '[प्रकाशित v0.0.6-alpha.2 release और checksum]'
-      : '[published v0.0.6-alpha.2 release and checksums]'
+      ? '[प्रकाशित v0.0.6-alpha.3 release और checksum]'
+      : '[published v0.0.6-alpha.3 release and checksums]'
     if (!quick.includes(exactLatestQuickstart)) {
-      fail(locale + ': historical quickstart must link current published alpha.2 download')
+      fail(locale + ': historical quickstart must link current published alpha.3 download')
     }
     if (!compat.includes(']('+(locale==='Hindi'?'/hi':'')+'/guide/learning-path)')) {
       fail(locale + ': compatibility page does not link to learner journey')
