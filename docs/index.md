@@ -23,9 +23,9 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
-  - title: Latest published compiler v0.0.6-alpha.2
-    details: Learn what the new opt-in Rust caches do, with exact release assets and retained interpreter commands.
-    link: /releases/v0.0.6-alpha.2
+  - title: Latest published compiler v0.0.6-alpha.3
+    details: Learn deterministic Top-K and temperature-aware softmax with official release examples and archive checksums.
+    link: /releases/v0.0.6-alpha.3
   - title: Choose your release-aware Scarp learning path
     details: Follow seven verified stages from first program and numerical functions to real projects, static analysis and RMS, with per-release guidance.
     link: /guide/learning-path
@@ -77,5 +77,5 @@ features:
 ---
 
 ::: warning Experimental language
-The newest published compiler is **[v0.0.6-alpha.1](/releases/v0.0.6-alpha.1)**, while much of the main reference still targets the separately verified **v0.0.5-alpha.1** baseline. Both are experimental prereleases. Before upgrading older code, check [alpha.1 → alpha.2 upgrade readiness](/reference/upgrade-readiness) and the [feature status](/reference/status).
+The newest published compiler is **[v0.0.6-alpha.3](/releases/v0.0.6-alpha.3)**, while much of the main reference still targets the separately verified **v0.0.5-alpha.1** baseline. Both are experimental prereleases. Before upgrading older code, check [alpha.1 → alpha.2 upgrade readiness](/reference/upgrade-readiness) and the [feature status](/reference/status).
 :::

@@ -11,7 +11,9 @@ Official TypeScript-generated documentation for the experimental [Scarp Programm
 
 **Compiler:** https://github.com/scarp-lang/scarp
 
-**Latest published compiler:** [v0.0.6-alpha.2](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.2), November 6, 2026, tagged source `398b8ff705154a02423fe458ce3a427401e81e31`. Read the [English release guide](docs/releases/v0.0.6-alpha.2.md) and [हिन्दी विवरण](docs/hi/releases/v0.0.6-alpha.2.md). This release adds opt-in Rust embedding caches and invalidation, **not new Scarp commands**.
+**Latest published compiler:** [v0.0.6-alpha.3](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.3), November 7, 2026, tagged source `ceff07d9014f466974e0c9e02fc5d23573f55777`. Read the [English release guide](docs/releases/v0.0.6-alpha.3.md) and [हिन्दी विवरण](docs/hi/releases/v0.0.6-alpha.3.md). It ships Top-K and temperature-aware softmax, **not a general native compiler**.
+
+**Previous published compiler:** [v0.0.6-alpha.2](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.2), November 6, 2026, tagged source `398b8ff705154a02423fe458ce3a427401e81e31`. Its [English release notes](docs/releases/v0.0.6-alpha.2.md) and [हिन्दी विवरण](docs/hi/releases/v0.0.6-alpha.2.md) cover optional Rust caching.
 
 **Earlier published compiler:** [v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1), November 5, 2026, source commit `aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8`. Read the [English release guide](docs/releases/v0.0.6-alpha.1.md) and [हिन्दी release guide](docs/hi/releases/v0.0.6-alpha.1.md). The [symbol navigation and CLI reference](docs/tooling/cli-alpha6.md), [हिन्दी symbols guide](docs/hi/tooling/cli-alpha6.md), [RMS tutorial](docs/language/rms-alpha6.md) and [हिन्दी RMS पाठ](docs/hi/language/rms-alpha6.md) document features **actually published** in alpha.6. The docs pin tagged compiler examples/JSON fixtures, track release drift and run the tagged CLI in CI. Native `.srp` compilation and LSP integrations remain unavailable.
 
@@ -19,7 +21,7 @@ Official TypeScript-generated documentation for the experimental [Scarp Programm
 
 **Start learning in order:** [English: seven-stage learning path](docs/guide/learning-path.md) · [हिन्दी: सात चरणों में Scarp](docs/hi/guide/learning-path.md). Historical compiler examples retain their versioned baselines; the learning path explains which release to use, from alpha.1 through the latest alpha.6, without claiming universal compatibility.
 
-**Install the latest published compiler:** [Published alpha.2 archives and checksum guide](docs/releases/v0.0.6-alpha.2.md). Historical [English alpha.1 installation guide](docs/guide/installation-alpha6.md) · [हिन्दी: alpha.6 इंस्टॉलेशन](docs/hi/guide/installation-alpha6.md). Windows x64, Linux x64 GNU, and Apple Silicon archives are paired with official SHA-256 checksums; the guides also provide commands for building the immutable source tag. Earlier installation walkthroughs remain historically scoped.
+**Install the latest published compiler:** [Published alpha.3 archives and checksum guide](docs/releases/v0.0.6-alpha.3.md). Historical [English alpha.1 installation guide](docs/guide/installation-alpha6.md) · [हिन्दी: alpha.6 इंस्टॉलेशन](docs/hi/guide/installation-alpha6.md). Windows x64, Linux x64 GNU, and Apple Silicon archives are paired with official SHA-256 checksums; the guides also provide commands for building the immutable source tag. Earlier installation walkthroughs remain historically scoped.
 
 **Automated accessibility auditing:** The extracted offline site is checked with pinned local axe-core in 10 bilingual light/dark/search/mobile states; CI attaches per-state WCAG A/AA findings on failures. Manual screen-reader verification remains separately tracked in [Issue #65](https://github.com/scarp-lang/scarp-docs/issues/65).
 
