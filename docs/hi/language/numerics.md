@@ -34,6 +34,13 @@ print(matvec(weights, [2.0, 1.0])); // [4.0, 1.0]
 
 [Alpha.2 collections और probability tutorial](/hi/tutorials/alpha2-collections-and-learning) में immutable integer collections, stable score selection, numerically stable probability और स्पष्ट loss gradient के चार पूरे tagged programs मिलते हैं। इन्हें नए alpha.2 compiler के विरुद्ध अलग CI job में सत्यापित किया जाता है। यह automatic differentiation या पूरा neural-network training loop नहीं है।
 
+## Scientific computing — आने वाला विकास
+
+[वैज्ञानिक कंप्यूटिंग की योजना](/hi/project/scientific-computing)
+में लागू vector/matrix सुविधाएँ और भविष्य के calculus, tensor तथा AI
+features अलग-अलग बताए गए हैं। Compiler PR #153 के sampled-calculus
+functions अभी प्रकाशित alpha.3 में **उपलब्ध नहीं** हैं।
+
 ## आकार और संसाधन सीमा
 
 अधिकतम vector length 65,536 तत्व है। लंबाई/shape mismatch E0032, गलत numeric domain E0034, allocation E0035 और cumulative numeric payload quota E0036 दे सकते हैं। [numeric budget](/hi/reference/budgets) तथा [builtin reference](/hi/reference/library) देखें।
