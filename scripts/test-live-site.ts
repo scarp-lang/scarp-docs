@@ -1,12 +1,12 @@
 import assert from 'node:assert/strict'
-import { DOCS_BASE, SITE_ORIGIN, pairedUrls, urlForPage } from '../docs/.vitepress/site-meta.ts'
+import { BASE, ORIGIN, pairedRoutes, urlForPage } from './scarp-site/routes.ts'
 import { LIVE_PAGE_SOURCES, verifyLiveSite, type SiteFetcher } from './lib/live-site.ts'
 
 const htmlRouteByUrl = new Map(LIVE_PAGE_SOURCES.map(source => [urlForPage(source), source]))
 
 function fakeSite(options: { wrongCanonical?: boolean; missingHindi?: boolean; missingInstaller?: boolean; missingCss?: boolean; missingSitemapPage?: boolean; duplicateSitemapPage?: boolean } = {}): SiteFetcher {
   return async url => {
-    if (url === SITE_ORIGIN + DOCS_BASE + 'sitemap.xml') {
+    if (url === ORIGIN + BASE + 'sitemap.xml') {
       const sourcePages = options.missingSitemapPage
         ? LIVE_PAGE_SOURCES.filter(source => source !== 'hi/community/social.md')
         : [...LIVE_PAGE_SOURCES]
@@ -18,7 +18,7 @@ function fakeSite(options: { wrongCanonical?: boolean; missingHindi?: boolean; m
         { status: 200, headers: { 'content-type': 'application/xml' } }
       )
     }
-    if (url.startsWith(SITE_ORIGIN + DOCS_BASE + 'assets/')) {
+    if (url.startsWith(ORIGIN + BASE + 'assets/')) {
       return new Response('asset', { status: 200, headers: { 'content-type': 'application/octet-stream' } })
     }
     const source = htmlRouteByUrl.get(url)
@@ -29,7 +29,7 @@ function fakeSite(options: { wrongCanonical?: boolean; missingHindi?: boolean; m
     if (options.missingInstaller && source === 'hi/guide/installation-alpha6.md') {
       return new Response('Not found', { status: 404 })
     }
-    const links = pairedUrls(source)
+    const links = pairedRoutes(source)
     const lang = source.startsWith('hi/') ? 'hi-IN' : 'en-US'
     const canonical = options.wrongCanonical && source === 'guide/learning-path.md'
       ? links.hindi : links.canonical
@@ -50,7 +50,7 @@ function fakeSite(options: { wrongCanonical?: boolean; missingHindi?: boolean; m
 const healthy = await verifyLiveSite(fakeSite(), LIVE_PAGE_SOURCES)
 assert.equal(healthy.pages, LIVE_PAGE_SOURCES.length)
 assert.equal(healthy.assets, 2)
-assert.equal(healthy.sitemap, SITE_ORIGIN + DOCS_BASE + 'sitemap.xml')
+assert.equal(healthy.sitemap, ORIGIN + BASE + 'sitemap.xml')
 assert.equal(healthy.sitemapPages, LIVE_PAGE_SOURCES.length)
 await assert.rejects(() => verifyLiveSite(fakeSite({ wrongCanonical: true }), LIVE_PAGE_SOURCES), /canonical mismatch/)
 await assert.rejects(() => verifyLiveSite(fakeSite({ missingHindi: true }), LIVE_PAGE_SOURCES), /HTTP 200, got 404/)

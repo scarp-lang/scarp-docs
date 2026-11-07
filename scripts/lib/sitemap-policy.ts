@@ -1,4 +1,4 @@
-import { urlForPage } from '../../docs/.vitepress/site-meta.ts'
+import { urlForPage } from '../scarp-site/routes.ts'
 
 /**
  * Validate the complete generated sitemap against all English/Hindi source

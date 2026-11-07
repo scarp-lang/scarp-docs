@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
-import { DOCS_BASE, SITE_ORIGIN, pairedUrls, urlForPage } from '../../docs/.vitepress/site-meta.ts'
+import { BASE, ORIGIN, pairedRoutes, urlForPage } from '../scarp-site/routes.ts'
 import { validateSitemap } from './sitemap-policy.ts'
+import { LATEST_RELEASE } from './command-finder.ts'
 
 /**
  * Exercises real public GitHub Pages URLs after deployment, not just the
@@ -16,6 +17,8 @@ export const LIVE_PAGE_SOURCES = [
   'hi/guide/installation-alpha6.md',
   'releases/v0.0.6-alpha.1.md',
   'hi/releases/v0.0.6-alpha.1.md',
+  `releases/${LATEST_RELEASE}.md`,
+  `hi/releases/${LATEST_RELEASE}.md`,
   'tutorials/project-symbol-navigation-alpha6.md',
   'hi/tutorials/project-symbol-navigation-alpha6.md',
   'community/social.md',
@@ -43,7 +46,7 @@ async function request(fetcher: SiteFetcher, url: string): Promise<Response> {
   const response = await fetcher(url)
   assert.equal(response.status, 200, url + ': expected HTTP 200, got ' + response.status)
   // Do not accept a successful redirect to an unrelated host.
-  if (response.url) assert.equal(new URL(response.url).origin, SITE_ORIGIN, url + ': unexpected redirect origin')
+  if (response.url) assert.equal(new URL(response.url).origin, ORIGIN, url + ': unexpected redirect origin')
   return response
 }
 
@@ -54,7 +57,7 @@ export async function verifyLiveSite(fetcher: SiteFetcher, sitemapSources: reado
     const response = await request(fetcher, url)
     assert.match(response.headers.get('content-type') ?? '', /text\/html/i, url + ': expected HTML')
     const html = await response.text()
-    const expected = pairedUrls(source)
+    const expected = pairedRoutes(source)
     const lang = source.startsWith('hi/') ? 'hi-IN' : 'en-US'
     assert.match(html, new RegExp('<html\\b[^>]*\\blang="' + lang + '"', 'i'), url + ': wrong HTML locale')
     const links = tags(html, 'link')
@@ -74,9 +77,9 @@ export async function verifyLiveSite(fetcher: SiteFetcher, sitemapSources: reado
   const styles = assets.filter(path => path.endsWith('.css'))
   assert.ok(scripts.length, 'English homepage is missing its versioned JavaScript bundle')
   assert.ok(styles.length, 'English homepage is missing its versioned CSS bundle')
-  for (const asset of [scripts[0], styles[0]]) await request(fetcher, SITE_ORIGIN + asset)
+  for (const asset of [scripts[0], styles[0]]) await request(fetcher, ORIGIN + asset)
 
-  const sitemap = SITE_ORIGIN + DOCS_BASE + 'sitemap.xml'
+  const sitemap = ORIGIN + BASE + 'sitemap.xml'
   const sitemapResponse = await request(fetcher, sitemap)
   const xml = await sitemapResponse.text()
   const checked = validateSitemap(xml, sitemapSources)

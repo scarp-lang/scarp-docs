@@ -28,6 +28,11 @@ export function htmlPath(source: string): string {
   return source.slice(0, -3) + '.html'
 }
 
+/** The independent renderer, sitemap and live-site checks share a single URL contract. */
+export function urlForPage(source: string): string {
+  return ORIGIN + sourceRoute(source)
+}
+
 export function pairedRoutes(source: string): {
   locale: Locale; route: string; canonical: string; english: string; hindi: string
 } {

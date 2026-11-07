@@ -2,7 +2,8 @@ import assert from 'node:assert/strict'
 import { existsSync, readFileSync } from 'node:fs'
 import { join, resolve, relative } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { pairedUrls } from '../docs/.vitepress/site-meta.ts'
+import { pairedRoutes } from './scarp-site/routes.ts'
+import { pageSeoHead } from './scarp-site/seo.ts'
 import { documentationPages } from './lib/docs-pages.ts'
 import { validateSitemap } from './lib/sitemap-policy.ts'
 
@@ -24,7 +25,7 @@ for (const path of pages) {
   const rendered = join(dist, path.replace(/\.md$/, '.html'))
   if (!existsSync(rendered)) { failures.push(`${path}: no generated HTML at ${relative(root, rendered)}`); continue }
   const html = readFileSync(rendered, 'utf8')
-  const expected = pairedUrls(path)
+  const expected = pairedRoutes(path)
   const links = headTags(html, 'link')
   const canonical = links.filter(attrs => attrs.rel === 'canonical')
   if (canonical.length !== 1 || canonical[0].href !== expected.canonical) {
@@ -36,7 +37,12 @@ for (const path of pages) {
     }
   }
   const meta = headTags(html, 'meta')
-  if (!meta.some(attrs => attrs.property === 'og:url' && attrs.content === expected.canonical)) failures.push(`${path}: missing og:url`)
+  for (const [tag, attrs] of pageSeoHead(path)) {
+    const actual = tag === 'link' ? links : meta
+    if (actual.filter(found => Object.entries(attrs).every(([key,value]) => found[key] === value)).length !== 1) {
+      failures.push(`${path}: missing/duplicate ${tag} SEO metadata ${JSON.stringify(attrs)}`)
+    }
+  }
   const lang = path.startsWith('hi/') ? 'hi-IN' : 'en-US'
   if (!new RegExp(`<html\\b[^>]*\\blang="${lang}"`, 'i').test(html)) failures.push(`${path}: expected <html lang="${lang}">`)
   checked++
