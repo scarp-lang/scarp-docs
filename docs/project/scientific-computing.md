@@ -25,7 +25,7 @@ proposes two typed pure kernels:
 
 This PR is **not part of alpha.3**. Do not copy its examples into projects
 built against the published compiler until a verified compatible release
-is identified. The [compiler's detailed implementation and tests](https://github.com/scarp-lang/scarp/blob/feature/scientific-sampled-calculus/docs/sampled-calculus.md)
+is identified. The [compiler's detailed implementation and tests](https://github.com/scarp-lang/scarp/pull/153/files)
 are reviewable, but the development branch can change.
 
 Both functions require equal-length finite-vector inputs with at least two
@@ -55,7 +55,7 @@ The long-term module names `scarp.math`, `scarp.stats`,
 and `scarp.signal` are **design candidates**, not importable modules.
 
 For the technical plan and validation requirements see
-[compiler proposal 0038](https://github.com/scarp-lang/scarp/blob/feature/scientific-sampled-calculus/docs/proposals/0038-scientific-computing-ecosystem.md).
+[compiler proposal 0038](https://github.com/scarp-lang/scarp/pull/153/files).
 For functionality available today, see [vectors and tiles](/language/numerics)
 and the [built-in reference](/reference/library).
 
