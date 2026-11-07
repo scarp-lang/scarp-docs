@@ -36,11 +36,11 @@ framework अभी नहीं बने हैं।
 strictly increasing होने चाहिए। ये numerical estimates हैं, symbolic
 differentiation या बिल्कुल सही गणितीय integration का दावा नहीं करते।
 
-[Compiler PR #155](https://github.com/scarp-lang/scarp/pull/155) में
-`sample_cumulative_area(x, y) -> vector` पर काम हो रहा है। यह हर sample
-तक जमा हुआ integral देगा: पहला परिणाम शून्य और आख़िरी कुल integral होगा
-(जब परिणाम finite और representable हों)। **यह अभी विकास के चरण में है,
-प्रकाशित alpha.3 में उपलब्ध नहीं है।**
+[Compiler PR #155](https://github.com/scarp-lang/scarp/pull/155) भी
+**main में merge हो चुका है**। इसमें `sample_cumulative_area(x, y) -> vector`
+हर sample तक जमा हुआ integral देता है: पहला परिणाम शून्य और आख़िरी कुल
+integral होता है (जब परिणाम finite और representable हों)।
+**ये तीनों functions अभी प्रकाशित alpha.3 में उपलब्ध नहीं हैं।**
 
 ## आगे काम का सही क्रम
 

@@ -33,11 +33,12 @@ entries and strictly increasing coordinates. They are not symbolic
 differentiation, spline fitting or exact integration. The merged code checks numerical overflow, enforces bounded work and
 numerical output allocation, and uses finite binary64 arithmetic.
 
-[Compiler PR #155](https://github.com/scarp-lang/scarp/pull/155) additionally
-proposes `sample_cumulative_area(x, y) -> vector`, a time-series prefix
-integration kernel with one result per input coordinate. Its first value is
-zero and its final value matches the full sampled integral for representable
-results. **PR #155 is development work, not an alpha.3 feature.**
+[Compiler PR #155](https://github.com/scarp-lang/scarp/pull/155) has
+also **merged into main**, adding
+`sample_cumulative_area(x, y) -> vector`: a prefix integral with one result
+per coordinate. Its first value is zero and its final value matches the
+full sampled integral for finite, representable results.
+**All three kernels are available in current source only, not alpha.3.**
 
 ## Architecture and dependency order
 
