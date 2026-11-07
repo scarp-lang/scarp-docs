@@ -44,6 +44,14 @@ The [verified classification and probabilities tutorial](/tutorials/verified-cla
 
 The [alpha.2 collections and numeric-learning tutorial](/tutorials/alpha2-collections-and-learning) provides four additional compiler-verified complete programs: immutable integer collections, stable score selection, numerically stable probabilities, and explicit loss gradients. The separate alpha.2 fixture suite checks them against the newer release; the existing alpha.1 numerical examples remain independently pinned. These primitives do not provide automatic differentiation or a full training loop.
 
+## Scientific computing roadmap (unreleased)
+
+Scarp is extending numerical work incrementally. The [scientific computing
+proposal](/project/scientific-computing) distinguishes shipped vector/tile
+operations from proposed integration, differentiation, tensor and AI work.
+The sampled-calculus functions in compiler PR #153 are **not** in the published
+alpha.3 compiler; do not treat them as runnable released APIs.
+
 ## Limits and errors
 
 Indexing is bounds-checked. Invalid shapes, nonfinite results, and numerical payload-budget exhaustion produce diagnostics rather than silently returning invalid data. Each vector/tile element is a finite 64-bit float; some operations materialize new buffers and consume the cumulative vector-byte budget.
