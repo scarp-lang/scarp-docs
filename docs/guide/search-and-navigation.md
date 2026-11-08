@@ -13,13 +13,13 @@ The keyboard shortcut shown in the search trigger is part of its accessible name
 
 ## Find the right version
 
-A search result may come from a **historical** tutorial. Start with the [seven-stage learning path](/guide/learning-path), [latest published compiler downloads](/releases/v0.0.6-alpha.3) or [published feature status](/reference/status) to determine the correct compiler version before running an example. The core language reference remains pinned to alpha.1, while newer guides identify their own prereleases.
+A search result may come from a **historical** tutorial. Start with the [seven-stage learning path](/guide/learning-path), [latest published compiler downloads](/releases/v0.0.6-alpha.4) or [published feature status](/reference/status) to determine the correct compiler version before running an example. The core language reference remains pinned to alpha.1, while newer guides identify their own prereleases.
 
 For exact commands, compare the [alpha.6 CLI](/tooling/cli-alpha6), [AST inspection](/tooling/inspect-ast-alpha6) and [troubleshooting](/tooling/troubleshooting). Use the [Hindi search help](/hi/guide/search-and-navigation) to read these instructions in हिन्दी.
 
 ## When search shows no results
 
-Check the spelling of Scarp keywords, use a shorter term, or switch locale using the language menu. Search is provided by Scarp Docs' generated static full-text index and needs JavaScript enabled to display results. The offline Chromium suite also checks the no-results message and that **Esc** returns focus to the search trigger when opened from that button. A failed local index load is not evidence that a compiler feature does not exist: use the [page navigation](/guide/learning-path) or the [compiler's published release notes](/releases/v0.0.6-alpha.3) instead.
+Check the spelling of Scarp keywords, use a shorter term, or switch locale using the language menu. Search is provided by Scarp Docs' generated static full-text index and needs JavaScript enabled to display results. The offline Chromium suite also checks the no-results message and that **Esc** returns focus to the search trigger when opened from that button. A failed local index load is not evidence that a compiler feature does not exist: use the [page navigation](/guide/learning-path) or the [compiler's published release notes](/releases/v0.0.6-alpha.4) instead.
 
 ## Keyboard and clipboard accessibility
 

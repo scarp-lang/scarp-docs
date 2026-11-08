@@ -140,7 +140,7 @@ check(hindiHome.includes('href="/scarp-docs/hi/reference/status">रिलीज
   'Hindi releases menu must display the historical version matrix')
 const finder=readFileSync(join(site,'tooling/command-finder.html'),'utf8')
 check(finder.includes('id="scarp-command-data"'),'Release-scoped CLI model missing')
-check(finder.includes('v0.0.6-alpha.3'),'Latest published release missing')
+check(finder.includes(LATEST_RELEASE),'Latest published release missing')
 const dev=readFileSync(join(site,'project/deployments.html'),'utf8')
 check(dev.includes('data-load-deployments'),'Deployment widget missing')
 const search=JSON.parse(readFileSync(join(site,'assets/search-index.json'),'utf8')) as Array<{
