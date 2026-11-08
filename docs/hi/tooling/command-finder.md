@@ -30,6 +30,8 @@ Alpha.2 पुराने `run` command के लिए चुना जा �
 
 प्रकाशित **v0.0.6-alpha.2** में सीमित Rust caching और dependency invalidation APIs जोड़ी गई हैं। नया `scarp` CLI command **नहीं** आया है। Alpha.1 के पुराने symbols और references commands अभी भी उपलब्ध हैं। [Alpha.2 रिलीज़ विवरण](/hi/releases/v0.0.6-alpha.2) पढ़ें।
 
+पिछला प्रकाशित [v0.0.6-alpha.3](/hi/releases/v0.0.6-alpha.3) Top-K और temperature-softmax के ऐतिहासिक संदर्भ के लिए उपलब्ध है।
+
 ## Alpha.4 में वैज्ञानिक functions
 
 प्रकाशित [v0.0.6-alpha.4](/hi/releases/v0.0.6-alpha.4) में `sample_area`, `sample_cumulative_area`, `sample_slopes` और `cosine_similarity` उपलब्ध हैं। कोई नया CLI command नहीं आया। सीमित ELF64 emitter सिर्फ Rust API है, सामान्य native compiler या `scarp compile` नहीं।
