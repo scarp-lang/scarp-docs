@@ -30,6 +30,8 @@ The [हिन्दी command finder](/hi/tooling/command-finder) contains the
 
 The published **v0.0.6-alpha.2** adds bounded Rust embedding caches and dependency invalidation. It does **not** add new `scarp` CLI commands. The existing alpha.1 symbols and references commands remain available. See the [alpha.2 release guide](/releases/v0.0.6-alpha.2).
 
+The previous published compiler [v0.0.6-alpha.3](/releases/v0.0.6-alpha.3) remains available for historical Top-K and temperature-softmax behavior.
+
 ## Alpha.4 scientific functions
 
 The published [v0.0.6-alpha.4](/releases/v0.0.6-alpha.4) adds `sample_area`, `sample_cumulative_area`, `sample_slopes` and `cosine_similarity`, but **no new CLI subcommands**. The restricted ELF64 object emitter is a Rust API, not a general native executable compiler or `scarp compile` command.
