@@ -23,9 +23,9 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
-  - title: नवीनतम प्रकाशित v0.0.6-alpha.3 compiler
-    details: Top-K ranking, temperature softmax, सत्यापित उदाहरण और आधिकारिक checksum पढ़ें।
-    link: /hi/releases/v0.0.6-alpha.3
+  - title: नवीनतम प्रकाशित v0.0.6-alpha.4 compiler
+    details: Sampled calculus, cosine similarity, सत्यापित उदाहरण और आधिकारिक checksum पढ़ें।
+    link: /hi/releases/v0.0.6-alpha.4
   - title: सात चरणों में Scarp सीखें
     details: शुरुआती प्रोग्राम से numerical examples, modules, projects और symbols तक सही compiler release के साथ पूरा रास्ता।
     link: /hi/guide/learning-path
@@ -77,5 +77,5 @@ features:
 ---
 
 ::: warning प्रयोगात्मक रिलीज़
-नवीनतम प्रकाशित compiler **[v0.0.6-alpha.3](/hi/releases/v0.0.6-alpha.3)** है, जबकि अधिकतर मुख्य reference अभी अलग से सत्यापित **v0.0.5-alpha.1** पर आधारित है। सभी experimental prereleases हैं। पुराने code के लिए [अपग्रेड की जाँच](/hi/reference/upgrade-readiness) और [फ़ीचर स्थिति](/hi/reference/status) पढ़ें।
+नवीनतम प्रकाशित compiler **[v0.0.6-alpha.4](/hi/releases/v0.0.6-alpha.4)** है, जबकि अधिकतर मुख्य reference अभी अलग से सत्यापित **v0.0.5-alpha.1** पर आधारित है। सभी experimental prereleases हैं। पुराने code के लिए [अपग्रेड की जाँच](/hi/reference/upgrade-readiness) और [फ़ीचर स्थिति](/hi/reference/status) पढ़ें।
 :::
