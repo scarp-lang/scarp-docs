@@ -1,5 +1,7 @@
 # First Scarp program — published v0.0.6-alpha.4
 
+<!-- scarp-cli-release: v0.0.6-alpha.4 -->
+
 > **New learners:** This is the recommended file-based starting point for the **published experimental** [Scarp v0.0.6-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.4), from compiler commit `f04be0758cbce405ddcdb229699b0ff83c09d207`. Earlier `v0.0.5-alpha.1` examples use older CLI commands; the [historical first-program tutorial](/guide/first-program) remains preserved for that release.
 
 Scarp currently executes these programs using its interpreter. The examples below are **not invented snippets**: both source files and exact stdout are included in the [compiler-tested Scarp by Example course](https://github.com/scarp-lang/scarp-by-example). The course verifies them on Windows, macOS and Linux against the pinned compiler.
