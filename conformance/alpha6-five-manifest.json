@@ -1,0 +1,24 @@
+{
+  "compilerRepository": "scarp-lang/scarp",
+  "compilerRef": "v0.0.6-alpha.5",
+  "compilerCommit": "205e92f166f186c3905e5880d41c31717b697b8e",
+  "publishedAt": "2026-11-09T11:39:41Z",
+  "fixtures": {
+    "nucleus_selection.srp": {
+      "compilerPath": "examples/nucleus_selection.srp",
+      "gitBlobSha": "af84efd3c0c40c0f45f5b12a006948e6f68d4969"
+    },
+    "nucleus_selection.stdout": {
+      "compilerPath": "examples/nucleus_selection.stdout",
+      "gitBlobSha": "d5b42850ee84a983ca24544019b8e5d653c8bff0"
+    },
+    "pearson_correlation.srp": {
+      "compilerPath": "examples/pearson_correlation.srp",
+      "gitBlobSha": "e1f1ec7b7ec630083e5d071f2daf873fcfc0ce3e"
+    },
+    "pearson_correlation.stdout": {
+      "compilerPath": "examples/pearson_correlation.stdout",
+      "gitBlobSha": "937d583b2d6bc6d9f1a07172bd8987864754a0aa"
+    }
+  }
+}

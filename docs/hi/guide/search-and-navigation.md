@@ -13,13 +13,13 @@ Search button के साथ दिखाई देने वाला **K** s
 
 ## सही compiler version चुनें
 
-Search परिणाम में कोई **पुराना** tutorial भी हो सकता है। Code चलाने से पहले [सात-चरण वाला learning path](/hi/guide/learning-path), [नवीनतम प्रकाशित compiler डाउनलोड](/hi/releases/v0.0.6-alpha.4) और [प्रकाशित feature status](/hi/reference/status) देखें। मुख्य language reference alpha.1 पर आधारित है; नई सुविधाएँ अपने अलग प्रकाशित compiler releases से सत्यापित हैं।
+Search परिणाम में कोई **पुराना** tutorial भी हो सकता है। Code चलाने से पहले [सात-चरण वाला learning path](/hi/guide/learning-path), [नवीनतम प्रकाशित compiler डाउनलोड](/hi/releases/v0.0.6-alpha.5) और [प्रकाशित feature status](/hi/reference/status) देखें। मुख्य language reference alpha.1 पर आधारित है; नई सुविधाएँ अपने अलग प्रकाशित compiler releases से सत्यापित हैं।
 
 सही CLI command पहचानने के लिए [alpha.6 CLI](/hi/tooling/cli-alpha6), [AST inspection](/hi/tooling/inspect-ast-alpha6) तथा [troubleshooting](/hi/tooling/troubleshooting) पढ़ें। [English search help](/guide/search-and-navigation) भी उपलब्ध है।
 
 ## कोई परिणाम न मिले तो
 
-Keyword की spelling जाँचें, छोटा शब्द खोजें या भाषा बदलें। Local search को परिणाम दिखाने के लिए browser में JavaScript चाहिए, क्योंकि index static website से लोड होता है। Offline Chromium परीक्षण में कोई परिणाम न मिलने वाला संदेश और search button से खोलने के बाद **Esc** दबाने पर keyboard focus वापस आने की भी जाँच होती है। Search विफल होने से यह सिद्ध **नहीं** होता कि compiler में कोई सुविधा नहीं है। ऐसे में [learning path](/hi/guide/learning-path) या [प्रकाशित compiler release](/hi/releases/v0.0.6-alpha.4) से सीधे आगे बढ़ें।
+Keyword की spelling जाँचें, छोटा शब्द खोजें या भाषा बदलें। Local search को परिणाम दिखाने के लिए browser में JavaScript चाहिए, क्योंकि index static website से लोड होता है। Offline Chromium परीक्षण में कोई परिणाम न मिलने वाला संदेश और search button से खोलने के बाद **Esc** दबाने पर keyboard focus वापस आने की भी जाँच होती है। Search विफल होने से यह सिद्ध **नहीं** होता कि compiler में कोई सुविधा नहीं है। ऐसे में [learning path](/hi/guide/learning-path) या [प्रकाशित compiler release](/hi/releases/v0.0.6-alpha.5) से सीधे आगे बढ़ें।
 
 ## Keyboard और clipboard accessibility
 

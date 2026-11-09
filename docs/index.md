@@ -23,9 +23,9 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
-  - title: Latest published compiler v0.0.6-alpha.4
-    details: Learn sampled calculus and cosine similarity with source-backed examples and official release checksums.
-    link: /releases/v0.0.6-alpha.4
+  - title: Latest published compiler v0.0.6-alpha.5
+    details: Explore deterministic Top-P, Pearson correlation, tagged examples and official checksums.
+    link: /releases/v0.0.6-alpha.5
   - title: Choose your release-aware Scarp learning path
     details: Follow seven verified stages from first program and numerical functions to real projects, static analysis and RMS, with per-release guidance.
     link: /guide/learning-path
@@ -77,5 +77,5 @@ features:
 ---
 
 ::: warning Experimental language
-The newest published compiler is **[v0.0.6-alpha.4](/releases/v0.0.6-alpha.4)**, while much of the main reference still targets the separately verified **v0.0.5-alpha.1** baseline. Both are experimental prereleases. Before upgrading older code, check [alpha.1 → alpha.2 upgrade readiness](/reference/upgrade-readiness) and the [feature status](/reference/status).
+The newest published compiler is **[v0.0.6-alpha.5](/releases/v0.0.6-alpha.5)**, while much of the main reference still targets the separately verified **v0.0.5-alpha.1** baseline. Both are experimental prereleases. Before upgrading older code, check [alpha.1 → alpha.2 upgrade readiness](/reference/upgrade-readiness) and the [feature status](/reference/status).
 :::
