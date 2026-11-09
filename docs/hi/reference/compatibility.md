@@ -6,8 +6,9 @@ Scarp के शुरुआती prereleases में syntax और API ब�
 
 | संस्करण | प्रमुख प्रकाशित सुविधा |
 | --- | --- |
-| **[v0.0.6-alpha.3](/hi/releases/v0.0.6-alpha.3)** | **वर्तमान प्रकाशित prerelease (7 नवंबर):** Top-K चयन, temperature softmax और private scalar-IR जाँच; नया native CLI नहीं |
-| **[v0.0.6-alpha.2](/hi/releases/v0.0.6-alpha.2)** | **पिछली प्रकाशित prerelease (6 नवंबर):** वैकल्पिक Rust caching और dependency invalidation APIs; नया Scarp CLI command या syntax नहीं |
+| **[v0.0.6-alpha.4](/hi/releases/v0.0.6-alpha.4)** | **नवीनतम प्रकाशित prerelease (8 नवंबर):** cosine similarity, sampled slopes और cumulative area; पहले के Top-K तथा temperature softmax भी उपलब्ध हैं। [नया हिन्दी starter](/hi/guide/first-program-alpha4) और [scientific reference](/hi/language/scientific-kernels-alpha4) देखें |
+| **[v0.0.6-alpha.3](/hi/releases/v0.0.6-alpha.3)** | **पहले प्रकाशित prerelease (7 नवंबर):** Top-K चयन, temperature softmax और private scalar-IR जाँच; नया native CLI नहीं |
+| **[v0.0.6-alpha.2](/hi/releases/v0.0.6-alpha.2)** | **पहले प्रकाशित prerelease (6 नवंबर):** वैकल्पिक Rust caching और dependency invalidation APIs; नया Scarp CLI command या syntax नहीं |
 | **`v0.0.6-alpha.1`** | **पिछला प्रकाशित, 5 नवंबर 2026:** static symbols/references JSON inspection तथा `rms(vector)`; [release](/hi/releases/v0.0.6-alpha.1), [पूरा project lab](/hi/tutorials/project-symbol-navigation-alpha6) |
 | **`v0.0.5-alpha.5`** | पिछला, 4 नवंबर 2026: project-directory module inspection; केवल Rust embedding के लिए सीमित C11 emitter; [release](/hi/releases/v0.0.5-alpha.5) |
 | **`v0.0.5-alpha.4`** | 3 नवंबर: नया project create, static verify DIRECTORY, launch; [project guide](/hi/releases/v0.0.5-alpha.4) |
