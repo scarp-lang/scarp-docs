@@ -11,7 +11,7 @@ Official TypeScript-generated documentation for the experimental [Scarp Programm
 
 **Compiler:** https://github.com/scarp-lang/scarp
 
-**Latest published compiler:** [v0.0.6-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.4), November 8, 2026, tagged source `f04be0758cbce405ddcdb229699b0ff83c09d207`. Read the [English release guide](docs/releases/v0.0.6-alpha.4.md) and [हिन्दी विवरण](docs/hi/releases/v0.0.6-alpha.4.md). It ships sampled calculus and cosine similarity; restricted ELF64 object emission is a Rust API, **not a general native compiler**.
+**Latest published compiler:** [v0.0.6-alpha.5](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.5), 9 November 2026, immutable source `205e92f166f186c3905e5880d41c31717b697b8e`. Read the [English release guide](docs/releases/v0.0.6-alpha.5.md) and [हिन्दी विवरण](docs/hi/releases/v0.0.6-alpha.5.md). New published scientific functions include **Pearson correlation and deterministic Top-P ranking**, not stochastic sampling. The limited ELF64 writer is a Rust API, **not a general native compiler**. The [earlier v0.0.6-alpha.4 release](docs/releases/v0.0.6-alpha.4.md) retains its own historical examples and checksums.
 
 **Previous published compiler:** [v0.0.6-alpha.2](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.2), November 6, 2026, tagged source `398b8ff705154a02423fe458ce3a427401e81e31`. Its [English release notes](docs/releases/v0.0.6-alpha.2.md) and [हिन्दी विवरण](docs/hi/releases/v0.0.6-alpha.2.md) cover optional Rust caching.
 
@@ -21,7 +21,7 @@ Official TypeScript-generated documentation for the experimental [Scarp Programm
 
 **Start learning in order:** [English: seven-stage learning path](docs/guide/learning-path.md) · [हिन्दी: सात चरणों में Scarp](docs/hi/guide/learning-path.md). Historical compiler examples retain their versioned baselines; the learning path explains which release to use, from alpha.1 through the latest alpha.6, without claiming universal compatibility.
 
-**Install the latest published compiler:** [Published alpha.4 archives and checksum guide](docs/releases/v0.0.6-alpha.4.md). Historical [English alpha.1 installation guide](docs/guide/installation-alpha6.md) · [हिन्दी: alpha.6 इंस्टॉलेशन](docs/hi/guide/installation-alpha6.md). Windows x64, Linux x64 GNU, and Apple Silicon archives are paired with official SHA-256 checksums; the guides also provide commands for building the immutable source tag. Earlier installation walkthroughs remain historically scoped.
+**Install the latest published compiler:** [Published alpha.5 archives and checksum guide](docs/releases/v0.0.6-alpha.5.md). Historical [English alpha.1 installation guide](docs/guide/installation-alpha6.md) · [हिन्दी: alpha.6 इंस्टॉलेशन](docs/hi/guide/installation-alpha6.md). Windows x64, Linux x64 GNU, and Apple Silicon archives are paired with official SHA-256 checksums; the guides also provide commands for building the immutable source tag. Earlier installation walkthroughs remain historically scoped.
 
 **Automated accessibility auditing:** The extracted offline site is checked with pinned local axe-core in 10 bilingual light/dark/search/mobile states; CI attaches per-state WCAG A/AA findings on failures. Manual screen-reader verification remains separately tracked in [Issue #65](https://github.com/scarp-lang/scarp-docs/issues/65).
 

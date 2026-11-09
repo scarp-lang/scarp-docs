@@ -1,6 +1,6 @@
 # Scarp में पहला project बनाएँ (v0.0.5-alpha.4)
 ::: tip नवीनतम प्रकाशित compiler
-नए उपयोगकर्ताओं के लिए [प्रकाशित v0.0.6-alpha.4 release और checksum](/hi/releases/v0.0.6-alpha.4), [नया पहला प्रोग्राम](/hi/guide/first-program-alpha4) और [सही version वाला learning path](/hi/guide/learning-path) हैं। इस पुराने **v0.0.5-alpha.4** guide का source, binary और stdout जानबूझकर बदला नहीं गया है।
+नए उपयोगकर्ताओं के लिए [प्रकाशित v0.0.6-alpha.5 release और checksum](/hi/releases/v0.0.6-alpha.5), [नया पहला प्रोग्राम](/hi/guide/first-program-alpha4) और [सही version वाला learning path](/hi/guide/learning-path) हैं। इस पुराने **v0.0.5-alpha.4** guide का source, binary और stdout जानबूझकर बदला नहीं गया है।
 :::
 
 
