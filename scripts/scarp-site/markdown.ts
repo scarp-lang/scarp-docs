@@ -42,7 +42,7 @@ export function splitFrontMatter(markdown: string): {matter: FrontMatter; conten
  * All normal Markdown is parsed with html:false so a Markdown contribution
  * cannot embed script tags, handlers or HTML event attributes.
  */
-type MarkdownFence = { marker: '\`' | '~'; width: number }
+type MarkdownFence = { marker: '`' | '~'; width: number }
 
 /**
  * Markdown fenced-code detection for the small pre-render transforms below.
@@ -52,13 +52,13 @@ type MarkdownFence = { marker: '\`' | '~'; width: number }
 function fencedLine(
   line: string, current: MarkdownFence | null
 ): { inside: boolean; next: MarkdownFence | null } {
-  const match = /^ {0,3}(\`{3,}|~{3,})(.*)$/.exec(line)
+  const match = /^ {0,3}(`{3,}|~{3,})(.*)$/.exec(line)
   if (current) {
     const closing = match && match[1][0] === current.marker &&
       match[1].length >= current.width && match[2].trim() === ''
     return { inside: true, next: closing ? null : current }
   }
-  if (!match || (match[1][0] === '\`' && match[2].includes('\`'))) {
+  if (!match || (match[1][0] === '`' && match[2].includes('`'))) {
     return { inside: false, next: null }
   }
   return {
