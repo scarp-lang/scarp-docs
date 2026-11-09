@@ -53,7 +53,7 @@ export default defineConfig({
         // Historic releases, CLI reference and the remaining guides live in sidebar.
         nav: [
           { text: 'सीखें', link: '/hi/guide/learning-path' },
-          { text: 'इंस्टॉल', link: '/hi/guide/installation-alpha6' },
+          { text: 'इंस्टॉल', link: '/hi/releases/v0.0.6-alpha.4' },
           { text: 'उदाहरण', link: '/hi/examples/' },
           { text: 'रिलीज़', items: [
             { text: 'नवीनतम: v0.0.6-alpha.4', link: '/hi/releases/v0.0.6-alpha.4' },
@@ -198,7 +198,7 @@ export default defineConfig({
     // Every long-form guide and historical reference stays in the sidebar.
     nav: [
       { text: 'Learn', link: '/guide/learning-path' },
-      { text: 'Install', link: '/guide/installation-alpha6' },
+      { text: 'Install', link: '/releases/v0.0.6-alpha.4' },
       { text: 'Examples', link: '/examples/' },
       { text: 'Releases', items: [
         { text: 'Latest: v0.0.6-alpha.4', link: '/releases/v0.0.6-alpha.4' },
