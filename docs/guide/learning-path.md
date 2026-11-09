@@ -6,7 +6,9 @@
 
 **Unsure which command belongs to your installed compiler?** Use the [interactive version-aware CLI Command Finder](/tooling/command-finder) to avoid mixing older `run` / `check` with newer static `verify` or project inspection.
 
-**Current compiler:** The newest published prerelease is [v0.0.6-alpha.3](/releases/v0.0.6-alpha.3), with Top-K ranking and temperature softmax, but no new CLI commands or general native compiler. The alpha.1 symbol-navigation lesson below remains tied to its original checked examples.
+**Current published compiler:** [v0.0.6-alpha.4](/releases/v0.0.6-alpha.4) (8 November 2026) includes temperature softmax, deterministic Top-K, cosine similarity, sampled-area and sampled-slope numerical kernels. It does **not** introduce a general native compiler. The alpha.1 symbol-navigation lesson below remains pinned to its own published release.
+
+**Using the newest published prerelease?** Start with the [English/Hindi-ready v0.0.6-alpha.4 first program](/guide/first-program-alpha4) and the [compiler-verified by-example course](https://github.com/scarp-lang/scarp-by-example). These use `scarp verify FILE.srp` and `scarp exec FILE.srp`, not the historical alpha.1 file commands. The numbered stages below remain deliberately tied to their original compiler releases.
 
 **Start here if you are new to Scarp.** This track connects complete, compiler-backed lessons from the first program through numerical modeling, project modules, and the symbol-navigation tools introduced in the **[published v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1)** prerelease.
 
