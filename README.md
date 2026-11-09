@@ -193,3 +193,4 @@ VitePress के language selector से English/Hindi बदलें। स�
 [![Deploy official documentation](https://github.com/scarp-lang/scarp-docs/actions/workflows/pages.yml/badge.svg)](https://github.com/scarp-lang/scarp-docs/actions/workflows/pages.yml)
 
 See [live successful deployment count](docs/project/deployments.md) and the [Hindi deployment view](docs/hi/project/deployments.md). The count comes from the public GitHub Actions API with a graceful fallback; it is not hardcoded.
+\n**Current alpha.5 conformance:** English/Hindi Top-P and Pearson examples are copied byte-for-byte from the published tag into `conformance/alpha6-five/` and independently checked using their Git blob identities. Run `npm run check:alpha6-five && npm run test:alpha6-five`; the dedicated CI job runs the exact tagged compiler against both programs and compares stdout.\n

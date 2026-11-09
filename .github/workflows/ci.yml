@@ -16,6 +16,8 @@ jobs:
           node-version: '22'
       - name: Install dependencies
         run: npm install --no-audit --no-fund
+      - name: Validate published alpha.6.5 Top-P/Pearson docs and provenance
+        run: npm run check:alpha6-five && npm run test:alpha6-five
       - name: Type-check TypeScript and Vue sources
         run: npm run typecheck
       - name: Build and validate framework-free Scarp documentation engine preview
@@ -342,6 +344,32 @@ jobs:
         run: npm run test:alpha5-compiler -- .compiler-alpha5/target/debug/scarp
       - name: Test the shipped experimental C11 Rust embedding backend
         run: cargo test --manifest-path .compiler-alpha5/Cargo.toml --locked --offline --test c_backend
+
+  alpha6-five-conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: scarp-lang/scarp
+          ref: 205e92f166f186c3905e5880d41c31717b697b8e
+          path: .compiler-alpha6-five
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Install TypeScript conformance dependencies
+        run: npm install --no-audit --no-fund
+      - name: Confirm exact published compiler source commit
+        run: test "$(git -C .compiler-alpha6-five rev-parse HEAD)" = "205e92f166f186c3905e5880d41c31717b697b8e"
+      - name: Compare published source and stdout files byte for byte
+        run: npm run check:alpha6-five -- .compiler-alpha6-five/examples
+      - name: Build tagged interpreter
+        run: cargo build --manifest-path .compiler-alpha6-five/Cargo.toml --locked --offline
+      - name: Execute real alpha.5 numerical programs and static verification
+        run: npm run test:alpha6-five-compiler -- .compiler-alpha6-five/target/debug/scarp .compiler-alpha6-five/examples
+      - name: Run new compiler's Top-P and Pearson regression suites
+        run: cargo test --manifest-path .compiler-alpha6-five/Cargo.toml --locked --offline --test nucleus_selection --test pearson_correlation
 
   alpha6-conformance:
     runs-on: ubuntu-latest
