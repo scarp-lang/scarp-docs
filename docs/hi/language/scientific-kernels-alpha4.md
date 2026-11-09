@@ -70,6 +70,10 @@ print(sample_area(time, speed));
 
 दोनों वेक्टरों में कम-से-कम दो मान, समान लंबाई और समय जैसे x निर्देशांकों में सख्ती से बढ़ता क्रम होना चाहिए। यह numerical integration है, symbolic calculus नहीं। [उदाहरण 14](https://github.com/scarp-lang/scarp-by-example/blob/main/examples/06-ai-foundations/14-sample-cumulative-area.srp) देखें।
 
+## दो और सत्यापित अभ्यास
+
+[नमूनों के क्षेत्रफल और ढलान का पाठ](https://github.com/scarp-lang/scarp-by-example/blob/content-migration-alpha4-20261109/examples/04-collections/13-sampled-calculus.srp) `sample_area` और `sample_slopes` के साथ `9.0` और `[2.0, 2.0]` देता है। [Top-K रैंकिंग पाठ](https://github.com/scarp-lang/scarp-by-example/blob/content-migration-alpha4-20261109/examples/06-ai-foundations/15-topk-ranking.srp) बराबर स्कोर और खाली परिणाम का परीक्षण करता है। ये [माइग्रेशन ड्राफ़्ट PR #57](https://github.com/scarp-lang/scarp-by-example/pull/57) में हैं; merge से पहले पाठ्यक्रम के `main` में उपलब्ध नहीं हैं।
+
 ## माइग्रेशन में कौन-सी फ़ाइल कहाँ रहे?
 
 - [scarp-docs](https://github.com/scarp-lang/scarp-docs) सार्वजनिक API और हिन्दी/अंग्रेज़ी मार्गदर्शिकाओं का मुख्य स्थान है।
