@@ -20,7 +20,7 @@
 | **[v0.0.6-alpha.2](/hi/releases/v0.0.6-alpha.2)** (6 नवंबर 2026) | `398b8ff705154a02423fe458ce3a427401e81e31` | वैकल्पिक Rust caching और module invalidation APIs; **नया Scarp CLI command या syntax नहीं** | [Alpha.2 cache guide](/hi/releases/v0.0.6-alpha.2) |
 | **[v0.0.6-alpha.3](/hi/releases/v0.0.6-alpha.3)** (7 नवंबर 2026) | `ceff07d9014f466974e0c9e02fc5d23573f55777` | `topk`, `topk_values`, `softmax_temp`, `logsoftmax_temp`; private scalar IR जाँच, **नया native CLI नहीं** | [Alpha.3 रिलीज़](/hi/releases/v0.0.6-alpha.3) |
 | **[v0.0.6-alpha.4](/hi/releases/v0.0.6-alpha.4)** (8 नवंबर 2026) | `f04be0758cbce405ddcdb229699b0ff83c09d207` | Sampled calculus, cosine similarity और सीमित Rust ELF64 object API; **सामान्य native compiler नहीं** | [Alpha.4 विवरण](/hi/releases/v0.0.6-alpha.4) |
-| **[v0.0.6-alpha.5](/hi/releases/v0.0.6-alpha.5)** (9 नवंबर 2026) | `205e92f166f186c3905e5880d41c31717b697b8e` | Pearson correlation, deterministic Top-P और Rust API का सीमित multi-binding ELF64 object; **random sampling और native compile CLI नहीं** | [Alpha.5 विवरण](/hi/releases/v0.0.6-alpha.5) |
+| **[v0.0.6-alpha.5](/hi/releases/v0.0.6-alpha.5)** (9 नवंबर 2026) | `205e92f166f186c3905e5880d41c31717b697b8e` | निश्चित Top-P, centered Pearson correlation और सीमित Rust ELF64 object API; सामान्य native compiler नहीं | [Alpha.5 release](/hi/releases/v0.0.6-alpha.5) |
 
 यह संख्या प्रत्येक release के **अलग सत्यापित examples** की है; पूरे language features की संख्या या हर पुराने program की compatibility का प्रमाण नहीं। [Alpha.1 → alpha.2 upgrade gate](/hi/reference/upgrade-readiness) में मूल 11 programs को alpha.2 पर दोबारा चलाया जाता है; इससे alpha.3 की सामान्य backward compatibility सिद्ध नहीं होती।
 

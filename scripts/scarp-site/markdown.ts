@@ -42,6 +42,31 @@ export function splitFrontMatter(markdown: string): {matter: FrontMatter; conten
  * All normal Markdown is parsed with html:false so a Markdown contribution
  * cannot embed script tags, handlers or HTML event attributes.
  */
+type MarkdownFence = { marker: '`' | '~'; width: number }
+
+/**
+ * Markdown fenced-code detection for the small pre-render transforms below.
+ * Opening/closing delimiters are never interpreted as callouts or widgets.
+ * Backtick info strings cannot contain backticks; tilde info strings can.
+ */
+function fencedLine(
+  line: string, current: MarkdownFence | null
+): { inside: boolean; next: MarkdownFence | null } {
+  const match = /^ {0,3}(`{3,}|~{3,})(.*)$/.exec(line)
+  if (current) {
+    const closing = match && match[1][0] === current.marker &&
+      match[1].length >= current.width && match[2].trim() === ''
+    return { inside: true, next: closing ? null : current }
+  }
+  if (!match || (match[1][0] === '`' && match[2].includes('`'))) {
+    return { inside: false, next: null }
+  }
+  return {
+    inside: true,
+    next: { marker: match[1][0] as MarkdownFence['marker'], width: match[1].length }
+  }
+}
+
 function containers(source: string): {
   markdown: string; trusted: Map<string,string>
 } {
@@ -50,7 +75,14 @@ function containers(source: string): {
   let counter=0
   const lines = source.split('\n')
   const output: string[] = []
+  let fence: MarkdownFence | null = null
   for (const line of lines) {
+    const scan = fencedLine(line, fence)
+    fence = scan.next
+    if (scan.inside) {
+      output.push(line)
+      continue
+    }
     const open = /^::: (tip|info|warning|danger|note|details)(?:\s+(.*))?\s*$/.exec(line)
     if (open) {
       const kind = open[1]
@@ -93,21 +125,35 @@ function highlightScarp(raw: string): string {
   return out+escapeHtml(raw.slice(previous))
 }
 
-function widgetPlaceholders(source: string): {markdown:string;trusted:Map<string,string>} {
-  const trusted=new Map<string,string>()
-  const widgets: Array<[RegExp,string,string]> = [
-    [/<ScarpCommandFinder\s*\/>/g,'SCARPWIDGETCOMMANDS','<section class="command-finder" data-command-finder aria-live="polite"></section>'],
-    [/<PagesDeployments\s*\/>/g,'SCARPWIDGETDEPLOYMENTS',
-      '<section class="deployments" data-deployments><p>GitHub Pages deployment history is available from <a href="https://github.com/scarp-lang/scarp-docs/actions/workflows/pages.yml">GitHub Actions</a>.</p><button type="button" data-load-deployments>Load deployment count</button><output aria-live="polite"></output></section>']
-  ]
-  let markdown=source
-  for (const [pattern,token,html] of widgets) {
-    if (pattern.test(markdown)) {
-      trusted.set(token,html)
-      markdown=markdown.replace(pattern,'\n'+token+'\n')
-    }
+function widgetPlaceholders(source: string): { markdown: string; trusted: Map<string,string> } {
+  const trusted = new Map<string,string>()
+  const templates: Record<'ScarpCommandFinder'|'PagesDeployments',string> = {
+    ScarpCommandFinder: '<section class="command-finder" data-command-finder aria-live="polite"></section>',
+    PagesDeployments: '<section class="deployments" data-deployments><p>GitHub Pages deployment history is available from <a href="https://github.com/scarp-lang/scarp-docs/actions/workflows/pages.yml">GitHub Actions</a>.</p><button type="button" data-load-deployments>Load deployment count</button><output aria-live="polite"></output></section>'
   }
-  return {markdown,trusted}
+  let fence: MarkdownFence | null = null
+  let count = 0
+  const lines: string[] = []
+  for (const line of source.split('\n')) {
+    const scan = fencedLine(line, fence)
+    fence = scan.next
+    if (scan.inside) {
+      lines.push(line)
+      continue
+    }
+    // Widgets are rendered only as standalone directives, never inline or
+    // within fenced examples. The tokens are local to this render call.
+    const widget = /^ {0,3}<(ScarpCommandFinder|PagesDeployments)\s*\/>\s*$/.exec(line)
+    if (!widget) {
+      lines.push(line)
+      continue
+    }
+    const kind = widget[1] as keyof typeof templates
+    const token = 'SCARPWIDGET'+kind.toUpperCase()+count+++'TOKEN'
+    trusted.set(token, templates[kind])
+    lines.push('', token, '')
+  }
+  return { markdown: lines.join('\n'), trusted }
 }
 
 export function renderMarkdown(markdown: string, source: string): RenderedPage {

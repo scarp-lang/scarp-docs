@@ -24,7 +24,7 @@ hero:
 
 features:
   - title: नवीनतम प्रकाशित v0.0.6-alpha.5 compiler
-    details: Pearson correlation और deterministic Top-P के सत्यापित उदाहरण एवं आधिकारिक checksum पढ़ें।
+    details: Top-P, Pearson correlation, प्रकाशित उदाहरण तथा आधिकारिक SHA-256 जाँच पढ़ें।
     link: /hi/releases/v0.0.6-alpha.5
   - title: सात चरणों में Scarp सीखें
     details: शुरुआती प्रोग्राम से numerical examples, modules, projects और symbols तक सही compiler release के साथ पूरा रास्ता।

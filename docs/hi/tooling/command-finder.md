@@ -36,6 +36,6 @@ Alpha.2 पुराने `run` command के लिए चुना जा �
 
 प्रकाशित [v0.0.6-alpha.4](/hi/releases/v0.0.6-alpha.4) में `sample_area`, `sample_cumulative_area`, `sample_slopes` और `cosine_similarity` उपलब्ध हैं। कोई नया CLI command नहीं आया। सीमित ELF64 emitter सिर्फ Rust API है, सामान्य native compiler या `scarp compile` नहीं।
 
-## Alpha.5 की नई संख्यात्मक सुविधाएँ
+## Alpha.5 में नई scientific APIs
 
-प्रकाशित [v0.0.6-alpha.5](/hi/releases/v0.0.6-alpha.5) में `pearson_correlation`, `top_p` और `top_p_values` नए interpreter numerical built-ins हैं, लेकिन **नया CLI command नहीं है**। Nucleus ranking निश्चित है, random sampling नहीं। [पूरा numerical reference](/hi/language/scientific-kernels-alpha5) पढ़ें; `scarp compile` अभी भी उपलब्ध नहीं है।
+प्रकाशित [v0.0.6-alpha.5](/hi/releases/v0.0.6-alpha.5) में `top_p`, `top_p_values` और `pearson_correlation` जुड़े हैं। नया CLI subcommand **नहीं** आया; सीमित ELF64 object केवल Rust API से बनता है, `scarp compile` से नहीं। [Top-P](/hi/language/nucleus-selection-alpha5) और [Pearson](/hi/language/pearson-correlation-alpha5) देखें।

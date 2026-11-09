@@ -24,7 +24,7 @@ hero:
 
 features:
   - title: Latest published compiler v0.0.6-alpha.5
-    details: Learn centered Pearson correlation and deterministic Top-P selection, with immutable examples and official checksums.
+    details: Explore deterministic Top-P, Pearson correlation, tagged examples and official checksums.
     link: /releases/v0.0.6-alpha.5
   - title: Choose your release-aware Scarp learning path
     details: Follow seven verified stages from first program and numerical functions to real projects, static analysis and RMS, with per-release guidance.
