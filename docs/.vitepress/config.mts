@@ -53,10 +53,11 @@ export default defineConfig({
         // Historic releases, CLI reference and the remaining guides live in sidebar.
         nav: [
           { text: 'सीखें', link: '/hi/guide/learning-path' },
-          { text: 'इंस्टॉल', link: '/hi/releases/v0.0.6-alpha.4' },
+          { text: 'इंस्टॉल', link: '/hi/releases/v0.0.6-alpha.5' },
           { text: 'उदाहरण', link: '/hi/examples/' },
           { text: 'रिलीज़', items: [
-            { text: 'नवीनतम: v0.0.6-alpha.4', link: '/hi/releases/v0.0.6-alpha.4' },
+            { text: 'नवीनतम: v0.0.6-alpha.5', link: '/hi/releases/v0.0.6-alpha.5' },
+            { text: 'पिछली v0.0.6-alpha.4 रिलीज़', link: '/hi/releases/v0.0.6-alpha.4' },
             { text: 'पुरानी v0.0.6-alpha.1 रिलीज़', link: '/hi/releases/v0.0.6-alpha.1' },
             { text: 'CLI (alpha.6)', link: '/hi/tooling/cli-alpha6' },
             { text: 'CLI (alpha.5)', link: '/hi/tooling/cli-alpha5' },
@@ -122,7 +123,8 @@ export default defineConfig({
             { text: 'आउटपुट', link: '/hi/language/output' },
             { text: 'मेमोरी', link: '/hi/language/memory' },
             { text: 'वैक्टर और टाइल', link: '/hi/language/numerics' },
-            { text: 'प्रकाशित वैज्ञानिक फ़ंक्शन (alpha.4)', link: '/hi/language/scientific-kernels-alpha4' },
+            { text: 'नए Pearson/Top-P (v0.0.6-alpha.5)', link: '/hi/language/scientific-kernels-alpha5' },
+            { text: 'पहले के वैज्ञानिक फ़ंक्शन (alpha.4)', link: '/hi/language/scientific-kernels-alpha4' },
             { text: 'RMS (alpha.6)', link: '/hi/language/rms-alpha6' }
           ] },
           { text: 'टूलिंग और संदर्भ', items: [
@@ -198,10 +200,11 @@ export default defineConfig({
     // Every long-form guide and historical reference stays in the sidebar.
     nav: [
       { text: 'Learn', link: '/guide/learning-path' },
-      { text: 'Install', link: '/releases/v0.0.6-alpha.4' },
+      { text: 'Install', link: '/releases/v0.0.6-alpha.5' },
       { text: 'Examples', link: '/examples/' },
       { text: 'Releases', items: [
-        { text: 'Latest: v0.0.6-alpha.4', link: '/releases/v0.0.6-alpha.4' },
+        { text: 'Latest: v0.0.6-alpha.5', link: '/releases/v0.0.6-alpha.5' },
+        { text: 'Previous v0.0.6-alpha.4', link: '/releases/v0.0.6-alpha.4' },
         { text: 'Historical v0.0.6-alpha.1', link: '/releases/v0.0.6-alpha.1' },
         { text: 'CLI (alpha.6)', link: '/tooling/cli-alpha6' },
         { text: 'CLI (alpha.5)', link: '/tooling/cli-alpha5' },
@@ -269,7 +272,8 @@ export default defineConfig({
         { text: 'Output streams', link: '/language/output' },
         { text: 'Memory and lifetimes', link: '/language/memory' },
         { text: 'Vectors and tiles', link: '/language/numerics' },
-            { text: 'Published scientific kernels (alpha.4)', link: '/language/scientific-kernels-alpha4' },
+            { text: 'Pearson and Top-P (v0.0.6-alpha.5)', link: '/language/scientific-kernels-alpha5' },
+        { text: 'Published scientific kernels (alpha.4)', link: '/language/scientific-kernels-alpha4' },
         { text: 'RMS numerics (alpha.6)', link: '/language/rms-alpha6' }
       ] },
       { text: 'Tools and reference', items: [
