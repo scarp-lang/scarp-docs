@@ -76,7 +76,7 @@ These functions require equally sized finite vectors with at least two observati
 
 - **Public reference:** This documentation repository owns learner-facing API descriptions and version-aware usage.
 - **Runnable course:** [scarp-by-example](https://github.com/scarp-lang/scarp-by-example) owns numbered lessons, Hindi exercises and their exact expected output files.
-- **Compiler checks:** [scarp](https://github.com/scarp-lang/scarp/tree/v0.0.6-alpha.4/examples) retains the original fixtures and Rust regression suites. Those files must not be removed by a documentation migration.
+- **Compiler checks:** [scarp](https://github.com/scarp-lang/scarp/tree/f04be0758cbce405ddcdb229699b0ff83c09d207/examples) retains the original fixtures and Rust regression suites. Those files must not be removed by a documentation migration.
 - **Unreleased candidate:** `pearson_correlation` and nucleus/top-p ranking under `v0.0.6-alpha.5` development are **not** part of the published alpha.4 release; do not advertise them as available in alpha.4 binaries.
 
 Use the [version compatibility reference](/reference/compatibility) when running a different compiler tag, and the [scientific-computing roadmap](/project/scientific-computing) for proposals rather than shipped functions.
