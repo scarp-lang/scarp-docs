@@ -1,5 +1,16 @@
 # Verified examples
 
+## Published numerical examples (v0.0.6-alpha.4)
+
+The dedicated [Scarp by Example course](https://github.com/scarp-lang/scarp-by-example) is the primary destination for runnable learning programs; the compiler repository retains its regression fixtures.
+
+- [Lesson 12 — Temperature softmax](https://github.com/scarp-lang/scarp-by-example/blob/main/examples/06-ai-foundations/12-temperature-softmax.srp) (`softmax_temp`, `logsoftmax_temp`, deterministic `topk`).
+- [Lesson 13 — Cosine similarity](https://github.com/scarp-lang/scarp-by-example/blob/main/examples/06-ai-foundations/13-cosine-similarity.srp).
+- [Lesson 14 — Cumulative sampled area](https://github.com/scarp-lang/scarp-by-example/blob/main/examples/06-ai-foundations/14-sample-cumulative-area.srp).
+
+All three examples have exact `.stdout` companions copied from immutable compiler tag `v0.0.6-alpha.4` and are being reviewed in [the course migration PR](https://github.com/scarp-lang/scarp-by-example/pull/57). Until that PR merges, follow its branch links rather than assuming `main` contains these lessons. The [published numerical kernel API guide](/language/scientific-kernels-alpha4) describes signatures, release requirements and limitations.
+
+
 The official [compiler examples directory](https://github.com/scarp-lang/scarp/tree/v0.0.5-alpha.1/examples) contains `.srp` files paired with expected `.stdout` files. These are compiler-owned fixtures, not invented syntax samples.
 
 ## Current alpha.6 project tutorial
