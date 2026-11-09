@@ -120,6 +120,7 @@ export default defineConfig({
             { text: 'आउटपुट', link: '/hi/language/output' },
             { text: 'मेमोरी', link: '/hi/language/memory' },
             { text: 'वैक्टर और टाइल', link: '/hi/language/numerics' },
+            { text: 'प्रकाशित वैज्ञानिक फ़ंक्शन (alpha.4)', link: '/hi/language/scientific-kernels-alpha4' },
             { text: 'RMS (alpha.6)', link: '/hi/language/rms-alpha6' }
           ] },
           { text: 'टूलिंग और संदर्भ', items: [
@@ -264,6 +265,7 @@ export default defineConfig({
         { text: 'Output streams', link: '/language/output' },
         { text: 'Memory and lifetimes', link: '/language/memory' },
         { text: 'Vectors and tiles', link: '/language/numerics' },
+            { text: 'Published scientific kernels (alpha.4)', link: '/language/scientific-kernels-alpha4' },
         { text: 'RMS numerics (alpha.6)', link: '/language/rms-alpha6' }
       ] },
       { text: 'Tools and reference', items: [
