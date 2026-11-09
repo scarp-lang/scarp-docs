@@ -2,7 +2,7 @@
 
 <!-- scarp-cli-release: v0.0.6-alpha.4 -->
 
-> **New learners:** This is the recommended file-based starting point for the **published experimental** [Scarp v0.0.6-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.4), from compiler commit `f04be0758cbce405ddcdb229699b0ff83c09d207`. Earlier `v0.0.5-alpha.1` examples use older CLI commands; the [historical first-program tutorial](/guide/first-program) remains preserved for that release.
+> **Release-pinned historical beginner guide:** This file targets **published experimental** [Scarp v0.0.6-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.4), from compiler commit `f04be0758cbce405ddcdb229699b0ff83c09d207`. Earlier `v0.0.5-alpha.1` examples use older CLI commands; the [historical first-program tutorial](/guide/first-program) remains preserved for that release.
 
 Scarp currently executes these programs using its interpreter. The examples below are **not invented snippets**: both source files and exact stdout are included in the [compiler-tested Scarp by Example course](https://github.com/scarp-lang/scarp-by-example). The course verifies them on Windows, macOS and Linux against the pinned compiler.
 
@@ -75,4 +75,6 @@ Area:
 
 The [Scarp by Example course](https://github.com/scarp-lang/scarp-by-example) provides numbered executable lessons, English/Hindi notes, and exact output fixtures. Follow its [chapter 01 basics](https://github.com/scarp-lang/scarp-by-example/tree/main/examples/01-basics), then [control flow](/language/control-flow), [modules](/language/modules) and [published alpha.4 numerical functions](/language/scientific-kernels-alpha4).
 
-For whole-folder projects, the [release-aware learning path](/guide/learning-path) distinguishes the older `v0.0.5-alpha.4` project generator from the currently published `v0.0.6-alpha.4` compiler. A release number must always include the full `v0.0.x-alpha.y` prefix; the short name "alpha.4" refers to multiple historical versions.
+For whole-folder projects, the [release-aware learning path](/guide/learning-path) distinguishes the older `v0.0.5-alpha.4` project generator from the published `v0.0.6-alpha.4` compiler. A release number must always include the full `v0.0.x-alpha.y` prefix; the short name "alpha.4" refers to multiple historical versions.
+
+**Newer published release:** [v0.0.6-alpha.5](/releases/v0.0.6-alpha.5) also exists, but this lesson deliberately retains the original alpha.4 compiler and output evidence. For new numerical features see [Pearson and Top-P](/language/scientific-kernels-alpha5).

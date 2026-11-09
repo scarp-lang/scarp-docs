@@ -6,9 +6,9 @@
 
 **आपके compiler में कौन सा command उपलब्ध है?** [Version-aware CLI Command Finder](/hi/tooling/command-finder) में installed release और काम चुनें। पुरानी `run` / `check` commands को नए static `verify` या project inspection से न मिलाएँ।
 
-**वर्तमान प्रकाशित compiler:** [v0.0.6-alpha.4](/hi/releases/v0.0.6-alpha.4) (8 नवंबर 2026) में Top-K ranking, temperature softmax, cosine similarity, sampled area और slopes हैं। यह अभी सामान्य native compiler नहीं है। नीचे के alpha.1 symbol-navigation पाठ के मूल release और source पिन सुरक्षित हैं।
+**वर्तमान प्रकाशित compiler:** [v0.0.6-alpha.5](/hi/releases/v0.0.6-alpha.5) (9 नवंबर 2026) में Pearson correlation और deterministic Top-P ranking भी हैं। पुराने alpha.4 में Top-K, temperature softmax, cosine similarity और sampled calculus उपलब्ध थे। यह अभी सामान्य native compiler नहीं है। नीचे के alpha.1 symbol-navigation पाठ के मूल release और source पिन सुरक्षित हैं।
 
-**नया प्रकाशित compiler सीखना है?** पहले [v0.0.6-alpha.4 की हिन्दी first-program guide](/hi/guide/first-program-alpha4) और [compiler-tested by-example पाठ्यक्रम](https://github.com/scarp-lang/scarp-by-example) देखें। नए compiler पर `scarp verify FILE.srp` और `scarp exec FILE.srp` का उपयोग करें; पुराने alpha.1 command उदाहरणों को अनजाने में न मिलाएँ। नीचे के सात ऐतिहासिक चरण अपनी मूल releases से पिन किए गए हैं।
+**नया प्रकाशित compiler सीखना है?** [v0.0.6-alpha.5 की वर्तमान release guide](/hi/releases/v0.0.6-alpha.5) के बाद [अलग से pinned v0.0.6-alpha.4 हिन्दी first-program guide](/hi/guide/first-program-alpha4) और [compiler-tested by-example पाठ्यक्रम](https://github.com/scarp-lang/scarp-by-example) देखें। नए compiler पर `scarp verify FILE.srp` और `scarp exec FILE.srp` का उपयोग करें; पुराने alpha.1 command उदाहरणों को अनजाने में न मिलाएँ। नीचे के सात ऐतिहासिक चरण अपनी मूल releases से पिन किए गए हैं।
 
 **Scarp पहली बार सीख रहे हैं तो यहाँ से शुरुआत करें।** यह मार्गदर्शिका शुरुआती प्रोग्राम से numerical examples, source modules, project और **[प्रकाशित v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1)** में आए symbol-navigation tools तक पहुँचाती है। हर पाठ के examples compiler के वास्तविक परीक्षणों पर आधारित हैं।
 

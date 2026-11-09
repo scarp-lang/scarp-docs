@@ -2,7 +2,7 @@
 
 <!-- scarp-cli-release: v0.0.6-alpha.4 -->
 
-> **नए विद्यार्थियों के लिए:** यह **प्रकाशित प्रयोगात्मक** [Scarp v0.0.6-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.4) से फ़ाइल बनाकर शुरू करने की गाइड है। आधिकारिक compiler commit `f04be0758cbce405ddcdb229699b0ff83c09d207` है। [पुराना first-program tutorial](/hi/guide/first-program) `v0.0.5-alpha.1` के लिए सुरक्षित रखा गया है।
+> **पुराने release पर pinned शुरुआती गाइड:** यह **प्रकाशित प्रयोगात्मक** [Scarp v0.0.6-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.4) से फ़ाइल बनाकर शुरू करने की गाइड है। आधिकारिक compiler commit `f04be0758cbce405ddcdb229699b0ff83c09d207` है। [पुराना first-program tutorial](/hi/guide/first-program) `v0.0.5-alpha.1` के लिए सुरक्षित रखा गया है।
 
 यहाँ के source और output [Scarp by Example](https://github.com/scarp-lang/scarp-by-example) के वास्तविक compiler-verified पाठों से लिए गए हैं। Scarp इन प्रोग्रामों को interpreter से चलाता है; अभी यह सामान्य native executable compiler नहीं है।
 
@@ -76,3 +76,5 @@ Area:
 [Scarp by Example](https://github.com/scarp-lang/scarp-by-example) में क्रमवार runnable lessons, हिन्दी/अंग्रेज़ी व्याख्या, अभ्यास और stdout fixtures हैं। पहले [Basics chapter](https://github.com/scarp-lang/scarp-by-example/tree/main/examples/01-basics), फिर [control flow](/hi/language/control-flow), [modules](/hi/language/modules) और [प्रकाशित alpha.4 वैज्ञानिक kernels](/hi/language/scientific-kernels-alpha4) पढ़ें।
 
 पूरा project बनाना हो तो [version-aware learning path](/hi/guide/learning-path) खोलें। पुराने `v0.0.5-alpha.4` project-generator और नए `v0.0.6-alpha.4` compiler को केवल "alpha.4" कहकर एक जैसा न समझें।
+
+**इसके बाद प्रकाशित compiler:** [v0.0.6-alpha.5](/hi/releases/v0.0.6-alpha.5) में नये फ़ंक्शन हैं, लेकिन इस पाठ के alpha.4 source/output और version pin जानबूझकर सुरक्षित हैं। [Pearson और Top-P](/hi/language/scientific-kernels-alpha5) अलग सीखें।

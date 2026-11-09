@@ -3,9 +3,9 @@
 <!-- scarp-release-status: v0.0.5-alpha.5 -->
 <!-- scarp-main-reference-baseline: v0.0.5-alpha.1 -->
 
-**नवीनतम प्रकाशित compiler: [v0.0.6-alpha.4](/hi/releases/v0.0.6-alpha.4), 8 नवंबर 2026।** मुख्य language-reference अध्याय जानबूझकर **v0.0.5-alpha.1** पर आधारित हैं। Alpha.2, alpha.3, alpha.4, alpha.5 तथा alpha.6 की सत्यापित सुविधाओं के अलग release guides हैं। **सभी experimental prereleases हैं।** Stable compatibility की गारंटी नहीं है।
+**नवीनतम प्रकाशित compiler: [v0.0.6-alpha.5](/hi/releases/v0.0.6-alpha.5), 9 नवंबर 2026।** मुख्य language-reference अध्याय जानबूझकर **v0.0.5-alpha.1** पर आधारित हैं। Alpha.2, alpha.3, alpha.4, alpha.5 तथा alpha.6 की सत्यापित सुविधाओं के अलग release guides हैं। **सभी experimental prereleases हैं।** Stable compatibility की गारंटी नहीं है।
 
-नए डाउनलोड के लिए [alpha.4 archive और checksum](/hi/releases/v0.0.6-alpha.4) देखें। [alpha.1 installation](/hi/guide/installation-alpha6) अपने पुराने संस्करण पर pinned है। पुराने alpha.5 के लिए [प्रकाशित alpha.5 इंस्टॉलेशन](/hi/guide/installation-alpha5) और [alpha.5 CLI](/hi/tooling/cli-alpha5) पढ़ें। पुरानी project-generation प्रक्रिया [alpha.4 quickstart](/hi/guide/quickstart-alpha4) में है। पुराने individual file commands के लिए [alpha.3 CLI reference](/hi/tooling/cli) उपलब्ध है। पुराने programs migrate करने से पहले [version compatibility](/hi/reference/compatibility) जाँचें।
+नए डाउनलोड के लिए [alpha.5 archive और checksum](/hi/releases/v0.0.6-alpha.5) देखें। [alpha.1 installation](/hi/guide/installation-alpha6) अपने पुराने संस्करण पर pinned है। पुराने alpha.5 के लिए [प्रकाशित alpha.5 इंस्टॉलेशन](/hi/guide/installation-alpha5) और [alpha.5 CLI](/hi/tooling/cli-alpha5) पढ़ें। पुरानी project-generation प्रक्रिया [alpha.4 quickstart](/hi/guide/quickstart-alpha4) में है। पुराने individual file commands के लिए [alpha.3 CLI reference](/hi/tooling/cli) उपलब्ध है। पुराने programs migrate करने से पहले [version compatibility](/hi/reference/compatibility) जाँचें।
 
 ## प्रकाशित releases का compiler प्रमाण
 
@@ -20,6 +20,7 @@
 | **[v0.0.6-alpha.2](/hi/releases/v0.0.6-alpha.2)** (6 नवंबर 2026) | `398b8ff705154a02423fe458ce3a427401e81e31` | वैकल्पिक Rust caching और module invalidation APIs; **नया Scarp CLI command या syntax नहीं** | [Alpha.2 cache guide](/hi/releases/v0.0.6-alpha.2) |
 | **[v0.0.6-alpha.3](/hi/releases/v0.0.6-alpha.3)** (7 नवंबर 2026) | `ceff07d9014f466974e0c9e02fc5d23573f55777` | `topk`, `topk_values`, `softmax_temp`, `logsoftmax_temp`; private scalar IR जाँच, **नया native CLI नहीं** | [Alpha.3 रिलीज़](/hi/releases/v0.0.6-alpha.3) |
 | **[v0.0.6-alpha.4](/hi/releases/v0.0.6-alpha.4)** (8 नवंबर 2026) | `f04be0758cbce405ddcdb229699b0ff83c09d207` | Sampled calculus, cosine similarity और सीमित Rust ELF64 object API; **सामान्य native compiler नहीं** | [Alpha.4 विवरण](/hi/releases/v0.0.6-alpha.4) |
+| **[v0.0.6-alpha.5](/hi/releases/v0.0.6-alpha.5)** (9 नवंबर 2026) | `205e92f166f186c3905e5880d41c31717b697b8e` | Pearson correlation, deterministic Top-P और Rust API का सीमित multi-binding ELF64 object; **random sampling और native compile CLI नहीं** | [Alpha.5 विवरण](/hi/releases/v0.0.6-alpha.5) |
 
 यह संख्या प्रत्येक release के **अलग सत्यापित examples** की है; पूरे language features की संख्या या हर पुराने program की compatibility का प्रमाण नहीं। [Alpha.1 → alpha.2 upgrade gate](/hi/reference/upgrade-readiness) में मूल 11 programs को alpha.2 पर दोबारा चलाया जाता है; इससे alpha.3 की सामान्य backward compatibility सिद्ध नहीं होती।
 
