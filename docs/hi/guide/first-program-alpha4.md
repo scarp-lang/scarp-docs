@@ -1,5 +1,7 @@
 # Scarp में पहला प्रोग्राम — प्रकाशित v0.0.6-alpha.4
 
+<!-- scarp-cli-release: v0.0.6-alpha.4 -->
+
 > **नए विद्यार्थियों के लिए:** यह **प्रकाशित प्रयोगात्मक** [Scarp v0.0.6-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.4) से फ़ाइल बनाकर शुरू करने की गाइड है। आधिकारिक compiler commit `f04be0758cbce405ddcdb229699b0ff83c09d207` है। [पुराना first-program tutorial](/hi/guide/first-program) `v0.0.5-alpha.1` के लिए सुरक्षित रखा गया है।
 
 यहाँ के source और output [Scarp by Example](https://github.com/scarp-lang/scarp-by-example) के वास्तविक compiler-verified पाठों से लिए गए हैं। Scarp इन प्रोग्रामों को interpreter से चलाता है; अभी यह सामान्य native executable compiler नहीं है।
