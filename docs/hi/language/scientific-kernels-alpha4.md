@@ -36,7 +36,8 @@ Temperature सीमित और शून्य से बड़ा होन
 ## कोसाइन समानता
 
 ~~~scarp
-print(cosine_similarity([3.0, 4.0], [6.0, 8.0]));
+bind direction = [3.0, 4.0];
+print(cosine_similarity(direction, [6.0, 8.0]));
 print(cosine_similarity([1.0, 0.0], [0.0, 1.0]));
 print(cosine_similarity([3.0], [-4.0]));
 ~~~
@@ -73,7 +74,7 @@ print(sample_area(time, speed));
 
 - [scarp-docs](https://github.com/scarp-lang/scarp-docs) सार्वजनिक API और हिन्दी/अंग्रेज़ी मार्गदर्शिकाओं का मुख्य स्थान है।
 - [scarp-by-example](https://github.com/scarp-lang/scarp-by-example) चलने वाले पाठ, अभ्यास और exact stdout का मुख्य स्थान है।
-- [scarp compiler](https://github.com/scarp-lang/scarp/tree/v0.0.6-alpha.4/examples) मूल regression fixtures और तकनीकी परीक्षण रखता रहेगा।
+- [scarp compiler](https://github.com/scarp-lang/scarp/tree/f04be0758cbce405ddcdb229699b0ff83c09d207/examples) मूल regression fixtures और तकनीकी परीक्षण रखता रहेगा।
 - विकास में मौजूद `v0.0.6-alpha.5` की `pearson_correlation` या nucleus/top-p सुविधा **प्रकाशित alpha.4 का हिस्सा नहीं** है।
 
 [संगतता जाँच](/hi/reference/compatibility) और [वैज्ञानिक कंप्यूटिंग का रोडमैप](/hi/project/scientific-computing) भी देखें।
