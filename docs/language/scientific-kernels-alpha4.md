@@ -72,6 +72,10 @@ Expected output:
 
 These functions require equally sized finite vectors with at least two observations and **strictly increasing** coordinate samples. This is sampled numerical integration, not symbolic calculus. [Lesson 14](https://github.com/scarp-lang/scarp-by-example/blob/main/examples/06-ai-foundations/14-sample-cumulative-area.srp) provides the unchanged tagged source.
 
+## Further compiler-tested exercises
+
+The [sampled-calculus lesson](https://github.com/scarp-lang/scarp-by-example/blob/content-migration-alpha4-20261109/examples/04-collections/13-sampled-calculus.srp) shows both `sample_area` and `sample_slopes` with exact output `9.0` and `[2.0, 2.0]`. The [Top-K ranking lesson](https://github.com/scarp-lang/scarp-by-example/blob/content-migration-alpha4-20261109/examples/06-ai-foundations/15-topk-ranking.srp) tests deterministic ties and an empty-result case. Both are included in [the migration draft PR #57](https://github.com/scarp-lang/scarp-by-example/pull/57), not yet in the course `main` until it merges.
+
 ## Source of truth and safe migration
 
 - **Public reference:** This documentation repository owns learner-facing API descriptions and version-aware usage.
