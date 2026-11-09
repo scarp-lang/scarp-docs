@@ -44,4 +44,17 @@ assert.equal(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.2 -->\\n~~
 assert.ok(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.5-alpha.5 -->\\n~~~sh\\nscarp inspect symbols --json demo.srp\\n~~~'.replaceAll('\\n','\n'))
   .some(x => x.message.includes('requires published alpha.6')))
 
+// Published v0.0.6-alpha.4 has Scarp-first CLI verbs but no general build/compile command.
+const publishedAlpha4 = `<!-- scarp-cli-release: v0.0.6-alpha.4 -->
+~~~sh
+scarp version
+scarp verify examples/hello.srp
+scarp exec examples/hello.srp
+scarp inspect symbols --json demo.srp
+scarp create project
+scarp launch project
+~~~`
+assert.deepEqual(checkSnippetPolicy(publishedAlpha4), [])
+assert.equal(checkSnippetPolicy(publishedAlpha4.replace('scarp exec examples/hello.srp', 'scarp compile examples/hello.srp')).length, 1)
+assert.equal(checkSnippetPolicy(publishedAlpha4.replace('v0.0.6-alpha.4', 'v0.0.6-alpha.0')).length, 5)
 console.log('PASS: executable Scarp and shell examples reject deprecated syntax without flagging prose, quotes or comments')
