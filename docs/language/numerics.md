@@ -44,13 +44,9 @@ The [verified classification and probabilities tutorial](/tutorials/verified-cla
 
 The [alpha.2 collections and numeric-learning tutorial](/tutorials/alpha2-collections-and-learning) provides four additional compiler-verified complete programs: immutable integer collections, stable score selection, numerically stable probabilities, and explicit loss gradients. The separate alpha.2 fixture suite checks them against the newer release; the existing alpha.1 numerical examples remain independently pinned. These primitives do not provide automatic differentiation or a full training loop.
 
-## Scientific computing roadmap (unreleased)
+## Published sampled numerical kernels and future work
 
-Scarp is extending numerical work incrementally. The [scientific computing
-proposal](/project/scientific-computing) distinguishes shipped vector/tile
-operations from proposed integration, differentiation, tensor and AI work.
-The sampled-calculus functions in compiler PR #153 are **not** in the published
-alpha.3 compiler; do not treat them as runnable released APIs.
+The published [v0.0.6-alpha.4 numerical-kernels guide](/language/scientific-kernels-alpha4) documents `sample_area`, `sample_slopes`, `sample_cumulative_area`, `cosine_similarity`, temperature softmax and deterministic Top-K, with exact tagged compiler fixtures and [runnable lessons](https://github.com/scarp-lang/scarp-by-example/pull/57). These functions do not exist in older v0.0.6-alpha.3 binaries where applicable. The [scientific computing roadmap](/project/scientific-computing) separately lists unshipped symbolic calculus, tensor/autodiff and full AI framework plans.
 
 ## Limits and errors
 
