@@ -76,6 +76,25 @@ check(fixture.html.includes('class="table-scroll" tabindex="0"'),
   'Wide Markdown tables must be keyboard scrollable')
 check(fixture.html.includes('tabindex="0"'),'Scrollable code must be keyboard focusable')
 
+
+const inertExamples=renderMarkdown(["~~~text","::: danger Fenced tilde marker","<ScarpCommandFinder />","~~~","```text","::: warning Fenced backtick marker","<PagesDeployments />","```","Inline: `<ScarpCommandFinder />`","::: note Active callout","Visible callout.",":::","<ScarpCommandFinder />","<PagesDeployments />"].join('\n'),'guide/test.md')
+check(inertExamples.html.includes('::: danger Fenced tilde marker'),
+  'Tilde fenced callout syntax must remain literal example text')
+check(inertExamples.html.includes('::: warning Fenced backtick marker'),
+  'Backtick fenced callout syntax must remain literal example text')
+check(inertExamples.html.includes('&lt;ScarpCommandFinder /&gt;'),
+  'Fenced or inline command widget source must remain escaped text')
+check(inertExamples.html.includes('&lt;PagesDeployments /&gt;'),
+  'Fenced deployment widget source must remain escaped text')
+check((inertExamples.html.match(/data-command-finder/g)??[]).length===1,
+  'Only a standalone command widget outside code may render')
+check((inertExamples.html.match(/data-deployments/g)??[]).length===1,
+  'Only a standalone deployment widget outside code may render')
+check((inertExamples.html.match(/class="scarp-callout/g)??[]).length===1,
+  'Only the real callout outside code may render')
+check(inertExamples.html.includes('Visible callout.'),
+  'A valid callout should remain rendered after fenced examples')
+
 const latest = JSON.parse(readFileSync(join(root,'data/compiler-latest-release.json'),'utf8')) as Record<string,unknown>
 check(currentPublishedCompilerTag(latest)===LATEST_RELEASE,'Current manifest and CLI release table must agree')
 assert.equal(currentCompilerReleaseRoute(LATEST_RELEASE,'en'),
