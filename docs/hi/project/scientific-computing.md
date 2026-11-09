@@ -1,46 +1,20 @@
-# Scientific Computing और AI — प्रस्तावित विकास
+# Scientific Computing और AI — प्रकाशित सुविधाएँ और आगे की योजना
 
-**स्थिति: यह विकास प्रस्ताव है, प्रकाशित Scarp लाइब्रेरी नहीं।**
-अभी सत्यापित सार्वजनिक कंपाइलर का नवीनतम प्रीरिलीज़
-[v0.0.6-alpha.3](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.3)
-है। `scarp.math`, `scarp.tensor`, `scarp.science` और `scarp.ai`
-जैसे नाम अभी वास्तविक standard-library namespace नहीं हैं।
+**नवीनतम प्रकाशित प्रायोगिक कंपाइलर:** [v0.0.6-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.4), 8 नवंबर 2026। यह पृष्ठ प्रकाशित संख्यात्मक सुविधाओं और भविष्य के प्रस्तावों को अलग-अलग बताता है।
 
-## आज क्या उपलब्ध है?
+Scarp में immutable finite-float vectors, numeric tiles, matrix operations, कुछ statistical functions, softmax/ranking और स्पष्ट loss-gradient primitives हैं। अब sampled calculus और cosine similarity भी प्रकाशित alpha.4 में उपलब्ध हैं। Compiler का experimental Rust interpreter तथा सीमित Rust-hosted C11/ELF64 सुविधाएँ पूर्ण native compiler, GPU runtime या automatic differentiation नहीं बनातीं।
 
-Scarp में finite `float` वाले immutable vectors, दो-अक्ष के numeric tiles,
-`matvec` और `matmul` जैसी matrix operations, कुछ statistics,
-stable `softmax`, score ranking और विशेष loss-gradient kernels हैं।
-कार्यक्रम सीमित संसाधनों वाले Rust interpreter से चलते हैं।
-प्रयोगात्मक C11 backend केवल Rust API के विशेष scalar हिस्से के लिए है;
-सामान्य native compiler, GPU tensors और पूरा automatic differentiation
-framework अभी नहीं बने हैं।
+## Alpha.4 में प्रकाशित संख्यात्मक सुविधाएँ
 
-## Source में उपलब्ध sampled calculus (अभी रिलीज़ नहीं हुआ)
+`sample_area(x, y)`, `sample_slopes(x, y)`, `sample_cumulative_area(x, y)` और `cosine_similarity(left, right)` प्रकाशित `v0.0.6-alpha.4` का हिस्सा हैं, लेकिन पहले प्रकाशित alpha.3 में नहीं थे।
 
-[Compiler PR #153](https://github.com/scarp-lang/scarp/pull/153)
-प्रकाशित alpha.3 के बाद **main में merge हो चुका है**। इसमें दो typed और pure functions जोड़े गए:
+Integration वाले दोनों inputs की लंबाई बराबर और कम-से-कम दो होनी चाहिए; x निर्देशांक लगातार बढ़ते हों। संचयी क्षेत्रफल की पहली प्रविष्टि शून्य होती है और वैध उदाहरण में आख़िरी मान पूरे क्षेत्रफल के बराबर होता है। Cosine similarity दो गैर-शून्य और बराबर लंबाई वाले वेक्टरों की दिशा तुलना करता है। ये सीमित गणितीय फ़ंक्शन हैं, symbolic calculus या ML framework नहीं।
 
-| प्रस्तावित फ़ंक्शन | नतीजा | कार्य |
-| --- | --- | --- |
-| `sample_area(x, y)` | `float` | दिए गए samples से trapezoidal integration |
-| `sample_slopes(x, y)` | `vector` | हर दो पड़ोसी samples के बीच औसत slope |
+[पूरा हिन्दी संदर्भ](/hi/language/scientific-kernels-alpha4) और [चलने वाले उदाहरण](/hi/examples/) देखें। Compiler अपने मूल regression fixtures रखता है।
 
-**ये फ़ंक्शन प्रकाशित alpha.3 में उपलब्ध नहीं हैं।**
-किसी नए compatible compiler build के परीक्षण और आधिकारिक प्रकाशन
-के बाद ही इन्हें released APIs मानना चाहिए।
-[merged compiler के code और tests](https://github.com/scarp-lang/scarp/pull/153/files)
-देख सकते हैं।
+## Alpha.5 का विकास, अभी प्रकाशित नहीं
 
-दोनों inputs की लंबाई बराबर और कम-से-कम 2 होनी चाहिए। Coordinates
-strictly increasing होने चाहिए। ये numerical estimates हैं, symbolic
-differentiation या बिल्कुल सही गणितीय integration का दावा नहीं करते।
-
-[Compiler PR #155](https://github.com/scarp-lang/scarp/pull/155) भी
-**main में merge हो चुका है**। इसमें `sample_cumulative_area(x, y) -> vector`
-हर sample तक जमा हुआ integral देता है: पहला परिणाम शून्य और आख़िरी कुल
-integral होता है (जब परिणाम finite और representable हों)।
-**ये तीनों functions अभी प्रकाशित alpha.3 में उपलब्ध नहीं हैं।**
+`pearson_correlation` तथा nucleus/top-p selection आगामी `v0.0.6-alpha.5` के **अप्रकाशित source candidate** में विकसित हो रहे हैं। प्रकाशित alpha.4 binary में इन्हें उपलब्ध न बताएँ। `scarp.math`, `scarp.tensor`, `scarp.science` और `scarp.ai` अभी import करने योग्य released namespaces नहीं हैं।
 
 ## आगे काम का सही क्रम
 
@@ -56,7 +30,7 @@ integral होता है (जब परिणाम finite और representa
 केवल **प्रस्तावित नाम** हैं; उन्हें अभी import नहीं किया जा सकता।
 
 गहराई से योजना के लिए
-[compiler proposal 0038](https://github.com/scarp-lang/scarp/pull/153/files),
+[compiler proposal 0038](https://github.com/scarp-lang/scarp/blob/main/docs/proposals/0038-scientific-computing-ecosystem.md),
 और आज उपलब्ध features के लिए
 [वेक्टर/टाइल](/hi/language/numerics) तथा
 [built-ins](/hi/reference/library) देखें।
