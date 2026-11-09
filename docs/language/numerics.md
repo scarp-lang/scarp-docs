@@ -48,6 +48,8 @@ The [alpha.2 collections and numeric-learning tutorial](/tutorials/alpha2-collec
 
 The published [v0.0.6-alpha.4 numerical-kernels guide](/language/scientific-kernels-alpha4) documents `sample_area`, `sample_slopes`, `sample_cumulative_area`, `cosine_similarity`, temperature softmax and deterministic Top-K, with exact tagged compiler fixtures and [runnable lessons](https://github.com/scarp-lang/scarp-by-example/pull/57). These functions do not exist in older v0.0.6-alpha.3 binaries where applicable. The [scientific computing roadmap](/project/scientific-computing) separately lists unshipped symbolic calculus, tensor/autodiff and full AI framework plans.
 
+The next [published v0.0.6-alpha.5 scientific guide](/language/scientific-kernels-alpha5) adds centered Pearson correlation and deterministic Top-P, with exact-source programs, numerical-domain checks and bounded resource use. Those operations do not retroactively exist in alpha.4, and Top-P does **not** perform stochastic sampling.
+
 ## Limits and errors
 
 Indexing is bounds-checked. Invalid shapes, nonfinite results, and numerical payload-budget exhaustion produce diagnostics rather than silently returning invalid data. Each vector/tile element is a finite 64-bit float; some operations materialize new buffers and consume the cumulative vector-byte budget.

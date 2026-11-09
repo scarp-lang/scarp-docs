@@ -57,4 +57,8 @@ scarp launch project
 assert.deepEqual(checkSnippetPolicy(publishedAlpha4), [])
 assert.equal(checkSnippetPolicy(publishedAlpha4.replace('scarp exec examples/hello.srp', 'scarp compile examples/hello.srp')).length, 1)
 assert.equal(checkSnippetPolicy(publishedAlpha4.replace('v0.0.6-alpha.4', 'v0.0.6-alpha.0')).length, 5)
+const publishedAlpha5 = publishedAlpha4.replace('v0.0.6-alpha.4', 'v0.0.6-alpha.5')
+assert.deepEqual(checkSnippetPolicy(publishedAlpha5), [])
+assert.equal(checkSnippetPolicy(publishedAlpha5.replace('scarp exec examples/hello.srp', 'scarp compile examples/hello.srp')).length, 1)
+
 console.log('PASS: executable Scarp and shell examples reject deprecated syntax without flagging prose, quotes or comments')
