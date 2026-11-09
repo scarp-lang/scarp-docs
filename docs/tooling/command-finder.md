@@ -10,7 +10,7 @@ Use the interactive tool below to select **the exact published compiler version*
 
 First confirm your actual executable. On alpha.3 and later, use `scarp version`; for alpha.1/alpha.2, use `scarp --version`. Replace `FILE.srp` with the path to a source file and `PROJECT_DIRECTORY` with the path of an existing project containing `Scarp.project`. For `scarp create demo`, choose a **new, nonexistent** directory; that command writes a scaffold and refuses to overwrite existing files.
 
-The command finder is **client-side and offline after the page loads**. It does not query GitHub, detect the executable on your computer, run Scarp programs or read your files. Its reference links point to separately verified release documentation. The **latest published release is [v0.0.6-alpha.4](/releases/v0.0.6-alpha.4)**, not the compiler's moving `main` branch.
+The command finder is **client-side and offline after the page loads**. It does not query GitHub, detect the executable on your computer, run Scarp programs or read your files. Its reference links point to separately verified release documentation. The **latest published release is [v0.0.6-alpha.5](/releases/v0.0.6-alpha.5)**, not the compiler's moving `main` branch.
 
 ## Where the release boundaries come from
 
@@ -35,3 +35,7 @@ The previous published compiler [v0.0.6-alpha.3](/releases/v0.0.6-alpha.3) remai
 ## Alpha.4 scientific functions
 
 The published [v0.0.6-alpha.4](/releases/v0.0.6-alpha.4) adds `sample_area`, `sample_cumulative_area`, `sample_slopes` and `cosine_similarity`, but **no new CLI subcommands**. The restricted ELF64 object emitter is a Rust API, not a general native executable compiler or `scarp compile` command.
+
+## Alpha.5 scientific APIs
+
+Published [v0.0.6-alpha.5](/releases/v0.0.6-alpha.5) adds `top_p`, `top_p_values` and `pearson_correlation` without new CLI subcommands. Narrow ELF64 object generation is a Rust embedding API, **not** a `scarp compile` command. See [Top-P](/language/nucleus-selection-alpha5) and [Pearson correlation](/language/pearson-correlation-alpha5).

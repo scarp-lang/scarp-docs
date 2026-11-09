@@ -10,7 +10,7 @@ Scarp के प्रयोगात्मक compiler releases में CLI �
 
 पहले असली binary का version जाँचें। Alpha.3 या नए compiler में `scarp version` और alpha.1/alpha.2 में `scarp --version` चलाएँ। `FILE.srp` की जगह अपनी source file का path दें। `PROJECT_DIRECTORY` की जगह `Scarp.project` manifest वाला स्पष्ट project folder दें। `scarp create demo` चलाने से **नया folder** बनता है; यह पुराने folder को overwrite नहीं करता।
 
-यह widget पेज लोड होने के बाद **browser में ही काम करता है**। यह GitHub से data नहीं माँगता, आपके कंप्यूटर का executable नहीं पहचानता, आपकी files नहीं पढ़ता और Scarp code execute नहीं करता। इसके links अलग-अलग प्रकाशित releases के जाँचे हुए संदर्भों तक ले जाते हैं। **नवीनतम प्रकाशित release [v0.0.6-alpha.4](/hi/releases/v0.0.6-alpha.4)** है; compiler की बदलती `main` branch नहीं।
+यह widget पेज लोड होने के बाद **browser में ही काम करता है**। यह GitHub से data नहीं माँगता, आपके कंप्यूटर का executable नहीं पहचानता, आपकी files नहीं पढ़ता और Scarp code execute नहीं करता। इसके links अलग-अलग प्रकाशित releases के जाँचे हुए संदर्भों तक ले जाते हैं। **नवीनतम प्रकाशित release [v0.0.6-alpha.5](/hi/releases/v0.0.6-alpha.5)** है; compiler की बदलती `main` branch नहीं।
 
 ## अलग-अलग commands पहली बार कब आए?
 
@@ -35,3 +35,7 @@ Alpha.2 पुराने `run` command के लिए चुना जा �
 ## Alpha.4 में वैज्ञानिक functions
 
 प्रकाशित [v0.0.6-alpha.4](/hi/releases/v0.0.6-alpha.4) में `sample_area`, `sample_cumulative_area`, `sample_slopes` और `cosine_similarity` उपलब्ध हैं। कोई नया CLI command नहीं आया। सीमित ELF64 emitter सिर्फ Rust API है, सामान्य native compiler या `scarp compile` नहीं।
+
+## Alpha.5 में नई scientific APIs
+
+प्रकाशित [v0.0.6-alpha.5](/hi/releases/v0.0.6-alpha.5) में `top_p`, `top_p_values` और `pearson_correlation` जुड़े हैं। नया CLI subcommand **नहीं** आया; सीमित ELF64 object केवल Rust API से बनता है, `scarp compile` से नहीं। [Top-P](/hi/language/nucleus-selection-alpha5) और [Pearson](/hi/language/pearson-correlation-alpha5) देखें।
