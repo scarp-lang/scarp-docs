@@ -51,4 +51,14 @@ for (const p of ['docs/releases/' + tag + '.md', 'docs/hi/releases/' + tag + '.m
 for (const index of ['docs/index.md','docs/hi/index.md']) {
   assert.ok(read(index).includes('releases/' + tag), index + ': stale homepage version')
 }
+for (const p of [
+  'README.md', 'docs/guide/learning-path.md', 'docs/hi/guide/learning-path.md',
+  'docs/reference/compatibility.md', 'docs/hi/reference/compatibility.md',
+  'docs/guide/search-and-navigation.md', 'docs/hi/guide/search-and-navigation.md'
+]) assert.ok(read(p).includes('releases/' + tag), p + ': missing current compiler release')
+
+assert.ok(!read('docs/hi/guide/learning-path.md')
+  .includes('[v0.0.6-alpha.6](/hi/releases/v0.0.6-alpha.5)'),
+  'Hindi learning path points at an older binary')
+
 console.log('PASS: published alpha.6 bilingual release, official archive/checksum links, four paired guides, and code parity')
