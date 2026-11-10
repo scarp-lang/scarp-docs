@@ -1,6 +1,6 @@
 # Scientific computing and AI — shipped kernels and future direction
 
-**Latest published experimental compiler:** [v0.0.6-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.4), released 8 November 2026. This page describes both available primitives and future proposals; it is **not** a claim that a scientific standard library has been released.
+**Latest published experimental compiler:** [v0.0.6-alpha.6](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.6), released 10 November 2026. This page describes both available primitives and future proposals; it is **not** a claim that a scientific standard library has been released.
 
 Scarp includes immutable finite-float vectors, numeric tiles, matrix operations, a selection of statistics, stable softmax/ranking, explicit loss-gradient primitives and the published sampled calculus/cosine similarity kernels. The current interpreter is bounded. An experimental Rust-hosted C11 emitter and limited ELF64 integer object writer do **not** constitute general native compilation, GPU tensors, automatic differentiation, or neural-network training.
 
@@ -12,9 +12,11 @@ Sampled calculus requires finite equally sized coordinate/value vectors with at 
 
 See the version-pinned [public API guide](/language/scientific-kernels-alpha4) and the [runnable example catalog](/examples/) for full examples and outputs. The compiler retains its original regression fixtures.
 
-## Post-alpha.4 development (not published)
+## Published alpha.5 numerical functions and alpha.6 language foundations
 
-`pearson_correlation` and nucleus/top-p selection are being developed for the **unpublished** `v0.0.6-alpha.5` source candidate. Do not include them in examples claiming compatibility with the published alpha.4 artifacts. No `scarp.math`, `scarp.tensor`, `scarp.science` or `scarp.ai` importable namespaces exist as released libraries.
+The [published v0.0.6-alpha.5 numerical guide](/language/scientific-kernels-alpha5) covers `pearson_correlation`, deterministic `top_p` and `top_p_values`. **None is available in the older alpha.4 binary**. Top-P ranks candidates; it does not implement random sampling. The separately published [v0.0.6-alpha.6 release](/releases/v0.0.6-alpha.6) adds [bounded input](/language/program-input-alpha6), [explicit text conversions](/language/text-foundations-alpha6) and [tuples](/language/tuples-alpha6). These are general-language foundations, not a new scientific library.
+
+No `scarp.math`, `scarp.tensor`, `scarp.science` or `scarp.ai` importable namespaces exist as released libraries. Treat the scientific ecosystem proposal below as **planned**, not as an executable API.
 
 ## Architecture and dependency order
 

@@ -1,6 +1,6 @@
 # Scientific Computing और AI — प्रकाशित सुविधाएँ और आगे की योजना
 
-**नवीनतम प्रकाशित प्रायोगिक कंपाइलर:** [v0.0.6-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.4), 8 नवंबर 2026। यह पृष्ठ प्रकाशित संख्यात्मक सुविधाओं और भविष्य के प्रस्तावों को अलग-अलग बताता है।
+**नवीनतम प्रकाशित प्रायोगिक कंपाइलर:** [v0.0.6-alpha.6](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.6), 10 नवंबर 2026। यह पृष्ठ प्रकाशित संख्यात्मक सुविधाओं और भविष्य के प्रस्तावों को अलग-अलग बताता है।
 
 Scarp में immutable finite-float vectors, numeric tiles, matrix operations, कुछ statistical functions, softmax/ranking और स्पष्ट loss-gradient primitives हैं। अब sampled calculus और cosine similarity भी प्रकाशित alpha.4 में उपलब्ध हैं। Compiler का experimental Rust interpreter तथा सीमित Rust-hosted C11/ELF64 सुविधाएँ पूर्ण native compiler, GPU runtime या automatic differentiation नहीं बनातीं।
 
@@ -12,9 +12,11 @@ Integration वाले दोनों inputs की लंबाई बरा
 
 [पूरा हिन्दी संदर्भ](/hi/language/scientific-kernels-alpha4) और [चलने वाले उदाहरण](/hi/examples/) देखें। Compiler अपने मूल regression fixtures रखता है।
 
-## Alpha.5 का विकास, अभी प्रकाशित नहीं
+## प्रकाशित alpha.5 के numerical functions और alpha.6 की बुनियाद
 
-`pearson_correlation` तथा nucleus/top-p selection आगामी `v0.0.6-alpha.5` के **अप्रकाशित source candidate** में विकसित हो रहे हैं। प्रकाशित alpha.4 binary में इन्हें उपलब्ध न बताएँ। `scarp.math`, `scarp.tensor`, `scarp.science` और `scarp.ai` अभी import करने योग्य released namespaces नहीं हैं।
+[प्रकाशित v0.0.6-alpha.5 का वैज्ञानिक संदर्भ](/hi/language/scientific-kernels-alpha5) `pearson_correlation`, निश्चित `top_p` तथा `top_p_values` समझाता है। ये **पुराने alpha.4 binary में उपलब्ध नहीं** हैं। Top-P केवल candidates को rank करता है, random sampling नहीं करता। अलग प्रकाशित [v0.0.6-alpha.6](/hi/releases/v0.0.6-alpha.6) में [सीमित input](/hi/language/program-input-alpha6), [text conversion](/hi/language/text-foundations-alpha6) और [tuples](/hi/language/tuples-alpha6) आए हैं। ये सामान्य भाषा की सुविधाएँ हैं, नई scientific standard library नहीं।
+
+`scarp.math`, `scarp.tensor`, `scarp.science` और `scarp.ai` नाम के importable modules अभी **प्रकाशित नहीं** हुए हैं। नीचे की ecosystem योजना को भविष्य का प्रस्ताव समझें, उपलब्ध API नहीं।
 
 ## आगे काम का सही क्रम
 

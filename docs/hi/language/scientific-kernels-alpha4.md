@@ -31,7 +31,7 @@ print(topk(softmax_temp(logits, 0.5), 3));
 [integer: 1, 2, 3]
 ~~~
 
-Temperature सीमित और शून्य से बड़ा होना चाहिए। Top-K यादृच्छिक sampling नहीं करता। [उदाहरण 12](https://github.com/scarp-lang/scarp-by-example/blob/main/examples/06-ai-foundations/12-temperature-softmax.srp) देखें।
+Temperature सीमित और शून्य से बड़ा होना चाहिए। Top-K यादृच्छिक sampling नहीं करता। [उदाहरण 12](https://github.com/scarp-lang/scarp-by-example/blob/content-migration-alpha4-20261109/examples/06-ai-foundations/12-temperature-softmax.srp) देखें।
 
 ## कोसाइन समानता
 
@@ -50,7 +50,7 @@ print(cosine_similarity([3.0], [-4.0]));
 -1.0
 ~~~
 
-दोनों वेक्टरों की लंबाई बराबर और शून्य से अधिक होनी चाहिए, और कोई भी पूरा zero vector नहीं हो सकता। [उदाहरण 13](https://github.com/scarp-lang/scarp-by-example/blob/main/examples/06-ai-foundations/13-cosine-similarity.srp) देखें।
+दोनों वेक्टरों की लंबाई बराबर और शून्य से अधिक होनी चाहिए, और कोई भी पूरा zero vector नहीं हो सकता। [उदाहरण 13](https://github.com/scarp-lang/scarp-by-example/blob/content-migration-alpha4-20261109/examples/06-ai-foundations/13-cosine-similarity.srp) देखें।
 
 ## नमूनों का संचयी क्षेत्रफल
 
@@ -68,7 +68,7 @@ print(sample_area(time, speed));
 16.0
 ~~~
 
-दोनों वेक्टरों में कम-से-कम दो मान, समान लंबाई और समय जैसे x निर्देशांकों में सख्ती से बढ़ता क्रम होना चाहिए। यह numerical integration है, symbolic calculus नहीं। [उदाहरण 14](https://github.com/scarp-lang/scarp-by-example/blob/main/examples/06-ai-foundations/14-sample-cumulative-area.srp) देखें।
+दोनों वेक्टरों में कम-से-कम दो मान, समान लंबाई और समय जैसे x निर्देशांकों में सख्ती से बढ़ता क्रम होना चाहिए। यह numerical integration है, symbolic calculus नहीं। [उदाहरण 14](https://github.com/scarp-lang/scarp-by-example/blob/content-migration-alpha4-20261109/examples/06-ai-foundations/14-sample-cumulative-area.srp) देखें।
 
 ## दो और सत्यापित अभ्यास
 

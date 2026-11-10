@@ -33,7 +33,7 @@ Expected output:
 [integer: 1, 2, 3]
 ~~~
 
-Temperature must be finite and strictly positive. `topk` chooses indices deterministically; it does not draw random samples. [Run lesson 12](https://github.com/scarp-lang/scarp-by-example/blob/main/examples/06-ai-foundations/12-temperature-softmax.srp) once the linked course PR is merged.
+Temperature must be finite and strictly positive. `topk` chooses indices deterministically; it does not draw random samples. [Run lesson 12](https://github.com/scarp-lang/scarp-by-example/blob/content-migration-alpha4-20261109/examples/06-ai-foundations/12-temperature-softmax.srp) in the linked draft course branch (PR #57); it is not yet deployed on the course site.
 
 ## 2. Cosine similarity
 
@@ -52,7 +52,7 @@ Expected output:
 -1.0
 ~~~
 
-Operands require equal nonzero lengths and nonzero finite vectors. Similarity is not a metric search index or a trained embedding model. [Lesson 13](https://github.com/scarp-lang/scarp-by-example/blob/main/examples/06-ai-foundations/13-cosine-similarity.srp) and its `.stdout` preserve the published compiler fixture.
+Operands require equal nonzero lengths and nonzero finite vectors. Similarity is not a metric search index or a trained embedding model. [Lesson 13](https://github.com/scarp-lang/scarp-by-example/blob/content-migration-alpha4-20261109/examples/06-ai-foundations/13-cosine-similarity.srp) and its `.stdout` preserve the published compiler fixture.
 
 ## 3. Cumulative area of sampled measurements
 
@@ -70,7 +70,7 @@ Expected output:
 16.0
 ~~~
 
-These functions require equally sized finite vectors with at least two observations and **strictly increasing** coordinate samples. This is sampled numerical integration, not symbolic calculus. [Lesson 14](https://github.com/scarp-lang/scarp-by-example/blob/main/examples/06-ai-foundations/14-sample-cumulative-area.srp) provides the unchanged tagged source.
+These functions require equally sized finite vectors with at least two observations and **strictly increasing** coordinate samples. This is sampled numerical integration, not symbolic calculus. [Lesson 14](https://github.com/scarp-lang/scarp-by-example/blob/content-migration-alpha4-20261109/examples/06-ai-foundations/14-sample-cumulative-area.srp) provides the unchanged tagged source.
 
 ## Further compiler-tested exercises
 

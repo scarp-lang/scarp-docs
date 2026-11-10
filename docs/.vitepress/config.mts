@@ -56,7 +56,7 @@ export default defineConfig({
           { text: 'इंस्टॉल', link: '/hi/releases/v0.0.6-alpha.5' },
           { text: 'उदाहरण', link: '/hi/examples/' },
           { text: 'रिलीज़', items: [
-            { text: 'नवीनतम: v0.0.6-alpha.5', link: '/hi/releases/v0.0.6-alpha.5' },
+            { text: 'नवीनतम: v0.0.6-alpha.6', link: '/hi/releases/v0.0.6-alpha.6' },
             { text: 'पिछली v0.0.6-alpha.4 रिलीज़', link: '/hi/releases/v0.0.6-alpha.4' },
             { text: 'पुरानी v0.0.6-alpha.1 रिलीज़', link: '/hi/releases/v0.0.6-alpha.1' },
             { text: 'CLI (alpha.6)', link: '/hi/tooling/cli-alpha6' },
@@ -203,7 +203,7 @@ export default defineConfig({
       { text: 'Install', link: '/releases/v0.0.6-alpha.5' },
       { text: 'Examples', link: '/examples/' },
       { text: 'Releases', items: [
-        { text: 'Latest: v0.0.6-alpha.5', link: '/releases/v0.0.6-alpha.5' },
+        { text: 'Latest: v0.0.6-alpha.6', link: '/releases/v0.0.6-alpha.6' },
         { text: 'Previous v0.0.6-alpha.4', link: '/releases/v0.0.6-alpha.4' },
         { text: 'Historical v0.0.6-alpha.1', link: '/releases/v0.0.6-alpha.1' },
         { text: 'CLI (alpha.6)', link: '/tooling/cli-alpha6' },

@@ -1,6 +1,6 @@
 # Quickstart: your first Scarp project (v0.0.5-alpha.4)
 ::: tip Latest published compiler
-New installs should use the [published v0.0.6-alpha.5 release and checksums](/releases/v0.0.6-alpha.5), [current first-program guide](/guide/first-program-alpha4) and [release-aware learning path](/guide/learning-path). This historical **v0.0.5-alpha.4** project page is intentionally pinned to its original generator, binary and stdout.
+New installs should use the [published v0.0.6-alpha.6 release and checksums](/releases/v0.0.6-alpha.6), [release-pinned alpha.4 first-program guide](/guide/first-program-alpha4) and [release-aware learning path](/guide/learning-path). This historical **v0.0.5-alpha.4** project page is intentionally pinned to its original generator, binary and stdout.
 :::
 
 
