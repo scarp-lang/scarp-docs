@@ -53,10 +53,12 @@ export default defineConfig({
         // Historic releases, CLI reference and the remaining guides live in sidebar.
         nav: [
           { text: 'सीखें', link: '/hi/guide/learning-path' },
-          { text: 'इंस्टॉल', link: '/hi/guide/installation-alpha6' },
+          { text: 'इंस्टॉल', link: '/hi/releases/v0.0.6-alpha.5' },
           { text: 'उदाहरण', link: '/hi/examples/' },
           { text: 'रिलीज़', items: [
-            { text: 'नवीनतम: v0.0.6-alpha.1', link: '/hi/releases/v0.0.6-alpha.1' },
+            { text: 'नवीनतम: v0.0.6-alpha.6', link: '/hi/releases/v0.0.6-alpha.6' },
+            { text: 'पिछली v0.0.6-alpha.4 रिलीज़', link: '/hi/releases/v0.0.6-alpha.4' },
+            { text: 'पुरानी v0.0.6-alpha.1 रिलीज़', link: '/hi/releases/v0.0.6-alpha.1' },
             { text: 'CLI (alpha.6)', link: '/hi/tooling/cli-alpha6' },
             { text: 'CLI (alpha.5)', link: '/hi/tooling/cli-alpha5' },
             { text: 'CLI (alpha.4)', link: '/hi/tooling/cli-alpha4' },
@@ -92,7 +94,8 @@ export default defineConfig({
             { text: 'Alpha.3 से alpha.4 माइग्रेशन', link: '/hi/guide/migrate-alpha3-to-alpha4' },
             { text: 'पुराना इंस्टॉलेशन (alpha.5)', link: '/hi/guide/installation-alpha5' },
             { text: 'इंस्टॉलेशन (alpha.4)', link: '/hi/guide/installation' },
-            { text: 'पहला प्रोग्राम', link: '/hi/guide/first-program' },
+            { text: 'पहला प्रोग्राम (v0.0.6-alpha.4)', link: '/hi/guide/first-program-alpha4' },
+            { text: 'पहला प्रोग्राम (पुराना v0.0.5-alpha.1)', link: '/hi/guide/first-program' },
             { text: 'सरल शब्दावली', link: '/hi/guide/glossary' },
             { text: 'फ़ंक्शन अभ्यास (सत्यापित)', link: '/hi/tutorials/verified-functions' },
             { text: 'लूप ट्यूटोरियल', link: '/hi/tutorials/repeat-and-loops' },
@@ -120,6 +123,8 @@ export default defineConfig({
             { text: 'आउटपुट', link: '/hi/language/output' },
             { text: 'मेमोरी', link: '/hi/language/memory' },
             { text: 'वैक्टर और टाइल', link: '/hi/language/numerics' },
+            { text: 'नए Pearson/Top-P (v0.0.6-alpha.5)', link: '/hi/language/scientific-kernels-alpha5' },
+            { text: 'पहले के वैज्ञानिक फ़ंक्शन (alpha.4)', link: '/hi/language/scientific-kernels-alpha4' },
             { text: 'RMS (alpha.6)', link: '/hi/language/rms-alpha6' }
           ] },
           { text: 'टूलिंग और संदर्भ', items: [
@@ -195,10 +200,12 @@ export default defineConfig({
     // Every long-form guide and historical reference stays in the sidebar.
     nav: [
       { text: 'Learn', link: '/guide/learning-path' },
-      { text: 'Install', link: '/guide/installation-alpha6' },
+      { text: 'Install', link: '/releases/v0.0.6-alpha.5' },
       { text: 'Examples', link: '/examples/' },
       { text: 'Releases', items: [
-        { text: 'Published alpha.6 release', link: '/releases/v0.0.6-alpha.1' },
+        { text: 'Latest: v0.0.6-alpha.6', link: '/releases/v0.0.6-alpha.6' },
+        { text: 'Previous v0.0.6-alpha.4', link: '/releases/v0.0.6-alpha.4' },
+        { text: 'Historical v0.0.6-alpha.1', link: '/releases/v0.0.6-alpha.1' },
         { text: 'CLI (alpha.6)', link: '/tooling/cli-alpha6' },
         { text: 'CLI (alpha.5)', link: '/tooling/cli-alpha5' },
         { text: 'CLI (alpha.4)', link: '/tooling/cli-alpha4' },
@@ -236,7 +243,8 @@ export default defineConfig({
         { text: 'Upgrade: alpha.3 to alpha.4', link: '/guide/migrate-alpha3-to-alpha4' },
         { text: 'Historical installation (alpha.5)', link: '/guide/installation-alpha5' },
         { text: 'Installation (alpha.4)', link: '/guide/installation' },
-        { text: 'Your first program', link: '/guide/first-program' },
+        { text: 'First program (v0.0.6-alpha.4)', link: '/guide/first-program-alpha4' },
+        { text: 'First program (historical v0.0.5-alpha.1)', link: '/guide/first-program' },
         { text: 'Glossary for beginners', link: '/guide/glossary' },
         { text: 'Verified functions tutorial', link: '/tutorials/verified-functions' },
         { text: 'Repeat and while tutorial', link: '/tutorials/repeat-and-loops' },
@@ -264,6 +272,8 @@ export default defineConfig({
         { text: 'Output streams', link: '/language/output' },
         { text: 'Memory and lifetimes', link: '/language/memory' },
         { text: 'Vectors and tiles', link: '/language/numerics' },
+            { text: 'Pearson and Top-P (v0.0.6-alpha.5)', link: '/language/scientific-kernels-alpha5' },
+        { text: 'Published scientific kernels (alpha.4)', link: '/language/scientific-kernels-alpha4' },
         { text: 'RMS numerics (alpha.6)', link: '/language/rms-alpha6' }
       ] },
       { text: 'Tools and reference', items: [

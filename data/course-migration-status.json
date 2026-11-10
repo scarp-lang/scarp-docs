@@ -1,0 +1,21 @@
+{
+  "courseRepository": "scarp-lang/scarp-by-example",
+  "pullRequest": 57,
+  "state": "draft",
+  "ref": "content-migration-alpha4-20261109",
+  "compilerPins": {
+    "v0.0.6-alpha.4": "f04be0758cbce405ddcdb229699b0ff83c09d207",
+    "v0.0.6-alpha.5": "205e92f166f186c3905e5880d41c31717b697b8e"
+  },
+  "alpha4Lessons": [
+    "examples/06-ai-foundations/12-temperature-softmax.srp",
+    "examples/06-ai-foundations/13-cosine-similarity.srp",
+    "examples/06-ai-foundations/14-sample-cumulative-area.srp",
+    "examples/04-collections/13-sampled-calculus.srp",
+    "examples/06-ai-foundations/15-topk-ranking.srp"
+  ],
+  "alpha5Lessons": [
+    "examples/04-collections/14-pearson-correlation.srp",
+    "examples/06-ai-foundations/16-nucleus-selection.srp"
+  ]
+}

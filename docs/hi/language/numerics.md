@@ -34,12 +34,11 @@ print(matvec(weights, [2.0, 1.0])); // [4.0, 1.0]
 
 [Alpha.2 collections और probability tutorial](/hi/tutorials/alpha2-collections-and-learning) में immutable integer collections, stable score selection, numerically stable probability और स्पष्ट loss gradient के चार पूरे tagged programs मिलते हैं। इन्हें नए alpha.2 compiler के विरुद्ध अलग CI job में सत्यापित किया जाता है। यह automatic differentiation या पूरा neural-network training loop नहीं है।
 
-## Scientific computing — आने वाला विकास
+## प्रकाशित numerical kernels और भविष्य की योजना
 
-[वैज्ञानिक कंप्यूटिंग की योजना](/hi/project/scientific-computing)
-में लागू vector/matrix सुविधाएँ और भविष्य के calculus, tensor तथा AI
-features अलग-अलग बताए गए हैं। Compiler PR #153 के sampled-calculus
-functions अभी प्रकाशित alpha.3 में **उपलब्ध नहीं** हैं।
+[प्रकाशित v0.0.6-alpha.4 numerical guide](/hi/language/scientific-kernels-alpha4) में `sample_area`, `sample_slopes`, `sample_cumulative_area`, `cosine_similarity`, temperature softmax और deterministic Top-K की सीमाएँ और वास्तविक compiler fixtures हैं। [चलने योग्य नए अभ्यास](https://github.com/scarp-lang/scarp-by-example/pull/57) अलग review में हैं। पहले के v0.0.6-alpha.3 binaries में नई alpha.4 सुविधाएँ नहीं हैं। [वैज्ञानिक कंप्यूटिंग roadmap](/hi/project/scientific-computing) में अभी अनिर्मित symbolic calculus, tensor/autodiff और बड़े AI-framework के विचार अलग रखे गए हैं।
+
+इसके बाद [प्रकाशित v0.0.6-alpha.5 वैज्ञानिक गाइड](/hi/language/scientific-kernels-alpha5) में Pearson correlation और निश्चित Top-P ranking जुड़ी हैं। वास्तविक Scarp स्रोत, सटीक stdout, numerical constraints तथा resource budget इस अलग दस्तावेज़ में हैं। ये alpha.4 binary में नहीं हैं; Top-P random sampling नहीं करता।
 
 ## आकार और संसाधन सीमा
 

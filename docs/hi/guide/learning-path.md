@@ -8,6 +8,8 @@
 
 **नवीनतम compiler:** प्रकाशित [v0.0.6-alpha.6](/hi/releases/v0.0.6-alpha.6) में सीमित redirected input, explicit text/number conversion और immutable tuples जुड़े हैं। नई [input](/hi/language/program-input-alpha6), [text](/hi/language/text-foundations-alpha6) और [tuples](/hi/language/tuples-alpha6) मार्गदर्शिकाएँ बुनियादी पाठों के बाद पढ़ें। पुरानी [alpha.5](/hi/releases/v0.0.6-alpha.5) में Top-P और Pearson correlation आए थे। नीचे का alpha.1 symbol-navigation पाठ अपने मूल सत्यापित examples पर आधारित है।
 
+**पुरानी प्रकाशित versions सीखें:** [alpha.5 की प्रमाणित API guide](/hi/releases/v0.0.6-alpha.5), [v0.0.6-alpha.4 का first-program guide](/hi/guide/first-program-alpha4) और [Scarp by Example पाठ्यक्रम](https://github.com/scarp-lang/scarp-by-example) देखें। ये पुराने tagged compiler examples हैं; `scarp verify FILE.srp` और `scarp exec FILE.srp` का प्रयोग उसी दस्तावेज़ में दिए version से करें। सात ऐतिहासिक चरण अपनी मूल releases से पिन किए गए हैं।
+
 **Scarp पहली बार सीख रहे हैं तो यहाँ से शुरुआत करें।** यह मार्गदर्शिका शुरुआती प्रोग्राम से numerical examples, source modules, project और **[प्रकाशित v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1)** में आए symbol-navigation tools तक पहुँचाती है। हर पाठ के examples compiler के वास्तविक परीक्षणों पर आधारित हैं।
 
 Scarp अभी **experimental prerelease** है। ऐसा **कोई प्रमाण नहीं** कि हर पुराने tutorial का code एक ही नए binary में बिना बदलाव चलेगा। इसलिए **पढ़ाई इसी क्रम में करें**, लेकिन code चलाते समय **उस tutorial का बताया हुआ exact release** प्रयोग करें या दूसरे release पर स्वयं जाँचें। मुख्य भाषा-संदर्भ अभी v0.0.5-alpha.1 से सत्यापित है; नए features अलग release-specific पाठ में लिखे हैं।

@@ -59,6 +59,8 @@ mutate('compatibilityEnglish','aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8','wrong-
 mutate('introEnglish','tag/'+LATEST_RELEASE,'tag/v0.0.6-alpha.3')
 mutate('introHindi','tag/'+LATEST_RELEASE,'tag/v0.0.6-alpha.3')
 
+mutate('compatibilityHindi','[v0.0.6-alpha.6](/hi/releases/v0.0.6-alpha.6)',
+  '[v0.0.6-alpha.1](/hi/releases/v0.0.6-alpha.1)')
 mutate('compatibilityHindi','[v0.0.6-alpha.3](/hi/releases/v0.0.6-alpha.3)',
   '[v0.0.6-alpha.1](/hi/releases/v0.0.6-alpha.1)')
 mutate('examplesEnglish','](/guide/learning-path)','](/guide/removed)')

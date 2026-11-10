@@ -1,44 +1,22 @@
-# Scientific computing and AI — proposed direction
+# Scientific computing and AI — shipped kernels and future direction
 
-**Development proposal, not a released Scarp library.** The latest verified
-public compiler prerelease is [v0.0.6-alpha.3](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.3).
-Scientific computing remains incremental: no `scarp.math`, `scarp.tensor`,
-`scarp.science` or `scarp.ai` standard-library namespaces are implemented yet.
+**Latest published experimental compiler:** [v0.0.6-alpha.6](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.6), released 10 November 2026. This page describes both available primitives and future proposals; it is **not** a claim that a scientific standard library has been released.
 
-Scarp already supports immutable finite-float vectors, two-axis numeric tiles,
-checked matrix operations, selected statistics, stable softmax, ranking and
-specialized loss-gradient kernels. The language currently executes through
-a bounded Rust interpreter. Its C11 emitter is limited to an experimental,
-Rust-hosted scalar subset; this is **not** general native executable compilation.
-There is no GPU tensor backend, automatic differentiation engine or neural
-network training framework.
+Scarp includes immutable finite-float vectors, numeric tiles, matrix operations, a selection of statistics, stable softmax/ranking, explicit loss-gradient primitives and the published sampled calculus/cosine similarity kernels. The current interpreter is bounded. An experimental Rust-hosted C11 emitter and limited ELF64 integer object writer do **not** constitute general native compilation, GPU tensors, automatic differentiation, or neural-network training.
 
-## Source-only sampled calculus (unreleased)
+## Published sampled calculus and cosine similarity
 
-[Compiler PR #153](https://github.com/scarp-lang/scarp/pull/153)
-was **merged into main** after the published alpha.3 release. It adds two typed pure kernels:
+**Published in v0.0.6-alpha.4:** `sample_area(x, y) -> float`, `sample_slopes(x, y) -> vector`, `sample_cumulative_area(x, y) -> vector`, and `cosine_similarity(left, right) -> float`. Earlier v0.0.6-alpha.3 binaries do **not** contain the sampled calculus or cosine similarity functions.
 
-| Proposed call | Result | Purpose |
-| --- | --- | --- |
-| `sample_area(x, y)` | `float` | Integrate measurements using the composite trapezoidal rule |
-| `sample_slopes(x, y)` | `vector` | Estimate a secant derivative for each adjacent interval |
+Sampled calculus requires finite equally sized coordinate/value vectors with at least two observations and strictly increasing coordinates. It evaluates numerical approximations rather than symbolic integration/differentiation. The cumulative area result starts at zero; on valid finite samples its final result matches total area for the example. Cosine similarity compares two nonzero same-length vectors, returning a finite measure of their relative direction.
 
-These calls are **not part of the published alpha.3 artifacts**. Do not
-copy them into projects built against that published compiler until a newer,
-compatible release is verified. Source code and tests are available in the
-[merged compiler PR](https://github.com/scarp-lang/scarp/pull/153/files).
+See the version-pinned [public API guide](/language/scientific-kernels-alpha4) and the [runnable example catalog](/examples/) for full examples and outputs. The compiler retains its original regression fixtures.
 
-Both functions require equal-length finite-vector inputs with at least two
-entries and strictly increasing coordinates. They are not symbolic
-differentiation, spline fitting or exact integration. The merged code checks numerical overflow, enforces bounded work and
-numerical output allocation, and uses finite binary64 arithmetic.
+## Published alpha.5 numerical functions and alpha.6 language foundations
 
-[Compiler PR #155](https://github.com/scarp-lang/scarp/pull/155) has
-also **merged into main**, adding
-`sample_cumulative_area(x, y) -> vector`: a prefix integral with one result
-per coordinate. Its first value is zero and its final value matches the
-full sampled integral for finite, representable results.
-**All three kernels are available in current source only, not alpha.3.**
+The [published v0.0.6-alpha.5 numerical guide](/language/scientific-kernels-alpha5) covers `pearson_correlation`, deterministic `top_p` and `top_p_values`. **None is available in the older alpha.4 binary**. Top-P ranks candidates; it does not implement random sampling. The separately published [v0.0.6-alpha.6 release](/releases/v0.0.6-alpha.6) adds [bounded input](/language/program-input-alpha6), [explicit text conversions](/language/text-foundations-alpha6) and [tuples](/language/tuples-alpha6). These are general-language foundations, not a new scientific library.
+
+No `scarp.math`, `scarp.tensor`, `scarp.science` or `scarp.ai` importable namespaces exist as released libraries. Treat the scientific ecosystem proposal below as **planned**, not as an executable API.
 
 ## Architecture and dependency order
 
@@ -61,7 +39,7 @@ The long-term module names `scarp.math`, `scarp.stats`,
 and `scarp.signal` are **design candidates**, not importable modules.
 
 For the technical plan and validation requirements see
-[compiler proposal 0038](https://github.com/scarp-lang/scarp/pull/153/files).
+[compiler proposal 0038](https://github.com/scarp-lang/scarp/blob/main/docs/proposals/0038-scientific-computing-ecosystem.md).
 For functionality available today, see [vectors and tiles](/language/numerics)
 and the [built-in reference](/reference/library).
 

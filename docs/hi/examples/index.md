@@ -1,5 +1,18 @@
 # सत्यापित Scarp उदाहरण
 
+## प्रकाशित alpha.4 के नए अभ्यास
+
+चलने वाले `.srp` पाठों का मुख्य स्थान [Scarp by Example](https://github.com/scarp-lang/scarp-by-example) है। कंपाइलर में मूल regression tests बने रहेंगे।
+
+- [पाठ 12 — Temperature softmax](https://github.com/scarp-lang/scarp-by-example/blob/content-migration-alpha4-20261109/examples/06-ai-foundations/12-temperature-softmax.srp)
+- [पाठ 13 — Cosine similarity](https://github.com/scarp-lang/scarp-by-example/blob/content-migration-alpha4-20261109/examples/06-ai-foundations/13-cosine-similarity.srp)
+- [पाठ 14 — नमूनों का संचयी क्षेत्रफल](https://github.com/scarp-lang/scarp-by-example/blob/content-migration-alpha4-20261109/examples/06-ai-foundations/14-sample-cumulative-area.srp)
+- [संग्रह अध्याय पाठ 13 — नमूनों का क्षेत्रफल और ढलान](https://github.com/scarp-lang/scarp-by-example/blob/content-migration-alpha4-20261109/examples/04-collections/13-sampled-calculus.srp)
+- [AI अध्याय पाठ 15 — Top-K रैंकिंग](https://github.com/scarp-lang/scarp-by-example/blob/content-migration-alpha4-20261109/examples/06-ai-foundations/15-topk-ranking.srp)
+
+ये पाठ प्रकाशित compiler `v0.0.6-alpha.4` की source/stdout फ़ाइलों पर आधारित हैं; इनके [माइग्रेशन PR #57](https://github.com/scarp-lang/scarp-by-example/pull/57) को merge होने तक `main` में उपलब्ध न मानें। [फ़ंक्शन का हिन्दी संदर्भ](/hi/language/scientific-kernels-alpha4) भी पढ़ें।
+
+
 ये उदाहरण प्रकाशित compiler `v0.0.5-alpha.1` की fixtures से जुड़े हैं। केवल सिंटैक्स दिखाने के बजाय CI इनके अपेक्षित stdout की **byte-by-byte** तुलना करता है।
 
 ## नवीनतम alpha.6 का पूरा project पाठ
