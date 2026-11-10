@@ -6,7 +6,7 @@
 
 **आपके compiler में कौन सा command उपलब्ध है?** [Version-aware CLI Command Finder](/hi/tooling/command-finder) में installed release और काम चुनें। पुरानी `run` / `check` commands को नए static `verify` या project inspection से न मिलाएँ।
 
-**नवीनतम compiler:** प्रकाशित [v0.0.6-alpha.5](/hi/releases/v0.0.6-alpha.5) में निश्चित Top-P selection और centered Pearson correlation जुड़े हैं। नया CLI command या सामान्य native compiler नहीं आया। पहले बुनियादी चरण पूरे करें, फिर [Top-P पाठ](/hi/language/nucleus-selection-alpha5) और [Pearson पाठ](/hi/language/pearson-correlation-alpha5) पढ़ें। नीचे का alpha.1 symbol-navigation पाठ अपने मूल परीक्षण किए हुए examples पर आधारित है।
+**नवीनतम compiler:** प्रकाशित [v0.0.6-alpha.6](/hi/releases/v0.0.6-alpha.6) में सीमित redirected input, explicit text/number conversion और immutable tuples जुड़े हैं। नई [input](/hi/language/program-input-alpha6), [text](/hi/language/text-foundations-alpha6) और [tuples](/hi/language/tuples-alpha6) मार्गदर्शिकाएँ बुनियादी पाठों के बाद पढ़ें। पुरानी [alpha.5](/hi/releases/v0.0.6-alpha.5) में Top-P और Pearson correlation आए थे। नीचे का alpha.1 symbol-navigation पाठ अपने मूल सत्यापित examples पर आधारित है।
 
 **Scarp पहली बार सीख रहे हैं तो यहाँ से शुरुआत करें।** यह मार्गदर्शिका शुरुआती प्रोग्राम से numerical examples, source modules, project और **[प्रकाशित v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1)** में आए symbol-navigation tools तक पहुँचाती है। हर पाठ के examples compiler के वास्तविक परीक्षणों पर आधारित हैं।
 

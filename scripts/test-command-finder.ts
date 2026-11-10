@@ -30,6 +30,8 @@ assert.strictEqual(legacyCommandFinder.commandAdvice, commandAdvice,
   'Legacy Vue compatibility export must reuse the single framework-neutral selector')
 assert.deepEqual(validateCommandFinder(sources), [])
 assert.equal(LATEST_RELEASE, RELEASES.at(-1)?.tag)
+assert.equal(commandAdvice('v0.0.6-alpha.6', 'run-file').commands[0], 'scarp exec FILE.srp')
+assert.equal(RELEASES.at(-1)?.source, 'cdf6a3924ec2a36c7beca5a9aec4f01a0bce515e')
 const expected = new Map<CommandTask,number>([
   ['run-file',0], ['static-verify',2], ['create-project',3],
   ['inspect-project',4], ['inspect-symbols',5], ['diagnose-host',2], ['inspect-ast',2]
@@ -61,7 +63,7 @@ for (const [index,release] of RELEASES.entries()) {
     }
   }
 }
-assert.equal(combinations,70)
+assert.equal(combinations,77)
 assert.equal(unavailable,18,'release-sensitive unsupported capabilities must stay explicit')
 assert.deepEqual(commandAdvice('v0.0.5-alpha.1','run-file').commands,['scarp run FILE.srp'])
 assert.deepEqual(commandAdvice('v0.0.5-alpha.2','run-file').commands,['scarp run FILE.srp'])
@@ -128,5 +130,5 @@ assert.ok(validateCommandFinder(sources,RELEASES,TASKS,languages as unknown as F
 assert.ok(validateCommandFinder({...sources,hindi:sources.hindi.replace(/[\u0900-\u097f]/gu,'')}).length>0,
   'untranslated Hindi guide must not pass')
 
-console.log('PASS: 70 release/task combinations, '+unavailable+
+console.log('PASS: 77 release/task combinations, '+unavailable+
   ' unavailable states, exact commands, input validation and 21 negative regressions')
