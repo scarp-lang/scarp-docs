@@ -3,9 +3,9 @@
 <!-- scarp-release-status: v0.0.5-alpha.5 -->
 <!-- scarp-main-reference-baseline: v0.0.5-alpha.1 -->
 
-**Latest published compiler: [v0.0.6-alpha.5](/releases/v0.0.6-alpha.5), November 9, 2026.** The general language-reference chapters remain **intentionally pinned to v0.0.5-alpha.1**. Separately verified alpha.2, alpha.3, alpha.4, alpha.5 and alpha.6 features are documented in release-specific guides. **All versions are experimental prereleases**, without guaranteed language compatibility.
+**Latest published compiler: [v0.0.6-alpha.6](/releases/v0.0.6-alpha.6), November 10, 2026.** The general language-reference chapters remain **intentionally pinned to v0.0.5-alpha.1**. Separately verified alpha.2, alpha.3, alpha.4, alpha.5 and alpha.6 features are documented in release-specific guides. **All versions are experimental prereleases**, without guaranteed language compatibility.
 
-For current downloads use the [published alpha.5 archives and checksum pairs](/releases/v0.0.6-alpha.5). The [alpha.1 installation walkthrough](/guide/installation-alpha6) stays pinned to its tagged source. For the older alpha.5 release, start with [published alpha.5 installation](/guide/installation-alpha5) and [alpha.5 CLI](/tooling/cli-alpha5). The earlier [alpha.4 project quickstart](/guide/quickstart-alpha4) remains useful for the unchanged creation workflow. The [alpha.3 CLI reference](/tooling/cli) remains useful for individual file commands. Use the [version compatibility guide](/reference/compatibility) before migrating existing projects.
+For current downloads use the [published v0.0.6-alpha.6 archives and checksum pairs](/releases/v0.0.6-alpha.6). The [alpha.1 installation walkthrough](/guide/installation-alpha6) stays pinned to its tagged source. For the older alpha.5 release, start with [published alpha.5 installation](/guide/installation-alpha5) and [alpha.5 CLI](/tooling/cli-alpha5). The earlier [alpha.4 project quickstart](/guide/quickstart-alpha4) remains useful for the unchanged creation workflow. The [alpha.3 CLI reference](/tooling/cli) remains useful for individual file commands. Use the [version compatibility guide](/reference/compatibility) before migrating existing projects.
 
 ## Published compiler evidence by version
 
@@ -21,6 +21,7 @@ For current downloads use the [published alpha.5 archives and checksum pairs](/r
 | **[v0.0.6-alpha.3](/releases/v0.0.6-alpha.3)** (Nov 7, 2026) | `ceff07d9014f466974e0c9e02fc5d23573f55777` | `topk`, `topk_values`, `softmax_temp`, `logsoftmax_temp`; verified private scalar IR, **no new native CLI** | [Alpha.3 release](/releases/v0.0.6-alpha.3) |
 | **[v0.0.6-alpha.4](/releases/v0.0.6-alpha.4)** (Nov 8, 2026) | `f04be0758cbce405ddcdb229699b0ff83c09d207` | Sampled calculus, cosine similarity and restricted Rust ELF64 object API; **no general native compiler** | [Alpha.4 release](/releases/v0.0.6-alpha.4) |
 | **[v0.0.6-alpha.5](/releases/v0.0.6-alpha.5)** (Nov 9, 2026) | `205e92f166f186c3905e5880d41c31717b697b8e` | Deterministic Top-P, centered Pearson correlation and limited Rust ELF64 object API; **no general native compiler** | [Alpha.5 release](/releases/v0.0.6-alpha.5) |
+| **[v0.0.6-alpha.6](/releases/v0.0.6-alpha.6)** (Nov 10, 2026) | `cdf6a3924ec2a36c7beca5a9aec4f01a0bce515e` | Bounded redirected UTF-8 input, six explicit text/scalar intrinsics and immutable structural tuples; **no interactive prompt or general native CLI** | [Alpha.6 release](/releases/v0.0.6-alpha.6) |
 
 The numbers count **examples in their individual release-specific suites**; they are not a count of all language features, nor a proof that every existing program works in every later compiler. The [alpha.1 → alpha.2 upgrade test](/reference/upgrade-readiness) separately re-runs 11 original programs unchanged with alpha.2; it does **not** establish general alpha.3 backward compatibility.
 

@@ -6,7 +6,8 @@ The language is **prerelease and evolving**. Use the exact executable version ma
 
 | Version | Distinguishing features |
 | --- | --- |
-| **[v0.0.6-alpha.5](/releases/v0.0.6-alpha.5)** | **Latest published (Nov 9, 2026):** deterministic Top-P, centered Pearson correlation and restricted Rust ELF64 object API; no `scarp compile` |
+| **[v0.0.6-alpha.6](/releases/v0.0.6-alpha.6)** | **Latest published (Nov 10, 2026):** bounded redirected input, explicit scalar/text conversions and immutable tuples; no terminal prompt or general native CLI |
+| **[v0.0.6-alpha.5](/releases/v0.0.6-alpha.5)** | **Earlier published (Nov 9):** deterministic Top-P, centered Pearson correlation and restricted Rust ELF64 object API; no `scarp compile` |
 | **[v0.0.6-alpha.4](/releases/v0.0.6-alpha.4)** | **Earlier published (Nov 8):** sampled calculus, cosine similarity and one-binding Rust ELF64 object emitter |
 | **[v0.0.6-alpha.3](/releases/v0.0.6-alpha.3)** | **Earlier published prerelease (Nov 7):** deterministic Top-K scores, temperature softmax and private scalar-IR verification; no new native CLI |
 | **[v0.0.6-alpha.2](/releases/v0.0.6-alpha.2)** | **Previous published prerelease (Nov 6):** optional bounded Rust embedding cache and dependency invalidation APIs; no new Scarp CLI commands or syntax |

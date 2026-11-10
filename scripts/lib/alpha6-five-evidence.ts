@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto'
 import { extractCodeFences } from './code-fences.ts'
+import { RELEASES } from './command-finder.ts'
 
 export const ALPHA65_REF='v0.0.6-alpha.5' as const
 export const ALPHA65_SHA='205e92f166f186c3905e5880d41c31717b697b8e' as const
@@ -34,8 +35,15 @@ export function validateAlpha65Docs(
   if(manifest.compilerRepository!=='scarp-lang/scarp'||
     manifest.compilerRef!==ALPHA65_REF||manifest.compilerCommit!==ALPHA65_SHA||
     manifest.publishedAt!==ALPHA65_PUBLISHED)errors.push('Incorrect published alpha.5 release identity')
-  if(current.compilerRef!==ALPHA65_REF||current.compilerCommit!==ALPHA65_SHA||
-    current.status!=='published-prerelease')errors.push('Latest compiler manifest differs from published alpha.5')
+  // Historical alpha.5 conformance must continue passing when newer official
+  // compiler prereleases are published. The latest-release manifest is checked
+  // independently against GitHub and the command-finder table.
+  const historicalIndex=RELEASES.findIndex(release=>release.tag===ALPHA65_REF)
+  const currentIndex=RELEASES.findIndex(release=>release.tag===current.compilerRef)
+  if(current.status!=='published-prerelease'||currentIndex<historicalIndex||
+    currentIndex<0||RELEASES[currentIndex]?.source!==current.compilerCommit){
+    errors.push('Current published compiler must be alpha.5 or newer with a matching pinned source')
+  }
   const inventory=Object.keys(manifest.fixtures).sort()
   if(JSON.stringify(inventory)!==JSON.stringify([...names].sort()))
     errors.push('Unexpected alpha.5 release fixture inventory')
