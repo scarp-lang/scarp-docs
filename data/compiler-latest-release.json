@@ -1,14 +1,14 @@
 {
   "compilerRepository": "scarp-lang/scarp",
-  "compilerRef": "v0.0.6-alpha.5",
-  "compilerCommit": "205e92f166f186c3905e5880d41c31717b697b8e",
-  "releasedAt": "2026-11-09T11:39:41Z",
+  "compilerRef": "v0.0.6-alpha.6",
+  "compilerCommit": "cdf6a3924ec2a36c7beca5a9aec4f01a0bce515e",
+  "releasedAt": "2026-11-10T12:21:47Z",
   "status": "published-prerelease",
   "historicalReferenceBaseline": "v0.0.5-alpha.1",
   "assets": [
-    "scarp-0.0.6-alpha.5-x86_64-pc-windows-msvc.zip",
-    "scarp-0.0.6-alpha.5-x86_64-unknown-linux-gnu.tar.gz",
-    "scarp-0.0.6-alpha.5-aarch64-apple-darwin.tar.gz",
+    "scarp-0.0.6-alpha.6-x86_64-pc-windows-msvc.zip",
+    "scarp-0.0.6-alpha.6-x86_64-unknown-linux-gnu.tar.gz",
+    "scarp-0.0.6-alpha.6-aarch64-apple-darwin.tar.gz",
     "SHA256SUMS"
   ]
 }
