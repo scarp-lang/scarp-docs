@@ -27,7 +27,7 @@ const latest=(JSON.parse(read('data/compiler-latest-release.json')) as {compiler
 const check=(p=pages,m=manifest,t=latest)=>validateCourseMigrationDocs(p,m,t)
 assert.deepEqual(check(),[])
 const mutate=(k:keyof CourseMigrationPages,from:string,to:string):void=>{
-  const changed=pages[k].replace(from,to)
+  const changed=pages[k].replaceAll(from,to)
   assert.notEqual(changed,pages[k],'bad mutation fixture '+k)
   assert.ok(check({...pages,[k]:changed}).length>0,'mutation escaped: '+k)
 }

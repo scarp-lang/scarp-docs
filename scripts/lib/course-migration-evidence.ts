@@ -64,7 +64,7 @@ export function validateCourseMigrationDocs(
       fail(name+' lesson inventory or order has changed without review')
     }
   }
-  if(!/^v\\d+\\.\\d+\\.\\d+-(?:alpha|beta|rc)\\.\\d+$/.test(latest)){
+  if(!/^v\d+\.\d+\.\d+-(?:alpha|beta|rc)\.\d+$/.test(latest)){
     fail('Latest compiler release is not a published prerelease tag')
   }
   for(const [locale,intro,scientific,quick,prefix] of [
@@ -83,9 +83,12 @@ export function validateCourseMigrationDocs(
     if(!quick.includes('<!-- scarp-project-release: v0.0.5-alpha.4 -->')){
       fail(locale+': historical project baseline was lost')
     }
-    if(/(?:unpublished|अप्रकाशित)[^\\n]{0,160}v0\\.0\\.6-alpha\\.5/i.test(scientific)||
-       /v0\\.0\\.6-alpha\\.5[^\\n]{0,160}(?:unpublished|अप्रकाशित)/i.test(scientific)){
+    if(/(?:unpublished|अप्रकाशित)[^\n]{0,160}v0\.0\.6-alpha\.5/i.test(scientific)||
+       /v0\.0\.6-alpha\.5[^\n]{0,160}(?:unpublished|अप्रकाशित)/i.test(scientific)){
       fail(locale+': already-published alpha.5 kernels are called unpublished')
+    }
+    if(/(?:^|\n)##\s*(?:Unpublished alpha\.5|Post-alpha\.4 development \(not published\)|Alpha\.5 का विकास, अभी प्रकाशित नहीं)/i.test(scientific)){
+      fail(locale+': an alpha.5 draft-era heading remains')
     }
     if(!scientific.includes(prefix+'/language/scientific-kernels-alpha5')){
       fail(locale+': published alpha.5 scientific reference is missing')
