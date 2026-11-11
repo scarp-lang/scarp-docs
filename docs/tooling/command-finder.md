@@ -10,7 +10,7 @@ Use the interactive tool below to select **the exact published compiler version*
 
 First confirm your actual executable. On alpha.3 and later, use `scarp version`; for alpha.1/alpha.2, use `scarp --version`. Replace `FILE.srp` with the path to a source file and `PROJECT_DIRECTORY` with the path of an existing project containing `Scarp.project`. For `scarp create demo`, choose a **new, nonexistent** directory; that command writes a scaffold and refuses to overwrite existing files.
 
-The command finder is **client-side and offline after the page loads**. It does not query GitHub, detect the executable on your computer, run Scarp programs or read your files. Its reference links point to separately verified release documentation. The **latest published release is [v0.0.6-alpha.6](/releases/v0.0.6-alpha.6)**, not the compiler's moving `main` branch.
+The command finder is **client-side and offline after the page loads**. It does not query GitHub, detect the executable on your computer, run Scarp programs or read your files. Its reference links point to separately verified release documentation. The **latest published release is [v0.0.6-alpha.6](/releases/v0.0.6-alpha.7)**, not the compiler's moving `main` branch.
 
 ## Where the release boundaries come from
 
@@ -43,3 +43,5 @@ Published [v0.0.6-alpha.5](/releases/v0.0.6-alpha.5) adds `top_p`, `top_p_values
 ## Alpha.6 input, text and tuples
 
 Published [v0.0.6-alpha.6](/releases/v0.0.6-alpha.6) adds `read_line()` with redirected UTF-8 input, explicit scalar/text conversions, and immutable tuples. The existing `scarp exec` / `run` / `launch` commands are used; there is **no** `scarp compile` or terminal prompt command. See [input](/language/program-input-alpha6), [text](/language/text-foundations-alpha6), and [tuples](/language/tuples-alpha6).
+
+The published [v0.0.6-alpha.7](/releases/v0.0.6-alpha.7) adds conditional-expression values and Unicode scalar escapes to the interpreter, without adding a general native build command.

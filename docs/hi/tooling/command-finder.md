@@ -10,7 +10,7 @@ Scarp के प्रयोगात्मक compiler releases में CLI �
 
 पहले असली binary का version जाँचें। Alpha.3 या नए compiler में `scarp version` और alpha.1/alpha.2 में `scarp --version` चलाएँ। `FILE.srp` की जगह अपनी source file का path दें। `PROJECT_DIRECTORY` की जगह `Scarp.project` manifest वाला स्पष्ट project folder दें। `scarp create demo` चलाने से **नया folder** बनता है; यह पुराने folder को overwrite नहीं करता।
 
-यह widget पेज लोड होने के बाद **browser में ही काम करता है**। यह GitHub से data नहीं माँगता, आपके कंप्यूटर का executable नहीं पहचानता, आपकी files नहीं पढ़ता और Scarp code execute नहीं करता। इसके links अलग-अलग प्रकाशित releases के जाँचे हुए संदर्भों तक ले जाते हैं। **नवीनतम प्रकाशित release [v0.0.6-alpha.6](/hi/releases/v0.0.6-alpha.6)** है; compiler की बदलती `main` branch नहीं।
+यह widget पेज लोड होने के बाद **browser में ही काम करता है**। यह GitHub से data नहीं माँगता, आपके कंप्यूटर का executable नहीं पहचानता, आपकी files नहीं पढ़ता और Scarp code execute नहीं करता। इसके links अलग-अलग प्रकाशित releases के जाँचे हुए संदर्भों तक ले जाते हैं। **नवीनतम प्रकाशित release [v0.0.6-alpha.6](/hi/releases/v0.0.6-alpha.7)** है; compiler की बदलती `main` branch नहीं।
 
 ## अलग-अलग commands पहली बार कब आए?
 
@@ -43,3 +43,5 @@ Alpha.2 पुराने `run` command के लिए चुना जा �
 ## Alpha.6 में input, text और tuples
 
 प्रकाशित [v0.0.6-alpha.6](/hi/releases/v0.0.6-alpha.6) में redirected UTF-8 input वाला `read_line()`, explicit scalar/text conversion और immutable tuples उपलब्ध हैं। पुराने `scarp exec` / `run` / `launch` commands ही हैं; नया `scarp compile` या terminal prompt command **नहीं** है। [Input](/hi/language/program-input-alpha6), [Text](/hi/language/text-foundations-alpha6), [Tuples](/hi/language/tuples-alpha6) पढ़ें।
+
+प्रकाशित [v0.0.6-alpha.7](/hi/releases/v0.0.6-alpha.7) में value लौटाने वाले conditional expressions और Unicode scalar escapes आए हैं। सामान्य native build command अभी भी उपलब्ध नहीं है।
