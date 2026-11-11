@@ -32,6 +32,8 @@ jobs:
         run: npm run test:docs-slug
       - name: Check Hindi translation parity
         run: npm run check:i18n
+      - name: Verify latest published alpha.7 bilingual source and artifacts
+        run: npm run check:alpha7
       - name: Validate localized VitePress search and accessibility text
         run: npm run check:hindi-search && npm run test:hindi-search
       - name: Test version-aware bilingual command finder and historical release boundaries
@@ -400,3 +402,27 @@ jobs:
         run: npm run test:alpha6-ast-compiler -- .compiler-alpha6/target/debug/scarp .compiler-alpha6/examples
       - name: Verify actual alpha.6 diagnose JSON and read-only behavior
         run: npm run test:alpha6-diagnose-compiler -- .compiler-alpha6/target/debug/scarp
+
+  alpha7-conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: scarp-lang/scarp
+          ref: b1c1fd232b418267d95520c69ee563ac99ecae30
+          path: .compiler-alpha7
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Verify tagged alpha.7 source
+        run: test "$(git -C .compiler-alpha7 rev-parse HEAD)" = "b1c1fd232b418267d95520c69ee563ac99ecae30"
+      - name: Validate bilingual alpha.7 release and checksum references
+        run: npm run check:alpha7
+      - name: Build exactly published alpha.7 interpreter
+        run: cargo build --manifest-path .compiler-alpha7/Cargo.toml --locked
+      - name: Verify official published example and stdout
+        run: npm run test:alpha7-compiler -- .compiler-alpha7/target/debug/scarp

@@ -3,10 +3,12 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { extractCodeFences, firstMissingCodeBlock } from './lib/code-fences.ts'
+import { currentPublishedCompilerTag } from './scarp-site/current-release.ts'
 const root=resolve(fileURLToPath(new URL('..',import.meta.url)))
 const read=(p:string):string=>readFileSync(resolve(root,p),'utf8')
 const tag='v0.0.6-alpha.7', source='b1c1fd232b418267d95520c69ee563ac99ecae30'
 const manifest=JSON.parse(read('conformance/alpha7-manifest.json')) as {compilerRepository:string;compilerRef:string;compilerCommit:string;cases:{localSource:string;localStdout:string}[]}
+assert.equal(currentPublishedCompilerTag(JSON.parse(read('data/compiler-latest-release.json')) as unknown),tag)
 assert.equal(manifest.compilerRepository,'scarp-lang/scarp')
 assert.equal(manifest.compilerRef,tag)
 assert.equal(manifest.compilerCommit,source)
