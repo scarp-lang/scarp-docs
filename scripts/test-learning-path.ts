@@ -51,9 +51,9 @@ mutate('homeHindi','link: /hi/guide/learning-path','link: /hi/guide/removed')
 mutate('introEnglish','](/guide/learning-path)','](/guide/removed)')
 mutate('introHindi','](/hi/guide/learning-path)','](/hi/guide/removed)')
 mutate('firstEnglish','v0.0.6-alpha.1','v0.0.5-alpha.5')
-mutate('quickEnglish','[published v0.0.6-alpha.6 release and checksums]',
+mutate('quickEnglish','[published v0.0.6-alpha.7 release and checksums]',
   '[published v0.0.6-alpha.1 release and checksums]')
-mutate('quickHindi','[प्रकाशित v0.0.6-alpha.6 release और checksum]',
+mutate('quickHindi','[प्रकाशित v0.0.6-alpha.7 release और checksum]',
   '[प्रकाशित v0.0.6-alpha.1 release और checksum]')
 mutate('compatibilityEnglish','aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8','wrong-release-sha')
 mutate('introEnglish','tag/'+LATEST_RELEASE,'tag/v0.0.6-alpha.3')
