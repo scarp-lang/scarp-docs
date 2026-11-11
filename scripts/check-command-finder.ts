@@ -22,5 +22,5 @@ if (failures.length) {
   for (const failure of failures) console.error('FAIL version-aware command finder: ' + failure)
   process.exitCode = 1
 } else {
-  console.log('PASS: six pinned compiler releases, seven command tasks, bilingual Vue widget and safe links')
+  console.log('PASS: published compiler releases, seven command tasks, bilingual Vue widget and safe links')
 }
