@@ -23,9 +23,9 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
-  - title: नवीनतम प्रकाशित v0.0.6-alpha.6 compiler
-    details: सीमित input, स्पष्ट text/number conversion, immutable tuples और आधिकारिक SHA-256 जाँच सीखें।
-    link: /hi/releases/v0.0.6-alpha.6
+  - title: नवीनतम प्रकाशित v0.0.6-alpha.7 compiler
+    details: नए typed conditional expressions तथा Unicode scalar escapes को सत्यापित source और SHA-256 archive links से सीखें।
+    link: /hi/releases/v0.0.6-alpha.7
   - title: सात चरणों में Scarp सीखें
     details: शुरुआती प्रोग्राम से numerical examples, modules, projects और symbols तक सही compiler release के साथ पूरा रास्ता।
     link: /hi/guide/learning-path
@@ -77,5 +77,5 @@ features:
 ---
 
 ::: warning प्रयोगात्मक रिलीज़
-नवीनतम प्रकाशित compiler **[v0.0.6-alpha.6](/hi/releases/v0.0.6-alpha.6)** है, जबकि अधिकतर मुख्य reference अभी अलग से सत्यापित **v0.0.5-alpha.1** पर आधारित है। सभी experimental prereleases हैं। पुराने code के लिए [अपग्रेड की जाँच](/hi/reference/upgrade-readiness) और [फ़ीचर स्थिति](/hi/reference/status) पढ़ें।
+नवीनतम प्रकाशित compiler **[v0.0.6-alpha.7](/hi/releases/v0.0.6-alpha.7)** है, जबकि अधिकतर मुख्य reference अभी अलग से सत्यापित **v0.0.5-alpha.1** पर आधारित है। सभी experimental prereleases हैं। पुराने code के लिए [अपग्रेड की जाँच](/hi/reference/upgrade-readiness) और [फ़ीचर स्थिति](/hi/reference/status) पढ़ें।
 :::
