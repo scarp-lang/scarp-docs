@@ -26,3 +26,5 @@ Keyword की spelling जाँचें, छोटा शब्द खोज�
 Search में परिणाम आने के बाद **↓** से पहला link, **↑** से आखिरी link चुन सकते हैं। परिणामों में ↑/↓ से आगे-पीछे जाएँ; **Enter** से link खोलें। **Tab** से भी सामान्य क्रम में चल सकते हैं और **Esc** से search बंद कर सकते हैं। Search button से खोलने पर बंद करने के बाद focus उसी button पर लौटता है।
 
 [Version-aware Command Finder](/hi/tooling/command-finder) में keyboard से compiler version चुन सकते हैं। पुराने version में अनुपलब्ध commands का स्पष्ट हिन्दी संदेश मिलता है। **कॉपी करें** काम न करे या browser permission मना कर दे, तो command text चयन के लिए उपलब्ध रहता है। स्वचालित Chromium परीक्षण keyboard, अनुमति-अस्वीकृति, 320px layout और reduced-motion की जाँच करते हैं; इन्हें **manual screen-reader या पूर्ण WCAG certification** न समझें।
+
+Input और tuple से जुड़े पुराने परिणामों के लिए [ऐतिहासिक alpha.6 release](/hi/releases/v0.0.6-alpha.6) का अलग सत्यापित विवरण भी उपलब्ध है।

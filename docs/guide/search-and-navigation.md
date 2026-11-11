@@ -26,3 +26,5 @@ Check the spelling of Scarp keywords, use a shorter term, or switch locale using
 After results load, press **↓** to focus the first search link or **↑** to focus the last. Use Up/Down to move between links, **Enter** to open one, and **Esc** to close the dialog. Normal **Tab** navigation remains available. Closing a search opened from its trigger restores focus to that trigger.
 
 Use the [version-aware Command Finder](/tooling/command-finder) with the keyboard to select the installed compiler. Older versions explicitly indicate unavailable commands. If **Copy commands** fails or the browser denies clipboard permission, the command block remains keyboard-focusable and can be selected manually. The real Chromium suite tests keyboard navigation, permission denial, 320px layouts and reduced motion. **Automated testing does not replace a manual screen-reader review or constitute WCAG certification.**
+
+For version-specific input and tuple search results, the [historical alpha.6 release](/releases/v0.0.6-alpha.6) remains available independently of the newest compiler.

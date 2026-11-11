@@ -44,5 +44,4 @@ Published [v0.0.6-alpha.5](/releases/v0.0.6-alpha.5) adds `top_p`, `top_p_values
 
 Published [v0.0.6-alpha.6](/releases/v0.0.6-alpha.6) adds `read_line()` with redirected UTF-8 input, explicit scalar/text conversions, and immutable tuples. The existing `scarp exec` / `run` / `launch` commands are used; there is **no** `scarp compile` or terminal prompt command. See [input](/language/program-input-alpha6), [text](/language/text-foundations-alpha6), and [tuples](/language/tuples-alpha6).
 
-
 The published [v0.0.6-alpha.7](/releases/v0.0.6-alpha.7) adds conditional-expression values and Unicode scalar escapes to the interpreter, without adding a general native build command.

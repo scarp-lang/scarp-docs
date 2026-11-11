@@ -44,5 +44,4 @@ Alpha.2 पुराने `run` command के लिए चुना जा �
 
 प्रकाशित [v0.0.6-alpha.6](/hi/releases/v0.0.6-alpha.6) में redirected UTF-8 input वाला `read_line()`, explicit scalar/text conversion और immutable tuples उपलब्ध हैं। पुराने `scarp exec` / `run` / `launch` commands ही हैं; नया `scarp compile` या terminal prompt command **नहीं** है। [Input](/hi/language/program-input-alpha6), [Text](/hi/language/text-foundations-alpha6), [Tuples](/hi/language/tuples-alpha6) पढ़ें।
 
-
-The published [v0.0.6-alpha.7](/hi/releases/v0.0.6-alpha.7) adds conditional-expression values and Unicode scalar escapes to the interpreter, without adding a general native build command.
+प्रकाशित [v0.0.6-alpha.7](/hi/releases/v0.0.6-alpha.7) में value लौटाने वाले conditional expressions और Unicode scalar escapes आए हैं। सामान्य native build command अभी भी उपलब्ध नहीं है।
