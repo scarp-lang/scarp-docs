@@ -6,7 +6,8 @@ Scarp के शुरुआती prereleases में syntax और API ब�
 
 | संस्करण | प्रमुख प्रकाशित सुविधा |
 | --- | --- |
-| **[v0.0.6-alpha.6](/hi/releases/v0.0.6-alpha.6)** | **नवीनतम प्रकाशित (10 नवंबर 2026):** सीमित redirected input, explicit scalar/text conversion और immutable tuples; सामान्य native CLI या terminal prompt नहीं |
+| **[v0.0.6-alpha.7](/hi/releases/v0.0.6-alpha.7)** | **नवीनतम प्रकाशित (11 नवंबर 2026):** strict typed conditional expressions और Unicode scalar escapes; native emitters/module constants में conditional expressions नहीं |
+| **[v0.0.6-alpha.6](/hi/releases/v0.0.6-alpha.6)** | **पहले प्रकाशित (10 नवंबर 2026):** सीमित redirected input, explicit scalar/text conversion और immutable tuples; सामान्य native CLI या terminal prompt नहीं |
 | **[v0.0.6-alpha.5](/hi/releases/v0.0.6-alpha.5)** | **पहले प्रकाशित (9 नवंबर):** निश्चित Top-P, Pearson correlation और सीमित Rust ELF64 object API; सामान्य `scarp compile` नहीं |
 | **[v0.0.6-alpha.4](/hi/releases/v0.0.6-alpha.4)** | **पहले प्रकाशित (8 नवंबर):** sampled calculus, cosine similarity, सीमित Rust native object API |
 | **[v0.0.6-alpha.3](/hi/releases/v0.0.6-alpha.3)** | **पहले प्रकाशित prerelease (7 नवंबर):** Top-K चयन, temperature softmax और private scalar-IR जाँच; नया native CLI नहीं |
