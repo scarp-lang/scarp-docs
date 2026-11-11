@@ -3,14 +3,14 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { extractCodeFences, firstMissingCodeBlock } from './lib/code-fences.ts'
-import { currentPublishedCompilerTag } from './scarp-site/current-release.ts'
+import { RELEASES } from './lib/command-finder.ts'
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)))
 const read = (path: string): string => readFileSync(resolve(root, path), 'utf8')
 const tag = 'v0.0.6-alpha.6'
 const source = 'cdf6a3924ec2a36c7beca5a9aec4f01a0bce515e'
-const meta = JSON.parse(read('data/compiler-latest-release.json')) as unknown
-assert.equal(currentPublishedCompilerTag(meta), tag)
+assert.equal(RELEASES.find(item => item.tag === tag)?.source, source,
+  'Historical alpha.6 source must remain pinned after later releases')
 
 const featurePages = ['releases/' + tag,
   'language/program-input-alpha6', 'language/text-foundations-alpha6',
