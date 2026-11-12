@@ -140,8 +140,10 @@ jobs:
         run: npm run test:pages-api
       - name: Unit-test live Pages routes and failure diagnostics without network
         run: npm run test:live-site
-      - name: Build VitePress site
+      - name: Build Scarp-owned TypeScript documentation website
         run: npm run docs:build
+      - name: Test real preview HTTP routes for dotted compiler versions
+        run: npm run test:preview-server
       - name: Verify bilingual generated HTML and SEO metadata
         run: npm run check:site-build
       - name: Package and verify reproducible offline English/Hindi documentation
