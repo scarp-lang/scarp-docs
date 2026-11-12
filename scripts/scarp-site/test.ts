@@ -95,6 +95,32 @@ check((inertExamples.html.match(/class="scarp-callout/g)??[]).length===1,
 check(inertExamples.html.includes('Visible callout.'),
   'A valid callout should remain rendered after fenced examples')
 
+// Search and SEO excerpts must preserve Scarp source operators, not treat
+// comparisons and generic-like type spellings as raw HTML tags.
+const searchableCode=renderMarkdown([
+  '# Search example',
+  '~~~scarp',
+  'bind result = if 2 < 3 { 1 } else { 0 };',
+  'bind pair: tuple<integer, string> = (42, "नमस्ते");',
+  '~~~',
+  '::: note Symbol comparisons',
+  'One < two; three > four.',
+  ':::',
+  '<ScarpCommandFinder />'
+].join('\n'),'guide/test.md')
+check(searchableCode.bodyText.includes('2 < 3'),
+  'Search excerpts must retain less-than comparisons in Scarp fences')
+check(searchableCode.bodyText.includes('tuple<integer, string>'),
+  'Search excerpts must retain angle-bracket type annotations in Scarp fences')
+check(searchableCode.bodyText.includes('One < two; three > four.'),
+  'Prose comparisons must remain readable in search excerpts')
+check(!searchableCode.bodyText.includes('SCARPWIDGET') &&
+      !searchableCode.bodyText.includes('SCARPTRUSTEDBLOCK'),
+  'Internal renderer placeholders must not enter the public search index')
+check(searchableCode.html.includes('data-command-finder') &&
+      searchableCode.html.includes('class="scarp-callout'),
+  'Token-based text extraction must not change rendered widgets or callouts')
+
 const latest = JSON.parse(readFileSync(join(root,'data/compiler-latest-release.json'),'utf8')) as Record<string,unknown>
 check(currentPublishedCompilerTag(latest)===LATEST_RELEASE,'Current manifest and CLI release table must agree')
 assert.equal(currentCompilerReleaseRoute(LATEST_RELEASE,'en'),
