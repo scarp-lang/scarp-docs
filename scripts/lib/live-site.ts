@@ -77,7 +77,7 @@ export async function verifyLiveSite(fetcher: SiteFetcher, sitemapSources: reado
   assert.match(fallbackResponse.headers.get('content-type') ?? '', /text\/html/i,
     fallbackUrl + ': expected HTML fallback')
   const fallback = await fallbackResponse.text()
-  assert.match(fallback, /<html\b[^>]*\\blang="en"/i,
+  assert.match(fallback, /<html\b[^>]*\blang="en"/i,
     fallbackUrl + ': missing fallback HTML language')
   assert.match(fallback, /<meta\b[^>]*name="robots"[^>]*content="noindex, follow"/i,
     fallbackUrl + ': not excluded from search indexing')
