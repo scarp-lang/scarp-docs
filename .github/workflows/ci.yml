@@ -22,6 +22,8 @@ jobs:
         run: npm run typecheck
       - name: Build and validate framework-free Scarp documentation engine preview
         run: npm run scarp:test
+      - name: Mutation-test bilingual HTML links, Unicode anchors and duplicate IDs
+        run: npm run test:site-links
       - name: Ensure documentation tooling uses TypeScript
         run: npm run check:tooling
       - name: Verify Scarp-owned TypeScript renderer, parsing libraries and update policy
