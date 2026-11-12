@@ -32,8 +32,10 @@ jobs:
         run: npm run test:docs-slug
       - name: Check Hindi translation parity
         run: npm run check:i18n
-      - name: Verify latest published alpha.7 bilingual source and artifacts
+      - name: Validate historical published alpha.7 bilingual source and artifacts
         run: npm run check:alpha7
+      - name: Verify latest published alpha.8 project source and bilingual docs
+        run: npm run check:alpha8
       - name: Validate localized VitePress search and accessibility text
         run: npm run check:hindi-search && npm run test:hindi-search
       - name: Test version-aware bilingual command finder and historical release boundaries
@@ -138,8 +140,10 @@ jobs:
         run: npm run test:pages-api
       - name: Unit-test live Pages routes and failure diagnostics without network
         run: npm run test:live-site
-      - name: Build VitePress site
+      - name: Build Scarp-owned TypeScript documentation website
         run: npm run docs:build
+      - name: Test real preview HTTP routes for dotted compiler versions
+        run: npm run test:preview-server
       - name: Verify bilingual generated HTML and SEO metadata
         run: npm run check:site-build
       - name: Package and verify reproducible offline English/Hindi documentation
@@ -426,3 +430,32 @@ jobs:
         run: cargo build --manifest-path .compiler-alpha7/Cargo.toml --locked
       - name: Verify official published example and stdout
         run: npm run test:alpha7-compiler -- .compiler-alpha7/target/debug/scarp
+
+  alpha8-conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: scarp-lang/scarp
+          ref: 37253e7805c0ca594560700dd1deb3928458e60d
+          path: .compiler-alpha8
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Install TypeScript conformance dependencies
+        run: npm install --no-audit --no-fund
+      - name: Verify exact annotated alpha.8 tag source
+        run: test "$(git -C .compiler-alpha8 rev-parse HEAD)" = "37253e7805c0ca594560700dd1deb3928458e60d"
+      - name: Verify 6 project fixtures against immutable compiler source
+        run: |
+          for file in scarp.project src/main.srp src/math.srp tests/addition.srp tests/input.srp tests/input.stdin; do
+            diff -u ".compiler-alpha8/examples/projects/calculator/$file" "conformance/alpha8/calculator/$file"
+          done
+      - name: Validate published alpha.8 release and bilingual project guides
+        run: npm run check:alpha8
+      - name: Build published alpha.8 interpreter and test runner
+        run: cargo build --manifest-path .compiler-alpha8/Cargo.toml --locked
+      - name: Exercise real project commands, JSON tests, stdin fixtures and E0065
+        run: npm run test:alpha8-compiler -- .compiler-alpha8/target/debug/scarp

@@ -53,7 +53,12 @@ function pathCandidates(path: string): string[] | null {
   const mapped = resolve(site, tail)
   if (mapped !== site && !mapped.startsWith(site + sep)) return null
   if (tail.endsWith('/')) return [resolve(mapped, 'index.html')]
-  return extname(mapped)
+  // Compiler release slugs intentionally end in dotted version numbers
+  // (e.g. v0.0.6-alpha.8). path.extname() calls ".8" an extension, even
+  // though the generated documentation is v0.0.6-alpha.8.html.
+  // Treat only known static asset extensions as literal files.
+  const extension=extname(mapped).toLowerCase()
+  return extension && Object.hasOwn(contentTypes,extension)
     ? [mapped]
     : [mapped + '.html', resolve(mapped, 'index.html')]
 }

@@ -25,7 +25,8 @@ const publishedReleases = [
   ['v0.0.6-alpha.4', 'f04be0758cbce405ddcdb229699b0ff83c09d207'],
   ['v0.0.6-alpha.5', '205e92f166f186c3905e5880d41c31717b697b8e'],
   ['v0.0.6-alpha.6', 'cdf6a3924ec2a36c7beca5a9aec4f01a0bce515e'],
-  ['v0.0.6-alpha.7', 'b1c1fd232b418267d95520c69ee563ac99ecae30']
+  ['v0.0.6-alpha.7', 'b1c1fd232b418267d95520c69ee563ac99ecae30'],
+  ['v0.0.6-alpha.8', '37253e7805c0ca594560700dd1deb3928458e60d']
 ]
 const firstSupported = [
   ['run-file', 0],
@@ -34,10 +35,12 @@ const firstSupported = [
   ['inspect-project', 4],
   ['inspect-symbols', 5],
   ['diagnose-host', 2],
-  ['inspect-ast', 2]
+  ['inspect-ast', 2],
+  ['init-project', 12], ['test-project', 12], ['project-info', 12]
 ]
 const noteKeys = [
-  'legacy-run', 'exec', 'verify', 'project', 'modules', 'symbols', 'diagnose', 'ast'
+  'legacy-run', 'exec', 'verify', 'project', 'modules', 'symbols', 'diagnose', 'ast',
+  'init', 'test', 'info'
 ] as const
 
 type FinderRelease = { tag: string; source: string }
@@ -60,7 +63,7 @@ export function validateCommandFinder(
   }
 
   if (JSON.stringify(releases.map(r => [r.tag,r.source])) !== JSON.stringify(publishedReleases)) {
-    errors.push('Release list must match twelve exact published compiler tag commits in order')
+    errors.push('Release list must match thirteen exact published compiler tag commits in order')
   }
   if (JSON.stringify(tasks.map(t => [t.id,t.first])) !== JSON.stringify(firstSupported)) {
     errors.push('Task availability boundaries differ from the published tagged CLI')
@@ -101,8 +104,19 @@ export function validateCommandFinder(
       'v0.0.5-alpha.4',
       'v0.0.5-alpha.5',
       'v0.0.6-alpha.1',
-      'scarp --version'
+      'scarp --version',
+      '](' + prefix + '/tooling/project-alpha8)',
+      '](' + prefix + '/releases/v0.0.6-alpha.8)'
     ]) expect(name + ' page',page,expected)
+  }
+  // An up-to-date destination with a stale visible label misleads readers.
+  const latestTag = releases.at(-1)?.tag
+  for (const [locale, page, prefix, leading] of [
+    ['English', english, '', 'latest published release is '],
+    ['Hindi', hindi, '/hi', 'नवीनतम प्रकाशित release ']
+  ] as const) {
+    const expected = leading + '[' + latestTag + '](' + prefix + '/releases/' + latestTag + ')'
+    if (!page.includes(expected)) errors.push(locale + ': latest compiler label and link drift')
   }
   expect('English page',english,'](/hi/tooling/command-finder)')
   expect('Hindi page',hindi,'](/tooling/command-finder)')

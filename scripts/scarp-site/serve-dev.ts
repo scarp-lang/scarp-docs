@@ -44,8 +44,13 @@ const server=createServer((req,res)=>{
     return
   }
   const tail=pathname.slice(base.length)
-  const actual=resolve(site,tail+(tail.endsWith('/')||!tail?'index.html':
-    extname(tail)?'':'.html'))
+  // Dotted compiler versions such as v0.0.6-alpha.8 are clean HTML routes,
+  // not static files with a ".8" extension. Literal assets are recognized
+  // only by known content-types, matching the standalone offline server.
+  const extension=extname(tail).toLowerCase()
+  const suffix=tail.endsWith('/')||!tail?'index.html':
+    extension && Object.hasOwn(types,extension)?'':'.html'
+  const actual=resolve(site,tail+suffix)
   if(actual!==site&&!actual.startsWith(site+sep)){
     res.writeHead(404).end('Not found')
     return

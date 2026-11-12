@@ -23,8 +23,12 @@ const server=createServer((req,res)=>{
     return
   }
   const tail=decodeURIComponent(pathname.slice(base.length))
-  const path=resolve(root,tail+(tail.endsWith('/')||!tail? 'index.html':
-    extname(tail)?'':'.html'))
+  // Keep test-server routing aligned with both shipped preview servers.
+  // Versioned docs slug endings like ".8" are not asset extensions.
+  const extension=extname(tail).toLowerCase()
+  const suffix=tail.endsWith('/')||!tail?'index.html':
+    extension && Object.hasOwn(mime,extension)?'':'.html'
+  const path=resolve(root,tail+suffix)
   if(path!==root&&!path.startsWith(root+sep)){
     res.writeHead(404).end('Not found')
     return
@@ -82,6 +86,20 @@ async function testLocale(
     assert.equal(await install.getAttribute('href'),prefix+'releases/'+LATEST_RELEASE)
     assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'),
       'https://scarp-lang.github.io'+prefix)
+    assertions++
+
+    // Release guides have a dotted tag in their clean URLs. Check that the
+    // actual HTTP server resolves these to generated HTML rather than
+    // mistaking ".8" or ".7" for a static file extension.
+    for (const tag of [LATEST_RELEASE,'v0.0.6-alpha.7']) {
+      const url=origin+prefix+'releases/'+tag
+      const releaseResponse=await page.goto(url,{waitUntil:'networkidle'})
+      assert.equal(releaseResponse?.status(),200,lang+': dotted release URL '+tag)
+      assert.ok((await page.locator('article h1').innerText()).includes(tag),
+        lang+': wrong release HTML served for '+tag)
+      assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'),
+        'https://scarp-lang.github.io'+prefix+'releases/'+tag)
+    }
     assertions++
 
     await page.goto(origin+prefix+'tooling/command-finder',{waitUntil:'networkidle'})
