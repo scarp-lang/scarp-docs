@@ -5,7 +5,7 @@
  * Release boundaries come from the tagged upstream src/main.rs and docs:
  * alpha.1/2: run/check/tokens; alpha.3: Scarp-first CLI + static verify;
  * alpha.4: create/launch/project verify; alpha.5: inspect project modules;
- * alpha.6: inspect symbols and references.
+ * alpha.6: inspect symbols and references; alpha.8: declarative projects, tests and assertions.
  */
 export const RELEASES = [
   { tag: 'v0.0.5-alpha.1', label: 'v0.0.5-alpha.1', source: 'afe8b5380c9d6c4774162e51c6c9bc8b90901671' },
@@ -19,11 +19,12 @@ export const RELEASES = [
   { tag: 'v0.0.6-alpha.4', label: 'v0.0.6-alpha.4', source: 'f04be0758cbce405ddcdb229699b0ff83c09d207' },
   { tag: 'v0.0.6-alpha.5', label: 'v0.0.6-alpha.5', source: '205e92f166f186c3905e5880d41c31717b697b8e' },
   { tag: 'v0.0.6-alpha.6', label: 'v0.0.6-alpha.6', source: 'cdf6a3924ec2a36c7beca5a9aec4f01a0bce515e' },
-  { tag: 'v0.0.6-alpha.7', label: 'v0.0.6-alpha.7 (latest)', source: 'b1c1fd232b418267d95520c69ee563ac99ecae30' }
+  { tag: 'v0.0.6-alpha.7', label: 'v0.0.6-alpha.7', source: 'b1c1fd232b418267d95520c69ee563ac99ecae30' },
+  { tag: 'v0.0.6-alpha.8', label: 'v0.0.6-alpha.8 (latest)', source: '37253e7805c0ca594560700dd1deb3928458e60d' }
 ] as const
 
 export type ReleaseTag = (typeof RELEASES)[number]['tag']
-export const LATEST_RELEASE: ReleaseTag = 'v0.0.6-alpha.7'
+export const LATEST_RELEASE: ReleaseTag = 'v0.0.6-alpha.8'
 
 export const TASKS = [
   { id: 'run-file', en: 'Run a source file', hi: 'Source file चलाएँ', first: 0, reference: '/tooling/cli-alpha1' },
@@ -32,11 +33,14 @@ export const TASKS = [
   { id: 'inspect-project', en: 'Inspect a project module graph', hi: 'Project modules जाँचें', first: 4, reference: '/tooling/cli-alpha5' },
   { id: 'inspect-symbols', en: 'Inspect definitions and references', hi: 'Symbols और references खोजें', first: 5, reference: '/tooling/cli-alpha6' },
   { id: 'diagnose-host', en: 'Diagnose the installed compiler', hi: 'Compiler और host जाँचें', first: 2, reference: '/tooling/cli' },
-  { id: 'inspect-ast', en: 'View a parsed syntax tree', hi: 'Syntax tree देखें', first: 2, reference: '/tooling/cli' }
+  { id: 'inspect-ast', en: 'View a parsed syntax tree', hi: 'Syntax tree देखें', first: 2, reference: '/tooling/cli' },
+  { id: 'init-project', en: 'Initialize a declarative project', hi: 'नया declarative project बनाएँ', first: 12, reference: '/tooling/project-alpha8' },
+  { id: 'test-project', en: 'Run or list project tests', hi: 'Project tests चलाएँ या सूची देखें', first: 12, reference: '/tooling/project-alpha8' },
+  { id: 'project-info', en: 'Inspect project metadata', hi: 'Project metadata देखें', first: 12, reference: '/tooling/project-alpha8' }
 ] as const
 
 export type CommandTask = (typeof TASKS)[number]['id']
-export type NoteKey = 'legacy-run' | 'exec' | 'verify' | 'project' | 'modules' | 'symbols' | 'diagnose' | 'ast'
+export type NoteKey = 'legacy-run' | 'exec' | 'verify' | 'project' | 'modules' | 'symbols' | 'diagnose' | 'ast' | 'init' | 'test' | 'info'
 
 export interface CommandAdvice {
   release: ReleaseTag
@@ -94,6 +98,19 @@ export function commandAdvice(release: ReleaseTag, task: CommandTask): CommandAd
       return { ...result, commands: ['scarp inspect ast FILE.srp'],
         reference: versionIndex >= 5 ? '/tooling/inspect-ast-alpha6' : '/tooling/cli',
         note: 'ast' }
+    case 'init-project':
+      return { ...result, commands: [
+        'scarp init demo', 'scarp verify demo', 'scarp run demo'
+      ], note: 'init' }
+    case 'test-project':
+      return { ...result, commands: [
+        'scarp test --list PROJECT_DIRECTORY',
+        'scarp test --require-tests PROJECT_DIRECTORY',
+        'scarp test --json PROJECT_DIRECTORY'
+      ], note: 'test' }
+    case 'project-info':
+      return { ...result, commands: ['scarp project info --json PROJECT_DIRECTORY'],
+        note: 'info' }
   }
 }
 
@@ -121,7 +138,10 @@ export const FINDER_TEXT = {
       modules: 'Project inspection needs an explicit directory containing Scarp.project and does not run program statements.',
       symbols: 'Definitions and reference IDs belong to a single inspection snapshot; no LSP or rename command is shipped.',
       diagnose: 'The report is offline and reflects the actual running executable, not native compilation support.',
-      ast: 'AST output is human-readable parser debug text, not stable JSON or a substitute for type verification.'
+      ast: 'AST output is human-readable parser debug text, not stable JSON or a substitute for type verification.',
+      init: 'Init requires a nonexistent directory and creates a declarative scarp.project. Run executes application code.',
+      test: 'Test executes trusted project sources. --list only discovers tests; --require-tests rejects empty suites.',
+      info: 'Project info reads validated metadata without executing application code or installing dependencies.'
     }
   },
   hi: {
@@ -147,7 +167,10 @@ export const FINDER_TEXT = {
       modules: 'Project inspection में स्पष्ट Scarp.project directory चाहिए। यह program statements नहीं चलाता।',
       symbols: 'Symbols और references की IDs केवल एक snapshot के लिए हैं; LSP या rename command शामिल नहीं है।',
       diagnose: 'Offline report असली चल रहे executable का विवरण देती है; native compilation का दावा नहीं है।',
-      ast: 'AST output parser का debug text है, stable JSON या type checking का विकल्प नहीं।'
+      ast: 'AST output parser का debug text है, stable JSON या type checking का विकल्प नहीं।',
+      init: 'Init नया folder और declarative scarp.project बनाता है; पहले से बनी directory overwrite नहीं होती। Run source चलाता है।',
+      test: 'Test भरोसेमंद source execute करता है। --list सिर्फ सूची दिखाता है; --require-tests खाली suite reject करता है।',
+      info: 'Project info केवल validated metadata पढ़ता है; application execute या dependencies install नहीं करता।'
     }
   }
 } as const
