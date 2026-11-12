@@ -66,6 +66,17 @@ main { min-width:0; }
 .doc-content code:not(pre code) { border-radius:.3rem; padding:.13em .32em; background:var(--code-bg); font: .91em/1.5 ui-monospace,Consolas,monospace; }
 .doc-content pre,.command-finder pre { max-width:100%; overflow-x:auto; padding:1rem; background:var(--code-bg); border:1px solid var(--line); border-radius:.6rem; margin:1rem 0; tab-size:2; font: .89rem/1.5 ui-monospace,Consolas,"Liberation Mono",monospace; white-space:pre; overflow-wrap:normal; }
 .doc-content pre code { white-space:inherit; }
+/* Progressive enhancement for fenced language examples: no external script. */
+.code-example { margin:1.1rem 0; border:1px solid var(--line); border-radius:.6rem;
+  background:var(--code-bg); overflow:hidden; }
+.code-example-toolbar { display:flex; align-items:center; flex-wrap:wrap; gap:.5rem;
+  padding:.35rem .7rem; border-bottom:1px solid var(--line); font-size:.79rem; }
+.code-language { color:var(--muted); font-weight:700; letter-spacing:.02em; }
+.code-copy-button { margin-left:auto; padding:.2rem .65rem; min-height:34px;
+  font-size:.84rem; background:var(--background); color:var(--text); }
+.code-copy-status { color:var(--muted); font-size:.8rem; max-width:100%; }
+.doc-content .code-example pre { margin:0; border:0; border-radius:0; }
+
 .syntax-keyword { color:#1d4ed8; font-weight:600; }
 .syntax-number { color:#9a3412; }
 .syntax-string { color:#047857; }
