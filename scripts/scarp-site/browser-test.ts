@@ -213,8 +213,11 @@ async function testLocale(
         ?'क्लिपबोर्ड उपलब्ध नहीं। कोड चुना गया है; Ctrl+C दबाएँ।'
         :'Clipboard unavailable. Code selected; press Ctrl+C.',
       {exact:true}).waitFor()
-    assert.equal(await page.evaluate("window.getSelection()?.toString()"),expectedSource,
-      lang+': failed copy must select the exact code for manual copying')
+    // Chromium's Selection.toString() omits the trailing newline of a
+    // selected <code> node, even though Clipboard.writeText gets it intact.
+    const selected=await page.evaluate("window.getSelection()?.toString()")
+    assert.equal(selected?.trimEnd(),expectedSource.trimEnd(),
+      lang+': denied clipboard must select the entire meaningful source')
     assert.equal(await copyButton.isEnabled(),true)
     const codeAudit=await auditOfflineAccessibility(page!,lang+'-engine-code-copy',
       join(previewRoot,'audit-results'))
