@@ -88,6 +88,20 @@ async function testLocale(
       'https://scarp-lang.github.io'+prefix)
     assertions++
 
+    // Release guides have a dotted tag in their clean URLs. Check that the
+    // actual HTTP server resolves these to generated HTML rather than
+    // mistaking ".8" or ".7" for a static file extension.
+    for (const tag of [LATEST_RELEASE,'v0.0.6-alpha.7']) {
+      const url=origin+prefix+'releases/'+tag
+      const releaseResponse=await page.goto(url,{waitUntil:'networkidle'})
+      assert.equal(releaseResponse?.status(),200,lang+': dotted release URL '+tag)
+      assert.ok((await page.locator('article h1').innerText()).includes(tag),
+        lang+': wrong release HTML served for '+tag)
+      assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'),
+        'https://scarp-lang.github.io'+prefix+'releases/'+tag)
+    }
+    assertions++
+
     await page.goto(origin+prefix+'tooling/command-finder',{waitUntil:'networkidle'})
     const widget=page.locator('[data-command-finder]')
     await widget.locator('#scarp-release').waitFor({state:'visible'})
