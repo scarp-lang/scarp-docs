@@ -39,7 +39,7 @@ assert.equal(localLink('/guide/first-program.md?lang=hi#example','index.md'),
 assert.equal(localLink('/scarp-docs/hi/guide/first-program.md#example','index.md'),
   '/scarp-docs/hi/guide/first-program#example')
 assert.equal(localLink('index.md?mode=source','hi/guide/test.md'),
-  '/scarp-docs/hi/guide/index?mode=source')
+  '/scarp-docs/hi/guide/?mode=source')
 assert.equal(localLink('../../../private.md?x#y','tutorials/test.md'),'#')
 assert.equal(localLink('//example.org/file.md?x','index.md'),'#')
 assert.equal(escapeHtml('<script>&"\''),
