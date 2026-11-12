@@ -178,6 +178,49 @@ async function testLocale(
       join(previewRoot,'audit-results'))
     assert.ok(audit.passes>0)
     assertions++
+
+    // All code fences are readable without scripts and gain copy controls in
+    // browser mode. Test actual keyboard activation, exact Unicode content,
+    // clipboard permission rejection, selection fallback and WCAG A/AA.
+    await page.goto(origin+prefix.replace(/\/$/,'')+'/guide/first-program',
+      {waitUntil:'networkidle'})
+    const codeExample=page.locator('[data-code-example]').first()
+    await codeExample.locator('pre code').waitFor()
+    const expectedSource=await codeExample.locator('pre code').textContent()
+    assert.ok(expectedSource && expectedSource.length>0)
+    const copyButton=codeExample.getByRole('button',{
+      name:lang==='hi'?'कोड कॉपी करें':'Copy code'
+    })
+    await copyButton.waitFor({state:'visible'})
+    await page.evaluate(`Object.defineProperty(navigator,'clipboard',{
+      configurable:true,
+      value:{writeText(value){window.__copiedFence=value;return Promise.resolve()}}
+    })`)
+    await copyButton.focus()
+    await page.keyboard.press('Enter')
+    await page.waitForFunction("typeof window.__copiedFence === 'string'")
+    assert.equal(await page.evaluate("window.__copiedFence"),expectedSource,
+      lang+': copying must preserve highlighted source and Unicode')
+    await codeExample.getByRole('status').getByText(
+      lang==='hi'?'कॉपी हो गया':'Copied',{exact:true}).waitFor()
+    await page.evaluate(`Object.defineProperty(navigator,'clipboard',{
+      configurable:true,
+      value:{writeText(){return Promise.reject(new DOMException('Denied','NotAllowedError'))}}
+    })`)
+    await copyButton.click()
+    await codeExample.getByRole('status').getByText(
+      lang==='hi'
+        ?'क्लिपबोर्ड उपलब्ध नहीं। कोड चुना गया है; Ctrl+C दबाएँ।'
+        :'Clipboard unavailable. Code selected; press Ctrl+C.',
+      {exact:true}).waitFor()
+    assert.equal(await page.evaluate("window.getSelection()?.toString()"),expectedSource,
+      lang+': failed copy must select the exact code for manual copying')
+    assert.equal(await copyButton.isEnabled(),true)
+    const codeAudit=await auditOfflineAccessibility(page!,lang+'-engine-code-copy',
+      join(previewRoot,'audit-results'))
+    assert.ok(codeAudit.passes>0)
+    assertions++
+
     assert.deepEqual(outside,[],lang+': custom site attempted external requests')
   }finally{await ctx.close()}
 }
