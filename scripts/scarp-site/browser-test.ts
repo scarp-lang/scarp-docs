@@ -215,8 +215,8 @@ async function testLocale(
       {exact:true}).waitFor()
     // Chromium's Selection.toString() omits the trailing newline of a
     // selected <code> node, even though Clipboard.writeText gets it intact.
-    const selected=await page.evaluate("window.getSelection()?.toString()")
-    assert.equal(selected?.trimEnd(),expectedSource.trimEnd(),
+    const selected=String(await page.evaluate("window.getSelection()?.toString()"))
+    assert.equal(selected.trimEnd(),expectedSource.trimEnd(),
       lang+': denied clipboard must select the entire meaningful source')
     assert.equal(await copyButton.isEnabled(),true)
     const codeAudit=await auditOfflineAccessibility(page!,lang+'-engine-code-copy',
