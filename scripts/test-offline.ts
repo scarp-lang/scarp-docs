@@ -129,7 +129,9 @@ try {
     '/scarp-docs/guide/installation-alpha6',
     '/scarp-docs/hi/guide/installation-alpha6',
     '/scarp-docs/releases/'+currentCompiler,
-    '/scarp-docs/hi/releases/'+currentCompiler
+    '/scarp-docs/hi/releases/'+currentCompiler,
+    '/scarp-docs/releases/v0.0.6-alpha.7',
+    '/scarp-docs/hi/releases/v0.0.6-alpha.7'
   ]){
     const response=await request(path,200,/text\/html/i)
     const html=await response.text()
@@ -137,6 +139,19 @@ try {
     assert.ok(html.includes('/scarp-docs/assets/'),path+' missing local asset base')
     assert.ok(html.includes('lang="'+(path.includes('/hi/')?'hi-IN':'en-US')+'"'))
   }
+  for(const locale of ['', 'hi/']){
+    // HEAD must resolve exactly the same dotted version routes as GET,
+    // preserving the full length header but never returning HTML bytes.
+    const route='/scarp-docs/'+locale+'releases/'+currentCompiler
+    const head=await fetch(origin+route+'?source=offline',{
+      method:'HEAD',redirect:'manual',signal:AbortSignal.timeout(10000)
+    })
+    assert.equal(head.status,200,route+': HEAD incorrectly treats version suffix as extension')
+    assert.match(head.headers.get('content-type')??'',/text\/html/i)
+    assert.ok(Number(head.headers.get('content-length'))>0)
+    assert.equal(await head.text(),'','HEAD must not include a response body')
+  }
+
   for(const locale of ['', 'hi/']){
     const homepage=await (await request('/scarp-docs/'+locale,200,/text\/html/i)).text()
     assert.ok(homepage.includes('/scarp-docs/'+locale+'releases/'+currentCompiler),
