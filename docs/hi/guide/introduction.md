@@ -14,7 +14,7 @@ Scarp प्रोग्राम सामान्यतः UTF-8 `.srp` फ�
 
 ## दस्तावेज़ कैसे पढ़ें?
 
-नए सीखने वालों को पहले [पूरा learning path](/hi/guide/learning-path) और फिर [प्रकाशित alpha.8 calculator project](/hi/tutorials/calculator-alpha8) पढ़ना चाहिए। [पुराना alpha.6 project lab](/hi/tutorials/project-symbol-navigation-alpha6) तथा [पुराना पहला प्रोग्राम](/hi/guide/first-program) अपने-अपने release पर pinned हैं। [वेरिएबल](/hi/language/variables), [फ़ंक्शन](/hi/language/functions), [CLI](/hi/tooling/cli) और [feature status](/hi/reference/status) भी देखें।
+नए सीखने वालों को पहले [पूरा learning path](/hi/guide/learning-path) और फिर [प्रकाशित alpha.8 calculator project](/hi/tutorials/calculator-alpha8) पढ़ना चाहिए। [पुराना v0.0.6-alpha.1 project lab](/hi/tutorials/project-symbol-navigation-alpha6) तथा [पुराना पहला प्रोग्राम](/hi/guide/first-program) अपने-अपने release पर pinned हैं। [वेरिएबल](/hi/language/variables), [फ़ंक्शन](/hi/language/functions), [CLI](/hi/tooling/cli) और [feature status](/hi/reference/status) भी देखें।
 
 ## अंग्रेज़ी संदर्भ के अपरिवर्तित कोड उदाहरण
 
