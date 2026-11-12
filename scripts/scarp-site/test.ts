@@ -144,6 +144,18 @@ for(const source of sources) {
   htmlPaths.add(htmlPath(source))
 }
 assert.equal(htmlPaths.size,sources.length)
+const fallbackHtml=readFileSync(join(site,'404.html'),'utf8')
+check(fallbackHtml.includes('<html lang="en"><head>'),
+  'Fallback should have a complete HTML head and explicit language')
+check(fallbackHtml.includes('name="robots" content="noindex, follow"'),
+  '404 fallback must not be indexed as regular documentation')
+check(fallbackHtml.includes('href="/scarp-docs/"') &&
+      fallbackHtml.includes('href="/scarp-docs/hi/"'),
+  'Fallback must link both English and Hindi homepages')
+check(fallbackHtml.includes('lang="hi"') && fallbackHtml.includes('id="main"'),
+  'Fallback must expose Hindi text and a main accessibility landmark')
+check(fallbackHtml.includes('assets/scarp-site.css'),
+  'Fallback must use the Scarp-owned styling')
 const homeHtml=readFileSync(join(site,'index.html'),'utf8')
 const hindiHome=readFileSync(join(site,'hi/index.html'),'utf8')
 check(homeHtml.includes('Build Beyond Boundaries.'),'English homepage hero missing')
