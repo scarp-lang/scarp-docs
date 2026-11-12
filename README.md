@@ -184,6 +184,10 @@ VitePress के language selector से English/Hindi बदलें। स�
 
 `docs/.vitepress/theme/lib/pages-api.ts` implements the public GitHub Actions API parser, a bounded request timeout, validated success-count data, and English/Hindi labels. Unit tests are offline: `npm run test:pages-api`. The Vue indicator offers an accessible retry button, reports rate limiting without inventing a number, and always links to GitHub Actions. This is a public read-only counter; no user data or API token is sent to any additional service.
 
+## Support development
+
+The Scarp documentation remains publicly available. If you find it useful, you can [support the Scarp ecosystem on GitHub Sponsors](https://github.com/sponsors/sanskarIN). Sponsorship is voluntary and does not restrict access to tutorials or reference material.
+
 ## GitHub Pages deployment history
 
 [![Deploy official documentation](https://github.com/scarp-lang/scarp-docs/actions/workflows/pages.yml/badge.svg)](https://github.com/scarp-lang/scarp-docs/actions/workflows/pages.yml)
