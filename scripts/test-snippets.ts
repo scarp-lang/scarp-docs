@@ -53,6 +53,10 @@ assert.equal(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.6 -->\n~~~
 
 assert.deepEqual(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.7 -->\n~~~sh\nscarp exec examples/conditional_unicode.srp\nscarp verify examples/conditional_unicode.srp\n~~~'), [])
 assert.equal(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.7 -->\n~~~sh\nscarp compile examples/conditional_unicode.srp\n~~~').length, 1)
-assert.equal(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.8 -->\n~~~sh\nscarp exec demo.srp\n~~~').length, 1)
+assert.deepEqual(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.8 -->\n~~~sh\nscarp init demo\nscarp verify demo\nscarp run demo\nscarp project info --json demo\nscarp test --list demo\nscarp test --require-tests demo\nscarp exec demo.srp\n~~~'), [])
+assert.equal(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.7 -->\n~~~sh\nscarp init demo\nscarp test demo\nscarp project info demo\n~~~').length, 3)
+assert.deepEqual(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.8 -->\n~~~scarp\nassert(true, "works");\n~~~'), [])
+assert.equal(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.7 -->\n~~~scarp\nassert(true);\n~~~').length, 1)
+assert.equal(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.8 -->\n~~~sh\nscarp compile demo.srp\n~~~').length, 1)
 
 console.log('PASS: executable Scarp and shell examples reject deprecated syntax without flagging prose, quotes or comments')
