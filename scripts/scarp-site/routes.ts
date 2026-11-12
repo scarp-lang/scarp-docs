@@ -54,14 +54,29 @@ export function localLink(href: string, pageSource: string): string {
   if (!href || href.startsWith('#')) return href
   if (/^(?:https?:|mailto:|tel:)/i.test(href)) return href
   if (/^[a-z][a-z0-9+.-]*:/i.test(href) || href.startsWith('//')) return '#'
+
+  // A query string or fragment is not part of the Markdown filename. Split
+  // before detecting .md so links checked against source files by CI also
+  // resolve to published extensionless routes in the browser.
+  const suffixStart = href.search(/[?#]/)
+  const pathname = suffixStart === -1 ? href : href.slice(0, suffixStart)
+  const suffix = suffixStart === -1 ? '' : href.slice(suffixStart)
+
+  if (pathname.endsWith('.md')) {
+    const source = pathname.startsWith(BASE)
+      ? pathname.slice(BASE.length)
+      : pathname.startsWith('/')
+        ? pathname.slice(1)
+        : posix.normalize(posix.join(posix.dirname(pageSource), pathname))
+    // Keep traversal and malformed paths inert. sourceRoute validates the
+    // fully resolved source path, including attempts to escape docs/.
+    try {
+      return sourceRoute(source) + suffix
+    } catch {
+      return '#'
+    }
+  }
   if (href.startsWith(BASE)) return href
   if (href.startsWith('/')) return BASE + href.slice(1)
-  const [pathname, fragment = ''] = href.split('#', 2)
-  const isMarkdown = pathname.endsWith('.md')
-  if (isMarkdown) {
-    const normalized = posix.normalize(posix.join(posix.dirname(pageSource), pathname))
-    if (normalized.startsWith('../') || normalized.startsWith('/')) return '#'
-    return sourceRoute(normalized) + (fragment ? '#' + fragment : '')
-  }
   return href
 }
