@@ -59,7 +59,7 @@ export async function verifyLiveSite(fetcher: SiteFetcher, sitemapSources: reado
     const html = await response.text()
     const expected = pairedRoutes(source)
     const lang = source.startsWith('hi/') ? 'hi-IN' : 'en-US'
-    assert.match(html, new RegExp('<html\\b[^>]*\\blang="' + lang + '"', 'i'), url + ': wrong HTML locale')
+    assert.match(html, new RegExp('<html\\b[^>]*\blang="' + lang + '"', 'i'), url + ': wrong HTML locale')
     const links = tags(html, 'link')
     assert.equal(links.filter(attrs => attrs.rel === 'canonical' && attrs.href === expected.canonical).length, 1, url + ': canonical mismatch')
     for (const [locale, target] of [['en', expected.english], ['hi', expected.hindi], ['x-default', expected.english]]) {
@@ -77,11 +77,11 @@ export async function verifyLiveSite(fetcher: SiteFetcher, sitemapSources: reado
   assert.match(fallbackResponse.headers.get('content-type') ?? '', /text\/html/i,
     fallbackUrl + ': expected HTML fallback')
   const fallback = await fallbackResponse.text()
-  assert.match(fallback, /<html\\b[^>]*\\blang="en"/i,
+  assert.match(fallback, /<html\b[^>]*\\blang="en"/i,
     fallbackUrl + ': missing fallback HTML language')
-  assert.match(fallback, /<meta\\b[^>]*name="robots"[^>]*content="noindex, follow"/i,
+  assert.match(fallback, /<meta\b[^>]*name="robots"[^>]*content="noindex, follow"/i,
     fallbackUrl + ': not excluded from search indexing')
-  assert.match(fallback, /<main\\b[^>]*id="main"/i,
+  assert.match(fallback, /<main\b[^>]*id="main"/i,
     fallbackUrl + ': missing main accessibility landmark')
   assert.ok(fallback.includes('href="' + BASE + '"') &&
       fallback.includes('href="' + BASE + 'hi/"'),
