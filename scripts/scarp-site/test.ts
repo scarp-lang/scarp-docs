@@ -8,6 +8,7 @@ import { escapeHtml, localLink, htmlPath, pairedRoutes, sourceRoute } from './ro
 import { documentationPages } from '../lib/docs-pages.ts'
 import { urlForPage } from './routes.ts'
 import { validateSitemap } from '../lib/sitemap-policy.ts'
+import { auditPublishedLinks, type PublishedHtmlPage } from '../lib/site-link-audit.ts'
 import { LATEST_RELEASE } from '../lib/command-finder.ts'
 import { currentPublishedCompilerTag, currentCompilerReleaseRoute } from './current-release.ts'
 
@@ -123,10 +124,12 @@ for(const source of sources){
 }
 assert.deepEqual(await buildSite(),{pages:sources.length,assets:4})
 const htmlPaths=new Set<string>()
+const renderedPages: PublishedHtmlPage[] = []
 for(const source of sources) {
   const dest=join(site,htmlPath(source))
   check(existsSync(dest),'Missing generated page: '+source)
   const html=readFileSync(dest,'utf8')
+  renderedPages.push({source,html})
   const meta=pairedRoutes(source)
   check(html.startsWith('<!doctype html><html lang="'+(meta.locale==='hi'?'hi-IN':'en-US')+'">'),
     'Incorrect page locale: '+source)
@@ -144,6 +147,8 @@ for(const source of sources) {
   htmlPaths.add(htmlPath(source))
 }
 assert.equal(htmlPaths.size,sources.length)
+assert.deepEqual(auditPublishedLinks(renderedPages), [],
+  'Scarp engine must not emit broken cross-language links or heading fragments')
 const homeHtml=readFileSync(join(site,'index.html'),'utf8')
 const hindiHome=readFileSync(join(site,'hi/index.html'),'utf8')
 check(homeHtml.includes('Build Beyond Boundaries.'),'English homepage hero missing')
