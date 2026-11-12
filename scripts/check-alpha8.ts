@@ -3,7 +3,6 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { extractCodeFences, firstMissingCodeBlock } from './lib/code-fences.ts'
-import { currentPublishedCompilerTag } from './scarp-site/current-release.ts'
 
 const root=resolve(fileURLToPath(new URL('..',import.meta.url)))
 const read=(path:string):string=>readFileSync(resolve(root,path),'utf8')
@@ -16,7 +15,8 @@ const manifest=JSON.parse(read('conformance/alpha8-manifest.json')) as {
   compilerRepository:string;compilerRef:string;compilerCommit:string;
   releasedAt:string;cases:Case[];expectedStdout:string
 }
-assert.equal(currentPublishedCompilerTag(JSON.parse(read('data/compiler-latest-release.json')) as unknown),tag)
+// Validate this immutable release independently of whichever compiler ships next.
+// The current-release manifest is checked separately by the site and CLI table.
 assert.equal(manifest.compilerRepository,'scarp-lang/scarp')
 assert.equal(manifest.compilerRef,tag)
 assert.equal(manifest.compilerCommit,commit)
