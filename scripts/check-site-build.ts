@@ -6,6 +6,7 @@ import { pairedRoutes } from './scarp-site/routes.ts'
 import { pageSeoHead } from './scarp-site/seo.ts'
 import { documentationPages } from './lib/docs-pages.ts'
 import { validateSitemap } from './lib/sitemap-policy.ts'
+import { auditPublishedLinks, type PublishedHtmlPage } from './lib/site-link-audit.ts'
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)))
 const docs = join(root, 'docs')
@@ -21,10 +22,12 @@ assert.ok(existsSync(dist), `Missing site build at ${dist}: run npm run docs:bui
 const pages = documentationPages(docs)
 let checked = 0
 const failures: string[] = []
+const renderedPages: PublishedHtmlPage[] = []
 for (const path of pages) {
   const rendered = join(dist, path.replace(/\.md$/, '.html'))
   if (!existsSync(rendered)) { failures.push(`${path}: no generated HTML at ${relative(root, rendered)}`); continue }
   const html = readFileSync(rendered, 'utf8')
+  renderedPages.push({source:path,html})
   const expected = pairedRoutes(path)
   const links = headTags(html, 'link')
   const canonical = links.filter(attrs => attrs.rel === 'canonical')
@@ -47,6 +50,9 @@ for (const path of pages) {
   if (!new RegExp(`<html\\b[^>]*\\blang="${lang}"`, 'i').test(html)) failures.push(`${path}: expected <html lang="${lang}">`)
   checked++
 }
+// A page may have valid metadata yet still navigate to a missing local HTML
+// route or Hindi heading. Check the actual generated links before deployment.
+failures.push(...auditPublishedLinks(renderedPages))
 const sitemapFile = join(dist, 'sitemap.xml')
 if (!existsSync(sitemapFile)) {
   failures.push('Missing generated sitemap.xml')

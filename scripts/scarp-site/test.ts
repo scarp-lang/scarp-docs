@@ -8,6 +8,7 @@ import { escapeHtml, localLink, htmlPath, pairedRoutes, sourceRoute } from './ro
 import { documentationPages } from '../lib/docs-pages.ts'
 import { urlForPage } from './routes.ts'
 import { validateSitemap } from '../lib/sitemap-policy.ts'
+import { auditPublishedLinks, type PublishedHtmlPage } from '../lib/site-link-audit.ts'
 import { LATEST_RELEASE } from '../lib/command-finder.ts'
 import { currentPublishedCompilerTag, currentCompilerReleaseRoute } from './current-release.ts'
 
@@ -32,6 +33,16 @@ assert.equal(localLink('https://github.com/scarp-lang','index.md'),
 assert.equal(localLink('javascript:alert(1)','index.md'),'#')
 assert.equal(localLink('../guide/first-program.md','tutorials/test.md'),
   '/scarp-docs/guide/first-program')
+assert.equal(localLink('../guide/first-program.md?view=source#example','tutorials/test.md'),
+  '/scarp-docs/guide/first-program?view=source#example')
+assert.equal(localLink('/guide/first-program.md?lang=hi#example','index.md'),
+  '/scarp-docs/guide/first-program?lang=hi#example')
+assert.equal(localLink('/scarp-docs/hi/guide/first-program.md#example','index.md'),
+  '/scarp-docs/hi/guide/first-program#example')
+assert.equal(localLink('index.md?mode=source','hi/guide/test.md'),
+  '/scarp-docs/hi/guide/?mode=source')
+assert.equal(localLink('../../../private.md?x#y','tutorials/test.md'),'#')
+assert.equal(localLink('//example.org/file.md?x','index.md'),'#')
 assert.equal(escapeHtml('<script>&"\''),
   '&lt;script&gt;&amp;&quot;&#39;')
 for(const invalid of ['/index.md','hi/../index.md','hi\\index.md','bad?x.md','https://x.md']){
@@ -66,6 +77,9 @@ check(fixture.headings[0].id==='परीक्षण-heading','Devanagari headi
 check(fixture.headings[1].id==='duplicate-test','Heading slug must be stable')
 check(fixture.headings[2].id==='duplicate-test-1','Duplicate headings must get distinct IDs')
 check(fixture.html.includes('href="/scarp-docs/guide/first-program"'),'Internal links must use GitHub Pages base')
+const renderedLink = renderMarkdown('[example](../guide/first-program.md?view=source&lang=hi#top)', 'tutorials/test.md')
+check(renderedLink.html.includes('href="/scarp-docs/guide/first-program?view=source&amp;lang=hi#top"'),
+  'Markdown links with query parameters and fragments must resolve to browser routes')
 check(fixture.html.includes('rel="noopener noreferrer"'),'External links should be hardened')
 check(!fixture.html.includes('<script>alert('),'Raw HTML must not execute')
 check(fixture.html.includes('&lt;script&gt;'),'Raw HTML must be escaped')
@@ -75,6 +89,38 @@ check(fixture.html.includes('scarp-callout'),'Admonitions must render as accessi
 check(fixture.html.includes('class="table-scroll" tabindex="0"'),
   'Wide Markdown tables must be keyboard scrollable')
 check(fixture.html.includes('tabindex="0"'),'Scrollable code must be keyboard focusable')
+check(fixture.html.includes('class="code-example" data-code-example'),
+  'Every fenced example must have a progressive-enhancement copy wrapper')
+check(fixture.html.includes('<span class="code-language">Scarp</span>'),
+  'Scarp fences must label the code language')
+check(fixture.html.includes('class="code-example-toolbar"'),
+  'Copy-toolbar placeholder must be included in server-rendered HTML')
+check(!fixture.html.includes('class="code-copy-button"'),
+  'Inert buttons must not appear in static HTML without JavaScript')
+check(fixture.html.includes('// &lt;script&gt;alert(1)&lt;/script&gt;'),
+  'Syntax-highlighted source must stay escaped inside the copy wrapper')
+
+const copyFixture=renderMarkdown([
+  '~~~srp',
+  'print("नमस्ते 👋");',
+  '~~~',
+  '~~~bash',
+  'scarp version',
+  '~~~',
+  '~~~',
+  'unlabeled example',
+  '~~~'
+].join('\n'),'hi/guide/test.md')
+check((copyFixture.html.match(/data-code-example/g)??[]).length===3,
+  'Scarp, shell and unlabeled fences must all support copy enhancement')
+check(copyFixture.html.includes('<span class="code-language">Scarp</span>'),
+  'SRP aliases must display the Scarp language name')
+check(copyFixture.html.includes('<span class="code-language">bash</span>'),
+  'Shell code language labels should remain faithful to their fence')
+check(copyFixture.html.includes('<span class="code-language">text</span>'),
+  'An unlabeled code fence should have a readable fallback language')
+check(copyFixture.html.includes('नमस्ते 👋'),
+  'Unicode code content must remain intact in generated copy examples')
 
 
 const inertExamples=renderMarkdown(["~~~text","::: danger Fenced tilde marker","<ScarpCommandFinder />","~~~","```text","::: warning Fenced backtick marker","<PagesDeployments />","```","Inline: `<ScarpCommandFinder />`","::: note Active callout","Visible callout.",":::","<ScarpCommandFinder />","<PagesDeployments />"].join('\n'),'guide/test.md')
@@ -94,6 +140,32 @@ check((inertExamples.html.match(/class="scarp-callout/g)??[]).length===1,
   'Only the real callout outside code may render')
 check(inertExamples.html.includes('Visible callout.'),
   'A valid callout should remain rendered after fenced examples')
+
+// Search and SEO excerpts must preserve Scarp source operators, not treat
+// comparisons and generic-like type spellings as raw HTML tags.
+const searchableCode=renderMarkdown([
+  '# Search example',
+  '~~~scarp',
+  'bind result = if 2 < 3 { 1 } else { 0 };',
+  'bind pair: tuple<integer, string> = (42, "नमस्ते");',
+  '~~~',
+  '::: note Symbol comparisons',
+  'One < two; three > four.',
+  ':::',
+  '<ScarpCommandFinder />'
+].join('\n'),'guide/test.md')
+check(searchableCode.bodyText.includes('2 < 3'),
+  'Search excerpts must retain less-than comparisons in Scarp fences')
+check(searchableCode.bodyText.includes('tuple<integer, string>'),
+  'Search excerpts must retain angle-bracket type annotations in Scarp fences')
+check(searchableCode.bodyText.includes('One < two; three > four.'),
+  'Prose comparisons must remain readable in search excerpts')
+check(!searchableCode.bodyText.includes('SCARPWIDGET') &&
+      !searchableCode.bodyText.includes('SCARPTRUSTEDBLOCK'),
+  'Internal renderer placeholders must not enter the public search index')
+check(searchableCode.html.includes('data-command-finder') &&
+      searchableCode.html.includes('class="scarp-callout'),
+  'Token-based text extraction must not change rendered widgets or callouts')
 
 const latest = JSON.parse(readFileSync(join(root,'data/compiler-latest-release.json'),'utf8')) as Record<string,unknown>
 check(currentPublishedCompilerTag(latest)===LATEST_RELEASE,'Current manifest and CLI release table must agree')
@@ -123,10 +195,12 @@ for(const source of sources){
 }
 assert.deepEqual(await buildSite(),{pages:sources.length,assets:4})
 const htmlPaths=new Set<string>()
+const renderedPages: PublishedHtmlPage[] = []
 for(const source of sources) {
   const dest=join(site,htmlPath(source))
   check(existsSync(dest),'Missing generated page: '+source)
   const html=readFileSync(dest,'utf8')
+  renderedPages.push({source,html})
   const meta=pairedRoutes(source)
   check(html.startsWith('<!doctype html><html lang="'+(meta.locale==='hi'?'hi-IN':'en-US')+'">'),
     'Incorrect page locale: '+source)
@@ -144,6 +218,20 @@ for(const source of sources) {
   htmlPaths.add(htmlPath(source))
 }
 assert.equal(htmlPaths.size,sources.length)
+const fallbackHtml=readFileSync(join(site,'404.html'),'utf8')
+check(fallbackHtml.includes('<html lang="en"><head>'),
+  'Fallback should have a complete HTML head and explicit language')
+check(fallbackHtml.includes('name="robots" content="noindex, follow"'),
+  '404 fallback must not be indexed as regular documentation')
+check(fallbackHtml.includes('href="/scarp-docs/"') &&
+      fallbackHtml.includes('href="/scarp-docs/hi/"'),
+  'Fallback must link both English and Hindi homepages')
+check(fallbackHtml.includes('lang="hi"') && fallbackHtml.includes('id="main"'),
+  'Fallback must expose Hindi text and a main accessibility landmark')
+check(fallbackHtml.includes('assets/scarp-site.css'),
+  'Fallback must use the Scarp-owned styling')
+assert.deepEqual(auditPublishedLinks(renderedPages), [],
+  'Scarp engine must not emit broken cross-language links or heading fragments')
 const homeHtml=readFileSync(join(site,'index.html'),'utf8')
 const hindiHome=readFileSync(join(site,'hi/index.html'),'utf8')
 check(homeHtml.includes('Build Beyond Boundaries.'),'English homepage hero missing')

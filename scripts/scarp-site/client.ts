@@ -102,6 +102,25 @@ function search(entries:SearchEntry[],value:string):SearchEntry[]{
     .slice(0,18).map(x=>x.entry)
 }
 
+/**
+ * Give search results context around the actual match, not just the first
+ * paragraph of a long page. Slice by Unicode code points so Devanagari text,
+ * emoji and other supplementary characters cannot be cut in half.
+ */
+function searchPreview(content:string,query:string,maxLength=160):string {
+  const chars=Array.from(content)
+  if(chars.length<=maxLength)return content
+  const folded=content.toLocaleLowerCase()
+  const matches=query.toLocaleLowerCase().split(/\s+/u).filter(Boolean)
+    .map(term=>folded.indexOf(term)).filter(index=>index>=0)
+  const first=matches.length?Math.min(...matches):0
+  const matchPosition=Array.from(content.slice(0,first)).length
+  const start=Math.max(0,Math.min(matchPosition-48,chars.length-maxLength))
+  const end=Math.min(chars.length,start+maxLength)
+  return (start>0?'…':'')+chars.slice(start,end).join('').trim()+
+    (end<chars.length?'…':'')
+}
+
 function installSearch():void {
   const dialog=document.querySelector<HTMLDialogElement>('#search-panel')
   const open=document.querySelector<HTMLButtonElement>('#search-open')
@@ -133,7 +152,7 @@ function installSearch():void {
         const link=el('a')
         link.href=entry.route
         link.appendChild(el('strong',undefined,entry.title))
-        link.appendChild(el('small',undefined,entry.excerpt.slice(0,140)))
+        link.appendChild(el('small',undefined,searchPreview(entry.excerpt,query)))
         li.appendChild(link)
         output.appendChild(li)
       }
@@ -194,6 +213,43 @@ function installSearch():void {
       show()
     }
   })
+}
+
+/**
+ * Progressive enhancement: code and language labels are already server
+ * rendered. Install controls only in the browser, without an external library
+ * or a remote copy service. The original code text survives syntax highlighting.
+ */
+function installCodeCopy():void {
+  for(const sample of document.querySelectorAll<HTMLElement>('[data-code-example]')){
+    const code=sample.querySelector<HTMLElement>('pre code')
+    const toolbar=sample.querySelector<HTMLElement>('.code-example-toolbar')
+    if(!code||!toolbar)continue
+    const button=el('button','code-copy-button',t('Copy code','कोड कॉपी करें'))
+    button.type='button'
+    const status=el('span','code-copy-status')
+    status.setAttribute('role','status')
+    status.setAttribute('aria-live','polite')
+    status.setAttribute('aria-atomic','true')
+    button.addEventListener('click',()=>{
+      const source=code.textContent??''
+      const fallback=():void=>{
+        // Browser permission denial must never discard source code.
+        const selection=window.getSelection()
+        const range=document.createRange()
+        range.selectNodeContents(code)
+        selection?.removeAllRanges()
+        selection?.addRange(range)
+        status.textContent=t('Clipboard unavailable. Code selected; press Ctrl+C.',
+          'क्लिपबोर्ड उपलब्ध नहीं। कोड चुना गया है; Ctrl+C दबाएँ।')
+      }
+      if(!navigator.clipboard?.writeText){fallback();return}
+      void navigator.clipboard.writeText(source)
+        .then(()=>{status.textContent=t('Copied','कॉपी हो गया')})
+        .catch(fallback)
+    })
+    toolbar.append(button,status)
+  }
 }
 
 function installFinder():void {
@@ -304,5 +360,6 @@ function installDeployments():void {
 installAppearance()
 installMenu()
 installSearch()
+installCodeCopy()
 installFinder()
 installDeployments()

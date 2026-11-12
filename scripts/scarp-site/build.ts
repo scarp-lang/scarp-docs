@@ -204,8 +204,23 @@ export async function buildSite():Promise<{pages:number;assets:number}>{
     throw new Error('Client TypeScript compilation failed: '+details)
   }
   writeFileSync(join(siteRoot,'assets','scarp-site.js'),browserScript.outputText)
-  writeFileSync(join(siteRoot,'404.html'),'<!doctype html><html lang="en"><title>Not found · Scarp Docs</title>'+
-    '<main><h1>Documentation page not found</h1><a href="'+BASE+'">Scarp Docs</a></main></html>')
+  // A project Pages 404 is still a public documentation entry point. Give
+  // both language communities real navigation and keep it out of search.
+  writeFileSync(join(siteRoot,'404.html'),
+    '<!doctype html><html lang="en"><head><meta charset="UTF-8"/>'+
+    '<meta name="viewport" content="width=device-width,initial-scale=1"/>'+
+    '<meta name="robots" content="noindex, follow"/>'+
+    '<title>Page not found · Scarp Docs</title>'+
+    '<link rel="icon" type="image/svg+xml" href="'+BASE+'assets/scarp-mark.svg"/>'+
+    '<link rel="stylesheet" href="'+BASE+'assets/scarp-site.css"/></head><body>'+
+    '<a class="skip-link" href="#main">Skip to content</a>'+
+    '<main id="main" class="not-found"><p class="not-found-kicker">404 · Scarp Docs</p>'+
+    '<h1>Page not found</h1>'+
+    '<p>The documentation page may have moved or the address may be incorrect.</p>'+
+    '<p lang="hi">यह दस्तावेज़ पृष्ठ नहीं मिला। कृपया सही भाषा का मुख्य पृष्ठ खोलें।</p>'+
+    '<nav aria-label="Documentation homepages">'+
+    '<a lang="en" href="'+BASE+'">English documentation</a>'+
+    '<a lang="hi" href="'+BASE+'hi/">हिन्दी दस्तावेज़</a></nav></main></body></html>', 'utf8')
   console.log('PASS: independent Scarp TypeScript engine generated '+views.length+
     ' English/Hindi Markdown routes, local CSS/JavaScript and sitemap under '+siteRoot)
   return {pages:views.length,assets:4}

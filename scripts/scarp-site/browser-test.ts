@@ -180,7 +180,22 @@ async function testLocale(
       lang+': ArrowUp must cycle through search results')
     await page.keyboard.press('ArrowDown')
     assert.equal(await results.first().evaluate(node=>document.activeElement===node),true)
+
+    // E0054 occurs well inside language reference pages. Match-context
+    // previews must show the actual diagnostic in both document languages.
     await searchInput.focus()
+    await searchInput.fill('E0054')
+    await page.waitForFunction(() => {
+      const snippets=[...document.querySelectorAll('#search-results li a small')]
+      return snippets.length>0 && snippets.every(node=>node.textContent?.includes('E0054'))
+    })
+    const previews=await page.locator('#search-results li a small').allTextContents()
+    assert.ok(previews.length>0 && previews.every(text=>text.includes('E0054')),
+      lang+': previews must include the searched compiler diagnostic')
+    assert.ok(previews.every(text=>[...text].length<=162),
+      lang+': previews must be code-point bounded')
+    assertions++
+
     await searchInput.fill('zzqvkpwmntrxhfbjkldsrp9776')
     await page.getByRole('status').getByText(
       lang==='hi'?'कोई परिणाम नहीं मिला':'No results found',{exact:true}).waitFor()
@@ -196,6 +211,84 @@ async function testLocale(
       join(previewRoot,'audit-results'))
     assert.ok(audit.passes>0)
     assertions++
+
+    // The print stylesheet must keep lesson content readable while removing
+    // navigation and converting code windows into printable wrapped text.
+    await page.emulateMedia({media:'print'})
+    assert.equal(await page.locator('.site-header').evaluate(node=>getComputedStyle(node).display),
+      'none',lang+': header should not consume printed page space')
+    assert.equal(await page.locator('#main').evaluate(node=>getComputedStyle(node).display),
+      'block',lang+': teaching content must remain printable')
+    assert.equal(await page.locator('main pre').first().evaluate(node=>getComputedStyle(node).whiteSpace),
+      'pre-wrap',lang+': Scarp code should wrap when printed')
+    await page.emulateMedia({media:'screen'})
+    assert.notEqual(await page.locator('.site-header').evaluate(node=>getComputedStyle(node).display),
+      'none',lang+': screen navigation must recover after print emulation')
+    assertions++
+
+    // GitHub Pages serves this standalone fallback for unknown URLs. It
+    // must remain accessible and offer both language homepages offline.
+    const notFound=await page.goto(origin+base+'404.html',{waitUntil:'networkidle'})
+    assert.equal(notFound?.status(),200)
+    assert.equal(await page.title(),'Page not found · Scarp Docs')
+    assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'),
+      'noindex, follow')
+    assert.equal(await page.getByRole('heading',{name:'Page not found'}).count(),1)
+    assert.equal(await page.locator('main p[lang="hi"]').count(),1)
+    const homeNavigation=page.getByRole('navigation',{name:'Documentation homepages'})
+    assert.equal(await homeNavigation.getByRole('link',{name:'English documentation'}).getAttribute('href'),base)
+    assert.equal(await homeNavigation.getByRole('link',{name:'हिन्दी दस्तावेज़'}).getAttribute('href'),base+'hi/')
+    const fallbackAudit=await auditOfflineAccessibility(page,lang+'-engine-404',
+      join(previewRoot,'audit-results'))
+    assert.ok(fallbackAudit.passes>0)
+    assertions++
+
+
+    // All code fences are readable without scripts and gain copy controls in
+    // browser mode. Test actual keyboard activation, exact Unicode content,
+    // clipboard permission rejection, selection fallback and WCAG A/AA.
+    await page.goto(origin+prefix.replace(/\/$/,'')+'/guide/first-program',
+      {waitUntil:'networkidle'})
+    const codeExample=page.locator('[data-code-example]').first()
+    await codeExample.locator('pre code').waitFor()
+    const expectedSource=await codeExample.locator('pre code').textContent()
+    assert.ok(expectedSource && expectedSource.length>0)
+    const copyButton=codeExample.getByRole('button',{
+      name:lang==='hi'?'कोड कॉपी करें':'Copy code'
+    })
+    await copyButton.waitFor({state:'visible'})
+    await page.evaluate(`Object.defineProperty(navigator,'clipboard',{
+      configurable:true,
+      value:{writeText(value){window.__copiedFence=value;return Promise.resolve()}}
+    })`)
+    await copyButton.focus()
+    await page.keyboard.press('Enter')
+    await page.waitForFunction("typeof window.__copiedFence === 'string'")
+    assert.equal(await page.evaluate("window.__copiedFence"),expectedSource,
+      lang+': copying must preserve highlighted source and Unicode')
+    await codeExample.getByRole('status').getByText(
+      lang==='hi'?'कॉपी हो गया':'Copied',{exact:true}).waitFor()
+    await page.evaluate(`Object.defineProperty(navigator,'clipboard',{
+      configurable:true,
+      value:{writeText(){return Promise.reject(new DOMException('Denied','NotAllowedError'))}}
+    })`)
+    await copyButton.click()
+    await codeExample.getByRole('status').getByText(
+      lang==='hi'
+        ?'क्लिपबोर्ड उपलब्ध नहीं। कोड चुना गया है; Ctrl+C दबाएँ।'
+        :'Clipboard unavailable. Code selected; press Ctrl+C.',
+      {exact:true}).waitFor()
+    // Chromium's Selection.toString() omits the trailing newline of a
+    // selected <code> node, even though Clipboard.writeText gets it intact.
+    const selected=String(await page.evaluate("window.getSelection()?.toString()"))
+    assert.equal(selected.trimEnd(),expectedSource.trimEnd(),
+      lang+': denied clipboard must select the entire meaningful source')
+    assert.equal(await copyButton.isEnabled(),true)
+    const codeAudit=await auditOfflineAccessibility(page!,lang+'-engine-code-copy',
+      join(previewRoot,'audit-results'))
+    assert.ok(codeAudit.passes>0)
+    assertions++
+
     assert.deepEqual(outside,[],lang+': custom site attempted external requests')
   }finally{await ctx.close()}
 }
