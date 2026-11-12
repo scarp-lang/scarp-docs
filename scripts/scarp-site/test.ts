@@ -32,6 +32,16 @@ assert.equal(localLink('https://github.com/scarp-lang','index.md'),
 assert.equal(localLink('javascript:alert(1)','index.md'),'#')
 assert.equal(localLink('../guide/first-program.md','tutorials/test.md'),
   '/scarp-docs/guide/first-program')
+assert.equal(localLink('../guide/first-program.md?view=source#example','tutorials/test.md'),
+  '/scarp-docs/guide/first-program?view=source#example')
+assert.equal(localLink('/guide/first-program.md?lang=hi#example','index.md'),
+  '/scarp-docs/guide/first-program?lang=hi#example')
+assert.equal(localLink('/scarp-docs/hi/guide/first-program.md#example','index.md'),
+  '/scarp-docs/hi/guide/first-program#example')
+assert.equal(localLink('index.md?mode=source','hi/guide/test.md'),
+  '/scarp-docs/hi/guide/index?mode=source')
+assert.equal(localLink('../../../private.md?x#y','tutorials/test.md'),'#')
+assert.equal(localLink('//example.org/file.md?x','index.md'),'#')
 assert.equal(escapeHtml('<script>&"\''),
   '&lt;script&gt;&amp;&quot;&#39;')
 for(const invalid of ['/index.md','hi/../index.md','hi\\index.md','bad?x.md','https://x.md']){
@@ -66,6 +76,9 @@ check(fixture.headings[0].id==='परीक्षण-heading','Devanagari headi
 check(fixture.headings[1].id==='duplicate-test','Heading slug must be stable')
 check(fixture.headings[2].id==='duplicate-test-1','Duplicate headings must get distinct IDs')
 check(fixture.html.includes('href="/scarp-docs/guide/first-program"'),'Internal links must use GitHub Pages base')
+const renderedLink = renderMarkdown('[example](../guide/first-program.md?view=source&lang=hi#top)', 'tutorials/test.md')
+check(renderedLink.html.includes('href="/scarp-docs/guide/first-program?view=source&amp;lang=hi#top"'),
+  'Markdown links with query parameters and fragments must resolve to browser routes')
 check(fixture.html.includes('rel="noopener noreferrer"'),'External links should be hardened')
 check(!fixture.html.includes('<script>alert('),'Raw HTML must not execute')
 check(fixture.html.includes('&lt;script&gt;'),'Raw HTML must be escaped')
