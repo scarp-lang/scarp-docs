@@ -59,7 +59,7 @@ export async function verifyLiveSite(fetcher: SiteFetcher, sitemapSources: reado
     const html = await response.text()
     const expected = pairedRoutes(source)
     const lang = source.startsWith('hi/') ? 'hi-IN' : 'en-US'
-    assert.match(html, new RegExp('<html\\b[^>]*\blang="' + lang + '"', 'i'), url + ': wrong HTML locale')
+    assert.match(html, new RegExp('<html\\b[^>]*\\blang="' + lang + '"', 'i'), url + ': wrong HTML locale')
     const links = tags(html, 'link')
     assert.equal(links.filter(attrs => attrs.rel === 'canonical' && attrs.href === expected.canonical).length, 1, url + ': canonical mismatch')
     for (const [locale, target] of [['en', expected.english], ['hi', expected.hindi], ['x-default', expected.english]]) {
