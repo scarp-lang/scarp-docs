@@ -22,6 +22,6 @@ For quick topic discovery, open [search and navigation](/guide/search-and-naviga
 
 ## How to use these docs
 
-For new projects, choose the [learning path](/guide/learning-path) and the [published alpha.8 calculator tutorial](/tutorials/calculator-alpha8). The [historical alpha.6 project lab](/tutorials/project-symbol-navigation-alpha6) and [first-program reference](/guide/first-program) retain their exact release baselines. The [language reference](/language/overview), [CLI guide](/tooling/cli) and [compiler repository](https://github.com/scarp-lang/scarp) describe their separately verified scopes.
+For new projects, choose the [learning path](/guide/learning-path) and the [published alpha.8 calculator tutorial](/tutorials/calculator-alpha8). The [historical v0.0.6-alpha.1 project lab](/tutorials/project-symbol-navigation-alpha6) and [first-program reference](/guide/first-program) retain their exact release baselines. The [language reference](/language/overview), [CLI guide](/tooling/cli) and [compiler repository](https://github.com/scarp-lang/scarp) describe their separately verified scopes.
 
 **Verified against:** [compiler README](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/README.md), [reference](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/docs/language.md).
