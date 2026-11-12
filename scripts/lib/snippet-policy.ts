@@ -23,7 +23,8 @@ export function checkSnippetPolicy(markdown: string): SnippetIssue[] {
   const alpha3Cli = markdown.includes('<!-- scarp-cli-release: v0.0.5-alpha.3 -->')
   // The bilingual upgrade guide spans alpha.3 and alpha.4, but only the
   // published alpha.4 side demonstrates new project verbs.
-  const alpha6Cli = markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.1 -->') ||
+  const alpha8Cli = markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.8 -->')
+  const alpha6Cli = alpha8Cli || markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.1 -->') ||
     markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.2 -->') ||
     markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.3 -->')
     || markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.4 -->')
@@ -45,6 +46,9 @@ export function checkSnippetPolicy(markdown: string): SnippetIssue[] {
         if (/^\s*(?:fn|function)\s+[A-Za-z_][\w]*\s*\(/.test(line)) {
           issues.push({ line: fence.line + i + 1, message: 'unsupported function declaration; use typed funcra' })
         }
+        if (!alpha8Cli && /^\s*assert\s*\(/.test(line)) {
+          issues.push({ line: fence.line + i + 1, message: 'native assertions require published alpha.8' })
+        }
       }
     }
     if (['sh', 'shell', 'bash'].includes(fence.language)) {
@@ -60,10 +64,11 @@ export function checkSnippetPolicy(markdown: string): SnippetIssue[] {
           issues.push({ line: fence.line + i + 1, message: 'project module inspection requires published alpha.5' })
           continue
         }
-        const command = /^\s*(?:\$\s*)?scarp\s+(build|compile|create|launch|exec|verify|inspect)\b/.exec(line)
+        const command = /^\s*(?:\$\s*)?scarp\s+(build|compile|create|launch|exec|verify|inspect|init|test|project)\b/.exec(line)
         if (command && (!(
           (['exec', 'verify', 'inspect'].includes(command[1]) && (alpha3Cli || alpha4Cli)) ||
-          (['create', 'launch'].includes(command[1]) && alpha4Cli)
+          (['create', 'launch'].includes(command[1]) && alpha4Cli) ||
+          (['init', 'test', 'project'].includes(command[1]) && alpha8Cli)
         ))) {
           issues.push({ line: fence.line + i + 1, message: 'unsupported Scarp CLI command for this documented release' })
         }
