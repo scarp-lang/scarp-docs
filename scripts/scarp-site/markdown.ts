@@ -215,7 +215,12 @@ export function renderMarkdown(markdown: string, source: string): RenderedPage {
   const visibleContent=content.replace(/<!--[\s\S]*?-->/g,'')
   const widgets=widgetPlaceholders(visibleContent)
   const blocks=containers(widgets.markdown)
-  let html=renderer.render(blocks.markdown)
+  // Parse once for both HTML and searchable text. Regex-stripping raw source
+  // as though it were HTML silently removed Scarp comparisons (a < b) and
+  // type spellings such as tuple<integer, string> from the search index.
+  const env = {}
+  const tokens=renderer.parse(blocks.markdown,env)
+  let html=renderer.renderer.render(tokens,renderer.options,env)
   const placeholders=new Map([...widgets.trusted,...blocks.trusted])
   for (const [token, trusted] of placeholders) {
     html=html.replaceAll('<p>'+token+'</p>',trusted)
@@ -224,7 +229,17 @@ export function renderMarkdown(markdown: string, source: string): RenderedPage {
   // are ever injected AFTER markdown-it's HTML-escaping parse.
   const firstHeading=headings.find(h=>h.level===1)
   const title=matter.title??firstHeading?.title??'Scarp'
-  const bodyText=visibleContent.replace(/<[^>]+>/g,' ')
-    .replace(/[#*_\x60~|]/g,' ').replace(/\s+/g,' ').trim()
+  const textParts: string[] = []
+  const searchable = new Set(['text','code_inline','code_block','fence'])
+  function collectText(items: typeof tokens): void {
+    for (const token of items) {
+      if (searchable.has(token.type) && !placeholders.has(token.content.trim())) {
+        textParts.push(token.content)
+      }
+      if (token.children) collectText(token.children)
+    }
+  }
+  collectText(tokens)
+  const bodyText=textParts.join(' ').replace(/\s+/g,' ').trim()
   return {title,html,bodyText,headings,frontmatter:matter}
 }
