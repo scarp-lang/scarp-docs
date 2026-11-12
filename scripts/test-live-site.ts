@@ -4,8 +4,19 @@ import { LIVE_PAGE_SOURCES, verifyLiveSite, type SiteFetcher } from './lib/live-
 
 const htmlRouteByUrl = new Map(LIVE_PAGE_SOURCES.map(source => [urlForPage(source), source]))
 
-function fakeSite(options: { wrongCanonical?: boolean; missingHindi?: boolean; missingInstaller?: boolean; missingCss?: boolean; missingSitemapPage?: boolean; duplicateSitemapPage?: boolean } = {}): SiteFetcher {
+function fakeSite(options: { wrongCanonical?: boolean; missingHindi?: boolean; missingInstaller?: boolean; missingCss?: boolean; missingSitemapPage?: boolean; duplicateSitemapPage?: boolean; missingFallback?: boolean; missingFallbackHindi?: boolean; indexableFallback?: boolean } = {}): SiteFetcher {
   return async url => {
+    if (url === ORIGIN + BASE + '404.html') {
+      if (options.missingFallback) return new Response('Not found',{status:404})
+      const html = '<!doctype html><html lang="en"><head>'+
+        '<meta name="robots" content="'+(options.indexableFallback?'index':'noindex, follow')+'"/>'+
+        '<title>Page not found · Scarp Docs</title></head><body>'+
+        '<main id="main"><h1>Page not found</h1>'+
+        '<a href="'+BASE+'">English documentation</a>'+
+        (options.missingFallbackHindi?'':'<a href="'+BASE+'hi/">हिन्दी दस्तावेज़</a>')+
+        '</main></body></html>'
+      return new Response(html,{status:200,headers:{'content-type':'text/html; charset=utf-8'}})
+    }
     if (url === ORIGIN + BASE + 'sitemap.xml') {
       const sourcePages = options.missingSitemapPage
         ? LIVE_PAGE_SOURCES.filter(source => source !== 'hi/community/social.md')
@@ -56,6 +67,12 @@ await assert.rejects(() => verifyLiveSite(fakeSite({ wrongCanonical: true }), LI
 await assert.rejects(() => verifyLiveSite(fakeSite({ missingHindi: true }), LIVE_PAGE_SOURCES), /HTTP 200, got 404/)
 await assert.rejects(() => verifyLiveSite(fakeSite({ missingInstaller: true }), LIVE_PAGE_SOURCES), /HTTP 200, got 404/)
 await assert.rejects(() => verifyLiveSite(fakeSite({ missingCss: true }), LIVE_PAGE_SOURCES), /missing its versioned CSS bundle/)
+await assert.rejects(() => verifyLiveSite(fakeSite({ missingFallback: true }), LIVE_PAGE_SOURCES),
+  /404.html: expected HTTP 200, got 404/)
+await assert.rejects(() => verifyLiveSite(fakeSite({ missingFallbackHindi: true }), LIVE_PAGE_SOURCES),
+  /missing English\/Hindi recovery links/)
+await assert.rejects(() => verifyLiveSite(fakeSite({ indexableFallback: true }), LIVE_PAGE_SOURCES),
+  /not excluded from search indexing/)
 await assert.rejects(() => verifyLiveSite(fakeSite({ missingSitemapPage: true }), LIVE_PAGE_SOURCES),
   /Missing sitemap URL/)
 await assert.rejects(() => verifyLiveSite(fakeSite({ duplicateSitemapPage: true }), LIVE_PAGE_SOURCES),
