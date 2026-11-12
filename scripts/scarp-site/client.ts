@@ -205,7 +205,7 @@ function installCodeCopy():void {
   for(const sample of document.querySelectorAll<HTMLElement>('[data-code-example]')){
     const code=sample.querySelector<HTMLElement>('pre code')
     const toolbar=sample.querySelector<HTMLElement>('.code-example-toolbar')
-    if(!code||!toolbar)return
+    if(!code||!toolbar)continue
     const button=el('button','code-copy-button',t('Copy code','कोड कॉपी करें'))
     button.type='button'
     const status=el('span','code-copy-status')
