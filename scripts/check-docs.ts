@@ -158,6 +158,22 @@ for (const page of [
     error(file,'historical installer must link the latest published compiler release '+currentRelease)
   }
 }
+// The downloadable offline archive is built by the same TypeScript renderer
+// as production. Its two reader-facing guides must link to the *current*
+// release, without attributing generated output to the retired VitePress runtime.
+for(const [page,locale] of [
+  ['guide/offline-docs.md',''],
+  ['hi/guide/offline-docs.md','/hi']
+] as const){
+  const file=resolve(docs,page)
+  const body=readFileSync(file,'utf8')
+  if(!body.includes(']('+locale+'/releases/'+currentRelease+')')) {
+    error(file,'offline guide latest compiler link drift: '+currentRelease)
+  }
+  if(body.includes('VitePress')) {
+    error(file,'offline guide describes retired website generation framework')
+  }
+}
 if (pageCount !== pages.length || pageCount < 142) {
   error(sourceContract, `expected complete bilingual docs inventory (at least 142), got ${pageCount}`)
 }
