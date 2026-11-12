@@ -75,6 +75,38 @@ check(fixture.html.includes('scarp-callout'),'Admonitions must render as accessi
 check(fixture.html.includes('class="table-scroll" tabindex="0"'),
   'Wide Markdown tables must be keyboard scrollable')
 check(fixture.html.includes('tabindex="0"'),'Scrollable code must be keyboard focusable')
+check(fixture.html.includes('class="code-example" data-code-example'),
+  'Every fenced example must have a progressive-enhancement copy wrapper')
+check(fixture.html.includes('<span class="code-language">Scarp</span>'),
+  'Scarp fences must label the code language')
+check(fixture.html.includes('class="code-example-toolbar"'),
+  'Copy-toolbar placeholder must be included in server-rendered HTML')
+check(!fixture.html.includes('class="code-copy-button"'),
+  'Inert buttons must not appear in static HTML without JavaScript')
+check(fixture.html.includes('// &lt;script&gt;alert(1)&lt;/script&gt;'),
+  'Syntax-highlighted source must stay escaped inside the copy wrapper')
+
+const copyFixture=renderMarkdown([
+  '~~~srp',
+  'print("नमस्ते 👋");',
+  '~~~',
+  '~~~bash',
+  'scarp version',
+  '~~~',
+  '~~~',
+  'unlabeled example',
+  '~~~'
+].join('\n'),'hi/guide/test.md')
+check((copyFixture.html.match(/data-code-example/g)??[]).length===3,
+  'Scarp, shell and unlabeled fences must all support copy enhancement')
+check(copyFixture.html.includes('<span class="code-language">Scarp</span>'),
+  'SRP aliases must display the Scarp language name')
+check(copyFixture.html.includes('<span class="code-language">bash</span>'),
+  'Shell code language labels should remain faithful to their fence')
+check(copyFixture.html.includes('<span class="code-language">text</span>'),
+  'An unlabeled code fence should have a readable fallback language')
+check(copyFixture.html.includes('नमस्ते 👋'),
+  'Unicode code content must remain intact in generated copy examples')
 
 
 const inertExamples=renderMarkdown(["~~~text","::: danger Fenced tilde marker","<ScarpCommandFinder />","~~~","```text","::: warning Fenced backtick marker","<PagesDeployments />","```","Inline: `<ScarpCommandFinder />`","::: note Active callout","Visible callout.",":::","<ScarpCommandFinder />","<PagesDeployments />"].join('\n'),'guide/test.md')
