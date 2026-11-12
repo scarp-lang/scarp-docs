@@ -147,6 +147,21 @@ for (const page of ['reference/status.md','hi/reference/status.md']) {
 for (const page of ['releases/'+currentRelease+'.md','hi/releases/'+currentRelease+'.md']) {
   if (!pages.includes(page)) error(resolve(docs,page),'current published compiler guide missing')
 }
+// Historical installation commands remain immutable, but their onboarding
+// pointers must follow the actual published compiler release. Otherwise a
+// newly arriving reader can be sent to an obsolete binary by old guide pages.
+for (const page of [
+  'guide/installation.md', 'hi/guide/installation.md',
+  'guide/installation-alpha6.md', 'hi/guide/installation-alpha6.md'
+]) {
+  const file = resolve(docs,page)
+  const introduction = readFileSync(file,'utf8').split(/^~~~[a-z]+/m,1)[0]
+  const localePrefix = page.startsWith('hi/') ? '/hi' : ''
+  const latestLink = '](' + localePrefix + '/releases/' + currentRelease + ')'
+  if (!introduction.includes(latestLink)) {
+    error(file,'historical installer onboarding must link the currently published '+currentRelease+' guide')
+  }
+}
 if (pageCount !== pages.length || pageCount < 142) {
   error(sourceContract, `expected complete bilingual docs inventory (at least 142), got ${pageCount}`)
 }
