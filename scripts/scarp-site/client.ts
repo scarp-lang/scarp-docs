@@ -196,6 +196,43 @@ function installSearch():void {
   })
 }
 
+/**
+ * Progressive enhancement: code and language labels are already server
+ * rendered. Install controls only in the browser, without an external library
+ * or a remote copy service. The original code text survives syntax highlighting.
+ */
+function installCodeCopy():void {
+  for(const sample of document.querySelectorAll<HTMLElement>('[data-code-example]')){
+    const code=sample.querySelector<HTMLElement>('pre code')
+    const toolbar=sample.querySelector<HTMLElement>('.code-example-toolbar')
+    if(!code||!toolbar)return
+    const button=el('button','code-copy-button',t('Copy code','कोड कॉपी करें'))
+    button.type='button'
+    const status=el('span','code-copy-status')
+    status.setAttribute('role','status')
+    status.setAttribute('aria-live','polite')
+    status.setAttribute('aria-atomic','true')
+    button.addEventListener('click',()=>{
+      const source=code.textContent??''
+      const fallback=():void=>{
+        // Browser permission denial must never discard source code.
+        const selection=window.getSelection()
+        const range=document.createRange()
+        range.selectNodeContents(code)
+        selection?.removeAllRanges()
+        selection?.addRange(range)
+        status.textContent=t('Clipboard unavailable. Code selected; press Ctrl+C.',
+          'क्लिपबोर्ड उपलब्ध नहीं। कोड चुना गया है; Ctrl+C दबाएँ।')
+      }
+      if(!navigator.clipboard?.writeText){fallback();return}
+      void navigator.clipboard.writeText(source)
+        .then(()=>{status.textContent=t('Copied','कॉपी हो गया')})
+        .catch(fallback)
+    })
+    toolbar.append(button,status)
+  }
+}
+
 function installFinder():void {
   const panel=document.querySelector<HTMLElement>('[data-command-finder]')
   const data=document.querySelector<HTMLScriptElement>('#scarp-command-data')
@@ -304,5 +341,6 @@ function installDeployments():void {
 installAppearance()
 installMenu()
 installSearch()
+installCodeCopy()
 installFinder()
 installDeployments()
