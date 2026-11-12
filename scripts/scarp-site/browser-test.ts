@@ -23,8 +23,12 @@ const server=createServer((req,res)=>{
     return
   }
   const tail=decodeURIComponent(pathname.slice(base.length))
-  const path=resolve(root,tail+(tail.endsWith('/')||!tail? 'index.html':
-    extname(tail)?'':'.html'))
+  // Keep test-server routing aligned with both shipped preview servers.
+  // Versioned docs slug endings like ".8" are not asset extensions.
+  const extension=extname(tail).toLowerCase()
+  const suffix=tail.endsWith('/')||!tail?'index.html':
+    extension && Object.hasOwn(mime,extension)?'':'.html'
+  const path=resolve(root,tail+suffix)
   if(path!==root&&!path.startsWith(root+sep)){
     res.writeHead(404).end('Not found')
     return
