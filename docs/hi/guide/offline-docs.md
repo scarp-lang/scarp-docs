@@ -1,6 +1,6 @@
 # Scarp Docs को ऑफलाइन डाउनलोड करके पढ़ें
 
-Scarp के आधिकारिक **English/Hindi दस्तावेज़** एक offline snapshot archive में भी उपलब्ध हो सकते हैं। इसमें VitePress से बने सभी पृष्ठ, CSS, JavaScript तथा स्थानीय search की files होती हैं। यह **सिर्फ documentation** है, Scarp compiler का executable नहीं।
+Scarp के आधिकारिक **English/Hindi दस्तावेज़** एक offline snapshot archive में भी उपलब्ध हो सकते हैं। इसमें Scarp के स्वयं के TypeScript documentation engine से बने सभी पृष्ठ, CSS, JavaScript तथा स्थानीय search की files होती हैं। यह **सिर्फ documentation** है, Scarp compiler का executable नहीं।
 
 ## जाँचा हुआ archive डाउनलोड करें
 
@@ -64,6 +64,6 @@ Server केवल **127.0.0.1** अर्थात आपके अपने �
 
 इस package में सभी English/Hindi HTML पृष्ठ, उनके स्थानीय CSS/JavaScript, Scarp Docs search assets और [Command Finder](/hi/tooling/command-finder) शामिल हैं। पृष्ठों के अंदर के links स्थानीय server पर खुलते हैं। **बाहरी GitHub, social profiles तथा download links** के लिए फिर भी इंटरनेट चाहिए। असली browser में keyboard, search और accessibility परीक्षण का अलग काम [Issue #65](https://github.com/scarp-lang/scarp-docs/issues/65) पर रखा गया है; static assets की पुष्टि को पूरी browser accessibility जाँच न समझें।
 
-Archive का `MANIFEST.json` docs version, source commit, प्रकाशित compiler version तथा हर packaged file का SHA-256 बताता है। मुख्य language reference अभी alpha.1 पर है; नवीनतम अलग सत्यापित प्रकाशित compiler [v0.0.6-alpha.1](/hi/releases/v0.0.6-alpha.1) है। सिर्फ docs डाउनलोड करने से Scarp interpreter upgrade नहीं होता।
+Archive का `MANIFEST.json` docs version, source commit, प्रकाशित compiler version तथा हर packaged file का SHA-256 बताता है। मुख्य language reference का ऐतिहासिक प्रमाणित आधार **v0.0.5-alpha.1** है; नवीनतम अलग से सत्यापित प्रकाशित compiler [v0.0.6-alpha.8](/hi/releases/v0.0.6-alpha.8) है। नए project, `scarp test`, `scarp project info` और assertions के लिए [प्रकाशित calculator tutorial](/hi/tutorials/calculator-alpha8) पढ़ें। Extracted archive में `/scarp-docs/hi/releases/v0.0.6-alpha.8` वाला पृष्ठ local server पर offline भी खुलता है। सिर्फ documentation डाउनलोड करने से Scarp interpreter upgrade नहीं होता।
 
 Maintainers `npm run docs:build` के बाद `npm run package:offline` और `npm run test:offline` चलाकर archive जाँच सकते हैं। हर सफल `main` Pages workflow पर नया artifact upload होगा। [English offline guide](/guide/offline-docs) में भी निर्देश हैं।
