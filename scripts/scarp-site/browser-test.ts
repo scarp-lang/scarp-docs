@@ -162,7 +162,22 @@ async function testLocale(
       lang+': ArrowUp must cycle through search results')
     await page.keyboard.press('ArrowDown')
     assert.equal(await results.first().evaluate(node=>document.activeElement===node),true)
+
+    // E0054 occurs well inside language reference pages. Match-context
+    // previews must show the actual diagnostic in both document languages.
     await searchInput.focus()
+    await searchInput.fill('E0054')
+    await page.waitForFunction(() => {
+      const snippets=[...document.querySelectorAll('#search-results li a small')]
+      return snippets.length>0 && snippets.every(node=>node.textContent?.includes('E0054'))
+    })
+    const previews=await page.locator('#search-results li a small').allTextContents()
+    assert.ok(previews.length>0 && previews.every(text=>text.includes('E0054')),
+      lang+': previews must include the searched compiler diagnostic')
+    assert.ok(previews.every(text=>[...text].length<=162),
+      lang+': previews must be code-point bounded')
+    assertions++
+
     await searchInput.fill('zzqvkpwmntrxhfbjkldsrp9776')
     await page.getByRole('status').getByText(
       lang==='hi'?'कोई परिणाम नहीं मिला':'No results found',{exact:true}).waitFor()
