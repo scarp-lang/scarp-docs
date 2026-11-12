@@ -208,7 +208,13 @@ export function renderMarkdown(markdown: string, source: string): RenderedPage {
     const lang=token.info.trim().split(/\s+/)[0].replace(/[^a-zA-Z0-9_-]/g,'').toLowerCase()
     const rendered=lang==='scarp'||lang==='srp'
       ?highlightScarp(token.content):escapeHtml(token.content)
-    return '<pre class="code-block" tabindex="0"><code class="language-'+lang+'">'+rendered+'</code></pre>\n'
+    const label=lang==='scarp'||lang==='srp'?'Scarp':lang||'text'
+    // The static HTML is readable without JavaScript. Client-side buttons
+    // are added only when clipboard interaction is actually available.
+    return '<div class="code-example" data-code-example>'+
+      '<div class="code-example-toolbar"><span class="code-language">'+escapeHtml(label)+'</span></div>'+
+      '<pre class="code-block" tabindex="0"><code class="language-'+lang+'">'+rendered+
+      '</code></pre></div>\n'
   }
   // Compiler provenance markers remain in Markdown source for CI, but must
   // not be exposed as escaped HTML comments in the rendered user page.
