@@ -104,6 +104,21 @@ export function validateCommandFinder(
       'scarp --version'
     ]) expect(name + ' page',page,expected)
   }
+  // The URL alone is insufficient: stale human-facing link text can claim
+  // an older compiler is newest while its target silently points elsewhere.
+  // Derive the label and destination from the same published release table
+  // used by the framework-neutral browser command finder.
+  const latestTag = releases.at(-1)?.tag
+  for (const [locale, page, prefix, lead] of [
+    ['English', english, '', 'latest published release is '],
+    ['Hindi', hindi, '/hi', 'नवीनतम प्रकाशित release ']
+  ] as const) {
+    const expected = lead + '[' + latestTag + '](' + prefix + '/releases/' + latestTag + ')'
+    if (!page.includes(expected)) {
+      errors.push(locale + ': latest published compiler label and URL must agree with ' + latestTag)
+    }
+  }
+
   expect('English page',english,'](/hi/tooling/command-finder)')
   expect('Hindi page',hindi,'](/tooling/command-finder)')
   if ((hindi.match(/[\u0900-\u097f]/gu)?.length ?? 0) < 170) {
