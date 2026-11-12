@@ -70,6 +70,23 @@ export async function verifyLiveSite(fetcher: SiteFetcher, sitemapSources: reado
     if (source === 'index.md') home = html
   }
 
+  // The deployed Pages project must expose the bilingual 404 fallback
+  // directly; a successful local build alone does not prove deployment.
+  const fallbackUrl = ORIGIN + BASE + '404.html'
+  const fallbackResponse = await request(fetcher, fallbackUrl)
+  assert.match(fallbackResponse.headers.get('content-type') ?? '', /text\/html/i,
+    fallbackUrl + ': expected HTML fallback')
+  const fallback = await fallbackResponse.text()
+  assert.match(fallback, /<html\\b[^>]*\\blang="en"/i,
+    fallbackUrl + ': missing fallback HTML language')
+  assert.match(fallback, /<meta\\b[^>]*name="robots"[^>]*content="noindex, follow"/i,
+    fallbackUrl + ': not excluded from search indexing')
+  assert.match(fallback, /<main\\b[^>]*id="main"/i,
+    fallbackUrl + ': missing main accessibility landmark')
+  assert.ok(fallback.includes('href="' + BASE + '"') &&
+      fallback.includes('href="' + BASE + 'hi/"'),
+    fallbackUrl + ': missing English/Hindi recovery links')
+
   // Ensure published HTML points to actual JS and CSS rather than broken bundles.
   const assets = [...new Set([...home.matchAll(/(?:src|href)="(\/scarp-docs\/assets\/[^"?#]+\.(?:js|css))(?:\?[^"]*)?"/g)]
     .map(match => match[1]))]
