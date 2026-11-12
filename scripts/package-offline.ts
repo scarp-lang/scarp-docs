@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url'
 import { gzipSync } from 'node:zlib'
 import ts from 'typescript'
 import { documentationPages } from './lib/docs-pages.ts'
+import { currentPublishedCompilerTag } from './scarp-site/current-release.ts'
 
 /** Deterministic offline archive of the independently built Scarp documentation website. */
 export const root = resolve(fileURLToPath(new URL('..', import.meta.url)))
@@ -31,6 +32,18 @@ function walk(folder: string): string[] {
 assert.ok(existsSync(dist), 'First run npm run docs:build')
 assert.ok(existsSync(join(dist, 'sitemap.xml')), 'Built website is missing sitemap.xml')
 const packageJson = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8')) as {version:string}
+const releaseRecord=JSON.parse(
+  readFileSync(join(root,'data/compiler-latest-release.json'),'utf8')) as Record<string,unknown>
+// Read the same immutable, published compiler record used by rendered site's
+// Install link and version-aware CLI. Never hard-code a historical "latest".
+const currentCompiler=currentPublishedCompilerTag(releaseRecord)
+assert.equal(releaseRecord.historicalReferenceBaseline,'v0.0.5-alpha.1',
+  'Historical core language-reference baseline changed without review')
+const coreCompiler=releaseRecord.historicalReferenceBaseline as string
+for (const page of ['releases/'+currentCompiler+'.html','hi/releases/'+currentCompiler+'.html']) {
+  assert.ok(existsSync(join(dist,page)),
+    'Offline bundle is missing its latest published compiler guide: '+page)
+}
 const docSources = documentationPages(join(root, 'docs'))
 for (const source of docSources) {
   assert.ok(existsSync(join(dist, source.replace(/\.md$/,'.html'))),
@@ -99,8 +112,10 @@ writeFileSync(join(stage,'serve.mjs'),compiled.outputText,'utf8')
 const instructions = `Scarp Docs — Offline English/Hindi website
 Docs version: ${packageJson.version}
 Docs source commit: ${commit}
-Latest documented published compiler: v0.0.6-alpha.3
-Core language-reference baseline: v0.0.5-alpha.1
+Latest documented published compiler: ${currentCompiler}
+Core language-reference baseline: ${coreCompiler}
+English published-release guide: http://127.0.0.1:8080/scarp-docs/releases/${currentCompiler}
+हिन्दी प्रकाशित release: http://127.0.0.1:8080/scarp-docs/hi/releases/${currentCompiler}
 
 Requires Node.js 20.19+ (Node 22 recommended). No npm install needed.
 
@@ -122,6 +137,8 @@ Canonical metadata continues to reference the official online site.
 2. इस extracted folder में node serve.mjs चलाएँ।
 3. हिन्दी पृष्ठ खोलें: http://127.0.0.1:8080/scarp-docs/hi/
 4. रोकने के लिए Ctrl+C दबाएँ।
+इस snapshot का नवीनतम प्रकाशित compiler: ${currentCompiler}।
+मुख्य भाषा reference का पुराना प्रमाणित version: ${coreCompiler}।
 खोज और अंदर के लिंक offline चलते हैं। GitHub जैसे बाहरी लिंक को
 इंटरनेट चाहिए। यह केवल दस्तावेज़ है, Scarp compiler नहीं।
 `
@@ -136,8 +153,8 @@ const manifest = {
   format: 'scarp-docs-offline-v1',
   documentationVersion: packageJson.version,
   documentationCommit: commit,
-  latestPublishedCompiler: 'v0.0.6-alpha.1',
-  coreReferenceCompiler: 'v0.0.5-alpha.1',
+  latestPublishedCompiler: currentCompiler,
+  coreReferenceCompiler: coreCompiler,
   siteBase: '/scarp-docs/',
   pages: docSources.length,
   files: contents.map(path => ({
