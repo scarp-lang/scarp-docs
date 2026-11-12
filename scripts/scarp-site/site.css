@@ -66,6 +66,17 @@ main { min-width:0; }
 .doc-content code:not(pre code) { border-radius:.3rem; padding:.13em .32em; background:var(--code-bg); font: .91em/1.5 ui-monospace,Consolas,monospace; }
 .doc-content pre,.command-finder pre { max-width:100%; overflow-x:auto; padding:1rem; background:var(--code-bg); border:1px solid var(--line); border-radius:.6rem; margin:1rem 0; tab-size:2; font: .89rem/1.5 ui-monospace,Consolas,"Liberation Mono",monospace; white-space:pre; overflow-wrap:normal; }
 .doc-content pre code { white-space:inherit; }
+/* Progressive enhancement for fenced language examples: no external script. */
+.code-example { margin:1.1rem 0; border:1px solid var(--line); border-radius:.6rem;
+  background:var(--code-bg); overflow:hidden; }
+.code-example-toolbar { display:flex; align-items:center; flex-wrap:wrap; gap:.5rem;
+  padding:.35rem .7rem; border-bottom:1px solid var(--line); font-size:.79rem; }
+.code-language { color:var(--muted); font-weight:700; letter-spacing:.02em; }
+.code-copy-button { margin-left:auto; padding:.2rem .65rem; min-height:34px;
+  font-size:.84rem; background:var(--background); color:var(--text); }
+.code-copy-status { color:var(--muted); font-size:.8rem; max-width:100%; }
+.doc-content .code-example pre { margin:0; border:0; border-radius:0; }
+
 .syntax-keyword { color:#1d4ed8; font-weight:600; }
 .syntax-number { color:#9a3412; }
 .syntax-string { color:#047857; }
@@ -138,4 +149,42 @@ main { min-width:0; }
   .header-actions { gap:.15rem; }
   .header-actions .language-link { padding:.25rem; }
   .site-layout { padding:0 .8rem; }
+}
+
+/* Built-in, bilingual fallback page; no JavaScript required. */
+.not-found { max-width:52rem; margin:clamp(2rem,7vw,6rem) auto; padding:0 1.5rem; }
+.not-found-kicker { color:var(--accent); font-weight:750; letter-spacing:.07em; text-transform:uppercase; }
+.not-found h1 { font-size:clamp(2rem,5vw,3rem); line-height:1.2; }
+.not-found nav { display:flex; flex-wrap:wrap; gap:1rem 2rem; margin-top:2rem; font-weight:700; }
+
+/*
+ * Print the actual teaching content, not sticky navigation or open dialogs.
+ * Remove scroll containers so Scarp code, wide tables and Devanagari lessons
+ * remain readable in print/PDF output without a third-party site framework.
+ */
+@media print {
+  @page { margin:18mm; }
+  html, html.dark {
+    color-scheme:light;
+    --background:#fff; --surface:#fff; --surface-strong:#fff;
+    --text:#000; --muted:#222; --line:#666; --accent:#000;
+    --code-bg:#f5f5f5;
+  }
+  html { scroll-behavior:auto; }
+  body { background:#fff !important; color:#000 !important; font-size:10.5pt; line-height:1.45; }
+  .site-header, .side-nav, .toc, .site-footer, .search-panel, .skip-link {
+    display:none !important;
+  }
+  .site-layout { display:block !important; max-width:none; width:100%; padding:0; margin:0; }
+  main, .doc-content { display:block; max-width:none !important; width:100%; margin:0 !important; padding:0 !important; }
+  .hero { margin:0 0 1rem; padding:0; box-shadow:none; }
+  .features { display:block; }
+  .feature { display:block; break-inside:avoid-page; border:1px solid #888; margin:.6rem 0; }
+  .code-block, .table-scroll { max-width:100%; overflow:visible !important; box-shadow:none; }
+  pre, pre code { white-space:pre-wrap !important; overflow-wrap:anywhere; word-break:break-word; }
+  table { width:100%; max-width:100%; border-collapse:collapse; font-size:9pt; }
+  td, th { border:1px solid #666; padding:4pt; overflow-wrap:anywhere; }
+  .scarp-callout, blockquote { break-inside:avoid-page; }
+  h1, h2, h3 { break-after:avoid-page; }
+  a { color:#000 !important; text-decoration:underline; }
 }
