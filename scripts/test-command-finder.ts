@@ -85,6 +85,10 @@ assert.throws(()=>commandAdvice('v0.0.7-alpha.1' as ReleaseTag,'run-file'),TypeE
 assert.throws(()=>commandAdvice(LATEST_RELEASE,'native-compile' as CommandTask),TypeError)
 
 const mutations: Array<[keyof FinderSources,string,string]> = [
+  ['english','latest published release is [v0.0.6-alpha.7](/releases/v0.0.6-alpha.7)',
+    'latest published release is [v0.0.6-alpha.6](/releases/v0.0.6-alpha.7)'],
+  ['hindi','नवीनतम प्रकाशित release [v0.0.6-alpha.7](/hi/releases/v0.0.6-alpha.7)',
+    'नवीनतम प्रकाशित release [v0.0.6-alpha.7](/hi/releases/v0.0.6-alpha.6)'],
   ['english','<ScarpCommandFinder />','<OutdatedSelector />'],
   ['hindi','<ScarpCommandFinder />','<OutdatedSelector />'],
   ['english','scarp --version','scarp diagnose'],
@@ -131,4 +135,4 @@ assert.ok(validateCommandFinder({...sources,hindi:sources.hindi.replace(/[\u0900
   'untranslated Hindi guide must not pass')
 
 console.log('PASS: 77 release/task combinations, '+unavailable+
-  ' unavailable states, exact commands, input validation and 21 negative regressions')
+  ' unavailable states, exact commands, input validation and 23 negative regressions')
