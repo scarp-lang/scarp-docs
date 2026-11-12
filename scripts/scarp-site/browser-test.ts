@@ -178,6 +178,38 @@ async function testLocale(
       join(previewRoot,'audit-results'))
     assert.ok(audit.passes>0)
     assertions++
+
+    // The print stylesheet must keep lesson content readable while removing
+    // navigation and converting code windows into printable wrapped text.
+    await page.emulateMedia({media:'print'})
+    assert.equal(await page.locator('.site-header').evaluate(node=>getComputedStyle(node).display),
+      'none',lang+': header should not consume printed page space')
+    assert.equal(await page.locator('#main').evaluate(node=>getComputedStyle(node).display),
+      'block',lang+': teaching content must remain printable')
+    assert.equal(await page.locator('main pre').first().evaluate(node=>getComputedStyle(node).whiteSpace),
+      'pre-wrap',lang+': Scarp code should wrap when printed')
+    await page.emulateMedia({media:'screen'})
+    assert.notEqual(await page.locator('.site-header').evaluate(node=>getComputedStyle(node).display),
+      'none',lang+': screen navigation must recover after print emulation')
+    assertions++
+
+    // GitHub Pages serves this standalone fallback for unknown URLs. It
+    // must remain accessible and offer both language homepages offline.
+    const notFound=await page.goto(origin+base+'404.html',{waitUntil:'networkidle'})
+    assert.equal(notFound?.status(),200)
+    assert.equal(await page.title(),'Page not found · Scarp Docs')
+    assert.equal(await page.locator('meta[name="robots"]').getAttribute('content'),
+      'noindex, follow')
+    assert.equal(await page.getByRole('heading',{name:'Page not found'}).count(),1)
+    assert.equal(await page.locator('main p[lang="hi"]').count(),1)
+    const homeNavigation=page.getByRole('navigation',{name:'Documentation homepages'})
+    assert.equal(await homeNavigation.getByRole('link',{name:'English documentation'}).getAttribute('href'),base)
+    assert.equal(await homeNavigation.getByRole('link',{name:'हिन्दी दस्तावेज़'}).getAttribute('href'),base+'hi/')
+    const fallbackAudit=await auditOfflineAccessibility(page,lang+'-engine-404',
+      join(previewRoot,'audit-results'))
+    assert.ok(fallbackAudit.passes>0)
+    assertions++
+
     assert.deepEqual(outside,[],lang+': custom site attempted external requests')
   }finally{await ctx.close()}
 }
