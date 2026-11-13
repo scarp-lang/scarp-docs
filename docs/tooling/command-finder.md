@@ -10,7 +10,7 @@ Use the interactive tool below to select **the exact published compiler version*
 
 First confirm your actual executable. On alpha.3 and later, use `scarp version`; for alpha.1/alpha.2, use `scarp --version`. Replace `FILE.srp` with the path to a source file and `PROJECT_DIRECTORY` with the path of an existing project containing `Scarp.project`. For `scarp create demo`, choose a **new, nonexistent** directory; that command writes a scaffold and refuses to overwrite existing files.
 
-The command finder is **client-side and offline after the page loads**. It does not query GitHub, detect the executable on your computer, run Scarp programs or read your files. Its reference links point to separately verified release documentation. The **latest published release is [v0.0.6-alpha.8](/releases/v0.0.6-alpha.8)**, not the compiler's moving `main` branch.
+The command finder is **client-side and offline after the page loads**. It does not query GitHub, detect the executable on your computer, run Scarp programs or read your files. Its reference links point to separately verified release documentation. The **latest published release is [v0.0.6-alpha.9](/releases/v0.0.6-alpha.9)**, not the compiler's moving `main` branch.
 
 ## Where the release boundaries come from
 
@@ -51,3 +51,7 @@ The published [v0.0.6-alpha.7](/releases/v0.0.6-alpha.7) adds conditional-expres
 **[v0.0.6-alpha.8](/releases/v0.0.6-alpha.8)** is the first published compiler with the new `scarp init`, project `scarp run`, `scarp test` and `scarp project info` workflow. Select alpha.8 in the version picker to see three new tasks: initialize a declarative project, run/list tests, and inspect metadata. When an older version is selected, those commands are marked **unavailable** instead of being suggested for the wrong compiler.
 
 `scarp test --list` only discovers sources; ordinary `scarp test` **executes trusted programs**. `--require-tests` rejects empty suites and failed assertions report E0065. See the [alpha.8 project CLI](/tooling/project-alpha8) and [tagged calculator project](/tutorials/calculator-alpha8).
+
+## Alpha.9: structured test reports
+
+Published [v0.0.6-alpha.9](/releases/v0.0.6-alpha.9) adds `scarp test --json=v2` without changing the original `--json` schema. Choose the new **structured test failures** task in the command finder. Alpha.8 and earlier compiler versions must show this task as unavailable. Read the [JSON-v2 guide](/tooling/test-json-v2-alpha9) for failure phases and privacy limits.

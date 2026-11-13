@@ -23,9 +23,9 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
-  - title: Latest published compiler v0.0.6-alpha.8
-    details: Learn typed conditional expressions and Unicode scalar escapes from published, verified compiler examples and checksum-verified archives.
-    link: /releases/v0.0.6-alpha.8
+  - title: Latest published compiler v0.0.6-alpha.9
+    details: Learn exact signed BigInt arithmetic and JSON-v2 test diagnostics from compiler-pinned examples and official checksums.
+    link: /releases/v0.0.6-alpha.9
   - title: Choose your release-aware Scarp learning path
     details: Follow seven verified stages from first program and numerical functions to real projects, static analysis and RMS, with per-release guidance.
     link: /guide/learning-path
@@ -77,7 +77,7 @@ features:
 ---
 
 ::: warning Experimental language
-The newest published compiler is **[v0.0.6-alpha.8](/releases/v0.0.6-alpha.8)**, while much of the main reference still targets the separately verified **v0.0.5-alpha.1** baseline. Both are experimental prereleases. Before upgrading older code, check [alpha.1 → alpha.2 upgrade readiness](/reference/upgrade-readiness) and the [feature status](/reference/status).
+The newest published compiler is **[v0.0.6-alpha.9](/releases/v0.0.6-alpha.9)**, while much of the main reference still targets the separately verified **v0.0.5-alpha.1** baseline. Both are experimental prereleases. Before upgrading older code, check [alpha.1 → alpha.2 upgrade readiness](/reference/upgrade-readiness) and the [feature status](/reference/status).
 :::
 
-For historical input and tuple examples, see the [published alpha.6 release](/releases/v0.0.6-alpha.6), which remains version-pinned.
+The [previous alpha.8 release](/releases/v0.0.6-alpha.8) documents projects, tests and assertions. For historical input and tuple examples, see the [published alpha.6 release](/releases/v0.0.6-alpha.6), which remains version-pinned.
