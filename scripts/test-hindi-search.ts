@@ -18,7 +18,7 @@ const pages:SearchLocalizationSources={
 }
 assert.deepEqual(validateHindiLocalSearch(pages),[])
 function mutate(key:keyof SearchLocalizationSources,from:string,to:string):void{
-  const revised=pages[key].replace(from,to)
+  const revised=pages[key].replaceAll(from,to)
   assert.notEqual(revised,pages[key],'Missing regression target '+key+': '+from)
   assert.ok(validateHindiLocalSearch({...pages,[key]:revised}).length>0,
     'Native search drift escaped policy: '+key+' '+from)
