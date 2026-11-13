@@ -132,7 +132,7 @@ function htmlDocument(view:PageView, views:PageView[], currentTag:string):string
     '<a '+attrs(locale==='hi'?BASE+'hi/reference/status':BASE+'reference/status')+'>'+
       localized('Releases','रिलीज़',locale)+'</a></nav>'+
     '<div class="header-actions"><a '+attrs(target,'language-link')+' lang="'+(locale==='en'?'hi':'en')+'">'+
-      localeText+'</a><button type="button" id="search-open" aria-haspopup="dialog" aria-controls="search-panel">'+
+      localeText+'</a><button type="button" id="search-open" aria-haspopup="dialog" aria-controls="search-panel" aria-keyshortcuts="Control+K Meta+K /">'+
       searchText+' <kbd>K</kbd></button><button type="button" id="theme-toggle" aria-pressed="false" aria-label="'+
       localized('Toggle dark mode','डार्क मोड बदलें',locale)+'">◐</button>'+
     '<button type="button" id="menu-toggle" aria-expanded="false" aria-controls="side-nav" aria-label="'+

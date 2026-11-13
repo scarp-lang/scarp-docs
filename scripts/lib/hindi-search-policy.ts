@@ -1,120 +1,107 @@
 import { LATEST_RELEASE } from './command-finder.ts'
 
-/** Guard user-facing language consistency without importing the VitePress app. */
-interface SearchTranslationBlock {
-  [key: string]: string | Record<string, string> | undefined
-}
-export interface SearchLocalizationOptions {
-  locales?: Record<string, {
-    translations?: {
-      button?: Record<string, string>
-      modal?: SearchTranslationBlock
-    }
-  }>
-}
+/**
+ * Test the shipping Scarp-owned static renderer and browser controller, not
+ * the old VitePress theme. Browser tests separately exercise these behaviors
+ * in Chromium; this static gate catches source, locale and navigation drift.
+ */
 export interface SearchLocalizationSources {
-  config: string
+  client: string
+  renderer: string
   readme: string
   english: string
   hindi: string
   englishIntro: string
   hindiIntro: string
 }
-const buttonKeys = ['buttonText', 'buttonAriaLabel'] as const
-const modalKeys = [
-  'displayDetails', 'resetButtonTitle', 'backButtonTitle', 'noResultsText'
-] as const
-const footerKeys = [
-  'selectText', 'selectKeyAriaLabel', 'navigateText',
-  'navigateUpKeyAriaLabel', 'navigateDownKeyAriaLabel',
-  'closeText', 'closeKeyAriaLabel'
-] as const
 
-export function validateHindiLocalSearch(
-  options: SearchLocalizationOptions,
-  pages: SearchLocalizationSources
-): string[] {
+export function validateHindiLocalSearch(sources: SearchLocalizationSources): string[] {
   const failures: string[] = []
-  const translations = options.locales?.hi?.translations
-  const button = translations?.button ?? {}
-  // On mobile the search placeholder is visually hidden, so the translated
-  // aria-label must name the actual button. Desktop uses its visible DOM text
-  // directly; the locally installed theme performs this responsive switch.
-  if (button.buttonText && button.buttonAriaLabel !== button.buttonText) {
-    failures.push('Hindi mobile search accessible name differs from its translated button')
-  }
-  const modal = translations?.modal ?? {}
-  const footerCandidate = modal.footer
-  const footer = footerCandidate && typeof footerCandidate === 'object'
-    ? footerCandidate : {}
-  const isTranslated = (value: unknown): value is string =>
-    typeof value === 'string' && value.trim().length >= 2 && /[\u0900-\u097f]/u.test(value)
-
-  for (const key of buttonKeys) {
-    if (!isTranslated(button[key])) failures.push('Hindi search button missing translated ' + key)
-  }
-  for (const key of modalKeys) {
-    if (!isTranslated(modal[key])) failures.push('Hindi search modal missing translated ' + key)
-  }
-  for (const key of footerKeys) {
-    if (!isTranslated(footer[key])) failures.push('Hindi search keyboard hint missing translated ' + key)
-  }
-
-  const {config,readme,english,hindi,englishIntro,hindiIntro} = pages
-  for (const snippet of [
-    "import { localSearchOptions } from './local-search'",
-    "search: { provider: 'local', options: localSearchOptions }",
-    "link: '/guide/search-and-navigation'",
-    "link: '/hi/guide/search-and-navigation'",
-    "lang: 'hi-IN'",
-    "link: '/hi/'"
-  ]) {
-    if (!config.includes(snippet)) failures.push('VitePress config missing ' + snippet)
-  }
-  if (config.includes("provider: 'algolia'")) {
-    failures.push('An external search provider must not replace client-side search')
-  }
-  for (const key of [
-    'sidebarMenuLabel','returnToTopLabel','langMenuLabel',
-    'skipToContentLabel',
-    'darkModeSwitchLabel','lightModeSwitchTitle','darkModeSwitchTitle'
-  ]) {
-    const pattern = new RegExp('\\b'+key+'\\s*:\\s*([\\x27\\x22])([^\\x27\\x22]+)\\1')
-    const value = pattern.exec(config)?.[2]
-    if (!isTranslated(value)) failures.push('Hindi accessible theme control not translated: ' + key)
-  }
-  for (const [label,text,localePrefix] of [
-    ['English',english,''],
-    ['Hindi',hindi,'/hi']
-  ]) {
-    if (!text.startsWith('# ')) failures.push(label + ' search help missing top heading')
-    for (const marker of [
-      'Ctrl+K','⌘+K','Enter','Esc',
-      ']('+localePrefix+'/guide/learning-path)',
-      ']('+localePrefix+'/releases/'+LATEST_RELEASE+')',
-      ']('+localePrefix+'/reference/status)',
-      ']('+localePrefix+'/tooling/cli-alpha6)'
-    ]) {
-      if (!text.includes(marker)) failures.push(label + ' search help missing ' + marker)
+  const requireText = (where: string, body: string, fragments: readonly string[]): void => {
+    for (const fragment of fragments) {
+      if (!body.includes(fragment)) failures.push(where + ': missing ' + fragment)
     }
   }
-  if ((hindi.match(/[\u0900-\u097f]/gu) ?? []).length < 120) {
-    failures.push('Hindi search help needs a substantial original translation')
+  const { client, renderer, readme, english, hindi, englishIntro, hindiIntro } = sources
+
+  // Search must be entirely local to Scarp's deployed /scarp-docs/ assets.
+  // Separate preview/browser tests cover keyboard behavior and network isolation.
+  requireText('Browser', client, [
+    "const hindi=document.documentElement.lang.startsWith('hi')",
+    "const locale:'en'|'hi'=hindi?'hi':'en'",
+    "const t=(en:string,hi:string):string=>hindi?hi:en",
+    "fetch(BASE+'assets/search-index.json')",
+    "entries.filter(e=>e.locale===locale)",
+    "t('No results found','कोई परिणाम नहीं मिला')",
+    "t('Could not load the local search index. Use page navigation instead.',",
+    "dialog.showModal()",
+    "input.focus()",
+    "previousFocus?.isConnected",
+    "if(event.key==='Escape'&&dialog.open)",
+    "event.key!=='ArrowDown'&&event.key!=='ArrowUp'",
+    "(event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='k'",
+    "event.key==='/'&&!typing&&!dialog.open"
+  ])
+  const indexStart=client.indexOf('function searchIndex():Promise<SearchEntry[]>')
+  const indexEnd=client.indexOf('function search(entries:',indexStart)
+  if(indexStart<0 || indexEnd<=indexStart){
+    failures.push('Browser: local search index fetch contract missing')
+  }else{
+    const indexScope=client.slice(indexStart,indexEnd)
+    if(/(?:https?:\/\/|algolia|meilisearch|typesense|sendBeacon)/i.test(indexScope)){
+      failures.push('Browser: search index loading must not use a remote provider')
+    }
+    if(!indexScope.includes("fetch(BASE+'assets/search-index.json')")){
+      failures.push('Browser: search must fetch only the local static index')
+    }
   }
-  if (isTranslated(button.buttonText) && !hindi.includes(button.buttonText)) {
-    failures.push('Hindi help must identify the actual translated search button')
+
+  // HTML source and search index are emitted by the independent generator.
+  requireText('Renderer',renderer,[
+    "const searchText=localized('Search documentation','दस्तावेज़ खोजें',locale)",
+    'id="search-open" aria-haspopup="dialog" aria-controls="search-panel" aria-keyshortcuts="Control+K Meta+K /"',
+    'id="search-panel" class="search-panel" aria-labelledby="search-title"',
+    'id="search-query" type="search"',
+    'id="search-status" role="status" aria-live="polite"',
+    'id="search-results"',
+    'locale:view.locale',
+    "writeFileSync(join(siteRoot,'assets','search-index.json'),JSON.stringify(searchIndex))",
+    "const lang=locale==='hi'?'hi-IN':'en-US'"
+  ])
+  if(/(?:algolia|vitepress|v-html)/i.test(renderer)){
+    failures.push('Renderer: owned search must not depend on a framework or remote search provider')
   }
-  if (!english.includes('](/hi/guide/search-and-navigation)') ||
-      !hindi.includes('](/guide/search-and-navigation)')) {
-    failures.push('Search help must cross-link both language versions')
+
+  for(const [name,page,prefix] of [
+    ['English',english,''],
+    ['Hindi',hindi,'/hi']
+  ] as const){
+    if(!page.startsWith('# '))failures.push(name+': search help missing heading')
+    requireText(name+' search help',page,[
+      'Ctrl+K','⌘+K','Enter','Esc',
+      ']('+prefix+'/guide/learning-path)',
+      ']('+prefix+'/releases/'+LATEST_RELEASE+')',
+      ']('+prefix+'/reference/status)',
+      ']('+prefix+'/tooling/cli-alpha6)'
+    ])
   }
-  if (!englishIntro.includes('](/guide/search-and-navigation)') ||
-      !hindiIntro.includes('](/hi/guide/search-and-navigation)')) {
-    failures.push('Both introductions must offer localized search help')
+  if((hindi.match(/[\u0900-\u097f]/gu)??[]).length<120){
+    failures.push('Hindi help: substantial Hindi translation missing')
   }
-  if (!readme.includes('docs/guide/search-and-navigation.md') ||
-      !readme.includes('docs/hi/guide/search-and-navigation.md')) {
-    failures.push('README must link both search help pages')
+  if(!hindi.includes('दस्तावेज़ खोजें')){
+    failures.push('Hindi help: actual localized search button is not named')
+  }
+  if(!english.includes('](/hi/guide/search-and-navigation)')||
+    !hindi.includes('](/guide/search-and-navigation)')){
+    failures.push('Bilingual search help must link both locales')
+  }
+  if(!englishIntro.includes('](/guide/search-and-navigation)')||
+    !hindiIntro.includes('](/hi/guide/search-and-navigation)')){
+    failures.push('Both onboarding guides must link their localized search help')
+  }
+  if(!readme.includes('docs/guide/search-and-navigation.md')||
+    !readme.includes('docs/hi/guide/search-and-navigation.md')){
+    failures.push('README must link both local search guides')
   }
   return failures
 }
