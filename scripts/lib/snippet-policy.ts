@@ -23,7 +23,8 @@ export function checkSnippetPolicy(markdown: string): SnippetIssue[] {
   const alpha3Cli = markdown.includes('<!-- scarp-cli-release: v0.0.5-alpha.3 -->')
   // The bilingual upgrade guide spans alpha.3 and alpha.4, but only the
   // published alpha.4 side demonstrates new project verbs.
-  const alpha8Cli = markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.8 -->')
+  const alpha9Cli = markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.9 -->')
+  const alpha8Cli = alpha9Cli || markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.8 -->')
   const alpha6Cli = alpha8Cli || markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.1 -->') ||
     markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.2 -->') ||
     markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.3 -->')
@@ -64,7 +65,11 @@ export function checkSnippetPolicy(markdown: string): SnippetIssue[] {
           issues.push({ line: fence.line + i + 1, message: 'project module inspection requires published alpha.5' })
           continue
         }
-        const command = /^\s*(?:\$\s*)?scarp\s+(build|compile|create|launch|exec|verify|inspect|init|test|project)\b/.exec(line)
+        if (!alpha9Cli && /^\\s*(?:\\$\\s*)?scarp test\\b/.test(line) && line.includes('--json=v2')) {
+          issues.push({ line: fence.line + i + 1, message: 'test JSON v2 requires published alpha.9' })
+          continue
+        }
+        const command = /^\\s*(?:\\$\\s*)?scarp\\s+(build|compile|create|launch|exec|verify|inspect|init|test|project)\\b/.exec(line)
         if (command && (!(
           (['exec', 'verify', 'inspect'].includes(command[1]) && (alpha3Cli || alpha4Cli)) ||
           (['create', 'launch'].includes(command[1]) && alpha4Cli) ||

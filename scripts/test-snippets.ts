@@ -59,4 +59,10 @@ assert.deepEqual(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.8 -->\
 assert.equal(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.7 -->\n~~~scarp\nassert(true);\n~~~').length, 1)
 assert.equal(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.8 -->\n~~~sh\nscarp compile demo.srp\n~~~').length, 1)
 
+assert.deepEqual(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.9 -->\\n~~~sh\\nscarp exec examples/bigint_arithmetic.srp\\nscarp verify examples/bigint_arithmetic.srp\\nscarp test --json=v2 calculator\\n~~~'.replaceAll('\\n','\\n')), [])
+assert.ok(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.8 -->\\n~~~sh\\nscarp test --json=v2 calculator\\n~~~'.replaceAll('\\n','\\n'))
+  .some(x => x.message.includes('requires published alpha.9')))
+assert.deepEqual(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.8 -->\\n~~~sh\\nscarp test --json calculator\\n~~~'.replaceAll('\\n','\\n')), [])
+assert.equal(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.9 -->\\n~~~sh\\nscarp compile demo.srp\\n~~~'.replaceAll('\\n','\\n')).length,1)
+
 console.log('PASS: executable Scarp and shell examples reject deprecated syntax without flagging prose, quotes or comments')
