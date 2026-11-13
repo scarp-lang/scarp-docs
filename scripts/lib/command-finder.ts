@@ -5,7 +5,7 @@
  * Release boundaries come from the tagged upstream src/main.rs and docs:
  * alpha.1/2: run/check/tokens; alpha.3: Scarp-first CLI + static verify;
  * alpha.4: create/launch/project verify; alpha.5: inspect project modules;
- * alpha.6: inspect symbols and references; alpha.8: declarative projects, tests and assertions.
+ * alpha.6: inspect symbols and references; alpha.8: declarative projects, tests and assertions; alpha.9: JSON-v2 test failure reports.
  */
 export const RELEASES = [
   { tag: 'v0.0.5-alpha.1', label: 'v0.0.5-alpha.1', source: 'afe8b5380c9d6c4774162e51c6c9bc8b90901671' },
@@ -20,11 +20,12 @@ export const RELEASES = [
   { tag: 'v0.0.6-alpha.5', label: 'v0.0.6-alpha.5', source: '205e92f166f186c3905e5880d41c31717b697b8e' },
   { tag: 'v0.0.6-alpha.6', label: 'v0.0.6-alpha.6', source: 'cdf6a3924ec2a36c7beca5a9aec4f01a0bce515e' },
   { tag: 'v0.0.6-alpha.7', label: 'v0.0.6-alpha.7', source: 'b1c1fd232b418267d95520c69ee563ac99ecae30' },
-  { tag: 'v0.0.6-alpha.8', label: 'v0.0.6-alpha.8 (latest)', source: '37253e7805c0ca594560700dd1deb3928458e60d' }
+  { tag: 'v0.0.6-alpha.8', label: 'v0.0.6-alpha.8', source: '37253e7805c0ca594560700dd1deb3928458e60d' },
+  { tag: 'v0.0.6-alpha.9', label: 'v0.0.6-alpha.9 (latest)', source: '0814997dc43982eb707a9a1aee72aab3a7ac8b41' }
 ] as const
 
 export type ReleaseTag = (typeof RELEASES)[number]['tag']
-export const LATEST_RELEASE: ReleaseTag = 'v0.0.6-alpha.8'
+export const LATEST_RELEASE: ReleaseTag = 'v0.0.6-alpha.9'
 
 export const TASKS = [
   { id: 'run-file', en: 'Run a source file', hi: 'Source file चलाएँ', first: 0, reference: '/tooling/cli-alpha1' },
@@ -36,11 +37,12 @@ export const TASKS = [
   { id: 'inspect-ast', en: 'View a parsed syntax tree', hi: 'Syntax tree देखें', first: 2, reference: '/tooling/cli' },
   { id: 'init-project', en: 'Initialize a declarative project', hi: 'नया declarative project बनाएँ', first: 12, reference: '/tooling/project-alpha8' },
   { id: 'test-project', en: 'Run or list project tests', hi: 'Project tests चलाएँ या सूची देखें', first: 12, reference: '/tooling/project-alpha8' },
-  { id: 'project-info', en: 'Inspect project metadata', hi: 'Project metadata देखें', first: 12, reference: '/tooling/project-alpha8' }
+  { id: 'project-info', en: 'Inspect project metadata', hi: 'Project metadata देखें', first: 12, reference: '/tooling/project-alpha8' },
+  { id: 'test-json-v2', en: 'Get structured test failures', hi: 'संरचित test errors देखें', first: 13, reference: '/tooling/test-json-v2-alpha9' }
 ] as const
 
 export type CommandTask = (typeof TASKS)[number]['id']
-export type NoteKey = 'legacy-run' | 'exec' | 'verify' | 'project' | 'modules' | 'symbols' | 'diagnose' | 'ast' | 'init' | 'test' | 'info'
+export type NoteKey = 'legacy-run' | 'exec' | 'verify' | 'project' | 'modules' | 'symbols' | 'diagnose' | 'ast' | 'init' | 'test' | 'info' | 'testv2'
 
 export interface CommandAdvice {
   release: ReleaseTag
@@ -111,6 +113,9 @@ export function commandAdvice(release: ReleaseTag, task: CommandTask): CommandAd
     case 'project-info':
       return { ...result, commands: ['scarp project info --json PROJECT_DIRECTORY'],
         note: 'info' }
+    case 'test-json-v2':
+      return { ...result, commands: ['scarp test --json=v2 PROJECT_DIRECTORY'],
+        note: 'testv2' }
   }
 }
 
@@ -141,7 +146,8 @@ export const FINDER_TEXT = {
       ast: 'AST output is human-readable parser debug text, not stable JSON or a substitute for type verification.',
       init: 'Init requires a nonexistent directory and creates a declarative scarp.project. Run executes application code.',
       test: 'Test executes trusted project sources. --list only discovers tests; --require-tests rejects empty suites.',
-      info: 'Project info reads validated metadata without executing application code or installing dependencies.'
+      info: 'Project info reads validated metadata without executing application code or installing dependencies.',
+      testv2: 'JSON v2 structures failed test diagnostics; tests execute source unless --list is specified. The older --json still uses schema 1.'
     }
   },
   hi: {
@@ -170,7 +176,8 @@ export const FINDER_TEXT = {
       ast: 'AST output parser का debug text है, stable JSON या type checking का विकल्प नहीं।',
       init: 'Init नया folder और declarative scarp.project बनाता है; पहले से बनी directory overwrite नहीं होती। Run source चलाता है।',
       test: 'Test भरोसेमंद source execute करता है। --list सिर्फ सूची दिखाता है; --require-tests खाली suite reject करता है।',
-      info: 'Project info केवल validated metadata पढ़ता है; application execute या dependencies install नहीं करता।'
+      info: 'Project info केवल validated metadata पढ़ता है; application execute या dependencies install नहीं करता।',
+      testv2: 'JSON v2 में test failures की संरचित जानकारी मिलती है। --list के बिना tests source चलाते हैं; पुराना --json schema 1 ही देता है।'
     }
   }
 } as const

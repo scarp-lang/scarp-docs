@@ -31,11 +31,11 @@ assert.strictEqual(legacyCommandFinder.commandAdvice, commandAdvice,
 assert.deepEqual(validateCommandFinder(sources), [])
 assert.equal(LATEST_RELEASE, RELEASES.at(-1)?.tag)
 assert.equal(commandAdvice('v0.0.6-alpha.6', 'run-file').commands[0], 'scarp exec FILE.srp')
-assert.equal(RELEASES.at(-1)?.source, '37253e7805c0ca594560700dd1deb3928458e60d')
+assert.equal(RELEASES.at(-1)?.source, '0814997dc43982eb707a9a1aee72aab3a7ac8b41')
 const expected = new Map<CommandTask,number>([
   ['run-file',0], ['static-verify',2], ['create-project',3],
   ['inspect-project',4], ['inspect-symbols',5], ['diagnose-host',2], ['inspect-ast',2],
-  ['init-project',12], ['test-project',12], ['project-info',12]
+  ['init-project',12], ['test-project',12], ['project-info',12], ['test-json-v2',13]
 ])
 let combinations = 0
 let unavailable = 0
@@ -65,7 +65,7 @@ for (const [index,release] of RELEASES.entries()) {
   }
 }
 assert.equal(combinations,RELEASES.length * TASKS.length)
-assert.equal(unavailable,54,'release-sensitive unsupported capabilities must stay explicit')
+assert.equal(unavailable,67,'release-sensitive unsupported capabilities must stay explicit')
 assert.deepEqual(commandAdvice('v0.0.5-alpha.1','run-file').commands,['scarp run FILE.srp'])
 assert.deepEqual(commandAdvice('v0.0.5-alpha.2','run-file').commands,['scarp run FILE.srp'])
 assert.deepEqual(commandAdvice('v0.0.5-alpha.3','run-file').commands,['scarp exec FILE.srp'])
@@ -89,6 +89,9 @@ assert.deepEqual(commandAdvice('v0.0.6-alpha.8','test-project').commands,
    'scarp test --json PROJECT_DIRECTORY'])
 assert.deepEqual(commandAdvice('v0.0.6-alpha.8','project-info').commands,
   ['scarp project info --json PROJECT_DIRECTORY'])
+assert.deepEqual(commandAdvice('v0.0.6-alpha.9','test-json-v2').commands,
+  ['scarp test --json=v2 PROJECT_DIRECTORY'])
+assert.equal(commandAdvice('v0.0.6-alpha.8','test-json-v2').supported,false)
 for(const task of ['init-project','test-project','project-info'] as const) {
   assert.equal(commandAdvice('v0.0.6-alpha.7',task).supported,false)
   assert.deepEqual(commandAdvice('v0.0.6-alpha.7',task).commands,[])
@@ -97,10 +100,10 @@ assert.throws(()=>commandAdvice('v0.0.7-alpha.1' as ReleaseTag,'run-file'),TypeE
 assert.throws(()=>commandAdvice(LATEST_RELEASE,'native-compile' as CommandTask),TypeError)
 
 const mutations: Array<[keyof FinderSources,string,string]> = [
-  ['english','latest published release is [v0.0.6-alpha.8](/releases/v0.0.6-alpha.8)',
-    'latest published release is [v0.0.6-alpha.7](/releases/v0.0.6-alpha.8)'],
-  ['hindi','नवीनतम प्रकाशित release [v0.0.6-alpha.8](/hi/releases/v0.0.6-alpha.8)',
-    'नवीनतम प्रकाशित release [v0.0.6-alpha.8](/hi/releases/v0.0.6-alpha.7)'],
+  ['english','latest published release is [v0.0.6-alpha.9](/releases/v0.0.6-alpha.9)',
+    'latest published release is [v0.0.6-alpha.8](/releases/v0.0.6-alpha.9)'],
+  ['hindi','नवीनतम प्रकाशित release [v0.0.6-alpha.9](/hi/releases/v0.0.6-alpha.9)',
+    'नवीनतम प्रकाशित release [v0.0.6-alpha.9](/hi/releases/v0.0.6-alpha.8)'],
   ['english','<ScarpCommandFinder />','<OutdatedSelector />'],
   ['hindi','<ScarpCommandFinder />','<OutdatedSelector />'],
   ['english','scarp --version','scarp diagnose'],
