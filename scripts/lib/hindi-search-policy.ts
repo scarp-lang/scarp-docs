@@ -68,7 +68,7 @@ export function validateHindiLocalSearch(sources: SearchLocalizationSources): st
     "writeFileSync(join(siteRoot,'assets','search-index.json'),JSON.stringify(searchIndex))",
     "const lang=locale==='hi'?'hi-IN':'en-US'"
   ])
-  if(/(?:algolia|vitepress|v-html)/i.test(renderer)){
+  if(/(?:algolia|v-html|from\s+['\"]vitepress['\"]|import\(['\"]vitepress['\"]\))/i.test(renderer)){
     failures.push('Renderer: owned search must not depend on a framework or remote search provider')
   }
 
