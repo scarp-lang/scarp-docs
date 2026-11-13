@@ -1,0 +1,29 @@
+{
+  "compilerRepository": "scarp-lang/scarp",
+  "compilerRef": "v0.0.6-alpha.9",
+  "compilerCommit": "0814997dc43982eb707a9a1aee72aab3a7ac8b41",
+  "releasedAt": "2026-11-13T11:22:47Z",
+  "status": "published-prerelease",
+  "cases": [
+    {
+      "source": "examples/bigint_arithmetic.srp",
+      "localSource": "conformance/alpha9/bigint_arithmetic.srp",
+      "gitBlobSha": "e9918d24a5e52293f579246fdae751398047c471"
+    },
+    {
+      "source": "examples/bigint_arithmetic.stdout",
+      "localSource": "conformance/alpha9/bigint_arithmetic.stdout",
+      "gitBlobSha": "aaf65c90076b339e5150d6dac837719bf8a0fc63"
+    },
+    {
+      "source": "examples/bigint_sequences.srp",
+      "localSource": "conformance/alpha9/bigint_sequences.srp",
+      "gitBlobSha": "e056a2fd516abe988c19e1eabc8e65233fbc3f6b"
+    },
+    {
+      "source": "examples/bigint_sequences.stdout",
+      "localSource": "conformance/alpha9/bigint_sequences.stdout",
+      "gitBlobSha": "e0c1d106c9314533b09fef53920e3e9bf8536cab"
+    }
+  ]
+}
