@@ -11,7 +11,7 @@ Official TypeScript-generated documentation for the experimental [Scarp Programm
 
 **Compiler:** https://github.com/scarp-lang/scarp
 
-**Latest published compiler:** [v0.0.6-alpha.8](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.8), November 12, 2026, annotated-tag source `37253e7805c0ca594560700dd1deb3928458e60d`. This experimental prerelease publishes declarative `scarp.project`, `scarp init/run/verify`, `scarp test` with JSON/list/filter/stdin fixture support, read-only `scarp project info`, and native `assert`/E0065. No general native compiler, BigInt, registry or stable ABI has shipped. Read the [English alpha.8 release](docs/releases/v0.0.6-alpha.8.md), [हिन्दी release](docs/hi/releases/v0.0.6-alpha.8.md), [tagged calculator tutorial](docs/tutorials/calculator-alpha8.md), [हिन्दी project tutorial](docs/hi/tutorials/calculator-alpha8.md), and [project CLI](docs/tooling/project-alpha8.md). The earlier [alpha.7 conditional and Unicode features](docs/releases/v0.0.6-alpha.7.md) remain available with their tagged evidence.
+**Latest published compiler:** [v0.0.6-alpha.9](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.9), November 13, 2026, annotated-tag source `0814997dc43982eb707a9a1aee72aab3a7ac8b41`. This experimental prerelease ships exact signed BigInt and structured `scarp test --json=v2` diagnostics. [English release guide](docs/releases/v0.0.6-alpha.9.md) · [हिन्दी रिलीज़](docs/hi/releases/v0.0.6-alpha.9.md) · [BigInt tutorial](docs/language/bigint-alpha9.md) · [हिन्दी BigInt पाठ](docs/hi/language/bigint-alpha9.md) · [JSON-v2 testing](docs/tooling/test-json-v2-alpha9.md). The [earlier alpha.8 project release](docs/releases/v0.0.6-alpha.8.md) remains pinned; no native executable compiler or stable ABI is available.
 
 **Previous published compiler:** [v0.0.6-alpha.5](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.5), November 9, 2026, tagged source `205e92f166f186c3905e5880d41c31717b697b8e`. The [English release guide](docs/releases/v0.0.6-alpha.5.md) and [हिन्दी विवरण](docs/hi/releases/v0.0.6-alpha.5.md) document deterministic Top-P, centered Pearson correlation and a bounded Rust-only ELF64 object-generation step. **No general native `scarp compile` command or stable release is implied.**
 
@@ -21,9 +21,9 @@ Official TypeScript-generated documentation for the experimental [Scarp Programm
 
 **Find documentation in your language:** [Search and navigation](docs/guide/search-and-navigation.md) · [हिन्दी में खोजें](docs/hi/guide/search-and-navigation.md). The Scarp-owned local search offers Hindi labels, accessible keyboard hints and a translated no-results state; English remains unchanged. Search is client-side and does not depend on an external hosted search provider.
 
-**Start learning in order:** [English: seven-stage learning path](docs/guide/learning-path.md) · [हिन्दी: सात चरणों में Scarp](docs/hi/guide/learning-path.md). Historical compiler examples retain their versioned baselines; the learning path explains which release to use, from alpha.1 through the published alpha.8 prerelease, without claiming universal compatibility.
+**Start learning in order:** [English: seven-stage learning path](docs/guide/learning-path.md) · [हिन्दी: सात चरणों में Scarp](docs/hi/guide/learning-path.md). Historical compiler examples retain their versioned baselines; the learning path explains which release to use, from alpha.1 through the published alpha.9 prerelease, without claiming universal compatibility.
 
-**Install the latest published compiler:** [Alpha.8 Windows/Linux/macOS packages and SHA-256](docs/releases/v0.0.6-alpha.8.md). Historical [English alpha.1 installation guide](docs/guide/installation-alpha6.md) · [हिन्दी version-pinned installer](docs/hi/guide/installation-alpha6.md). Verify each platform's official archive checksum before execution. Installation commands and compiler source/fixtures remain version-pinned; never combine archives from different releases.
+**Install the latest published compiler:** [Alpha.9 Windows/Linux/macOS packages and SHA-256](docs/releases/v0.0.6-alpha.9.md). Historical [English alpha.1 installation guide](docs/guide/installation-alpha6.md) · [हिन्दी version-pinned installer](docs/hi/guide/installation-alpha6.md). Verify each platform's official archive checksum before execution.
 
 **Automated accessibility auditing:** The extracted offline site is checked with pinned local axe-core in 10 bilingual light/dark/search/mobile states; CI attaches per-state WCAG A/AA findings on failures. Manual screen-reader verification remains separately tracked in [Issue #65](https://github.com/scarp-lang/scarp-docs/issues/65).
 
@@ -66,7 +66,8 @@ npm install
 npm run docs:dev       # Scarp-owned TypeScript development server
 npm run typecheck      # strict TypeScript checks
 npm run check:tooling  # TypeScript-only authored tooling
-npm run check:alpha8   # latest published compiler metadata, project fixtures and bilingual docs
+npm run check:alpha8   # historical published compiler and project fixtures
+npm run check:alpha9   # latest compiler BigInt, JSON-v2 and bilingual docs
 npm run check:i18n     # bilingual pages and code-block parity
 npm run check          # full local checks and production build
 npm run docs:build     # compile the static site for GitHub Pages
