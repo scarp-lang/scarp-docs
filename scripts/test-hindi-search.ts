@@ -2,81 +2,59 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { localSearchOptions } from '../docs/.vitepress/local-search.ts'
+import { validateHindiLocalSearch, type SearchLocalizationSources } from './lib/hindi-search-policy.ts'
 import { LATEST_RELEASE } from './lib/command-finder.ts'
-import {
-  validateHindiLocalSearch,
-  type SearchLocalizationOptions,
-  type SearchLocalizationSources
-} from './lib/hindi-search-policy.ts'
 
-const root = resolve(fileURLToPath(new URL('..',import.meta.url)))
-const read = (path: string): string => readFileSync(resolve(root,path),'utf8')
-const pages: SearchLocalizationSources = {
-  config: read('docs/.vitepress/config.mts'),
-  readme: read('README.md'),
-  english: read('docs/guide/search-and-navigation.md'),
-  hindi: read('docs/hi/guide/search-and-navigation.md'),
-  englishIntro: read('docs/guide/introduction.md'),
-  hindiIntro: read('docs/hi/guide/introduction.md')
+const root=resolve(fileURLToPath(new URL('..',import.meta.url)))
+const read=(p:string):string=>readFileSync(resolve(root,p),'utf8')
+const pages:SearchLocalizationSources={
+  client:read('scripts/scarp-site/client.ts'),
+  renderer:read('scripts/scarp-site/build.ts'),
+  readme:read('README.md'),
+  english:read('docs/guide/search-and-navigation.md'),
+  hindi:read('docs/hi/guide/search-and-navigation.md'),
+  englishIntro:read('docs/guide/introduction.md'),
+  hindiIntro:read('docs/hi/guide/introduction.md')
 }
-assert.deepEqual(validateHindiLocalSearch(localSearchOptions, pages), [])
-const searchTrigger = read('docs/.vitepress/theme/search-trigger-accessibility.ts')
-const themeIndex = read('docs/.vitepress/theme/index.ts')
-assert.ok(themeIndex.includes('installAccessibleSearchTrigger()'),
-  'Theme must install responsive search trigger semantics')
-assert.ok(searchTrigger.includes("button.removeAttribute('aria-label')") &&
-  searchTrigger.includes("button.setAttribute('aria-label', text)"),
-  'Search button must derive its desktop accessible name from visible content and keep mobile name')
-
-
-function mutateOptions(name: string, change: (config: SearchLocalizationOptions) => void): void {
-  const copy = JSON.parse(JSON.stringify(localSearchOptions)) as SearchLocalizationOptions
-  change(copy)
-  assert.ok(validateHindiLocalSearch(copy,pages).length > 0,
-    name+' must fail the localized-search policy')
+assert.deepEqual(validateHindiLocalSearch(pages),[])
+function mutate(key:keyof SearchLocalizationSources,from:string,to:string):void{
+  const revised=pages[key].replaceAll(from,to)
+  assert.notEqual(revised,pages[key],'Missing regression target '+key+': '+from)
+  assert.ok(validateHindiLocalSearch({...pages,[key]:revised}).length>0,
+    'Native search drift escaped policy: '+key+' '+from)
 }
-mutateOptions('lost Hindi locale',x=>{delete x.locales?.hi})
-mutateOptions('English-only search button',x=>{
-  if(x.locales?.hi?.translations?.button) x.locales.hi.translations.button.buttonText='Search'
-})
-mutateOptions('missing accessible label',x=>{
-  if(x.locales?.hi?.translations?.button) x.locales.hi.translations.button.buttonAriaLabel=''
-})
-mutateOptions('Hindi mobile label diverges from visible translation',x=>{
-  if(x.locales?.hi?.translations?.button) {
-    x.locales.hi.translations.button.buttonAriaLabel='असंबंधित नाम'
-  }
-})
-mutateOptions('English-only empty-result text',x=>{
-  if(x.locales?.hi?.translations?.modal) x.locales.hi.translations.modal.noResultsText='No results'
-})
-mutateOptions('missing keyboard hint',x=>{
-  const footer=x.locales?.hi?.translations?.modal?.footer
-  if(footer && typeof footer==='object') delete footer.navigateUpKeyAriaLabel
-})
-function mutatePage(name: string,key: keyof SearchLocalizationSources,from:string,to:string): void {
-  const changed=pages[key].replace(from,to)
-  assert.notEqual(changed,pages[key],name+' target must exist')
-  assert.ok(validateHindiLocalSearch(localSearchOptions,{...pages,[key]:changed}).length > 0,
-    name+' must fail the localized-search policy')
-}
-mutatePage('no local provider','config',"provider: 'local'","provider: 'algolia'")
-mutatePage('no search options','config',"options: localSearchOptions","options: {}")
-mutatePage('missing Hindi sidebar','config',"link: '/hi/guide/search-and-navigation'","link: '/hi/guide/missing'")
-mutatePage('missing theme access label','config',"langMenuLabel: 'भाषा बदलें'","langMenuLabel: 'Language'")
-// Both the download link and release-notes fallback mention the latest tag.
-const withoutLatest=pages.english.replaceAll('](/releases/'+LATEST_RELEASE+')',
+// The old VitePress theme is not used by any test or acceptance check here.
+mutate('client',"const hindi=document.documentElement.lang.startsWith('hi')",
+  "const hindi=false")
+mutate('client',"entries.filter(e=>e.locale===locale)","entries.filter(e=>true)")
+mutate('client',"fetch(BASE+'assets/search-index.json')","fetch('https://search.example.com/index')")
+mutate('client',"t('No results found','कोई परिणाम नहीं मिला')",
+  "t('No results found','No results found')")
+mutate('client',"dialog.showModal()","dialog.show()")
+mutate('client',"previousFocus?.isConnected","false")
+mutate('client',"(event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='k'",
+  "event.altKey&&event.key.toLowerCase()==='k'")
+mutate('client',"event.key!=='ArrowDown'&&event.key!=='ArrowUp'",
+  "event.key!=='Tab'&&event.key!=='Tab'")
+mutate('renderer','aria-keyshortcuts="Control+K Meta+K /"',
+  'aria-keyshortcuts="Control+L"')
+mutate('renderer','id="search-status" role="status" aria-live="polite"',
+  'id="search-status"')
+mutate('renderer',"locale:view.locale","locale:'en'")
+mutate('renderer',"'दस्तावेज़ खोजें'","'Search documentation'")
+mutate('english','Ctrl+K','Alt+K')
+mutate('hindi','⌘+K','Alt+K')
+mutate('english','](/releases/'+LATEST_RELEASE+')',
   '](/releases/v0.0.5-alpha.1)')
-assert.notEqual(withoutLatest,pages.english,'latest release link must exist')
-assert.ok(validateHindiLocalSearch(localSearchOptions,{...pages,english:withoutLatest}).length>0,
-  'removing all current release links must fail the localized-search policy')
-mutatePage('missing Hindi shortcut','hindi','Ctrl+K','Alt+K')
-mutatePage('missing English shortcut','english','⌘+K','Ctrl+J')
-mutatePage('missing Hindi crosslink','hindi','](/guide/search-and-navigation)','](/hi/guide/search-and-navigation)')
-mutatePage('missing English intro link','englishIntro','](/guide/search-and-navigation)','](/guide/not-found)')
-mutatePage('missing Hindi intro link','hindiIntro','](/hi/guide/search-and-navigation)','](/hi/guide/not-found)')
-mutatePage('missing README Hindi path','readme','docs/hi/guide/search-and-navigation.md','docs/hi/guide/not-found.md')
-assert.ok(validateHindiLocalSearch(localSearchOptions,{...pages,hindi:pages.hindi.replace(/[\u0900-\u097f]/gu,'')}).length,
-  'Hindi locale cannot silently become untranslated')
-console.log('PASS: 18 negative regressions for Hindi search UI, locale navigation, current release, language parity and keyboard access')
+mutate('hindi','](/hi/releases/'+LATEST_RELEASE+')',
+  '](/hi/releases/v0.0.5-alpha.1)')
+mutate('hindi','](/guide/search-and-navigation)',
+  '](/hi/guide/search-and-navigation)')
+mutate('englishIntro','](/guide/search-and-navigation)','](/guide/missing)')
+mutate('hindiIntro','](/hi/guide/search-and-navigation)','](/hi/guide/missing)')
+mutate('readme','docs/hi/guide/search-and-navigation.md',
+  'docs/hi/guide/missing.md')
+assert.ok(validateHindiLocalSearch({...pages,
+  hindi:pages.hindi.replace(/[\u0900-\u097f]/gu,'')}).length>0,
+  'Removing all Hindi script must fail')
+console.log('PASS: 21 owned-search localization, ARIA, network, keyboard and release-drift regressions')

@@ -161,6 +161,8 @@ async function testLocale(
     assertions++
 
     const searchTrigger=page.locator('#search-open')
+    assert.equal(await searchTrigger.getAttribute('aria-keyshortcuts'),
+      'Control+K Meta+K /',lang+': keyboard shortcuts must be accessible in both locales')
     await searchTrigger.focus()
     await searchTrigger.press('Enter')
     const dialog=page.locator('#search-panel')

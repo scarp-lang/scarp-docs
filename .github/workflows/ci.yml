@@ -40,7 +40,7 @@ jobs:
         run: npm run check:alpha8
       - name: Verify published alpha.9 BigInt and JSON-v2 bilingual evidence
         run: npm run check:alpha9
-      - name: Validate localized VitePress search and accessibility text
+      - name: Validate Scarp-owned bilingual search and keyboard accessibility
         run: npm run check:hindi-search && npm run test:hindi-search
       - name: Test version-aware bilingual command finder and historical release boundaries
         run: npm run check:command-finder && npm run test:command-finder
