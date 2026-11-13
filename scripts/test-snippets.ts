@@ -59,10 +59,18 @@ assert.deepEqual(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.8 -->\
 assert.equal(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.7 -->\n~~~scarp\nassert(true);\n~~~').length, 1)
 assert.equal(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.8 -->\n~~~sh\nscarp compile demo.srp\n~~~').length, 1)
 
-assert.deepEqual(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.9 -->\\n~~~sh\\nscarp exec examples/bigint_arithmetic.srp\\nscarp verify examples/bigint_arithmetic.srp\\nscarp test --json=v2 calculator\\n~~~'.replaceAll('\\n','\\n')), [])
-assert.ok(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.8 -->\\n~~~sh\\nscarp test --json=v2 calculator\\n~~~'.replaceAll('\\n','\\n'))
-  .some(x => x.message.includes('requires published alpha.9')))
-assert.deepEqual(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.8 -->\\n~~~sh\\nscarp test --json calculator\\n~~~'.replaceAll('\\n','\\n')), [])
-assert.equal(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.9 -->\\n~~~sh\\nscarp compile demo.srp\\n~~~'.replaceAll('\\n','\\n')).length,1)
+const alpha9CliExample = ['<!-- scarp-cli-release: v0.0.6-alpha.9 -->',
+  '~~~sh','scarp exec examples/bigint_arithmetic.srp',
+  'scarp verify examples/bigint_arithmetic.srp',
+  'scarp test --json=v2 calculator','~~~'].join('\n')
+assert.deepEqual(checkSnippetPolicy(alpha9CliExample), [])
+const alpha8V2 = ['<!-- scarp-cli-release: v0.0.6-alpha.8 -->',
+  '~~~sh', 'scarp test --json=v2 calculator', '~~~'].join('\n')
+assert.ok(checkSnippetPolicy(alpha8V2).some(x => x.message.includes('requires published alpha.9')))
+const alpha8V1 = ['<!-- scarp-cli-release: v0.0.6-alpha.8 -->',
+  '~~~sh', 'scarp test --json calculator', '~~~'].join('\n')
+assert.deepEqual(checkSnippetPolicy(alpha8V1), [])
+assert.equal(checkSnippetPolicy(['<!-- scarp-cli-release: v0.0.6-alpha.9 -->',
+  '~~~sh', 'scarp compile demo.srp', '~~~'].join('\n')).length, 1)
 
 console.log('PASS: executable Scarp and shell examples reject deprecated syntax without flagging prose, quotes or comments')

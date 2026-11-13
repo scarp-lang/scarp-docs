@@ -65,11 +65,11 @@ export function checkSnippetPolicy(markdown: string): SnippetIssue[] {
           issues.push({ line: fence.line + i + 1, message: 'project module inspection requires published alpha.5' })
           continue
         }
-        if (!alpha9Cli && /^\\s*(?:\\$\\s*)?scarp test\\b/.test(line) && line.includes('--json=v2')) {
+        if (!alpha9Cli && /^\s*(?:\$\s*)?scarp test\b/.test(line) && line.includes('--json=v2')) {
           issues.push({ line: fence.line + i + 1, message: 'test JSON v2 requires published alpha.9' })
           continue
         }
-        const command = /^\\s*(?:\\$\\s*)?scarp\\s+(build|compile|create|launch|exec|verify|inspect|init|test|project)\\b/.exec(line)
+        const command = /^\s*(?:\$\s*)?scarp\s+(build|compile|create|launch|exec|verify|inspect|init|test|project)\b/.exec(line)
         if (command && (!(
           (['exec', 'verify', 'inspect'].includes(command[1]) && (alpha3Cli || alpha4Cli)) ||
           (['create', 'launch'].includes(command[1]) && alpha4Cli) ||
