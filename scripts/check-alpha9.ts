@@ -37,7 +37,7 @@ for(const c of manifest.cases){
     'The local example must stay at its pinned compiler path')
   assert.match(c.gitBlobSha,/^[a-f0-9]{40}$/)
   const bytes=readFileSync(resolve(root,c.localSource))
-  const blob=createHash('sha1').update('blob '+bytes.length+'\\0').update(bytes).digest('hex')
+  const blob=createHash('sha1').update('blob '+bytes.length+String.fromCharCode(0)).update(bytes).digest('hex')
   assert.equal(blob,c.gitBlobSha,'Upstream Git blob mismatch: '+c.source)
 }
 const code=read('conformance/alpha9/bigint_arithmetic.srp').trimEnd()
@@ -53,7 +53,7 @@ for(const path of ['releases/'+tag,'language/bigint-alpha9','tooling/test-json-v
   }
   assert.equal(firstMissingCodeBlock(extractCodeFences(en),extractCodeFences(hi)),-1,
     path+': English/Hindi code fences differ')
-  assert.ok((hi.match(/[\\u0900-\\u097f]/gu)??[]).length>=90,
+  assert.ok([...hi].filter(c=>{const n=c.codePointAt(0)??0;return n>=0x0900&&n<=0x097f}).length>=90,
     path+': Hindi translation missing')
 }
 for(const path of ['docs/releases/'+tag+'.md','docs/hi/releases/'+tag+'.md',
