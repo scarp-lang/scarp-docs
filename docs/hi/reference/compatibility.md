@@ -6,7 +6,8 @@ Scarp के शुरुआती prereleases में syntax और API ब�
 
 | संस्करण | प्रमुख प्रकाशित सुविधा |
 | --- | --- |
-| **[v0.0.6-alpha.8](/hi/releases/v0.0.6-alpha.8)** | **नवीनतम प्रकाशित (12 नवंबर 2026):** declarative `scarp.project`, `scarp init/run/verify`, `scarp test`/JSON/filter/`.stdin`, read-only `project info` तथा `assert`/E0065; पुराने manifests समर्थित, native compile और package registry नहीं |
+| **[v0.0.6-alpha.9](/hi/releases/v0.0.6-alpha.9)** | **नवीनतम प्रकाशित (13 नवंबर 2026):** सटीक signed BigInt, स्पष्ट conversion, सीमित digits/work और `scarp test --json=v2` structured failures; native compile CLI नहीं |
+| **[v0.0.6-alpha.8](/hi/releases/v0.0.6-alpha.8)** | **पहले प्रकाशित (12 नवंबर 2026):** declarative `scarp.project`, `scarp init/run/verify`, `scarp test`/JSON/filter/`.stdin`, read-only `project info` तथा `assert`/E0065; पुराने manifests समर्थित, native compile और package registry नहीं |
 | **[v0.0.6-alpha.7](/hi/releases/v0.0.6-alpha.7)** | **पहले प्रकाशित (11 नवंबर 2026):** strict typed conditional expressions और Unicode scalar escapes; native emitters/module constants में conditional expressions नहीं |
 | **[v0.0.6-alpha.6](/hi/releases/v0.0.6-alpha.6)** | **पहले प्रकाशित (10 नवंबर 2026):** सीमित redirected input, explicit scalar/text conversion और immutable tuples; सामान्य native CLI या terminal prompt नहीं |
 | **[v0.0.6-alpha.5](/hi/releases/v0.0.6-alpha.5)** | **पहले प्रकाशित (9 नवंबर):** निश्चित Top-P, Pearson correlation और सीमित Rust ELF64 object API; सामान्य `scarp compile` नहीं |
