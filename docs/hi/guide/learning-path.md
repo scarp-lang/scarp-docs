@@ -6,7 +6,7 @@
 
 **आपके compiler में कौन सा command उपलब्ध है?** [Version-aware CLI Command Finder](/hi/tooling/command-finder) में installed release और काम चुनें। पुरानी `run` / `check` commands को नए static `verify` या project inspection से न मिलाएँ।
 
-**नवीनतम compiler:** प्रकाशित [v0.0.6-alpha.9](/hi/releases/v0.0.6-alpha.9) में सटीक BigInt गणना और `scarp test --json=v2` की structured failure report आई है। [BigInt पाठ](/hi/language/bigint-alpha9) और [test-report guide](/hi/tooling/test-json-v2-alpha9) पढ़ें। पिछले [alpha.8 compiler](/hi/releases/v0.0.6-alpha.8) में declarative projects, project `init/run/verify`, `scarp test` और `assert` आए थे; [calculator tutorial](/hi/tutorials/calculator-alpha8) उसी version से सत्यापित है। नीचे के सात चरण अलग-अलग ऐतिहासिक releases पर pinned हैं।
+**नवीनतम compiler:** प्रकाशित [v0.0.6-alpha.10](/hi/releases/v0.0.6-alpha.10) में interactive input, immutable fixed arrays और नए BigInt operations मिलते हैं। [Input पाठ](/hi/tooling/interactive-input-alpha10) और [array पाठ](/hi/language/fixed-arrays-alpha10) देखें। पुराने [alpha.9](/hi/releases/v0.0.6-alpha.9) और [alpha.8](/hi/releases/v0.0.6-alpha.8) अपने अलग versions पर सत्यापित हैं। नीचे के सात historical stages अपने tagged releases पर ही pinned हैं।
 
 **Scarp पहली बार सीख रहे हैं तो यहाँ से शुरुआत करें।** यह मार्गदर्शिका शुरुआती प्रोग्राम से numerical examples, source modules, project और **[प्रकाशित v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1)** में आए symbol-navigation tools तक पहुँचाती है। हर पाठ के examples compiler के वास्तविक परीक्षणों पर आधारित हैं।
 
