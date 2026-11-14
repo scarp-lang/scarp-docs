@@ -102,8 +102,10 @@ for (const locale of ['', 'hi/']) {
   }
   assert.ok(release.includes('SHA256SUMS'))
   for (const route of ['index.md', 'reference/status.md', 'reference/compatibility.md']) {
-    assert.ok(read('docs/' + locale + route).includes('](/' + locale + 'releases/' + tag + ')'),
-      locale + route + ': current release link missing')
+    const page = read('docs/' + locale + route)
+    const destination = '/' + locale + 'releases/' + tag
+    const expected = route === 'index.md' ? 'link: ' + destination : '](' + destination + ')'
+    assert.ok(page.includes(expected), locale + route + ': current release link missing')
   }
 }
 assert.equal(current.assets.length, 4)
