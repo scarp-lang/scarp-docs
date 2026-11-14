@@ -6,7 +6,7 @@
 
 **Unsure which command belongs to your installed compiler?** Use the [interactive version-aware CLI Command Finder](/tooling/command-finder) to avoid mixing older `run` / `check` with newer static `verify` or project inspection.
 
-**Current compiler:** The newest published prerelease is [v0.0.6-alpha.9](/releases/v0.0.6-alpha.9), adding exact BigInt arithmetic and `scarp test --json=v2`. See [BigInt](/language/bigint-alpha9) and [structured test reports](/tooling/test-json-v2-alpha9). The [previous alpha.8 compiler](/releases/v0.0.6-alpha.8) introduced declarative projects, project `init/run/verify`, `scarp test` and `assert`; follow the [calculator tutorial](/tutorials/calculator-alpha8). All seven historical learning stages below remain pinned to their own compiler releases.
+**Current compiler:** The newest published prerelease is [v0.0.6-alpha.10](/releases/v0.0.6-alpha.10), adding opt-in interactive input, immutable arrays and expanded BigInt. Read [interactive input](/tooling/interactive-input-alpha10) and [fixed arrays](/language/fixed-arrays-alpha10). The earlier [alpha.9](/releases/v0.0.6-alpha.9) and [alpha.8](/releases/v0.0.6-alpha.8) remain release-pinned. The seven historical learning stages below retain their original verified compilers.
 
 **Start here if you are new to Scarp.** This track connects complete, compiler-backed lessons from the first program through numerical modeling, project modules, and the symbol-navigation tools introduced in the **[published v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1)** prerelease.
 

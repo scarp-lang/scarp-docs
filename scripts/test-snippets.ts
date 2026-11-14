@@ -74,3 +74,8 @@ assert.equal(checkSnippetPolicy(['<!-- scarp-cli-release: v0.0.6-alpha.9 -->',
   '~~~sh', 'scarp compile demo.srp', '~~~'].join('\n')).length, 1)
 
 console.log('PASS: executable Scarp and shell examples reject deprecated syntax without flagging prose, quotes or comments')
+
+// Alpha.10 inherits every earlier release-scoped command and adds opt-in prompts.
+assert.deepEqual(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.10 -->\n~~~sh\nscarp exec --interactive demo.srp\nscarp verify demo.srp\nscarp test --json=v2 demo\n~~~'), [])
+assert.deepEqual(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.10 -->\n~~~sh\nscarp build demo.srp\n~~~').map(x => x.message), ['unsupported Scarp CLI command for this documented release'])
+assert.ok(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.9 -->\n~~~sh\nscarp exec --interactive demo.srp\n~~~').some(x => x.message.includes('requires published alpha.10')))

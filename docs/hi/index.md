@@ -23,8 +23,11 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
-  - title: नवीनतम प्रकाशित v0.0.6-alpha.9 compiler
-    details: सटीक signed BigInt और JSON-v2 test reports के compiler-verified उदाहरण तथा आधिकारिक checksums सीखें।
+  - title: नवीनतम प्रकाशित v0.0.6-alpha.10 compiler
+    details: Interactive input, immutable arrays, नए BigInt और आधिकारिक checksums सीखें।
+    link: /hi/releases/v0.0.6-alpha.10
+  - title: पहले प्रकाशित alpha.9 BigInt और JSON
+    details: ऐतिहासिक release-pinned उदाहरण और compiler tests।
     link: /hi/releases/v0.0.6-alpha.9
   - title: सात चरणों में Scarp सीखें
     details: शुरुआती प्रोग्राम से numerical examples, modules, projects और symbols तक सही compiler release के साथ पूरा रास्ता।

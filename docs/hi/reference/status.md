@@ -3,9 +3,9 @@
 <!-- scarp-release-status: v0.0.5-alpha.5 -->
 <!-- scarp-main-reference-baseline: v0.0.5-alpha.1 -->
 
-**नवीनतम प्रकाशित compiler: [v0.0.6-alpha.9](/hi/releases/v0.0.6-alpha.9), 13 नवंबर 2026।** मुख्य language-reference अध्याय जानबूझकर **v0.0.5-alpha.1** पर आधारित हैं। Alpha.2, alpha.3, alpha.4, alpha.5 तथा alpha.6 की सत्यापित सुविधाओं के अलग release guides हैं। **सभी experimental prereleases हैं।** Stable compatibility की गारंटी नहीं है।
+**नवीनतम प्रकाशित compiler: [v0.0.6-alpha.10](/hi/releases/v0.0.6-alpha.10), 14 नवंबर 2026।** मुख्य language-reference अध्याय जानबूझकर **v0.0.5-alpha.1** पर आधारित हैं। Alpha.2, alpha.3, alpha.4, alpha.5 तथा alpha.6 की सत्यापित सुविधाओं के अलग release guides हैं। **सभी experimental prereleases हैं।** Stable compatibility की गारंटी नहीं है।
 
-नए डाउनलोड के लिए [v0.0.6-alpha.9 archive और checksum](/hi/releases/v0.0.6-alpha.9) देखें। [alpha.1 installation](/hi/guide/installation-alpha6) अपने पुराने संस्करण पर pinned है। पुराने alpha.5 के लिए [प्रकाशित alpha.5 इंस्टॉलेशन](/hi/guide/installation-alpha5) और [alpha.5 CLI](/hi/tooling/cli-alpha5) पढ़ें। पुरानी project-generation प्रक्रिया [alpha.4 quickstart](/hi/guide/quickstart-alpha4) में है। पुराने individual file commands के लिए [alpha.3 CLI reference](/hi/tooling/cli) उपलब्ध है। पुराने programs migrate करने से पहले [version compatibility](/hi/reference/compatibility) जाँचें।
+नए डाउनलोड के लिए [v0.0.6-alpha.10 archive और checksum](/hi/releases/v0.0.6-alpha.10) देखें। [alpha.1 installation](/hi/guide/installation-alpha6) अपने पुराने संस्करण पर pinned है। पुराने alpha.5 के लिए [प्रकाशित alpha.5 इंस्टॉलेशन](/hi/guide/installation-alpha5) और [alpha.5 CLI](/hi/tooling/cli-alpha5) पढ़ें। पुरानी project-generation प्रक्रिया [alpha.4 quickstart](/hi/guide/quickstart-alpha4) में है। पुराने individual file commands के लिए [alpha.3 CLI reference](/hi/tooling/cli) उपलब्ध है। पुराने programs migrate करने से पहले [version compatibility](/hi/reference/compatibility) जाँचें।
 
 ## प्रकाशित releases का compiler प्रमाण
 
@@ -23,6 +23,7 @@
 | **[v0.0.6-alpha.5](/hi/releases/v0.0.6-alpha.5)** (9 नवंबर 2026) | `205e92f166f186c3905e5880d41c31717b697b8e` | निश्चित Top-P, centered Pearson correlation और सीमित Rust ELF64 object API; सामान्य native compiler नहीं | [Alpha.5 release](/hi/releases/v0.0.6-alpha.5) |
 | **[v0.0.6-alpha.6](/hi/releases/v0.0.6-alpha.6)** (10 नवंबर 2026) | `cdf6a3924ec2a36c7beca5a9aec4f01a0bce515e` | सीमित redirected UTF-8 input, छह स्पष्ट text/scalar intrinsics और immutable tuples; interactive prompt या सामान्य native CLI नहीं | [Alpha.6 release](/hi/releases/v0.0.6-alpha.6) |
 | **[v0.0.6-alpha.7](/hi/releases/v0.0.6-alpha.7)** (11 नवंबर 2026) | `b1c1fd232b418267d95520c69ee563ac99ecae30` | Typed conditional expressions और Unicode scalar escapes; expression केवल interpreter में चलता है | [Alpha.7 release](/hi/releases/v0.0.6-alpha.7) |
+| **[v0.0.6-alpha.10](/hi/releases/v0.0.6-alpha.10)** (14 नवंबर 2026) | `44fcd0f77ccb92648cdb1fc7632495c506c87cb3` | Interactive input, fixed arrays, exact output fixtures और BigInt operations; pinned source examples | [Alpha.10 रिलीज़](/hi/releases/v0.0.6-alpha.10) |
 | **[v0.0.6-alpha.9](/hi/releases/v0.0.6-alpha.9)** (13 नवंबर 2026) | `0814997dc43982eb707a9a1aee72aab3a7ac8b41` | सटीक signed BigInt गणना, explicit conversions, सीमित संसाधन और JSON-v2 test errors; tagged arithmetic और sequence examples | [BigInt पाठ](/hi/language/bigint-alpha9) |
 | **[v0.0.6-alpha.8](/hi/releases/v0.0.6-alpha.8)** (12 नवंबर 2026) | `37253e7805c0ca594560700dd1deb3928458e60d` | नया declarative `scarp.project`, `init/run/verify`, `test` के साथ JSON/filter/stdin fixtures, `project info` और native `assert`/E0065; tagged calculator project सत्यापित | [Alpha.8 project](/hi/tutorials/calculator-alpha8) |
 

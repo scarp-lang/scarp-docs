@@ -13,7 +13,7 @@ Search button के साथ दिखाई देने वाला **K** s
 
 ## सही compiler version चुनें
 
-Search परिणाम में कोई **पुराना** tutorial भी हो सकता है। Code चलाने से पहले [सात-चरण वाला learning path](/hi/guide/learning-path), [नवीनतम प्रकाशित compiler डाउनलोड](/hi/releases/v0.0.6-alpha.9) और [प्रकाशित feature status](/hi/reference/status) देखें। मुख्य language reference alpha.1 पर आधारित है; नई सुविधाएँ अपने अलग प्रकाशित compiler releases से सत्यापित हैं।
+Search परिणाम में कोई **पुराना** tutorial भी हो सकता है। Code चलाने से पहले [सात-चरण वाला learning path](/hi/guide/learning-path), [नवीनतम प्रकाशित compiler डाउनलोड](/hi/releases/v0.0.6-alpha.10) और [प्रकाशित feature status](/hi/reference/status) देखें। मुख्य language reference alpha.1 पर आधारित है; नई सुविधाएँ अपने अलग प्रकाशित compiler releases से सत्यापित हैं।
 
 सही CLI command पहचानने के लिए [alpha.6 CLI](/hi/tooling/cli-alpha6), [AST inspection](/hi/tooling/inspect-ast-alpha6) तथा [troubleshooting](/hi/tooling/troubleshooting) पढ़ें। [English search help](/guide/search-and-navigation) भी उपलब्ध है।
 

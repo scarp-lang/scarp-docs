@@ -10,7 +10,7 @@ Scarp के प्रयोगात्मक compiler releases में CLI �
 
 पहले असली binary का version जाँचें। Alpha.3 या नए compiler में `scarp version` और alpha.1/alpha.2 में `scarp --version` चलाएँ। `FILE.srp` की जगह अपनी source file का path दें। `PROJECT_DIRECTORY` की जगह `Scarp.project` manifest वाला स्पष्ट project folder दें। `scarp create demo` चलाने से **नया folder** बनता है; यह पुराने folder को overwrite नहीं करता।
 
-यह widget पेज लोड होने के बाद **browser में ही काम करता है**। यह GitHub से data नहीं माँगता, आपके कंप्यूटर का executable नहीं पहचानता, आपकी files नहीं पढ़ता और Scarp code execute नहीं करता। इसके links अलग-अलग प्रकाशित releases के जाँचे हुए संदर्भों तक ले जाते हैं। **नवीनतम प्रकाशित release [v0.0.6-alpha.9](/hi/releases/v0.0.6-alpha.9)** है; compiler की बदलती `main` branch नहीं।
+यह widget पेज लोड होने के बाद **browser में ही काम करता है**। यह GitHub से data नहीं माँगता, आपके कंप्यूटर का executable नहीं पहचानता, आपकी files नहीं पढ़ता और Scarp code execute नहीं करता। इसके links अलग-अलग प्रकाशित releases के जाँचे हुए संदर्भों तक ले जाते हैं। **नवीनतम प्रकाशित release [v0.0.6-alpha.10](/hi/releases/v0.0.6-alpha.10)** है; compiler की बदलती `main` branch नहीं।
 
 ## अलग-अलग commands पहली बार कब आए?
 
@@ -55,3 +55,7 @@ Alpha.2 पुराने `run` command के लिए चुना जा �
 ## Alpha.9: structured test reports
 
 प्रकाशित [v0.0.6-alpha.9](/hi/releases/v0.0.6-alpha.9) में `scarp test --json=v2` नया है। पुराना `--json` schema version 1 देता है। Command Finder का नया **संरचित test errors** task चुनें। Alpha.8 या पुराने versions में यह सुविधा अनुपलब्ध दिखेगी। [JSON-v2 मार्गदर्शिका](/hi/tooling/test-json-v2-alpha9) में failure phases और privacy सीमाएँ हैं।
+
+## Alpha.10 interactive prompts
+
+प्रकाशित compiler में `--interactive` और `--input-file PATH` उपलब्ध हैं। विस्तृत [input guide](/hi/tooling/interactive-input-alpha10) तथा [arrays guide](/hi/language/fixed-arrays-alpha10). पुराने versions का command finder अपनी मूल सीमाएँ दिखाता है।

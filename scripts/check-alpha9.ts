@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { extractCodeFences, firstMissingCodeBlock } from './lib/code-fences.ts'
-import { commandAdvice, LATEST_RELEASE } from './lib/command-finder.ts'
+import { commandAdvice } from './lib/command-finder.ts'
 
 const root=resolve(fileURLToPath(new URL('..',import.meta.url)))
 const read=(path:string):string=>readFileSync(resolve(root,path),'utf8')
@@ -16,18 +16,13 @@ const manifest=JSON.parse(read('conformance/alpha9-manifest.json')) as {
   releasedAt:string;status:string;
   cases:Array<{source:string;localSource:string;gitBlobSha:string}>
 }
-const current=JSON.parse(read('data/compiler-latest-release.json')) as {
-  compilerRepository:string;compilerRef:string;compilerCommit:string;
-  releasedAt:string;status:string;assets:string[]
-}
-for(const value of [manifest,current]){
+for(const value of [manifest]){
   assert.equal(value.compilerRepository,'scarp-lang/scarp')
   assert.equal(value.compilerRef,tag)
   assert.equal(value.compilerCommit,source)
   assert.equal(value.releasedAt,published)
   assert.equal(value.status,'published-prerelease')
 }
-assert.equal(LATEST_RELEASE,tag)
 assert.deepEqual(manifest.cases.map(c=>c.source),[
   'examples/bigint_arithmetic.srp','examples/bigint_arithmetic.stdout',
   'examples/bigint_sequences.srp','examples/bigint_sequences.stdout'
@@ -75,7 +70,6 @@ for(const locale of ['', 'hi/']){
     const uri='https://github.com/scarp-lang/scarp/releases/download/'+tag+'/'+asset
     assert.ok(page.includes(']('+uri+')'))
     assert.ok(page.includes(']('+uri+'.sha256)'))
-    assert.ok(current.assets.includes(asset))
   }
   assert.ok(page.includes('SHA256SUMS'))
   assert.ok(read('docs/'+locale+'index.md').includes('](/'+locale+'releases/'+tag+')'))
@@ -86,5 +80,4 @@ for(const locale of ['', 'hi/']){
 assert.deepEqual(commandAdvice(tag,'test-json-v2').commands,
   ['scarp test --json=v2 PROJECT_DIRECTORY'])
 assert.equal(commandAdvice('v0.0.6-alpha.8','test-json-v2').supported,false)
-assert.equal(current.assets.length,4)
 console.log('PASS: alpha.9 release provenance, 4 exact Git blobs, 3 bilingual guides, downloads and CLI boundary')

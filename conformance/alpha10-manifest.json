@@ -1,0 +1,49 @@
+{
+  "compilerRepository": "scarp-lang/scarp",
+  "compilerRef": "v0.0.6-alpha.10",
+  "compilerCommit": "44fcd0f77ccb92648cdb1fc7632495c506c87cb3",
+  "releasedAt": "2026-11-14T07:03:24Z",
+  "status": "published-prerelease",
+  "cases": [
+    {
+      "source": "examples/interactive/greeting.srp",
+      "localSource": "conformance/alpha10/interactive_greeting.srp",
+      "gitBlobSha": "1b1c775a7979c2fd921fec571c91816dea73deb0"
+    },
+    {
+      "source": "examples/interactive/greeting.stdin",
+      "localSource": "conformance/alpha10/interactive_greeting.stdin",
+      "gitBlobSha": "6b3d6ac8f54acb566858c25ef6dffeebce260bf9"
+    },
+    {
+      "source": "examples/interactive/greeting.stdout",
+      "localSource": "conformance/alpha10/interactive_greeting.stdout",
+      "gitBlobSha": "32fa0a86a8ca78fc070dca2fd3f709c1533db6f9"
+    },
+    {
+      "source": "examples/interactive/typed_calculator.srp",
+      "localSource": "conformance/alpha10/interactive_typed_calculator.srp",
+      "gitBlobSha": "19baca1fedb196c74c9d1b9a1c3a0a195f989c1a"
+    },
+    {
+      "source": "examples/interactive/typed_calculator.stdin",
+      "localSource": "conformance/alpha10/interactive_typed_calculator.stdin",
+      "gitBlobSha": "db4c91e34739d7dc85d5d22d2c3fda67c44806e0"
+    },
+    {
+      "source": "examples/interactive/typed_calculator.stdout",
+      "localSource": "conformance/alpha10/interactive_typed_calculator.stdout",
+      "gitBlobSha": "f0dd1141c46f647245f41fba06b426ad0e5e1e48"
+    },
+    {
+      "source": "examples/fixed_arrays.srp",
+      "localSource": "conformance/alpha10/fixed_arrays.srp",
+      "gitBlobSha": "a7d0e5b4c8e25f64e4543fd5e32a82e7a36bdc54"
+    },
+    {
+      "source": "examples/fixed_arrays.stdout",
+      "localSource": "conformance/alpha10/fixed_arrays.stdout",
+      "gitBlobSha": "427382f9524c2f3d58a5979f31b38dae095bebaa"
+    }
+  ]
+}

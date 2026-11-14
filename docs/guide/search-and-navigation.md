@@ -13,7 +13,7 @@ The keyboard shortcut shown in the search trigger is part of its accessible name
 
 ## Find the right version
 
-A search result may come from a **historical** tutorial. Start with the [seven-stage learning path](/guide/learning-path), [latest published compiler downloads](/releases/v0.0.6-alpha.9) or [published feature status](/reference/status) to determine the correct compiler version before running an example. The core language reference remains pinned to alpha.1, while newer guides identify their own prereleases.
+A search result may come from a **historical** tutorial. Start with the [seven-stage learning path](/guide/learning-path), [latest published compiler downloads](/releases/v0.0.6-alpha.10) or [published feature status](/reference/status) to determine the correct compiler version before running an example. The core language reference remains pinned to alpha.1, while newer guides identify their own prereleases.
 
 For exact commands, compare the [alpha.6 CLI](/tooling/cli-alpha6), [AST inspection](/tooling/inspect-ast-alpha6) and [troubleshooting](/tooling/troubleshooting). Use the [Hindi search help](/hi/guide/search-and-navigation) to read these instructions in हिन्दी.
 
