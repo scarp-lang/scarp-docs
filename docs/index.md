@@ -23,8 +23,11 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
-  - title: Latest published compiler v0.0.6-alpha.9
-    details: Learn exact signed BigInt arithmetic and JSON-v2 test diagnostics from compiler-pinned examples and official checksums.
+  - title: Latest published compiler v0.0.6-alpha.10
+    details: Learn interactive input, immutable arrays, expanded BigInt and official checksums.
+    link: /releases/v0.0.6-alpha.10
+  - title: Earlier alpha.9 BigInt and JSON diagnostics
+    details: Source-pinned historical compiler examples and exact output tests.
     link: /releases/v0.0.6-alpha.9
   - title: Choose your release-aware Scarp learning path
     details: Follow seven verified stages from first program and numerical functions to real projects, static analysis and RMS, with per-release guidance.

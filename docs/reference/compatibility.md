@@ -1,12 +1,13 @@
 # Version compatibility
 
-For an evidence-backed inventory of alpha.1 through alpha.9 features, consult the [published feature status](/reference/status). For specific commands, the [interactive version-aware Command Finder](/tooling/command-finder) shows shipped actions and unavailable features for each published compiler.
+For an evidence-backed inventory of alpha.1 through alpha.10 features, consult the [published feature status](/reference/status). For specific commands, the [interactive version-aware Command Finder](/tooling/command-finder) shows shipped actions and unavailable features for each published compiler.
 
 The language is **prerelease and evolving**. Use the exact executable version matching the tutorial, not a mix of snippets taken from older release notes.
 
 | Version | Distinguishing features |
 | --- | --- |
-| **[v0.0.6-alpha.9](/releases/v0.0.6-alpha.9)** | **Latest published (Nov 13, 2026):** exact signed BigInt arithmetic, explicit conversion, bounded work/digits, and `scarp test --json=v2` structured failures; no native compile CLI or registry |
+| **[v0.0.6-alpha.10](/releases/v0.0.6-alpha.10)** | **Latest published (Nov 14, 2026):** interactive prompts, immutable arrays, exact output tests, expanded BigInt; no general native compile |
+| **[v0.0.6-alpha.9](/releases/v0.0.6-alpha.9)** | **Earlier published (Nov 13, 2026):** exact signed BigInt arithmetic, explicit conversion, bounded work/digits, and `scarp test --json=v2` structured failures; no native compile CLI or registry |
 | **[v0.0.6-alpha.8](/releases/v0.0.6-alpha.8)** | **Earlier published (Nov 12, 2026):** declarative `scarp.project`, `scarp init/run/verify`, `scarp test`/JSON/filter/`.stdin`, read-only `project info`, and `assert`/E0065; legacy manifests still work, no native compile or registry |
 | **[v0.0.6-alpha.7](/releases/v0.0.6-alpha.7)** | **Earlier published (Nov 11, 2026):** typed conditional expressions and Unicode scalar escapes; conditional expressions are interpreter-only |
 | **[v0.0.6-alpha.6](/releases/v0.0.6-alpha.6)** | **Earlier published (Nov 10, 2026):** bounded redirected input, explicit scalar/text conversions and immutable tuples; no terminal prompt or general native CLI |
