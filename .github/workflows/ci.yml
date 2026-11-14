@@ -40,6 +40,8 @@ jobs:
         run: npm run check:alpha8
       - name: Verify published alpha.9 BigInt and JSON-v2 bilingual evidence
         run: npm run check:alpha9
+      - name: Verify published alpha.10 interactive input and array evidence
+        run: npm run check:alpha10
       - name: Validate Scarp-owned bilingual search and keyboard accessibility
         run: npm run check:hindi-search && npm run test:hindi-search
       - name: Test version-aware bilingual command finder and historical release boundaries
@@ -487,3 +489,27 @@ jobs:
         run: cargo build --manifest-path .compiler-alpha9/Cargo.toml --locked --offline
       - name: Run tagged BigInt programs and compare JSON-v2 reports
         run: npm run test:alpha9-compiler -- .compiler-alpha9/target/debug/scarp
+
+  alpha10-conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: scarp-lang/scarp
+          ref: 44fcd0f77ccb92648cdb1fc7632495c506c87cb3
+          path: .compiler-alpha10
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Install TypeScript tooling
+        run: npm install --no-audit --no-fund
+      - name: Verify immutable alpha.10 compiler source
+        run: test "$(git -C .compiler-alpha10 rev-parse HEAD)" = "44fcd0f77ccb92648cdb1fc7632495c506c87cb3"
+      - name: Verify bilingual docs and byte-exact tagged fixtures
+        run: npm run check:alpha10
+      - name: Build exact published alpha.10 compiler
+        run: cargo build --manifest-path .compiler-alpha10/Cargo.toml --locked --offline
+      - name: Exercise published interactive programs and fixed arrays
+        run: npm run test:alpha10-compiler -- .compiler-alpha10/target/debug/scarp
