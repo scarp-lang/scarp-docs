@@ -21,9 +21,9 @@ Official TypeScript-generated documentation for the experimental [Scarp Programm
 
 **Find documentation in your language:** [Search and navigation](docs/guide/search-and-navigation.md) · [हिन्दी में खोजें](docs/hi/guide/search-and-navigation.md). The Scarp-owned local search offers Hindi labels, accessible keyboard hints and a translated no-results state; English remains unchanged. Search is client-side and does not depend on an external hosted search provider.
 
-**Start learning in order:** [English: seven-stage learning path](docs/guide/learning-path.md) · [हिन्दी: सात चरणों में Scarp](docs/hi/guide/learning-path.md). Historical compiler examples retain their versioned baselines; the learning path explains which release to use, from alpha.1 through the published alpha.9 prerelease, without claiming universal compatibility.
+**Start learning in order:** [English: seven-stage learning path](docs/guide/learning-path.md) · [हिन्दी: सात चरणों में Scarp](docs/hi/guide/learning-path.md). Historical compiler examples retain their versioned baselines; the learning path explains which release to use, from alpha.1 through the published alpha.10 prerelease, without claiming universal compatibility.
 
-**Install the latest published compiler:** [Alpha.9 Windows/Linux/macOS packages and SHA-256](docs/releases/v0.0.6-alpha.9.md). Historical [English alpha.1 installation guide](docs/guide/installation-alpha6.md) · [हिन्दी version-pinned installer](docs/hi/guide/installation-alpha6.md). Verify each platform's official archive checksum before execution.
+**Install the latest published compiler:** [Alpha.10 Windows/Linux/macOS packages and SHA-256](docs/releases/v0.0.6-alpha.10.md). Historical [English alpha.1 installation guide](docs/guide/installation-alpha6.md) · [हिन्दी version-pinned installer](docs/hi/guide/installation-alpha6.md). Verify each platform's official archive checksum before execution.
 
 **Automated accessibility auditing:** The extracted offline site is checked with pinned local axe-core in 10 bilingual light/dark/search/mobile states; CI attaches per-state WCAG A/AA findings on failures. Manual screen-reader verification remains separately tracked in [Issue #65](https://github.com/scarp-lang/scarp-docs/issues/65).
 
