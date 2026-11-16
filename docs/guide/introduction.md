@@ -1,6 +1,6 @@
 # Introduction to Scarp
 
-**Latest published compiler: [v0.0.6-alpha.11](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.11).** Exact `decimal` and `input_decimal` are shipped in the interpreter, not native compilation. [Official release](/releases/v0.0.6-alpha.11) · [Decimal guide](/language/decimal-alpha11) · [downloads and checksums](/releases/v0.0.6-alpha.11).
+**Latest published compiler: [v0.0.6-alpha.11](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.11).** Exact `decimal` and `input_decimal` are shipped in the interpreter, not native compilation. [Official release](/releases/v0.0.6-alpha.11) · [Decimal guide](/language/decimal-alpha11) · [downloads and checksums](/releases/v0.0.6-alpha.11). New learners should follow the [seven-stage learning path](/guide/learning-path).
 
 Scarp is an **experimental**, Rust-implemented, interpreted programming language. An **earlier published compiler** is [v0.0.5-alpha.5](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.5). This general-language overview remains based on the separately verified **alpha.1 reference**; the historical [alpha.4 tagged release](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.4), [alpha.4 installation](/guide/installation), [alpha.4 project quickstart](/guide/quickstart-alpha4), and [alpha.3 CLI reference](/tooling/cli) remain historical version-scoped guides. The language is not yet a stable general-purpose alternative to Rust, C++, or Python.
 
