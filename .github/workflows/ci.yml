@@ -44,6 +44,8 @@ jobs:
         run: npm run check:alpha10
       - name: Verify published alpha.11 exact Decimal source and bilingual guidance
         run: npm run check:alpha11
+      - name: Verify published alpha.12 typed data model and project evidence
+        run: npm run check:alpha12
       - name: Validate Scarp-owned bilingual search and keyboard accessibility
         run: npm run check:hindi-search && npm run test:hindi-search
       - name: Test version-aware bilingual command finder and historical release boundaries
@@ -546,3 +548,36 @@ jobs:
         run: cargo build --manifest-path .compiler-alpha11/Cargo.toml --locked --offline
       - name: Execute tagged exact and interactive Decimal examples
         run: npm run test:alpha11-compiler -- .compiler-alpha11/target/debug/scarp
+
+  alpha12-conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: scarp-lang/scarp
+          ref: a1f9c2fc1c6bc8f3e04878d30d658bb38fab441d
+          path: .compiler-alpha12
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Install TypeScript tooling
+        run: npm install --no-audit --no-fund
+      - name: Verify immutable published alpha.12 source
+        run: test "$(git -C .compiler-alpha12 rev-parse HEAD)" = "a1f9c2fc1c6bc8f3e04878d30d658bb38fab441d"
+      - name: Validate five bilingual guides and 23 exact Git blobs
+        run: npm run check:alpha12
+      - name: Compare all upstream tagged standalone examples byte-for-byte
+        run: |
+          for name in data_destructure variant_validation typed_propagation typed_dynamic_lists persistent_list_updates typed_maps persistent_maps ui_event_patterns; do
+            for extension in srp stdout; do
+              diff -u ".compiler-alpha12/examples/$name.$extension" "conformance/alpha12/$name.$extension"
+            done
+          done
+      - name: Compare full published multi-file task board
+        run: diff -ru .compiler-alpha12/examples/projects/task-board conformance/alpha12/projects/task-board
+      - name: Build exact tagged alpha.12 interpreter
+        run: cargo build --manifest-path .compiler-alpha12/Cargo.toml --locked --offline
+      - name: Run eight programs and three project tests on released compiler
+        run: npm run test:alpha12-compiler -- .compiler-alpha12/target/debug/scarp
