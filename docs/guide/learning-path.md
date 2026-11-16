@@ -6,7 +6,7 @@
 
 **Unsure which command belongs to your installed compiler?** Use the [interactive version-aware CLI Command Finder](/tooling/command-finder) to avoid mixing older `run` / `check` with newer static `verify` or project inspection.
 
-**Current compiler:** The newest published prerelease is [v0.0.6-alpha.10](/releases/v0.0.6-alpha.10), adding opt-in interactive input, immutable arrays and expanded BigInt. Read [interactive input](/tooling/interactive-input-alpha10) and [fixed arrays](/language/fixed-arrays-alpha10). The earlier [alpha.9](/releases/v0.0.6-alpha.9) and [alpha.8](/releases/v0.0.6-alpha.8) remain release-pinned. The seven historical learning stages below retain their original verified compilers.
+**Current compiler:** The newest published prerelease is [v0.0.6-alpha.11](/releases/v0.0.6-alpha.11), which adds exact `decimal` arithmetic, explicit rounding and `input_decimal`. Start with the [Decimal guide](/language/decimal-alpha11) and [interactive input](/tooling/decimal-input-alpha11). Historical learning stages retain their own release pins.
 
 **Start here if you are new to Scarp.** This track connects complete, compiler-backed lessons from the first program through numerical modeling, project modules, and the symbol-navigation tools introduced in the **[published v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1)** prerelease.
 

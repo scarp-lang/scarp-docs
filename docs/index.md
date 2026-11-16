@@ -23,9 +23,9 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
-  - title: Latest published compiler v0.0.6-alpha.10
+  - title: Latest published compiler v0.0.6-alpha.11
     details: Learn interactive input, immutable arrays, expanded BigInt and official checksums.
-    link: /releases/v0.0.6-alpha.10
+    link: /releases/v0.0.6-alpha.11
   - title: Earlier alpha.9 BigInt and JSON diagnostics
     details: Source-pinned historical compiler examples and exact output tests.
     link: /releases/v0.0.6-alpha.9

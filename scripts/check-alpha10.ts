@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { extractCodeFences, firstMissingCodeBlock } from './lib/code-fences.ts'
-import { LATEST_RELEASE, RELEASES, commandAdvice } from './lib/command-finder.ts'
+import { commandAdvice } from './lib/command-finder.ts'
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)))
 const read = (path: string): string => readFileSync(resolve(root, path), 'utf8')
@@ -19,24 +19,13 @@ const manifest = JSON.parse(read('conformance/alpha10-manifest.json')) as {
   status: string
   cases: Array<{ source: string; localSource: string; gitBlobSha: string }>
 }
-const current = JSON.parse(read('data/compiler-latest-release.json')) as {
-  compilerRepository: string
-  compilerRef: string
-  compilerCommit: string
-  releasedAt: string
-  status: string
-  assets: string[]
-}
-
-for (const release of [manifest, current]) {
+for (const release of [manifest]) {
   assert.equal(release.compilerRepository, 'scarp-lang/scarp')
   assert.equal(release.compilerRef, tag)
   assert.equal(release.compilerCommit, source)
   assert.equal(release.releasedAt, published)
   assert.equal(release.status, 'published-prerelease')
 }
-assert.equal(LATEST_RELEASE, tag)
-assert.equal(RELEASES.at(-1)?.source, source)
 assert.equal(manifest.cases.length, 8)
 assert.deepEqual(manifest.cases.map(record => record.source), [
   'examples/interactive/greeting.srp',
@@ -98,17 +87,9 @@ for (const locale of ['', 'hi/']) {
     const uri = 'https://github.com/scarp-lang/scarp/releases/download/' + tag + '/' + asset
     assert.ok(release.includes('](' + uri + ')'))
     assert.ok(release.includes('](' + uri + '.sha256)'))
-    assert.ok(current.assets.includes(asset))
   }
   assert.ok(release.includes('SHA256SUMS'))
-  for (const route of ['index.md', 'reference/status.md', 'reference/compatibility.md']) {
-    const page = read('docs/' + locale + route)
-    const destination = '/' + locale + 'releases/' + tag
-    const expected = route === 'index.md' ? 'link: ' + destination : '](' + destination + ')'
-    assert.ok(page.includes(expected), locale + route + ': current release link missing')
-  }
 }
-assert.equal(current.assets.length, 4)
 assert.equal(commandAdvice(tag, 'run-file').commands[0], 'scarp exec FILE.srp')
 assert.equal(commandAdvice(tag, 'test-json-v2').supported, true)
 assert.equal(commandAdvice('v0.0.6-alpha.8', 'test-json-v2').supported, false)

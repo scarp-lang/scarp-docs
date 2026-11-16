@@ -42,6 +42,8 @@ jobs:
         run: npm run check:alpha9
       - name: Verify published alpha.10 interactive input and array evidence
         run: npm run check:alpha10
+      - name: Verify published alpha.11 exact Decimal source and bilingual guidance
+        run: npm run check:alpha11
       - name: Validate Scarp-owned bilingual search and keyboard accessibility
         run: npm run check:hindi-search && npm run test:hindi-search
       - name: Test version-aware bilingual command finder and historical release boundaries
@@ -513,3 +515,34 @@ jobs:
         run: cargo build --manifest-path .compiler-alpha10/Cargo.toml --locked --offline
       - name: Exercise published interactive programs and fixed arrays
         run: npm run test:alpha10-compiler -- .compiler-alpha10/target/debug/scarp
+
+  alpha11-conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: scarp-lang/scarp
+          ref: 79b57395957f47e1270ee542a856c844b82386de
+          path: .compiler-alpha11
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Install TypeScript tooling
+        run: npm install --no-audit --no-fund
+      - name: Verify immutable published alpha.11 compiler commit
+        run: test "$(git -C .compiler-alpha11 rev-parse HEAD)" = "79b57395957f47e1270ee542a856c844b82386de"
+      - name: Check bilingual guides and five exact Git blobs
+        run: npm run check:alpha11
+      - name: Compare all five upstream fixture files byte-for-byte
+        run: |
+          diff -u .compiler-alpha11/examples/decimal_exact.srp conformance/alpha11/decimal_exact.srp
+          diff -u .compiler-alpha11/examples/decimal_exact.stdout conformance/alpha11/decimal_exact.stdout
+          diff -u .compiler-alpha11/examples/interactive/exact_decimal.srp conformance/alpha11/interactive_exact_decimal.srp
+          diff -u .compiler-alpha11/examples/interactive/exact_decimal.stdin conformance/alpha11/interactive_exact_decimal.stdin
+          diff -u .compiler-alpha11/examples/interactive/exact_decimal.stdout conformance/alpha11/interactive_exact_decimal.stdout
+      - name: Build published alpha.11 interpreter
+        run: cargo build --manifest-path .compiler-alpha11/Cargo.toml --locked --offline
+      - name: Execute tagged exact and interactive Decimal examples
+        run: npm run test:alpha11-compiler -- .compiler-alpha11/target/debug/scarp
