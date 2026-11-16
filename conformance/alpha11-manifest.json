@@ -1,0 +1,34 @@
+{
+  "compilerRepository": "scarp-lang/scarp",
+  "compilerRef": "v0.0.6-alpha.11",
+  "compilerCommit": "79b57395957f47e1270ee542a856c844b82386de",
+  "releasedAt": "2026-11-15T15:14:47Z",
+  "status": "published-prerelease",
+  "cases": [
+    {
+      "source": "examples/decimal_exact.srp",
+      "localSource": "conformance/alpha11/decimal_exact.srp",
+      "gitBlobSha": "4890c10b15d7a8e827bb9549e987a0a2eb0d973d"
+    },
+    {
+      "source": "examples/decimal_exact.stdout",
+      "localSource": "conformance/alpha11/decimal_exact.stdout",
+      "gitBlobSha": "d1f149f581b635d7f5ec6a6604805c2146bbe803"
+    },
+    {
+      "source": "examples/interactive/exact_decimal.srp",
+      "localSource": "conformance/alpha11/interactive_exact_decimal.srp",
+      "gitBlobSha": "0985dffa73b70808bac664987bc52d5ac89485ff"
+    },
+    {
+      "source": "examples/interactive/exact_decimal.stdin",
+      "localSource": "conformance/alpha11/interactive_exact_decimal.stdin",
+      "gitBlobSha": "83676ab0c86af9c0c430b76e171186125c2243c3"
+    },
+    {
+      "source": "examples/interactive/exact_decimal.stdout",
+      "localSource": "conformance/alpha11/interactive_exact_decimal.stdout",
+      "gitBlobSha": "0eb04ed48eb7838524c94591c7c6f60da6ad3e12"
+    }
+  ]
+}
