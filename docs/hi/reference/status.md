@@ -5,7 +5,7 @@
 
 **नवीनतम प्रकाशित compiler: [v0.0.6-alpha.11](/hi/releases/v0.0.6-alpha.11), 15 नवंबर 2026।** Exact `decimal` और `input_decimal` प्रयोगात्मक interpreter features हैं; native compile उपलब्ध नहीं है। सामान्य भाषा अध्याय अपने मूल `v0.0.5-alpha.1` baseline पर बने रहते हैं।
 
-नए डाउनलोड के लिए [v0.0.6-alpha.10 archive और checksum](/hi/releases/v0.0.6-alpha.10) देखें। [alpha.1 installation](/hi/guide/installation-alpha6) अपने पुराने संस्करण पर pinned है। पुराने alpha.5 के लिए [प्रकाशित alpha.5 इंस्टॉलेशन](/hi/guide/installation-alpha5) और [alpha.5 CLI](/hi/tooling/cli-alpha5) पढ़ें। पुरानी project-generation प्रक्रिया [alpha.4 quickstart](/hi/guide/quickstart-alpha4) में है। पुराने individual file commands के लिए [alpha.3 CLI reference](/hi/tooling/cli) उपलब्ध है। पुराने programs migrate करने से पहले [version compatibility](/hi/reference/compatibility) जाँचें।
+नए डाउनलोड के लिए [v0.0.6-alpha.11 archive और checksum](/hi/releases/v0.0.6-alpha.11) देखें। [alpha.1 installation](/hi/guide/installation-alpha6) अपने पुराने संस्करण पर pinned है। पुराने alpha.5 के लिए [प्रकाशित alpha.5 इंस्टॉलेशन](/hi/guide/installation-alpha5) और [alpha.5 CLI](/hi/tooling/cli-alpha5) पढ़ें। पुरानी project-generation प्रक्रिया [alpha.4 quickstart](/hi/guide/quickstart-alpha4) में है। पुराने individual file commands के लिए [alpha.3 CLI reference](/hi/tooling/cli) उपलब्ध है। पुराने programs migrate करने से पहले [version compatibility](/hi/reference/compatibility) जाँचें।
 
 ## प्रकाशित releases का compiler प्रमाण
 
