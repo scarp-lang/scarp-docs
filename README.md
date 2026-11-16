@@ -11,7 +11,9 @@ Official TypeScript-generated documentation for the experimental [Scarp Programm
 
 **Compiler:** https://github.com/scarp-lang/scarp
 
-**Latest published compiler:** [v0.0.6-alpha.11](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.11), November 15, 2026, source `79b57395957f47e1270ee542a856c844b82386de`. Exact base-10 `decimal`, explicit rounding/conversion and `input_decimal(prompt)` now run in the interpreter. [English release](docs/releases/v0.0.6-alpha.11.md) · [हिन्दी रिलीज़](docs/hi/releases/v0.0.6-alpha.11.md) · [Decimal guide](docs/language/decimal-alpha11.md) · [हिन्दी Decimal](docs/hi/language/decimal-alpha11.md). The new Decimal feature is interpreter-only; there is no public native `scarp compile` command or stable ABI.
+**Latest published compiler:** [v0.0.6-alpha.12](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.12), November 16, 2026, annotated source `a1f9c2fc1c6bc8f3e04878d30d658bb38fab441d`. This experimental interpreter prerelease adds records, tagged variants, checked pattern matching, nested destructuring, Option/Result propagation, persistent typed lists/maps and a full three-test task-board project. [English release](docs/releases/v0.0.6-alpha.12.md) · [हिन्दी रिलीज़](docs/hi/releases/v0.0.6-alpha.12.md) · [Records/variants](docs/language/records-variants-alpha12.md) · [Option/Result](docs/language/option-result-alpha12.md) · [Lists/maps](docs/language/lists-maps-alpha12.md) · [Task board](docs/tutorials/task-board-alpha12.md). No general native compiler, graphical UI framework or stable ABI is shipped.
+
+**Historical alpha.11 compiler:** [v0.0.6-alpha.11](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.11), November 15, 2026, pinned source `79b57395957f47e1270ee542a856c844b82386de`. Its [English release](docs/releases/v0.0.6-alpha.11.md) and [Hindi release](docs/hi/releases/v0.0.6-alpha.11.md) preserve exact base-10 Decimal, explicit rounding and interactive typed input.
 
 **Historical alpha.10 compiler:** [v0.0.6-alpha.10](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.10), November 14, 2026, pinned source `44fcd0f77ccb92648cdb1fc7632495c506c87cb3`. [English](docs/releases/v0.0.6-alpha.10.md) and [Hindi](docs/hi/releases/v0.0.6-alpha.10.md) preserve interactive prompts, fixed arrays, expanded BigInt and exact stdout fixtures.
 
@@ -23,9 +25,9 @@ Official TypeScript-generated documentation for the experimental [Scarp Programm
 
 **Find documentation in your language:** [Search and navigation](docs/guide/search-and-navigation.md) · [हिन्दी में खोजें](docs/hi/guide/search-and-navigation.md). The Scarp-owned local search offers Hindi labels, accessible keyboard hints and a translated no-results state; English remains unchanged. Search is client-side and does not depend on an external hosted search provider.
 
-**Start learning in order:** [English: seven-stage learning path](docs/guide/learning-path.md) · [हिन्दी: सात चरणों में Scarp](docs/hi/guide/learning-path.md). Historical compiler examples retain their versioned baselines; the learning path explains which release to use, from alpha.1 through the published alpha.11 prerelease, without claiming universal compatibility.
+**Start learning in order:** [English: seven-stage learning path](docs/guide/learning-path.md) · [हिन्दी: सात चरणों में Scarp](docs/hi/guide/learning-path.md). Historical compiler examples retain their versioned baselines; the learning path explains which release to use, from alpha.1 through the published alpha.12 prerelease, without claiming universal compatibility.
 
-**Install the latest published compiler:** [Alpha.11 Windows/Linux/macOS packages and SHA-256](docs/releases/v0.0.6-alpha.11.md). Historical [English alpha.1 installation guide](docs/guide/installation-alpha6.md) · [हिन्दी version-pinned installer](docs/hi/guide/installation-alpha6.md). Verify each platform's official archive checksum before execution.
+**Install the latest published compiler:** [Alpha.12 Windows/Linux/macOS packages and SHA-256](docs/releases/v0.0.6-alpha.12.md). Historical [English alpha.1 installation guide](docs/guide/installation-alpha6.md) · [हिन्दी version-pinned installer](docs/hi/guide/installation-alpha6.md). Verify each platform's official archive checksum before execution.
 
 **Automated accessibility auditing:** The extracted offline site is checked with pinned local axe-core in 10 bilingual light/dark/search/mobile states; CI attaches per-state WCAG A/AA findings on failures. Manual screen-reader verification remains separately tracked in [Issue #65](https://github.com/scarp-lang/scarp-docs/issues/65).
 
@@ -33,7 +35,7 @@ Official TypeScript-generated documentation for the experimental [Scarp Programm
 
 **Read the bilingual site offline:** [English offline download instructions](docs/guide/offline-docs.md) · [हिन्दी offline documentation](docs/hi/guide/offline-docs.md). A tested GitHub Actions artifact contains reproducible bundled docs, a Node.js loopback server and SHA-256 checksums. Offline docs are not compiler releases.
 
-**Choose version-correct CLI commands:** [Interactive English Command Finder](docs/tooling/command-finder.md) · [हिन्दी CLI Command Finder](docs/hi/tooling/command-finder.md). Eleven common tasks across sixteen pinned compiler prereleases, with explicit unavailable states and a copy button; no server API or installed-binary access is required.
+**Choose version-correct CLI commands:** [Interactive English Command Finder](docs/tooling/command-finder.md) · [हिन्दी CLI Command Finder](docs/hi/tooling/command-finder.md). Eleven common tasks across seventeen pinned compiler prereleases, with explicit unavailable states and a copy button; no server API or installed-binary access is required.
 
 **Verify your running Scarp compiler and host:** [English `diagnose --json` guide](docs/tooling/diagnose-alpha6.md) · [हिन्दी `diagnose --json` मार्गदर्शिका](docs/hi/tooling/diagnose-alpha6.md). Covers the tagged alpha.6 capability JSON and the distinction between interpreter execution and unsupported native binaries.
 

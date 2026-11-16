@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { extractCodeFences, firstMissingCodeBlock } from './lib/code-fences.ts'
-import { LATEST_RELEASE, RELEASES, commandAdvice } from './lib/command-finder.ts'
+import { commandAdvice } from './lib/command-finder.ts'
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)))
 const read = (path: string): string => readFileSync(resolve(root, path), 'utf8')
@@ -16,19 +16,13 @@ const manifest = JSON.parse(read('conformance/alpha11-manifest.json')) as {
   releasedAt: string; status: string;
   cases: Array<{ source: string; localSource: string; gitBlobSha: string }>
 }
-const latest = JSON.parse(read('data/compiler-latest-release.json')) as {
-  compilerRepository: string; compilerRef: string; compilerCommit: string;
-  releasedAt: string; status: string; assets: string[]
-}
-for (const entry of [manifest, latest]) {
+for (const entry of [manifest]) {
   assert.equal(entry.compilerRepository, 'scarp-lang/scarp')
   assert.equal(entry.compilerRef, tag)
   assert.equal(entry.compilerCommit, source)
   assert.equal(entry.releasedAt, published)
   assert.equal(entry.status, 'published-prerelease')
 }
-assert.equal(LATEST_RELEASE, tag)
-assert.equal(RELEASES.at(-1)?.source, source)
 assert.deepEqual(manifest.cases.map(c => c.source), [
   'examples/decimal_exact.srp',
   'examples/decimal_exact.stdout',
@@ -76,17 +70,9 @@ for (const locale of ['', 'hi/']) {
     const url = 'https://github.com/scarp-lang/scarp/releases/download/' + tag + '/' + asset
     assert.ok(release.includes('](' + url + ')'))
     assert.ok(release.includes('](' + url + '.sha256)'))
-    assert.ok(latest.assets.includes(asset))
   }
   assert.ok(release.includes('SHA256SUMS'))
-  for (const path of ['index.md','reference/status.md','reference/compatibility.md']) {
-    const page = read('docs/' + locale + path)
-    const suffix = '/' + locale + 'releases/' + tag
-    assert.ok(page.includes((path === 'index.md' ? 'link: ' : '](') + suffix),
-      path + ': latest release link missing')
-  }
 }
-assert.equal(latest.assets.length, 4)
 assert.equal(commandAdvice(tag, 'run-file').commands[0], 'scarp exec FILE.srp')
 assert.equal(commandAdvice(tag, 'test-json-v2').supported, true)
 console.log('PASS: alpha.11 immutable source and release metadata, five Git blobs, bilingual Decimal docs and archives')
