@@ -48,7 +48,7 @@ for (const file of manifest.cases ?? []) {
   assert.equal(hash, file.gitBlobSha, 'Published Git blob changed: ' + file.source)
 }
 const routeSnippets: Record<string, string[]> = {
-  'releases/' + tag: ['variant_validation'],
+  ['releases/' + tag]: ['variant_validation'],
   'language/records-variants-alpha12': ['variant_validation','data_destructure','ui_event_patterns'],
   'language/option-result-alpha12': ['typed_propagation'],
   'language/lists-maps-alpha12': [
