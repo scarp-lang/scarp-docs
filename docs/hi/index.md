@@ -83,4 +83,6 @@ features:
 नवीनतम प्रकाशित compiler **[v0.0.6-alpha.12](/hi/releases/v0.0.6-alpha.12)** है, जबकि अधिकतर मुख्य reference अभी अलग से सत्यापित **v0.0.5-alpha.1** पर आधारित है। सभी experimental prereleases हैं। पुराने code के लिए [अपग्रेड की जाँच](/hi/reference/upgrade-readiness) और [फ़ीचर स्थिति](/hi/reference/status) पढ़ें।
 :::
 
+[ऐतिहासिक alpha.9 BigInt और JSON-v2 रिलीज़](/hi/releases/v0.0.6-alpha.9) अपने मूल compiler version के लिए उपलब्ध है।
+
 पिछली [alpha.8 release](/hi/releases/v0.0.6-alpha.8) में projects, tests और assertions आए। पुराने input और tuple उदाहरणों के लिए [प्रकाशित alpha.6 release](/hi/releases/v0.0.6-alpha.6) पढ़ें। उसका code उसी ऐतिहासिक compiler से सत्यापित है।
