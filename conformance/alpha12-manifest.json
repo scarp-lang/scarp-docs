@@ -1,0 +1,124 @@
+{
+  "compilerRepository": "scarp-lang/scarp",
+  "compilerRef": "v0.0.6-alpha.12",
+  "compilerCommit": "a1f9c2fc1c6bc8f3e04878d30d658bb38fab441d",
+  "releasedAt": "2026-11-16T14:36:58Z",
+  "status": "published-prerelease",
+  "cases": [
+    {
+      "source": "examples/data_destructure.srp",
+      "localSource": "conformance/alpha12/data_destructure.srp",
+      "gitBlobSha": "7f0043c5e279adb3ff76db5e9870bc792e15debc"
+    },
+    {
+      "source": "examples/data_destructure.stdout",
+      "localSource": "conformance/alpha12/data_destructure.stdout",
+      "gitBlobSha": "7886a2e6ea5a276a8a23349191952ecf7e5c4259"
+    },
+    {
+      "source": "examples/variant_validation.srp",
+      "localSource": "conformance/alpha12/variant_validation.srp",
+      "gitBlobSha": "a487545d5fd1d139f103ddb45e6f87a42e1f0d9b"
+    },
+    {
+      "source": "examples/variant_validation.stdout",
+      "localSource": "conformance/alpha12/variant_validation.stdout",
+      "gitBlobSha": "9a3fb66b9d7cf03e80a7d6c7bc40b11f653d76c4"
+    },
+    {
+      "source": "examples/typed_propagation.srp",
+      "localSource": "conformance/alpha12/typed_propagation.srp",
+      "gitBlobSha": "3768806be5ae6a98f79e790c560580d3cfddb9c5"
+    },
+    {
+      "source": "examples/typed_propagation.stdout",
+      "localSource": "conformance/alpha12/typed_propagation.stdout",
+      "gitBlobSha": "b1afd873fe71e984a031971d0d7862daaf7f934b"
+    },
+    {
+      "source": "examples/typed_dynamic_lists.srp",
+      "localSource": "conformance/alpha12/typed_dynamic_lists.srp",
+      "gitBlobSha": "5ac294f39ba0d5f1e441318fce72ebbf7634a064"
+    },
+    {
+      "source": "examples/typed_dynamic_lists.stdout",
+      "localSource": "conformance/alpha12/typed_dynamic_lists.stdout",
+      "gitBlobSha": "d1fc9105a8cb232c35af0082ae74badec28d5d90"
+    },
+    {
+      "source": "examples/persistent_list_updates.srp",
+      "localSource": "conformance/alpha12/persistent_list_updates.srp",
+      "gitBlobSha": "e606f93792b8773535a68b0ee5f7b5340fea9ab4"
+    },
+    {
+      "source": "examples/persistent_list_updates.stdout",
+      "localSource": "conformance/alpha12/persistent_list_updates.stdout",
+      "gitBlobSha": "443187f66c7f8cff12e79fb18662b553eb496eec"
+    },
+    {
+      "source": "examples/typed_maps.srp",
+      "localSource": "conformance/alpha12/typed_maps.srp",
+      "gitBlobSha": "4a968e90ff9ad7e7319c3ed948567316b5b1da04"
+    },
+    {
+      "source": "examples/typed_maps.stdout",
+      "localSource": "conformance/alpha12/typed_maps.stdout",
+      "gitBlobSha": "f6e4fd81b503204e84b68c1cdd2919b80268cd55"
+    },
+    {
+      "source": "examples/persistent_maps.srp",
+      "localSource": "conformance/alpha12/persistent_maps.srp",
+      "gitBlobSha": "df1517675efc7e1fcdcc91b70b4143e6a8ecebf4"
+    },
+    {
+      "source": "examples/persistent_maps.stdout",
+      "localSource": "conformance/alpha12/persistent_maps.stdout",
+      "gitBlobSha": "729b6e03df1cdef91e05213d5a5faf7830dd9257"
+    },
+    {
+      "source": "examples/ui_event_patterns.srp",
+      "localSource": "conformance/alpha12/ui_event_patterns.srp",
+      "gitBlobSha": "0b31f0c669d4520bdb4bc01ee4fbe5421ebcf417"
+    },
+    {
+      "source": "examples/ui_event_patterns.stdout",
+      "localSource": "conformance/alpha12/ui_event_patterns.stdout",
+      "gitBlobSha": "0368214e001bca46ad9b0477f34fefa743fa98c8"
+    },
+    {
+      "source": "examples/projects/task-board/scarp.project",
+      "localSource": "conformance/alpha12/projects/task-board/scarp.project",
+      "gitBlobSha": "06f26722b8a116b4a7d2d822cd05b4ace06a9518"
+    },
+    {
+      "source": "examples/projects/task-board/src/board.srp",
+      "localSource": "conformance/alpha12/projects/task-board/src/board.srp",
+      "gitBlobSha": "c6ea08c519fdaa003359023d8c703f6d57db738c"
+    },
+    {
+      "source": "examples/projects/task-board/src/main.srp",
+      "localSource": "conformance/alpha12/projects/task-board/src/main.srp",
+      "gitBlobSha": "d414075456fc683028a0a2598891da5009025b14"
+    },
+    {
+      "source": "examples/projects/task-board/stdout.txt",
+      "localSource": "conformance/alpha12/projects/task-board/stdout.txt",
+      "gitBlobSha": "6a31f66e6f24001c1b4194ee429ec0ab2fcc95d1"
+    },
+    {
+      "source": "examples/projects/task-board/tests/capacity.srp",
+      "localSource": "conformance/alpha12/projects/task-board/tests/capacity.srp",
+      "gitBlobSha": "ec88e9b2552a62717defe7c8fd2fb354bacbc216"
+    },
+    {
+      "source": "examples/projects/task-board/tests/lifecycle.srp",
+      "localSource": "conformance/alpha12/projects/task-board/tests/lifecycle.srp",
+      "gitBlobSha": "15e73ddbde978b57a0154600ec26508defc224c7"
+    },
+    {
+      "source": "examples/projects/task-board/tests/validation.srp",
+      "localSource": "conformance/alpha12/projects/task-board/tests/validation.srp",
+      "gitBlobSha": "71d44e77d5b38d108f10077b84fd6bca679952e8"
+    }
+  ]
+}

@@ -3,9 +3,9 @@
 <!-- scarp-release-status: v0.0.5-alpha.5 -->
 <!-- scarp-main-reference-baseline: v0.0.5-alpha.1 -->
 
-**नवीनतम प्रकाशित compiler: [v0.0.6-alpha.11](/hi/releases/v0.0.6-alpha.11), 15 नवंबर 2026।** Exact `decimal` और `input_decimal` प्रयोगात्मक interpreter features हैं; native compile उपलब्ध नहीं है। सामान्य भाषा अध्याय अपने मूल `v0.0.5-alpha.1` baseline पर बने रहते हैं।
+**नवीनतम प्रकाशित compiler: [v0.0.6-alpha.12](/hi/releases/v0.0.6-alpha.12), 16 नवंबर 2026।** Typed records और variants, Option/Result propagation, immutable lists और maps, तथा runnable task-board project इस experimental interpreter prerelease में उपलब्ध हैं। पुरानी language-reference baseline अभी भी v0.0.5-alpha.1 है।
 
-नए डाउनलोड के लिए [v0.0.6-alpha.11 archive और checksum](/hi/releases/v0.0.6-alpha.11) देखें। [alpha.1 installation](/hi/guide/installation-alpha6) अपने पुराने संस्करण पर pinned है। पुराने alpha.5 के लिए [प्रकाशित alpha.5 इंस्टॉलेशन](/hi/guide/installation-alpha5) और [alpha.5 CLI](/hi/tooling/cli-alpha5) पढ़ें। पुरानी project-generation प्रक्रिया [alpha.4 quickstart](/hi/guide/quickstart-alpha4) में है। पुराने individual file commands के लिए [alpha.3 CLI reference](/hi/tooling/cli) उपलब्ध है। पुराने programs migrate करने से पहले [version compatibility](/hi/reference/compatibility) जाँचें।
+नए डाउनलोड के लिए [v0.0.6-alpha.12 archive और checksum](/hi/releases/v0.0.6-alpha.12) देखें। [alpha.1 installation](/hi/guide/installation-alpha6) अपने पुराने संस्करण पर pinned है। पुराने alpha.5 के लिए [प्रकाशित alpha.5 इंस्टॉलेशन](/hi/guide/installation-alpha5) और [alpha.5 CLI](/hi/tooling/cli-alpha5) पढ़ें। पुरानी project-generation प्रक्रिया [alpha.4 quickstart](/hi/guide/quickstart-alpha4) में है। पुराने individual file commands के लिए [alpha.3 CLI reference](/hi/tooling/cli) उपलब्ध है। पुराने programs migrate करने से पहले [version compatibility](/hi/reference/compatibility) जाँचें।
 
 ## प्रकाशित releases का compiler प्रमाण
 
@@ -23,6 +23,7 @@
 | **[v0.0.6-alpha.5](/hi/releases/v0.0.6-alpha.5)** (9 नवंबर 2026) | `205e92f166f186c3905e5880d41c31717b697b8e` | निश्चित Top-P, centered Pearson correlation और सीमित Rust ELF64 object API; सामान्य native compiler नहीं | [Alpha.5 release](/hi/releases/v0.0.6-alpha.5) |
 | **[v0.0.6-alpha.6](/hi/releases/v0.0.6-alpha.6)** (10 नवंबर 2026) | `cdf6a3924ec2a36c7beca5a9aec4f01a0bce515e` | सीमित redirected UTF-8 input, छह स्पष्ट text/scalar intrinsics और immutable tuples; interactive prompt या सामान्य native CLI नहीं | [Alpha.6 release](/hi/releases/v0.0.6-alpha.6) |
 | **[v0.0.6-alpha.7](/hi/releases/v0.0.6-alpha.7)** (11 नवंबर 2026) | `b1c1fd232b418267d95520c69ee563ac99ecae30` | Typed conditional expressions और Unicode scalar escapes; expression केवल interpreter में चलता है | [Alpha.7 release](/hi/releases/v0.0.6-alpha.7) |
+| **[v0.0.6-alpha.12](/hi/releases/v0.0.6-alpha.12)** (16 नवंबर 2026) | `a1f9c2fc1c6bc8f3e04878d30d658bb38fab441d` | Records, tagged variants, typed Option/Result, lists/maps, tested multi-file task-board | [ट्यूटोरियल](/hi/tutorials/task-board-alpha12) |
 | **[v0.0.6-alpha.11](/hi/releases/v0.0.6-alpha.11)** (15 नवंबर 2026) | `79b57395957f47e1270ee542a856c844b82386de` | exact `decimal`, explicit rounding, `input_decimal`; प्रकाशित source और output के दो उदाहरण; interpreter-only | [Decimal guide](/hi/language/decimal-alpha11) |
 | **[v0.0.6-alpha.10](/hi/releases/v0.0.6-alpha.10)** (14 नवंबर 2026) | `44fcd0f77ccb92648cdb1fc7632495c506c87cb3` | Interactive input, fixed arrays, exact output fixtures और BigInt operations; pinned source examples | [Alpha.10 रिलीज़](/hi/releases/v0.0.6-alpha.10) |
 | **[v0.0.6-alpha.9](/hi/releases/v0.0.6-alpha.9)** (13 नवंबर 2026) | `0814997dc43982eb707a9a1aee72aab3a7ac8b41` | सटीक signed BigInt गणना, explicit conversions, सीमित संसाधन और JSON-v2 test errors; tagged arithmetic और sequence examples | [BigInt पाठ](/hi/language/bigint-alpha9) |
