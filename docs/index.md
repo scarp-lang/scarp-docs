@@ -86,3 +86,5 @@ The newest published compiler is **[v0.0.6-alpha.13](/releases/v0.0.6-alpha.13)*
 For signed BigInt and JSON-v2 test reporting on earlier binaries, read the [historical alpha.9 release](/releases/v0.0.6-alpha.9).
 
 The [previous alpha.8 release](/releases/v0.0.6-alpha.8) documents projects, tests and assertions. For historical input and tuple examples, see the [published alpha.6 release](/releases/v0.0.6-alpha.6), which remains version-pinned.
+
+The earlier [v0.0.6-alpha.12 release](/releases/v0.0.6-alpha.12) introduced typed records, variants, Option/Result and immutable collections. Its exact-source historical tutorials remain independently verified.
