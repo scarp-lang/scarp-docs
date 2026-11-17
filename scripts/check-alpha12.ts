@@ -108,8 +108,9 @@ for (const locale of ['', 'hi/']) {
   assert.ok(release.includes('SHA256SUMS'))
   for (const path of ['index.md','reference/status.md','reference/compatibility.md']) {
     const page = read('docs/' + locale + path)
-    assert.ok(page.includes((path === 'index.md' ? 'link: ' : '](') +
-      '/' + locale + 'releases/' + tag), 'Missing latest release navigation: ' + path)
+    const archiveLink = '/' + locale + 'releases/' + tag
+    assert.ok(page.includes('](' + archiveLink + ')') || page.includes('link: ' + archiveLink),
+      'Historical alpha.12 release must remain discoverable: ' + path)
   }
 }
 assert.equal(commandAdvice(tag, 'run-file').commands[0], 'scarp exec FILE.srp')
