@@ -6,7 +6,7 @@
 
 **Unsure which command belongs to your installed compiler?** Use the [interactive version-aware CLI Command Finder](/tooling/command-finder) to avoid mixing older `run` / `check` with newer static `verify` or project inspection.
 
-**Current compiler:** The newest published prerelease is [v0.0.6-alpha.12](/releases/v0.0.6-alpha.12), adding typed records, variant matching, Option/Result propagation and immutable lists/maps. Follow the [task-board tutorial](/tutorials/task-board-alpha12). Historical stage examples remain pinned to their original compiler versions.
+**Current compiler:** The newest published prerelease is [v0.0.6-alpha.13](/releases/v0.0.6-alpha.13), adding host-side Rust editor/cache controls and more efficient Option/Result propagation. The historical alpha.12 release introduced records, variants and immutable collections. Follow the [task-board tutorial](/tutorials/task-board-alpha12). Historical stage examples remain pinned to their original compiler versions.
 
 **Start here if you are new to Scarp.** This track connects complete, compiler-backed lessons from the first program through numerical modeling, project modules, and the symbol-navigation tools introduced in the **[published v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1)** prerelease.
 

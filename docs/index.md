@@ -23,9 +23,9 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
-  - title: Latest published compiler v0.0.6-alpha.12
-    details: Learn interactive input, immutable arrays, expanded BigInt and official checksums.
-    link: /releases/v0.0.6-alpha.12
+  - title: Latest published compiler v0.0.6-alpha.13
+    details: Read the release-pinned editor/cache enhancements, Option/Result allocation behavior and verified archives.
+    link: /releases/v0.0.6-alpha.13
   - title: Earlier alpha.9 BigInt and JSON diagnostics
     details: Source-pinned historical compiler examples and exact output tests.
     link: /releases/v0.0.6-alpha.9
@@ -80,7 +80,7 @@ features:
 ---
 
 ::: warning Experimental language
-The newest published compiler is **[v0.0.6-alpha.12](/releases/v0.0.6-alpha.12)**, while much of the main reference still targets the separately verified **v0.0.5-alpha.1** baseline. Both are experimental prereleases. Before upgrading older code, check [alpha.1 → alpha.2 upgrade readiness](/reference/upgrade-readiness) and the [feature status](/reference/status).
+The newest published compiler is **[v0.0.6-alpha.13](/releases/v0.0.6-alpha.13)**, while much of the main reference still targets the separately verified **v0.0.5-alpha.1** baseline. Both are experimental prereleases. Before upgrading older code, check [alpha.1 → alpha.2 upgrade readiness](/reference/upgrade-readiness) and the [feature status](/reference/status).
 :::
 
 For signed BigInt and JSON-v2 test reporting on earlier binaries, read the [historical alpha.9 release](/releases/v0.0.6-alpha.9).

@@ -6,7 +6,8 @@ Scarp के शुरुआती prereleases में syntax और API ब�
 
 | संस्करण | प्रमुख प्रकाशित सुविधा |
 | --- | --- |
-| **[v0.0.6-alpha.12](/hi/releases/v0.0.6-alpha.12)** | **नवीनतम प्रकाशित (16 नवंबर 2026):** typed records, exhaustive variants, Option/Result, immutable lists/maps और tested task-board; interpreter-only aggregates |
+| **[v0.0.6-alpha.13](/hi/releases/v0.0.6-alpha.13)** | **नवीनतम (17 नवंबर):** Rust cache revision eviction, editor workspace generation और Option/Result में immutable payload reuse; नया Scarp syntax या CLI नहीं |
+| **[v0.0.6-alpha.12](/hi/releases/v0.0.6-alpha.12)** | **पूर्व प्रकाशित (16 नवंबर 2026):** typed records, exhaustive variants, Option/Result, immutable lists/maps और tested task-board; interpreter-only aggregates |
 | **[v0.0.6-alpha.11](/hi/releases/v0.0.6-alpha.11)** | **प्रकाशित (15 नवंबर 2026):** exact `decimal`, स्पष्ट rounding/conversions और `input_decimal`; interpreter-only, native compile नहीं |
 | **[v0.0.6-alpha.10](/hi/releases/v0.0.6-alpha.10)** | **प्रकाशित (14 नवंबर 2026):** interactive input, immutable arrays, exact `.stdout`/`.stderr` tests और expanded BigInt; सामान्य native compile नहीं |
 | **[v0.0.6-alpha.9](/hi/releases/v0.0.6-alpha.9)** | **पहले प्रकाशित (13 नवंबर 2026):** सटीक signed BigInt, स्पष्ट conversion, सीमित digits/work और `scarp test --json=v2` structured failures; native compile CLI नहीं |

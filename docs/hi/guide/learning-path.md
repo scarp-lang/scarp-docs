@@ -6,7 +6,7 @@
 
 **आपके compiler में कौन सा command उपलब्ध है?** [Version-aware CLI Command Finder](/hi/tooling/command-finder) में installed release और काम चुनें। पुरानी `run` / `check` commands को नए static `verify` या project inspection से न मिलाएँ।
 
-**नवीनतम compiler:** प्रकाशित [v0.0.6-alpha.12](/hi/releases/v0.0.6-alpha.12) में typed records, tagged variants, Option/Result propagation, immutable lists/maps और multi-file task-board शामिल हैं। [Task-board tutorial](/hi/tutorials/task-board-alpha12) देखें। पुराने पाठ अपने मूल compiler version पर pinned हैं.
+**नवीनतम compiler:** प्रकाशित [v0.0.6-alpha.13](/hi/releases/v0.0.6-alpha.13) में Rust editor/cache APIs और Option/Result payload reuse सुधरे हैं। पुराने alpha.12 में typed records, variants, lists/maps और task-board आए थे। [Task-board tutorial](/hi/tutorials/task-board-alpha12) देखें। पुराने पाठ अपने मूल compiler version पर pinned हैं.
 
 **Scarp पहली बार सीख रहे हैं तो यहाँ से शुरुआत करें।** यह मार्गदर्शिका शुरुआती प्रोग्राम से numerical examples, source modules, project और **[प्रकाशित v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1)** में आए symbol-navigation tools तक पहुँचाती है। हर पाठ के examples compiler के वास्तविक परीक्षणों पर आधारित हैं।
 
