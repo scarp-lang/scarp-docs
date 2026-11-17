@@ -46,6 +46,8 @@ jobs:
         run: npm run check:alpha11
       - name: Verify published alpha.12 typed data model and project evidence
         run: npm run check:alpha12
+      - name: Verify published alpha.13 compiler and bilingual Rust API boundaries
+        run: npm run check:alpha13
       - name: Validate Scarp-owned bilingual search and keyboard accessibility
         run: npm run check:hindi-search && npm run test:hindi-search
       - name: Test version-aware bilingual command finder and historical release boundaries
@@ -581,3 +583,38 @@ jobs:
         run: cargo build --manifest-path .compiler-alpha12/Cargo.toml --locked --offline
       - name: Run eight programs and three project tests on released compiler
         run: npm run test:alpha12-compiler -- .compiler-alpha12/target/debug/scarp
+
+  alpha13-conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: scarp-lang/scarp
+          ref: e755fda37cdaeed29434e848cb5dd41f2f2e7eb2
+          path: .compiler-alpha13
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Install TypeScript tooling
+        run: npm install --no-audit --no-fund
+      - name: Verify immutable published compiler source
+        run: test "$(git -C .compiler-alpha13 rev-parse HEAD)" = "e755fda37cdaeed29434e848cb5dd41f2f2e7eb2"
+      - name: Verify bilingual release, Git blobs and archive metadata
+        run: npm run check:alpha13
+      - name: Compare tagged alpha.13 source and output bytes
+        run: |
+          for name in revision_range_snapshot revision_ceiling_snapshot map_projection_snapshots aggregate_resource_boundaries; do
+            for extension in srp stdout; do
+              diff -u ".compiler-alpha13/examples/$name.$extension" "conformance/alpha13/$name.$extension"
+            done
+          done
+      - name: Build exact alpha.13 interpreter
+        run: cargo build --manifest-path .compiler-alpha13/Cargo.toml --locked --offline
+      - name: Execute alpha.13 and unchanged alpha.12 conformance programs
+        run: npm run test:alpha13-compiler -- .compiler-alpha13/target/debug/scarp
+      - name: Run exact alpha.13 Rust retention, revision and editor regressions
+        run: |
+          cargo test --manifest-path .compiler-alpha13/Cargo.toml --locked --offline --test semantic_cache_live_quotas --test semantic_cache_revision_eviction --test semantic_cache_revision_range --test semantic_cache_revision_ceiling --test semantic_cache_revision_watermark --test editor_source_revisions --test source_propagation
+
