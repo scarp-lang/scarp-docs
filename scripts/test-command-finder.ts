@@ -31,7 +31,7 @@ assert.strictEqual(legacyCommandFinder.commandAdvice, commandAdvice,
 assert.deepEqual(validateCommandFinder(sources), [])
 assert.equal(LATEST_RELEASE, RELEASES.at(-1)?.tag)
 assert.equal(commandAdvice('v0.0.6-alpha.6', 'run-file').commands[0], 'scarp exec FILE.srp')
-assert.equal(RELEASES.at(-1)?.source, 'a1f9c2fc1c6bc8f3e04878d30d658bb38fab441d')
+assert.equal(RELEASES.at(-1)?.source, 'e755fda37cdaeed29434e848cb5dd41f2f2e7eb2')
 const expected = new Map<CommandTask,number>([
   ['run-file',0], ['static-verify',2], ['create-project',3],
   ['inspect-project',4], ['inspect-symbols',5], ['diagnose-host',2], ['inspect-ast',2],
@@ -100,9 +100,9 @@ assert.throws(()=>commandAdvice('v0.0.7-alpha.1' as ReleaseTag,'run-file'),TypeE
 assert.throws(()=>commandAdvice(LATEST_RELEASE,'native-compile' as CommandTask),TypeError)
 
 const mutations: Array<[keyof FinderSources,string,string]> = [
-  ['english','latest published release is [v0.0.6-alpha.12](/releases/v0.0.6-alpha.12)',
+  ['english','latest published release is [v0.0.6-alpha.13](/releases/v0.0.6-alpha.13)',
     'latest published release is [v0.0.6-alpha.8](/releases/v0.0.6-alpha.9)'],
-  ['hindi','नवीनतम प्रकाशित release [v0.0.6-alpha.12](/hi/releases/v0.0.6-alpha.12)',
+  ['hindi','नवीनतम प्रकाशित release [v0.0.6-alpha.13](/hi/releases/v0.0.6-alpha.13)',
     'नवीनतम प्रकाशित release [v0.0.6-alpha.9](/hi/releases/v0.0.6-alpha.8)'],
   ['english','<ScarpCommandFinder />','<OutdatedSelector />'],
   ['hindi','<ScarpCommandFinder />','<OutdatedSelector />'],

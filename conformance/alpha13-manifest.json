@@ -1,0 +1,49 @@
+{
+  "compilerRepository": "scarp-lang/scarp",
+  "compilerRef": "v0.0.6-alpha.13",
+  "compilerCommit": "e755fda37cdaeed29434e848cb5dd41f2f2e7eb2",
+  "releasedAt": "2026-11-17T12:28:07Z",
+  "status": "published-prerelease",
+  "cases": [
+    {
+      "source": "examples/revision_range_snapshot.srp",
+      "localSource": "conformance/alpha13/revision_range_snapshot.srp",
+      "gitBlobSha": "e63fa2aaf4ee98917ed81c8bca5a76f75b49e34e"
+    },
+    {
+      "source": "examples/revision_range_snapshot.stdout",
+      "localSource": "conformance/alpha13/revision_range_snapshot.stdout",
+      "gitBlobSha": "f64f5d8d85ac0230d36724bd7e6ba351a95b4942"
+    },
+    {
+      "source": "examples/revision_ceiling_snapshot.srp",
+      "localSource": "conformance/alpha13/revision_ceiling_snapshot.srp",
+      "gitBlobSha": "18d5d2835087981c661179463ca179c0408da35e"
+    },
+    {
+      "source": "examples/revision_ceiling_snapshot.stdout",
+      "localSource": "conformance/alpha13/revision_ceiling_snapshot.stdout",
+      "gitBlobSha": "ec635144f60048986bc560c5576355344005e6e7"
+    },
+    {
+      "source": "examples/map_projection_snapshots.srp",
+      "localSource": "conformance/alpha13/map_projection_snapshots.srp",
+      "gitBlobSha": "612bc31154ef9c32d23687c618ebd316ac8e0304"
+    },
+    {
+      "source": "examples/map_projection_snapshots.stdout",
+      "localSource": "conformance/alpha13/map_projection_snapshots.stdout",
+      "gitBlobSha": "306b9fcfdb631148de0a48129778a1064f01e55c"
+    },
+    {
+      "source": "examples/aggregate_resource_boundaries.srp",
+      "localSource": "conformance/alpha13/aggregate_resource_boundaries.srp",
+      "gitBlobSha": "6d4898b96c2849dbe1c540532438c53c917ff3bd"
+    },
+    {
+      "source": "examples/aggregate_resource_boundaries.stdout",
+      "localSource": "conformance/alpha13/aggregate_resource_boundaries.stdout",
+      "gitBlobSha": "08bed4c787a96a8e6f5947b1f6e66afe85f3ff26"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Introduction to Scarp
 
-**Latest published compiler: [v0.0.6-alpha.12](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.12).** This experimental interpreter now ships typed records, variants, Option/Result and lists/maps with a tested task-board project. [Release](/releases/v0.0.6-alpha.12) · [Task-board tutorial](/tutorials/task-board-alpha12) · [Learning path](/guide/learning-path).
+**Latest published compiler: [v0.0.6-alpha.13](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.13).** This experimental interpreter now ships typed records, variants, Option/Result and lists/maps with a tested task-board project. [Release](/releases/v0.0.6-alpha.13) · [Task-board tutorial](/tutorials/task-board-alpha12) · [Learning path](/guide/learning-path).
 
 Scarp is an **experimental**, Rust-implemented, interpreted programming language. An **earlier published compiler** is [v0.0.5-alpha.5](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.5). This general-language overview remains based on the separately verified **alpha.1 reference**; the historical [alpha.4 tagged release](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.4), [alpha.4 installation](/guide/installation), [alpha.4 project quickstart](/guide/quickstart-alpha4), and [alpha.3 CLI reference](/tooling/cli) remain historical version-scoped guides. The language is not yet a stable general-purpose alternative to Rust, C++, or Python.
 
@@ -16,7 +16,7 @@ The program prints `Hello, Scarp!` followed by a newline. `bind` creates an immu
 
 ## Current scope
 
-The interpreter supports checked `integer`, finite `float`, `string`, `boolean`, numerical vectors, tiles, typed `funcra` functions, loops, and source modules. It does **not** have a general-purpose standard library, user-defined types, a package manager, native code generation, or a stable language specification. Review the [feature status](/reference/status) before relying on a capability.
+The interpreter supports checked `integer`, finite `float`, `string`, `boolean`, numerical vectors, tiles, typed `funcra` functions, loops, and source modules. Alpha.12 introduced typed source records and variants. It still has **no** general-purpose standard library, user-defined generics, package manager, general native executable compiler, or stable language specification. Review the [feature status](/reference/status) before relying on a capability.
 
 For quick topic discovery, open [search and navigation](/guide/search-and-navigation); the search works within English/Hindi locale documents and keeps release-specific tutorials distinguishable.
 

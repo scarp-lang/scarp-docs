@@ -16,15 +16,17 @@ interface Release { compilerRepository: string; compilerRef: string; compilerCom
   releasedAt: string; status: string; assets?: string[]; cases?: Fixture[] }
 const manifest = JSON.parse(read('conformance/alpha12-manifest.json')) as Release
 const latest = JSON.parse(read('data/compiler-latest-release.json')) as Release
-for (const value of [manifest, latest]) {
+for (const value of [manifest]) {
   assert.equal(value.compilerRepository, 'scarp-lang/scarp')
   assert.equal(value.compilerRef, tag)
   assert.equal(value.compilerCommit, source)
   assert.equal(value.releasedAt, published)
   assert.equal(value.status, 'published-prerelease')
 }
-assert.equal(LATEST_RELEASE, tag)
-assert.equal(RELEASES.at(-1)?.source, source)
+assert.equal(RELEASES.find(item => item.tag === tag)?.source, source)
+assert.equal(latest.compilerRef, LATEST_RELEASE)
+assert.ok(RELEASES.findIndex(item => item.tag === tag) < RELEASES.length - 1,
+  'Historical alpha.12 must not claim to be the newest release')
 const standalone = [
   'data_destructure','variant_validation','typed_propagation','typed_dynamic_lists',
   'persistent_list_updates','typed_maps','persistent_maps','ui_event_patterns'
@@ -102,16 +104,15 @@ for (const locale of ['', 'hi/']) {
     const uri = 'https://github.com/scarp-lang/scarp/releases/download/' + tag + '/' + asset
     assert.ok(release.includes('](' + uri + ')'), 'Missing archive: ' + asset)
     assert.ok(release.includes('](' + uri + '.sha256)'), 'Missing checksum: ' + asset)
-    assert.ok(latest.assets?.includes(asset))
   }
   assert.ok(release.includes('SHA256SUMS'))
   for (const path of ['index.md','reference/status.md','reference/compatibility.md']) {
     const page = read('docs/' + locale + path)
-    assert.ok(page.includes((path === 'index.md' ? 'link: ' : '](') +
-      '/' + locale + 'releases/' + tag), 'Missing latest release navigation: ' + path)
+    const archiveLink = '/' + locale + 'releases/' + tag
+    assert.ok(page.includes('](' + archiveLink + ')') || page.includes('link: ' + archiveLink),
+      'Historical alpha.12 release must remain discoverable: ' + path)
   }
 }
-assert.equal(latest.assets?.length, 4)
 assert.equal(commandAdvice(tag, 'run-file').commands[0], 'scarp exec FILE.srp')
 assert.equal(commandAdvice(tag, 'test-json-v2').supported, true)
 console.log('PASS: alpha.12 immutable tag, 23 compiler blobs, five bilingual guides, exact project and archives')

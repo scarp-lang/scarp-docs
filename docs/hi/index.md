@@ -23,9 +23,9 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
-  - title: नवीनतम प्रकाशित v0.0.6-alpha.12 compiler
-    details: Interactive input, immutable arrays, नए BigInt और आधिकारिक checksums सीखें।
-    link: /hi/releases/v0.0.6-alpha.12
+  - title: नवीनतम प्रकाशित v0.0.6-alpha.13 compiler
+    details: Rust cache/editor के नए APIs, Option/Result fixes और official checksums देखें।
+    link: /hi/releases/v0.0.6-alpha.13
   - title: पहले प्रकाशित alpha.9 BigInt और JSON
     details: ऐतिहासिक release-pinned उदाहरण और compiler tests।
     link: /hi/releases/v0.0.6-alpha.9
@@ -80,9 +80,11 @@ features:
 ---
 
 ::: warning प्रयोगात्मक रिलीज़
-नवीनतम प्रकाशित compiler **[v0.0.6-alpha.12](/hi/releases/v0.0.6-alpha.12)** है, जबकि अधिकतर मुख्य reference अभी अलग से सत्यापित **v0.0.5-alpha.1** पर आधारित है। सभी experimental prereleases हैं। पुराने code के लिए [अपग्रेड की जाँच](/hi/reference/upgrade-readiness) और [फ़ीचर स्थिति](/hi/reference/status) पढ़ें।
+नवीनतम प्रकाशित compiler **[v0.0.6-alpha.13](/hi/releases/v0.0.6-alpha.13)** है, जबकि अधिकतर मुख्य reference अभी अलग से सत्यापित **v0.0.5-alpha.1** पर आधारित है। सभी experimental prereleases हैं। पुराने code के लिए [अपग्रेड की जाँच](/hi/reference/upgrade-readiness) और [फ़ीचर स्थिति](/hi/reference/status) पढ़ें।
 :::
 
 [ऐतिहासिक alpha.9 BigInt और JSON-v2 रिलीज़](/hi/releases/v0.0.6-alpha.9) अपने मूल compiler version के लिए उपलब्ध है।
 
 पिछली [alpha.8 release](/hi/releases/v0.0.6-alpha.8) में projects, tests और assertions आए। पुराने input और tuple उदाहरणों के लिए [प्रकाशित alpha.6 release](/hi/releases/v0.0.6-alpha.6) पढ़ें। उसका code उसी ऐतिहासिक compiler से सत्यापित है।
+
+पिछले [v0.0.6-alpha.12 रिलीज़](/hi/releases/v0.0.6-alpha.12) में typed records, variants, Option/Result और immutable collections शामिल थे। पुराने tutorials अभी भी उसी tagged source से जाँचे जाते हैं।

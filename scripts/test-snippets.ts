@@ -79,3 +79,20 @@ console.log('PASS: executable Scarp and shell examples reject deprecated syntax 
 assert.deepEqual(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.10 -->\n~~~sh\nscarp exec --interactive demo.srp\nscarp verify demo.srp\nscarp test --json=v2 demo\n~~~'), [])
 assert.deepEqual(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.10 -->\n~~~sh\nscarp build demo.srp\n~~~').map(x => x.message), ['unsupported Scarp CLI command for this documented release'])
 assert.ok(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.9 -->\n~~~sh\nscarp exec --interactive demo.srp\n~~~').some(x => x.message.includes('requires published alpha.10')))
+
+// Alpha.13 inherits the public CLI while its new cache/editor APIs remain Rust-only.
+const alpha13Commands = [
+  '<!-- scarp-cli-release: v0.0.6-alpha.13 -->',
+  '~~~sh',
+  'scarp exec examples/map_projection_snapshots.srp',
+  'scarp verify examples/map_projection_snapshots.srp',
+  'scarp test --require-tests examples/projects/task-board',
+  'scarp launch examples/projects/task-board',
+  '~~~'
+].join('\n')
+assert.deepEqual(checkSnippetPolicy(alpha13Commands), [])
+assert.deepEqual(checkSnippetPolicy(alpha13Commands.replace('scarp exec ', 'scarp compile ')).map(x => x.message),
+  ['unsupported Scarp CLI command for this documented release'])
+assert.ok(checkSnippetPolicy(alpha13Commands.replace('<!-- scarp-cli-release: v0.0.6-alpha.13 -->', ''))
+  .some(x => x.message.includes('unsupported Scarp CLI command')),
+  'new commands without a release marker must remain unsupported')
