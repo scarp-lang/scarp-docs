@@ -96,3 +96,7 @@ assert.deepEqual(checkSnippetPolicy(alpha13Commands.replace('scarp exec ', 'scar
 assert.ok(checkSnippetPolicy(alpha13Commands.replace('<!-- scarp-cli-release: v0.0.6-alpha.13 -->', ''))
   .some(x => x.message.includes('unsupported Scarp CLI command')),
   'new commands without a release marker must remain unsupported')
+
+// The published alpha.14 tag inherits historical CLI capabilities, not native compilation.
+assert.deepEqual(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.14 -->\n~~~sh\nscarp verify demo.srp\nscarp exec demo.srp\nscarp test --json=v2 demo\n~~~'), [])
+assert.equal(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.14 -->\n~~~sh\nscarp compile demo.srp\n~~~').length, 1)

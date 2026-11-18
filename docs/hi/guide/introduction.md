@@ -1,6 +1,6 @@
 # Scarp का परिचय
 
-**नवीनतम प्रकाशित compiler [v0.0.6-alpha.13](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.13) है।** इस experimental interpreter में typed records, variants, Option/Result, lists/maps और tested task-board उपलब्ध हैं। [रिलीज़](/hi/releases/v0.0.6-alpha.13) · [Task-board tutorial](/hi/tutorials/task-board-alpha12) · [Learning path](/hi/guide/learning-path)।
+**नवीनतम प्रकाशित compiler [v0.0.6-alpha.14](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.14) है।** Alpha.14 में nested pattern diagnostics तथा Rust-only API सुधरी हैं। इस experimental interpreter में typed records, variants, Option/Result, lists/maps और tested task-board उपलब्ध हैं। [रिलीज़](/hi/releases/v0.0.6-alpha.14) · [Task-board tutorial](/hi/tutorials/task-board-alpha12) · [Learning path](/hi/guide/learning-path)।
 
 **Scarp** एक प्रयोगात्मक, Rust में बनाया गया interpreted प्रोग्रामिंग लैंग्वेज है। एक पुराना प्रकाशित compiler **[v0.0.5-alpha.5](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.5)** है। इस सामान्य भाषा-परिचय का सत्यापित आधार अभी **v0.0.5-alpha.1** है। पुराने [alpha.4 tagged release](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.4), [alpha.4 installation guide](/hi/guide/installation), [alpha.4 project quickstart](/hi/guide/quickstart-alpha4) और [alpha.3 CLI संदर्भ](/hi/tooling/cli) को उनके अपने releases का ऐतिहासिक विवरण समझें। यह अभी स्थिर (stable) भाषा विनिर्देश नहीं है; सिंटैक्स और API भविष्य में बदल सकते हैं। [आधिकारिक compiler](https://github.com/scarp-lang/scarp) ही व्यवहार का मूल स्रोत है।
 

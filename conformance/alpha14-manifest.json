@@ -1,0 +1,29 @@
+{
+  "compilerRepository": "scarp-lang/scarp",
+  "compilerRef": "v0.0.6-alpha.14",
+  "compilerCommit": "43627b74af5fccccc5e233e98207413983ebafc1",
+  "releasedAt": "2026-11-18T12:43:31Z",
+  "status": "published-prerelease",
+  "cases": [
+    {
+      "source": "examples/map_string_projection_snapshots.srp",
+      "localSource": "conformance/alpha14/map_string_projection_snapshots.srp",
+      "gitBlobSha": "f9c7675132044e63a028e80b8fd34fb2d6830fad"
+    },
+    {
+      "source": "examples/map_string_projection_snapshots.stdout",
+      "localSource": "conformance/alpha14/map_string_projection_snapshots.stdout",
+      "gitBlobSha": "29b464352921d2932481f1e728190fedbc63f48f"
+    },
+    {
+      "source": "examples/structured_pattern_coverage.srp",
+      "localSource": "conformance/alpha14/structured_pattern_coverage.srp",
+      "gitBlobSha": "0dcad8840118d4063e6252814435cc198d861a9d"
+    },
+    {
+      "source": "examples/structured_pattern_coverage.stdout",
+      "localSource": "conformance/alpha14/structured_pattern_coverage.stdout",
+      "gitBlobSha": "fa40f0c971384fdb52a0f56fea5beb999a971b16"
+    }
+  ]
+}

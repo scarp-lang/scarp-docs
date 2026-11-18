@@ -1,6 +1,6 @@
 # Introduction to Scarp
 
-**Latest published compiler: [v0.0.6-alpha.13](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.13).** This experimental interpreter now ships typed records, variants, Option/Result and lists/maps with a tested task-board project. [Release](/releases/v0.0.6-alpha.13) · [Task-board tutorial](/tutorials/task-board-alpha12) · [Learning path](/guide/learning-path).
+**Latest published compiler: [v0.0.6-alpha.14](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.14).** Alpha.14 improves nested pattern diagnostics and Rust-only integration APIs. The experimental interpreter also ships typed records, variants, Option/Result and lists/maps with a tested task-board project. [Release](/releases/v0.0.6-alpha.14) · [Task-board tutorial](/tutorials/task-board-alpha12) · [Learning path](/guide/learning-path).
 
 Scarp is an **experimental**, Rust-implemented, interpreted programming language. An **earlier published compiler** is [v0.0.5-alpha.5](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.5). This general-language overview remains based on the separately verified **alpha.1 reference**; the historical [alpha.4 tagged release](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.4), [alpha.4 installation](/guide/installation), [alpha.4 project quickstart](/guide/quickstart-alpha4), and [alpha.3 CLI reference](/tooling/cli) remain historical version-scoped guides. The language is not yet a stable general-purpose alternative to Rust, C++, or Python.
 

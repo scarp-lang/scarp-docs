@@ -26,7 +26,8 @@ export function checkSnippetPolicy(markdown: string): SnippetIssue[] {
   const alpha10Cli = markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.10 -->') ||
     markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.11 -->') ||
     markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.12 -->') ||
-    markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.13 -->')
+    markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.13 -->') ||
+    markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.14 -->')
   const alpha9Cli = alpha10Cli || markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.9 -->')
   const alpha8Cli = alpha9Cli || markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.8 -->')
   const alpha6Cli = alpha8Cli || markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.1 -->') ||
