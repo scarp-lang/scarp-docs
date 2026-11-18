@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
+import { documentationPages } from './lib/docs-pages.ts'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import {
@@ -8,26 +10,22 @@ import {
 } from './lib/command-finder.ts'
 import { validateCommandFinder, type FinderLabels, type FinderSources } from './lib/command-finder-evidence.ts'
 
-import * as legacyCommandFinder from '../docs/.vitepress/theme/lib/command-finder.ts'
-
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)))
 const read = (path: string): string => readFileSync(resolve(root, path), 'utf8')
 const sources: FinderSources = {
   english: read('docs/tooling/command-finder.md'),
   hindi: read('docs/hi/tooling/command-finder.md'),
-  component: read('docs/.vitepress/theme/components/ScarpCommandFinder.vue'),
-  theme: read('docs/.vitepress/theme/index.ts'),
-  config: read('docs/.vitepress/config.mts'),
+  client: read('scripts/scarp-site/client.ts'),
+  builder: read('scripts/scarp-site/build.ts'),
+  markdown: read('scripts/scarp-site/markdown.ts'),
+  styles: read('scripts/scarp-site/site.css'),
+  pages: documentationPages(join(root,'docs')),
   readme: read('README.md'),
   learnEn: read('docs/guide/learning-path.md'),
   learnHi: read('docs/hi/guide/learning-path.md'),
   compatEn: read('docs/reference/compatibility.md'),
   compatHi: read('docs/hi/reference/compatibility.md')
 }
-assert.strictEqual(legacyCommandFinder.RELEASES, RELEASES,
-  'Legacy Vue compatibility export must reuse the single framework-neutral release table')
-assert.strictEqual(legacyCommandFinder.commandAdvice, commandAdvice,
-  'Legacy Vue compatibility export must reuse the single framework-neutral selector')
 assert.deepEqual(validateCommandFinder(sources), [])
 assert.equal(LATEST_RELEASE, RELEASES.at(-1)?.tag)
 assert.equal(commandAdvice('v0.0.6-alpha.6', 'run-file').commands[0], 'scarp exec FILE.srp')
@@ -99,7 +97,8 @@ for(const task of ['init-project','test-project','project-info'] as const) {
 assert.throws(()=>commandAdvice('v0.0.7-alpha.1' as ReleaseTag,'run-file'),TypeError)
 assert.throws(()=>commandAdvice(LATEST_RELEASE,'native-compile' as CommandTask),TypeError)
 
-const mutations: Array<[keyof FinderSources,string,string]> = [
+type MutableTextSource = Exclude<keyof FinderSources,'pages'>
+const mutations: Array<[MutableTextSource,string,string]> = [
   ['english','latest published release is [v0.0.6-alpha.14](/releases/v0.0.6-alpha.14)',
     'latest published release is [v0.0.6-alpha.8](/releases/v0.0.6-alpha.9)'],
   ['hindi','नवीनतम प्रकाशित release [v0.0.6-alpha.14](/hi/releases/v0.0.6-alpha.14)',
@@ -108,20 +107,38 @@ const mutations: Array<[keyof FinderSources,string,string]> = [
   ['hindi','<ScarpCommandFinder />','<OutdatedSelector />'],
   ['english','scarp --version','scarp diagnose'],
   ['hindi','v0.0.5-alpha.5','v0.0.5-beta.5'],
-  ['component','aria-live="polite"','aria-live="off"'],
-  ['component','navigator.clipboard.writeText','console.log'],
-  ['component','v-if="current.supported"','v-if="true"'],
-  ['component','<pre tabindex="0">','<pre>'],
-  ['component','withBase(', 'notBased('],
-  ['theme',"ctx.app.component('ScarpCommandFinder', ScarpCommandFinder)","// not registered"],
-  ['config',"link: '/hi/tooling/command-finder'","link: '/hi/tooling/missing'"],
-  ['config',"link: '/tooling/command-finder'","link: '/tooling/missing'"],
+
+  ['client',"result.setAttribute('aria-live','polite')","result.setAttribute('aria-live','off')"],
+  ['client','navigator.clipboard?.writeText','navigator.clipboard?.unavailable'],
+  ['client','if(!item.supported)','if(false)'],
+  ['client','pre.tabIndex=0','pre.tabIndex=-1'],
+  ['client',"releaseSelect.value=parsed.releases.at(-1)?.tag??''","releaseSelect.value=parsed.releases.at(0)?.tag??''"],
+  ['client','reference.href=BASE+item.reference.replace(','reference.href=item.reference.replace('],
+  ['client',"taskSelect.addEventListener('change',render)","taskSelect.addEventListener('keydown',render)"],
+  ['builder','TASKS.map(task=>commandAdvice(','TASKS.map(task=>differentAdvice('],
+  ['builder','replace(/</g,','replace(/>/g,'],
+  ['builder','id="scarp-command-data"','id="deprecated-command-data"'],
+  ['markdown','data-command-finder aria-live="polite"','data-command-finder aria-live="off"'],
+  ['styles','.command-finder .status.unavailable','.command-finder .status.missing'],
   ['readme','docs/tooling/command-finder.md','docs/tooling/missing.md'],
   ['learnEn','](/tooling/command-finder)','](/tooling/missing)'],
   ['learnHi','](/hi/tooling/command-finder)','](/hi/tooling/missing)'],
   ['compatEn','](/tooling/command-finder)','](/tooling/missing)'],
   ['compatHi','](/hi/tooling/command-finder)','](/hi/tooling/missing)']
 ]
+assert.ok(validateCommandFinder({...sources,
+  pages:sources.pages.filter(path=>path!=='hi/tooling/command-finder.md')}).length>0,
+  'Missing Hindi route must fail the owned renderer validation')
+const beforeDeployment='function installDeployments():void'
+const networkedFinder=sources.client.replace(beforeDeployment,
+  "fetch('https://example.invalid')\n"+beforeDeployment)
+assert.ok(validateCommandFinder({...sources,client:networkedFinder}).length>0,
+  'Network calls inserted into the offline Command Finder must be rejected')
+const networkedDeployment=sources.client.replace(beforeDeployment+' {',
+  beforeDeployment+" {\nfetch('https://example.invalid')")
+assert.deepEqual(validateCommandFinder({...sources,client:networkedDeployment}),[],
+  'Unrelated deployment network access must not be mistaken for Command Finder access')
+
 for (const [key,needle,replacement] of mutations) {
   const changed=sources[key].replaceAll(needle,replacement)
   assert.notEqual(changed,sources[key],'mutation target missing: '+key+' '+needle)
