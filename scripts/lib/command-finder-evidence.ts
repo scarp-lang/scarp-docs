@@ -3,9 +3,11 @@ import { FINDER_TEXT, RELEASES, TASKS } from './command-finder.ts'
 export interface FinderSources {
   english: string
   hindi: string
-  component: string
-  theme: string
-  config: string
+  client: string
+  builder: string
+  markdown: string
+  styles: string
+  pages: readonly string[]
   readme: string
   learnEn: string
   learnHi: string
@@ -54,8 +56,8 @@ type FinderTask = { id: string; first: number; en: string; hi: string; reference
 export type FinderLabels = typeof FINDER_TEXT
 
 /**
- * Does not depend on VitePress runtime; validates every release boundary,
- * locale, navigation surface and basic accessible widget structure in CI.
+ * Validates pinned compiler boundaries against the production Scarp-owned
+ * TypeScript renderer, browser, Markdown parser and accessible styles.
  */
 export function validateCommandFinder(
   sources: FinderSources,
@@ -85,8 +87,8 @@ export function validateCommandFinder(
     }
   }
 
-  const { english, hindi, component, theme, config, readme, learnEn, learnHi,
-    compatEn, compatHi } = sources
+  const { english, hindi, client, builder, markdown, styles, pages, readme,
+    learnEn, learnHi, compatEn, compatHi } = sources
 
   for (const [name,page,prefix] of [
     ['English',english,''],
@@ -132,14 +134,58 @@ export function validateCommandFinder(
     errors.push('Hindi guide lacks substantial localized explanation')
   }
 
-  for (const required of [
-    "import ScarpCommandFinder from './components/ScarpCommandFinder.vue'",
-    "ctx.app.component('ScarpCommandFinder', ScarpCommandFinder)"
-  ]) expect('Theme registration',theme,required)
-  for (const required of [
-    "link: '/tooling/command-finder'",
-    "link: '/hi/tooling/command-finder'"
-  ]) expect('Sidebar',config,required)
+
+  // Release navigation comes from the Scarp-owned full Markdown route inventory.
+  for (const route of ['tooling/command-finder.md','hi/tooling/command-finder.md']) {
+    if (!pages.includes(route)) errors.push('Owned navigation is missing ' + route)
+  }
+
+  for (const marker of [
+    'function navigation(locale:', 'const inLocale=views.filter(',
+    'byGroup.get(group)!.map(', 'attrs(v.route', 'function finderData():string',
+    'RELEASES.flatMap(', 'TASKS.map(task=>commandAdvice(',
+    'JSON.stringify({releases:RELEASES,tasks:TASKS,entries,text:FINDER_TEXT})',
+    'replace(/</g,', 'replace(/&/g,',
+    "body.includes('data-command-finder')?finderData():''",
+    'id="scarp-command-data"', 'type="application/json"'
+  ]) expect('Scarp site generator',builder,marker)
+
+  for (const marker of [
+    'ScarpCommandFinder:', 'data-command-finder aria-live="polite"',
+    '(ScarpCommandFinder|PagesDeployments)'
+  ]) expect('Safe Markdown widget parser',markdown,marker)
+
+  for (const marker of [
+    'function installFinder():void',
+    "document.querySelector<HTMLElement>('[data-command-finder]')",
+    "document.querySelector<HTMLScriptElement>('#scarp-command-data')",
+    'JSON.parse(data.textContent)', 'const words=parsed.text[locale]',
+    "releaseLabel.htmlFor='scarp-release'",
+    "taskLabel.htmlFor='scarp-task'",
+    "releaseSelect.value=parsed.releases.at(-1)?.tag??''",
+    'entry.release===releaseSelect.value', 'entry.task===taskSelect.value',
+    "result.setAttribute('aria-live','polite')",
+    "result.setAttribute('aria-atomic','true')",
+    'if(!item.supported)', 'item.firstRelease', 'words.missing',
+    'item.commands.join(', 'pre.tabIndex=0',
+    'navigator.clipboard?.writeText', 'words.copied', 'words.copyFailed',
+    'reference.href=BASE+item.reference.replace(',
+    "releaseSelect.addEventListener('change',render)",
+    "taskSelect.addEventListener('change',render)",
+    "result.appendChild(el('p',undefined,words.warning))"
+  ]) expect('Owned Command Finder UI',client,marker)
+  const finderStart=client.indexOf('function installFinder():void')
+  const finderEnd=client.indexOf('function installDeployments():void',finderStart)
+  if (finderStart===-1 || finderEnd===-1 ||
+      /\bfetch\s*\(|XMLHttpRequest|\baxios\b/.test(client.slice(finderStart,finderEnd))) {
+    errors.push('Offline Command Finder must not make network requests')
+  }
+
+  for (const marker of [
+    '.command-finder', '.command-finder select', '.command-finder .status.unavailable',
+    ':focus-visible', 'prefers-reduced-motion'
+  ]) expect('Owned accessible stylesheet',styles,marker)
+
   for (const [name,page,fragment] of [
     ['README',readme,'docs/tooling/command-finder.md'],
     ['README',readme,'docs/hi/tooling/command-finder.md'],
@@ -148,17 +194,6 @@ export function validateCommandFinder(
     ['Compatibility English',compatEn,'](/tooling/command-finder)'],
     ['Compatibility Hindi',compatHi,'](/hi/tooling/command-finder)']
   ]) expect(name,page,fragment)
-
-  for (const marker of [
-    'withBase(', 'useData()', 'v-model="selectedVersion"', 'v-model="selectedTask"',
-    'v-if="current.supported"', 'aria-live="polite"', 'aria-atomic="true"',
-    'navigator.clipboard.writeText', 'role="status"', 'focus-visible',
-    'prefers-reduced-motion', 'current.commands.join', 'current.firstRelease',
-    '<pre tabindex="0">', 'pre:focus-visible'
-  ]) expect('Accessible Vue widget',component,marker)
-  if (/\bfetch\s*\(|\bXMLHttpRequest\b|\baxios\b/.test(component)) {
-    errors.push('The offline selector must not send a network request')
-  }
 
   for (const locale of ['en','hi'] as const) {
     const messages = labels[locale]
