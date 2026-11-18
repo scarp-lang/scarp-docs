@@ -191,7 +191,7 @@ VitePress के language selector से English/Hindi बदलें। स�
 
 ## Reliable TypeScript deployment indicator
 
-`docs/.vitepress/theme/lib/pages-api.ts` implements the public GitHub Actions API parser, a bounded request timeout, validated success-count data, and English/Hindi labels. Unit tests are offline: `npm run test:pages-api`. The Vue indicator offers an accessible retry button, reports rate limiting without inventing a number, and always links to GitHub Actions. This is a public read-only counter; no user data or API token is sent to any additional service.
+`scripts/scarp-site/pages-api.ts` implements the public GitHub Actions API parser, a bounded request timeout, validated success-count data, and English/Hindi labels. Unit tests are offline: `npm run test:pages-api`. The Vue indicator offers an accessible retry button, reports rate limiting without inventing a number, and always links to GitHub Actions. This is a public read-only counter; no user data or API token is sent to any additional service.
 
 ## Support development
 

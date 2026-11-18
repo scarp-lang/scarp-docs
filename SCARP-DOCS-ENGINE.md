@@ -54,3 +54,9 @@ The Scarp-owned renderer is now the production-build candidate. The VitePress an
 ## Native bilingual search release gate
 
 The `check:hindi-search` and `test:hindi-search` scripts now inspect the production Scarp-owned `scripts/scarp-site/build.ts` and `client.ts` directly instead of the obsolete VitePress local-search configuration and theme. The gate checks localized labels, generated search-index routing, same-language search filtering, offline-only index fetches, keyboard commands, focus restoration, accessible dialog/live status and current compiler release links. The production search trigger advertises `Control+K Meta+K /` via `aria-keyshortcuts` in both locales; Chromium verifies the HTML attribute. Mutations cover loss of language isolation, local routing, ARIA, and published-release navigation. The older `.vitepress` files remain pending the broader Issue #70 deletion gate and are **not** part of the production renderer.
+
+## Production Pages deployment counter
+
+The previous Vue-only `pages-api.ts` logic was copied into `scripts/scarp-site/pages-api.ts` and is now **used by the production browser** through an independently compiled ES module. `scripts/scarp-site/client.ts` imports `./pages-api.js`; the owned build emits both assets under `/scarp-docs/assets/` without a bundler or framework. The retired Vue module is now just a compatibility re-export.
+
+A successful count requires a real nonnegative safe integer in the GitHub Actions response; HTTP failures, invalid payloads, timeouts and offline errors show translated retry text instead of fabricated counts. `test:pages-api` exercises that exact shared module, while Chromium independently checks its live browser invocation with mocked success, negative/fractional counts, rate limits and offline failures. No token, analytics endpoint or postback is required.
