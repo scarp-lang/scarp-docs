@@ -23,9 +23,9 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
-  - title: Latest published compiler v0.0.6-alpha.13
+  - title: Latest published compiler v0.0.6-alpha.14
     details: Read the release-pinned editor/cache enhancements, Option/Result allocation behavior and verified archives.
-    link: /releases/v0.0.6-alpha.13
+    link: /releases/v0.0.6-alpha.14
   - title: Earlier alpha.9 BigInt and JSON diagnostics
     details: Source-pinned historical compiler examples and exact output tests.
     link: /releases/v0.0.6-alpha.9
@@ -80,7 +80,7 @@ features:
 ---
 
 ::: warning Experimental language
-The newest published compiler is **[v0.0.6-alpha.13](/releases/v0.0.6-alpha.13)**, while much of the main reference still targets the separately verified **v0.0.5-alpha.1** baseline. Both are experimental prereleases. Before upgrading older code, check [alpha.1 → alpha.2 upgrade readiness](/reference/upgrade-readiness) and the [feature status](/reference/status).
+The newest published compiler is **[v0.0.6-alpha.14](/releases/v0.0.6-alpha.14)**, while much of the main reference still targets the separately verified **v0.0.5-alpha.1** baseline. Both are experimental prereleases. Before upgrading older code, check [alpha.1 → alpha.2 upgrade readiness](/reference/upgrade-readiness) and the [feature status](/reference/status).
 :::
 
 For signed BigInt and JSON-v2 test reporting on earlier binaries, read the [historical alpha.9 release](/releases/v0.0.6-alpha.9).
@@ -88,3 +88,5 @@ For signed BigInt and JSON-v2 test reporting on earlier binaries, read the [hist
 The [previous alpha.8 release](/releases/v0.0.6-alpha.8) documents projects, tests and assertions. For historical input and tuple examples, see the [published alpha.6 release](/releases/v0.0.6-alpha.6), which remains version-pinned.
 
 The earlier [v0.0.6-alpha.12 release](/releases/v0.0.6-alpha.12) introduced typed records, variants, Option/Result and immutable collections. Its exact-source historical tutorials remain independently verified.
+
+The [previous v0.0.6-alpha.13 release](/releases/v0.0.6-alpha.13) retains its exact Rust semantic cache and Option/Result evidence.
