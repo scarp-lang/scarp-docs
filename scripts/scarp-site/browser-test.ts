@@ -357,6 +357,10 @@ async function mobile(
     assert.equal(await page.locator('#side-nav').evaluate(x=>x.classList.contains('open')),true)
     await page.locator('#side-nav a').first().click()
     assert.equal(await toggle.getAttribute('aria-expanded'),'false')
+    // Module imports finish asynchronously after navigation; test the keyboard
+    // shortcut only once the new page has installed its event listeners.
+    await page.locator('html[data-scarp-ready="true"]').waitFor({state:'attached'})
+    await page.waitForLoadState('networkidle')
     await page.keyboard.press('Control+k')
     await page.locator('#search-query').waitFor({state:'visible'})
     await page.keyboard.press('Escape')
@@ -386,7 +390,7 @@ try{
   console.log('PASS: '+assertions+
     ' Scarp-owned engine Chromium tests: keyboard search, clipboard success/denial, release selector, typed deployment API successes/failures, bilingual UI, 320px reflow, reduced motion and axe A/AA scans')
 }catch(error){
-  console.error('FAIL: Scarp-owned engine Chromium: '+String(error))
+  console.error('FAIL: Scarp-owned engine Chromium: '+(error instanceof Error ? error.stack : String(error)))
   process.exitCode=1
 }finally{
   await browser?.close()

@@ -366,3 +366,5 @@ installSearch()
 installCodeCopy()
 installFinder()
 installDeployments()
+// A stable enhancement boundary for navigation tests and assistive integrations.
+document.documentElement.dataset.scarpReady='true'
