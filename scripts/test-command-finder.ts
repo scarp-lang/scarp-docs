@@ -100,9 +100,9 @@ assert.throws(()=>commandAdvice('v0.0.7-alpha.1' as ReleaseTag,'run-file'),TypeE
 assert.throws(()=>commandAdvice(LATEST_RELEASE,'native-compile' as CommandTask),TypeError)
 
 const mutations: Array<[keyof FinderSources,string,string]> = [
-  ['english','latest published release is [v0.0.6-alpha.13](/releases/v0.0.6-alpha.13)',
+  ['english','latest published release is [v0.0.6-alpha.14](/releases/v0.0.6-alpha.14)',
     'latest published release is [v0.0.6-alpha.8](/releases/v0.0.6-alpha.9)'],
-  ['hindi','नवीनतम प्रकाशित release [v0.0.6-alpha.13](/hi/releases/v0.0.6-alpha.13)',
+  ['hindi','नवीनतम प्रकाशित release [v0.0.6-alpha.14](/hi/releases/v0.0.6-alpha.14)',
     'नवीनतम प्रकाशित release [v0.0.6-alpha.9](/hi/releases/v0.0.6-alpha.8)'],
   ['english','<ScarpCommandFinder />','<OutdatedSelector />'],
   ['hindi','<ScarpCommandFinder />','<OutdatedSelector />'],

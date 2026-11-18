@@ -48,6 +48,8 @@ jobs:
         run: npm run check:alpha12
       - name: Verify published alpha.13 compiler and bilingual Rust API boundaries
         run: npm run check:alpha13
+      - name: Verify published alpha.14 compiler, provenance and bilingual Rust host APIs
+        run: npm run check:alpha14
       - name: Validate Scarp-owned bilingual search and keyboard accessibility
         run: npm run check:hindi-search && npm run test:hindi-search
       - name: Test version-aware bilingual command finder and historical release boundaries
@@ -618,3 +620,37 @@ jobs:
         run: |
           cargo test --manifest-path .compiler-alpha13/Cargo.toml --locked --offline --test semantic_cache_live_quotas --test semantic_cache_revision_eviction --test semantic_cache_revision_range --test semantic_cache_revision_ceiling --test semantic_cache_revision_watermark --test editor_source_revisions --test source_propagation
 
+
+  alpha14-conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: scarp-lang/scarp
+          ref: 43627b74af5fccccc5e233e98207413983ebafc1
+          path: .compiler-alpha14
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Install TypeScript tooling
+        run: npm install --no-audit --no-fund
+      - name: Verify immutable published compiler source
+        run: test "$(git -C .compiler-alpha14 rev-parse HEAD)" = "43627b74af5fccccc5e233e98207413983ebafc1"
+      - name: Check bilingual release and four immutable Git blobs
+        run: npm run check:alpha14
+      - name: Diff actual tagged source and output bytes
+        run: |
+          for name in structured_pattern_coverage map_string_projection_snapshots; do
+            for extension in srp stdout; do
+              diff -u ".compiler-alpha14/examples/$name.$extension" "conformance/alpha14/$name.$extension"
+            done
+          done
+      - name: Build the exact published alpha.14 interpreter
+        run: cargo build --manifest-path .compiler-alpha14/Cargo.toml --locked --offline
+      - name: Execute exact published alpha.14 fixtures
+        run: npm run test:alpha14-compiler -- .compiler-alpha14/target/debug/scarp
+      - name: Run tagged Rust editor, checked ELF64 and pattern regressions
+        run: |
+          cargo test --manifest-path .compiler-alpha14/Cargo.toml --locked --offline --test editor_compilation_cache --test editor_diamond_differential --test native_object_checked --test pattern_separator_diagnostics --test structured_pattern_coverage --test source_map_projection_snapshots
