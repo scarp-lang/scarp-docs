@@ -2,11 +2,11 @@ import assert from 'node:assert/strict'
 import {
   deploymentLabels, getSuccessfulRunCount, readSuccessfulRunCount,
   SUCCESSFUL_RUNS_ENDPOINT, type Fetcher
-} from '../docs/.vitepress/theme/lib/pages-api.ts'
+} from './scarp-site/pages-api.ts'
 
 assert.equal(readSuccessfulRunCount({ total_count: 5 }), 5)
 assert.equal(readSuccessfulRunCount({ total_count: 0 }), 0)
-for (const value of [null, undefined, 12, {}, { total_count: -1 }, { total_count: NaN }, { total_count: 1.5 }, { total_count: '5' }, { total_count: Number.MAX_SAFE_INTEGER + 1 }]) {
+for (const value of [null, undefined, 12, {}, { total_count: -1 }, { total_count: NaN }, { total_count: 1.5 }, { total_count: '5' }, { total_count: Number.MAX_SAFE_INTEGER + 1 }, { total_count: Infinity }, { total_count: -Infinity }]) {
   assert.throws(() => readSuccessfulRunCount(value), TypeError)
 }
 assert.equal(deploymentLabels('hi-IN').retry, 'दोबारा प्रयास करें')

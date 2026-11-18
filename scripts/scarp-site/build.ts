@@ -19,6 +19,7 @@ const siteRoot=production
   :join(previewRoot,'scarp-docs')
 const styles=join(root,'scripts/scarp-site/site.css')
 const client=join(root,'scripts/scarp-site/client.ts')
+const pagesApi=join(root,'scripts/scarp-site/pages-api.ts')
 const groupOrder=['guide','tutorials','language','tooling','reference','examples','releases','community','project']
 const groupLabels:Record<string,[string,string]>={
   guide:['Getting started','शुरुआत'],
@@ -121,7 +122,7 @@ function htmlDocument(view:PageView, views:PageView[], currentTag:string):string
     renderSeoHead(source)+
     '<link rel="icon" type="image/svg+xml" href="'+BASE+'assets/scarp-mark.svg"/>'+
     '<link rel="stylesheet" href="'+BASE+'assets/scarp-site.css"/>'+
-    '<script defer src="'+BASE+'assets/scarp-site.js"></script></head><body>'+
+    '<script type="module" src="'+BASE+'assets/scarp-site.js"></script></head><body>'+
     '<a class="skip-link" href="#main">'+localized('Skip to content','मुख्य सामग्री पर जाएँ',locale)+'</a>'+
     '<header class="site-header"><a class="brand" '+attrs(BASE)+'><img src="'+BASE+'assets/scarp-mark.svg" alt="" width="34" height="34"/><span>Scarp</span></a>'+
     '<nav class="top-nav" aria-label="'+localized('Primary','मुख्य नेविगेशन',locale)+'">'+
@@ -189,8 +190,8 @@ export async function buildSite():Promise<{pages:number;assets:number}>{
   writeFileSync(join(siteRoot,'assets','search-index.json'),JSON.stringify(searchIndex))
   writeFileSync(join(siteRoot,'assets','scarp-mark.svg'),logo)
   writeFileSync(join(siteRoot,'assets','scarp-site.css'),readFileSync(styles,'utf8'))
-  // Browser controller is a single import-free TypeScript file. Compile it
-  // directly: no VitePress, Vite, Vue, esbuild or client framework.
+  // Compile the Scarp-owned browser entry and its typed API helper as native
+  // ES modules. No VitePress, Vue, Vite, esbuild or client framework.
   const browserScript=ts.transpileModule(readFileSync(client,'utf8'),{
     fileName:'client.ts',
     compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext},
@@ -204,6 +205,15 @@ export async function buildSite():Promise<{pages:number;assets:number}>{
     throw new Error('Client TypeScript compilation failed: '+details)
   }
   writeFileSync(join(siteRoot,'assets','scarp-site.js'),browserScript.outputText)
+  const apiScript=ts.transpileModule(readFileSync(pagesApi,'utf8'),{
+    fileName:'pages-api.ts',
+    compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext},
+    reportDiagnostics:true
+  })
+  if(apiScript.diagnostics?.length) {
+    throw new Error('GitHub deployment counter TypeScript compilation failed')
+  }
+  writeFileSync(join(siteRoot,'assets','pages-api.js'),apiScript.outputText)
   // A project Pages 404 is still a public documentation entry point. Give
   // both language communities real navigation and keep it out of search.
   writeFileSync(join(siteRoot,'404.html'),
@@ -223,7 +233,7 @@ export async function buildSite():Promise<{pages:number;assets:number}>{
     '<a lang="hi" href="'+BASE+'hi/">हिन्दी दस्तावेज़</a></nav></main></body></html>', 'utf8')
   console.log('PASS: independent Scarp TypeScript engine generated '+views.length+
     ' English/Hindi Markdown routes, local CSS/JavaScript and sitemap under '+siteRoot)
-  return {pages:views.length,assets:4}
+  return {pages:views.length,assets:5}
 }
 if(process.argv[1] && resolve(process.argv[1])===fileURLToPath(import.meta.url)){
   await buildSite()

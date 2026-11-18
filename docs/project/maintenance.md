@@ -77,3 +77,7 @@ The `Documentation CI` workflow validates docs and runs compiler conformance for
 The current `scarp` CLI is an interpreter, not a native-code backend. Scarp's numerical and source-module budgets are deterministic counters, not comprehensive memory or time isolation. Source imports assume a trusted root. Document this accurately and link claims to matching tagged compiler tests.
 
 Do not add dead links, speculative syntax, fake screenshots, or user-specific email addresses. Contributor issue reports should include Scarp version, exact command and file, expected versus actual output, and evidence.
+
+## Scarp-owned deployment counter verification
+
+The public Pages count uses `scripts/scarp-site/pages-api.ts` compiled into `assets/pages-api.js` as a native browser module. The README and bilingual deployment page link to the workflow history. Run `npm run test:pages-api`, `npm run scarp:test`, and `npm run scarp:browser-test` to verify schema validation, timeout/offline behavior, public API failure states and accessible retry feedback. The retired VitePress integration remains only as a temporary compatibility re-export while Issue #70 migration is completed.

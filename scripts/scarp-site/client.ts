@@ -1,3 +1,5 @@
+import { deploymentLabels, getSuccessfulRunCount } from './pages-api.js'
+
 /**
  * Scarp's own browser controller. No Vue/VitePress runtime.
  * The server renders every page as plain HTML; this enhances only the search,
@@ -338,22 +340,23 @@ function installDeployments():void {
   const button=target?.querySelector<HTMLButtonElement>('[data-load-deployments]')
   const output=target?.querySelector<HTMLOutputElement>('output')
   if(!button||!output)return
+  const labels=deploymentLabels(document.documentElement.lang)
+  button.textContent=labels.refresh
   button.addEventListener('click',()=>{
     button.disabled=true
-    output.textContent=t('Checking published workflow history…','प्रकाशित workflow इतिहास देख रहे हैं…')
-    void fetch('https://api.github.com/repos/scarp-lang/scarp-docs/actions/workflows/pages.yml/runs?status=success&per_page=1')
-      .then(async response=>{
-        if(!response.ok)throw new Error('Public Actions API rate limit or network unavailable')
-        return response.json() as Promise<{total_count?:number}>
-      }).then(body=>{
-        output.textContent=typeof body.total_count==='number'
-          ?t('Successful Pages workflow runs: '+body.total_count,
-            'सफल Pages workflow रन: '+body.total_count)
-          :t('Run count unavailable','रन की संख्या उपलब्ध नहीं')
-      }).catch(()=>{
-        output.textContent=t('Count unavailable offline. View GitHub Actions when connected.',
-          'ऑफलाइन संख्या उपलब्ध नहीं। इंटरनेट पर GitHub Actions देखें।')
-      }).finally(()=>{button.disabled=false})
+    output.textContent=labels.loading
+    void getSuccessfulRunCount()
+      .then(count=>{
+        output.textContent=t('Successful Pages workflow runs: '+count,
+          'सफल Pages workflow रन: '+count)
+        button.textContent=labels.refresh
+      })
+      .catch(()=>{
+        output.textContent=labels.unavailable+'. '+
+          t('View GitHub Actions when connected.','इंटरनेट पर GitHub Actions देखें।')
+        button.textContent=labels.retry
+      })
+      .finally(()=>{button.disabled=false})
   })
 }
 
@@ -363,3 +366,5 @@ installSearch()
 installCodeCopy()
 installFinder()
 installDeployments()
+// A stable enhancement boundary for navigation tests and assistive integrations.
+document.documentElement.dataset.scarpReady='true'

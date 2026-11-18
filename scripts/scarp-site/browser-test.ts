@@ -6,6 +6,7 @@ import { chromium, type BrowserContext, type Page } from 'playwright'
 import { auditOfflineAccessibility } from '../lib/offline-a11y.ts'
 import { previewRoot } from './build.ts'
 import { LATEST_RELEASE } from '../lib/command-finder.ts'
+import { SUCCESSFUL_RUNS_ENDPOINT } from './pages-api.ts'
 
 const root=process.argv[2]?resolve(process.argv[2]):resolve(previewRoot,'scarp-docs')
 const base='/scarp-docs/'
@@ -295,6 +296,51 @@ async function testLocale(
   }finally{await ctx.close()}
 }
 
+
+/** Exercise the *deployed* counter rather than the retired VitePress helper. */
+async function deploymentCounter(
+  browser:Awaited<ReturnType<typeof chromium.launch>>,
+  origin:string,lang:'en'|'hi'
+):Promise<void>{
+  const {ctx,outside}=await context(browser,origin,1280)
+  let mode:'valid'|'negative'|'fractional'|'http'|'offline'='valid'
+  await ctx.route(SUCCESSFUL_RUNS_ENDPOINT,route=>{
+    if(mode==='offline')return route.abort('failed')
+    return route.fulfill({
+      status:mode==='http'?429:200,
+      contentType:'application/json',
+      headers:{'access-control-allow-origin':'*'},
+      body:JSON.stringify({total_count:mode==='valid'?8:mode==='negative'?-3:2.5})
+    })
+  })
+  try{
+    const page=await ctx.newPage()
+    const route=lang==='hi'?base+'hi/project/deployments':base+'project/deployments'
+    const response=await page.goto(origin+route,{waitUntil:'networkidle'})
+    assert.equal(response?.status(),200)
+    const widget=page.locator('[data-deployments]')
+    const button=widget.locator('[data-load-deployments]')
+    const output=widget.locator('output')
+    await button.waitFor({state:'visible'})
+    assert.equal(await button.innerText(),lang==='hi'?'संख्या अपडेट करें':'Refresh count')
+    async function clickAndCheck(expected:string):Promise<void>{
+      await button.click()
+      await output.filter({hasText:expected}).waitFor()
+      assert.equal(await button.isEnabled(),true)
+    }
+    await clickAndCheck(lang==='hi'?'सफल Pages workflow रन: 8':'Successful Pages workflow runs: 8')
+    assert.equal(await button.innerText(),lang==='hi'?'संख्या अपडेट करें':'Refresh count')
+    assertions++
+    for (const failing of ['negative','fractional','http','offline'] as const){
+      mode=failing
+      await clickAndCheck(lang==='hi'?'अभी संख्या उपलब्ध नहीं है':'Count currently unavailable')
+      assert.equal(await button.innerText(),lang==='hi'?'दोबारा प्रयास करें':'Try again')
+      assertions++
+    }
+    assert.deepEqual(outside,[],lang+': deployment test performed an uncontrolled external request')
+  }finally{await ctx.close()}
+}
+
 async function mobile(
   browser:Awaited<ReturnType<typeof chromium.launch>>,origin:string,lang:'en'|'hi'
 ):Promise<void>{
@@ -311,6 +357,10 @@ async function mobile(
     assert.equal(await page.locator('#side-nav').evaluate(x=>x.classList.contains('open')),true)
     await page.locator('#side-nav a').first().click()
     assert.equal(await toggle.getAttribute('aria-expanded'),'false')
+    // Module imports finish asynchronously after navigation; test the keyboard
+    // shortcut only once the new page has installed its event listeners.
+    await page.locator('html[data-scarp-ready="true"]').waitFor({state:'attached'})
+    await page.waitForLoadState('networkidle')
     await page.keyboard.press('Control+k')
     await page.locator('#search-query').waitFor({state:'visible'})
     await page.keyboard.press('Escape')
@@ -335,11 +385,12 @@ try{
   for(const locale of ['en','hi'] as const){
     await testLocale(browser,origin,locale)
     await mobile(browser,origin,locale)
+    await deploymentCounter(browser,origin,locale)
   }
   console.log('PASS: '+assertions+
-    ' Scarp-owned engine Chromium tests: keyboard search, clipboard success/denial, release selector, bilingual UI, 320px reflow, reduced motion and axe A/AA scans')
+    ' Scarp-owned engine Chromium tests: keyboard search, clipboard success/denial, release selector, typed deployment API successes/failures, bilingual UI, 320px reflow, reduced motion and axe A/AA scans')
 }catch(error){
-  console.error('FAIL: Scarp-owned engine Chromium: '+String(error))
+  console.error('FAIL: Scarp-owned engine Chromium: '+(error instanceof Error ? error.stack : String(error)))
   process.exitCode=1
 }finally{
   await browser?.close()
