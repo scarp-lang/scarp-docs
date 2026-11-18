@@ -31,7 +31,7 @@ assert.strictEqual(legacyCommandFinder.commandAdvice, commandAdvice,
 assert.deepEqual(validateCommandFinder(sources), [])
 assert.equal(LATEST_RELEASE, RELEASES.at(-1)?.tag)
 assert.equal(commandAdvice('v0.0.6-alpha.6', 'run-file').commands[0], 'scarp exec FILE.srp')
-assert.equal(RELEASES.at(-1)?.source, 'e755fda37cdaeed29434e848cb5dd41f2f2e7eb2')
+assert.equal(RELEASES.at(-1)?.source, '43627b74af5fccccc5e233e98207413983ebafc1')
 const expected = new Map<CommandTask,number>([
   ['run-file',0], ['static-verify',2], ['create-project',3],
   ['inspect-project',4], ['inspect-symbols',5], ['diagnose-host',2], ['inspect-ast',2],
