@@ -193,7 +193,7 @@ for(const source of sources){
   assert.equal(pairedRoutes(source).canonical,urlForPage(source),
     'Own engine must preserve canonical route for '+source)
 }
-assert.deepEqual(await buildSite(),{pages:sources.length,assets:4})
+assert.deepEqual(await buildSite(),{pages:sources.length,assets:5})
 const htmlPaths=new Set<string>()
 const renderedPages: PublishedHtmlPage[] = []
 for(const source of sources) {
@@ -211,7 +211,7 @@ for(const source of sources) {
     'Missing reciprocal translated links: '+source)
   check(html.includes('id="main"')&&html.includes('class="skip-link"'),
     'Accessible main landmark missing: '+source)
-  check(html.includes('assets/scarp-site.js')&&html.includes('assets/scarp-site.css'),
+  check(html.includes('assets/scarp-site.js')&&html.includes('assets/scarp-site.css')&&html.includes('type="module"'),
     'No framework-free browser assets: '+source)
   check(!html.includes('<ScarpCommandFinder />')&&!html.includes('<PagesDeployments />'),
     'Unrendered historical widget in '+source)
@@ -258,6 +258,9 @@ check(search.filter(x=>x.locale==='hi').length===sources.filter(path=>path.start
 check(search.some(x=>x.excerpt.includes('funcra')),'Scarp syntax must be searchable')
 check(search.every(x=>x.route.startsWith('/scarp-docs/')),'Search routes must use correct base')
 check(existsSync(join(site,'assets/scarp-site.js')),'Browser TypeScript did not compile')
+check(existsSync(join(site,'assets/pages-api.js')),'Typed deployment API module was not built')
+const appScript=readFileSync(join(site,'assets/scarp-site.js'),'utf8')
+check(appScript.includes('pages-api.js'),'Production browser does not import the tested API module')
 check(existsSync(join(site,'assets/scarp-site.css')),'Own CSS missing')
 const sitemap=readFileSync(join(site,'sitemap.xml'),'utf8')
 assert.deepEqual(validateSitemap(sitemap,sources).errors,[],'Sitemap must precisely cover published sources')
