@@ -3,9 +3,9 @@
 <!-- scarp-release-status: v0.0.5-alpha.5 -->
 <!-- scarp-main-reference-baseline: v0.0.5-alpha.1 -->
 
-**नवीनतम प्रकाशित compiler: [v0.0.6-alpha.14](/hi/releases/v0.0.6-alpha.14), 18 नवंबर 2026।** Typed records और variants, Option/Result propagation, immutable lists और maps, तथा runnable task-board project इस experimental interpreter prerelease में उपलब्ध हैं। पुरानी language-reference baseline अभी भी v0.0.5-alpha.1 है।
+**नवीनतम प्रकाशित compiler: [v0.0.6-alpha.15](/hi/releases/v0.0.6-alpha.15), 19 नवंबर 2026।** Typed records और variants, Option/Result propagation, immutable lists और maps, तथा runnable task-board project इस experimental interpreter prerelease में उपलब्ध हैं। पुरानी language-reference baseline अभी भी v0.0.5-alpha.1 है।
 
-नए डाउनलोड के लिए [v0.0.6-alpha.14 archive और checksum](/hi/releases/v0.0.6-alpha.14) देखें। [alpha.1 installation](/hi/guide/installation-alpha6) अपने पुराने संस्करण पर pinned है। पुराने alpha.5 के लिए [प्रकाशित alpha.5 इंस्टॉलेशन](/hi/guide/installation-alpha5) और [alpha.5 CLI](/hi/tooling/cli-alpha5) पढ़ें। पुरानी project-generation प्रक्रिया [alpha.4 quickstart](/hi/guide/quickstart-alpha4) में है। पुराने individual file commands के लिए [alpha.3 CLI reference](/hi/tooling/cli) उपलब्ध है। पुराने programs migrate करने से पहले [version compatibility](/hi/reference/compatibility) जाँचें।
+नए डाउनलोड के लिए [v0.0.6-alpha.15 archive और checksum](/hi/releases/v0.0.6-alpha.15) देखें। [alpha.1 installation](/hi/guide/installation-alpha6) अपने पुराने संस्करण पर pinned है। पुराने alpha.5 के लिए [प्रकाशित alpha.5 इंस्टॉलेशन](/hi/guide/installation-alpha5) और [alpha.5 CLI](/hi/tooling/cli-alpha5) पढ़ें। पुरानी project-generation प्रक्रिया [alpha.4 quickstart](/hi/guide/quickstart-alpha4) में है। पुराने individual file commands के लिए [alpha.3 CLI reference](/hi/tooling/cli) उपलब्ध है। पुराने programs migrate करने से पहले [version compatibility](/hi/reference/compatibility) जाँचें।
 
 ## प्रकाशित releases का compiler प्रमाण
 
@@ -23,6 +23,7 @@
 | **[v0.0.6-alpha.5](/hi/releases/v0.0.6-alpha.5)** (9 नवंबर 2026) | `205e92f166f186c3905e5880d41c31717b697b8e` | निश्चित Top-P, centered Pearson correlation और सीमित Rust ELF64 object API; सामान्य native compiler नहीं | [Alpha.5 release](/hi/releases/v0.0.6-alpha.5) |
 | **[v0.0.6-alpha.6](/hi/releases/v0.0.6-alpha.6)** (10 नवंबर 2026) | `cdf6a3924ec2a36c7beca5a9aec4f01a0bce515e` | सीमित redirected UTF-8 input, छह स्पष्ट text/scalar intrinsics और immutable tuples; interactive prompt या सामान्य native CLI नहीं | [Alpha.6 release](/hi/releases/v0.0.6-alpha.6) |
 | **[v0.0.6-alpha.7](/hi/releases/v0.0.6-alpha.7)** (11 नवंबर 2026) | `b1c1fd232b418267d95520c69ee563ac99ecae30` | Typed conditional expressions और Unicode scalar escapes; expression केवल interpreter में चलता है | [Alpha.7 release](/hi/releases/v0.0.6-alpha.7) |
+| **[v0.0.6-alpha.15](/hi/releases/v0.0.6-alpha.15)** (19 नवंबर 2026) | `a21b7b6d942bd1ca9abbbbb522f92f9c8e21e281` | 1 MiB inspection, UTF-8 text work budget, revision validation और Rust checked ELF64 shifts; native CLI नहीं | [Rust host](/hi/tooling/rust-host-alpha15) |
 | **[v0.0.6-alpha.14](/hi/releases/v0.0.6-alpha.14)** (18 नवंबर 2026) | `43627b74af5fccccc5e233e98207413983ebafc1` | बेहतर nested pattern errors, live Rust editor cache quotas, checked ELF64 integer kernel API; दो immutable source/stdout fixtures | [Alpha.14 Rust guide](/hi/tooling/rust-host-alpha14) |
 | **[v0.0.6-alpha.13](/hi/releases/v0.0.6-alpha.13)** (17 नवंबर 2026) | `e755fda37cdaeed29434e848cb5dd41f2f2e7eb2` | Rust cache revision limits, editor generation checks, Option/Result reuse; चार tagged source/stdout pairs | [Alpha.13 guide](/hi/tooling/editor-caches-alpha13) |
 | **[v0.0.6-alpha.12](/hi/releases/v0.0.6-alpha.12)** (16 नवंबर 2026) | `a1f9c2fc1c6bc8f3e04878d30d658bb38fab441d` | Records, tagged variants, typed Option/Result, lists/maps, tested multi-file task-board | [ट्यूटोरियल](/hi/tutorials/task-board-alpha12) |

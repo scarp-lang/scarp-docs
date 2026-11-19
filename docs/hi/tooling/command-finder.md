@@ -10,7 +10,7 @@ Scarp के प्रयोगात्मक compiler releases में CLI �
 
 पहले असली binary का version जाँचें। Alpha.3 या नए compiler में `scarp version` और alpha.1/alpha.2 में `scarp --version` चलाएँ। `FILE.srp` की जगह अपनी source file का path दें। `PROJECT_DIRECTORY` की जगह `Scarp.project` manifest वाला स्पष्ट project folder दें। `scarp create demo` चलाने से **नया folder** बनता है; यह पुराने folder को overwrite नहीं करता।
 
-यह widget पेज लोड होने के बाद **browser में ही काम करता है**। यह GitHub से data नहीं माँगता, आपके कंप्यूटर का executable नहीं पहचानता, आपकी files नहीं पढ़ता और Scarp code execute नहीं करता। इसके links अलग-अलग प्रकाशित releases के जाँचे हुए संदर्भों तक ले जाते हैं। **नवीनतम प्रकाशित release [v0.0.6-alpha.14](/hi/releases/v0.0.6-alpha.14)** है; compiler की बदलती `main` branch नहीं।
+यह widget पेज लोड होने के बाद **browser में ही काम करता है**। यह GitHub से data नहीं माँगता, आपके कंप्यूटर का executable नहीं पहचानता, आपकी files नहीं पढ़ता और Scarp code execute नहीं करता। इसके links अलग-अलग प्रकाशित releases के जाँचे हुए संदर्भों तक ले जाते हैं। **नवीनतम प्रकाशित release [v0.0.6-alpha.15](/hi/releases/v0.0.6-alpha.15)** है; compiler की बदलती `main` branch नहीं।
 
 ## अलग-अलग commands पहली बार कब आए?
 
@@ -59,3 +59,5 @@ Alpha.2 पुराने `run` command के लिए चुना जा �
 ## Alpha.10 interactive prompts
 
 प्रकाशित compiler में `--interactive` और `--input-file PATH` उपलब्ध हैं। विस्तृत [input guide](/hi/tooling/interactive-input-alpha10) तथा [arrays guide](/hi/language/fixed-arrays-alpha10). पुराने versions का command finder अपनी मूल सीमाएँ दिखाता है।
+
+[पुराना alpha.14](/hi/releases/v0.0.6-alpha.14) भी अलग version के रूप में चुना जा सकता है।
