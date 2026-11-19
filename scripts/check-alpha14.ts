@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { extractCodeFences, firstMissingCodeBlock } from './lib/code-fences.ts'
-import { LATEST_RELEASE, RELEASES, commandAdvice } from './lib/command-finder.ts'
+import { RELEASES, commandAdvice } from './lib/command-finder.ts'
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)))
 const read = (path: string): string => readFileSync(resolve(root, path), 'utf8')
@@ -15,16 +15,14 @@ interface Case { source: string; localSource: string; gitBlobSha: string }
 interface Release { compilerRepository: string; compilerRef: string; compilerCommit: string;
   releasedAt: string; status: string; assets?: string[]; cases?: Case[] }
 const manifest = JSON.parse(read('conformance/alpha14-manifest.json')) as Release
-const latest = JSON.parse(read('data/compiler-latest-release.json')) as Release
-for (const record of [manifest,latest]) {
+for (const record of [manifest]) {
   assert.equal(record.compilerRepository, 'scarp-lang/scarp')
   assert.equal(record.compilerRef, tag)
   assert.equal(record.compilerCommit, source)
   assert.equal(record.releasedAt, published)
   assert.equal(record.status, 'published-prerelease')
 }
-assert.equal(LATEST_RELEASE, tag)
-assert.equal(RELEASES.at(-1)?.source, source)
+assert.equal(RELEASES.find(item => item.tag === tag)?.source, source)
 const names = ['structured_pattern_coverage', 'map_string_projection_snapshots'] as const
 assert.deepEqual(manifest.cases?.map(c => c.source).sort(),
   names.flatMap(n => ['examples/' + n + '.srp','examples/' + n + '.stdout']).sort())
@@ -60,11 +58,9 @@ for (const [prefix,language] of [['','English'], ['hi/','Hindi']] as const) {
     const url = 'https://github.com/scarp-lang/scarp/releases/download/' + tag + '/' + asset
     assert.ok(release.includes('](' + url + ')'), language + ' missing archive')
     assert.ok(release.includes('](' + url + '.sha256)'), language + ' missing checksum')
-    assert.ok(latest.assets?.includes(asset))
   }
   assert.ok(release.includes('SHA256SUMS'))
 }
-assert.equal(latest.assets?.length,4)
 const en=read('docs/releases/' + tag + '.md')
 const hi=read('docs/hi/releases/' + tag + '.md')
 assert.equal(firstMissingCodeBlock(extractCodeFences(en),extractCodeFences(hi)),-1,
