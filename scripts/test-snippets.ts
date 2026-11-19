@@ -100,3 +100,8 @@ assert.ok(checkSnippetPolicy(alpha13Commands.replace('<!-- scarp-cli-release: v0
 // The published alpha.14 tag inherits historical CLI capabilities, not native compilation.
 assert.deepEqual(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.14 -->\n~~~sh\nscarp verify demo.srp\nscarp exec demo.srp\nscarp test --json=v2 demo\n~~~'), [])
 assert.equal(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.14 -->\n~~~sh\nscarp compile demo.srp\n~~~').length, 1)
+
+// Alpha.15 inherits interpreter and project commands, never general native compilation.
+assert.deepEqual(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.15 -->\n~~~sh\nscarp inspect ast demo.srp\nscarp verify demo.srp\nscarp exec demo.srp\nscarp test --json=v2 project\n~~~'), [])
+assert.equal(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.15 -->\n~~~sh\nscarp compile demo.srp\n~~~').length, 1)
+assert.ok(checkSnippetPolicy('~~~sh\nscarp verify demo.srp\n~~~').length > 0)

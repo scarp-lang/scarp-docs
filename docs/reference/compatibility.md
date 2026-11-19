@@ -1,12 +1,13 @@
 # Version compatibility
 
-For an evidence-backed inventory of alpha.1 through alpha.14 features, consult the [published feature status](/reference/status). For specific commands, the [interactive version-aware Command Finder](/tooling/command-finder) shows shipped actions and unavailable features for each published compiler.
+For an evidence-backed inventory of alpha.1 through alpha.15 features, consult the [published feature status](/reference/status). For specific commands, the [interactive version-aware Command Finder](/tooling/command-finder) shows shipped actions and unavailable features for each published compiler.
 
 The language is **prerelease and evolving**. Use the exact executable version matching the tutorial, not a mix of snippets taken from older release notes.
 
 | Version | Distinguishing features |
 | --- | --- |
-| **[v0.0.6-alpha.14](/releases/v0.0.6-alpha.14)** | **Latest (Nov 18):** improved nested pattern diagnostics, host-only editor-cache limits and checked ELF64 Rust API; unchanged interpreter CLI and no general native compiler |
+| **[v0.0.6-alpha.15](/releases/v0.0.6-alpha.15)** | **Latest (Nov 19):** 1 MiB CLI inspection, UTF-8 string work accounting, loader revision checks and restricted ELF64 shifts; no native compiler CLI |
+| **[v0.0.6-alpha.14](/releases/v0.0.6-alpha.14)** | **Earlier (Nov 18):** improved nested pattern diagnostics, host-only editor-cache limits and checked ELF64 Rust API; unchanged interpreter CLI and no general native compiler |
 | **[v0.0.6-alpha.13](/releases/v0.0.6-alpha.13)** | **Earlier (Nov 17):** host-side revision-aware cache eviction, editor workspace generation and immutable Option/Result payload reuse; no new CLI or Scarp syntax |
 | **[v0.0.6-alpha.12](/releases/v0.0.6-alpha.12)** | **Earlier published (Nov 16, 2026):** typed records, exhaustive variants, Option/Result, immutable lists/maps and tested task-board; interpreter-focused aggregates |
 | **[v0.0.6-alpha.11](/releases/v0.0.6-alpha.11)** | **Published (Nov 15, 2026):** exact `decimal`, explicit rounding and conversions, `input_decimal`; interpreter-only, no general native compilation |
