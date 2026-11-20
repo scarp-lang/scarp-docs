@@ -43,6 +43,22 @@ assert.equal(localLink('index.md?mode=source','hi/guide/test.md'),
   '/scarp-docs/hi/guide/?mode=source')
 assert.equal(localLink('../../../private.md?x#y','tutorials/test.md'),'#')
 assert.equal(localLink('//example.org/file.md?x','index.md'),'#')
+// URL parsers treat backslashes like slashes for special schemes: two leading
+// backslashes would otherwise navigate away from the Scarp Docs origin.
+for (const unsafe of [
+  '\\evil.example/path', '/\\evil.example/path',
+  '\t//evil.example/path', ' //evil.example/path',
+  'https:\\evil.example/path', 'https:evil.example/path',
+  'https://evil.example/\npath', 'javascript:alert(1)',
+  'data:text/html,unsafe'
+]) {
+  assert.equal(localLink(unsafe, 'guide/test.md'), '#',
+    'Ambiguous or dangerous URL must be inert: ' + JSON.stringify(unsafe))
+}
+assert.equal(localLink('https://example.org/path','guide/test.md'),
+  'https://example.org/path')
+assert.equal(localLink('mailto:team@example.org','guide/test.md'),
+  'mailto:team@example.org')
 assert.equal(escapeHtml('<script>&"\''),
   '&lt;script&gt;&amp;&quot;&#39;')
 for(const invalid of ['/index.md','hi/../index.md','hi\\index.md','bad?x.md','https://x.md']){
@@ -140,6 +156,36 @@ check((inertExamples.html.match(/class="scarp-callout/g)??[]).length===1,
   'Only the real callout outside code may render')
 check(inertExamples.html.includes('Visible callout.'),
   'A valid callout should remain rendered after fenced examples')
+
+// Literal text resembling the internal trust sentinels must not be promoted
+// to a second widget or callout by the HTML post-processing stage.
+const spoofedMarkers = renderMarkdown([
+  'SCARPWIDGETSCARPCOMMANDFINDER0TOKEN',
+  '',
+  'SCARPTRUSTEDBLOCK0TOKEN',
+  '',
+  '<ScarpCommandFinder />',
+  '',
+  '::: tip Safely rendered',
+  'Visible callout.',
+  ':::'
+].join('\n'), 'guide/test.md')
+check(spoofedMarkers.html.includes('<p>SCARPWIDGETSCARPCOMMANDFINDER0TOKEN</p>'),
+  'Literal widget sentinel must remain plain documentation text')
+check(spoofedMarkers.html.includes('<p>SCARPTRUSTEDBLOCK0TOKEN</p>'),
+  'Literal callout sentinel must remain plain documentation text')
+check((spoofedMarkers.html.match(/data-command-finder/g) ?? []).length === 1,
+  'Only the authored standalone directive may create an interactive widget')
+check((spoofedMarkers.html.match(/class="scarp-callout/g) ?? []).length === 1,
+  'Only the authored callout may create trusted callout markup')
+
+// HTML entities are decoded by Markdown after token allocation. A token that
+// becomes ambiguous during decoding must fail closed rather than inject HTML.
+assert.throws(() => renderMarkdown([
+  'SCAR&#80;WIDGETSCARPCOMMANDFINDER0TOKEN',
+  '',
+  '<ScarpCommandFinder />'
+].join('\n'), 'guide/test.md'), /Ambiguous trusted Markdown placeholder/)
 
 // Search and SEO excerpts must preserve Scarp source operators, not treat
 // comparisons and generic-like type spellings as raw HTML tags.

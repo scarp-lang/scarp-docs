@@ -41,6 +41,26 @@ The engine's test build is generated under artifacts/scarp-engine-preview/scarp-
 5. **Remove VitePress**: only after actual production and offline verification, migrate pure release data out of the old theme, remove its Vue/VitePress files and dependencies, and update older conformance and toolchain tests without weakening them.
 6. **Release policy**: no stable documentation version is created by this migration. Keep the existing prerelease release gates.
 
+## Renderer URL and trusted-directive safety
+
+The independent renderer treats documentation Markdown and frontmatter as
+untrusted content for navigation and markup. The Scarp-owned localLink route
+contract allows ordinary HTTPS/HTTP, mailto and tel links,
+hash anchors and internal documentation routes. It rejects unapproved schemes,
+protocol-relative URLs, raw backslashes, ASCII whitespace/control characters,
+and malformed HTTPS/HTTP destinations before writing HTML attributes.
+Use percent encoding (%20) for intentional URL spaces. This matters because
+browsers may interpret backslash-prefixed paths as protocol-relative links,
+even when they look local in source review.
+
+Only standalone ScarpCommandFinder, PagesDeployments and supported callout
+directives can create trusted HTML. The renderer chooses source-unique temporary
+placeholders and requires exactly one rendered placeholder occurrence before
+substitution. If Markdown entity decoding creates an ambiguous token, the build
+fails rather than generating duplicate interactive markup. Fenced and inline
+examples stay escaped. These guarantees are covered by npm run scarp:test and
+production build/CI checks.
+
 ## Content security and provenance
 
 The renderer escapes unreviewed raw Markdown HTML. It explicitly recognizes only the project's callouts and named widgets; future embedded content must be implemented and tested rather than bypassing HTML safety. The core language reference remains pinned to v0.0.5-alpha.1. The published compiler at migration start was v0.0.6-alpha.1; v0.0.6-alpha.2 was published November 6, 2026; v0.0.6-alpha.3 followed November 7 with Top-K and temperature softmax. These are pinned published tags, not the moving compiler main branch.
