@@ -1,0 +1,34 @@
+{
+  "compilerRepository": "scarp-lang/scarp",
+  "compilerRef": "v0.0.6-alpha.16",
+  "compilerCommit": "244f713b4fa48f02a98b8e3e3c11025363f35260",
+  "releasedAt": "2026-11-20T13:17:18Z",
+  "status": "published-prerelease",
+  "cases": [
+    {
+      "source": "examples/order_statistics.srp",
+      "localSource": "conformance/alpha16/order_statistics.srp",
+      "gitBlobSha": "51a417bddf5172ef775be5eb8db2600cfaea2519"
+    },
+    {
+      "source": "examples/order_statistics.stdout",
+      "localSource": "conformance/alpha16/order_statistics.stdout",
+      "gitBlobSha": "1beeaa675292c5a39226bd01c8e835b99060baac"
+    },
+    {
+      "source": "examples/core_collections.srp",
+      "localSource": "conformance/alpha16/core_collections.srp",
+      "gitBlobSha": "11b41a7b00e534ddc5185daf1dfd383eb6ddbbaf"
+    },
+    {
+      "source": "examples/core_collections.stdout",
+      "localSource": "conformance/alpha16/core_collections.stdout",
+      "gitBlobSha": "7992303e5c5c9482fa19a74939069c7ab099ad84"
+    },
+    {
+      "source": "examples/modules/collection_tools.srp",
+      "localSource": "conformance/alpha16/modules/collection_tools.srp",
+      "gitBlobSha": "77347f32c5b0024ff393135e60178ff2673d6bca"
+    }
+  ]
+}

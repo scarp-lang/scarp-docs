@@ -3,13 +3,13 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { extractCodeFences, firstMissingCodeBlock } from './lib/code-fences.ts'
-import { LATEST_RELEASE, RELEASES, commandAdvice } from './lib/command-finder.ts'
+import { RELEASES, commandAdvice } from './lib/command-finder.ts'
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)))
 const read = (path: string): string => readFileSync(resolve(root, path), 'utf8')
 const tag = 'v0.0.6-alpha.15'
 const source = 'a21b7b6d942bd1ca9abbbbb522f92f9c8e21e281'
-const manifest = JSON.parse(read('data/compiler-latest-release.json')) as {
+const manifest = JSON.parse(read('data/compiler-alpha15-release.json')) as {
   compilerRepository: string
   compilerRef: string
   compilerCommit: string
@@ -24,8 +24,8 @@ assert.equal(manifest.compilerCommit, source)
 assert.equal(manifest.releasedAt, '2026-11-19T14:14:09Z')
 assert.equal(manifest.status, 'published-prerelease')
 assert.equal(manifest.historicalReferenceBaseline, 'v0.0.5-alpha.1')
-assert.equal(LATEST_RELEASE, tag)
-assert.equal(RELEASES.at(-1)?.source, source)
+assert.equal(RELEASES.find(item => item.tag === tag)?.source, source)
+assert.notEqual(RELEASES.at(-1)?.tag, tag, 'Historical alpha.15 must not remain latest')
 assert.equal(commandAdvice(tag, 'run-file').commands[0], 'scarp exec FILE.srp')
 assert.equal(commandAdvice(tag, 'inspect-ast').supported, true)
 assert.equal(commandAdvice(tag, 'test-json-v2').supported, true)
