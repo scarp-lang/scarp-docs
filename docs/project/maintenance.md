@@ -1,6 +1,6 @@
 # Documentation maintenance and release checks
 
-This is the contributor-maintainer process for Scarp Docs. Documentation must describe the **published compiler**, not design proposals or unmerged work. The core language-reference baseline remains intentionally pinned to [v0.0.5-alpha.1](/reference/status); the current separately verified prerelease is [v0.0.6-alpha.15](/releases/v0.0.6-alpha.15), which provides current downloads and checksums.
+This is the contributor-maintainer process for Scarp Docs. Documentation must describe the **published compiler**, not design proposals or unmerged work. The core language-reference baseline remains intentionally pinned to [v0.0.5-alpha.1](/reference/status); the current separately verified prerelease is [v0.0.6-alpha.16](/releases/v0.0.6-alpha.16), which provides current downloads and checksums.
 
 ## Compiler failure fixtures
 
