@@ -23,9 +23,9 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
-  - title: नवीनतम प्रकाशित v0.0.6-alpha.15 compiler
-    details: CLI inspection limit, string budget और Rust host ELF64 सुरक्षा की नई release जानकारी पढ़ें।
-    link: /hi/releases/v0.0.6-alpha.15
+  - title: नवीनतम प्रकाशित v0.0.6-alpha.16 compiler
+    details: median, quantile, Unicode और checked integer utilities, Rust host caching तथा डाउनलोड देखें।
+    link: /hi/releases/v0.0.6-alpha.16
   - title: पहले प्रकाशित alpha.9 BigInt और JSON
     details: ऐतिहासिक release-pinned उदाहरण और compiler tests।
     link: /hi/releases/v0.0.6-alpha.9
@@ -80,7 +80,7 @@ features:
 ---
 
 ::: warning प्रयोगात्मक रिलीज़
-नवीनतम प्रकाशित compiler **[v0.0.6-alpha.15](/hi/releases/v0.0.6-alpha.15)** है, जबकि अधिकतर मुख्य reference अभी अलग से सत्यापित **v0.0.5-alpha.1** पर आधारित है। सभी experimental prereleases हैं। पुराने code के लिए [अपग्रेड की जाँच](/hi/reference/upgrade-readiness) और [फ़ीचर स्थिति](/hi/reference/status) पढ़ें।
+नवीनतम प्रकाशित compiler **[v0.0.6-alpha.16](/hi/releases/v0.0.6-alpha.16)** है, जबकि अधिकतर मुख्य reference अभी अलग से सत्यापित **v0.0.5-alpha.1** पर आधारित है। सभी experimental prereleases हैं। पुराने code के लिए [अपग्रेड की जाँच](/hi/reference/upgrade-readiness) और [फ़ीचर स्थिति](/hi/reference/status) पढ़ें।
 :::
 
 [ऐतिहासिक alpha.9 BigInt और JSON-v2 रिलीज़](/hi/releases/v0.0.6-alpha.9) अपने मूल compiler version के लिए उपलब्ध है।
@@ -92,3 +92,5 @@ features:
 [पिछली v0.0.6-alpha.13 रिलीज़](/hi/releases/v0.0.6-alpha.13) का Rust cache और Option/Result प्रमाण अपने पुराने tag पर सुरक्षित है।
 
 [पहले प्रकाशित alpha.14 रिलीज़](/hi/releases/v0.0.6-alpha.14) का मूल प्रमाण सुरक्षित है।
+
+[पिछली alpha.15 release](/hi/releases/v0.0.6-alpha.15) का इतिहास अलग सुरक्षित है।
