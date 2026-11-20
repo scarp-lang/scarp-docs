@@ -1,6 +1,6 @@
 # दस्तावेज़ रखरखाव और रिलीज़ जाँच
 
-Documentation changes compiler के वास्तविक व्यवहार, नाम और रिलीज़ के साथ मेल खाने चाहिए। English और Hindi दोनों भाषाओं के पृष्ठ मिलकर ही एक पूर्ण documentation update हैं। मुख्य language-reference baseline अभी [v0.0.5-alpha.1](/hi/reference/status) पर स्थिर है। अलग से सत्यापित नवीनतम प्रकाशित version [v0.0.6-alpha.15](/hi/releases/v0.0.6-alpha.15) है। उसी पृष्ठ पर वर्तमान डाउनलोड और checksum मिलते हैं।
+Documentation changes compiler के वास्तविक व्यवहार, नाम और रिलीज़ के साथ मेल खाने चाहिए। English और Hindi दोनों भाषाओं के पृष्ठ मिलकर ही एक पूर्ण documentation update हैं। मुख्य language-reference baseline अभी [v0.0.5-alpha.1](/hi/reference/status) पर स्थिर है। अलग से सत्यापित नवीनतम प्रकाशित version [v0.0.6-alpha.16](/hi/releases/v0.0.6-alpha.16) है। उसी पृष्ठ पर वर्तमान डाउनलोड और checksum मिलते हैं।
 
 ## Compiler त्रुटि fixtures
 
