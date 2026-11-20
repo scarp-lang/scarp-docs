@@ -1,6 +1,6 @@
 # दस्तावेज़ रखरखाव और रिलीज़ जाँच
 
-Documentation changes compiler के वास्तविक व्यवहार, नाम और रिलीज़ के साथ मेल खाने चाहिए। English और Hindi दोनों भाषाओं के पृष्ठ मिलकर ही एक पूर्ण documentation update हैं। मुख्य language-reference baseline अभी [v0.0.5-alpha.1](/hi/reference/status) पर स्थिर है। अलग से सत्यापित नवीनतम प्रकाशित version [v0.0.6-alpha.1](/hi/releases/v0.0.6-alpha.1) है। नए इंस्टॉलेशन के लिए [alpha.6 guide](/hi/guide/installation-alpha6) इस्तेमाल करें।
+Documentation changes compiler के वास्तविक व्यवहार, नाम और रिलीज़ के साथ मेल खाने चाहिए। English और Hindi दोनों भाषाओं के पृष्ठ मिलकर ही एक पूर्ण documentation update हैं। मुख्य language-reference baseline अभी [v0.0.5-alpha.1](/hi/reference/status) पर स्थिर है। अलग से सत्यापित नवीनतम प्रकाशित version [v0.0.6-alpha.15](/hi/releases/v0.0.6-alpha.15) है। उसी पृष्ठ पर वर्तमान डाउनलोड और checksum मिलते हैं।
 
 ## Compiler त्रुटि fixtures
 
@@ -14,13 +14,11 @@ Documentation changes compiler के वास्तविक व्यवह�
 
 [Alpha.3 release guide](/hi/releases/v0.0.5-alpha.3) तथा उसका English page **चार पूरे published source/output programs और 11 Git blobs** दिखाते हैं। `npm run check:alpha3` bilingual snippets जाँचता है। `npm run check:alpha3 -- /path/to/tagged-alpha3/examples` से source files की byte comparison होती है। `alpha3-conformance` CI release commit `7715c28df09c7703b39e14fddb963275b25df476` का compiler build करके `npm run test:alpha3 -- /path/to/alpha3/scarp` चलाता है। पुरानी alpha.1 और alpha.2 verification suites अलग रहती हैं।
 
-## TypeScript तथा Vue compatibility
+## TypeScript और साइट बिल्ड
 
-Scarp Docs के .ts और .vue sources की जाँच `vue-tsc` करता है। अभी जाँचा गया समर्थित संयोजन **TypeScript 6.0.x** और **vue-tsc 3.3.x** है। TypeScript 7 में Vue SFC checker के लिए आवश्यक programmatic API अभी उपलब्ध नहीं है, इसलिए `ERR_PACKAGE_PATH_NOT_EXPORTED` आता है। यह upstream integration की सीमा है; TypeScript भाषा को सामान्य रूप से खराब बताने का दावा नहीं।
+`npm run typecheck` रिपॉज़िटरी की configuration के साथ `tsc` चलाता है। साइट और ऑफ़लाइन पैकेज TypeScript की transpilation API पर निर्भर हैं, इसलिए Dependabot major upgrades रोकता है। नया major अपनाने से पहले `check:toolchain`, `test:toolchain`, browser checks, ऑफ़लाइन पैकेज और compiler conformance जाँचें।
 
-**विशिष्ट Vue patch समस्या:** `vue-tsc` **3.3.14** में [template URL code-generation bug](https://github.com/vuejs/language-tools/issues/6322) की रिपोर्ट है। Template attribute में सीधे URL होने पर गलत TS2339/TS7006 error आ सकता है। इसलिए अभी **3.3.13** pinned है और Dependabot केवल **3.3.14 version** को ignore करता है; सुधार आने पर बाद वाला patch अपडेट हो सकेगा। मौजूदा CI पास होने से हर भविष्य का Vue template सही होने की गारंटी नहीं मिलती।
-
-इस कारण npm Dependabot, TypeScript के **major upgrades** फिलहाल रोकता है, लेकिन compatible updates की अनुमति है। `npm run check:toolchain` version और configuration जाँचता है; `npm run test:toolchain` regression cases चलाता है; `npm run typecheck` असली TypeScript तथा Vue sources की जाँच करता है। Vue tooling के आधिकारिक समर्थन और पूरे CI/Pages परीक्षण के बाद ही TypeScript 7 का नया PR स्वीकार करें।
+Scarp का अपना generator `scripts/scarp-site/` में है। `npm run docs:build` दोनों भाषाओं की साइट `docs/.scarp/dist/` में बनाता है। पुराने theme और configuration files की सफ़ाई [Issue #70](https://github.com/scarp-lang/scarp-docs/issues/70) में दर्ज है। शेष validators के migration और production, browser तथा offline checks के बाद ही उन्हें हटाएँ।
 
 ## Local quality checks
 
@@ -46,7 +44,7 @@ npm run docs:build
 
 ## GitHub Actions और Pages
 
-`main` पर merge होने के बाद GitHub Actions static VitePress site को GitHub Pages पर deploy करता है। Workflow की ताज़ा स्थिति और पिछली deployments [Actions history](https://github.com/scarp-lang/scarp-docs/actions/workflows/pages.yml) में देखें। केवल deployment count बढ़ाने के लिए workflow को बार-बार न चलाएँ।
+`main` पर merge होने के बाद GitHub Actions `docs/.scarp/dist/` में बनी static site को GitHub Pages पर deploy करता है। Workflow की ताज़ा स्थिति और पिछली deployments [Actions history](https://github.com/scarp-lang/scarp-docs/actions/workflows/pages.yml) में देखें। केवल deployment count बढ़ाने के लिए workflow को बार-बार न चलाएँ।
 
 ## गुणवत्ता और सुरक्षा
 
