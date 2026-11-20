@@ -50,8 +50,10 @@ jobs:
         run: npm run check:alpha13
       - name: Verify published alpha.14 compiler, provenance and bilingual Rust host APIs
         run: npm run check:alpha14
-      - name: Verify published alpha.15 compiler and bilingual release boundaries
+      - name: Verify historical alpha.15 compiler and bilingual release boundaries
         run: npm run check:alpha15
+      - name: Verify published alpha.16 compiler, pinned fixtures and bilingual guides
+        run: npm run check:alpha16
       - name: Validate Scarp-owned bilingual search and keyboard accessibility
         run: npm run check:hindi-search && npm run test:hindi-search
       - name: Test version-aware bilingual command finder and historical release boundaries
