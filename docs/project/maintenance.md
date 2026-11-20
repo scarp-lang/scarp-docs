@@ -1,6 +1,6 @@
 # Documentation maintenance and release checks
 
-This is the contributor-maintainer process for Scarp Docs. Documentation must describe the **published compiler**, not design proposals or unmerged work. The core language-reference baseline remains intentionally pinned to [v0.0.5-alpha.1](/reference/status); the newest separately verified prerelease is [v0.0.6-alpha.1](/releases/v0.0.6-alpha.1). New installs should follow the [alpha.6 installation guide](/guide/installation-alpha6).
+This is the contributor-maintainer process for Scarp Docs. Documentation must describe the **published compiler**, not design proposals or unmerged work. The core language-reference baseline remains intentionally pinned to [v0.0.5-alpha.1](/reference/status); the current separately verified prerelease is [v0.0.6-alpha.15](/releases/v0.0.6-alpha.15), which provides current downloads and checksums.
 
 ## Compiler failure fixtures
 
@@ -20,29 +20,23 @@ The official website is now authored and rendered by the independent generator i
 
 The same generator can build an isolated comparison copy using npm run scarp:build, verified by npm run scarp:test and npm run scarp:browser-test. The offline package contains this new production output and must pass npm run package:offline, npm run test:offline and npm run test:browser-offline before release.
 
-VitePress/Vue checker dependencies and earlier theme/config source may remain temporarily to preserve historical compiler/docs policy tests. They are no longer used to render Pages; move pure release evidence into neutral modules and update those policy checks before uninstalling the old dependencies. See Issue #70.
+Historical theme and configuration files remain for compatibility with older policy checks. Keep those files until remaining validators are migrated and production, browser, and offline checks pass. Track cleanup in [Issue #70](https://github.com/scarp-lang/scarp-docs/issues/70).
 
 ## Offline Chromium browser acceptance
 
 The dedicated `browser-offline` Documentation CI job installs pinned Playwright/Chromium, builds the Scarp-owned TypeScript site, packages the full English/Hindi offline archive and runs `npm run test:browser-offline` against the **extracted** standalone Node server. This validates release-aware Command Finder availability, keyboard-only version selection, copy-button success and denied-permission fallback, English/Hindi local search, a mobile-width menu, keyboard shortcuts and the restriction that no external resource is requested.
 
-For a local repeat, install dependencies with `npm install`, install Chromium with `npx playwright install chromium` (CI uses the same browser install on GitHub-hosted Ubuntu, which has its required system libraries), run `npm run docs:build && npm run package:offline`, then `npm run test:browser-offline`. Failure screenshots, when possible, are saved under ignored `artifacts/browser-failures/` and uploaded on CI failure. The expanded suite also checks a keyboard-opened empty search state and focus restoration on close (implemented by the small theme-level `local-search-focus.ts` manager from the legacy VitePress 1.6 theme), translated-page switching, skip-to-content link and target, persisted appearance mode across reloads, and usable CLI controls under a reduced-motion viewport. These tests exercise selected interactive controls, not every screen-reader combination or a full WCAG conformance audit; track broader access testing in [Issue #65](https://github.com/scarp-lang/scarp-docs/issues/65). The offline distribution remains pinned to the tested docs commit, and the browser suite has no external-search backend.
+For a local repeat, install dependencies with `npm install`, install Chromium with `npx playwright install chromium` (CI uses the same browser install on GitHub-hosted Ubuntu, which has its required system libraries), run `npm run docs:build && npm run package:offline`, then `npm run test:browser-offline`. Failure screenshots, when possible, are saved under ignored `artifacts/browser-failures/` and uploaded on CI failure. The expanded suite also checks a keyboard-opened empty search state and focus restoration on close, translated-page switching, skip-to-content link and target, persisted appearance mode across reloads, and usable CLI controls under a reduced-motion viewport. These tests exercise selected interactive controls, not every screen-reader combination or a full WCAG conformance audit; track broader access testing in [Issue #65](https://github.com/scarp-lang/scarp-docs/issues/65). The offline distribution remains pinned to the tested docs commit, and the browser suite has no external-search backend.
 
 ## Offline accessibility rule audits
-
-The VitePress 1.6.4 search UI needs small theme-level semantic repairs: `search-trigger-accessibility.ts` derives the desktop search control's name from visible text and labels its icon-only mobile form, while `search-dialog-accessibility.ts` presents the overlay as a properly named modal dialog rather than a button containing interactive descendants. Retest these fixes against the real browser whenever VitePress is upgraded.
 
 The offline browser job now runs **axe-core 4.14.0** from the pinned local npm devDependency against ten extracted-site states: English/Hindi Command Finder in light and dark appearances, a narrow 320 CSS-pixel viewport, an open local-search dialog, and the English/Hindi homepages. It asserts zero automated WCAG A/AA violations, verifies that the browser did not make external network requests, and writes per-state JSON results under ignored `artifacts/browser-a11y/` (uploaded to CI on a failure). The 320px viewport checks reflow; it approximates the content width at 200% browser zoom on a 640 CSS-pixel display, **not** a test of native browser zoom or text-only zoom.
 
 The checks run automatically within `npm run test:browser-offline` after `npm run docs:build && npm run package:offline`. If an audit reports a violation, inspect its concrete rule ID, offending selector and remediation in the uploaded JSON rather than excluding the rule. Review `incomplete` manual-review signals as well. These tests catch common machine-detectable accessibility issues but **cannot establish WCAG compliance**, screen-reader compatibility, color differentiation perception, or real-user navigation quality. Manual assistive-technology review remains tracked under [Issue #65](https://github.com/scarp-lang/scarp-docs/issues/65).
 
-## Supported TypeScript and Vue toolchain
+## Supported TypeScript toolchain
 
-The docs run strict Vue SFC checks through `vue-tsc`. The tested compatibility line is **TypeScript 6.0.x** with **vue-tsc 3.3.x**. TypeScript 7.0 removes the programmatic TypeScript API expected by Vue's checker, causing `ERR_PACKAGE_PATH_NOT_EXPORTED` before actual document diagnostics run. This is an **upstream integration limitation**, not evidence that the TypeScript 7 compiler itself is defective.
-
-**Known patch regression:** `vue-tsc` **3.3.14** has a [reported URL-in-template code-generation bug](https://github.com/vuejs/language-tools/issues/6322) that can introduce false TS2339/TS7006 errors when a Vue template contains a literal URL. The project remains pinned to **3.3.13** and Dependabot ignores **3.3.14 specifically**; it can propose a later patch after an upstream fix. An existing passing CI run is not proof that every future Vue template pattern is safe.
-
-Until Vue tooling supports TypeScript 7, the npm Dependabot configuration ignores TypeScript **major** upgrades. It still permits compatible fixes. `npm run check:toolchain` verifies the dependency and ignore-policy contract, `npm run test:toolchain` mutation-tests it, and `npm run typecheck` checks real .ts and .vue sources. Reconsider this hold only after a new Vue toolchain supports the relevant TypeScript API **and** all GitHub CI and Pages checks pass; do not merge a major dependency PR merely because its diff is small.
+`npm run typecheck` runs `tsc` against the repository configuration. Dependabot holds TypeScript at its current major because the static generator and offline packager use its programmatic transpilation API. The `check:toolchain` and `test:toolchain` scripts enforce the dependency and build-script policy. Requalify the renderer, portable archive, and compiler conformance jobs before changing the major version.
 
 ## Local quality gates
 
@@ -53,7 +47,7 @@ npm run check:fixtures
 npm run docs:build
 ```
 
-Node.js 22 or a runtime satisfying the declared `engines` entry is required. The docs use VitePress and Markdown; no application router or hand-written pages are needed. The conformance job additionally requires Rust/Cargo and the pinned compiler. It runs on GitHub Actions with an explicit upstream source commit.
+Node.js 22 or a runtime satisfying the declared `engines` entry is required. The Scarp-owned generator renders the Markdown sources in both languages. The conformance job additionally requires Rust/Cargo and the pinned compiler. It runs on GitHub Actions with an explicit upstream source commit.
 
 ## Separate release-track gates
 
@@ -65,12 +59,12 @@ The [newly published alpha.2 guide](/releases/v0.0.5-alpha.2) has twelve exact s
 2. Add or update a **release-specific** manifest with the new tag, publication date, source commit and verified capabilities. Update latest-release navigation and the [status matrix](/reference/status). **Do not automatically move `data/compiler-baseline.json`**: the core alpha.1 language-reference baseline changes only after every historic example, output and compatibility assumption is requalified.
 3. Review all statements of feature availability. Distinguish shipped experimental behavior from development-only branches and unavailable proposals.
 4. Copy the new compiler tag's executable examples and `.stdout` files into a separate release-specific conformance fixture set. Pin that **new** manifest and source SHA in `.github/workflows/ci.yml` in the same PR. Keep earlier manifests, source snapshots and CI jobs unchanged unless a separate, tested baseline migration is explicitly approved.
-5. Run `check:docs`, `check:fixtures`, the compiler-evidence path checks, a production VitePress build, and compiler conformance. Fix broken anchors, source links and changed output.
+5. Run `check:docs`, `check:fixtures`, the compiler-evidence path checks, `npm run docs:build` and `npm run check:site-build`, and compiler conformance. Fix broken anchors, source links and changed output.
 6. Confirm that GitHub Pages serves the correct subpath, search loads, and dark/light navigation works on mobile and desktop.
 
 ## GitHub Actions and Pages
 
-The `Documentation CI` workflow validates docs and runs compiler conformance for pull requests and main pushes. The `Deploy official documentation` workflow builds the static site on main, uploads `docs/.vitepress/dist`, and requests a Pages deployment with `pages: write` and `id-token: write`. Repository administrators must select **Settings → Pages → Build and deployment → GitHub Actions** once. A successful workflow is needed before calling the site deployed.
+The `Documentation CI` workflow validates docs and runs compiler conformance for pull requests and main pushes. The `Deploy official documentation` workflow builds the static site on main, uploads `docs/.scarp/dist`, and requests a Pages deployment with `pages: write` and `id-token: write`. Repository administrators must select **Settings → Pages → Build and deployment → GitHub Actions** once. A successful workflow is needed before calling the site deployed.
 
 ## Scope and safety notes
 

@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { extractCodeFences, firstMissingCodeBlock } from './lib/code-fences.ts'
-import { RELEASES } from './lib/command-finder.ts'
+import { LATEST_RELEASE, RELEASES } from './lib/command-finder.ts'
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)))
 const read = (path: string): string => readFileSync(resolve(root, path), 'utf8')
@@ -48,14 +48,12 @@ for (const p of ['docs/releases/' + tag + '.md', 'docs/hi/releases/' + tag + '.m
     '--max-input-line-bytes', '--max-tuple-bytes'
   ]) assert.ok(content.includes(expected), p + ': missing release evidence ' + expected)
 }
-for (const index of ['docs/index.md','docs/hi/index.md']) {
-  assert.ok(read(index).includes('releases/' + tag), index + ': stale homepage version')
-}
 for (const p of [
-  'README.md', 'docs/guide/learning-path.md', 'docs/hi/guide/learning-path.md',
+  'README.md', 'docs/index.md', 'docs/hi/index.md',
+  'docs/guide/learning-path.md', 'docs/hi/guide/learning-path.md',
   'docs/reference/compatibility.md', 'docs/hi/reference/compatibility.md',
   'docs/guide/search-and-navigation.md', 'docs/hi/guide/search-and-navigation.md'
-]) assert.ok(read(p).includes('releases/' + tag), p + ': missing current compiler release')
+]) assert.ok(read(p).includes('releases/' + LATEST_RELEASE), p + ': missing current compiler release')
 
 assert.ok(!read('docs/hi/guide/learning-path.md')
   .includes('[v0.0.6-alpha.6](/hi/releases/v0.0.6-alpha.5)'),
