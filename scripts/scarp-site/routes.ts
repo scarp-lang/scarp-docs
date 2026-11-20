@@ -51,8 +51,16 @@ export function escapeHtml(text: string): string {
 }
 
 export function localLink(href: string, pageSource: string): string {
-  if (!href || href.startsWith('#')) return href
-  if (/^(?:https?:|mailto:|tel:)/i.test(href)) return href
+  if (!href) return href
+  // WHATWG URLs treat backslashes as separators for special schemes, so a
+  // seemingly local \\server path can navigate to another host. Reject raw
+  // controls, whitespace and backslashes before inspecting any URL scheme.
+  // Valid authored spaces belong in percent-encoded URLs (e.g. %20).
+  if (/[\u0000-\u0020\u007f\\]/u.test(href)) return '#'
+  if (href.startsWith('#')) return href
+  // Unlike a bare "https:target", an absolute web link must have // and a host.
+  if (/^https?:\/\/[^/?#]+/i.test(href)) return href
+  if (/^(?:mailto:|tel:)/i.test(href)) return href
   if (/^[a-z][a-z0-9+.-]*:/i.test(href) || href.startsWith('//')) return '#'
 
   // A query string or fragment is not part of the Markdown filename. Split

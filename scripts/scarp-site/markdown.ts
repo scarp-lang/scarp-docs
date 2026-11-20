@@ -45,6 +45,21 @@ export function splitFrontMatter(markdown: string): {matter: FrontMatter; conten
 type MarkdownFence = { marker: '`' | '~'; width: number }
 
 /**
+ * Trusted HTML sentinels must never equal literal author text. A predictable
+ * sentinel can otherwise turn an ordinary paragraph into an extra widget or
+ * callout during post-render replacement.
+ */
+function uniqueTrustedToken(prefix: string, source: string, used: ReadonlyMap<string,string>,
+  start: number): string {
+  let candidate: string
+  let ordinal = start
+  do {
+    candidate = prefix + ordinal++ + 'TOKEN'
+  } while (source.includes(candidate) || used.has(candidate))
+  return candidate
+}
+
+/**
  * Markdown fenced-code detection for the small pre-render transforms below.
  * Opening/closing delimiters are never interpreted as callouts or widgets.
  * Backtick info strings cannot contain backticks; tilde info strings can.
@@ -87,7 +102,7 @@ function containers(source: string): {
     if (open) {
       const kind = open[1]
       const name = (open[2] ?? kind).trim()
-      const token = 'SCARPTRUSTEDBLOCK'+counter+++'TOKEN'
+      const token = uniqueTrustedToken('SCARPTRUSTEDBLOCK',source,trusted,counter++)
       const element = kind === 'details'
         ? '<details class="scarp-callout"><summary>'+escapeHtml(name)+'</summary>'
         : '<aside class="scarp-callout scarp-'+kind+'"><strong>'+escapeHtml(name)+'</strong>'
@@ -98,7 +113,7 @@ function containers(source: string): {
     }
     if (/^:::\s*$/.test(line) && stack.length) {
       const kind=stack.pop()
-      const token = 'SCARPTRUSTEDBLOCK'+counter+++'TOKEN'
+      const token = uniqueTrustedToken('SCARPTRUSTEDBLOCK',source,trusted,counter++)
       trusted.set(token,kind==='details'?'</details>':'</aside>')
       output.push('',token,'')
       continue
@@ -149,7 +164,7 @@ function widgetPlaceholders(source: string): { markdown: string; trusted: Map<st
       continue
     }
     const kind = widget[1] as keyof typeof templates
-    const token = 'SCARPWIDGET'+kind.toUpperCase()+count+++'TOKEN'
+    const token = uniqueTrustedToken('SCARPWIDGET'+kind.toUpperCase(),source,trusted,count++)
     trusted.set(token, templates[kind])
     lines.push('', token, '')
   }
@@ -229,7 +244,14 @@ export function renderMarkdown(markdown: string, source: string): RenderedPage {
   let html=renderer.renderer.render(tokens,renderer.options,env)
   const placeholders=new Map([...widgets.trusted,...blocks.trusted])
   for (const [token, trusted] of placeholders) {
-    html=html.replaceAll('<p>'+token+'</p>',trusted)
+    const marker = '<p>' + token + '</p>'
+    const first = html.indexOf(marker)
+    // An HTML entity can decode to a marker that was absent from the source.
+    // Never allow a decoded duplicate to gain trusted HTML capabilities.
+    if (first < 0 || html.indexOf(marker,first + marker.length) >= 0) {
+      throw new Error('Ambiguous trusted Markdown placeholder: ' + token)
+    }
+    html = html.replace(marker,trusted)
   }
   // Trust no raw author HTML: only the explicitly handled widget/callout tags
   // are ever injected AFTER markdown-it's HTML-escaping parse.
