@@ -6,7 +6,8 @@ Scarp के शुरुआती prereleases में syntax और API ब�
 
 | संस्करण | प्रमुख प्रकाशित सुविधा |
 | --- | --- |
-| **[v0.0.6-alpha.15](/hi/releases/v0.0.6-alpha.15)** | **नवीनतम (19 नवंबर):** 1 MiB निरीक्षण सीमा, UTF-8 string comparison budget, loader revision checks और checked ELF64 shifts; native compiler CLI नहीं |
+| **[v0.0.6-alpha.16](/hi/releases/v0.0.6-alpha.16)** | **नवीनतम (20 नवंबर):** pure `median`/`quantile`, Unicode text utilities, checked 64-bit integers तथा Rust cache limits; अभी interpreter CLI, general native compiler नहीं |
+| **[v0.0.6-alpha.15](/hi/releases/v0.0.6-alpha.15)** | **पूर्व (19 नवंबर):** 1 MiB निरीक्षण सीमा, UTF-8 string comparison budget, loader revision checks और checked ELF64 shifts; native compiler CLI नहीं |
 | **[v0.0.6-alpha.14](/hi/releases/v0.0.6-alpha.14)** | **पूर्व (18 नवंबर):** nested pattern diagnostics, Rust editor-cache quotas तथा checked ELF64 host API; सामान्य native compilation नहीं |
 | **[v0.0.6-alpha.13](/hi/releases/v0.0.6-alpha.13)** | **पिछला (17 नवंबर):** Rust cache revision eviction, editor workspace generation और Option/Result में immutable payload reuse; नया Scarp syntax या CLI नहीं |
 | **[v0.0.6-alpha.12](/hi/releases/v0.0.6-alpha.12)** | **पूर्व प्रकाशित (16 नवंबर 2026):** typed records, exhaustive variants, Option/Result, immutable lists/maps और tested task-board; interpreter-only aggregates |
