@@ -10,7 +10,7 @@ Use the interactive tool below to select **the exact published compiler version*
 
 First confirm your actual executable. On alpha.3 and later, use `scarp version`; for alpha.1/alpha.2, use `scarp --version`. Replace `FILE.srp` with the path to a source file and `PROJECT_DIRECTORY` with the path of an existing project containing `Scarp.project`. For `scarp create demo`, choose a **new, nonexistent** directory; that command writes a scaffold and refuses to overwrite existing files.
 
-The command finder is **client-side and offline after the page loads**. It does not query GitHub, detect the executable on your computer, run Scarp programs or read your files. Its reference links point to separately verified release documentation. The **latest published release is [v0.0.6-alpha.15](/releases/v0.0.6-alpha.15)**, not the compiler's moving `main` branch.
+The command finder is **client-side and offline after the page loads**. It does not query GitHub, detect the executable on your computer, run Scarp programs or read your files. Its reference links point to separately verified release documentation. The **latest published release is [v0.0.6-alpha.16](/releases/v0.0.6-alpha.16)**, not the compiler's moving `main` branch.
 
 ## Where the release boundaries come from
 
@@ -61,3 +61,5 @@ Published [v0.0.6-alpha.9](/releases/v0.0.6-alpha.9) adds `scarp test --json=v2`
 The published compiler adds `--interactive` and `--input-file PATH`. Follow the [input guide](/tooling/interactive-input-alpha10) and the [arrays guide](/language/fixed-arrays-alpha10). Older release selections keep their original capability boundaries.
 
 [Historical alpha.14](/releases/v0.0.6-alpha.14) remains available in the version selector.
+
+[Earlier alpha.15 release](/releases/v0.0.6-alpha.15) remains available with its original compiler boundaries.
