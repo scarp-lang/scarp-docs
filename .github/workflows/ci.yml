@@ -684,3 +684,38 @@ jobs:
         run: npm run test:alpha15-compiler -- .compiler-alpha15/target/debug/scarp
       - name: Run tagged alpha.15 Rust regressions
         run: cargo test --manifest-path .compiler-alpha15/Cargo.toml --locked --offline --test text_comparison_budget --test editor_source_revisions --test native_object_checked --test scarp_inspect_ast
+
+  alpha16-conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: scarp-lang/scarp
+          ref: 244f713b4fa48f02a98b8e3e3c11025363f35260
+          path: .compiler-alpha16
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Install documentation TypeScript tooling
+        run: npm install --no-audit --no-fund
+      - name: Verify exact published compiler source
+        run: test "$(git -C .compiler-alpha16 rev-parse HEAD)" = "244f713b4fa48f02a98b8e3e3c11025363f35260"
+      - name: Verify immutable alpha.16 manifests and bilingual pages
+        run: npm run check:alpha16
+      - name: Verify tagged source and expected output bytes
+        run: |
+          for name in order_statistics core_collections; do
+            for extension in srp stdout; do
+              diff -u ".compiler-alpha16/examples/$name.$extension" "conformance/alpha16/$name.$extension"
+            done
+          done
+          diff -u .compiler-alpha16/examples/modules/collection_tools.srp conformance/alpha16/modules/collection_tools.srp
+      - name: Build exact published alpha.16 compiler
+        run: cargo build --manifest-path .compiler-alpha16/Cargo.toml --locked --offline
+      - name: Run tagged alpha.16 documentation programs
+        run: npm run test:alpha16-compiler -- .compiler-alpha16/target/debug/scarp
+      - name: Run tagged alpha.16 Rust statistics, Unicode, cache and collections regressions
+        run: |
+          cargo test --manifest-path .compiler-alpha16/Cargo.toml --locked --offline --test order_statistics --test text_unicode_transforms --test unicode_codepoint_search --test core_collections --test module_constant_cache
