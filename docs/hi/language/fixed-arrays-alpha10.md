@@ -59,3 +59,14 @@ scarp exec examples/fixed_arrays.srp
 Alpha.10 में exact powers, gcd/lcm, integer square root, bit length, radix conversion 2–36, signed bitwise और shifts, modular exponentiation, और `bigint_divmod` हैं। सब पर budgets हैं; modular exponentiation variable-time है।
 
 Array types होने पर module JSON schema 3 प्रयोग होता है। General native compile CLI उपलब्ध नहीं है।
+
+## alpha.16 के बाद के डेवलपमेंट बिल्ड
+
+`array_len(values)` से `repeat` लूप के लिए ऐरे की लंबाई मिलती है।
+इंडेक्स ऋणात्मक हो या ऐरे की सीमा से बाहर हो, तो
+`array_get_or(values, index, fallback)` डिफ़ॉल्ट मान देता है। यह मान ऐरे के
+एलिमेंट के ठीक उसी टाइप का होना चाहिए और सही इंडेक्स पर भी एक बार
+मूल्यांकित होता है। इन सुविधाओं के लिए डेवलपमेंट कंपाइलर चाहिए।
+[ऐरे पर लूप का उदाहरण](https://github.com/scarp-lang/scarp/blob/976a5ce33bfd66cf5a916f3c0c0a8b0ea6001048/examples/array_traversal.srp)
+और [अपेक्षित आउटपुट](https://github.com/scarp-lang/scarp/blob/976a5ce33bfd66cf5a916f3c0c0a8b0ea6001048/examples/array_traversal.stdout)
+देखें।

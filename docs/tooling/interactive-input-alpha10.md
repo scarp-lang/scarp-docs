@@ -70,3 +70,11 @@ scarp exec --interactive examples/interactive/typed_calculator.srp < examples/in
 `ask_or` uses fallback only at EOF, not a genuine blank line. `try_read_line()` returns `(false, "")` at EOF and `(true, "")` for a blank line. `flush_stdout()` and `flush_stderr()` publish streams during interactive execution.
 
 Project tests compare byte-exact `.stdin`, `.stdout` and `.stderr` fixtures. JSON v1/v2 omit output streams; user-authored diagnostic messages may still contain private text. Execute only trusted code.
+
+## Development builds after alpha.16
+
+`input_boolean(prompt)` accepts the exact lowercase literals `true` and
+`false` with `--interactive`. An invalid line reports E0084. End of input
+before a line reports E0055. See the
+[Boolean prompt example](https://github.com/scarp-lang/scarp/blob/82237c9497caa9ea165e37683561cd45c9438cfb/examples/interactive/boolean_prompt.srp)
+and its [input fixture](https://github.com/scarp-lang/scarp/blob/82237c9497caa9ea165e37683561cd45c9438cfb/examples/interactive/boolean_prompt.stdin).
