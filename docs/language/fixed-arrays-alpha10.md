@@ -59,3 +59,12 @@ scarp exec examples/fixed_arrays.srp
 Alpha.10 adds exact powers, gcd/lcm, integer square roots, bit length, radix conversion 2–36, signed bitwise and shifts, modular exponentiation, and `bigint_divmod`. Budgets apply and modular exponentiation is variable-time.
 
 Module inventories with array types use schema 3. General native compilation remains unavailable.
+
+## Development builds after alpha.16
+
+`array_len(values)` gives the count for a `repeat` loop. Use
+`array_get_or(values, index, fallback)` to handle a negative or out-of-range
+index. The fallback has the array's exact element type and evaluates once
+even when the index is valid. These helpers require a development compiler.
+See the [array traversal example](https://github.com/scarp-lang/scarp/blob/976a5ce33bfd66cf5a916f3c0c0a8b0ea6001048/examples/array_traversal.srp)
+and its [expected output](https://github.com/scarp-lang/scarp/blob/976a5ce33bfd66cf5a916f3c0c0a8b0ea6001048/examples/array_traversal.stdout).
