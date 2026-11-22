@@ -1,0 +1,34 @@
+{
+  "compilerRepository": "scarp-lang/scarp",
+  "compilerRef": "v0.0.6-alpha.17",
+  "compilerCommit": "7831a37939965f557ce746e1d86bf82d3d629f74",
+  "releasedAt": "2026-11-21T03:44:23Z",
+  "status": "published-prerelease",
+  "cases": [
+    {
+      "source": "examples/array_traversal.srp",
+      "localSource": "conformance/alpha17/array_traversal.srp",
+      "gitBlobSha": "b88e2e700f9e8d4a5ca5f12a315a10621e3854fe"
+    },
+    {
+      "source": "examples/array_traversal.stdout",
+      "localSource": "conformance/alpha17/array_traversal.stdout",
+      "gitBlobSha": "ffd8738f199c0ae4da530c1ac41a1679bf921a58"
+    },
+    {
+      "source": "examples/interactive/boolean_prompt.srp",
+      "localSource": "conformance/alpha17/interactive/boolean_prompt.srp",
+      "gitBlobSha": "5379f5ba6e2b2410e0066f80311705b7edf91dbb"
+    },
+    {
+      "source": "examples/interactive/boolean_prompt.stdin",
+      "localSource": "conformance/alpha17/interactive/boolean_prompt.stdin",
+      "gitBlobSha": "da29283aaa47cd5d0ac424a424fe51351b767933"
+    },
+    {
+      "source": "examples/interactive/boolean_prompt.stdout",
+      "localSource": "conformance/alpha17/interactive/boolean_prompt.stdout",
+      "gitBlobSha": "daebc3e130858e0d3439ca3b3c4248ef59a597db"
+    }
+  ]
+}

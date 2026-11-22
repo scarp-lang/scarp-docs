@@ -36,7 +36,9 @@ const publishedReleases = [
   ['v0.0.6-alpha.13', 'e755fda37cdaeed29434e848cb5dd41f2f2e7eb2'],
   ['v0.0.6-alpha.14', '43627b74af5fccccc5e233e98207413983ebafc1'],
   ['v0.0.6-alpha.15', 'a21b7b6d942bd1ca9abbbbb522f92f9c8e21e281'],
-  ['v0.0.6-alpha.16', '244f713b4fa48f02a98b8e3e3c11025363f35260']
+  ['v0.0.6-alpha.16', '244f713b4fa48f02a98b8e3e3c11025363f35260'],
+  ['v0.0.6-alpha.17', '7831a37939965f557ce746e1d86bf82d3d629f74'],
+  ['v0.0.6-alpha.18', '84d8de05968a488773e7c5b6eda1376d8957553c']
 ]
 const firstSupported = [
   ['run-file', 0],
@@ -46,11 +48,11 @@ const firstSupported = [
   ['inspect-symbols', 5],
   ['diagnose-host', 2],
   ['inspect-ast', 2],
-  ['init-project', 12], ['test-project', 12], ['project-info', 12], ['test-json-v2', 13]
+  ['init-project', 12], ['test-project', 12], ['project-info', 12], ['test-json-v2', 13], ['exec-default', 22]
 ]
 const noteKeys = [
   'legacy-run', 'exec', 'verify', 'project', 'modules', 'symbols', 'diagnose', 'ast',
-  'init', 'test', 'info', 'testv2'
+  'init', 'test', 'info', 'testv2', 'exec-default'
 ] as const
 
 type FinderRelease = { tag: string; source: string }
@@ -73,7 +75,7 @@ export function validateCommandFinder(
   }
 
   if (JSON.stringify(releases.map(r => [r.tag,r.source])) !== JSON.stringify(publishedReleases)) {
-    errors.push('Release list must match twenty exact published compiler tag commits in order')
+    errors.push('Release list must match twenty-three exact published compiler tag commits in order')
   }
   if (JSON.stringify(tasks.map(t => [t.id,t.first])) !== JSON.stringify(firstSupported)) {
     errors.push('Task availability boundaries differ from the published tagged CLI')

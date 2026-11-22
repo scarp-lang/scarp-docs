@@ -1,6 +1,6 @@
 # Scarp का परिचय
 
-**नवीनतम प्रकाशित compiler [v0.0.6-alpha.16](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.16) है।** Alpha.16 में pure `median`/`quantile`, Unicode text functions, checked 64-bit integer intrinsics और Rust host cache limits हैं। Experimental interpreter में typed records, variants, Option/Result, lists/maps और task-board भी प्रकाशित हैं। [रिलीज़](/hi/releases/v0.0.6-alpha.16) · [Task-board tutorial](/hi/tutorials/task-board-alpha12) · [Learning path](/hi/guide/learning-path)।
+**नवीनतम प्रकाशित compiler [v0.0.6-alpha.18](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.18) है।** Alpha.18 में filename के बिना `scarp exec`, immutable `array_set` और Lifetime के empty-window सुधार हैं। [पिछली alpha.17](/hi/releases/v0.0.6-alpha.17) में `array_len`, `array_get_or` और `input_boolean` आए। यह अभी experimental interpreter है। [रिलीज़](/hi/releases/v0.0.6-alpha.18) · [Exec/Lifetime](/hi/guide/exec-and-lifetime-alpha18) · [Learning path](/hi/guide/learning-path)।
 
 [पिछली alpha.15 रिलीज़](/hi/releases/v0.0.6-alpha.15) की सीमाएँ मूल source के साथ सुरक्षित हैं।
 
@@ -29,3 +29,5 @@ print(message);
 ~~~
 
 [पिछली alpha.14 रिलीज़](/hi/releases/v0.0.6-alpha.14) के दस्तावेज़ ऐतिहासिक version पर सुरक्षित हैं।
+
+[पुराने alpha.16 release](/hi/releases/v0.0.6-alpha.16) के statistics और Unicode examples अपने मूल compiler tag के साथ सुरक्षित हैं।

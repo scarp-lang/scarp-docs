@@ -10,7 +10,7 @@ Use the interactive tool below to select **the exact published compiler version*
 
 First confirm your actual executable. On alpha.3 and later, use `scarp version`; for alpha.1/alpha.2, use `scarp --version`. Replace `FILE.srp` with the path to a source file and `PROJECT_DIRECTORY` with the path of an existing project containing `Scarp.project`. For `scarp create demo`, choose a **new, nonexistent** directory; that command writes a scaffold and refuses to overwrite existing files.
 
-The command finder is **client-side and offline after the page loads**. It does not query GitHub, detect the executable on your computer, run Scarp programs or read your files. Its reference links point to separately verified release documentation. The **latest published release is [v0.0.6-alpha.16](/releases/v0.0.6-alpha.16)**, not the compiler's moving `main` branch.
+The command finder is **client-side and offline after the page loads**. It does not query GitHub, detect the executable on your computer, run Scarp programs or read your files. Its reference links point to separately verified release documentation. The **latest published release is [v0.0.6-alpha.18](/releases/v0.0.6-alpha.18)**, not the compiler's moving `main` branch.
 
 ## Where the release boundaries come from
 
@@ -63,3 +63,5 @@ The published compiler adds `--interactive` and `--input-file PATH`. Follow the 
 [Historical alpha.14](/releases/v0.0.6-alpha.14) remains available in the version selector.
 
 [Earlier alpha.15 release](/releases/v0.0.6-alpha.15) remains available with its original compiler boundaries.
+
+**New alpha.18 Command Finder task:** choose **Run the current project or default entrypoint**. Only [v0.0.6-alpha.18](/releases/v0.0.6-alpha.18) supports `scarp exec` with no source path; this behavior was unavailable in [alpha.17](/releases/v0.0.6-alpha.17). See the [exec and Lifetime guide](/guide/exec-and-lifetime-alpha18) for safe manifest selection and the [historical alpha.16 release](/releases/v0.0.6-alpha.16) for older behavior.

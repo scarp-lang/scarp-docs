@@ -28,11 +28,13 @@ export const RELEASES = [
   { tag: 'v0.0.6-alpha.13', label: 'v0.0.6-alpha.13', source: 'e755fda37cdaeed29434e848cb5dd41f2f2e7eb2' },
   { tag: 'v0.0.6-alpha.14', label: 'v0.0.6-alpha.14', source: '43627b74af5fccccc5e233e98207413983ebafc1' },
   { tag: 'v0.0.6-alpha.15', label: 'v0.0.6-alpha.15', source: 'a21b7b6d942bd1ca9abbbbb522f92f9c8e21e281' },
-  { tag: 'v0.0.6-alpha.16', label: 'v0.0.6-alpha.16 (latest)', source: '244f713b4fa48f02a98b8e3e3c11025363f35260' }
+  { tag: 'v0.0.6-alpha.16', label: 'v0.0.6-alpha.16', source: '244f713b4fa48f02a98b8e3e3c11025363f35260' },
+  { tag: 'v0.0.6-alpha.17', label: 'v0.0.6-alpha.17', source: '7831a37939965f557ce746e1d86bf82d3d629f74' },
+  { tag: 'v0.0.6-alpha.18', label: 'v0.0.6-alpha.18 (latest)', source: '84d8de05968a488773e7c5b6eda1376d8957553c' }
 ] as const
 
 export type ReleaseTag = (typeof RELEASES)[number]['tag']
-export const LATEST_RELEASE: ReleaseTag = 'v0.0.6-alpha.16'
+export const LATEST_RELEASE: ReleaseTag = 'v0.0.6-alpha.18'
 
 export const TASKS = [
   { id: 'run-file', en: 'Run a source file', hi: 'Source file चलाएँ', first: 0, reference: '/tooling/cli-alpha1' },
@@ -45,11 +47,12 @@ export const TASKS = [
   { id: 'init-project', en: 'Initialize a declarative project', hi: 'नया declarative project बनाएँ', first: 12, reference: '/tooling/project-alpha8' },
   { id: 'test-project', en: 'Run or list project tests', hi: 'Project tests चलाएँ या सूची देखें', first: 12, reference: '/tooling/project-alpha8' },
   { id: 'project-info', en: 'Inspect project metadata', hi: 'Project metadata देखें', first: 12, reference: '/tooling/project-alpha8' },
-  { id: 'test-json-v2', en: 'Get structured test failures', hi: 'संरचित test errors देखें', first: 13, reference: '/tooling/test-json-v2-alpha9' }
+  { id: 'test-json-v2', en: 'Get structured test failures', hi: 'संरचित test errors देखें', first: 13, reference: '/tooling/test-json-v2-alpha9' },
+  { id: 'exec-default', en: 'Run the current project or default entrypoint', hi: 'वर्तमान project या default file चलाएँ', first: 22, reference: '/guide/exec-and-lifetime-alpha18' }
 ] as const
 
 export type CommandTask = (typeof TASKS)[number]['id']
-export type NoteKey = 'legacy-run' | 'exec' | 'verify' | 'project' | 'modules' | 'symbols' | 'diagnose' | 'ast' | 'init' | 'test' | 'info' | 'testv2'
+export type NoteKey = 'legacy-run' | 'exec' | 'verify' | 'project' | 'modules' | 'symbols' | 'diagnose' | 'ast' | 'init' | 'test' | 'info' | 'testv2' | 'exec-default'
 
 export interface CommandAdvice {
   release: ReleaseTag
@@ -85,6 +88,9 @@ export function commandAdvice(release: ReleaseTag, task: CommandTask): CommandAd
           versionIndex === 3 ? '/tooling/cli-alpha4' :
           versionIndex === 4 ? '/tooling/cli-alpha5' : '/tooling/cli-alpha6',
         note: versionIndex <= 1 ? 'legacy-run' : 'exec' }
+    case 'exec-default':
+      return { ...result, commands: ['scarp exec'],
+        reference: '/guide/exec-and-lifetime-alpha18', note: 'exec-default' }
     case 'static-verify':
       return { ...result, commands: ['scarp verify FILE.srp'], note: 'verify' }
     case 'create-project':
@@ -145,6 +151,7 @@ export const FINDER_TEXT = {
     notes: {
       'legacy-run': 'Before alpha.3, use run. The historical check command can evaluate runtime paths; it is not static verify.',
       exec: 'Exec runs through the Scarp interpreter, not a native compiled executable.',
+      'exec-default': 'Alpha.18 selects the current project manifest, otherwise src/main.srp then main.srp. A malformed manifest never falls back; exec runs in the interpreter.',
       verify: 'Verify checks source and imports without executing ordinary runtime statements.',
       project: 'Create writes a new directory and refuses to overwrite an existing one. Launch runs its entrypoint through the interpreter.',
       modules: 'Project inspection needs an explicit directory containing Scarp.project and does not run program statements.',
@@ -175,6 +182,7 @@ export const FINDER_TEXT = {
     notes: {
       'legacy-run': 'Alpha.3 से पहले run प्रयोग करें। पुराना check runtime के कुछ भाग चलाता है; यह static verify नहीं है।',
       exec: 'Exec, Scarp interpreter से चलता है; native executable compilation नहीं करता।',
+      'exec-default': 'Alpha.18 में मौजूदा project manifest, फिर src/main.srp और उसके बाद main.srp चुना जाता है। गलत manifest पर fallback नहीं होता; यह interpreter command है।',
       verify: 'Verify सामान्य program statements चलाए बिना source और imports की static जाँच करता है।',
       project: 'Create नया directory बनाता है; पुराने folder को overwrite नहीं करता। Launch interpreter से entrypoint चलाता है।',
       modules: 'Project inspection में स्पष्ट Scarp.project directory चाहिए। यह program statements नहीं चलाता।',

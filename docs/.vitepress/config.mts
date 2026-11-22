@@ -56,7 +56,7 @@ export default defineConfig({
           { text: 'इंस्टॉल', link: '/hi/guide/installation-alpha6' },
           { text: 'उदाहरण', link: '/hi/examples/' },
           { text: 'रिलीज़', items: [
-            { text: 'नवीनतम: v0.0.6-alpha.1', link: '/hi/releases/v0.0.6-alpha.1' },
+            { text: 'नवीनतम: v0.0.6-alpha.18', link: '/hi/releases/v0.0.6-alpha.18' },
             { text: 'CLI (alpha.6)', link: '/hi/tooling/cli-alpha6' },
             { text: 'CLI (alpha.5)', link: '/hi/tooling/cli-alpha5' },
             { text: 'CLI (alpha.4)', link: '/hi/tooling/cli-alpha4' },
@@ -125,6 +125,8 @@ export default defineConfig({
           { text: 'टूलिंग और संदर्भ', items: [
             { text: 'CLI (alpha.6) — symbols', link: '/hi/tooling/cli-alpha6' },
             { text: 'CLI Command Finder', link: '/hi/tooling/command-finder' },
+            { text: 'Exec और Lifetime (alpha.18)', link: '/hi/guide/exec-and-lifetime-alpha18' },
+            { text: 'Array traversal (alpha.17)', link: '/hi/language/array-traversal-alpha17' },
             { text: 'Compiler diagnose (alpha.6)', link: '/hi/tooling/diagnose-alpha6' },
             { text: 'AST debugging (alpha.6)', link: '/hi/tooling/inspect-ast-alpha6' },
             { text: 'CLI संदर्भ (alpha.5)', link: '/hi/tooling/cli-alpha5' },

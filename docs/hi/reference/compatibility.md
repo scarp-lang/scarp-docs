@@ -6,6 +6,8 @@ Scarp के शुरुआती prereleases में syntax और API ब�
 
 | संस्करण | प्रमुख प्रकाशित सुविधा |
 | --- | --- |
+| **[v0.0.6-alpha.18](/hi/releases/v0.0.6-alpha.18)** | **नवीनतम (22 नवंबर):** बिना filename `scarp exec`, immutable `array_set` और Lifetime memory सुधार; general native compiler नहीं |
+| **[v0.0.6-alpha.17](/hi/releases/v0.0.6-alpha.17)** | **पिछली (21 नवंबर):** `array_len`, `array_get_or`, `input_boolean` और सटीक type diagnostics |
 | **[v0.0.6-alpha.16](/hi/releases/v0.0.6-alpha.16)** | **नवीनतम (20 नवंबर):** pure `median`/`quantile`, Unicode text utilities, checked 64-bit integers तथा Rust cache limits; अभी interpreter CLI, general native compiler नहीं |
 | **[v0.0.6-alpha.15](/hi/releases/v0.0.6-alpha.15)** | **पूर्व (19 नवंबर):** 1 MiB निरीक्षण सीमा, UTF-8 string comparison budget, loader revision checks और checked ELF64 shifts; native compiler CLI नहीं |
 | **[v0.0.6-alpha.14](/hi/releases/v0.0.6-alpha.14)** | **पूर्व (18 नवंबर):** nested pattern diagnostics, Rust editor-cache quotas तथा checked ELF64 host API; सामान्य native compilation नहीं |

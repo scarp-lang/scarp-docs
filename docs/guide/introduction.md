@@ -1,6 +1,6 @@
 # Introduction to Scarp
 
-**Latest published compiler: [v0.0.6-alpha.16](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.16).** Alpha.16 adds pure `median`/`quantile`, Unicode text functions, checked 64-bit integer intrinsics and Rust host cache limits. The experimental interpreter also ships typed records, variants, Option/Result, lists/maps and the tested task-board. [Release](/releases/v0.0.6-alpha.16) · [Task-board tutorial](/tutorials/task-board-alpha12) · [Learning path](/guide/learning-path).
+**Latest published compiler: [v0.0.6-alpha.18](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.18).** Alpha.18 adds zero-argument `scarp exec`, immutable `array_set` and empty-window Lifetime improvements; [alpha.17](/releases/v0.0.6-alpha.17) added `array_len`, `array_get_or` and `input_boolean`. These remain interpreter prereleases, not a general native compiler. [Release](/releases/v0.0.6-alpha.18) · [Exec/Lifetime guide](/guide/exec-and-lifetime-alpha18) · [Learning path](/guide/learning-path).
 
 [Previous alpha.15 release](/releases/v0.0.6-alpha.15) retains its separately verified source and CLI boundaries.
 
@@ -29,3 +29,5 @@ For new projects, choose the [learning path](/guide/learning-path) and the [publ
 **Verified against:** [compiler README](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/README.md), [reference](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/docs/language.md).
 
 [Previous alpha.14 release](/releases/v0.0.6-alpha.14) retains its own historical validation.
+
+The [historical alpha.16 release](/releases/v0.0.6-alpha.16) preserves separate statistics and Unicode conformance evidence.

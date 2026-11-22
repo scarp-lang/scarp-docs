@@ -52,8 +52,12 @@ jobs:
         run: npm run check:alpha14
       - name: Verify historical alpha.15 compiler and bilingual release boundaries
         run: npm run check:alpha15
-      - name: Verify published alpha.16 compiler, pinned fixtures and bilingual guides
+      - name: Verify historical alpha.16 compiler, pinned fixtures and bilingual guides
         run: npm run check:alpha16
+      - name: Verify published alpha.17 immutable array traversal and Boolean input evidence
+        run: npm run check:alpha17
+      - name: Verify published alpha.18 exec, immutable arrays and Lifetime evidence
+        run: npm run check:alpha18
       - name: Validate Scarp-owned bilingual search and keyboard accessibility
         run: npm run check:hindi-search && npm run test:hindi-search
       - name: Test version-aware bilingual command finder and historical release boundaries
@@ -719,3 +723,70 @@ jobs:
       - name: Run tagged alpha.16 Rust statistics, Unicode, cache and collections regressions
         run: |
           cargo test --manifest-path .compiler-alpha16/Cargo.toml --locked --offline --test order_statistics --test text_unicode_transforms --test unicode_codepoint_search --test core_collections --test module_constant_cache
+
+
+  alpha17-conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: scarp-lang/scarp
+          ref: 7831a37939965f557ce746e1d86bf82d3d629f74
+          path: .compiler-alpha17
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Install TypeScript tooling
+        run: npm install --no-audit --no-fund
+      - name: Pin published alpha.17 source revision
+        run: test "$(git -C .compiler-alpha17 rev-parse HEAD)" = "7831a37939965f557ce746e1d86bf82d3d629f74"
+      - name: Validate bilingual release, source hashes and downloads
+        run: npm run check:alpha17
+      - name: Compare immutable compiler example bytes
+        run: |
+          diff -u .compiler-alpha17/examples/array_traversal.srp conformance/alpha17/array_traversal.srp
+          diff -u .compiler-alpha17/examples/array_traversal.stdout conformance/alpha17/array_traversal.stdout
+          for extension in srp stdin stdout; do
+            diff -u ".compiler-alpha17/examples/interactive/boolean_prompt.$extension" "conformance/alpha17/interactive/boolean_prompt.$extension"
+          done
+      - name: Build exact published alpha.17 interpreter
+        run: cargo build --manifest-path .compiler-alpha17/Cargo.toml --locked --offline
+      - name: Execute exact alpha.17 compiler-backed tutorials
+        run: npm run test:alpha17-compiler -- .compiler-alpha17/target/debug/scarp
+
+  alpha18-conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: scarp-lang/scarp
+          ref: 84d8de05968a488773e7c5b6eda1376d8957553c
+          path: .compiler-alpha18
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Install TypeScript tooling
+        run: npm install --no-audit --no-fund
+      - name: Pin published alpha.18 source revision
+        run: test "$(git -C .compiler-alpha18 rev-parse HEAD)" = "84d8de05968a488773e7c5b6eda1376d8957553c"
+      - name: Validate bilingual release, source hashes and downloads
+        run: npm run check:alpha18
+      - name: Compare immutable compiler examples and expected outputs
+        run: |
+          for name in array_updates lifetime_windows; do
+            for extension in srp stdout; do
+              diff -u ".compiler-alpha18/examples/$name.$extension" "conformance/alpha18/$name.$extension"
+            done
+          done
+      - name: Build exact published alpha.18 interpreter
+        run: cargo build --manifest-path .compiler-alpha18/Cargo.toml --locked --offline
+      - name: Execute exact alpha.18 arrays, Lifetime and exec-selection tests
+        run: npm run test:alpha18-compiler -- .compiler-alpha18/target/debug/scarp
+      - name: Run published Lifetime retention regression suites
+        run: |
+          cargo test --manifest-path .compiler-alpha18/Cargo.toml --locked --offline --test lifetime_windows
+          cargo test --manifest-path .compiler-alpha18/Cargo.toml --locked --offline --lib lifetime_storage_tests
