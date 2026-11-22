@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { extractCodeFences, firstMissingCodeBlock } from './lib/code-fences.ts'
-import { LATEST_RELEASE, RELEASES, commandAdvice } from './lib/command-finder.ts'
+import { RELEASES, commandAdvice } from './lib/command-finder.ts'
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)))
 const read = (path: string): string => readFileSync(resolve(root, path), 'utf8')
@@ -18,18 +18,15 @@ interface Manifest {
   cases?: Case[]; assets?: string[]
 }
 const evidence = JSON.parse(read('conformance/alpha16-manifest.json')) as Manifest
-const latest = JSON.parse(read('data/compiler-latest-release.json')) as Manifest
-for (const record of [evidence, latest]) {
+for (const record of [evidence]) {
   assert.equal(record.compilerRepository, 'scarp-lang/scarp')
   assert.equal(record.compilerRef, tag)
   assert.equal(record.compilerCommit, source)
   assert.equal(record.releasedAt, published)
   assert.equal(record.status, 'published-prerelease')
 }
-assert.equal(latest.historicalReferenceBaseline, 'v0.0.5-alpha.1')
-assert.equal(LATEST_RELEASE, tag)
-assert.equal(RELEASES.at(-1)?.tag, tag)
-assert.equal(RELEASES.at(-1)?.source, source)
+assert.equal(RELEASES.find(item => item.tag === tag)?.source, source)
+assert.notEqual(RELEASES.at(-1)?.tag, tag, 'Historical alpha.16 must not remain latest')
 assert.equal(commandAdvice(tag, 'run-file').commands[0], 'scarp exec FILE.srp')
 assert.equal(commandAdvice(tag, 'test-json-v2').supported, true)
 const expected = [
@@ -49,8 +46,7 @@ for (const item of evidence.cases ?? []) {
 }
 const suffixes = ['x86_64-pc-windows-msvc.zip',
   'x86_64-unknown-linux-gnu.tar.gz', 'aarch64-apple-darwin.tar.gz']
-assert.deepEqual(latest.assets,
-  suffixes.map(s => 'scarp-0.0.6-alpha.16-' + s).concat('SHA256SUMS'))
+
 for (const [prefix, label] of [['','English'], ['hi/','Hindi']] as const) {
   const release = read('docs/' + prefix + 'releases/' + tag + '.md')
   const guide = read('docs/' + prefix + 'tooling/alpha16-statistics-utilities.md')

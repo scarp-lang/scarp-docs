@@ -29,13 +29,14 @@ const sources: FinderSources = {
 assert.deepEqual(validateCommandFinder(sources), [])
 assert.equal(LATEST_RELEASE, RELEASES.at(-1)?.tag)
 assert.equal(commandAdvice('v0.0.6-alpha.6', 'run-file').commands[0], 'scarp exec FILE.srp')
-assert.equal(RELEASES.at(-1)?.source, '244f713b4fa48f02a98b8e3e3c11025363f35260')
+assert.equal(RELEASES.at(-1)?.source, '84d8de05968a488773e7c5b6eda1376d8957553c')
+assert.equal(RELEASES.find(entry => entry.tag === 'v0.0.6-alpha.17')?.source, '7831a37939965f557ce746e1d86bf82d3d629f74')
 assert.equal(RELEASES.find(entry => entry.tag === 'v0.0.6-alpha.15')?.source,
   'a21b7b6d942bd1ca9abbbbb522f92f9c8e21e281')
 const expected = new Map<CommandTask,number>([
   ['run-file',0], ['static-verify',2], ['create-project',3],
   ['inspect-project',4], ['inspect-symbols',5], ['diagnose-host',2], ['inspect-ast',2],
-  ['init-project',12], ['test-project',12], ['project-info',12], ['test-json-v2',13]
+  ['init-project',12], ['test-project',12], ['project-info',12], ['test-json-v2',13], ['exec-default',22]
 ])
 let combinations = 0
 let unavailable = 0
@@ -65,7 +66,7 @@ for (const [index,release] of RELEASES.entries()) {
   }
 }
 assert.equal(combinations,RELEASES.length * TASKS.length)
-assert.equal(unavailable,67,'release-sensitive unsupported capabilities must stay explicit')
+assert.equal(unavailable,89,'release-sensitive unsupported capabilities must stay explicit')
 assert.deepEqual(commandAdvice('v0.0.5-alpha.1','run-file').commands,['scarp run FILE.srp'])
 assert.deepEqual(commandAdvice('v0.0.5-alpha.2','run-file').commands,['scarp run FILE.srp'])
 assert.deepEqual(commandAdvice('v0.0.5-alpha.3','run-file').commands,['scarp exec FILE.srp'])
@@ -92,6 +93,9 @@ assert.deepEqual(commandAdvice('v0.0.6-alpha.8','project-info').commands,
 assert.deepEqual(commandAdvice('v0.0.6-alpha.9','test-json-v2').commands,
   ['scarp test --json=v2 PROJECT_DIRECTORY'])
 assert.equal(commandAdvice('v0.0.6-alpha.8','test-json-v2').supported,false)
+assert.equal(commandAdvice('v0.0.6-alpha.17','exec-default').supported,false)
+assert.deepEqual(commandAdvice('v0.0.6-alpha.17','exec-default').commands,[])
+assert.deepEqual(commandAdvice('v0.0.6-alpha.18','exec-default').commands,['scarp exec'])
 for(const task of ['init-project','test-project','project-info'] as const) {
   assert.equal(commandAdvice('v0.0.6-alpha.7',task).supported,false)
   assert.deepEqual(commandAdvice('v0.0.6-alpha.7',task).commands,[])
@@ -101,9 +105,9 @@ assert.throws(()=>commandAdvice(LATEST_RELEASE,'native-compile' as CommandTask),
 
 type MutableTextSource = Exclude<keyof FinderSources,'pages'>
 const mutations: Array<[MutableTextSource,string,string]> = [
-  ['english','latest published release is [v0.0.6-alpha.16](/releases/v0.0.6-alpha.16)',
+  ['english','latest published release is [v0.0.6-alpha.18](/releases/v0.0.6-alpha.18)',
     'latest published release is [v0.0.6-alpha.8](/releases/v0.0.6-alpha.9)'],
-  ['hindi','नवीनतम प्रकाशित release [v0.0.6-alpha.16](/hi/releases/v0.0.6-alpha.16)',
+  ['hindi','नवीनतम प्रकाशित release [v0.0.6-alpha.18](/hi/releases/v0.0.6-alpha.18)',
     'नवीनतम प्रकाशित release [v0.0.6-alpha.9](/hi/releases/v0.0.6-alpha.8)'],
   ['english','<ScarpCommandFinder />','<OutdatedSelector />'],
   ['hindi','<ScarpCommandFinder />','<OutdatedSelector />'],
