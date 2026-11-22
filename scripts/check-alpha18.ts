@@ -67,7 +67,7 @@ for (const [prefix, label] of [['','English'],['hi/','Hindi']] as const) {
   }
   assert.ok(read('docs/' + prefix + 'reference/status.md').includes(source),
     label + ' status omits exact tagged source')
-  assert.ok((read('docs/hi/' + 'guide/exec-and-lifetime-alpha18.md').match(/[\\u0900-\\u097f]/gu) ?? []).length >= 120,
+  assert.ok((read('docs/hi/guide/exec-and-lifetime-alpha18.md').match(/[\u0900-\u097f]/gu) ?? []).length >= 120,
     'Hindi translation is missing')
 }
 for (const path of ['releases/' + tag + '.md','guide/exec-and-lifetime-alpha18.md']) {
