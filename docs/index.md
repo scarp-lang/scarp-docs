@@ -23,9 +23,9 @@ hero:
       link: https://github.com/scarp-lang/scarp
 
 features:
-  - title: Latest published compiler v0.0.6-alpha.16
+  - title: Latest published compiler v0.0.6-alpha.18
     details: Explore median/quantile, Unicode and checked integer utilities, and Rust host cache limits.
-    link: /releases/v0.0.6-alpha.16
+    link: /releases/v0.0.6-alpha.18
   - title: Earlier alpha.9 BigInt and JSON diagnostics
     details: Source-pinned historical compiler examples and exact output tests.
     link: /releases/v0.0.6-alpha.9
@@ -80,7 +80,7 @@ features:
 ---
 
 ::: warning Experimental language
-The newest published compiler is **[v0.0.6-alpha.16](/releases/v0.0.6-alpha.16)**, while much of the main reference still targets the separately verified **v0.0.5-alpha.1** baseline. Both are experimental prereleases. Before upgrading older code, check [alpha.1 → alpha.2 upgrade readiness](/reference/upgrade-readiness) and the [feature status](/reference/status).
+The newest published compiler is **[v0.0.6-alpha.18](/releases/v0.0.6-alpha.18)**, while much of the main reference still targets the separately verified **v0.0.5-alpha.1** baseline. Both are experimental prereleases. Before upgrading older code, check [alpha.1 → alpha.2 upgrade readiness](/reference/upgrade-readiness) and the [feature status](/reference/status).
 :::
 
 For signed BigInt and JSON-v2 test reporting on earlier binaries, read the [historical alpha.9 release](/releases/v0.0.6-alpha.9).
@@ -94,3 +94,5 @@ The [previous v0.0.6-alpha.13 release](/releases/v0.0.6-alpha.13) retains its ex
 [Earlier alpha.14 release](/releases/v0.0.6-alpha.14) retains its release-scoped evidence.
 
 [Earlier alpha.15 release](/releases/v0.0.6-alpha.15) preserves its source-pinned safety evidence.
+
+Continue with [alpha.17 array traversal](/releases/v0.0.6-alpha.17), the [alpha.18 Exec/Lifetime guide](/guide/exec-and-lifetime-alpha18), and the [historical alpha.16 source evidence](/releases/v0.0.6-alpha.16). Each earlier compiler tutorial remains version-pinned.
