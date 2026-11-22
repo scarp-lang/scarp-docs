@@ -107,3 +107,22 @@ assert.equal(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.16 -->\n~~
 assert.deepEqual(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.15 -->\n~~~sh\nscarp inspect ast demo.srp\nscarp verify demo.srp\nscarp exec demo.srp\nscarp test --json=v2 project\n~~~'), [])
 assert.equal(checkSnippetPolicy('<!-- scarp-cli-release: v0.0.6-alpha.15 -->\n~~~sh\nscarp compile demo.srp\n~~~').length, 1)
 assert.ok(checkSnippetPolicy('~~~sh\nscarp verify demo.srp\n~~~').length > 0)
+
+const alpha17Commands = [
+  '<!-- scarp-cli-release: v0.0.6-alpha.17 -->', '~~~sh',
+  'scarp exec --interactive --input-file inputs.txt app.srp',
+  'scarp verify app.srp', '~~~'
+].join('\n')
+assert.deepEqual(checkSnippetPolicy(alpha17Commands), [])
+assert.deepEqual(checkSnippetPolicy(alpha17Commands.replace('scarp verify app.srp','scarp exec')).map(i=>i.message),
+  ['zero-argument scarp exec requires published alpha.18'])
+const alpha18Commands = [
+  '<!-- scarp-cli-release: v0.0.6-alpha.18 -->','~~~sh',
+  'scarp exec', 'scarp exec main.srp', 'scarp exec --interactive main.srp',
+  'scarp verify src/main.srp', '~~~'
+].join('\n')
+assert.deepEqual(checkSnippetPolicy(alpha18Commands), [])
+assert.deepEqual(checkSnippetPolicy(alpha18Commands.replace('scarp exec main.srp','scarp compile main.srp')).map(i=>i.message),
+  ['unsupported Scarp CLI command for this documented release'])
+assert.deepEqual(checkSnippetPolicy('~~~sh\nscarp exec\n~~~').map(i=>i.message),
+  ['zero-argument scarp exec requires published alpha.18'])
