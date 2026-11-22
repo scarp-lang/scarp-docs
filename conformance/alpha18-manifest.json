@@ -1,0 +1,29 @@
+{
+  "compilerRepository": "scarp-lang/scarp",
+  "compilerRef": "v0.0.6-alpha.18",
+  "compilerCommit": "84d8de05968a488773e7c5b6eda1376d8957553c",
+  "releasedAt": "2026-11-22T14:19:01Z",
+  "status": "published-prerelease",
+  "cases": [
+    {
+      "source": "examples/array_updates.srp",
+      "localSource": "conformance/alpha18/array_updates.srp",
+      "gitBlobSha": "55cb1fc9b40d6f2cd45b293faad46a399357ca1b"
+    },
+    {
+      "source": "examples/array_updates.stdout",
+      "localSource": "conformance/alpha18/array_updates.stdout",
+      "gitBlobSha": "d336f29af65d87616a7ff84df989efd50756282e"
+    },
+    {
+      "source": "examples/lifetime_windows.srp",
+      "localSource": "conformance/alpha18/lifetime_windows.srp",
+      "gitBlobSha": "46308fc65e04e266b420ca043f586b10ebcbc52b"
+    },
+    {
+      "source": "examples/lifetime_windows.stdout",
+      "localSource": "conformance/alpha18/lifetime_windows.stdout",
+      "gitBlobSha": "9c579a3ddca3fc1ea49af07aec737e54c2ccc4a2"
+    }
+  ]
+}
