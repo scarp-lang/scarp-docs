@@ -32,3 +32,7 @@ count = 2;
 print(old);   // 1
 print(count); // 2
 ~~~
+
+## प्रकाशित Lifetime alpha.18 में मेमोरी सुधार
+
+[प्रकाशित v0.0.6-alpha.18](/hi/releases/v0.0.6-alpha.18) में **खाली finite और integer numerical windows** पुराने बड़े backing buffer से अलग हो जाती हैं और canonical empty storage साझा करती हैं। गैर-खाली windows immutable backing साझा करती हैं और बड़ी allocation memory में रख सकती हैं। इससे cycle collector, RAM/RSS मापन या unsafe pointer API नहीं जुड़ती। ऊपर का alpha.1 विवरण ऐतिहासिक है। [नया Lifetime पाठ](/hi/guide/exec-and-lifetime-alpha18) तथा [tagged compiler अनुबंध](https://github.com/scarp-lang/scarp/blob/84d8de05968a488773e7c5b6eda1376d8957553c/docs/memory-lifetimes.md) पढ़ें।

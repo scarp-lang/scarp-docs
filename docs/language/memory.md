@@ -25,3 +25,7 @@ Retirement is **not garbage collection for arbitrary user object graphs**. Scarp
 `--max-live-slots`, `--max-capture-bytes`, and `--max-vector-bytes` constrain different logical quantities. In particular, `--max-vector-bytes` is a *cumulative* new-buffer payload cap; dropping old values does not refund it. None of these measures complete process RAM/RSS or provides a security sandbox.
 
 **Verified against:** [automatic value retirement](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/docs/memory-lifetimes.md), [resource limits](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/docs/budgets.md), [compiler architecture](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/docs/architecture.md).
+
+## Published Lifetime alpha.18 retention improvement
+
+[Published v0.0.6-alpha.18](/releases/v0.0.6-alpha.18) detaches **empty finite and integer numerical windows** from their original backing allocations and reuses canonical empty storage. Nonempty windows still share immutable backing and can retain large allocations. This does **not** introduce cycle collection, RSS accounting or exposed unsafe pointers. The older alpha.1 text above remains a historical baseline. See the [alpha.18 Lifetime guide](/guide/exec-and-lifetime-alpha18) and [tagged design](https://github.com/scarp-lang/scarp/blob/84d8de05968a488773e7c5b6eda1376d8957553c/docs/memory-lifetimes.md).
