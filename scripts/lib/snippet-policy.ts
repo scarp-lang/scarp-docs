@@ -83,12 +83,12 @@ export function checkSnippetPolicy(markdown: string): SnippetIssue[] {
           issues.push({ line: fence.line + i + 1, message: 'interactive CLI input requires published alpha.10' })
           continue
         }
-        if (!alpha18Cli && /^\\s*(?:\\$\\s*)?scarp exec\\s*$/.test(line)) {
+        if (!alpha18Cli && /^\s*(?:\$\s*)?scarp exec\s*$/.test(line)) {
           issues.push({ line: fence.line + i + 1,
             message: 'zero-argument scarp exec requires published alpha.18' })
           continue
         }
-        const command = /^\\s*(?:\\$\\s*)?scarp\\s+(build|compile|create|launch|exec|verify|inspect|init|test|project)\\b/.exec(line)
+        const command = /^\s*(?:\$\s*)?scarp\s+(build|compile|create|launch|exec|verify|inspect|init|test|project)\b/.exec(line)
         if (command && (!(
           (['exec', 'verify', 'inspect'].includes(command[1]) && (alpha3Cli || alpha4Cli)) ||
           (['create', 'launch'].includes(command[1]) && alpha4Cli) ||
