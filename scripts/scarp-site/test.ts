@@ -291,10 +291,10 @@ check(homeHtml.includes('href="/scarp-docs/guide/install-latest">Install</a>'),
   'English Install menu must open the current bilingual installation guide')
 check(hindiHome.includes('href="/scarp-docs/hi/guide/install-latest">इंस्टॉल</a>'),
   'Hindi Install menu must open the current localized installation guide')
-check(homeHtml.includes('href="/scarp-docs/reference/status">Releases</a>'),
-  'English releases menu must display the historical version matrix')
-check(hindiHome.includes('href="/scarp-docs/hi/reference/status">रिलीज़</a>'),
-  'Hindi releases menu must display the historical version matrix')
+check(homeHtml.includes('href="'+currentCompilerReleaseRoute(LATEST_RELEASE,'en')+'">Releases</a>'),
+  'English releases menu must display the latest published version')
+check(hindiHome.includes('href="'+currentCompilerReleaseRoute(LATEST_RELEASE,'hi')+'">रिलीज़</a>'),
+  'Hindi releases menu must display the latest published version')
 const finder=readFileSync(join(site,'tooling/command-finder.html'),'utf8')
 check(finder.includes('id="scarp-command-data"'),'Release-scoped CLI model missing')
 check(finder.includes(LATEST_RELEASE),'Latest published release missing')
