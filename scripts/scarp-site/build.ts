@@ -122,6 +122,7 @@ function htmlDocument(view:PageView, views:PageView[], currentTag:string,activeR
   const other=locale==='en'?meta.hindi:meta.english
   const home=page.frontmatter.layout==='home'
   const retired=!view.active
+  const legacyFinder=retired && source.endsWith('tooling/command-finder.md')
   const retiredNotice=retired
     ?'<aside class="scarp-callout" role="note"><p>'+localized(
       'Retired compiler documentation: preserved only for historical links and testing. Use the current guide for new code.',
@@ -130,17 +131,24 @@ function htmlDocument(view:PageView, views:PageView[], currentTag:string,activeR
       localized('Current guide','वर्तमान गाइड',locale)+'</a> · <a '+attrs('https://scarp-lang.github.io/downloads/')+'>'+
       localized('Official downloads','आधिकारिक डाउनलोड',locale)+'</a></p></aside>'
     :''
-  const body=retiredNotice+(home?homeMarkup(page,source,activeRoutes):retired?page.html:unlinkRetiredCrossReferences(page.html,activeRoutes))
+  const retiredStub='<section><h1>'+escapeHtml(page.title)+'</h1><p>'+
+    localized('This compiler documentation is retired and no longer supported for new installations. The original source and conformance evidence remain available in Git.',
+      'यह compiler दस्तावेज़ अब नए इंस्टॉलेशन के लिए समर्थित नहीं है। मूल source और परीक्षण प्रमाण Git में सुरक्षित हैं।',locale)+
+    '</p><p><a '+attrs((locale==='hi'?BASE+'hi/':BASE)+'guide/current')+'>'+
+    localized('Read current Scarp documentation','वर्तमान Scarp दस्तावेज़ पढ़ें',locale)+'</a></p></section>'
+  const body=retiredNotice+(retired
+    ? (legacyFinder?unlinkRetiredCrossReferences(page.html,activeRoutes):retiredStub)
+    : (home?homeMarkup(page,source,activeRoutes):unlinkRetiredCrossReferences(page.html,activeRoutes)))
   const heading=home||page.headings.some(item=>item.level===1)
     ?'':'<h1 class="page-heading">'+escapeHtml(page.title)+'</h1>'
-  const seoDescription=(home?page.frontmatter.hero?.tagline:page.bodyText)??page.bodyText
+  const seoDescription=retired?'Retired Scarp compiler documentation. Use the latest published Scarp release at the official download hub.':((home?page.frontmatter.hero?.tagline:page.bodyText)??page.bodyText)
   const description=seoDescription.slice(0,185)
   const lang=locale==='hi'?'hi-IN':'en-US'
   const target=other.slice('https://scarp-lang.github.io'.length)
   const localeText=localized('हिन्दी','English',locale)
   const title=page.title==='Scarp'?'Scarp Docs':page.title+' · Scarp Docs'
   const searchText=localized('Search documentation','दस्तावेज़ खोजें',locale)
-  const contents=page.headings.filter(h=>h.level===2||h.level===3).slice(0,45)
+  const contents=(retired&&!legacyFinder?[]:page.headings.filter(h=>h.level===2||h.level===3).slice(0,45))
   const toc=contents.length
     ?'<nav class="toc" aria-label="'+localized('On this page','इस पृष्ठ पर',locale)+'"><h2>'+
       localized('On this page','इस पृष्ठ पर',locale)+'</h2><ul>'+contents.map(h=>
