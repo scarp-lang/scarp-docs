@@ -2,6 +2,8 @@
 
 **नवीनतम प्रकाशित compiler [v0.0.6-alpha.18](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.18) है।** Alpha.18 में filename के बिना `scarp exec`, immutable `array_set` और Lifetime के empty-window सुधार हैं। [पिछली alpha.17](/hi/releases/v0.0.6-alpha.17) में `array_len`, `array_get_or` और `input_boolean` आए। यह अभी experimental interpreter है। [रिलीज़](/hi/releases/v0.0.6-alpha.18) · [Exec/Lifetime](/hi/guide/exec-and-lifetime-alpha18) · [Learning path](/hi/guide/learning-path)।
 
+**वर्तमान compiler इंस्टॉल करें:** [आधिकारिक Scarp Downloads](https://scarp-lang.github.io/downloads/) · [नई इंस्टॉलेशन गाइड](/hi/guide/install-latest)। यह नए इंस्टॉलेशन का अनुशंसित रास्ता है; पुराने उदाहरण अपने मूल release पर सत्यापित हैं।
+
 [पिछली alpha.15 रिलीज़](/hi/releases/v0.0.6-alpha.15) की सीमाएँ मूल source के साथ सुरक्षित हैं।
 
 **Scarp** एक प्रयोगात्मक, Rust में बनाया गया interpreted प्रोग्रामिंग लैंग्वेज है। एक पुराना प्रकाशित compiler **[v0.0.5-alpha.5](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.5)** है। इस सामान्य भाषा-परिचय का सत्यापित आधार अभी **v0.0.5-alpha.1** है। पुराने [alpha.4 tagged release](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.4), [alpha.4 installation guide](/hi/guide/installation), [alpha.4 project quickstart](/hi/guide/quickstart-alpha4) और [alpha.3 CLI संदर्भ](/hi/tooling/cli) को उनके अपने releases का ऐतिहासिक विवरण समझें। यह अभी स्थिर (stable) भाषा विनिर्देश नहीं है; सिंटैक्स और API भविष्य में बदल सकते हैं। [आधिकारिक compiler](https://github.com/scarp-lang/scarp) ही व्यवहार का मूल स्रोत है।

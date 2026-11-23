@@ -1,4 +1,6 @@
 # Scarp v0.0.5-alpha.4 कैसे इंस्टॉल करें
+
+> **नए Scarp डाउनलोड के लिए:** [आधिकारिक Downloads](https://scarp-lang.github.io/downloads/) और [वर्तमान इंस्टॉलेशन गाइड](/hi/guide/install-latest) इस्तेमाल करें। इस पृष्ठ के पुराने archive और checksum केवल मूल रिलीज़ के परीक्षण के लिए हैं।
 ::: warning पुराना alpha.4 release
 नए इंस्टॉलेशन के लिए [नवीनतम प्रकाशित alpha.18 पैकेज और SHA-256](/hi/releases/v0.0.6-alpha.18) प्रयोग करें। यह पृष्ठ पुराने alpha.4 binaries और checksums का ऐतिहासिक संदर्भ है।
 :::

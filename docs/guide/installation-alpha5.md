@@ -1,4 +1,6 @@
 # Install Scarp v0.0.5-alpha.5
+
+> **Current Scarp downloads:** [Official Downloads](https://scarp-lang.github.io/downloads/) · [Latest installation guide](/guide/install-latest). Archived binary names and SHA-256 values below are valid only for their original release.
 ::: warning Historical alpha.5 release
 The newest published installer is now [v0.0.6-alpha.1](/guide/installation-alpha6). Use this page only when you specifically need the older alpha.5 release.
 :::

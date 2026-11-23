@@ -1,4 +1,6 @@
 # Scarp v0.0.5-alpha.5 कैसे इंस्टॉल करें
+
+> **वर्तमान Scarp डाउनलोड:** [आधिकारिक Downloads](https://scarp-lang.github.io/downloads/) · [नवीनतम इंस्टॉलेशन](/hi/guide/install-latest)। नीचे के पुराने archive नाम और SHA-256 केवल उनके मूल रिलीज़ के लिए हैं।
 ::: warning पुराना alpha.5 release
 अब नवीनतम प्रकाशित installer [v0.0.6-alpha.1](/hi/guide/installation-alpha6) है। यह पृष्ठ केवल पुराने alpha.5 version का ऐतिहासिक मार्गदर्शन है।
 :::

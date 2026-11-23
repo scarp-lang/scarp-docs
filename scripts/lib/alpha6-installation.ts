@@ -92,8 +92,11 @@ export function validateAlpha6Installation(pages: Alpha6InstallPages): string[] 
     ['English','/guide/installation-alpha6',pages.homeEnglish,pages.releaseEnglish],
     ['Hindi','/hi/guide/installation-alpha6',pages.homeHindi,pages.releaseHindi]
   ] as const) {
-    requireText(pages.config, "link: '" + path + "'", locale + ' site navigation')
-    requireText(home, 'link: ' + path, locale + ' homepage')
+    // Current installation links are in primary navigation and the homepage.
+    // The historical alpha.6 release guide must still link its pinned installer.
+    const currentInstall = path.replace('/guide/installation-alpha6', '/guide/install-latest')
+    requireText(pages.config, "link: '" + currentInstall + "'", locale + ' site navigation')
+    requireText(home, 'link: ' + currentInstall, locale + ' homepage')
     requireText(releasePage, '](' + path + ')', locale + ' published release')
   }
   if (pages.homeEnglish.includes('details: Use verified prerelease binaries, or build the interpreter from the official Rust source.\n    link: /guide/installation\n')) {

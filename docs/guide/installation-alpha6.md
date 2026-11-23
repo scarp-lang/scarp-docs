@@ -1,5 +1,7 @@
 # Install Scarp v0.0.6-alpha.1
 
+> **For new Scarp downloads:** Use [Official Downloads](https://scarp-lang.github.io/downloads/) and the [current installation guide](/guide/install-latest). The archived binary names and checksums below apply only to their original release.
+
 <!-- scarp-cli-release: v0.0.6-alpha.1 -->
 <!-- scarp-install-release: v0.0.6-alpha.1 -->
 <!-- scarp-install-compiler: aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8 -->

@@ -27,10 +27,10 @@ const mutations: Array<[string, keyof Alpha6InstallPages, string, string]> = [
   ['moving source tag', 'english', 'git checkout v0.0.6-alpha.1', 'git checkout main'],
   ['not-offline source build', 'hindi', 'cargo build --locked --offline', 'cargo build --locked'],
   ['unreleased CLI command', 'english', '.\\scarp.exe launch hello-world', '.\\scarp.exe build hello-world'],
-  ['missing English nav', 'config', "link: '/guide/installation-alpha6'", "link: '/guide/installation'"],
-  ['missing Hindi nav', 'config', "link: '/hi/guide/installation-alpha6'", "link: '/hi/guide/installation'"],
-  ['missing homepage card', 'homeEnglish', 'link: /guide/installation-alpha6', 'link: /guide/installation'],
-  ['missing Hindi homepage card', 'homeHindi', 'link: /hi/guide/installation-alpha6', 'link: /hi/guide/installation'],
+  ['missing English nav', 'config', "link: '/guide/install-latest'", "link: '/guide/installation'"],
+  ['missing Hindi nav', 'config', "link: '/hi/guide/install-latest'", "link: '/hi/guide/installation'"],
+  ['missing homepage card', 'homeEnglish', 'link: /guide/install-latest', 'link: /guide/installation'],
+  ['missing Hindi homepage card', 'homeHindi', 'link: /hi/guide/install-latest', 'link: /hi/guide/installation'],
   ['missing English release crosslink', 'releaseEnglish', '](/guide/installation-alpha6)', '](/guide/installation-alpha5)'],
   ['missing Hindi release crosslink', 'releaseHindi', '](/hi/guide/installation-alpha6)', '](/hi/guide/installation-alpha5)']
 ]

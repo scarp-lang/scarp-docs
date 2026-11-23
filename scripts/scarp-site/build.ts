@@ -128,9 +128,10 @@ function htmlDocument(view:PageView, views:PageView[], currentTag:string):string
     '<nav class="top-nav" aria-label="'+localized('Primary','मुख्य नेविगेशन',locale)+'">'+
     '<a '+attrs(locale==='hi'?BASE+'hi/guide/learning-path':BASE+'guide/learning-path')+'>'+
       localized('Learn','सीखें',locale)+'</a>'+
-    '<a '+attrs(currentCompilerReleaseRoute(currentTag,locale))+'>'+
+    '<a '+attrs(locale==='hi'?BASE+'hi/guide/install-latest':BASE+'guide/install-latest')+'>'+
       localized('Install','इंस्टॉल',locale)+'</a>'+
-    '<a '+attrs(locale==='hi'?BASE+'hi/reference/status':BASE+'reference/status')+'>'+
+    '<a '+attrs('https://scarp-lang.github.io/downloads/')+'>'+localized('Download','डाउनलोड',locale)+'</a>'+
+    '<a '+attrs(currentCompilerReleaseRoute(currentTag,locale))+'>'+
       localized('Releases','रिलीज़',locale)+'</a></nav>'+
     '<div class="header-actions"><a '+attrs(target,'language-link')+' lang="'+(locale==='en'?'hi':'en')+'">'+
       localeText+'</a><button type="button" id="search-open" aria-haspopup="dialog" aria-controls="search-panel" aria-keyshortcuts="Control+K Meta+K /">'+

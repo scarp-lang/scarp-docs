@@ -2,6 +2,8 @@
 
 **Latest published compiler: [v0.0.6-alpha.18](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.18).** Alpha.18 adds zero-argument `scarp exec`, immutable `array_set` and empty-window Lifetime improvements; [alpha.17](/releases/v0.0.6-alpha.17) added `array_len`, `array_get_or` and `input_boolean`. These remain interpreter prereleases, not a general native compiler. [Release](/releases/v0.0.6-alpha.18) · [Exec/Lifetime guide](/guide/exec-and-lifetime-alpha18) · [Learning path](/guide/learning-path).
 
+**Install the current compiler:** [Official Scarp Downloads](https://scarp-lang.github.io/downloads/) · [Current installation guide](/guide/install-latest). This is the recommended path for new installations; older examples retain their original release-specific evidence.
+
 [Previous alpha.15 release](/releases/v0.0.6-alpha.15) retains its separately verified source and CLI boundaries.
 
 Scarp is an **experimental**, Rust-implemented, interpreted programming language. An **earlier published compiler** is [v0.0.5-alpha.5](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.5). This general-language overview remains based on the separately verified **alpha.1 reference**; the historical [alpha.4 tagged release](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.4), [alpha.4 installation](/guide/installation), [alpha.4 project quickstart](/guide/quickstart-alpha4), and [alpha.3 CLI reference](/tooling/cli) remain historical version-scoped guides. The language is not yet a stable general-purpose alternative to Rust, C++, or Python.
