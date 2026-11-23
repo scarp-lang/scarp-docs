@@ -102,6 +102,20 @@ function finderData():string {
   return '<script id="scarp-command-data" type="application/json">'+json+'</script>'
 }
 
+/**
+ * Retired version pages remain reachable by bookmarks, but no active guide
+ * should link a new reader into an unsupported historical release.
+ * Preserve the link's visible label as plain text without a dead destination.
+ */
+function unlinkRetiredCrossReferences(html:string,current:Set<string>):string{
+  return html.replace(/<a\b([^>]*\bhref="([^"]+)"[^>]*)>([\s\S]*?)<\/a>/gi,
+    (whole, _attributes:string, href:string, label:string)=>{
+      if(!href.startsWith(BASE)) return whole
+      const path=href.split(/[?#]/)[0]
+      return current.has(path) ? whole : '<span class="retired-cross-reference">'+label+'</span>'
+    })
+}
+
 function htmlDocument(view:PageView, views:PageView[], currentTag:string,activeRoutes:Set<string>):string{
   const {page,source,route,locale}=view
   const meta=pairedRoutes(source)
@@ -116,7 +130,7 @@ function htmlDocument(view:PageView, views:PageView[], currentTag:string,activeR
       localized('Current guide','वर्तमान गाइड',locale)+'</a> · <a '+attrs('https://scarp-lang.github.io/downloads/')+'>'+
       localized('Official downloads','आधिकारिक डाउनलोड',locale)+'</a></p></aside>'
     :''
-  const body=retiredNotice+(home?homeMarkup(page,source,activeRoutes):page.html)
+  const body=retiredNotice+(home?homeMarkup(page,source,activeRoutes):retired?page.html:unlinkRetiredCrossReferences(page.html,activeRoutes))
   const heading=home||page.headings.some(item=>item.level===1)
     ?'':'<h1 class="page-heading">'+escapeHtml(page.title)+'</h1>'
   const seoDescription=(home?page.frontmatter.hero?.tagline:page.bodyText)??page.bodyText
