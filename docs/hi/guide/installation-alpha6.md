@@ -1,5 +1,7 @@
 # Scarp v0.0.6-alpha.1 कैसे इंस्टॉल करें
 
+> **नए Scarp डाउनलोड के लिए:** [आधिकारिक Downloads](https://scarp-lang.github.io/downloads/) और [वर्तमान इंस्टॉलेशन गाइड](/hi/guide/install-latest) इस्तेमाल करें। इस पृष्ठ के पुराने archive और checksum केवल मूल रिलीज़ के परीक्षण के लिए हैं।
+
 <!-- scarp-cli-release: v0.0.6-alpha.1 -->
 <!-- scarp-install-release: v0.0.6-alpha.1 -->
 <!-- scarp-install-compiler: aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8 -->
