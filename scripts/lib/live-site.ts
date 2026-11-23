@@ -11,6 +11,8 @@ import { LATEST_RELEASE } from './command-finder.ts'
 export const LIVE_PAGE_SOURCES = [
   'index.md',
   'hi/index.md',
+  'language/tuple-ordering-development.md',
+  'hi/language/tuple-ordering-development.md',
   'guide/learning-path.md',
   'hi/guide/learning-path.md',
   'guide/installation-alpha6.md',
@@ -67,6 +69,15 @@ export async function verifyLiveSite(fetcher: SiteFetcher, sitemapSources: reado
         url + ': missing hreflang ' + locale)
     }
     assert.match(html, /<title\b[^>]*>[^<]+<\/title>/i, url + ': missing document title')
+    if (source.endsWith('language/tuple-ordering-development.md')) {
+      assert.ok(html.includes('10, 20') && html.includes('v0.0.6-alpha.19'),
+        url + ': development tuple ordering content missing or replaced by retirement stub')
+      assert.ok(!html.includes('This compiler documentation is retired') &&
+        !html.includes('यह compiler दस्तावेज़ अब नए इंस्टॉलेशन के लिए समर्थित नहीं है'),
+        url + ': development preview was incorrectly retired')
+      assert.ok(!/<meta name="robots" content="noindex, follow"\s*\/>/.test(html),
+        url + ': source-pinned development reference should remain discoverable')
+    }
     if (source === 'index.md') home = html
   }
 
