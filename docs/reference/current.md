@@ -44,6 +44,10 @@ one नमस्ते
 
 Scarp Lifetime combines compiler-planned scope retirement with safe Rust shared immutable storage. User source does not need explicit free/borrow calls. In alpha.18, empty finite and integer numerical windows detach from a larger backing allocation; **nonempty views can still retain the original storage**. This is not a general cycle collector, an operating-system memory cap, or a guarantee of immediate memory return. The `--max-vector-bytes` budget is **cumulative** and `--max-live-slots` counts allocated frame slots, not process RAM.
 
+## Development preview: tuple ordering (not released)
+
+The source compiler on `main` includes **lexicographic ordering of numeric tuples**, merged after the alpha.19 publication baseline. **No published alpha.19 (or earlier) binary includes this feature.** See the [development-only tuple ordering reference](/language/tuple-ordering-development) and its source-pinned tests. This section does not change the published alpha.18 snapshot documented above.
+
 ## What remains outside this compiler
 
 The native ELF64 and C11 code-generation experiments are **Rust host APIs**, not general user-facing `.srp` binary compilation. Scarp remains an experimental interpreter, with no stable compiler or standard-library compatibility promise.
