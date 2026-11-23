@@ -18,10 +18,10 @@ print((1, (2, 3)) < (1, (2, 4))); // true
 ## कौन-सी तुलना अमान्य है?
 
 ~~~scarp
-print(("a",) < ("b",));          // गलत: string ordering समर्थित नहीं
-print((true,) > (false,));      // गलत: boolean ordering समर्थित नहीं
-print((1,) < (1.0,));           // गलत: अलग structural types
-print((1, 2) >= (1,));          // गलत: tuple size अलग है
+print(("a",) < ("b",));          // invalid: string members are unordered
+print((true,) > (false,));      // invalid: boolean members are unordered
+print((1,) < (1.0,));           // invalid: different structural types
+print((1, 2) >= (1,));          // invalid: different tuple arity
 ~~~
 
 Compiler इनका **static verification** में ही विरोध करता है। `==` और `!=` की पहले से मौजूद structural equality अलग feature है; इस बदलाव से strings/booleans की equality या tuple arithmetic का नियम नहीं बदलता।
