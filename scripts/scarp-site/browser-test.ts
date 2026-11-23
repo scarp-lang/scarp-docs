@@ -84,7 +84,9 @@ async function testLocale(
     assert.equal(await page.locator('.features .feature').count()>8,true)
     assert.equal(await page.locator('.hero h1').count(),1)
     const install=page.locator('.top-nav a').filter({hasText:lang==='hi'?'इंस्टॉल':'Install'})
-    assert.equal(await install.getAttribute('href'),prefix+'releases/'+LATEST_RELEASE)
+    assert.equal(await install.getAttribute('href'),prefix+'guide/install-latest')
+    assert.equal(await page.locator('.top-nav a').filter({hasText:lang==='hi'?'डाउनलोड':'Download'}).getAttribute('href'),
+      'https://scarp-lang.github.io/downloads/')
     assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'),
       'https://scarp-lang.github.io'+prefix)
     assertions++
