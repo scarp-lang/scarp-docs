@@ -31,12 +31,10 @@
 सत्यापित archive को अपने folder में extract करें और उसी के executable को चलाएँ, `PATH` के किसी पुराने binary को नहीं:
 
 ~~~powershell
-# Windows PowerShell: extracted binary folder से
 .\scarp.exe version
 ~~~
 
 ~~~sh
-# Linux / macOS: extracted binary folder से
 ./scarp version
 ~~~
 

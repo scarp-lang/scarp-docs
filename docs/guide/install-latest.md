@@ -31,12 +31,10 @@ Those digests apply **only** to [the published alpha.18 artifacts](https://githu
 Extract the verified archive to a directory you control and invoke its own binary, not another Scarp executable already on your `PATH`:
 
 ~~~powershell
-# PowerShell, from the extracted Windows binary directory
 .\scarp.exe version
 ~~~
 
 ~~~sh
-# Linux / macOS, from the extracted binary directory
 ./scarp version
 ~~~
 
