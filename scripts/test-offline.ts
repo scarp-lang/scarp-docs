@@ -7,6 +7,7 @@ import { join, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { gzipSync } from 'node:zlib'
 import { documentationPages } from './lib/docs-pages.ts'
+import { currentDocumentationSources } from './lib/current-publication.ts'
 import { currentPublishedCompilerTag } from './scarp-site/current-release.ts'
 
 const root = resolve(fileURLToPath(new URL('..',import.meta.url)))
@@ -166,7 +167,7 @@ try {
     assert.ok((await data.arrayBuffer()).byteLength>0)
   }
   const sitemap=await request('/scarp-docs/sitemap.xml',200,/xml/)
-  assert.equal((await sitemap.text()).match(/<url>/g)?.length, sources.length)
+  assert.equal((await sitemap.text()).match(/<url>/g)?.length, currentDocumentationSources(sources,currentCompiler).length)
   await request('/scarp-docs/does-not-exist',404)
   await request('/not-inside-prefix',404)
   const forbidden=await fetch(origin+'/scarp-docs/',{method:'POST'})

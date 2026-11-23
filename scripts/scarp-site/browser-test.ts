@@ -186,16 +186,16 @@ async function testLocale(
     await page.keyboard.press('ArrowDown')
     assert.equal(await results.first().evaluate(node=>document.activeElement===node),true)
 
-    // E0054 occurs well inside language reference pages. Match-context
+    // E0063 is a current verified fixed-array index diagnostic. Match-context
     // previews must show the actual diagnostic in both document languages.
     await searchInput.focus()
-    await searchInput.fill('E0054')
+    await searchInput.fill('E0063')
     await page.waitForFunction(() => {
       const snippets=[...document.querySelectorAll('#search-results li a small')]
-      return snippets.length>0 && snippets.every(node=>node.textContent?.includes('E0054'))
+      return snippets.length>0 && snippets.every(node=>node.textContent?.includes('E0063'))
     })
     const previews=await page.locator('#search-results li a small').allTextContents()
-    assert.ok(previews.length>0 && previews.every(text=>text.includes('E0054')),
+    assert.ok(previews.length>0 && previews.every(text=>text.includes('E0063')),
       lang+': previews must include the searched compiler diagnostic')
     assert.ok(previews.every(text=>[...text].length<=162),
       lang+': previews must be code-point bounded')
@@ -252,7 +252,7 @@ async function testLocale(
     // All code fences are readable without scripts and gain copy controls in
     // browser mode. Test actual keyboard activation, exact Unicode content,
     // clipboard permission rejection, selection fallback and WCAG A/AA.
-    await page.goto(origin+prefix.replace(/\/$/,'')+'/guide/first-program',
+    await page.goto(origin+prefix.replace(/\/$/,'')+'/reference/current',
       {waitUntil:'networkidle'})
     const codeExample=page.locator('[data-code-example]').first()
     await codeExample.locator('pre code').waitFor()

@@ -5,6 +5,8 @@ import { fileURLToPath } from 'node:url'
 import { pairedRoutes } from './scarp-site/routes.ts'
 import { pageSeoHead } from './scarp-site/seo.ts'
 import { documentationPages } from './lib/docs-pages.ts'
+import { currentDocumentationSources } from './lib/current-publication.ts'
+import { LATEST_RELEASE } from './lib/command-finder.ts'
 import { validateSitemap } from './lib/sitemap-policy.ts'
 import { auditPublishedLinks, type PublishedHtmlPage } from './lib/site-link-audit.ts'
 
@@ -57,7 +59,7 @@ const sitemapFile = join(dist, 'sitemap.xml')
 if (!existsSync(sitemapFile)) {
   failures.push('Missing generated sitemap.xml')
 } else {
-  const sitemap = validateSitemap(readFileSync(sitemapFile, 'utf8'), pages)
+  const sitemap = validateSitemap(readFileSync(sitemapFile, 'utf8'), currentDocumentationSources(pages,LATEST_RELEASE))
   failures.push(...sitemap.errors.map(error => 'sitemap.xml: ' + error))
   if (!sitemap.errors.length) console.log('PASS: sitemap contains all ' + sitemap.expected + ' English/Hindi source routes exactly once')
 }

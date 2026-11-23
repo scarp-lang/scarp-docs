@@ -14,10 +14,10 @@ hero:
   actions:
     - theme: brand
       text: शुरुआत करें
-      link: /hi/guide/learning-path
+      link: /hi/guide/current
     - theme: alt
       text: भाषा संदर्भ
-      link: /hi/language/overview
+      link: /hi/reference/current
     - theme: alt
       text: GitHub पर स्रोत
       link: https://github.com/scarp-lang/scarp
@@ -29,6 +29,25 @@ features:
   - title: नवीनतम प्रकाशित v0.0.6-alpha.18 compiler
     details: median, quantile, Unicode और checked integer utilities, Rust host caching तथा डाउनलोड देखें।
     link: /hi/releases/v0.0.6-alpha.18
+
+  - title: वर्तमान compiler से शुरुआत
+    details: केवल वर्तमान प्रकाशित Scarp interpreter के सत्यापित commands और installation steps सीखें।
+    link: /hi/guide/current
+  - title: वर्तमान Scarp language reference
+    details: Alpha.18 के verified CLI, immutable arrays और Lifetime व्यवहार की सीमाएँ समझें।
+    link: /hi/reference/current
+  - title: Exec और Lifetime के प्रमाणित उदाहरण
+    details: Alpha.18 interpreter के सही source, stdout और memory semantics पढ़ें।
+    link: /hi/guide/exec-and-lifetime-alpha18
+  - title: GitHub Pages deployments
+    details: प्रकाशित documentation deployment और build workflow के बारे में जानें।
+    link: /hi/project/deployments
+  - title: Scarp development में योगदान
+    details: आधिकारिक community और योगदान का रास्ता जानें।
+    link: /hi/community/contributing
+  - title: हमेशा नवीनतम Scarp डाउनलोड करें
+    details: Windows, Linux और macOS के नवीनतम उपलब्ध published package चुनें।
+    link: https://scarp-lang.github.io/downloads/
   - title: पहले प्रकाशित alpha.9 BigInt और JSON
     details: ऐतिहासिक release-pinned उदाहरण और compiler tests।
     link: /hi/releases/v0.0.6-alpha.9

@@ -6,6 +6,7 @@ import { buildSite, previewRoot } from './build.ts'
 import { renderMarkdown, splitFrontMatter } from './markdown.ts'
 import { escapeHtml, localLink, htmlPath, pairedRoutes, sourceRoute } from './routes.ts'
 import { documentationPages } from '../lib/docs-pages.ts'
+import { currentDocumentationSources } from '../lib/current-publication.ts'
 import { urlForPage } from './routes.ts'
 import { validateSitemap } from '../lib/sitemap-policy.ts'
 import { auditPublishedLinks, type PublishedHtmlPage } from '../lib/site-link-audit.ts'
@@ -234,6 +235,7 @@ for(const [key,invalid] of [
 assert.throws(()=>currentCompilerReleaseRoute('v0.0.6-alpha.1','en'))
 
 const sources=documentationPages(docs)
+const currentSources=currentDocumentationSources(sources,LATEST_RELEASE)
 check(sources.length>=142,'Published docs dropped below the verified 142-page baseline')
 for(const source of sources){
   assert.equal(pairedRoutes(source).canonical,urlForPage(source),
@@ -303,15 +305,16 @@ check(dev.includes('data-load-deployments'),'Deployment widget missing')
 const search=JSON.parse(readFileSync(join(site,'assets/search-index.json'),'utf8')) as Array<{
   locale:string;title:string;route:string;excerpt:string
 }>
-check(search.length===sources.length,'All docs must be in local search index')
-check(search.filter(x=>x.locale==='hi').length===sources.filter(path=>path.startsWith('hi/')).length,'Hindi search parity')
+check(search.length===currentSources.length,'Only current compiler docs may appear in local search')
+check(search.filter(x=>x.locale==='hi').length===currentSources.filter(path=>path.startsWith('hi/')).length,'Current Hindi search parity')
 check(search.some(x=>x.excerpt.includes('funcra')),'Scarp syntax must be searchable')
 check(search.every(x=>x.route.startsWith('/scarp-docs/')),'Search routes must use correct base')
+check(search.every(x=>!x.route.includes('v0.0.5-alpha.')),'Retired versions must not appear in search')
 check(existsSync(join(site,'assets/scarp-site.js')),'Browser TypeScript did not compile')
 check(existsSync(join(site,'assets/pages-api.js')),'Typed deployment API module was not built')
 const appScript=readFileSync(join(site,'assets/scarp-site.js'),'utf8')
 check(appScript.includes('pages-api.js'),'Production browser does not import the tested API module')
 check(existsSync(join(site,'assets/scarp-site.css')),'Own CSS missing')
 const sitemap=readFileSync(join(site,'sitemap.xml'),'utf8')
-assert.deepEqual(validateSitemap(sitemap,sources).errors,[],'Sitemap must precisely cover published sources')
+assert.deepEqual(validateSitemap(sitemap,currentSources).errors,[],'Sitemap must precisely cover current-only documentation')
 console.log('PASS: '+assertions+' Scarp-owned engine assertions, '+sources.length+' paired routes, bilingual SEO, safe Markdown, offline search, home layout, release-aware CLI and sitemap')

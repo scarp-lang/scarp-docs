@@ -3,7 +3,7 @@
 There are two distinct repositories:
 
 - [**scarp-lang/scarp**](https://github.com/scarp-lang/scarp) — the Rust interpreter, source-language implementation, compiler tests, and release artifacts.
-- [**scarp-lang/scarp-docs**](https://github.com/scarp-lang/scarp-docs) — this VitePress documentation website, which is MIT licensed.
+- [**scarp-lang/scarp-docs**](https://github.com/scarp-lang/scarp-docs) — the official, Scarp-owned TypeScript documentation website, licensed under MIT.
 
 ## Documentation contributions
 
@@ -20,11 +20,15 @@ npm run check:docs
 npm run docs:build
 ~~~
 
-A good documentation pull request adds a focused explanation, one source-backed example, a compiler evidence link, and updated navigation or links when appropriate. Responsive design, local search, and theme switching are provided by VitePress; minimal custom CSS keeps the site maintainable.
+A good documentation pull request adds a focused explanation, one source-backed example, a compiler evidence link, and updated navigation or links when appropriate. Responsive layout, search, theme switching and offline packaging are implemented by the Scarp-owned TypeScript renderer. VitePress configuration is retained only as historical migration evidence, not the active website engine.
+
+## Current-compiler documentation policy
+
+For new content, start from the [current compiler reference](/reference/current) and [current installation guide](/guide/install-latest). Never link a retired compiler release as the recommended download. The verified published compiler is recorded in `data/compiler-latest-release.json`; proposals and unreleased branches must not be presented as published behavior. Historical reference pages are retired from active search and navigation and remain in source only to support reproducibility.
 
 ## Compiler contributions
 
-Read the compiler's [CONTRIBUTING.md](https://github.com/scarp-lang/scarp/blob/v0.0.5-alpha.1/CONTRIBUTING.md), run its Rust formatting/lint/test gates, and report implementation bugs in the compiler repository. **Documentation fixes cannot themselves introduce language features.**
+Read the compiler's [CONTRIBUTING.md](https://github.com/scarp-lang/scarp/blob/main/CONTRIBUTING.md), run its Rust formatting/lint/test gates, and report implementation bugs in the compiler repository. **Documentation fixes cannot themselves introduce language features.**
 
 ## Licensing
 

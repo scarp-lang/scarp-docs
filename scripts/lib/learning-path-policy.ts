@@ -150,8 +150,9 @@ export function validateLearningPath(pages: LearningPathPages, release: Alpha6Ma
     ['Hindi',pages.homeHindi,pages.introHindi,'/hi']
   ] as const) {
     const course = prefix + '/guide/learning-path'
-    if (home.split('link: ' + course).length - 1 < 2) {
-      fail(locale + ': both homepage hero and feature card must link to learning path')
+    const current = prefix + '/guide/current'
+    if (home.split('link: ' + current).length - 1 < 2) {
+      fail(locale + ': homepage hero and feature card must promote the current compiler guide')
     }
     if (intro.split('](' + course + ')').length - 1 < 2) {
       fail(locale + ': both introduction onboarding and guide section must link to course')

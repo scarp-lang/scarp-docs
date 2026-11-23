@@ -166,6 +166,8 @@ jobs:
         run: npm run test:live-site
       - name: Build Scarp-owned TypeScript documentation website
         run: npm run docs:build
+      - name: Enforce current-only discovery and retired-page noindex
+        run: npm run check:retirement
       - name: Test real preview HTTP routes for dotted compiler versions
         run: npm run test:preview-server
       - name: Verify bilingual generated HTML and SEO metadata
