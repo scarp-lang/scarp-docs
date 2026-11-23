@@ -30,6 +30,8 @@ jobs:
         run: npm run check:toolchain && npm run test:toolchain
       - name: Check pages and local links
         run: npm run check:docs
+      - name: Verify latest published compiler and permanent download links
+        run: npm run check:downloads
       - name: Regression-test Unicode Markdown link anchors
         run: npm run test:docs-slug
       - name: Check Hindi translation parity
