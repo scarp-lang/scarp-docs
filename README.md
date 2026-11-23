@@ -13,6 +13,11 @@ Official TypeScript-generated documentation for the experimental [Scarp Programm
 
 **Latest published compiler:** [v0.0.6-alpha.18](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.18), November 22, 2026, source `84d8de05968a488773e7c5b6eda1376d8957553c`. The experimental interpreter adds automatic `scarp exec` entrypoint discovery, immutable `array_set`, and Lifetime empty-view retention improvements. [English release](docs/releases/v0.0.6-alpha.18.md) · [हिन्दी रिलीज़](docs/hi/releases/v0.0.6-alpha.18.md) · [Exec/Lifetime guide](docs/guide/exec-and-lifetime-alpha18.md). **For binaries use [the official downloads hub](https://scarp-lang.github.io/downloads/)**; there is no general native compiler CLI.
 
+**Supported documentation policy:** The public site now recommends only the **latest published Scarp prerelease**, via [Official Downloads](https://scarp-lang.github.io/downloads/), the [current English guide](docs/guide/current.md), [हिन्दी वर्तमान गाइड](docs/hi/guide/current.md), and the [current compiler reference](docs/reference/current.md). Older compiler pages are retired from public search, navigation and sitemap, and return noindex migration notices. Their tagged evidence remains in this repository for test reproducibility, not recommended installation.
+
+<details>
+<summary>Retired compiler release history (preserved for audit, not for new installations)</summary>
+
 **Earlier compiler alpha.15:** [v0.0.6-alpha.15](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.15), November 19, 2026, source `a21b7b6d942bd1ca9abbbbb522f92f9c8e21e281`. [English](docs/releases/v0.0.6-alpha.15.md) · [हिन्दी](docs/hi/releases/v0.0.6-alpha.15.md) · [Rust host guide](docs/tooling/rust-host-alpha15.md).
 
 **Earlier published compiler alpha.14:** [v0.0.6-alpha.14](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.14), November 18, 2026, exact source `43627b74af5fccccc5e233e98207413983ebafc1`. Clearer nested pattern diagnostics, live Rust editor-cache quotas and checked ELF64 integer kernels (Rust host API only) are covered in [English release](docs/releases/v0.0.6-alpha.14.md), [हिन्दी रिलीज़](docs/hi/releases/v0.0.6-alpha.14.md), [Rust host guide](docs/tooling/rust-host-alpha14.md) and [हिन्दी Rust API guide](docs/hi/tooling/rust-host-alpha14.md). No general native compiler CLI is shipped.
@@ -30,6 +35,8 @@ Official TypeScript-generated documentation for the experimental [Scarp Programm
 **Earlier published compiler:** [v0.0.6-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.4), November 8, 2026, tagged source `f04be0758cbce405ddcdb229699b0ff83c09d207`. Its [English release notes](docs/releases/v0.0.6-alpha.4.md) and [हिन्दी विवरण](docs/hi/releases/v0.0.6-alpha.4.md) cover sampled calculus, cosine similarity, and the earlier restricted ELF64 object API. The older [v0.0.6-alpha.2 release](docs/releases/v0.0.6-alpha.2.md) introduced optional Rust embedding caches.
 
 **Earlier published compiler:** [v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1), November 5, 2026, source commit `aa329a22cf2bf92d2c9814a26ff9c8b67a72e6e8`. Read the [English release guide](docs/releases/v0.0.6-alpha.1.md) and [हिन्दी release guide](docs/hi/releases/v0.0.6-alpha.1.md). The [symbol navigation and CLI reference](docs/tooling/cli-alpha6.md), [हिन्दी symbols guide](docs/hi/tooling/cli-alpha6.md), [RMS tutorial](docs/language/rms-alpha6.md) and [हिन्दी RMS पाठ](docs/hi/language/rms-alpha6.md) document features **actually published** in alpha.6. The docs pin tagged compiler examples/JSON fixtures, track release drift and run the tagged CLI in CI. Native `.srp` compilation and LSP integrations remain unavailable.
+
+</details>
 
 **Find documentation in your language:** [Search and navigation](docs/guide/search-and-navigation.md) · [हिन्दी में खोजें](docs/hi/guide/search-and-navigation.md). The Scarp-owned local search offers Hindi labels, accessible keyboard hints and a translated no-results state; English remains unchanged. Search is client-side and does not depend on an external hosted search provider.
 
@@ -51,6 +58,9 @@ Official TypeScript-generated documentation for the experimental [Scarp Programm
 
 **Start with a complete alpha.6 project:** [English beginner lab](docs/tutorials/project-symbol-navigation-alpha6.md) · [हिन्दी शुरुआती मार्गदर्शिका](docs/hi/tutorials/project-symbol-navigation-alpha6.md). Create a project with `Scarp.project`, add a verified source module, statically inspect definitions/references, and run the exact tagged entrypoint. The project fixtures are tested with the published compiler in CI.
 
+<details>
+<summary>Older published interpreter notes and compatibility fixtures (retired)</summary>
+
 **Historical published compiler:** [v0.0.5-alpha.5](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.5), November 4, 2026, source `2eeed0aa52ccb59523307841ad8ffbd83f8911a8`. The [English release guide](docs/releases/v0.0.5-alpha.5.md), [हिन्दी release guide](docs/hi/releases/v0.0.5-alpha.5.md), [new CLI](docs/tooling/cli-alpha5.md) and [हिन्दी CLI](docs/hi/tooling/cli-alpha5.md) cover published project module inspection and the experimental C11 **Rust embedding-only** API. Historical alpha.5 installations: [English](docs/guide/installation-alpha5.md) · [हिन्दी](docs/hi/guide/installation-alpha5.md). The [C11 backend limits](docs/reference/c11-backend-alpha5.md) and [हिन्दी C11 विवरण](docs/hi/reference/c11-backend-alpha5.md) explicitly reject false native compile CLI claims. New CI executes an exact tagged alpha.5 Rust compiler and compares release-pinned source, output and file-vs-project JSON inventories.
 
 **Previous published prerelease:** [v0.0.5-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.4), November 3, 2026. The new [English project quickstart](docs/guide/quickstart-alpha4.md) and [हिन्दी project guide](docs/hi/guide/quickstart-alpha4.md) reproduce the real `create` / `verify DIRECTORY` / `launch` workflow. The [English release details](docs/releases/v0.0.5-alpha.4.md) and [हिन्दी विवरण](docs/hi/releases/v0.0.5-alpha.4.md) cover manifest safety, version bounds, and source provenance. Dedicated CI builds the tagged alpha.4 Rust interpreter and exercises project lifecycle and failure behavior.
@@ -68,6 +78,8 @@ Official TypeScript-generated documentation for the experimental [Scarp Programm
 **Documentation prerelease process:** The docs source uses a separate `docs-v*` tag namespace to avoid confusion with compiler tags. The first official docs version, [`docs-v0.1.0-alpha.1`](https://github.com/scarp-lang/scarp-docs/releases/tag/docs-v0.1.0-alpha.1), is explicitly **prerelease-only**, based on compiler [v0.0.5-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.5-alpha.4). [Release metadata](data/docs-prerelease.json) and [release notes](RELEASE_NOTES.md) are guarded by `npm run check:docs-prerelease` and `npm run test:docs-prerelease`. A [GitHub workflow](.github/workflows/docs-prerelease.yml) publishes this docs tag only after all Documentation CI jobs pass on a push to `main`; it never marks the release stable. The original `docs-v0.2.0-alpha.1` label was corrected to keep the first prerelease in the 0.1.0 series.
 
 **License:** [MIT](LICENSE)
+
+</details>
 
 ## Development
 
