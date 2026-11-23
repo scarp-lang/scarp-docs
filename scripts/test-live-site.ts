@@ -4,7 +4,7 @@ import { LIVE_PAGE_SOURCES, verifyLiveSite, type SiteFetcher } from './lib/live-
 
 const htmlRouteByUrl = new Map(LIVE_PAGE_SOURCES.map(source => [urlForPage(source), source]))
 
-function fakeSite(options: { wrongCanonical?: boolean; missingHindi?: boolean; missingInstaller?: boolean; missingCss?: boolean; missingSitemapPage?: boolean; duplicateSitemapPage?: boolean; missingFallback?: boolean; missingFallbackHindi?: boolean; indexableFallback?: boolean } = {}): SiteFetcher {
+function fakeSite(options: { wrongCanonical?: boolean; missingHindi?: boolean; missingInstaller?: boolean; missingCss?: boolean; missingSitemapPage?: boolean; duplicateSitemapPage?: boolean; missingFallback?: boolean; missingFallbackHindi?: boolean; indexableFallback?: boolean; missingTuplePreview?: boolean } = {}): SiteFetcher {
   return async url => {
     if (url === ORIGIN + BASE + '404.html') {
       if (options.missingFallback) return new Response('Not found',{status:404})
@@ -53,7 +53,12 @@ function fakeSite(options: { wrongCanonical?: boolean; missingHindi?: boolean; m
       '<link rel="alternate" hreflang="en" href="' + links.english + '">' +
       '<link rel="alternate" hreflang="hi" href="' + links.hindi + '">' +
       '<link rel="alternate" hreflang="x-default" href="' + links.english + '">' +
-      assets + '</head><body>Scarp</body></html>'
+      assets + '</head><body>' +
+      (source.endsWith('language/tuple-ordering-development.md')
+        ? (options.missingTuplePreview
+          ? 'This compiler documentation is retired'
+          : '<p>Development preview; not in v0.0.6-alpha.19</p><code>print((10, 20) &lt; (30, 40));</code>')
+        : 'Scarp') + '</body></html>'
     return new Response(html, { status: 200, headers: { 'content-type': 'text/html; charset=utf-8' } })
   }
 }
@@ -63,6 +68,8 @@ assert.equal(healthy.pages, LIVE_PAGE_SOURCES.length)
 assert.equal(healthy.assets, 2)
 assert.equal(healthy.sitemap, ORIGIN + BASE + 'sitemap.xml')
 assert.equal(healthy.sitemapPages, LIVE_PAGE_SOURCES.length)
+await assert.rejects(() => verifyLiveSite(fakeSite({ missingTuplePreview: true }), LIVE_PAGE_SOURCES),
+  /development tuple ordering content missing or replaced by retirement stub/)
 await assert.rejects(() => verifyLiveSite(fakeSite({ wrongCanonical: true }), LIVE_PAGE_SOURCES), /canonical mismatch/)
 await assert.rejects(() => verifyLiveSite(fakeSite({ missingHindi: true }), LIVE_PAGE_SOURCES), /HTTP 200, got 404/)
 await assert.rejects(() => verifyLiveSite(fakeSite({ missingInstaller: true }), LIVE_PAGE_SOURCES), /HTTP 200, got 404/)
