@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 
 /**
  * Source history is immutable evidence, not a menu of supported compilers.
- * Only current, explicitly reviewed pages enter public navigation/search/SEO.
+ * Only explicitly reviewed current or clearly labeled development-preview pages enter public navigation/search/SEO.
  * Retired URLs retain noindex legacy pages so bookmarks do not become 404s.
  */
 export function isActiveDocumentationSource(source: string, currentTag: string): boolean {
@@ -14,6 +14,9 @@ export function isActiveDocumentationSource(source: string, currentTag: string):
     'guide/current.md',
     'guide/install-latest.md',
     'reference/current.md',
+    // Reviewed, source-pinned and visibly unreleased: expose the compiler
+    // development preview without presenting it as a published release.
+    'language/tuple-ordering-development.md',
     'community/social.md',
     'community/contributing.md',
     'project/deployments.md',
