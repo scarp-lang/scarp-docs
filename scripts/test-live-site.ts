@@ -57,7 +57,7 @@ function fakeSite(options: { wrongCanonical?: boolean; missingHindi?: boolean; m
       (source.endsWith('language/tuple-ordering-development.md')
         ? (options.missingTuplePreview
           ? 'This compiler documentation is retired'
-          : '<p>Development preview; not in v0.0.6-alpha.19</p><code>print((10, 20) &lt; (30, 40));</code>')
+          : '<p>Development preview; not in v0.0.6-alpha.19. Source fde0e374b445fb573dfd980bde36f83e9d76e729</p><code>print((10, 20) &lt; (30, 40));</code>')
         : 'Scarp') + '</body></html>'
     return new Response(html, { status: 200, headers: { 'content-type': 'text/html; charset=utf-8' } })
   }
