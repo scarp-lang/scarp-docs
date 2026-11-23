@@ -14,10 +14,10 @@ hero:
   actions:
     - theme: brand
       text: Get started
-      link: /guide/learning-path
+      link: /guide/current
     - theme: alt
       text: Language reference
-      link: /language/overview
+      link: /reference/current
     - theme: alt
       text: View source
       link: https://github.com/scarp-lang/scarp
@@ -29,6 +29,25 @@ features:
   - title: Latest published compiler v0.0.6-alpha.18
     details: Alpha.18 adds scarp exec, immutable array_set and Lifetime fixes. Download from the official website.
     link: /releases/v0.0.6-alpha.18
+
+  - title: Current compiler getting started
+    details: Install and use only the latest published and verified Scarp interpreter.
+    link: /guide/current
+  - title: Current compiler reference
+    details: Read verified alpha.18 CLI, persistent array, and Lifetime behavior and limitations.
+    link: /reference/current
+  - title: Exec and Lifetime, compiler verified
+    details: Explore current immutable arrays and automatic memory retention with exact examples.
+    link: /guide/exec-and-lifetime-alpha18
+  - title: Documentation deployments
+    details: Inspect the official documentation build and Pages deployment process.
+    link: /project/deployments
+  - title: Contribute to Scarp
+    details: Find the current official contribution pathways and community.
+    link: /community/contributing
+  - title: Permanent official download links
+    details: Get the latest published Windows, Linux and macOS packages from the official hub.
+    link: https://scarp-lang.github.io/downloads/
   - title: Earlier alpha.9 BigInt and JSON diagnostics
     details: Source-pinned historical compiler examples and exact output tests.
     link: /releases/v0.0.6-alpha.9
