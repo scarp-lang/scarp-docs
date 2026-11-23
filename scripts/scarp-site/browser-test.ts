@@ -252,7 +252,7 @@ async function testLocale(
     // All code fences are readable without scripts and gain copy controls in
     // browser mode. Test actual keyboard activation, exact Unicode content,
     // clipboard permission rejection, selection fallback and WCAG A/AA.
-    await page.goto(origin+prefix.replace(/\/$/,'')+'/guide/first-program',
+    await page.goto(origin+prefix.replace(/\/$/,'')+'/reference/current',
       {waitUntil:'networkidle'})
     const codeExample=page.locator('[data-code-example]').first()
     await codeExample.locator('pre code').waitFor()
