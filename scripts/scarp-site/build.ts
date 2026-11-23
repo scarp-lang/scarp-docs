@@ -4,6 +4,7 @@ import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import ts from 'typescript'
 import { documentationPages } from '../lib/docs-pages.ts'
+import { currentDocumentationSources } from '../lib/current-publication.ts'
 import { commandAdvice, FINDER_TEXT, RELEASES, TASKS } from '../lib/command-finder.ts'
 import { escapeHtml, localLink, htmlPath, pairedRoutes, BASE } from './routes.ts'
 import { renderMarkdown, type RenderedPage, type HomeAction, type HomeFeature } from './markdown.ts'
@@ -37,7 +38,7 @@ const logo='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="
   '<path d="M96 26H49L28 46L46 64H78L97 83L76 102H29" fill="none" stroke="#1d4ed8" stroke-width="16" stroke-linecap="square" stroke-linejoin="bevel"/></svg>'
 
 interface IndexEntry {route:string;title:string;locale:'en'|'hi';section:string;excerpt:string}
-interface PageView {source:string;page:RenderedPage;route:string;locale:'en'|'hi'}
+interface PageView {source:string;page:RenderedPage;route:string;locale:'en'|'hi';active:boolean}
 
 function htmlAttr(text:string):string{return escapeHtml(text)}
 function attrs(href:string, cls?:string):string {
@@ -48,28 +49,36 @@ function groupFor(source:string):string {
   const path=source.startsWith('hi/')?source.slice(3):source
   return path.split('/')[0]==='index.md'?'guide':path.split('/')[0]
 }
-function homeActions(items: HomeAction[]|undefined, source:string):string {
-  return (items??[]).map(action=>'<a '+attrs(localLink(action.link,source),'hero-action '+(action.theme==='brand'?'primary':'secondary'))+'>'+
+function activeDestination(href:string,source:string,active:Set<string>):boolean {
+  const destination=localLink(href,source)
+  if (!destination.startsWith(BASE)) return /^https:\/\/(?:scarp-lang\.github\.io|github\.com)\//.test(destination)
+  return active.has(destination.split(/[?#]/)[0])
+}
+function homeActions(items: HomeAction[]|undefined, source:string, active:Set<string>):string {
+  return (items??[]).filter(action=>activeDestination(action.link,source,active)).map(action=>'<a '+attrs(localLink(action.link,source),'hero-action '+(action.theme==='brand'?'primary':'secondary'))+'>'+
     escapeHtml(action.text)+'</a>').join('')
 }
-function homeFeatures(items:HomeFeature[]|undefined,source:string):string{
-  return '<div class="features">'+(items??[]).map(item=>
+function homeFeatures(items:HomeFeature[]|undefined,source:string,active:Set<string>):string{
+  return '<div class="features">'+(items??[]).filter(item=>activeDestination(item.link,source,active)).map(item=>
     '<a '+attrs(localLink(item.link,source),'feature')+'><h2>'+escapeHtml(item.title)+'</h2>'+
     '<p>'+escapeHtml(item.details)+'</p></a>').join('')+'</div>'
 }
 
-function homeMarkup(page:RenderedPage,source:string):string {
+function homeMarkup(page:RenderedPage,source:string,active:Set<string>):string {
   const hero=page.frontmatter.hero
   if (!hero || page.frontmatter.layout!=='home') return page.html
   return '<div class="hero"><img src="'+BASE+'assets/scarp-mark.svg" width="110" height="110" alt="Scarp"/>'+
     '<p class="hero-kicker">'+escapeHtml(hero.name??'Scarp')+'</p>'+
     '<h1>'+escapeHtml(hero.text??page.title)+'</h1>'+
     '<p>'+escapeHtml(hero.tagline??'')+'</p>'+
-    '<div class="hero-actions">'+homeActions(hero.actions,source)+'</div></div>'+
-    homeFeatures(page.frontmatter.features,source)+page.html
+    '<div class="hero-actions">'+homeActions(hero.actions,source,active)+'</div></div>'+
+    homeFeatures(page.frontmatter.features,source,active)+
+    (source.startsWith('hi/')
+      ?'<section><h2>वर्तमान Scarp</h2><p>नए users के लिए केवल नवीनतम प्रकाशित compiler की दस्तावेज़ सामग्री और आधिकारिक डाउनलोड उपलब्ध हैं। पुराने versions को खोज, नेविगेशन और sitemap से हटाया गया है। पुराने परीक्षण Git में सुरक्षित हैं।</p><p><a href="'+BASE+'hi/guide/current">वर्तमान शुरुआत</a> · <a href="'+BASE+'hi/reference/current">वर्तमान संदर्भ</a></p></section>'
+      :'<section><h2>Current Scarp</h2><p>Use the latest published compiler and official downloads for new projects. Previous versions are retired from search, navigation and the sitemap; their test records remain in Git.</p><p><a href="'+BASE+'guide/current">Current getting started</a> · <a href="'+BASE+'reference/current">Current reference</a></p></section>')
 }
 function navigation(locale:'en'|'hi',active:string,views:PageView[]):string {
-  const inLocale=views.filter(v=>v.locale===locale && v.source!=='index.md' && v.source!=='hi/index.md')
+  const inLocale=views.filter(v=>v.active && v.locale===locale && v.source!=='index.md' && v.source!=='hi/index.md')
   const byGroup=new Map<string,PageView[]>()
   for(const v of inLocale){
     const key=groupFor(v.source)
@@ -93,12 +102,21 @@ function finderData():string {
   return '<script id="scarp-command-data" type="application/json">'+json+'</script>'
 }
 
-function htmlDocument(view:PageView, views:PageView[], currentTag:string):string{
+function htmlDocument(view:PageView, views:PageView[], currentTag:string,activeRoutes:Set<string>):string{
   const {page,source,route,locale}=view
   const meta=pairedRoutes(source)
   const other=locale==='en'?meta.hindi:meta.english
   const home=page.frontmatter.layout==='home'
-  const body=home?homeMarkup(page,source):page.html
+  const retired=!view.active
+  const retiredNotice=retired
+    ?'<aside class="scarp-callout" role="note"><p>'+localized(
+      'Retired compiler documentation: preserved only for historical links and testing. Use the current guide for new code.',
+      'पुराने compiler का दस्तावेज़: केवल ऐतिहासिक लिंक और परीक्षण के लिए सुरक्षित। नए code के लिए वर्तमान गाइड देखें।',locale)+
+      '</p><p><a '+attrs((locale==='hi'?BASE+'hi/':BASE)+'guide/current')+'>'+
+      localized('Current guide','वर्तमान गाइड',locale)+'</a> · <a '+attrs('https://scarp-lang.github.io/downloads/')+'>'+
+      localized('Official downloads','आधिकारिक डाउनलोड',locale)+'</a></p></aside>'
+    :''
+  const body=retiredNotice+(home?homeMarkup(page,source,activeRoutes):page.html)
   const heading=home||page.headings.some(item=>item.level===1)
     ?'':'<h1 class="page-heading">'+escapeHtml(page.title)+'</h1>'
   const seoDescription=(home?page.frontmatter.hero?.tagline:page.bodyText)??page.bodyText
@@ -118,6 +136,7 @@ function htmlDocument(view:PageView, views:PageView[], currentTag:string):string
   return '<!doctype html><html lang="'+lang+'"><head><meta charset="UTF-8"/>'+
     '<meta name="viewport" content="width=device-width,initial-scale=1"/>'+
     '<meta name="description" content="'+htmlAttr(description)+'"/>'+
+    (retired?'<meta name="robots" content="noindex, follow"/>':'')+
     '<title>'+escapeHtml(title)+'</title>'+
     renderSeoHead(source)+
     '<link rel="icon" type="image/svg+xml" href="'+BASE+'assets/scarp-mark.svg"/>'+
@@ -166,26 +185,30 @@ export async function buildSite():Promise<{pages:number;assets:number}>{
   rmSync(production?siteRoot:previewRoot,{recursive:true,force:true})
   mkdirSync(join(siteRoot,'assets'),{recursive:true})
   const sources=documentationPages(docsRoot)
+  const activeSources=currentDocumentationSources(sources,currentTag)
+  const activePaths=new Set(activeSources)
   const views=sources.map(source=>{
     const page=renderMarkdown(readFileSync(join(docsRoot,source),'utf8'),source)
-    return {page,source,route:pairedRoutes(source).route,locale:pairedRoutes(source).locale}
+    return {page,source,route:pairedRoutes(source).route,
+      locale:pairedRoutes(source).locale,active:activePaths.has(source)}
   })
+  const activeRoutes=new Set(views.filter(v=>v.active).map(v=>v.route))
   assert.ok(views.length >= 142,'Migration must preserve the 142-page bilingual baseline')
   assert.equal(views.filter(v=>v.locale==='hi').length * 2,views.length,'Hindi page parity')
   const routes=new Set(views.map(v=>v.route))
   assert.equal(routes.size,views.length,'Generated public routes must be unique')
-  const searchIndex:IndexEntry[]=views.map(view=>({
+  const searchIndex:IndexEntry[]=views.filter(view=>view.active).map(view=>({
     route:view.route,title:view.page.title,locale:view.locale,
     section:groupFor(view.source),excerpt:view.page.bodyText
   }))
   for(const view of views){
     const dest=join(siteRoot,htmlPath(view.source))
     mkdirSync(resolve(dest,'..'),{recursive:true})
-    writeFileSync(dest,htmlDocument(view,views,currentTag),'utf8')
+    writeFileSync(dest,htmlDocument(view,views,currentTag,activeRoutes),'utf8')
   }
   const sitemap='<?xml version="1.0" encoding="UTF-8"?>\n'+
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+
-    views.map(v=>'<url><loc>'+pairedRoutes(v.source).canonical+'</loc></url>').join('\n')+
+    views.filter(v=>v.active).map(v=>'<url><loc>'+pairedRoutes(v.source).canonical+'</loc></url>').join('\n')+
     '\n</urlset>\n'
   writeFileSync(join(siteRoot,'sitemap.xml'),sitemap)
   writeFileSync(join(siteRoot,'assets','search-index.json'),JSON.stringify(searchIndex))
@@ -233,7 +256,7 @@ export async function buildSite():Promise<{pages:number;assets:number}>{
     '<a lang="en" href="'+BASE+'">English documentation</a>'+
     '<a lang="hi" href="'+BASE+'hi/">हिन्दी दस्तावेज़</a></nav></main></body></html>', 'utf8')
   console.log('PASS: independent Scarp TypeScript engine generated '+views.length+
-    ' English/Hindi Markdown routes, local CSS/JavaScript and sitemap under '+siteRoot)
+    ' bilingual routes ('+activeSources.length+' current, '+(views.length-activeSources.length)+' retired), local assets and sitemap under '+siteRoot)
   return {pages:views.length,assets:5}
 }
 if(process.argv[1] && resolve(process.argv[1])===fileURLToPath(import.meta.url)){
