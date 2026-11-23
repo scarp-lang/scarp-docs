@@ -53,10 +53,11 @@ export default defineConfig({
         // Historic releases, CLI reference and the remaining guides live in sidebar.
         nav: [
           { text: 'सीखें', link: '/hi/guide/learning-path' },
-          { text: 'इंस्टॉल', link: '/hi/guide/installation-alpha6' },
+          { text: 'इंस्टॉल', link: '/hi/guide/install-latest' },
           { text: 'उदाहरण', link: '/hi/examples/' },
           { text: 'रिलीज़', items: [
             { text: 'नवीनतम: v0.0.6-alpha.18', link: '/hi/releases/v0.0.6-alpha.18' },
+            { text: 'आधिकारिक डाउनलोड', link: 'https://scarp-lang.github.io/downloads/' },
             { text: 'CLI (alpha.6)', link: '/hi/tooling/cli-alpha6' },
             { text: 'CLI (alpha.5)', link: '/hi/tooling/cli-alpha5' },
             { text: 'CLI (alpha.4)', link: '/hi/tooling/cli-alpha4' },
@@ -65,7 +66,7 @@ export default defineConfig({
             { text: 'Alpha.3 CLI', link: '/hi/releases/v0.0.5-alpha.3' },
             { text: 'Alpha.2 examples', link: '/hi/releases/v0.0.5-alpha.2' },
             { text: 'प्रकाशित features', link: '/hi/reference/status' },
-            { text: 'मुख्य reference: v0.0.5-alpha.1', link: '/hi/reference/status' },
+            { text: 'प्रकाशित compiler स्थिति', link: '/hi/reference/status' },
             { text: 'अपग्रेड जाँच: alpha.1 → alpha.2', link: '/hi/reference/upgrade-readiness' }
           ] },
           { text: 'समुदाय', items: [
@@ -84,7 +85,7 @@ export default defineConfig({
             { text: 'परिचय', link: '/hi/guide/introduction' },
             { text: 'दस्तावेज़ खोजें', link: '/hi/guide/search-and-navigation' },
             { text: 'Offline डाउनलोड', link: '/hi/guide/offline-docs' },
-            { text: 'इंस्टॉलेशन (alpha.6)', link: '/hi/guide/installation-alpha6' },
+            { text: 'नवीनतम Scarp इंस्टॉल करें', link: '/hi/guide/install-latest' },
             { text: 'सात चरणों वाला Learning Path', link: '/hi/guide/learning-path' },
             { text: 'पहला Alpha.6 project और symbols', link: '/hi/tutorials/project-symbol-navigation-alpha6' },
             { text: 'Alpha.4 project शुरुआत', link: '/hi/guide/quickstart-alpha4' },
@@ -197,10 +198,11 @@ export default defineConfig({
     // Every long-form guide and historical reference stays in the sidebar.
     nav: [
       { text: 'Learn', link: '/guide/learning-path' },
-      { text: 'Install', link: '/guide/installation-alpha6' },
+      { text: 'Install', link: '/guide/install-latest' },
       { text: 'Examples', link: '/examples/' },
       { text: 'Releases', items: [
-        { text: 'Published alpha.6 release', link: '/releases/v0.0.6-alpha.1' },
+        { text: 'Latest compiler v0.0.6-alpha.18', link: '/releases/v0.0.6-alpha.18' },
+        { text: 'Official compiler downloads', link: 'https://scarp-lang.github.io/downloads/' },
         { text: 'CLI (alpha.6)', link: '/tooling/cli-alpha6' },
         { text: 'CLI (alpha.5)', link: '/tooling/cli-alpha5' },
         { text: 'CLI (alpha.4)', link: '/tooling/cli-alpha4' },
@@ -211,7 +213,7 @@ export default defineConfig({
         { text: 'Published alpha.3 and Scarp-first CLI', link: '/releases/v0.0.5-alpha.3' },
         { text: 'Published alpha.2 examples', link: '/releases/v0.0.5-alpha.2' },
         { text: 'Shipped feature matrix (alpha.1–alpha.6)', link: '/reference/status' },
-        { text: 'Core reference: v0.0.5-alpha.1', link: '/reference/status' },
+        { text: 'Verified compiler status', link: '/reference/status' },
         { text: 'Compiler releases', link: `${sourceRepo}/releases` }
       ] },
       { text: 'Community', items: [
@@ -230,7 +232,7 @@ export default defineConfig({
         { text: 'Introduction', link: '/guide/introduction' },
         { text: 'Search and navigation', link: '/guide/search-and-navigation' },
         { text: 'Download offline docs', link: '/guide/offline-docs' },
-        { text: 'Install the current alpha.6 release', link: '/guide/installation-alpha6' },
+        { text: 'Install the latest Scarp release', link: '/guide/install-latest' },
         { text: 'Learn Scarp: seven stages', link: '/guide/learning-path' },
         { text: 'First alpha.6 project and symbols', link: '/tutorials/project-symbol-navigation-alpha6' },
         { text: 'Quickstart: projects (alpha.4)', link: '/guide/quickstart-alpha4' },

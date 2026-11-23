@@ -11,7 +11,7 @@ Official TypeScript-generated documentation for the experimental [Scarp Programm
 
 **Compiler:** https://github.com/scarp-lang/scarp
 
-**Latest published compiler:** [v0.0.6-alpha.16](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.16), November 20, 2026, source `244f713b4fa48f02a98b8e3e3c11025363f35260`. The published experimental interpreter adds pure median and type-7 quantiles, Unicode text utilities, checked signed 64-bit number helpers, and bounded Rust `ConstantCache` retention. Read the [English release](docs/releases/v0.0.6-alpha.16.md), [हिन्दी release](docs/hi/releases/v0.0.6-alpha.16.md), and [bilingual learning guide](docs/tooling/alpha16-statistics-utilities.md). **There is no general native compiler CLI.**
+**Latest published compiler:** [v0.0.6-alpha.18](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.18), November 22, 2026, source `84d8de05968a488773e7c5b6eda1376d8957553c`. The experimental interpreter adds automatic `scarp exec` entrypoint discovery, immutable `array_set`, and Lifetime empty-view retention improvements. [English release](docs/releases/v0.0.6-alpha.18.md) · [हिन्दी रिलीज़](docs/hi/releases/v0.0.6-alpha.18.md) · [Exec/Lifetime guide](docs/guide/exec-and-lifetime-alpha18.md). **For binaries use [the official downloads hub](https://scarp-lang.github.io/downloads/)**; there is no general native compiler CLI.
 
 **Earlier compiler alpha.15:** [v0.0.6-alpha.15](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.15), November 19, 2026, source `a21b7b6d942bd1ca9abbbbb522f92f9c8e21e281`. [English](docs/releases/v0.0.6-alpha.15.md) · [हिन्दी](docs/hi/releases/v0.0.6-alpha.15.md) · [Rust host guide](docs/tooling/rust-host-alpha15.md).
 
@@ -33,9 +33,9 @@ Official TypeScript-generated documentation for the experimental [Scarp Programm
 
 **Find documentation in your language:** [Search and navigation](docs/guide/search-and-navigation.md) · [हिन्दी में खोजें](docs/hi/guide/search-and-navigation.md). The Scarp-owned local search offers Hindi labels, accessible keyboard hints and a translated no-results state; English remains unchanged. Search is client-side and does not depend on an external hosted search provider.
 
-**Start learning in order:** [English: seven-stage learning path](docs/guide/learning-path.md) · [हिन्दी: सात चरणों में Scarp](docs/hi/guide/learning-path.md). Historical compiler examples retain their versioned baselines; the learning path explains which release to use, from alpha.1 through the published alpha.16 prerelease, without claiming universal compatibility.
+**Start learning in order:** [English: seven-stage learning path](docs/guide/learning-path.md) · [हिन्दी: सात चरणों में Scarp](docs/hi/guide/learning-path.md). The recommended download is the latest published compiler; historical examples retain exact release-specific provenance, without a guarantee of universal compatibility.
 
-**Install the latest published compiler:** [Alpha.16 Windows/Linux/macOS packages and SHA-256](docs/releases/v0.0.6-alpha.16.md). Historical [English alpha.1 installation guide](docs/guide/installation-alpha6.md) · [हिन्दी version-pinned installer](docs/hi/guide/installation-alpha6.md). Verify each platform's official archive checksum before execution.
+**Install the latest published compiler:** [Official Scarp Downloads](https://scarp-lang.github.io/downloads/) · [English](docs/guide/install-latest.md) · [हिन्दी](docs/hi/guide/install-latest.md). Permanent platform links target the newest published release; verify its corresponding SHA-256 before extracting.
 
 **Automated accessibility auditing:** The extracted offline site is checked with pinned local axe-core in 10 bilingual light/dark/search/mobile states; CI attaches per-state WCAG A/AA findings on failures. Manual screen-reader verification remains separately tracked in [Issue #65](https://github.com/scarp-lang/scarp-docs/issues/65).
 

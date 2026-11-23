@@ -21,6 +21,9 @@ hero:
     - theme: alt
       text: GitHub पर स्रोत
       link: https://github.com/scarp-lang/scarp
+    - theme: alt
+      text: Scarp डाउनलोड
+      link: https://scarp-lang.github.io/downloads/
 
 features:
   - title: नवीनतम प्रकाशित v0.0.6-alpha.18 compiler
@@ -38,14 +41,14 @@ features:
   - title: पुराने alpha.6 symbols और references
     details: सही archive और checksum की जाँच, static symbols और references तथा RMS के प्रकाशित उदाहरण सीखें।
     link: /hi/releases/v0.0.6-alpha.1
-  - title: पुराने alpha.1 की सुरक्षित स्थापना
-    details: Windows, Linux और Apple Silicon के लिए आधिकारिक पैकेज, SHA-256 जाँच और tagged source build चरणबद्ध सीखें।
-    link: /hi/guide/installation-alpha6
+  - title: नवीनतम Scarp compiler डाउनलोड करें
+    details: Windows, Linux और Apple Silicon के लिए स्थायी आधिकारिक लिंक और SHA-256 जाँच देखें।
+    link: /hi/guide/install-latest
   - title: हिन्दी में पूरी दस्तावेज़ संरचना
     details: स्थापना, वेरिएबल, फ़ंक्शन, मॉड्यूल, मेमोरी और CLI को हिन्दी में समझें।
     link: /hi/guide/introduction
   - title: वास्तविक compiler प्रमाण
-    details: v0.0.5-alpha.1 के कोड और परीक्षण पर आधारित जानकारी।
+    details: अलग-अलग compiler releases के सत्यापित परीक्षण और प्रमाण देखें।
     link: /hi/reference/evidence
   - title: सत्यापित फ़ंक्शन ट्यूटोरियल
     details: आधिकारिक compiler के वास्तविक फ़ंक्शन प्रोग्राम और जाँचे गए आउटपुट चरणबद्ध समझें।
@@ -80,7 +83,7 @@ features:
 ---
 
 ::: warning प्रयोगात्मक रिलीज़
-नवीनतम प्रकाशित compiler **[v0.0.6-alpha.18](/hi/releases/v0.0.6-alpha.18)** है, जबकि अधिकतर मुख्य reference अभी अलग से सत्यापित **v0.0.5-alpha.1** पर आधारित है। सभी experimental prereleases हैं। पुराने code के लिए [अपग्रेड की जाँच](/hi/reference/upgrade-readiness) और [फ़ीचर स्थिति](/hi/reference/status) पढ़ें।
+नवीनतम सत्यापित प्रकाशित compiler **[v0.0.6-alpha.18](/hi/releases/v0.0.6-alpha.18)** है। [आधिकारिक Scarp डाउनलोड](https://scarp-lang.github.io/downloads/) और [वर्तमान इंस्टॉलेशन गाइड](/hi/guide/install-latest) से शुरुआत करें। यह experimental prerelease है; पुराने पृष्ठ केवल अपने मूल release के परीक्षण बताते हैं। [फ़ीचर स्थिति](/hi/reference/status) देखें।
 :::
 
 [ऐतिहासिक alpha.9 BigInt और JSON-v2 रिलीज़](/hi/releases/v0.0.6-alpha.9) अपने मूल compiler version के लिए उपलब्ध है।

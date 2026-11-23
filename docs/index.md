@@ -21,10 +21,13 @@ hero:
     - theme: alt
       text: View source
       link: https://github.com/scarp-lang/scarp
+    - theme: alt
+      text: Download Scarp
+      link: https://scarp-lang.github.io/downloads/
 
 features:
   - title: Latest published compiler v0.0.6-alpha.18
-    details: Explore median/quantile, Unicode and checked integer utilities, and Rust host cache limits.
+    details: Alpha.18 adds scarp exec, immutable array_set and Lifetime fixes. Download from the official website.
     link: /releases/v0.0.6-alpha.18
   - title: Earlier alpha.9 BigInt and JSON diagnostics
     details: Source-pinned historical compiler examples and exact output tests.
@@ -41,11 +44,11 @@ features:
   - title: Verified language syntax
     details: Explore bind/var, typed funcra functions, branching, iteration, modules, and explicit output.
     link: /reference/status
-  - title: Historical alpha.1 installation walkthrough
-    details: Verify official Windows, Linux or Apple Silicon archives before extraction, or build the immutable Rust tag.
-    link: /guide/installation-alpha6
+  - title: Download the latest Scarp compiler
+    details: Use permanent official links for Windows, Linux and Apple Silicon and verify the correct release checksum.
+    link: /guide/install-latest
   - title: Honest compatibility guidance
-    details: Understand what shipped in v0.0.5-alpha.1, what changed since earlier prereleases, and what remains planned.
+    details: Compare versioned compiler features without treating archived tutorials as current installation instructions.
     link: /reference/compatibility
   - title: Functions, verified from the compiler
     details: Follow real typed-function examples with outputs checked against the published Scarp interpreter.
@@ -80,7 +83,7 @@ features:
 ---
 
 ::: warning Experimental language
-The newest published compiler is **[v0.0.6-alpha.18](/releases/v0.0.6-alpha.18)**, while much of the main reference still targets the separately verified **v0.0.5-alpha.1** baseline. Both are experimental prereleases. Before upgrading older code, check [alpha.1 → alpha.2 upgrade readiness](/reference/upgrade-readiness) and the [feature status](/reference/status).
+The latest verified published compiler is **[v0.0.6-alpha.18](/releases/v0.0.6-alpha.18)** (experimental prerelease). [Download Scarp](https://scarp-lang.github.io/downloads/) or open the [current installation guide](/guide/install-latest). Older tutorial pages preserve release-pinned evidence, not current installation advice; check [feature status](/reference/status).
 :::
 
 For signed BigInt and JSON-v2 test reporting on earlier binaries, read the [historical alpha.9 release](/releases/v0.0.6-alpha.9).
