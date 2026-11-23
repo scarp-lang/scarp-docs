@@ -1,5 +1,7 @@
 # नवीनतम प्रकाशित Scarp इंस्टॉल करें
 
+<!-- scarp-cli-release: v0.0.6-alpha.18 -->
+
 **आधिकारिक डाउनलोड:** [scarp-lang.github.io/downloads](https://scarp-lang.github.io/downloads/)।
 
 23 नवंबर 2026 तक नवीनतम सत्यापित प्रकाशित compiler **[Scarp v0.0.6-alpha.18](/hi/releases/v0.0.6-alpha.18)** है। यह experimental interpreter prerelease है। भविष्य के नए प्रकाशित संस्करणों के लिए पुराने इंस्टॉलेशन पेज नहीं, आधिकारिक Downloads वेबसाइट इस्तेमाल करें।

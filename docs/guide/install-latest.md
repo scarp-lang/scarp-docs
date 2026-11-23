@@ -1,5 +1,7 @@
 # Install the latest published Scarp
 
+<!-- scarp-cli-release: v0.0.6-alpha.18 -->
+
 **Official download center:** [scarp-lang.github.io/downloads](https://scarp-lang.github.io/downloads/).
 
 As of November 23, 2026, the latest verified published compiler is **[Scarp v0.0.6-alpha.18](/releases/v0.0.6-alpha.18)**, an experimental interpreter prerelease. For the newest available version, including future prereleases, use the official Downloads website rather than the archived installation pages.
