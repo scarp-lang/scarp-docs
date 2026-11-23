@@ -15,6 +15,12 @@ const manifest=JSON.parse(readFileSync(join(root,'data/compiler-latest-release.j
 const all=documentationPages(docs)
 const active=currentDocumentationSources(all,manifest.compilerRef)
 const activeRoutes=new Set(active.map(sourceRoute))
+// Reviewed source-only tuple ordering guides must be real, discoverable pages,
+// not historical stubs. They explicitly warn users alpha.19 lacks the feature.
+for(const locale of ['', 'hi/']) {
+  const preview=locale+'language/tuple-ordering-development.md'
+  assert.ok(active.includes(preview), 'Development preview missing from active publication: '+preview)
+}
 assert.ok(all.length>=200,'Missing historical source fixtures')
 assert.ok(all.length-active.length>=100,'Retirement must cover historical pages')
 for(const prefix of ['', 'hi/']){
