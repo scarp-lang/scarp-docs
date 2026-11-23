@@ -70,7 +70,7 @@ export async function verifyLiveSite(fetcher: SiteFetcher, sitemapSources: reado
     }
     assert.match(html, /<title\b[^>]*>[^<]+<\/title>/i, url + ': missing document title')
     if (source.endsWith('language/tuple-ordering-development.md')) {
-      assert.ok(html.includes('10, 20') && html.includes('v0.0.6-alpha.19'),
+      assert.ok(html.includes('fde0e374b445fb573dfd980bde36f83e9d76e729') && html.includes('v0.0.6-alpha.19'),
         url + ': development tuple ordering content missing or replaced by retirement stub')
       assert.ok(!html.includes('This compiler documentation is retired') &&
         !html.includes('यह compiler दस्तावेज़ अब नए इंस्टॉलेशन के लिए समर्थित नहीं है'),
