@@ -167,7 +167,7 @@ function htmlDocument(view:PageView, views:PageView[], currentTag:string,activeR
     '<a class="skip-link" href="#main">'+localized('Skip to content','मुख्य सामग्री पर जाएँ',locale)+'</a>'+
     '<header class="site-header"><a class="brand" '+attrs(BASE)+'><img src="'+BASE+'assets/scarp-mark.svg" alt="" width="34" height="34"/><span>Scarp</span></a>'+
     '<nav class="top-nav" aria-label="'+localized('Primary','मुख्य नेविगेशन',locale)+'">'+
-    '<a '+attrs(locale==='hi'?BASE+'hi/guide/learning-path':BASE+'guide/learning-path')+'>'+
+    '<a '+attrs(locale==='hi'?BASE+'hi/guide/current':BASE+'guide/current')+'>'+
       localized('Learn','सीखें',locale)+'</a>'+
     '<a '+attrs(locale==='hi'?BASE+'hi/guide/install-latest':BASE+'guide/install-latest')+'>'+
       localized('Install','इंस्टॉल',locale)+'</a>'+
