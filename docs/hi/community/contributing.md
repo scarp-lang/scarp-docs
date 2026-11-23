@@ -3,7 +3,7 @@
 Scarp का compiler और documentation अलग repositories में हैं:
 
 - [scarp-lang/scarp](https://github.com/scarp-lang/scarp) — Rust interpreter, tests, releases और language features।
-- [scarp-lang/scarp-docs](https://github.com/scarp-lang/scarp-docs) — यह MIT-licensed VitePress दस्तावेज़ वेबसाइट।
+- [scarp-lang/scarp-docs](https://github.com/scarp-lang/scarp-docs) — यह MIT-licensed, Scarp के अपने TypeScript renderer पर चलने वाली आधिकारिक दस्तावेज़ वेबसाइट।
 
 ## दस्तावेज़ में बदलाव
 
@@ -17,6 +17,10 @@ npm run docs:dev
 npm run check:docs
 npm run docs:build
 ~~~
+
+## वर्तमान compiler की दस्तावेज़ नीति
+
+नए content के लिए [वर्तमान compiler reference](/hi/reference/current) तथा [नवीनतम इंस्टॉलेशन](/hi/guide/install-latest) देखें। पुराने compiler releases को नए download के रूप में न सुझाएँ। सत्यापित प्रकाशित version `data/compiler-latest-release.json` में लिखा है। Unreleased branch को published feature न बताएँ। पुराने संदर्भ पृष्ठ केवल Git में reproducible tests के लिए सुरक्षित हैं और current search/navigation से हटाए गए हैं। वेबसाइट अब Scarp के स्वयं के TypeScript renderer से बनती है, VitePress से नहीं।
 
 ## Compiler में योगदान
 
