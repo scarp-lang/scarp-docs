@@ -44,6 +44,10 @@ one नमस्ते
 
 Scarp Lifetime compiler-planned scope retirement तथा सुरक्षित Rust immutable shared storage पर आधारित है। User source में free या borrow call लिखना ज़रूरी नहीं। Alpha.18 में खाली finite/integer windows बड़े मूल buffer से अलग हो जाती हैं, लेकिन **गैर-खाली views अब भी पुराने storage को रोके रख सकती हैं**। यह सामान्य cycle collector या OS RAM limit नहीं है, और memory तुरंत लौटने की गारंटी नहीं। `--max-vector-bytes` **cumulative** budget है तथा `--max-live-slots` allocated frame slots गिनता है, actual RAM नहीं।
 
+## Development preview: tuple ordering (अभी प्रकाशित नहीं)
+
+Compiler के `main` source में **numeric tuples की lexicographic ordering** शामिल है। यह alpha.19 publication baseline के बाद merge हुआ feature है। **प्रकाशित alpha.19 या उससे पुराने binary में उपलब्ध नहीं है।** [हिन्दी development reference](/hi/language/tuple-ordering-development) में source-verified उदाहरण देखें। ऊपर दिया गया alpha.18 विवरण अपने published snapshot के लिए ही है।
+
 ## वर्तमान compiler में क्या उपलब्ध नहीं है?
 
 प्रयोगात्मक ELF64 तथा C11 code generation सीमित **Rust host APIs** हैं, सामान्य `.srp` native compilation command नहीं। Scarp experimental interpreter ही है; syntax तथा standard-library compatibility स्थिर नहीं।
