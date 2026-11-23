@@ -3,6 +3,8 @@
 <!-- scarp-release-status: v0.0.5-alpha.5 -->
 <!-- scarp-main-reference-baseline: v0.0.5-alpha.1 -->
 
+**Get the latest binaries:** [Official Scarp Downloads](https://scarp-lang.github.io/downloads/) · [Current installation](/guide/install-latest). The historical release table preserves original compiler source and conformance evidence.
+
 **Latest published compiler: [v0.0.6-alpha.18](/releases/v0.0.6-alpha.18), November 22, 2026.** The published interpreter adds path-free `scarp exec`, persistent `array_set`, and improved Lifetime retention for empty numeric windows. [Alpha.17](/releases/v0.0.6-alpha.17) added array traversal and Boolean input. The main general-language reference remains pinned to v0.0.5-alpha.1.
 
 For current downloads use the [published v0.0.6-alpha.18 archives and checksum pairs](/releases/v0.0.6-alpha.18). The [alpha.1 installation walkthrough](/guide/installation-alpha6) stays pinned to its tagged source. For the older alpha.5 release, start with [published alpha.5 installation](/guide/installation-alpha5) and [alpha.5 CLI](/tooling/cli-alpha5). The earlier [alpha.4 project quickstart](/guide/quickstart-alpha4) remains useful for the unchanged creation workflow. The [alpha.3 CLI reference](/tooling/cli) remains useful for individual file commands. Use the [version compatibility guide](/reference/compatibility) before migrating existing projects.

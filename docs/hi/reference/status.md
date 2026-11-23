@@ -3,6 +3,8 @@
 <!-- scarp-release-status: v0.0.5-alpha.5 -->
 <!-- scarp-main-reference-baseline: v0.0.5-alpha.1 -->
 
+**नवीनतम binaries:** [आधिकारिक Scarp Downloads](https://scarp-lang.github.io/downloads/) · [वर्तमान इंस्टॉलेशन](/hi/guide/install-latest)। नीचे पुरानी releases का मूल compiler source और परीक्षण प्रमाण सुरक्षित है।
+
 **नवीनतम प्रकाशित compiler: [v0.0.6-alpha.18](/hi/releases/v0.0.6-alpha.18), 22 नवंबर 2026।** प्रकाशित interpreter में बिना filename `scarp exec`, immutable `array_set` और Lifetime empty-window सुधार उपलब्ध हैं। [पिछली alpha.17](/hi/releases/v0.0.6-alpha.17) में array traversal और Boolean input आए। मुख्य reference अभी v0.0.5-alpha.1 के मूल संस्करण पर आधारित है।
 
 नए डाउनलोड के लिए [v0.0.6-alpha.18 archive और checksum](/hi/releases/v0.0.6-alpha.18) देखें। [alpha.1 installation](/hi/guide/installation-alpha6) अपने पुराने संस्करण पर pinned है। पुराने alpha.5 के लिए [प्रकाशित alpha.5 इंस्टॉलेशन](/hi/guide/installation-alpha5) और [alpha.5 CLI](/hi/tooling/cli-alpha5) पढ़ें। पुरानी project-generation प्रक्रिया [alpha.4 quickstart](/hi/guide/quickstart-alpha4) में है। पुराने individual file commands के लिए [alpha.3 CLI reference](/hi/tooling/cli) उपलब्ध है। पुराने programs migrate करने से पहले [version compatibility](/hi/reference/compatibility) जाँचें।

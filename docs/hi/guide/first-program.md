@@ -1,5 +1,7 @@
 # अपना पहला Scarp प्रोग्राम
 
+**नया compiler डाउनलोड करने के लिए:** [आधिकारिक Scarp Downloads](https://scarp-lang.github.io/downloads/) और [वर्तमान इंस्टॉलेशन](/hi/guide/install-latest) देखें। नीचे का उदाहरण पुराना release-pinned tutorial है; इसे नई binary डाउनलोड करने की सलाह न समझें।
+
 **नई शुरुआत के लिए:** [सभी stages वाला सीखने का मार्ग](/hi/guide/learning-path) तथा [प्रकाशित alpha.6 release और checksum](/hi/releases/v0.0.6-alpha.1) देखें। यह पृष्ठ **पुराने alpha.1 file tutorial** के प्रमाणित code को इतिहास के लिए सुरक्षित रखता है।
 
 **नया पूरा project चाहिए?** [प्रकाशित alpha.6 project lab](/hi/tutorials/project-symbol-navigation-alpha6) को उसी release के interpreter से चलाएँ। [Alpha.4 installation guide](/hi/guide/installation) और [alpha.4 project quickstart](/hi/guide/quickstart-alpha4) अलग ऐतिहासिक references हैं। यह पुरानी file guide जानबूझकर alpha.1 पर आधारित है।
