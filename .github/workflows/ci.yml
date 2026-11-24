@@ -794,3 +794,29 @@ jobs:
         run: |
           cargo test --manifest-path .compiler-alpha18/Cargo.toml --locked --offline --test lifetime_windows
           cargo test --manifest-path .compiler-alpha18/Cargo.toml --locked --offline --lib lifetime_storage_tests
+
+  alpha20-conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: scarp-lang/scarp
+          ref: b1a9347f93540fdf95b0ddecba4adc55a3b4bb98
+          path: .compiler-alpha20
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Install TypeScript tooling
+        run: npm install --no-audit --no-fund
+      - name: Confirm exact published alpha.20 revision
+        run: test "$(git -C .compiler-alpha20 rev-parse HEAD)" = "b1a9347f93540fdf95b0ddecba4adc55a3b4bb98"
+      - name: Validate bilingual source and release evidence
+        run: npm run check:alpha20
+      - name: Build the exact published interpreter
+        run: cargo build --manifest-path .compiler-alpha20/Cargo.toml --locked --offline
+      - name: Run real lesson snippets and manifest migration regression
+        run: npm run test:alpha20-compiler -- .compiler-alpha20/target/debug/scarp
+      - name: Test published decimal, tuple, callable and native object contracts
+        run: cargo test --manifest-path .compiler-alpha20/Cargo.toml --locked --offline --test decimal_literals --test tuple_index_updates --test tuples --test cumulative_host_quotas --test host_argument_budget --test native_object_function
