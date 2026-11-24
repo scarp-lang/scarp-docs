@@ -39,8 +39,8 @@ jobs:
         run: npm run test:sitemap
       - name: Build static website
         run: npm run docs:build
-      - name: Verify generated bilingual HTML and SEO metadata
-        run: npm run check:site-build
+      - name: Verify retirement, generated HTML, SEO and public smoke contract before upload
+        run: npm run check:retirement && npm run check:site-build
       - name: Build and test downloadable offline documentation archive
         run: npm run package:offline && npm run test:offline
       - name: Upload versioned offline snapshot and SHA-256 checksum
