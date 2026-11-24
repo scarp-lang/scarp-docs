@@ -10,6 +10,7 @@ import { escapeHtml, localLink, htmlPath, pairedRoutes, BASE } from './routes.ts
 import { renderMarkdown, type RenderedPage, type HomeAction, type HomeFeature } from './markdown.ts'
 import { currentPublishedCompilerTag, currentCompilerReleaseRoute } from './current-release.ts'
 import { renderSeoHead } from './seo.ts'
+import { parseSearchIndex, type SearchEntry } from './search-index.ts'
 
 const root=resolve(fileURLToPath(new URL('../..',import.meta.url)))
 const docsRoot=join(root,'docs')
@@ -37,7 +38,6 @@ const logo='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="
   '<rect width="128" height="128" rx="22" fill="#eff6ff"/>'+
   '<path d="M96 26H49L28 46L46 64H78L97 83L76 102H29" fill="none" stroke="#1d4ed8" stroke-width="16" stroke-linecap="square" stroke-linejoin="bevel"/></svg>'
 
-interface IndexEntry {route:string;title:string;locale:'en'|'hi';section:string;excerpt:string}
 interface PageView {source:string;page:RenderedPage;route:string;locale:'en'|'hi';active:boolean}
 
 function htmlAttr(text:string):string{return escapeHtml(text)}
@@ -219,10 +219,11 @@ export async function buildSite():Promise<{pages:number;assets:number}>{
   assert.equal(views.filter(v=>v.locale==='hi').length * 2,views.length,'Hindi page parity')
   const routes=new Set(views.map(v=>v.route))
   assert.equal(routes.size,views.length,'Generated public routes must be unique')
-  const searchIndex:IndexEntry[]=views.filter(view=>view.active).map(view=>({
+  const searchIndex:SearchEntry[]=views.filter(view=>view.active).map(view=>({
     route:view.route,title:view.page.title,locale:view.locale,
     section:groupFor(view.source),excerpt:view.page.bodyText
   }))
+  parseSearchIndex(searchIndex)
   for(const view of views){
     const dest=join(siteRoot,htmlPath(view.source))
     mkdirSync(resolve(dest,'..'),{recursive:true})
@@ -260,6 +261,13 @@ export async function buildSite():Promise<{pages:number;assets:number}>{
     throw new Error('GitHub deployment counter TypeScript compilation failed')
   }
   writeFileSync(join(siteRoot,'assets','pages-api.js'),apiScript.outputText)
+  const searchScript=ts.transpileModule(readFileSync(join(root,'scripts/scarp-site/search-index.ts'),'utf8'),{
+    fileName:'search-index.ts',
+    compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext},
+    reportDiagnostics:true
+  })
+  if(searchScript.diagnostics?.length) throw new Error('Search index TypeScript compilation failed')
+  writeFileSync(join(siteRoot,'assets','search-index.js'),searchScript.outputText)
   // A project Pages 404 is still a public documentation entry point. Give
   // both language communities real navigation and keep it out of search.
   writeFileSync(join(siteRoot,'404.html'),
@@ -279,7 +287,7 @@ export async function buildSite():Promise<{pages:number;assets:number}>{
     '<a lang="hi" href="'+BASE+'hi/">हिन्दी दस्तावेज़</a></nav></main></body></html>', 'utf8')
   console.log('PASS: independent Scarp TypeScript engine generated '+views.length+
     ' bilingual routes ('+activeSources.length+' current, '+(views.length-activeSources.length)+' retired), local assets and sitemap under '+siteRoot)
-  return {pages:views.length,assets:5}
+  return {pages:views.length,assets:6}
 }
 if(process.argv[1] && resolve(process.argv[1])===fileURLToPath(import.meta.url)){
   await buildSite()
