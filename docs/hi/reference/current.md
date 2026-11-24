@@ -48,6 +48,9 @@ Scarp Lifetime compiler-planned scope retirement तथा सुरक्षि
 
 Alpha.20 में `0.1d + 0.2d` exact `0.3` देता है; unsuffixed binary64 floats नहीं बदले। Mutable tuple में constant index पर persistent replacement और compatible numeric tuples की lexicographic ordering उपलब्ध है। [उदाहरण और सीमाएँ](/hi/guide/alpha20-language) पढ़ें।
 
+
+[वर्तमान type system guide](/hi/guide/alpha20-types) में scalar, composite और nominal types के उदाहरण पढ़ें।
+
 ## Rust embedding और native API
 
 Alpha.19 ने checked named/exported callable handles, signature/effect constrained slots और cumulative execution receipts दिए। Alpha.20 में composite strings के logical UTF-8 bytes भी quota में गिने जाते हैं। Ledger पूरे process की memory limit नहीं है।
