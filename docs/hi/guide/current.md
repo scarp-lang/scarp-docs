@@ -46,4 +46,6 @@ scarp verify src/main.srp
 
 [Systems programming और Rust embedding](/hi/guide/alpha20-systems) में native ABI, callable slots तथा cumulative quotas की सीमाएँ पढ़ें।
 
+[वर्तमान type system guide](/hi/guide/alpha20-types) में scalar, composite और nominal types के उदाहरण पढ़ें।
+
 **दस्तावेज़ नीति:** नए इंस्टॉलेशन में केवल नवीनतम प्रकाशित compiler सुझाया जाएगा। पुराने संस्करणों के पृष्ठ active navigation, search और sitemap से हटा दिए गए हैं। पुराने source और conformance tests Git repository में केवल पुनः परीक्षण के प्रमाण के लिए सुरक्षित हैं।
