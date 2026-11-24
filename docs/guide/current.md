@@ -46,4 +46,6 @@ The [current compiler reference](/reference/current) summarizes what is demonstr
 
 Read [systems programming and Rust embedding](/guide/alpha20-systems) for native ABI boundaries, callable slots and cumulative quotas.
 
+Read the [current type system guide](/guide/alpha20-types) for scalar, composite and nominal types with runnable examples.
+
 **Documentation policy:** New installations and recommendations always use the latest published compiler. Older compiler documentation has been retired from the active navigation, search results, and sitemap. Historical source and conformance tests remain in the repository for reproducibility; they are not recommended installation paths.
