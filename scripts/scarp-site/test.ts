@@ -227,7 +227,9 @@ for(const [key,invalid] of [
   ['compilerRepository','unknown/compiler'],
   ['status','planned'],
   ['releasedAt','not-a-timestamp'],
-  ['assets',[]]
+  ['assets',[]],
+  ['assetDigests',{}],
+  ['assetDigests',null]
 ] as const) {
   assert.throws(()=>currentPublishedCompilerTag({...latest,[key]:invalid}),{name:'AssertionError'},
     'Invalid current compiler metadata escaped guard: '+key)

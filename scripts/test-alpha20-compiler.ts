@@ -34,10 +34,21 @@ const outputs = [
 for (const [index, expected] of outputs.entries()) {
   assert.equal(english[index * 2 + 1].code, expected, 'Documented stdout drift')
 }
+const publishedEvidence = JSON.parse(read('data/compiler-latest-release.json')) as {
+  compilerRef: string; assetDigests?: Record<string, string>
+}
 for (const prefix of ['', 'hi/']) {
   const release = read('docs/' + prefix + 'releases/' + tag + '.md')
   assert.ok(release.includes('<!-- scarp-current-source: ' + commit + ' -->'))
   assert.ok(release.includes('https://scarp-lang.github.io/downloads/'))
+  if (publishedEvidence.compilerRef === tag && publishedEvidence.assetDigests) {
+    for (const [name, digest] of Object.entries(publishedEvidence.assetDigests)) {
+      if (!name.endsWith('.sha256') && name !== 'SHA256SUMS') {
+        assert.ok(release.includes('`' + name + '` | `' + digest.slice(7) + '`'),
+          prefix + ' archive checksum table differs from immutable evidence: ' + name)
+      }
+    }
+  }
   for (const feature of ['scarp.project', '0.1d', 'scarp_checked_integer_function', 'SHA256SUMS']) {
     assert.ok(release.includes(feature), prefix + ' missing published feature: ' + feature)
   }

@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import { LATEST_RELEASE, RELEASES } from '../lib/command-finder.ts'
 import { BASE, type Locale } from './routes.ts'
+import { validateCompilerEvidence } from '../lib/compiler-release-drift.ts'
 
 /**
  * The current-release manifest must refer to the exact compiler source commit
@@ -23,17 +24,8 @@ export function currentPublishedCompilerTag(metadata: unknown): string {
   assert.equal(typeof data.releasedAt, 'string')
   assert.ok(!Number.isNaN(Date.parse(data.releasedAt as string)),
     'Current compiler publication time is not a date')
-  const archives = [
-    'x86_64-pc-windows-msvc.zip',
-    'x86_64-unknown-linux-gnu.tar.gz',
-    'aarch64-apple-darwin.tar.gz'
-  ].map(platform => 'scarp-' + published.tag.slice(1) + '-' + platform)
-  assert.ok(Array.isArray(data.assets), 'Current compiler assets are missing')
-  const assets = data.assets as unknown[]
-  assert.equal(new Set(assets).size, assets.length, 'Current compiler asset inventory has duplicates')
-  for (const asset of [...archives, 'SHA256SUMS']) {
-    assert.ok(assets.includes(asset), 'Missing official release asset: ' + asset)
-  }
+  const errors = validateCompilerEvidence(data)
+  assert.deepEqual(errors, [], 'Invalid immutable compiler download evidence: ' + errors.join('; '))
   return published.tag
 }
 
