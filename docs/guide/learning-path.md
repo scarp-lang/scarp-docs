@@ -8,7 +8,7 @@
 
 **Unsure which command belongs to your installed compiler?** Use the [interactive version-aware CLI Command Finder](/tooling/command-finder) to avoid mixing older `run` / `check` with newer static `verify` or project inspection.
 
-**Current compiler:** [v0.0.6-alpha.18](/releases/v0.0.6-alpha.18) (November 22, 2026) adds path-free `scarp exec`, persistent `array_set` and Lifetime empty-window retention improvement. [Alpha.17](/releases/v0.0.6-alpha.17) added `array_len`, `array_get_or` and `input_boolean`. Follow the [alpha.18 focused guide](/guide/exec-and-lifetime-alpha18) and [alpha.17 traversal guide](/language/array-traversal-alpha17). [Historical alpha.16](/releases/v0.0.6-alpha.16) and earlier examples remain version-pinned.
+**Current compiler:** [v0.0.6-alpha.20](/releases/v0.0.6-alpha.20) (November 24, 2026). Exact decimal literals, persistent tuple updates, numeric tuple ordering, lowercase `scarp.project` and experimental Rust native functions; no general native CLI. [Current language lesson](/guide/alpha20-language) · [Historical alpha.18](/releases/v0.0.6-alpha.18) · [alpha.17](/releases/v0.0.6-alpha.17) · [alpha.16](/releases/v0.0.6-alpha.16).
 
 **Start here if you are new to Scarp.** This track connects complete, compiler-backed lessons from the first program through numerical modeling, project modules, and the symbol-navigation tools introduced in the **[published v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1)** prerelease.
 
