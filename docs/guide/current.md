@@ -44,4 +44,6 @@ For an explicit file, use `scarp exec path/to/file.srp`. `exec` runs interpreted
 
 The [current compiler reference](/reference/current) summarizes what is demonstrably available in this release, including exact decimal literals, tuple operations, source entrypoint selection, and Lifetime behavior. The [release notes](/releases/v0.0.6-alpha.20) provide immutable source provenance and published checksums.
 
+Read [systems programming and Rust embedding](/guide/alpha20-systems) for native ABI boundaries, callable slots and cumulative quotas.
+
 **Documentation policy:** New installations and recommendations always use the latest published compiler. Older compiler documentation has been retired from the active navigation, search results, and sitemap. Historical source and conformance tests remain in the repository for reproducibility; they are not recommended installation paths.

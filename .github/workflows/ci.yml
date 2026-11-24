@@ -817,6 +817,6 @@ jobs:
       - name: Build the exact published interpreter
         run: cargo build --manifest-path .compiler-alpha20/Cargo.toml --locked --offline
       - name: Run real lesson snippets and manifest migration regression
-        run: npm run test:alpha20-compiler -- .compiler-alpha20/target/debug/scarp
+        run: npm run test:alpha20-compiler -- .compiler-alpha20/target/debug/scarp .compiler-alpha20
       - name: Test published decimal, tuple, callable and native object contracts
         run: cargo test --manifest-path .compiler-alpha20/Cargo.toml --locked --offline --test decimal_literals --test tuple_index_updates --test tuples --test cumulative_host_quotas --test host_argument_budget --test native_object_function

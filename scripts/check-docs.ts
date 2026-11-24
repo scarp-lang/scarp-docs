@@ -21,7 +21,7 @@ let linkCount = 0
 let fenceCount = 0
 const currentRelease = currentPublishedCompilerTag(JSON.parse(readFileSync(resolve(root, 'data/compiler-latest-release.json'), 'utf8')) as unknown)
 const baseline = JSON.parse(readFileSync(resolve(root, 'data/compiler-baseline.json'), 'utf8')) as { repository: string; release: string }
-const supportedFences = new Set(['scarp', 'rust', 'sh', 'bash', 'shell', 'powershell', 'text', 'json', 'ts', 'js', 'yaml'])
+const supportedFences = new Set(['scarp', 'rust', 'sh', 'bash', 'shell', 'powershell', 'text', 'json', 'ts', 'js', 'yaml', 'c'])
 
 function error(file: string, problem: string): void {
   failures.push(`${relative(root, file)}: ${problem}`)

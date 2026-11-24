@@ -53,6 +53,9 @@ Alpha.20 supports exact decimal literals (`0.1d + 0.2d` is exactly `0.3`), persi
 Alpha.19 introduced checked named/exported callable handles, signature/effect-constrained slots and cumulative execution receipts. Alpha.20 extends host argument admission to strings inside composite values, counted by logical UTF-8 occurrence. These quotas do not bound total process memory.
 
 The experimental native object API supports pure functions with one to six integer parameters, integer/Boolean locals, checked arithmetic, local assignment, short-circuit logic and early integer returns. Its target is Linux x86-64 System V ELF64, not a general native CLI. Loops, calls, contracts, defaults and heap-backed values are outside the subset. See [compiler native contract](https://github.com/scarp-lang/scarp/blob/b1a9347f93540fdf95b0ddecba4adc55a3b4bb98/docs/native-elf64.md).
+
+Read [systems programming and Rust embedding](/guide/alpha20-systems) for native ABI boundaries, callable slots and cumulative quotas.
+
 ## What remains outside this compiler
 
 The native ELF64 and C11 code-generation experiments are **Rust host APIs**, not general user-facing `.srp` binary compilation. Scarp remains an experimental interpreter, with no stable compiler or standard-library compatibility promise.

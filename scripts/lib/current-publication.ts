@@ -19,7 +19,10 @@ export function isActiveDocumentationSource(source: string, currentTag: string):
     'project/deployments.md',
     'releases/' + currentTag + '.md'
   ])
-  if(currentTag==='v0.0.6-alpha.20') active.add('guide/alpha20-language.md')
+  if(currentTag==='v0.0.6-alpha.20') {
+    active.add('guide/alpha20-language.md')
+    active.add('guide/alpha20-systems.md')
+  }
   // The focused lesson is only current while its exact compiler tag is current.
   if(currentTag==='v0.0.6-alpha.18') active.add('guide/exec-and-lifetime-alpha18.md')
   return active.has(name)

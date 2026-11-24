@@ -44,4 +44,6 @@ scarp verify src/main.srp
 
 [वर्तमान compiler reference](/hi/reference/current) में इस रिलीज़ के exact decimal, tuple operations, entrypoint चुनाव और Lifetime व्यवहार का सार है। [Release notes](/hi/releases/v0.0.6-alpha.20) में प्रकाशित source और checksums उपलब्ध हैं।
 
+[Systems programming और Rust embedding](/hi/guide/alpha20-systems) में native ABI, callable slots तथा cumulative quotas की सीमाएँ पढ़ें।
+
 **दस्तावेज़ नीति:** नए इंस्टॉलेशन में केवल नवीनतम प्रकाशित compiler सुझाया जाएगा। पुराने संस्करणों के पृष्ठ active navigation, search और sitemap से हटा दिए गए हैं। पुराने source और conformance tests Git repository में केवल पुनः परीक्षण के प्रमाण के लिए सुरक्षित हैं।

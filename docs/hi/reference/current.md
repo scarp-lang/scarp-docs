@@ -53,6 +53,9 @@ Alpha.20 में `0.1d + 0.2d` exact `0.3` देता है; unsuffixed bin
 Alpha.19 ने checked named/exported callable handles, signature/effect constrained slots और cumulative execution receipts दिए। Alpha.20 में composite strings के logical UTF-8 bytes भी quota में गिने जाते हैं। Ledger पूरे process की memory limit नहीं है।
 
 Experimental native object API pure integer functions के एक से छह parameters, checked arithmetic, integer/boolean locals और early returns के सीमित subset को Linux x86-64 System V ELF64 में emit करती है। Loops, calls, contracts, defaults और heap-backed values शामिल नहीं। [Compiler native contract](https://github.com/scarp-lang/scarp/blob/b1a9347f93540fdf95b0ddecba4adc55a3b4bb98/docs/native-elf64.md) देखें।
+
+[Systems programming और Rust embedding](/hi/guide/alpha20-systems) में native ABI, callable slots तथा cumulative quotas की सीमाएँ पढ़ें।
+
 ## वर्तमान compiler में क्या उपलब्ध नहीं है?
 
 प्रयोगात्मक ELF64 तथा C11 code generation सीमित **Rust host APIs** हैं, सामान्य `.srp` native compilation command नहीं। Scarp experimental interpreter ही है; syntax तथा standard-library compatibility स्थिर नहीं।
