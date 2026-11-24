@@ -141,7 +141,8 @@ if (!process.argv[2]) {
       'bind wrong = [list: 1, true];',
       'bind wrong = [map: 1.5: 2];',
       'var values = [array: 1, 2]; values[0] = 3;',
-      'variant V { Empty } bind x = new V::Empty;'
+      'variant V { Empty } bind x = new V::Empty;',
+      'pure funcra f(result: integer) -> integer { return result; }'
     ].entries()) {
       const name = 'invalid-' + index + '.srp'
       writeFileSync(join(work, name), source + '\n')
