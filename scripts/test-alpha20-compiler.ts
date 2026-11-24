@@ -140,7 +140,8 @@ if (!process.argv[2]) {
       'var n: integer = 1; n = "wrong";',
       'bind wrong = [list: 1, true];',
       'bind wrong = [map: 1.5: 2];',
-      'var values = [array: 1, 2]; values[0] = 3;'
+      'var values = [array: 1, 2]; values[0] = 3;',
+      'variant V { Empty } bind x = new V::Empty;'
     ].entries()) {
       const name = 'invalid-' + index + '.srp'
       writeFileSync(join(work, name), source + '\n')
