@@ -112,7 +112,7 @@ List lengths are bounded at 4,096 and map entries at 1,024. These limits do not 
 
 ## Nominal records and variants
 
-A record declares a named shape at file scope. Each field must be initialized exactly once. Use the arrow projection operator to read fields; a mutable binding may receive a replacement record. Different declared record types are distinct even with identical field names. A variant represents one of its declared cases, with zero or one payload. Match arms must account for every case or use the permitted final wildcard.
+A record declares a named shape at file scope. Each field must be initialized exactly once. Use the arrow projection operator to read fields; a mutable binding may receive a replacement record. Different declared record types are distinct even with identical field names. A variant represents one of its declared cases, with zero or one payload. Even a payload-free case constructor requires empty parentheses. Match arms must account for every case or use the permitted final wildcard.
 
 ~~~scarp
 record Book { title: string, available: boolean }
@@ -128,7 +128,7 @@ pure funcra describe(result: variant Search) -> string {
 bind book: record Book = new Book { title: "Scarp", available: true };
 print(book->available);
 print(describe(new Search::Found(book)));
-print(describe(new Search::Missing));
+print(describe(new Search::Missing()));
 ~~~
 
 ~~~text
