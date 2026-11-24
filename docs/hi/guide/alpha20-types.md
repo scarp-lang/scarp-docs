@@ -28,7 +28,7 @@ Scalar और aggregate के नियम अलग हैं। यह practi
 
 ## Explicit type, inference और bindings
 
-नाम के बाद annotation से type तय होता है। Annotation न होने पर initializer type निर्धारित करता है। Compiler assignments, arguments और return types जाँचता है। bind को दोबारा assign नहीं कर सकते; var में compatible value से replacement संभव है। var type को dynamic नहीं बनाता।
+नाम के बाद annotation से type तय होता है। Annotation न होने पर initializer type निर्धारित करता है। Compiler assignments, arguments और return types जाँचता है। Function parameter का नाम result नहीं हो सकता और उसका type unit नहीं हो सकता। bind को दोबारा assign नहीं कर सकते; var में compatible value से replacement संभव है। var type को dynamic नहीं बनाता।
 
 ~~~scarp
 bind count: integer = 7;
@@ -118,8 +118,8 @@ Record file scope में named shape declare करता है। हर fi
 record Book { title: string, available: boolean }
 variant Search { Missing, Found(record Book) }
 
-pure funcra describe(result: variant Search) -> string {
-    match on result {
+pure funcra describe(outcome: variant Search) -> string {
+    match on outcome {
         case Missing { return "Not found"; }
         case Found(book) { return book->title; }
     }
