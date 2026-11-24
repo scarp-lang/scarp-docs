@@ -35,6 +35,24 @@ const systems = ['', 'hi/'].map(prefix => {
 assert.deepEqual(systems[0], systems[1], 'Bilingual systems examples differ')
 assert.deepEqual(systems[0].map(block => block.language), ['scarp', 'text', 'sh', 'rust', 'c'])
 assert.equal(systems[0][1].code, '24\n-1')
+const typeLessons = ['', 'hi/'].map(prefix => {
+  const page = read('docs/' + prefix + 'guide/alpha20-types.md')
+  assert.ok(page.includes('<!-- scarp-current-source: ' + commit + ' -->'))
+  assert.ok(page.includes('<!-- scarp-cli-release: ' + tag + ' -->'))
+  return extractCodeFences(page).map(({language, code}) => ({language, code}))
+})
+assert.deepEqual(typeLessons[0], typeLessons[1], 'Bilingual type examples differ')
+assert.deepEqual(typeLessons[0].map(block => block.language), Array.from({length:5}, () => ['scarp','text']).flat())
+const typeOutputs = [
+  'Scarp true 12 2.4',
+  '1000000000000000000000\n0.3\n0.30000000000000004',
+  '7 9\n20 40',
+  '1 2 8\n1 9\n-1',
+  'true\nScarp\nNot found'
+]
+for (const [index, expected] of typeOutputs.entries()) {
+  assert.equal(typeLessons[0][index * 2 + 1].code, expected, 'Type lesson stdout drift')
+}
 const outputs = [
   '0.3 true\n5.1\n0.30000000000000004',
   '(50, 100)\n(10, 20)',
@@ -107,12 +125,22 @@ if (!process.argv[2]) {
     writeFileSync(join(work, 'offset.srp'), systems[0][0].code + '\n')
     assert.equal(run(['verify', 'offset.srp']), '')
     assert.equal(run(['exec', 'offset.srp']), systems[0][1].code + '\n')
+    for (const [index, expected] of typeOutputs.entries()) {
+      const name = 'type-lesson-' + index + '.srp'
+      writeFileSync(join(work, name), typeLessons[0][index * 2].code + '\n')
+      assert.equal(run(['verify', name]), '')
+      assert.equal(run(['exec', name]), expected + '\n', 'Type lesson stdout differs: ' + name)
+    }
     for (const [index, source] of [
       'print(0.1d + 0.2);',
       'print(1d + 1);',
       'bind pair = (1, 2); pair[0] = 3;',
       'var pair = (1, 2); bind index = 0; pair[index] = 3;',
-      'var pair = (1, 2); pair[0] = "wrong";'
+      'var pair = (1, 2); pair[0] = "wrong";',
+      'var n: integer = 1; n = "wrong";',
+      'bind wrong = [list: 1, true];',
+      'bind wrong = [map: 1.5: 2];',
+      'var values = [array: 1, 2]; values[0] = 3;'
     ].entries()) {
       const name = 'invalid-' + index + '.srp'
       writeFileSync(join(work, name), source + '\n')
