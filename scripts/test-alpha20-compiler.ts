@@ -26,6 +26,15 @@ function lesson(prefix: string) {
 const english = lesson('')
 const hindi = lesson('hi/')
 assert.deepEqual(english, hindi, 'English and Hindi executable examples must match exactly')
+const systems = ['', 'hi/'].map(prefix => {
+  const page = read('docs/' + prefix + 'guide/alpha20-systems.md')
+  assert.ok(page.includes('<!-- scarp-current-source: ' + commit + ' -->'))
+  assert.ok(page.includes('<!-- scarp-cli-release: ' + tag + ' -->'))
+  return extractCodeFences(page).map(({language, code}) => ({language, code}))
+})
+assert.deepEqual(systems[0], systems[1], 'Bilingual systems examples differ')
+assert.deepEqual(systems[0].map(block => block.language), ['scarp', 'text', 'sh', 'rust', 'c'])
+assert.equal(systems[0][1].code, '24\n-1')
 const outputs = [
   '0.3 true\n5.1\n0.30000000000000004',
   '(50, 100)\n(10, 20)',
@@ -78,6 +87,9 @@ if (!process.argv[2]) {
       assert.equal(run(['verify', name]), '')
       assert.equal(run(['exec', name]), expected + '\n', 'Lesson stdout differs: ' + name)
     }
+    writeFileSync(join(work, 'offset.srp'), systems[0][0].code + '\n')
+    assert.equal(run(['verify', 'offset.srp']), '')
+    assert.equal(run(['exec', 'offset.srp']), systems[0][1].code + '\n')
     for (const [index, source] of [
       'print(0.1d + 0.2);',
       'print(1d + 1);',
