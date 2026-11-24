@@ -5,7 +5,7 @@ import { deploymentLabels, getSuccessfulRunCount } from './pages-api.js'
  * The server renders every page as plain HTML; this enhances only the search,
  * appearance, mobile menu, deployment count and release-aware CLI widget.
  */
-interface SearchEntry { route: string; title: string; locale: 'en'|'hi'; section: string; excerpt: string }
+import { parseSearchIndex, type SearchEntry } from './search-index.js'
 interface Release { tag:string; label:string }
 interface Task { id:string; en:string; hi:string }
 interface CommandAdvice {
@@ -83,7 +83,7 @@ function searchIndex():Promise<SearchEntry[]> {
   if(!searchIndexPromise){
     searchIndexPromise=fetch(BASE+'assets/search-index.json').then(response=>{
       if(!response.ok)throw new Error('Local search index unavailable')
-      return response.json() as Promise<SearchEntry[]>
+      return response.json().then(parseSearchIndex)
     }).catch(err=>{searchIndexPromise=null;throw err})
   }
   return searchIndexPromise
