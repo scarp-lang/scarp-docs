@@ -1,3 +1,4 @@
+import { parseSearchIndex } from './search-index.ts'
 import assert from 'node:assert/strict'
 import { existsSync, readFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
@@ -243,7 +244,7 @@ for(const source of sources){
   assert.equal(pairedRoutes(source).canonical,urlForPage(source),
     'Own engine must preserve canonical route for '+source)
 }
-assert.deepEqual(await buildSite(),{pages:sources.length,assets:5})
+assert.deepEqual(await buildSite(),{pages:sources.length,assets:6})
 const htmlPaths=new Set<string>()
 const renderedPages: PublishedHtmlPage[] = []
 for(const source of sources) {
@@ -313,6 +314,8 @@ check(search.some(x=>x.excerpt.includes('funcra')),'Scarp syntax must be searcha
 check(search.every(x=>x.route.startsWith('/scarp-docs/')),'Search routes must use correct base')
 check(search.every(x=>!x.route.includes('v0.0.5-alpha.')),'Retired versions must not appear in search')
 check(existsSync(join(site,'assets/scarp-site.js')),'Browser TypeScript did not compile')
+check(existsSync(join(site,'assets/search-index.js')),'Typed search index module was not built')
+assert.deepEqual(parseSearchIndex(search),search)
 check(existsSync(join(site,'assets/pages-api.js')),'Typed deployment API module was not built')
 const appScript=readFileSync(join(site,'assets/scarp-site.js'),'utf8')
 check(appScript.includes('pages-api.js'),'Production browser does not import the tested API module')
@@ -320,3 +323,18 @@ check(existsSync(join(site,'assets/scarp-site.css')),'Own CSS missing')
 const sitemap=readFileSync(join(site,'sitemap.xml'),'utf8')
 assert.deepEqual(validateSitemap(sitemap,currentSources).errors,[],'Sitemap must precisely cover current-only documentation')
 console.log('PASS: '+assertions+' Scarp-owned engine assertions, '+sources.length+' paired routes, bilingual SEO, safe Markdown, offline search, home layout, release-aware CLI and sitemap')
+
+const validSearch = {route:'/scarp-docs/guide/current',title:'Scarp',locale:'en',section:'guide',excerpt:'funcra'} as const
+assert.deepEqual(parseSearchIndex([validSearch]),[validSearch])
+for (const invalid of [null, {}, [], [null], [validSearch,validSearch],
+  [{...validSearch,route:'https://example.com'}],
+  [{...validSearch,route:'/scarp-docs/../outside'}],
+  [{...validSearch,route:'/scarp-docs/%2e%2e/outside'}],
+  [{...validSearch,route:'/scarp-docs//outside'}],
+  [{...validSearch,route:'/scarp-docs/hi/guide/current'}],
+  [{...validSearch,locale:'hi'}],
+  [{...validSearch,route:'/scarp-docs/guide/current?next=bad'}],
+  [{...validSearch,title:''}], [{...validSearch,excerpt:4}],
+  [{...validSearch,section:null}]
+]) assert.throws(()=>parseSearchIndex(invalid),TypeError)
+console.log('PASS: local search index shape, route isolation, locale and duplicate rejection')

@@ -173,6 +173,18 @@ async function testLocale(
     assert.equal(await dialog.getAttribute('aria-labelledby'),'search-title')
     const searchInput=page.locator('#search-query')
     assert.equal(await searchInput.evaluate(node=>document.activeElement===node),true)
+    // A corrupt index must fail closed and retry successfully on the next query.
+    await page.route('**/assets/search-index.json', route=>route.fulfill({
+      status:200, contentType:'application/json',
+      body:JSON.stringify([{route:'https://example.com/',title:'funcra',
+        locale:lang,section:'guide',excerpt:'funcra'}])
+    }),{times:1})
+    await searchInput.fill('funcra')
+    await page.locator('#search-status').getByText(lang==='hi'
+      ?'स्थानीय खोज उपलब्ध नहीं है। पृष्ठों के लिंक का उपयोग करें।'
+      :'Could not load the local search index. Use page navigation instead.',{exact:true}).waitFor()
+    assert.equal(await page.locator('#search-results li a').count(),0)
+    await searchInput.fill('')
     await searchInput.fill('funcra')
     const results=page.locator('#search-results li a')
     await results.first().waitFor({state:'visible',timeout:15000})
