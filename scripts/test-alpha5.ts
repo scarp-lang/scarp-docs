@@ -1,3 +1,4 @@
+import { historicalNavigationEvidence } from './lib/historical-navigation.ts'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
@@ -17,7 +18,7 @@ const pages: Alpha5Pages = {
   c11Hi: read('docs/hi/reference/c11-backend-alpha5.md'),
   statusEn: read('docs/reference/status.md'),
   statusHi: read('docs/hi/reference/status.md'),
-  config: read('docs/.vitepress/config.mts')
+  config: historicalNavigationEvidence
 }
 const meta = JSON.parse(read('conformance/alpha5-manifest.json')) as Alpha5Fixture
 const source = read('conformance/alpha5/native_scalar_repeat.srp')
