@@ -67,6 +67,7 @@ if (!process.argv[2]) {
   console.log('PASS: alpha.20 bilingual examples, expected stdout and immutable release evidence')
 } else {
   const binary = resolve(process.argv[2])
+  const compilerRoot = process.argv[3] ? resolve(process.argv[3]) : undefined
   const work = mkdtempSync(join(tmpdir(), 'scarp-docs-alpha20-'))
   function invoke(args: string[], cwd = work) {
     const result = spawnSync(binary, args, { cwd, encoding: 'utf8', timeout: 30000, maxBuffer: 2 * 1024 * 1024 })
@@ -86,6 +87,22 @@ if (!process.argv[2]) {
       writeFileSync(join(work, name), english[index * 2].code + '\n')
       assert.equal(run(['verify', name]), '')
       assert.equal(run(['exec', name]), expected + '\n', 'Lesson stdout differs: ' + name)
+    }
+    if (compilerRoot) {
+      const rustExample = join(compilerRoot, 'examples', 'docs_alpha20_systems.rs')
+      assert.ok(!existsSync(rustExample), 'Refusing to overwrite a compiler example')
+      writeFileSync(rustExample, systems[0][3].code + '\n', { flag: 'wx' })
+      try {
+        const emitted = spawnSync('cargo', ['run', '--locked', '--offline', '--quiet',
+          '--example', 'docs_alpha20_systems'], {
+          cwd: compilerRoot, encoding: 'utf8', timeout: 120000, maxBuffer: 2 * 1024 * 1024
+        })
+        assert.equal(emitted.error, undefined)
+        assert.equal(emitted.status, 0, emitted.stderr)
+        assert.match(emitted.stdout, /^[1-9][0-9]*\n$/, 'Rust example must report emitted object length')
+      } finally {
+        rmSync(rustExample)
+      }
     }
     writeFileSync(join(work, 'offset.srp'), systems[0][0].code + '\n')
     assert.equal(run(['verify', 'offset.srp']), '')
