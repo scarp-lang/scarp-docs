@@ -112,7 +112,7 @@ List में 4,096 तथा map में 1,024 entries की सीमा �
 
 ## Nominal records और variants
 
-Record file scope में named shape declare करता है। हर field ठीक एक बार initialize करें। Arrow projection operator से field पढ़ें; mutable binding में नया record assign कर सकते हैं। समान fields वाले अलग declared record types भी अलग हैं। Variant अपनी declared cases में से एक को represent करता है, जिसमें zero या one payload होता है। Match में सभी cases cover करें या मान्य अंतिम wildcard दें।
+Record file scope में named shape declare करता है। हर field ठीक एक बार initialize करें। Arrow projection operator से field पढ़ें; mutable binding में नया record assign कर सकते हैं। समान fields वाले अलग declared record types भी अलग हैं। Variant अपनी declared cases में से एक को represent करता है, जिसमें zero या one payload होता है। बिना payload वाली case के constructor में भी खाली parentheses आवश्यक हैं। Match में सभी cases cover करें या मान्य अंतिम wildcard दें।
 
 ~~~scarp
 record Book { title: string, available: boolean }
@@ -128,7 +128,7 @@ pure funcra describe(result: variant Search) -> string {
 bind book: record Book = new Book { title: "Scarp", available: true };
 print(book->available);
 print(describe(new Search::Found(book)));
-print(describe(new Search::Missing));
+print(describe(new Search::Missing()));
 ~~~
 
 ~~~text
