@@ -48,6 +48,9 @@ Scarp Lifetime combines compiler-planned scope retirement with safe Rust shared 
 
 Alpha.20 supports exact decimal literals (`0.1d + 0.2d` is exactly `0.3`), persistent replacement at a constant tuple index on mutable bindings, and lexicographic ordering of compatible numeric tuples. Unsuffixed binary64 float behavior is unchanged. See the [language lesson](/guide/alpha20-language).
 
+
+Read the [current type system guide](/guide/alpha20-types) for scalar, composite and nominal types with runnable examples.
+
 ## Rust embedding and experimental native objects
 
 Alpha.19 introduced checked named/exported callable handles, signature/effect-constrained slots and cumulative execution receipts. Alpha.20 extends host argument admission to strings inside composite values, counted by logical UTF-8 occurrence. These quotas do not bound total process memory.
