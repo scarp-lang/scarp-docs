@@ -19,7 +19,7 @@ type Manifest = {
 }
 const manifest = JSON.parse(read('conformance/alpha18-manifest.json')) as Manifest
 const latest = JSON.parse(read('data/compiler-latest-release.json')) as Manifest
-for (const record of [manifest, latest]) {
+for (const record of [manifest]) {
   assert.equal(record.compilerRepository, 'scarp-lang/scarp')
   assert.equal(record.compilerRef, tag)
   assert.equal(record.compilerCommit, source)
@@ -27,8 +27,7 @@ for (const record of [manifest, latest]) {
   assert.equal(record.status, 'published-prerelease')
 }
 assert.equal(RELEASES.find(item => item.tag === tag)?.source, source)
-assert.equal(LATEST_RELEASE, tag)
-assert.equal(RELEASES.at(-1)?.tag, tag)
+assert.ok(RELEASES.findIndex(item => item.tag === LATEST_RELEASE) >= RELEASES.findIndex(item => item.tag === tag), 'Latest compiler cannot predate alpha.18')
 assert.equal(latest.historicalReferenceBaseline, 'v0.0.5-alpha.1')
 const names = ["array_updates.srp","array_updates.stdout","lifetime_windows.srp","lifetime_windows.stdout"] as const
 assert.deepEqual(manifest.cases?.map(c => c.localSource), names.map(n => 'conformance/alpha18/' + n))
@@ -41,7 +40,7 @@ for (const entry of manifest.cases ?? []) {
 }
 const suffixes = ['x86_64-pc-windows-msvc.zip',
   'x86_64-unknown-linux-gnu.tar.gz', 'aarch64-apple-darwin.tar.gz']
-assert.deepEqual(latest.assets, suffixes.map(s => 'scarp-0.0.6-alpha.18-' + s).concat('SHA256SUMS'))
+// Historical package provenance is checked against the release page below.
 for (const [prefix, label] of [['','English'],['hi/','Hindi']] as const) {
   const release = read('docs/' + prefix + 'releases/' + tag + '.md')
   const guide = read('docs/' + prefix + 'guide/exec-and-lifetime-alpha18.md')
@@ -60,8 +59,7 @@ for (const [prefix, label] of [['','English'],['hi/','Hindi']] as const) {
     assert.ok(release.includes('](' + url + '.sha256)'), label + ' SHA-256 missing: ' + archive)
   }
   assert.ok(release.includes('SHA256SUMS'))
-  for (const path of ['index.md','guide/introduction.md','guide/learning-path.md',
-    'reference/status.md','reference/compatibility.md','tooling/command-finder.md']) {
+  for (const path of ['reference/status.md','reference/compatibility.md']) {
     assert.ok(read('docs/' + prefix + path).includes('/' + prefix + 'releases/' + tag),
       label + ' missing release route: ' + path)
   }

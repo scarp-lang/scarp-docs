@@ -1,10 +1,10 @@
 # नवीनतम प्रकाशित Scarp इंस्टॉल करें
 
-<!-- scarp-cli-release: v0.0.6-alpha.18 -->
+<!-- scarp-cli-release: v0.0.6-alpha.20 -->
 
 **आधिकारिक डाउनलोड:** [scarp-lang.github.io/downloads](https://scarp-lang.github.io/downloads/)।
 
-23 नवंबर 2026 तक नवीनतम सत्यापित प्रकाशित compiler **[Scarp v0.0.6-alpha.18](/hi/releases/v0.0.6-alpha.18)** है। यह experimental interpreter prerelease है। भविष्य के नए प्रकाशित संस्करणों के लिए पुराने इंस्टॉलेशन पेज नहीं, आधिकारिक Downloads वेबसाइट इस्तेमाल करें।
+24 नवंबर 2026 तक नवीनतम सत्यापित प्रकाशित compiler **[Scarp v0.0.6-alpha.20](/hi/releases/v0.0.6-alpha.20)** है। यह experimental interpreter prerelease है। भविष्य के नए प्रकाशित संस्करणों के लिए पुराने इंस्टॉलेशन पेज नहीं, आधिकारिक Downloads वेबसाइट इस्तेमाल करें।
 
 ## अपना सिस्टम चुनें
 
@@ -18,15 +18,15 @@
 
 ## चलाने से पहले SHA-256 जाँचें
 
-[आधिकारिक Downloads](https://scarp-lang.github.io/downloads/) पर archive का वास्तविक version जाँचें। Extract या execute करने से पहले **उसी version** की प्रकाशित SHA-256 value से मिलाएँ। नए संस्करण के लिए पुराने alpha.18 checksum का उपयोग न करें।
+[आधिकारिक Downloads](https://scarp-lang.github.io/downloads/) पर archive का वास्तविक version जाँचें। Extract या execute करने से पहले **उसी version** की प्रकाशित SHA-256 value से मिलाएँ। नए संस्करण के लिए पुराने alpha.20 checksum का उपयोग न करें।
 
-| सत्यापित alpha.18 archive | SHA-256 |
+| सत्यापित alpha.20 archive | SHA-256 |
 | --- | --- |
-| Windows x64 `scarp-0.0.6-alpha.18-x86_64-pc-windows-msvc.zip` | `1dbd8e9f6dbb3e727fb765b5a1bf184f8574c8b139289269b65a7d889d60e6b0` |
-| Linux x64 `scarp-0.0.6-alpha.18-x86_64-unknown-linux-gnu.tar.gz` | `175fc419b1469e80dbf3cd7ccee273eb573a9113e27467801ef7095c064b289f` |
-| macOS ARM64 `scarp-0.0.6-alpha.18-aarch64-apple-darwin.tar.gz` | `30aed1c56fc666f86dca6c08234d8ac17d9f5ee513a4270d7a65f80544dc2c52` |
+| Windows x64 `scarp-0.0.6-alpha.20-x86_64-pc-windows-msvc.zip` | `68a5ee47f24e2e36dd7fb1fcc6257feaea291d801048f7866bff1a7e4994aca2` |
+| Linux x64 `scarp-0.0.6-alpha.20-x86_64-unknown-linux-gnu.tar.gz` | `b570336d589d7484e67e69274d84cbab73fced4f41a99d11a07255da2048eb7b` |
+| macOS ARM64 `scarp-0.0.6-alpha.20-aarch64-apple-darwin.tar.gz` | `908a21d62888ab716eba97d79a1f13cd705e19e2b584b344638f6dccdbe93bb3` |
 
-ये hash **सिर्फ** [प्रकाशित alpha.18 archives](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.18) के लिए हैं। Hash सही होना experimental software के production-ready होने की गारंटी नहीं है। Mismatch होने पर **आगे न बढ़ें**।
+ये hash **सिर्फ** [प्रकाशित alpha.20 archives](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.20) के लिए हैं। Hash सही होना experimental software के production-ready होने की गारंटी नहीं है। Mismatch होने पर **आगे न बढ़ें**।
 
 ## डाउनलोड किया interpreter जाँचें
 
@@ -40,12 +40,12 @@
 ./scarp version
 ~~~
 
-Output में version डाउनलोड किए archive से मिलना चाहिए। Alpha.18 में `scarp exec` valid project manifest, फिर `src/main.srp`, और उसके बाद `main.srp` को प्राथमिकता से चुनता है। खराब manifest त्रुटि देता है। सही project directory में, जब executable उपलब्ध हो:
+Output में version डाउनलोड किए archive से मिलना चाहिए। Alpha.20 में `scarp exec` valid project manifest, फिर `src/main.srp`, और उसके बाद `main.srp` को प्राथमिकता से चुनता है। खराब manifest त्रुटि देता है। सही project directory में, जब executable उपलब्ध हो:
 
 ~~~sh
 scarp exec
 ~~~
 
-सत्यापित व्यवहार के लिए [alpha.18 Exec और Lifetime](/hi/guide/exec-and-lifetime-alpha18), सीमाओं के लिए [फीचर स्थिति](/hi/reference/status) और आगे पढ़ने के लिए [सीखने का मार्ग](/hi/guide/learning-path) देखें।
+[वर्तमान संदर्भ](/hi/reference/current) और [decimal और tuple guide](/hi/guide/alpha20-language) में वर्तमान व्यवहार और सीमाएँ देखें।
 
 > पुराने release पेज अपने मूल compiler के परीक्षण सुरक्षित रखने के लिए हैं; वे नई binary इंस्टॉल करने की सलाह नहीं हैं।

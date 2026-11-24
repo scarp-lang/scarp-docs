@@ -1,6 +1,6 @@
 # Introduction to Scarp
 
-**Latest published compiler: [v0.0.6-alpha.18](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.18).** Alpha.18 adds zero-argument `scarp exec`, immutable `array_set` and empty-window Lifetime improvements; [alpha.17](/releases/v0.0.6-alpha.17) added `array_len`, `array_get_or` and `input_boolean`. These remain interpreter prereleases, not a general native compiler. [Release](/releases/v0.0.6-alpha.18) · [Exec/Lifetime guide](/guide/exec-and-lifetime-alpha18) · [Learning path](/guide/learning-path).
+**Latest published compiler: [v0.0.6-alpha.20](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.20).** Exact decimal literals, persistent tuple updates, numeric tuple ordering, lowercase `scarp.project` and experimental Rust native functions; no general native CLI. [Current release](/releases/v0.0.6-alpha.20) · [Historical alpha.18](/releases/v0.0.6-alpha.18) · [Historical alpha.17](/releases/v0.0.6-alpha.17) · [Learning path](/guide/learning-path).
 
 **Install the current compiler:** [Official Scarp Downloads](https://scarp-lang.github.io/downloads/) · [Current installation guide](/guide/install-latest). This is the recommended path for new installations; older examples retain their original release-specific evidence.
 

@@ -15,11 +15,14 @@ const manifest=JSON.parse(readFileSync(join(root,'data/compiler-latest-release.j
 const all=documentationPages(docs)
 const active=currentDocumentationSources(all,manifest.compilerRef)
 const activeRoutes=new Set(active.map(sourceRoute))
-// Reviewed source-only tuple ordering guides must be real, discoverable pages,
-// not historical stubs. They explicitly warn users alpha.19 lacks the feature.
+// Published tuple and decimal features must replace the obsolete development preview.
 for(const locale of ['', 'hi/']) {
-  const preview=locale+'language/tuple-ordering-development.md'
-  assert.ok(active.includes(preview), 'Development preview missing from active publication: '+preview)
+  const lesson=locale+'guide/alpha20-language.md'
+  if(manifest.compilerRef==='v0.0.6-alpha.20') {
+    assert.ok(active.includes(lesson), 'Current language lesson missing: '+lesson)
+    assert.ok(!active.includes(locale+'language/tuple-ordering-development.md'),
+      'Published tuple ordering must not retain its development-only page')
+  }
 }
 assert.ok(all.length>=200,'Missing historical source fixtures')
 assert.ok(all.length-active.length>=100,'Retirement must cover historical pages')
