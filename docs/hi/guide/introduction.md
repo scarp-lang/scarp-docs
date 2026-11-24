@@ -1,6 +1,6 @@
 # Scarp का परिचय
 
-**नवीनतम प्रकाशित compiler [v0.0.6-alpha.18](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.18) है।** Alpha.18 में filename के बिना `scarp exec`, immutable `array_set` और Lifetime के empty-window सुधार हैं। [पिछली alpha.17](/hi/releases/v0.0.6-alpha.17) में `array_len`, `array_get_or` और `input_boolean` आए। यह अभी experimental interpreter है। [रिलीज़](/hi/releases/v0.0.6-alpha.18) · [Exec/Lifetime](/hi/guide/exec-and-lifetime-alpha18) · [Learning path](/hi/guide/learning-path)।
+**नवीनतम प्रकाशित compiler [v0.0.6-alpha.20](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.20) है।** Exact decimal literals, persistent tuple updates, numeric tuple ordering, lowercase `scarp.project` और experimental Rust native functions; सामान्य native CLI नहीं। [वर्तमान release](/hi/releases/v0.0.6-alpha.20) · [ऐतिहासिक alpha.18](/hi/releases/v0.0.6-alpha.18) · [पिछली alpha.17](/hi/releases/v0.0.6-alpha.17) · [Learning path](/hi/guide/learning-path)।
 
 **वर्तमान compiler इंस्टॉल करें:** [आधिकारिक Scarp Downloads](https://scarp-lang.github.io/downloads/) · [नई इंस्टॉलेशन गाइड](/hi/guide/install-latest)। यह नए इंस्टॉलेशन का अनुशंसित रास्ता है; पुराने उदाहरण अपने मूल release पर सत्यापित हैं।
 
