@@ -1,8 +1,8 @@
 # वर्तमान Scarp compiler reference
 
-<!-- scarp-cli-release: v0.0.6-alpha.18 -->
+<!-- scarp-cli-release: v0.0.6-alpha.20 -->
 
-**प्रकाशित वर्तमान snapshot:** [v0.0.6-alpha.18](/hi/releases/v0.0.6-alpha.18), 22 नवंबर 2026। यह पृष्ठ **सत्यापित वर्तमान व्यवहार** बताता है; भविष्य के releases में syntax हमेशा समान रहने की गारंटी नहीं।
+**प्रकाशित वर्तमान snapshot:** [v0.0.6-alpha.20](/hi/releases/v0.0.6-alpha.20), 24 नवंबर 2026। यह पृष्ठ **सत्यापित वर्तमान व्यवहार** बताता है; भविष्य के releases में syntax हमेशा समान रहने की गारंटी नहीं।
 
 ## CLI और entrypoint चुनाव
 
@@ -44,14 +44,19 @@ one नमस्ते
 
 Scarp Lifetime compiler-planned scope retirement तथा सुरक्षित Rust immutable shared storage पर आधारित है। User source में free या borrow call लिखना ज़रूरी नहीं। Alpha.18 में खाली finite/integer windows बड़े मूल buffer से अलग हो जाती हैं, लेकिन **गैर-खाली views अब भी पुराने storage को रोके रख सकती हैं**। यह सामान्य cycle collector या OS RAM limit नहीं है, और memory तुरंत लौटने की गारंटी नहीं। `--max-vector-bytes` **cumulative** budget है तथा `--max-live-slots` allocated frame slots गिनता है, actual RAM नहीं।
 
-## Development preview: tuple ordering (अभी प्रकाशित नहीं)
+## प्रकाशित decimal और tuple features
 
-Compiler के `main` source में **numeric tuples की lexicographic ordering** शामिल है। यह alpha.19 publication baseline के बाद merge हुआ feature है। **प्रकाशित alpha.19 या उससे पुराने binary में उपलब्ध नहीं है।** [हिन्दी development reference](/hi/language/tuple-ordering-development) में source-verified उदाहरण देखें। ऊपर दिया गया alpha.18 विवरण अपने published snapshot के लिए ही है।
+Alpha.20 में `0.1d + 0.2d` exact `0.3` देता है; unsuffixed binary64 floats नहीं बदले। Mutable tuple में constant index पर persistent replacement और compatible numeric tuples की lexicographic ordering उपलब्ध है। [उदाहरण और सीमाएँ](/hi/guide/alpha20-language) पढ़ें।
 
+## Rust embedding और native API
+
+Alpha.19 ने checked named/exported callable handles, signature/effect constrained slots और cumulative execution receipts दिए। Alpha.20 में composite strings के logical UTF-8 bytes भी quota में गिने जाते हैं। Ledger पूरे process की memory limit नहीं है।
+
+Experimental native object API pure integer functions के एक से छह parameters, checked arithmetic, integer/boolean locals और early returns के सीमित subset को Linux x86-64 System V ELF64 में emit करती है। Loops, calls, contracts, defaults और heap-backed values शामिल नहीं। [Compiler native contract](https://github.com/scarp-lang/scarp/blob/b1a9347f93540fdf95b0ddecba4adc55a3b4bb98/docs/native-elf64.md) देखें।
 ## वर्तमान compiler में क्या उपलब्ध नहीं है?
 
 प्रयोगात्मक ELF64 तथा C11 code generation सीमित **Rust host APIs** हैं, सामान्य `.srp` native compilation command नहीं। Scarp experimental interpreter ही है; syntax तथा standard-library compatibility स्थिर नहीं।
 
 ## आधिकारिक डाउनलोड और प्रमाण
 
-[आधिकारिक Downloads](https://scarp-lang.github.io/downloads/), [वर्तमान इंस्टॉलेशन](/hi/guide/install-latest), [प्रमाणित alpha.18 पाठ](/hi/guide/exec-and-lifetime-alpha18) तथा [compiler का मूल source](https://github.com/scarp-lang/scarp/tree/84d8de05968a488773e7c5b6eda1376d8957553c) पढ़ें। पुराने version-specific pages अब current search/navigation में नहीं दिखते; उनके परीक्षण Git में सुरक्षित हैं।
+[आधिकारिक Downloads](https://scarp-lang.github.io/downloads/), [वर्तमान इंस्टॉलेशन](/hi/guide/install-latest), [वर्तमान भाषा पाठ](/hi/guide/alpha20-language) तथा [compiler का मूल source](https://github.com/scarp-lang/scarp/tree/b1a9347f93540fdf95b0ddecba4adc55a3b4bb98) पढ़ें। पुराने version-specific pages अब current search/navigation में नहीं दिखते; उनके परीक्षण Git में सुरक्षित हैं।

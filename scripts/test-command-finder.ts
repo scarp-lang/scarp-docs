@@ -29,7 +29,7 @@ const sources: FinderSources = {
 assert.deepEqual(validateCommandFinder(sources), [])
 assert.equal(LATEST_RELEASE, RELEASES.at(-1)?.tag)
 assert.equal(commandAdvice('v0.0.6-alpha.6', 'run-file').commands[0], 'scarp exec FILE.srp')
-assert.equal(RELEASES.at(-1)?.source, '84d8de05968a488773e7c5b6eda1376d8957553c')
+assert.equal(RELEASES.at(-1)?.source, 'b1a9347f93540fdf95b0ddecba4adc55a3b4bb98')
 assert.equal(RELEASES.find(entry => entry.tag === 'v0.0.6-alpha.17')?.source, '7831a37939965f557ce746e1d86bf82d3d629f74')
 assert.equal(RELEASES.find(entry => entry.tag === 'v0.0.6-alpha.15')?.source,
   'a21b7b6d942bd1ca9abbbbb522f92f9c8e21e281')
@@ -105,9 +105,9 @@ assert.throws(()=>commandAdvice(LATEST_RELEASE,'native-compile' as CommandTask),
 
 type MutableTextSource = Exclude<keyof FinderSources,'pages'>
 const mutations: Array<[MutableTextSource,string,string]> = [
-  ['english','latest published release is [v0.0.6-alpha.18](/releases/v0.0.6-alpha.18)',
+  ['english','latest published release is [v0.0.6-alpha.20](/releases/v0.0.6-alpha.20)',
     'latest published release is [v0.0.6-alpha.8](/releases/v0.0.6-alpha.9)'],
-  ['hindi','नवीनतम प्रकाशित release [v0.0.6-alpha.18](/hi/releases/v0.0.6-alpha.18)',
+  ['hindi','नवीनतम प्रकाशित release [v0.0.6-alpha.20](/hi/releases/v0.0.6-alpha.20)',
     'नवीनतम प्रकाशित release [v0.0.6-alpha.9](/hi/releases/v0.0.6-alpha.8)'],
   ['english','<ScarpCommandFinder />','<OutdatedSelector />'],
   ['hindi','<ScarpCommandFinder />','<OutdatedSelector />'],

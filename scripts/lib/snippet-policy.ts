@@ -23,7 +23,8 @@ export function checkSnippetPolicy(markdown: string): SnippetIssue[] {
   const alpha3Cli = markdown.includes('<!-- scarp-cli-release: v0.0.5-alpha.3 -->')
   // The bilingual upgrade guide spans alpha.3 and alpha.4, but only the
   // published alpha.4 side demonstrates new project verbs.
-  const alpha18Cli = markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.18 -->')
+  const alpha18Cli = ['v0.0.6-alpha.18', 'v0.0.6-alpha.19', 'v0.0.6-alpha.20'].some(tag =>
+    markdown.includes('<!-- scarp-cli-release: ' + tag + ' -->'))
   const alpha10Cli = alpha18Cli ||
     markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.17 -->') ||
     markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.10 -->') ||

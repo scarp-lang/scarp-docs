@@ -26,19 +26,19 @@ hero:
       link: https://scarp-lang.github.io/downloads/
 
 features:
-  - title: Latest published compiler v0.0.6-alpha.18
-    details: Alpha.18 adds scarp exec, immutable array_set and Lifetime fixes. Download from the official website.
-    link: /releases/v0.0.6-alpha.18
+  - title: Latest published compiler v0.0.6-alpha.20
+    details: Alpha.20 adds exact decimal literals, tuple updates and ordering, and experimental native integer functions.
+    link: /releases/v0.0.6-alpha.20
 
   - title: Current compiler getting started
     details: Install and use only the latest published and verified Scarp interpreter.
     link: /guide/current
   - title: Current compiler reference
-    details: Read verified alpha.18 CLI, persistent array, and Lifetime behavior and limitations.
+    details: Learn the published decimal, tuple, project and host embedding contracts.
     link: /reference/current
-  - title: Exec and Lifetime, compiler verified
-    details: Explore current immutable arrays and automatic memory retention with exact examples.
-    link: /guide/exec-and-lifetime-alpha18
+  - title: Exact decimals and tuple semantics
+    details: Learn exact base-ten values and persistent tuple replacement.
+    link: /guide/alpha20-language
   - title: Documentation deployments
     details: Inspect the official documentation build and Pages deployment process.
     link: /project/deployments
@@ -102,7 +102,7 @@ features:
 ---
 
 ::: warning Experimental language
-The latest verified published compiler is **[v0.0.6-alpha.18](/releases/v0.0.6-alpha.18)** (experimental prerelease). [Download Scarp](https://scarp-lang.github.io/downloads/) or open the [current installation guide](/guide/install-latest). Older tutorial pages preserve release-pinned evidence, not current installation advice; check [feature status](/reference/status).
+The latest verified published compiler is **[v0.0.6-alpha.20](/releases/v0.0.6-alpha.20)** (experimental prerelease). [Download Scarp](https://scarp-lang.github.io/downloads/) or open the [current installation guide](/guide/install-latest). Older tutorial pages preserve release-pinned evidence, not current installation advice; check [feature status](/reference/status).
 :::
 
 For signed BigInt and JSON-v2 test reporting on earlier binaries, read the [historical alpha.9 release](/releases/v0.0.6-alpha.9).

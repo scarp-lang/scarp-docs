@@ -14,14 +14,12 @@ export function isActiveDocumentationSource(source: string, currentTag: string):
     'guide/current.md',
     'guide/install-latest.md',
     'reference/current.md',
-    // Reviewed, source-pinned and visibly unreleased: expose the compiler
-    // development preview without presenting it as a published release.
-    'language/tuple-ordering-development.md',
     'community/social.md',
     'community/contributing.md',
     'project/deployments.md',
     'releases/' + currentTag + '.md'
   ])
+  if(currentTag==='v0.0.6-alpha.20') active.add('guide/alpha20-language.md')
   // The focused lesson is only current while its exact compiler tag is current.
   if(currentTag==='v0.0.6-alpha.18') active.add('guide/exec-and-lifetime-alpha18.md')
   return active.has(name)

@@ -1,8 +1,8 @@
 # Current Scarp compiler reference
 
-<!-- scarp-cli-release: v0.0.6-alpha.18 -->
+<!-- scarp-cli-release: v0.0.6-alpha.20 -->
 
-**Current published snapshot:** [v0.0.6-alpha.18](/releases/v0.0.6-alpha.18), published November 22, 2026. This page describes **verified current behavior**, not a promise of stable syntax across future prereleases.
+**Current published snapshot:** [v0.0.6-alpha.20](/releases/v0.0.6-alpha.20), published November 24, 2026. This page describes **verified current behavior**, not a promise of stable syntax across future prereleases.
 
 ## CLI and entrypoint selection
 
@@ -44,14 +44,19 @@ one नमस्ते
 
 Scarp Lifetime combines compiler-planned scope retirement with safe Rust shared immutable storage. User source does not need explicit free/borrow calls. In alpha.18, empty finite and integer numerical windows detach from a larger backing allocation; **nonempty views can still retain the original storage**. This is not a general cycle collector, an operating-system memory cap, or a guarantee of immediate memory return. The `--max-vector-bytes` budget is **cumulative** and `--max-live-slots` counts allocated frame slots, not process RAM.
 
-## Development preview: tuple ordering (not released)
+## Published decimal and tuple features
 
-The source compiler on `main` includes **lexicographic ordering of numeric tuples**, merged after the alpha.19 publication baseline. **No published alpha.19 (or earlier) binary includes this feature.** See the [development-only tuple ordering reference](/language/tuple-ordering-development) and its source-pinned tests. This section does not change the published alpha.18 snapshot documented above.
+Alpha.20 supports exact decimal literals (`0.1d + 0.2d` is exactly `0.3`), persistent replacement at a constant tuple index on mutable bindings, and lexicographic ordering of compatible numeric tuples. Unsuffixed binary64 float behavior is unchanged. See the [language lesson](/guide/alpha20-language).
 
+## Rust embedding and experimental native objects
+
+Alpha.19 introduced checked named/exported callable handles, signature/effect-constrained slots and cumulative execution receipts. Alpha.20 extends host argument admission to strings inside composite values, counted by logical UTF-8 occurrence. These quotas do not bound total process memory.
+
+The experimental native object API supports pure functions with one to six integer parameters, integer/Boolean locals, checked arithmetic, local assignment, short-circuit logic and early integer returns. Its target is Linux x86-64 System V ELF64, not a general native CLI. Loops, calls, contracts, defaults and heap-backed values are outside the subset. See [compiler native contract](https://github.com/scarp-lang/scarp/blob/b1a9347f93540fdf95b0ddecba4adc55a3b4bb98/docs/native-elf64.md).
 ## What remains outside this compiler
 
 The native ELF64 and C11 code-generation experiments are **Rust host APIs**, not general user-facing `.srp` binary compilation. Scarp remains an experimental interpreter, with no stable compiler or standard-library compatibility promise.
 
 ## Download and evidence
 
-Use [official downloads](https://scarp-lang.github.io/downloads/), the [current installation guide](/guide/install-latest), the [compiler-backed alpha.18 lesson](/guide/exec-and-lifetime-alpha18), and [immutable compiler source](https://github.com/scarp-lang/scarp/tree/84d8de05968a488773e7c5b6eda1376d8957553c). Archived versioned pages are **retired from current documentation discovery**, though their source and test evidence remain in Git.
+Use [official downloads](https://scarp-lang.github.io/downloads/), the [current installation guide](/guide/install-latest), the [current language lesson](/guide/alpha20-language), and [immutable compiler source](https://github.com/scarp-lang/scarp/tree/b1a9347f93540fdf95b0ddecba4adc55a3b4bb98). Archived versioned pages are **retired from current documentation discovery**, though their source and test evidence remain in Git.
