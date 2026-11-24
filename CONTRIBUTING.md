@@ -26,7 +26,7 @@ npm run test:coverage-statistics
 npm run docs:build
 ~~~
 
-Use Markdown for prose and TypeScript for VitePress configuration. Avoid custom HTML, complex client-side components, or large CSS frameworks. Link to tested Scarp examples. Keep each page focused and descriptive. Fix navigation and cross-page links when moving documents.
+Use Markdown for prose and TypeScript for the Scarp-owned renderer, browser modules, and publication policy. Avoid custom HTML, complex client-side components, or large CSS frameworks. Link to tested Scarp examples. Keep each page focused and descriptive. Fix navigation and cross-page links when moving documents.
 
 ## Pull requests
 
