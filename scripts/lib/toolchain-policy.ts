@@ -4,7 +4,10 @@
  * review TypeScript 7 API changes before lifting the major-upgrade hold.
  */
 export interface ToolchainPackage {
+  dependencies?: Record<string, unknown>
   devDependencies?: Record<string, unknown>
+  optionalDependencies?: Record<string, unknown>
+  peerDependencies?: Record<string, unknown>
   scripts?: Record<string, unknown>
 }
 
@@ -35,8 +38,8 @@ export function validateToolchain(pkg: ToolchainPackage, dependabotYaml: string)
   if (parserMajor >= 15 && '@types/markdown-it' in deps) {
     errors.push('markdown-it 15+ bundles its own types: remove obsolete @types/markdown-it')
   }
-  for (const removed of ['vitepress','vue-tsc']) {
-    if (removed in deps) errors.push('Removed framework/checker dependency must not return: ' + removed)
+  for (const removed of ['vitepress','vue','vue-tsc']) {
+    if ([pkg.dependencies, deps, pkg.optionalDependencies, pkg.peerDependencies].some(group => group && removed in group)) errors.push('Removed framework/checker dependency must not return: ' + removed)
   }
 
   const scripts = pkg.scripts ?? {}
@@ -61,6 +64,16 @@ export function validateToolchain(pkg: ToolchainPackage, dependabotYaml: string)
   }
   if (/dependency-name:\s*["']?(?:vitepress|vue-tsc)["']?/.test(npm)) {
     errors.push('Dependabot must not retain obsolete VitePress or vue-tsc rules')
+  }
+  return errors
+}
+
+/** Keep the TypeScript project and production source tree independent of retired framework files. */
+export function validateFrameworkRetirement(legacyTreeExists: boolean, includes: unknown): string[] {
+  const errors: string[] = []
+  if (legacyTreeExists) errors.push('Retired framework source tree must not return')
+  if (!Array.isArray(includes) || includes.length !== 1 || includes[0] !== 'scripts/**/*.ts') {
+    errors.push('TypeScript include scope must contain only the owned scripts tree')
   }
   return errors
 }
