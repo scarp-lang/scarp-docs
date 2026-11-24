@@ -1,3 +1,4 @@
+import { historicalNavigationEvidence } from './lib/historical-navigation.ts'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -8,7 +9,7 @@ const read = (path: string): string => readFileSync(resolve(root,path),'utf8')
 export const pages: AstGuidePages = {
   en: read('docs/tooling/inspect-ast-alpha6.md'),
   hi: read('docs/hi/tooling/inspect-ast-alpha6.md'),
-  config: read('docs/.vitepress/config.mts'),
+  config: historicalNavigationEvidence,
   cliEn: read('docs/tooling/cli-alpha6.md'),
   cliHi: read('docs/hi/tooling/cli-alpha6.md'),
   troubleshootEn: read('docs/tooling/troubleshooting.md'),
