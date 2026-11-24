@@ -8,7 +8,7 @@
 
 **आपके compiler में कौन सा command उपलब्ध है?** [Version-aware CLI Command Finder](/hi/tooling/command-finder) में installed release और काम चुनें। पुरानी `run` / `check` commands को नए static `verify` या project inspection से न मिलाएँ।
 
-**नवीनतम compiler:** [v0.0.6-alpha.18](/hi/releases/v0.0.6-alpha.18) (22 नवंबर 2026) में बिना filename `scarp exec`, immutable `array_set` और Lifetime के empty-window सुधार आए। [Alpha.17](/hi/releases/v0.0.6-alpha.17) में `array_len`, `array_get_or` तथा `input_boolean` उपलब्ध हुए। [नया alpha.18 पाठ](/hi/guide/exec-and-lifetime-alpha18) और [alpha.17 traversal पाठ](/hi/language/array-traversal-alpha17) पढ़ें। [पुराना alpha.16](/hi/releases/v0.0.6-alpha.16) अपने मूल compiler पर ही सत्यापित है।
+**नवीनतम compiler:** [v0.0.6-alpha.20](/hi/releases/v0.0.6-alpha.20) (24 नवंबर 2026)। Exact decimal literals, persistent tuple updates, numeric tuple ordering, lowercase `scarp.project` और experimental Rust native functions; सामान्य native CLI नहीं। [वर्तमान भाषा पाठ](/hi/guide/alpha20-language) · [ऐतिहासिक alpha.18](/hi/releases/v0.0.6-alpha.18) · [alpha.17](/hi/releases/v0.0.6-alpha.17) · [alpha.16](/hi/releases/v0.0.6-alpha.16)।
 
 **Scarp पहली बार सीख रहे हैं तो यहाँ से शुरुआत करें।** यह मार्गदर्शिका शुरुआती प्रोग्राम से numerical examples, source modules, project और **[प्रकाशित v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1)** में आए symbol-navigation tools तक पहुँचाती है। हर पाठ के examples compiler के वास्तविक परीक्षणों पर आधारित हैं।
 
