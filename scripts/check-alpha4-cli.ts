@@ -1,3 +1,4 @@
+import { historicalNavigationEvidence } from './lib/historical-navigation.ts'
 import { readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -8,7 +9,7 @@ const read = (path: string) => readFileSync(resolve(root, path), 'utf8')
 const errors = validatePublishedAlpha4Cli(
   read('docs/tooling/cli-alpha4.md'), read('docs/hi/tooling/cli-alpha4.md'),
   read('conformance/alpha4/Scarp.project'), read('conformance/alpha4/starter.srp'),
-  read('conformance/alpha4/starter.stdout'), read('docs/.vitepress/config.mts')
+  read('conformance/alpha4/starter.stdout'), historicalNavigationEvidence
 )
 if (errors.length) {
   for (const issue of errors) console.error('FAIL alpha.4 published CLI: ' + issue)
