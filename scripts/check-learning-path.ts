@@ -1,3 +1,4 @@
+import { historicalNavigationEvidence } from './lib/historical-navigation.ts'
 import { readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -8,7 +9,7 @@ const read=(p:string):string=>readFileSync(resolve(root,p),'utf8')
 const pages:LearningPathPages = {
   english:read('docs/guide/learning-path.md'),
   hindi:read('docs/hi/guide/learning-path.md'),
-  config:read('docs/.vitepress/config.mts'),
+  config:historicalNavigationEvidence,
   homeEnglish:read('docs/index.md'),
   homeHindi:read('docs/hi/index.md'),
   introEnglish:read('docs/guide/introduction.md'),
