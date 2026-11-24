@@ -2,6 +2,8 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { currentDocumentationSources } from './lib/current-publication.ts'
+import { documentationPages } from './lib/docs-pages.ts'
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)))
 const read = (path: string): string => readFileSync(resolve(root, path), 'utf8')
@@ -25,14 +27,16 @@ for (const locale of ['', 'hi/']) {
   assert.ok(home.includes('guide/install-latest'), locale + 'home is missing current installer')
   assert.ok(!home.includes('v0.0.5-alpha.1'), locale + 'home still advertises retired compiler baseline')
 }
-const config = read('docs/.vitepress/config.mts')
-assert.ok(config.includes("link: '/guide/install-latest'"))
-assert.ok(config.includes("link: '/hi/guide/install-latest'"))
-assert.ok(config.includes(hub))
-assert.ok(!config.includes('v0.0.5-alpha.1'), 'navigation still advertises the retired compiler baseline')
+const active = currentDocumentationSources(documentationPages(resolve(root, 'docs')), manifest.compilerRef)
+for (const locale of ['', 'hi/']) {
+  assert.ok(active.includes(locale + 'guide/install-latest.md'), 'Current installer is not discoverable: ' + locale)
+  assert.ok(active.includes(locale + 'releases/' + manifest.compilerRef + '.md'), 'Current release is not discoverable: ' + locale)
+}
+assert.ok(active.every(source => !source.includes('v0.0.5-alpha.1')), 'Retired baseline is discoverable')
 const renderer = read('scripts/scarp-site/build.ts')
 assert.ok(renderer.includes(hub), 'Scarp-owned HTML renderer missing downloads link')
-assert.ok(renderer.includes("BASE+'guide/install-latest'"), 'Scarp-owned HTML renderer missing current install route')
+assert.ok(renderer.includes("BASE+'guide/install-latest'"), 'Scarp-owned HTML renderer missing current English install route')
+assert.ok(renderer.includes("BASE+'hi/guide/install-latest'"), 'Scarp-owned HTML renderer missing current Hindi install route')
 const readme = read('README.md')
 assert.ok(readme.includes('**Latest published compiler:** [' + manifest.compilerRef + ']'))
 assert.ok(readme.includes(hub))

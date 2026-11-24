@@ -1,3 +1,4 @@
+import { historicalNavigationEvidence } from './lib/historical-navigation.ts'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
@@ -9,7 +10,7 @@ const read = (path: string) => readFileSync(resolve(root, path), 'utf8')
 const pages = [
   read('docs/tooling/cli-alpha4.md'), read('docs/hi/tooling/cli-alpha4.md'),
   read('conformance/alpha4/Scarp.project'), read('conformance/alpha4/starter.srp'),
-  read('conformance/alpha4/starter.stdout'), read('docs/.vitepress/config.mts')
+  read('conformance/alpha4/starter.stdout'), historicalNavigationEvidence
 ] as [string, string, string, string, string, string]
 const check = (changes: Partial<Record<number, string>> = {}) =>
   validatePublishedAlpha4Cli(...(pages.map((page, i) => changes[i] ?? page) as

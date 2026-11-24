@@ -1,3 +1,4 @@
+import { historicalNavigationEvidence } from './lib/historical-navigation.ts'
 import { readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -20,7 +21,7 @@ const sources: Alpha6ProjectSources = {
 const pages: Alpha6ProjectPages = {
   english: read('docs/tutorials/project-symbol-navigation-alpha6.md'),
   hindi: read('docs/hi/tutorials/project-symbol-navigation-alpha6.md'),
-  config: read('docs/.vitepress/config.mts'),
+  config: historicalNavigationEvidence,
   examplesEn: read('docs/examples/index.md'),
   examplesHi: read('docs/hi/examples/index.md'),
   homeEn: read('docs/index.md'),

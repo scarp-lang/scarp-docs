@@ -1,3 +1,4 @@
+import { historicalNavigationEvidence } from './lib/historical-navigation.ts'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
@@ -9,7 +10,7 @@ const read=(path: string):string=>readFileSync(resolve(root,path),'utf8')
 const pages:DiagnosePages={
  en:read('docs/tooling/diagnose-alpha6.md'),
  hi:read('docs/hi/tooling/diagnose-alpha6.md'),
- config:read('docs/.vitepress/config.mts'),
+ config:historicalNavigationEvidence,
  cliEn:read('docs/tooling/cli-alpha6.md'),
  cliHi:read('docs/hi/tooling/cli-alpha6.md'),
  installEn:read('docs/guide/installation-alpha6.md'),

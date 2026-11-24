@@ -1,3 +1,4 @@
+import { historicalNavigationEvidence } from './lib/historical-navigation.ts'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -8,7 +9,7 @@ const read = (path: string): string => readFileSync(resolve(root, path), 'utf8')
 const pages: Alpha6InstallPages = {
   english: read('docs/guide/installation-alpha6.md'),
   hindi: read('docs/hi/guide/installation-alpha6.md'),
-  config: read('docs/.vitepress/config.mts'),
+  config: historicalNavigationEvidence,
   homeEnglish: read('docs/index.md'),
   homeHindi: read('docs/hi/index.md'),
   releaseEnglish: read('docs/releases/v0.0.6-alpha.1.md'),

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { validateToolchain, type ToolchainPackage } from './lib/toolchain-policy.ts'
+import { validateFrameworkRetirement, validateToolchain, type ToolchainPackage } from './lib/toolchain-policy.ts'
 
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)))
 const pkg = JSON.parse(readFileSync(resolve(root, 'package.json'), 'utf8')) as ToolchainPackage
@@ -59,3 +59,16 @@ mustFail('obsolete VitePress ignore rule',pkg,
   'obsolete')
 console.log('PASS: Scarp-owned TypeScript toolchain, source-parser locks, VitePress removal and '+
   negative+' negative policy regressions')
+
+assert.deepEqual(validateFrameworkRetirement(false, ['scripts/**/*.ts']), [])
+assert.match(validateFrameworkRetirement(true, ['scripts/**/*.ts']).join(' '), /source tree/)
+for (const invalid of [null, [], ['scripts/**/*.ts', 'docs/.vitepress/theme/**/*.ts'], ['**/*.ts']]) {
+  assert.match(validateFrameworkRetirement(false, invalid).join(' '), /include scope/)
+}
+for (const dependency of ['vitepress','vue','vue-tsc']) {
+  for (const group of ['dependencies','optionalDependencies','peerDependencies','devDependencies'] as const) {
+    assert.ok(validateToolchain({ ...pkg, [group]: { ...pkg[group], [dependency]: '1.0.0' } }, yaml)
+      .some(error => error.includes(dependency)))
+  }
+}
+console.log('PASS: retired source tree and dependency groups are protected against reintroduction')

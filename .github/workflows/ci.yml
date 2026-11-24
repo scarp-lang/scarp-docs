@@ -18,7 +18,7 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Validate published alpha.6.5 Top-P/Pearson docs and provenance
         run: npm run check:alpha6-five && npm run test:alpha6-five
-      - name: Type-check TypeScript and Vue sources
+      - name: Type-check Scarp-owned TypeScript sources
         run: npm run typecheck
       - name: Build and validate framework-free Scarp documentation engine preview
         run: npm run scarp:test
@@ -192,7 +192,7 @@ jobs:
         run: npm run docs:build && npm run package:offline && npm run test:offline
       - name: Check extracted Scarp-owned offline archive in Chromium and axe
         run: npm run test:browser-offline
-      - name: Test Scarp-owned static engine in Chromium independently of VitePress
+      - name: Test Scarp-owned static engine in Chromium
         run: npm run scarp:test && npm run scarp:browser-test
       - name: Upload accessibility audit evidence on failure
         if: failure()
