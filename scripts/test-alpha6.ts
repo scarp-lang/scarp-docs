@@ -1,3 +1,4 @@
+import { historicalNavigationEvidence } from './lib/historical-navigation.ts'
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
@@ -18,7 +19,7 @@ const pages: Alpha6Pages = {
   statusHi: read('docs/hi/reference/status.md'),
   homeEn: read('docs/index.md'),
   homeHi: read('docs/hi/index.md'),
-  config: read('docs/.vitepress/config.mts'),
+  config: historicalNavigationEvidence,
   readme: read('README.md')
 }
 const fixtures = Object.fromEntries(Object.entries(manifest.fixtures)
