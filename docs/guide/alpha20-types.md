@@ -28,7 +28,7 @@ The scalar and aggregate rules differ. This is a practical overview, not a claim
 
 ## Explicit types, inference and bindings
 
-An annotation after a name declares its type. Without an annotation, the initializer establishes the type. The compiler checks assignments, argument and return types. Bindings introduced by bind cannot be rebound; var permits replacement with a compatible value. A binding's type does not become dynamic when it is declared with var.
+An annotation after a name declares its type. Without an annotation, the initializer establishes the type. The compiler checks assignments, argument and return types. A function parameter cannot be named result or have type unit. Bindings introduced by bind cannot be rebound; var permits replacement with a compatible value. A binding's type does not become dynamic when it is declared with var.
 
 ~~~scarp
 bind count: integer = 7;
@@ -118,8 +118,8 @@ A record declares a named shape at file scope. Each field must be initialized ex
 record Book { title: string, available: boolean }
 variant Search { Missing, Found(record Book) }
 
-pure funcra describe(result: variant Search) -> string {
-    match on result {
+pure funcra describe(outcome: variant Search) -> string {
+    match on outcome {
         case Missing { return "Not found"; }
         case Found(book) { return book->title; }
     }
