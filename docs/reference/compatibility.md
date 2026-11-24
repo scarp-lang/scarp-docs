@@ -1,12 +1,14 @@
 # Version compatibility
 
-For an evidence-backed inventory of alpha.1 through alpha.18 features, consult the [published feature status](/reference/status). For specific commands, the [interactive version-aware Command Finder](/tooling/command-finder) shows shipped actions and unavailable features for each published compiler.
+For an evidence-backed inventory of alpha.1 through alpha.20 features, consult the [published feature status](/reference/status). For specific commands, the [interactive version-aware Command Finder](/tooling/command-finder) shows shipped actions and unavailable features for each published compiler.
 
 The language is **prerelease and evolving**. Use the exact executable version matching the tutorial, not a mix of snippets taken from older release notes.
 
 | Version | Distinguishing features |
 | --- | --- |
-| **[v0.0.6-alpha.18](/releases/v0.0.6-alpha.18)** | **Latest (Nov 22):** no-path `scarp exec`, immutable `array_set`, Lifetime empty-window retention; no native compiler CLI |
+| **[v0.0.6-alpha.20](/releases/v0.0.6-alpha.20)** | **Latest (Nov 24):** Exact decimal literals, persistent tuple updates, numeric tuple ordering, lowercase `scarp.project` and experimental Rust native functions; no general native CLI. |
+| **[v0.0.6-alpha.19](/releases/v0.0.6-alpha.19)** | Checked Rust host callable handles and cumulative quotas |
+| **[v0.0.6-alpha.18](/releases/v0.0.6-alpha.18)** | Nov 22: no-path `scarp exec`, immutable `array_set`, Lifetime empty-window retention; no native compiler CLI |
 | **[v0.0.6-alpha.17](/releases/v0.0.6-alpha.17)** | **Earlier (Nov 21):** `array_len`, `array_get_or`, interactive `input_boolean` and scoped diagnostics |
 | **[v0.0.6-alpha.16](/releases/v0.0.6-alpha.16)** | **Latest (Nov 20):** pure median/quantile, Unicode helpers, checked 64-bit integers and Rust host cache limits; interpreter CLI, no general native compiler |
 | **[v0.0.6-alpha.15](/releases/v0.0.6-alpha.15)** | **Earlier (Nov 19):** 1 MiB CLI inspection, UTF-8 string work accounting, loader revision checks and restricted ELF64 shifts; no native compiler CLI |
