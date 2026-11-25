@@ -6,11 +6,12 @@ Scarp के शुरुआती prereleases में syntax और API ब�
 
 | संस्करण | प्रमुख प्रकाशित सुविधा |
 | --- | --- |
-| **[v0.0.6-alpha.20](/hi/releases/v0.0.6-alpha.20)** | **नवीनतम (24 नवंबर):** Exact decimal literals, persistent tuple updates, numeric tuple ordering, lowercase `scarp.project` और experimental Rust native functions; सामान्य native CLI नहीं। |
+| **[v0.0.7-alpha.1](/hi/releases/v0.0.7-alpha.1)** | **नवीनतम (25 नवंबर):** Fixed-array concatenation, integer reductions, bounded frame reuse और experimental ELF64 scalar control flow; सामान्य native CLI नहीं। |
+| **[v0.0.6-alpha.20](/hi/releases/v0.0.6-alpha.20)** | **पूर्व (24 नवंबर):** Exact decimal literals, persistent tuple updates, numeric tuple ordering, lowercase `scarp.project` और experimental Rust native functions; सामान्य native CLI नहीं। |
 | **[v0.0.6-alpha.19](/hi/releases/v0.0.6-alpha.19)** | Checked Rust host callable handles and cumulative quotas |
 | **[v0.0.6-alpha.18](/hi/releases/v0.0.6-alpha.18)** | 22 नवंबर: बिना filename `scarp exec`, immutable `array_set` और Lifetime memory सुधार; general native compiler नहीं |
 | **[v0.0.6-alpha.17](/hi/releases/v0.0.6-alpha.17)** | **पिछली (21 नवंबर):** `array_len`, `array_get_or`, `input_boolean` और सटीक type diagnostics |
-| **[v0.0.6-alpha.16](/hi/releases/v0.0.6-alpha.16)** | **नवीनतम (20 नवंबर):** pure `median`/`quantile`, Unicode text utilities, checked 64-bit integers तथा Rust cache limits; अभी interpreter CLI, general native compiler नहीं |
+| **[v0.0.6-alpha.16](/hi/releases/v0.0.6-alpha.16)** | **पूर्व (20 नवंबर):** pure `median`/`quantile`, Unicode text utilities, checked 64-bit integers तथा Rust cache limits; अभी interpreter CLI, general native compiler नहीं |
 | **[v0.0.6-alpha.15](/hi/releases/v0.0.6-alpha.15)** | **पूर्व (19 नवंबर):** 1 MiB निरीक्षण सीमा, UTF-8 string comparison budget, loader revision checks और checked ELF64 shifts; native compiler CLI नहीं |
 | **[v0.0.6-alpha.14](/hi/releases/v0.0.6-alpha.14)** | **पूर्व (18 नवंबर):** nested pattern diagnostics, Rust editor-cache quotas तथा checked ELF64 host API; सामान्य native compilation नहीं |
 | **[v0.0.6-alpha.13](/hi/releases/v0.0.6-alpha.13)** | **पिछला (17 नवंबर):** Rust cache revision eviction, editor workspace generation और Option/Result में immutable payload reuse; नया Scarp syntax या CLI नहीं |
