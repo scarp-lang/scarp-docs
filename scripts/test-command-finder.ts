@@ -100,7 +100,10 @@ for(const task of ['init-project','test-project','project-info'] as const) {
   assert.equal(commandAdvice('v0.0.6-alpha.7',task).supported,false)
   assert.deepEqual(commandAdvice('v0.0.6-alpha.7',task).commands,[])
 }
-assert.throws(()=>commandAdvice('v0.0.7-alpha.1' as ReleaseTag,'run-file'),TypeError)
+// Use a deliberately invalid token, not a plausible future published tag.
+assert.throws(()=>commandAdvice('not-a-published-release' as ReleaseTag,'run-file'),TypeError)
+assert.deepEqual(commandAdvice(LATEST_RELEASE,'run-file').commands,['scarp exec FILE.srp'])
+assert.deepEqual(commandAdvice(LATEST_RELEASE,'exec-default').commands,['scarp exec'])
 assert.throws(()=>commandAdvice(LATEST_RELEASE,'native-compile' as CommandTask),TypeError)
 
 type MutableTextSource = Exclude<keyof FinderSources,'pages'>
