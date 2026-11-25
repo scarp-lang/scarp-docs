@@ -1,8 +1,8 @@
 # वर्तमान Scarp compiler reference
 
-<!-- scarp-cli-release: v0.0.6-alpha.20 -->
+<!-- scarp-cli-release: v0.0.7-alpha.1 -->
 
-**प्रकाशित वर्तमान snapshot:** [v0.0.6-alpha.20](/hi/releases/v0.0.6-alpha.20), 24 नवंबर 2026। यह पृष्ठ **सत्यापित वर्तमान व्यवहार** बताता है; भविष्य के releases में syntax हमेशा समान रहने की गारंटी नहीं।
+**प्रकाशित वर्तमान snapshot:** [v0.0.7-alpha.1](/hi/releases/v0.0.7-alpha.1), 25 नवंबर 2026। यह पृष्ठ **सत्यापित वर्तमान व्यवहार** बताता है; भविष्य के releases में syntax हमेशा समान रहने की गारंटी नहीं।
 
 ## CLI और entrypoint चुनाव
 
@@ -40,24 +40,28 @@ one नमस्ते
 100
 ~~~
 
+## Fixed-array concatenation
+
+`array_concat(left, right)` समान element type वाली fixed arrays जोड़कर combined length की नई array बनाता है। Original arrays नहीं बदलतीं। [उदाहरण](/hi/guide/alpha7-first) देखें।
+
 ## Lifetime और memory की सीमाएँ
 
 Scarp Lifetime compiler-planned scope retirement तथा सुरक्षित Rust immutable shared storage पर आधारित है। User source में free या borrow call लिखना ज़रूरी नहीं। Alpha.18 में खाली finite/integer windows बड़े मूल buffer से अलग हो जाती हैं, लेकिन **गैर-खाली views अब भी पुराने storage को रोके रख सकती हैं**। यह सामान्य cycle collector या OS RAM limit नहीं है, और memory तुरंत लौटने की गारंटी नहीं। `--max-vector-bytes` **cumulative** budget है तथा `--max-live-slots` allocated frame slots गिनता है, actual RAM नहीं।
 
 ## प्रकाशित decimal और tuple features
 
-Alpha.20 में `0.1d + 0.2d` exact `0.3` देता है; unsuffixed binary64 floats नहीं बदले। Mutable tuple में constant index पर persistent replacement और compatible numeric tuples की lexicographic ordering उपलब्ध है। [उदाहरण और सीमाएँ](/hi/guide/alpha20-language) पढ़ें।
+Alpha.20 में `0.1d + 0.2d` exact `0.3` देता है; unsuffixed binary64 floats नहीं बदले। Mutable tuple में constant index पर persistent replacement और compatible numeric tuples की lexicographic ordering उपलब्ध है। [उदाहरण और सीमाएँ](/hi/guide/alpha7-first) पढ़ें।
 
 
-[वर्तमान type system guide](/hi/guide/alpha20-types) में scalar, composite और nominal types के उदाहरण पढ़ें।
+[वर्तमान type system guide](/hi/guide/current-types) में scalar, composite और nominal types के उदाहरण पढ़ें।
 
 ## Rust embedding और native API
 
 Alpha.19 ने checked named/exported callable handles, signature/effect constrained slots और cumulative execution receipts दिए। Alpha.20 में composite strings के logical UTF-8 bytes भी quota में गिने जाते हैं। Ledger पूरे process की memory limit नहीं है।
 
-Experimental native object API pure integer functions के एक से छह parameters, checked arithmetic, integer/boolean locals और early returns के सीमित subset को Linux x86-64 System V ELF64 में emit करती है। Loops, calls, contracts, defaults और heap-backed values शामिल नहीं। [Compiler native contract](https://github.com/scarp-lang/scarp/blob/b1a9347f93540fdf95b0ddecba4adc55a3b4bb98/docs/native-elf64.md) देखें।
+Experimental Rust native-object API में अब 16 तक required integer arguments, scalar conditional expressions, counted repeats और nested loop control हैं। Execution work सीमित है और diagnostic source spans सुरक्षित हैं। General native calls, contracts, defaults, heap-backed values और executable linking उपलब्ध नहीं हैं। [Tagged compiler native contract](https://github.com/scarp-lang/scarp/blob/996bd5b83c8cb26e98637563729f67bdacc61cd4/docs/native-elf64.md) देखें।
 
-[Systems programming और Rust embedding](/hi/guide/alpha20-systems) में native ABI, callable slots तथा cumulative quotas की सीमाएँ पढ़ें।
+[वर्तमान release guide](/hi/guide/alpha7-first) में array concatenation, integer reductions और native सीमाएँ पढ़ें।
 
 ## वर्तमान compiler में क्या उपलब्ध नहीं है?
 
@@ -65,4 +69,4 @@ Experimental native object API pure integer functions के एक से छ�
 
 ## आधिकारिक डाउनलोड और प्रमाण
 
-[आधिकारिक Downloads](https://scarp-lang.github.io/downloads/), [वर्तमान इंस्टॉलेशन](/hi/guide/install-latest), [वर्तमान भाषा पाठ](/hi/guide/alpha20-language) तथा [compiler का मूल source](https://github.com/scarp-lang/scarp/tree/b1a9347f93540fdf95b0ddecba4adc55a3b4bb98) पढ़ें। पुराने version-specific pages अब current search/navigation में नहीं दिखते; उनके परीक्षण Git में सुरक्षित हैं।
+[आधिकारिक Downloads](https://scarp-lang.github.io/downloads/), [वर्तमान इंस्टॉलेशन](/hi/guide/install-latest), [वर्तमान भाषा पाठ](/hi/guide/alpha7-first) तथा [compiler का मूल source](https://github.com/scarp-lang/scarp/tree/996bd5b83c8cb26e98637563729f67bdacc61cd4) पढ़ें। पुराने version-specific pages अब current search/navigation में नहीं दिखते; उनके परीक्षण Git में सुरक्षित हैं।

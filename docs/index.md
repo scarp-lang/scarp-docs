@@ -26,9 +26,9 @@ hero:
       link: https://scarp-lang.github.io/downloads/
 
 features:
-  - title: Latest published compiler v0.0.6-alpha.20
-    details: Alpha.20 adds exact decimal literals, tuple updates and ordering, and experimental native integer functions.
-    link: /releases/v0.0.6-alpha.20
+  - title: Latest published compiler v0.0.7-alpha.1
+    details: The first v0.0.7 prerelease expands fixed arrays, integer reductions, native scalar control flow and interpreter frame reuse.
+    link: /releases/v0.0.7-alpha.1
 
   - title: Current compiler getting started
     details: Install and use only the latest published and verified Scarp interpreter.
@@ -38,7 +38,7 @@ features:
     link: /reference/current
   - title: Exact decimals and tuple semantics
     details: Learn exact base-ten values and persistent tuple replacement.
-    link: /guide/alpha20-language
+    link: /guide/alpha7-first
   - title: Documentation deployments
     details: Inspect the official documentation build and Pages deployment process.
     link: /project/deployments
@@ -102,7 +102,7 @@ features:
 ---
 
 ::: warning Experimental language
-The latest verified published compiler is **[v0.0.6-alpha.20](/releases/v0.0.6-alpha.20)** (experimental prerelease). [Download Scarp](https://scarp-lang.github.io/downloads/) or open the [current installation guide](/guide/install-latest). Older tutorial pages preserve release-pinned evidence, not current installation advice; check [feature status](/reference/status).
+The latest verified published compiler is **[v0.0.7-alpha.1](/releases/v0.0.7-alpha.1)** (experimental prerelease). [Download Scarp](https://scarp-lang.github.io/downloads/) or open the [current installation guide](/guide/install-latest). Older tutorial pages preserve release-pinned evidence, not current installation advice; check [feature status](/reference/status).
 :::
 
 For signed BigInt and JSON-v2 test reporting on earlier binaries, read the [historical alpha.9 release](/releases/v0.0.6-alpha.9).

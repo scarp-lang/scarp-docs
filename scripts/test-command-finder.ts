@@ -29,7 +29,7 @@ const sources: FinderSources = {
 assert.deepEqual(validateCommandFinder(sources), [])
 assert.equal(LATEST_RELEASE, RELEASES.at(-1)?.tag)
 assert.equal(commandAdvice('v0.0.6-alpha.6', 'run-file').commands[0], 'scarp exec FILE.srp')
-assert.equal(RELEASES.at(-1)?.source, 'b1a9347f93540fdf95b0ddecba4adc55a3b4bb98')
+assert.equal(RELEASES.at(-1)?.source, '996bd5b83c8cb26e98637563729f67bdacc61cd4')
 assert.equal(RELEASES.find(entry => entry.tag === 'v0.0.6-alpha.17')?.source, '7831a37939965f557ce746e1d86bf82d3d629f74')
 assert.equal(RELEASES.find(entry => entry.tag === 'v0.0.6-alpha.15')?.source,
   'a21b7b6d942bd1ca9abbbbb522f92f9c8e21e281')
