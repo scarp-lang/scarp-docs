@@ -29,7 +29,7 @@ const sources: FinderSources = {
 assert.deepEqual(validateCommandFinder(sources), [])
 assert.equal(LATEST_RELEASE, RELEASES.at(-1)?.tag)
 assert.equal(commandAdvice('v0.0.6-alpha.6', 'run-file').commands[0], 'scarp exec FILE.srp')
-assert.equal(RELEASES.at(-1)?.source, 'b1a9347f93540fdf95b0ddecba4adc55a3b4bb98')
+assert.equal(RELEASES.at(-1)?.source, '996bd5b83c8cb26e98637563729f67bdacc61cd4')
 assert.equal(RELEASES.find(entry => entry.tag === 'v0.0.6-alpha.17')?.source, '7831a37939965f557ce746e1d86bf82d3d629f74')
 assert.equal(RELEASES.find(entry => entry.tag === 'v0.0.6-alpha.15')?.source,
   'a21b7b6d942bd1ca9abbbbb522f92f9c8e21e281')
@@ -100,14 +100,17 @@ for(const task of ['init-project','test-project','project-info'] as const) {
   assert.equal(commandAdvice('v0.0.6-alpha.7',task).supported,false)
   assert.deepEqual(commandAdvice('v0.0.6-alpha.7',task).commands,[])
 }
-assert.throws(()=>commandAdvice('v0.0.7-alpha.1' as ReleaseTag,'run-file'),TypeError)
+// Use a deliberately invalid token, not a plausible future published tag.
+assert.throws(()=>commandAdvice('not-a-published-release' as ReleaseTag,'run-file'),TypeError)
+assert.deepEqual(commandAdvice(LATEST_RELEASE,'run-file').commands,['scarp exec FILE.srp'])
+assert.deepEqual(commandAdvice(LATEST_RELEASE,'exec-default').commands,['scarp exec'])
 assert.throws(()=>commandAdvice(LATEST_RELEASE,'native-compile' as CommandTask),TypeError)
 
 type MutableTextSource = Exclude<keyof FinderSources,'pages'>
 const mutations: Array<[MutableTextSource,string,string]> = [
-  ['english','latest published release is [v0.0.6-alpha.20](/releases/v0.0.6-alpha.20)',
+  ['english','latest published release is [v0.0.7-alpha.1](/releases/v0.0.7-alpha.1)',
     'latest published release is [v0.0.6-alpha.8](/releases/v0.0.6-alpha.9)'],
-  ['hindi','नवीनतम प्रकाशित release [v0.0.6-alpha.20](/hi/releases/v0.0.6-alpha.20)',
+  ['hindi','नवीनतम प्रकाशित release [v0.0.7-alpha.1](/hi/releases/v0.0.7-alpha.1)',
     'नवीनतम प्रकाशित release [v0.0.6-alpha.9](/hi/releases/v0.0.6-alpha.8)'],
   ['english','<ScarpCommandFinder />','<OutdatedSelector />'],
   ['hindi','<ScarpCommandFinder />','<OutdatedSelector />'],

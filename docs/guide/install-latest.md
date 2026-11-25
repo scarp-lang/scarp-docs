@@ -1,10 +1,10 @@
 # Install the latest published Scarp
 
-<!-- scarp-cli-release: v0.0.6-alpha.20 -->
+<!-- scarp-cli-release: v0.0.7-alpha.1 -->
 
 **Official download center:** [scarp-lang.github.io/downloads](https://scarp-lang.github.io/downloads/).
 
-As of November 24, 2026, the latest verified published compiler is **[Scarp v0.0.6-alpha.20](/releases/v0.0.6-alpha.20)**, an experimental interpreter prerelease. For the newest available version, including future prereleases, use the official Downloads website rather than the archived installation pages.
+As of November 25, 2026, the latest verified published compiler is **[Scarp v0.0.7-alpha.1](/releases/v0.0.7-alpha.1)**, an experimental interpreter prerelease. For the newest available version, including future prereleases, use the official Downloads website rather than the archived installation pages.
 
 ## Choose your platform
 
@@ -18,15 +18,15 @@ The permanent links check for the newest **published** Scarp release (including 
 
 ## Verify the download before running it
 
-After selecting the download, confirm the archive's **actual version** on the [official downloads page](https://scarp-lang.github.io/downloads/). Verify its SHA-256 against the checksum posted for **that exact version** before extraction or execution. Never assume the alpha.20 checksum below is valid for a newer archive.
+After selecting the download, confirm the archive's **actual version** on the [official downloads page](https://scarp-lang.github.io/downloads/). Verify its SHA-256 against the checksum posted for **that exact version** before extraction or execution. Never assume the v0.0.7-alpha.1 checksum below is valid for a newer archive.
 
-| Verified alpha.20 archive | SHA-256 |
+| Verified v0.0.7-alpha.1 archive | SHA-256 |
 | --- | --- |
-| Windows x64 `scarp-0.0.6-alpha.20-x86_64-pc-windows-msvc.zip` | `68a5ee47f24e2e36dd7fb1fcc6257feaea291d801048f7866bff1a7e4994aca2` |
-| Linux x64 `scarp-0.0.6-alpha.20-x86_64-unknown-linux-gnu.tar.gz` | `b570336d589d7484e67e69274d84cbab73fced4f41a99d11a07255da2048eb7b` |
-| macOS ARM64 `scarp-0.0.6-alpha.20-aarch64-apple-darwin.tar.gz` | `908a21d62888ab716eba97d79a1f13cd705e19e2b584b344638f6dccdbe93bb3` |
+| Windows x64 `scarp-0.0.7-alpha.1-x86_64-pc-windows-msvc.zip` | `371eeabd1b35e9e3530ce44f13d90f376972b0650df9d41ce79a41c814875924` |
+| Linux x64 `scarp-0.0.7-alpha.1-x86_64-unknown-linux-gnu.tar.gz` | `f034432f46c12720b74ec303446fb46ecef483abdc942bcb9eaca41ea349cb5c` |
+| macOS ARM64 `scarp-0.0.7-alpha.1-aarch64-apple-darwin.tar.gz` | `63697cb53224cf0a22a38a28ae7887b8c694979d54ee780dc0639f1057409909` |
 
-Those digests apply **only** to [the published alpha.20 artifacts](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.20). The hash matching is an integrity check, not a guarantee that experimental software is production-ready. If a hash fails to match, **stop**.
+Those digests apply **only** to [the published v0.0.7-alpha.1 artifacts](https://github.com/scarp-lang/scarp/releases/tag/v0.0.7-alpha.1). The hash matching is an integrity check, not a guarantee that experimental software is production-ready. If a hash fails to match, **stop**.
 
 ## Check your installed interpreter
 
@@ -40,12 +40,12 @@ Extract the verified archive to a directory you control and invoke its own binar
 ./scarp version
 ~~~
 
-The printed version should agree with the archive you actually downloaded. For a verified alpha.20 project, `scarp exec` selects a valid project manifest, then `src/main.srp`, then `main.srp` when no manifest is present; malformed manifests are an error. From the appropriate project directory, with the extracted executable accessible:
+The printed version should agree with the archive you actually downloaded. For a verified v0.0.7-alpha.1 project, `scarp exec` selects a valid project manifest, then `src/main.srp`, then `main.srp` when no manifest is present; malformed manifests are an error. From the appropriate project directory, with the extracted executable accessible:
 
 ~~~sh
 scarp exec
 ~~~
 
-Read the [current reference](/reference/current) and [decimal and tuple guide](/guide/alpha20-language) for current language behavior and limits.
+Read the [current reference](/reference/current) and [current release guide](/guide/alpha7-first) for current language behavior and limits.
 
 > Older release documents are retained as historical evidence with their original tagged compiler outputs, not as current installation recommendations.

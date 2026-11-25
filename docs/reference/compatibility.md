@@ -6,11 +6,12 @@ The language is **prerelease and evolving**. Use the exact executable version ma
 
 | Version | Distinguishing features |
 | --- | --- |
-| **[v0.0.6-alpha.20](/releases/v0.0.6-alpha.20)** | **Latest (Nov 24):** Exact decimal literals, persistent tuple updates, numeric tuple ordering, lowercase `scarp.project` and experimental Rust native functions; no general native CLI. |
+| **[v0.0.7-alpha.1](/releases/v0.0.7-alpha.1)** | **Latest (Nov 25):** Fixed-array concatenation, variadic integer reductions, bounded frame reuse and experimental ELF64 scalar control flow; no general native CLI. |
+| **[v0.0.6-alpha.20](/releases/v0.0.6-alpha.20)** | **Earlier (Nov 24):** Exact decimal literals, persistent tuple updates, numeric tuple ordering, lowercase `scarp.project` and experimental Rust native functions; no general native CLI. |
 | **[v0.0.6-alpha.19](/releases/v0.0.6-alpha.19)** | Checked Rust host callable handles and cumulative quotas |
 | **[v0.0.6-alpha.18](/releases/v0.0.6-alpha.18)** | Nov 22: no-path `scarp exec`, immutable `array_set`, Lifetime empty-window retention; no native compiler CLI |
 | **[v0.0.6-alpha.17](/releases/v0.0.6-alpha.17)** | **Earlier (Nov 21):** `array_len`, `array_get_or`, interactive `input_boolean` and scoped diagnostics |
-| **[v0.0.6-alpha.16](/releases/v0.0.6-alpha.16)** | **Latest (Nov 20):** pure median/quantile, Unicode helpers, checked 64-bit integers and Rust host cache limits; interpreter CLI, no general native compiler |
+| **[v0.0.6-alpha.16](/releases/v0.0.6-alpha.16)** | **Earlier (Nov 20):** pure median/quantile, Unicode helpers, checked 64-bit integers and Rust host cache limits; interpreter CLI, no general native compiler |
 | **[v0.0.6-alpha.15](/releases/v0.0.6-alpha.15)** | **Earlier (Nov 19):** 1 MiB CLI inspection, UTF-8 string work accounting, loader revision checks and restricted ELF64 shifts; no native compiler CLI |
 | **[v0.0.6-alpha.14](/releases/v0.0.6-alpha.14)** | **Earlier (Nov 18):** improved nested pattern diagnostics, host-only editor-cache limits and checked ELF64 Rust API; unchanged interpreter CLI and no general native compiler |
 | **[v0.0.6-alpha.13](/releases/v0.0.6-alpha.13)** | **Earlier (Nov 17):** host-side revision-aware cache eviction, editor workspace generation and immutable Option/Result payload reuse; no new CLI or Scarp syntax |

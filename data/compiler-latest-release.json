@@ -1,26 +1,26 @@
 {
   "compilerRepository": "scarp-lang/scarp",
-  "compilerRef": "v0.0.6-alpha.20",
-  "compilerCommit": "b1a9347f93540fdf95b0ddecba4adc55a3b4bb98",
-  "releasedAt": "2026-11-24T02:58:58Z",
+  "compilerRef": "v0.0.7-alpha.1",
+  "compilerCommit": "996bd5b83c8cb26e98637563729f67bdacc61cd4",
+  "releasedAt": "2026-11-25T11:47:52Z",
   "status": "published-prerelease",
   "historicalReferenceBaseline": "v0.0.5-alpha.1",
   "assets": [
-    "scarp-0.0.6-alpha.20-x86_64-pc-windows-msvc.zip",
-    "scarp-0.0.6-alpha.20-x86_64-unknown-linux-gnu.tar.gz",
-    "scarp-0.0.6-alpha.20-aarch64-apple-darwin.tar.gz",
-    "scarp-0.0.6-alpha.20-x86_64-pc-windows-msvc.zip.sha256",
-    "scarp-0.0.6-alpha.20-x86_64-unknown-linux-gnu.tar.gz.sha256",
-    "scarp-0.0.6-alpha.20-aarch64-apple-darwin.tar.gz.sha256",
+    "scarp-0.0.7-alpha.1-aarch64-apple-darwin.tar.gz",
+    "scarp-0.0.7-alpha.1-aarch64-apple-darwin.tar.gz.sha256",
+    "scarp-0.0.7-alpha.1-x86_64-pc-windows-msvc.zip",
+    "scarp-0.0.7-alpha.1-x86_64-pc-windows-msvc.zip.sha256",
+    "scarp-0.0.7-alpha.1-x86_64-unknown-linux-gnu.tar.gz",
+    "scarp-0.0.7-alpha.1-x86_64-unknown-linux-gnu.tar.gz.sha256",
     "SHA256SUMS"
   ],
   "assetDigests": {
-    "scarp-0.0.6-alpha.20-x86_64-pc-windows-msvc.zip": "sha256:68a5ee47f24e2e36dd7fb1fcc6257feaea291d801048f7866bff1a7e4994aca2",
-    "scarp-0.0.6-alpha.20-x86_64-unknown-linux-gnu.tar.gz": "sha256:b570336d589d7484e67e69274d84cbab73fced4f41a99d11a07255da2048eb7b",
-    "scarp-0.0.6-alpha.20-aarch64-apple-darwin.tar.gz": "sha256:908a21d62888ab716eba97d79a1f13cd705e19e2b584b344638f6dccdbe93bb3",
-    "scarp-0.0.6-alpha.20-x86_64-pc-windows-msvc.zip.sha256": "sha256:70e76c9cf5baa36e1abf1ef63dc7ba7742328b6ddc74b3738e0041bad0cdd9b2",
-    "scarp-0.0.6-alpha.20-x86_64-unknown-linux-gnu.tar.gz.sha256": "sha256:b1d79e61e1a14afe061ea65f62712588b7aaf89e374dd716c220a03eaff19f73",
-    "scarp-0.0.6-alpha.20-aarch64-apple-darwin.tar.gz.sha256": "sha256:ad8cecfded521b6527ad964e8740446553c800e95e2e24919f98c3df0c52d7c4",
-    "SHA256SUMS": "sha256:0640a2549816d39b52590c985b0df417347ea6b410797d94c7aee603ca43ce94"
+    "scarp-0.0.7-alpha.1-aarch64-apple-darwin.tar.gz": "sha256:63697cb53224cf0a22a38a28ae7887b8c694979d54ee780dc0639f1057409909",
+    "scarp-0.0.7-alpha.1-aarch64-apple-darwin.tar.gz.sha256": "sha256:c44502f63d73e79ec0780d028d17f2477147b5f163796d35704da591d23728ca",
+    "scarp-0.0.7-alpha.1-x86_64-pc-windows-msvc.zip": "sha256:371eeabd1b35e9e3530ce44f13d90f376972b0650df9d41ce79a41c814875924",
+    "scarp-0.0.7-alpha.1-x86_64-pc-windows-msvc.zip.sha256": "sha256:458d2217de7f9b53473c8cf94ba182dbeefd17ad722ce3c684c5e612ff1593e6",
+    "scarp-0.0.7-alpha.1-x86_64-unknown-linux-gnu.tar.gz": "sha256:f034432f46c12720b74ec303446fb46ecef483abdc942bcb9eaca41ea349cb5c",
+    "scarp-0.0.7-alpha.1-x86_64-unknown-linux-gnu.tar.gz.sha256": "sha256:84d072812c11d03008613451d7148ea1dc52ff9bf9a264dab0a781844875887a",
+    "SHA256SUMS": "sha256:faf1b5cda6399fc1825f7f0000780f28f4c3acf29e1843893c1fc2d5ee4dde60"
   }
 }

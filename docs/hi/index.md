@@ -26,19 +26,19 @@ hero:
       link: https://scarp-lang.github.io/downloads/
 
 features:
-  - title: नवीनतम प्रकाशित v0.0.6-alpha.20 compiler
+  - title: नवीनतम प्रकाशित v0.0.7-alpha.1 compiler
     details: Exact decimal literals, tuple updates और ordering तथा Rust host native functions देखें।
-    link: /hi/releases/v0.0.6-alpha.20
+    link: /hi/releases/v0.0.7-alpha.1
 
   - title: वर्तमान compiler से शुरुआत
     details: केवल वर्तमान प्रकाशित Scarp interpreter के सत्यापित commands और installation steps सीखें।
     link: /hi/guide/current
   - title: वर्तमान Scarp language reference
-    details: Alpha.20 के decimal, tuple, project और host embedding की सीमाएँ समझें।
+    details: Fixed-array concatenation, integer reductions और native scalar control flow का विस्तार।
     link: /hi/reference/current
-  - title: Exact decimal और tuple के उदाहरण
-    details: Exact base-ten values और persistent tuple replacement सीखें।
-    link: /hi/guide/alpha20-language
+  - title: v0.0.7 में नया क्या है
+    details: Fixed arrays, integer reductions और experimental native backend की सीमाएँ।
+    link: /hi/guide/alpha7-first
   - title: GitHub Pages deployments
     details: प्रकाशित documentation deployment और build workflow के बारे में जानें।
     link: /hi/project/deployments
@@ -102,7 +102,7 @@ features:
 ---
 
 ::: warning प्रयोगात्मक रिलीज़
-नवीनतम सत्यापित प्रकाशित compiler **[v0.0.6-alpha.20](/hi/releases/v0.0.6-alpha.20)** है। [आधिकारिक Scarp डाउनलोड](https://scarp-lang.github.io/downloads/) और [वर्तमान इंस्टॉलेशन गाइड](/hi/guide/install-latest) से शुरुआत करें। यह experimental prerelease है; पुराने पृष्ठ केवल अपने मूल release के परीक्षण बताते हैं। [फ़ीचर स्थिति](/hi/reference/status) देखें।
+नवीनतम सत्यापित प्रकाशित compiler **[v0.0.7-alpha.1](/hi/releases/v0.0.7-alpha.1)** है। [आधिकारिक Scarp डाउनलोड](https://scarp-lang.github.io/downloads/) और [वर्तमान इंस्टॉलेशन गाइड](/hi/guide/install-latest) से शुरुआत करें। यह experimental prerelease है; पुराने पृष्ठ केवल अपने मूल release के परीक्षण बताते हैं। [फ़ीचर स्थिति](/hi/reference/status) देखें।
 :::
 
 [ऐतिहासिक alpha.9 BigInt और JSON-v2 रिलीज़](/hi/releases/v0.0.6-alpha.9) अपने मूल compiler version के लिए उपलब्ध है।
