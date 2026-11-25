@@ -8,7 +8,7 @@
 
 **आपके compiler में कौन सा command उपलब्ध है?** [Version-aware CLI Command Finder](/hi/tooling/command-finder) में installed release और काम चुनें। पुरानी `run` / `check` commands को नए static `verify` या project inspection से न मिलाएँ।
 
-**नवीनतम compiler:** [v0.0.6-alpha.20](/hi/releases/v0.0.6-alpha.20) (24 नवंबर 2026)। Exact decimal literals, persistent tuple updates, numeric tuple ordering, lowercase `scarp.project` और experimental Rust native functions; सामान्य native CLI नहीं। [वर्तमान भाषा पाठ](/hi/guide/alpha20-language) · [ऐतिहासिक alpha.18](/hi/releases/v0.0.6-alpha.18) · [alpha.17](/hi/releases/v0.0.6-alpha.17) · [alpha.16](/hi/releases/v0.0.6-alpha.16)।
+**नवीनतम compiler:** [v0.0.7-alpha.1](/hi/releases/v0.0.7-alpha.1) (25 नवंबर 2026)। Fixed-array concatenation, integer reductions, bounded frame reuse और experimental ELF64 scalar control flow; सामान्य native CLI नहीं। [वर्तमान भाषा पाठ](/hi/guide/alpha7-first) · [ऐतिहासिक alpha.18](/hi/releases/v0.0.6-alpha.18) · [alpha.17](/hi/releases/v0.0.6-alpha.17) · [alpha.16](/hi/releases/v0.0.6-alpha.16)।
 
 **Scarp पहली बार सीख रहे हैं तो यहाँ से शुरुआत करें।** यह मार्गदर्शिका शुरुआती प्रोग्राम से numerical examples, source modules, project और **[प्रकाशित v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1)** में आए symbol-navigation tools तक पहुँचाती है। हर पाठ के examples compiler के वास्तविक परीक्षणों पर आधारित हैं।
 
