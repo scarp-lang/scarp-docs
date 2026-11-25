@@ -105,9 +105,9 @@ assert.throws(()=>commandAdvice(LATEST_RELEASE,'native-compile' as CommandTask),
 
 type MutableTextSource = Exclude<keyof FinderSources,'pages'>
 const mutations: Array<[MutableTextSource,string,string]> = [
-  ['english','latest published release is [v0.0.6-alpha.20](/releases/v0.0.6-alpha.20)',
+  ['english','latest published release is [v0.0.7-alpha.1](/releases/v0.0.7-alpha.1)',
     'latest published release is [v0.0.6-alpha.8](/releases/v0.0.6-alpha.9)'],
-  ['hindi','नवीनतम प्रकाशित release [v0.0.6-alpha.20](/hi/releases/v0.0.6-alpha.20)',
+  ['hindi','नवीनतम प्रकाशित release [v0.0.7-alpha.1](/hi/releases/v0.0.7-alpha.1)',
     'नवीनतम प्रकाशित release [v0.0.6-alpha.9](/hi/releases/v0.0.6-alpha.8)'],
   ['english','<ScarpCommandFinder />','<OutdatedSelector />'],
   ['hindi','<ScarpCommandFinder />','<OutdatedSelector />'],
