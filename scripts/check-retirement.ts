@@ -24,6 +24,14 @@ for(const locale of ['', 'hi/']) {
       'Published tuple ordering must not retain its development-only page')
   }
 }
+if(manifest.compilerRef==='v0.0.7-alpha.1') {
+  for(const locale of ['', 'hi/']) {
+    for(const lesson of ['guide/alpha7-first.md','guide/current-types.md','releases/v0.0.7-alpha.1.md']) {
+      assert.ok(active.includes(locale+lesson),'Missing current bilingual guide: '+locale+lesson)
+    }
+    assert.ok(!active.includes(locale+'releases/v0.0.6-alpha.20.md'),'Previous release remains active')
+  }
+}
 assert.ok(all.length>=200,'Missing historical source fixtures')
 assert.ok(all.length-active.length>=100,'Retirement must cover historical pages')
 for(const prefix of ['', 'hi/']){
