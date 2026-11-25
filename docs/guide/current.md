@@ -42,9 +42,11 @@ For an explicit file, use `scarp exec path/to/file.srp`. `exec` runs interpreted
 
 ## Step 4: Understand the current capabilities
 
+The new release adds fixed-array concatenation, variadic integer reductions and bounded interpreter frame reuse.
+
 The [current compiler reference](/reference/current) summarizes what is demonstrably available in this release, including exact decimal literals, tuple operations, source entrypoint selection, and Lifetime behavior. The [release notes](/releases/v0.0.7-alpha.1) provide immutable source provenance and published checksums.
 
-Read [systems programming and Rust embedding](/guide/alpha7-first) for native ABI boundaries, callable slots and cumulative quotas.
+Read [systems programming and Rust embedding](/guide/alpha7-first) for array concatenation, integer reductions and native ABI boundaries.
 
 Read the [current type system guide](/guide/current-types) for scalar, composite and nominal types with runnable examples.
 

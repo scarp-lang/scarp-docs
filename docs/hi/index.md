@@ -36,8 +36,8 @@ features:
   - title: वर्तमान Scarp language reference
     details: Fixed-array concatenation, integer reductions और native scalar control flow का विस्तार।
     link: /hi/reference/current
-  - title: Exact decimal और tuple के उदाहरण
-    details: Exact base-ten values और persistent tuple replacement सीखें।
+  - title: v0.0.7 में नया क्या है
+    details: Fixed arrays, integer reductions और experimental native backend की सीमाएँ।
     link: /hi/guide/alpha7-first
   - title: GitHub Pages deployments
     details: प्रकाशित documentation deployment और build workflow के बारे में जानें।

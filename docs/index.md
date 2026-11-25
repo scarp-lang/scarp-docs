@@ -36,8 +36,8 @@ features:
   - title: Current compiler reference
     details: Learn the published decimal, tuple, project and host embedding contracts.
     link: /reference/current
-  - title: Exact decimals and tuple semantics
-    details: Learn exact base-ten values and persistent tuple replacement.
+  - title: New in v0.0.7
+    details: Learn fixed-array concatenation, integer reductions and experimental native backend limits.
     link: /guide/alpha7-first
   - title: Documentation deployments
     details: Inspect the official documentation build and Pages deployment process.

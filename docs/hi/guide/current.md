@@ -42,9 +42,11 @@ scarp verify src/main.srp
 
 ## चरण 4: वर्तमान सुविधाओं को समझें
 
+नए release में fixed-array concatenation, कई arguments वाले integer reductions और bounded interpreter frame reuse शामिल हैं।
+
 [वर्तमान compiler reference](/hi/reference/current) में इस रिलीज़ के exact decimal, tuple operations, entrypoint चुनाव और Lifetime व्यवहार का सार है। [Release notes](/hi/releases/v0.0.7-alpha.1) में प्रकाशित source और checksums उपलब्ध हैं।
 
-[Systems programming और Rust embedding](/hi/guide/alpha7-first) में native ABI, callable slots तथा cumulative quotas की सीमाएँ पढ़ें।
+[Systems programming और Rust embedding](/hi/guide/alpha7-first) में array concatenation, integer reductions और native ABI की सीमाएँ पढ़ें।
 
 [वर्तमान type system guide](/hi/guide/current-types) में scalar, composite और nominal types के उदाहरण पढ़ें।
 
