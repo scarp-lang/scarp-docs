@@ -64,4 +64,4 @@ The published compiler adds `--interactive` and `--input-file PATH`. Follow the 
 
 [Earlier alpha.15 release](/releases/v0.0.6-alpha.15) remains available with its original compiler boundaries.
 
-**New alpha.18 Command Finder task:** choose **Run the current project or default entrypoint**. Only [v0.0.7-alpha.1](/releases/v0.0.7-alpha.1) supports `scarp exec` with no source path; this behavior was unavailable in [alpha.17](/releases/v0.0.6-alpha.17). See the [exec and Lifetime guide](/guide/exec-and-lifetime-alpha18) for safe manifest selection and the [historical alpha.16 release](/releases/v0.0.6-alpha.16) for older behavior.
+**Command Finder task (introduced in alpha.18):** choose **Run the current project or default entrypoint**. [Alpha.18](/releases/v0.0.6-alpha.18) and later published releases support `scarp exec` with no source path; this behavior was unavailable in [alpha.17](/releases/v0.0.6-alpha.17). See the [exec and Lifetime guide](/guide/exec-and-lifetime-alpha18) for safe manifest selection and the [historical alpha.16 release](/releases/v0.0.6-alpha.16) for older behavior.
