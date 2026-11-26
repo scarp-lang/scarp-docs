@@ -6,7 +6,8 @@ Scarp के शुरुआती prereleases में syntax और API ब�
 
 | संस्करण | प्रमुख प्रकाशित सुविधा |
 | --- | --- |
-| **[v0.0.7-alpha.1](/hi/releases/v0.0.7-alpha.1)** | **नवीनतम (25 नवंबर):** Fixed-array concatenation, integer reductions, bounded frame reuse और experimental ELF64 scalar control flow; सामान्य native CLI नहीं। |
+| **[v0.0.7-alpha.2](/hi/releases/v0.0.7-alpha.2)** | **नवीनतम (26 नवंबर):** Experimental ELF64 object CLI, bounded direct calls और Rust aggregate layout queries; सामान्य native executable compiler नहीं। |
+| **[v0.0.7-alpha.1](/hi/releases/v0.0.7-alpha.1)** | **ऐतिहासिक (25 नवंबर):** Fixed-array concatenation, integer reductions, bounded frame reuse और experimental ELF64 scalar control flow; सामान्य native CLI नहीं। |
 | **[v0.0.6-alpha.20](/hi/releases/v0.0.6-alpha.20)** | **पूर्व (24 नवंबर):** Exact decimal literals, persistent tuple updates, numeric tuple ordering, lowercase `scarp.project` और experimental Rust native functions; सामान्य native CLI नहीं। |
 | **[v0.0.6-alpha.19](/hi/releases/v0.0.6-alpha.19)** | Checked Rust host callable handles and cumulative quotas |
 | **[v0.0.6-alpha.18](/hi/releases/v0.0.6-alpha.18)** | 22 नवंबर: बिना filename `scarp exec`, immutable `array_set` और Lifetime memory सुधार; general native compiler नहीं |

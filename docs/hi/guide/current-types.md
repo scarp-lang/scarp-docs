@@ -1,9 +1,9 @@
 # वर्तमान Scarp type system
 
-<!-- scarp-cli-release: v0.0.7-alpha.1 -->
-<!-- scarp-current-source: 996bd5b83c8cb26e98637563729f67bdacc61cd4 -->
+<!-- scarp-cli-release: v0.0.7-alpha.2 -->
+<!-- scarp-current-source: 638dc4c227f34f1c660be66834bcc0cbdb22dec8 -->
 
-यह reference [प्रकाशित v0.0.7-alpha.1](/hi/releases/v0.0.7-alpha.1) के source types समझाता है। केवल [आधिकारिक Downloads](https://scarp-lang.github.io/downloads/) से compiler लें। Type बताता है कि value किस प्रकार की है और कौन से operations मान्य हैं। Mutable binding का अर्थ mutable backing storage नहीं है। Interpreter में चलने वाला example अपने आप native backend में समर्थित नहीं होता।
+यह reference [प्रकाशित v0.0.7-alpha.2](/hi/releases/v0.0.7-alpha.2) के source types समझाता है। केवल [आधिकारिक Downloads](https://scarp-lang.github.io/downloads/) से compiler लें। Type बताता है कि value किस प्रकार की है और कौन से operations मान्य हैं। Mutable binding का अर्थ mutable backing storage नहीं है। Interpreter में चलने वाला example अपने आप native backend में समर्थित नहीं होता।
 
 ## सही type चुनें
 
@@ -64,7 +64,7 @@ print(0.1 + 0.2);
 0.30000000000000004
 ~~~
 
-Numeric types में explicit conversion करें। Decimal division तभी सफल है जब exact result representable हो, या explicit rounding चुनी गई हो। [BigInt](https://github.com/scarp-lang/scarp/blob/996bd5b83c8cb26e98637563729f67bdacc61cd4/docs/bigint.md), [Decimal](https://github.com/scarp-lang/scarp/blob/996bd5b83c8cb26e98637563729f67bdacc61cd4/docs/decimal.md) और [वर्तमान release lesson](/hi/guide/alpha7-first) देखें। कुछ source docs में draft-era headings हैं; प्रकाशित immutable tag वास्तविक प्रमाण है।
+Numeric types में explicit conversion करें। Decimal division तभी सफल है जब exact result representable हो, या explicit rounding चुनी गई हो। [BigInt](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/docs/bigint.md), [Decimal](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/docs/decimal.md) और [वर्तमान release lesson](/hi/guide/alpha7-first) देखें। कुछ source docs में draft-era headings हैं; प्रकाशित immutable tag वास्तविक प्रमाण है।
 
 ## Fixed tuples और arrays
 
@@ -85,7 +85,7 @@ print(values[1], changed[1]);
 20 40
 ~~~
 
-array_set नया array बनाता है, पुराना सुरक्षित रहता है। tuple<integer, string> और tuple<string, integer> अलग types हैं; array<integer, 2> और array<integer, 3> भी अलग हैं। साधारण square brackets numerical vector बनाते हैं, generic array नहीं। [Tuples](https://github.com/scarp-lang/scarp/blob/996bd5b83c8cb26e98637563729f67bdacc61cd4/docs/tuples.md) और [Fixed arrays](https://github.com/scarp-lang/scarp/blob/996bd5b83c8cb26e98637563729f67bdacc61cd4/docs/fixed-arrays.md) देखें।
+array_set नया array बनाता है, पुराना सुरक्षित रहता है। tuple<integer, string> और tuple<string, integer> अलग types हैं; array<integer, 2> और array<integer, 3> भी अलग हैं। साधारण square brackets numerical vector बनाते हैं, generic array नहीं। [Tuples](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/docs/tuples.md) और [Fixed arrays](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/docs/fixed-arrays.md) देखें।
 
 ## Dynamic lists और deterministic maps
 
@@ -108,7 +108,7 @@ print(map_get_or(updated, "absent", -1));
 -1
 ~~~
 
-List में 4,096 तथा map में 1,024 entries की सीमा है। Execution और allocation quotas अलग से लागू रहते हैं। [List contract](https://github.com/scarp-lang/scarp/blob/996bd5b83c8cb26e98637563729f67bdacc61cd4/docs/typed-dynamic-lists.md) और [Map contract](https://github.com/scarp-lang/scarp/blob/996bd5b83c8cb26e98637563729f67bdacc61cd4/docs/typed-maps.md) में सभी operations पढ़ें।
+List में 4,096 तथा map में 1,024 entries की सीमा है। Execution और allocation quotas अलग से लागू रहते हैं। [List contract](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/docs/typed-dynamic-lists.md) और [Map contract](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/docs/typed-maps.md) में सभी operations पढ़ें।
 
 ## Nominal records और variants
 
@@ -137,7 +137,7 @@ Scarp
 Not found
 ~~~
 
-Records और variants bounded acyclic types हैं, arbitrary recursive object graphs नहीं। Payload में अन्य समर्थित composite type हो सकता है। Exported nominal types के लिए explicit public declaration तथा module-aware type names चाहिए। [Records](https://github.com/scarp-lang/scarp/blob/996bd5b83c8cb26e98637563729f67bdacc61cd4/docs/development/source-records.md) और [Variants](https://github.com/scarp-lang/scarp/blob/996bd5b83c8cb26e98637563729f67bdacc61cd4/docs/development/source-variants.md) देखें।
+Records और variants bounded acyclic types हैं, arbitrary recursive object graphs नहीं। Payload में अन्य समर्थित composite type हो सकता है। Exported nominal types के लिए explicit public declaration तथा module-aware type names चाहिए। [Records](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/docs/development/source-records.md) और [Variants](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/docs/development/source-variants.md) देखें।
 
 ## सामान्य गलतियाँ और सही तरीका
 
@@ -158,3 +158,5 @@ Static check हर runtime property साबित नहीं कर सक�
 Interpreter यहाँ बताए source aggregates को चलाता है; experimental scalar native APIs सीमित subset स्वीकार करती हैं। Composite values raw pointers या first-class function values नहीं हैं। Shared immutable storage, logical allocation quotas तथा Lifetime तुरंत OS memory वापसी या पूरे process की RAM सीमा का वादा नहीं करते। [Systems और embedding](/hi/guide/alpha7-first) तथा [वर्तमान reference](/hi/reference/current) पढ़ें।
 
 हर Scarp block को अलग source file में save करके प्रकाशित interpreter से चलाएँ। CI दोनों भाषाओं के blocks निकालकर exact parity, source verification और documented stdout की जाँच करता है। यह गाइड प्रकाशित compiler तक सीमित है, main branch तक नहीं।
+
+Target layout के लिए [experimental native value layout](/hi/guide/native-layout) पढ़ें।

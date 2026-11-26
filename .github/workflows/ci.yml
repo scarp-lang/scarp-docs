@@ -821,15 +821,15 @@ jobs:
       - name: Test published decimal, tuple, callable and native object contracts
         run: cargo test --manifest-path .compiler-alpha20/Cargo.toml --locked --offline --test decimal_literals --test tuple_index_updates --test tuples --test cumulative_host_quotas --test host_argument_budget --test native_object_function
 
-  v007-alpha1-conformance:
+  v007-alpha2-conformance:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
       - uses: actions/checkout@v7
         with:
           repository: scarp-lang/scarp
-          ref: 996bd5b83c8cb26e98637563729f67bdacc61cd4
-          path: .compiler-v007-alpha1
+          ref: 638dc4c227f34f1c660be66834bcc0cbdb22dec8
+          path: .compiler-v007-alpha2
           persist-credentials: false
       - uses: actions/setup-node@v7
         with:
@@ -837,8 +837,8 @@ jobs:
       - name: Install TypeScript tooling
         run: npm install --no-audit --no-fund
       - name: Confirm exact published compiler revision
-        run: test "$(git -C .compiler-v007-alpha1 rev-parse HEAD)" = "996bd5b83c8cb26e98637563729f67bdacc61cd4"
-      - name: Build exact published interpreter
-        run: cargo build --manifest-path .compiler-v007-alpha1/Cargo.toml --locked --offline
-      - name: Verify bilingual release evidence and execute lesson examples
-        run: npm run test:v007-alpha1 -- .compiler-v007-alpha1/target/debug/scarp
+        run: test "$(git -C .compiler-v007-alpha2 rev-parse HEAD)" = "638dc4c227f34f1c660be66834bcc0cbdb22dec8"
+      - name: Build exact published compiler
+        run: cargo build --manifest-path .compiler-v007-alpha2/Cargo.toml --locked --offline
+      - name: Verify bilingual lessons and native object output
+        run: npm run test:v007-alpha2 -- .compiler-v007-alpha2/target/debug/scarp

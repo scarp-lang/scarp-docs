@@ -29,14 +29,14 @@ const sources: FinderSources = {
 assert.deepEqual(validateCommandFinder(sources), [])
 assert.equal(LATEST_RELEASE, RELEASES.at(-1)?.tag)
 assert.equal(commandAdvice('v0.0.6-alpha.6', 'run-file').commands[0], 'scarp exec FILE.srp')
-assert.equal(RELEASES.at(-1)?.source, '996bd5b83c8cb26e98637563729f67bdacc61cd4')
+assert.equal(RELEASES.at(-1)?.source, '638dc4c227f34f1c660be66834bcc0cbdb22dec8')
 assert.equal(RELEASES.find(entry => entry.tag === 'v0.0.6-alpha.17')?.source, '7831a37939965f557ce746e1d86bf82d3d629f74')
 assert.equal(RELEASES.find(entry => entry.tag === 'v0.0.6-alpha.15')?.source,
   'a21b7b6d942bd1ca9abbbbb522f92f9c8e21e281')
 const expected = new Map<CommandTask,number>([
   ['run-file',0], ['static-verify',2], ['create-project',3],
   ['inspect-project',4], ['inspect-symbols',5], ['diagnose-host',2], ['inspect-ast',2],
-  ['init-project',12], ['test-project',12], ['project-info',12], ['test-json-v2',13], ['exec-default',22]
+  ['init-project',12], ['test-project',12], ['project-info',12], ['test-json-v2',13], ['exec-default',22], ['native-object',26]
 ])
 let combinations = 0
 let unavailable = 0
@@ -66,7 +66,7 @@ for (const [index,release] of RELEASES.entries()) {
   }
 }
 assert.equal(combinations,RELEASES.length * TASKS.length)
-assert.equal(unavailable,89,'release-sensitive unsupported capabilities must stay explicit')
+assert.equal(unavailable,115,'release-sensitive unsupported capabilities must stay explicit')
 assert.deepEqual(commandAdvice('v0.0.5-alpha.1','run-file').commands,['scarp run FILE.srp'])
 assert.deepEqual(commandAdvice('v0.0.5-alpha.2','run-file').commands,['scarp run FILE.srp'])
 assert.deepEqual(commandAdvice('v0.0.5-alpha.3','run-file').commands,['scarp exec FILE.srp'])
@@ -105,12 +105,20 @@ assert.throws(()=>commandAdvice('not-a-published-release' as ReleaseTag,'run-fil
 assert.deepEqual(commandAdvice(LATEST_RELEASE,'run-file').commands,['scarp exec FILE.srp'])
 assert.deepEqual(commandAdvice(LATEST_RELEASE,'exec-default').commands,['scarp exec'])
 assert.throws(()=>commandAdvice(LATEST_RELEASE,'native-compile' as CommandTask),TypeError)
+for (const release of RELEASES.slice(0,-1)) {
+  const advice=commandAdvice(release.tag,'native-object')
+  assert.equal(advice.supported,false)
+  assert.deepEqual(advice.commands,[])
+}
+assert.deepEqual(commandAdvice(LATEST_RELEASE,'native-object').commands,['scarp native-object --json x86_64-none bounded-entry ENTRY 1000 512 FILE.srp -o OUTPUT.o'])
+assert.equal(commandAdvice(LATEST_RELEASE,'native-object').reference,'/guide/native-object')
+assert.equal(commandAdvice(LATEST_RELEASE,'native-object').note,'native-object')
 
 type MutableTextSource = Exclude<keyof FinderSources,'pages'>
 const mutations: Array<[MutableTextSource,string,string]> = [
-  ['english','latest published release is [v0.0.7-alpha.1](/releases/v0.0.7-alpha.1)',
+  ['english','latest published release is [v0.0.7-alpha.2](/releases/v0.0.7-alpha.2)',
     'latest published release is [v0.0.6-alpha.8](/releases/v0.0.6-alpha.9)'],
-  ['hindi','नवीनतम प्रकाशित release [v0.0.7-alpha.1](/hi/releases/v0.0.7-alpha.1)',
+  ['hindi','नवीनतम प्रकाशित release [v0.0.7-alpha.2](/hi/releases/v0.0.7-alpha.2)',
     'नवीनतम प्रकाशित release [v0.0.6-alpha.9](/hi/releases/v0.0.6-alpha.8)'],
   ['english','<ScarpCommandFinder />','<OutdatedSelector />'],
   ['hindi','<ScarpCommandFinder />','<OutdatedSelector />'],
@@ -123,6 +131,7 @@ const mutations: Array<[MutableTextSource,string,string]> = [
   ['client','pre.tabIndex=0','pre.tabIndex=-1'],
   ['client',"releaseSelect.value=parsed.releases.at(-1)?.tag??''","releaseSelect.value=parsed.releases.at(0)?.tag??''"],
   ['client','reference.href=BASE+item.reference.replace(','reference.href=item.reference.replace('],
+  ['client',"if(locale==='hi') reference.href=BASE+'hi/'+item.reference.replace(","if(locale==='en') reference.href=BASE+'hi/'+item.reference.replace("],
   ['client',"taskSelect.addEventListener('change',render)","taskSelect.addEventListener('keydown',render)"],
   ['builder','TASKS.map(task=>commandAdvice(','TASKS.map(task=>differentAdvice('],
   ['builder','replace(/</g,','replace(/>/g,'],

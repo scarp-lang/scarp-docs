@@ -1,6 +1,6 @@
 # Scarp का परिचय
 
-**नवीनतम प्रकाशित compiler [v0.0.7-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.7-alpha.1) है।** Fixed-array concatenation, integer reductions, bounded frame reuse और expanded experimental Rust ELF64 functions; सामान्य native CLI नहीं। [वर्तमान release](/hi/releases/v0.0.7-alpha.1) · [ऐतिहासिक alpha.18](/hi/releases/v0.0.6-alpha.18) · [पिछली alpha.17](/hi/releases/v0.0.6-alpha.17) · [Learning path](/hi/guide/learning-path)।
+**नवीनतम प्रकाशित compiler [v0.0.7-alpha.2](https://github.com/scarp-lang/scarp/releases/tag/v0.0.7-alpha.2) है।** Fixed-array concatenation, integer reductions, bounded frame reuse और expanded experimental Rust ELF64 functions; सामान्य native CLI नहीं। [वर्तमान release](/hi/releases/v0.0.7-alpha.2) · [ऐतिहासिक alpha.18](/hi/releases/v0.0.6-alpha.18) · [पिछली alpha.17](/hi/releases/v0.0.6-alpha.17) · [Learning path](/hi/guide/learning-path)।
 
 **वर्तमान compiler इंस्टॉल करें:** [आधिकारिक Scarp Downloads](https://scarp-lang.github.io/downloads/) · [नई इंस्टॉलेशन गाइड](/hi/guide/install-latest)। यह नए इंस्टॉलेशन का अनुशंसित रास्ता है; पुराने उदाहरण अपने मूल release पर सत्यापित हैं।
 

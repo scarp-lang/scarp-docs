@@ -1,10 +1,10 @@
 # Install the latest published Scarp
 
-<!-- scarp-cli-release: v0.0.7-alpha.1 -->
+<!-- scarp-cli-release: v0.0.7-alpha.2 -->
 
 **Official download center:** [scarp-lang.github.io/downloads](https://scarp-lang.github.io/downloads/).
 
-As of November 25, 2026, the latest verified published compiler is **[Scarp v0.0.7-alpha.1](/releases/v0.0.7-alpha.1)**, an experimental interpreter prerelease. For the newest available version, including future prereleases, use the official Downloads website rather than the archived installation pages.
+As of November 26, 2026, the latest verified published compiler is **[Scarp v0.0.7-alpha.2](/releases/v0.0.7-alpha.2)**, an experimental interpreter prerelease. For the newest available version, including future prereleases, use the official Downloads website rather than the archived installation pages.
 
 ## Choose your platform
 
@@ -18,15 +18,15 @@ The permanent links check for the newest **published** Scarp release (including 
 
 ## Verify the download before running it
 
-After selecting the download, confirm the archive's **actual version** on the [official downloads page](https://scarp-lang.github.io/downloads/). Verify its SHA-256 against the checksum posted for **that exact version** before extraction or execution. Never assume the v0.0.7-alpha.1 checksum below is valid for a newer archive.
+After selecting the download, confirm the archive's **actual version** on the [official downloads page](https://scarp-lang.github.io/downloads/). Verify its SHA-256 against the checksum posted for **that exact version** before extraction or execution. Never assume the v0.0.7-alpha.2 checksum below is valid for a newer archive.
 
-| Verified v0.0.7-alpha.1 archive | SHA-256 |
+| Verified v0.0.7-alpha.2 archive | SHA-256 |
 | --- | --- |
-| Windows x64 `scarp-0.0.7-alpha.1-x86_64-pc-windows-msvc.zip` | `371eeabd1b35e9e3530ce44f13d90f376972b0650df9d41ce79a41c814875924` |
-| Linux x64 `scarp-0.0.7-alpha.1-x86_64-unknown-linux-gnu.tar.gz` | `f034432f46c12720b74ec303446fb46ecef483abdc942bcb9eaca41ea349cb5c` |
-| macOS ARM64 `scarp-0.0.7-alpha.1-aarch64-apple-darwin.tar.gz` | `63697cb53224cf0a22a38a28ae7887b8c694979d54ee780dc0639f1057409909` |
+| Windows x64 `scarp-0.0.7-alpha.2-x86_64-pc-windows-msvc.zip` | `5cddf9d831d6eb487b2142755b36b48f1cc598d8f6cfbca39332219fd2567849` |
+| Linux x64 `scarp-0.0.7-alpha.2-x86_64-unknown-linux-gnu.tar.gz` | `8397f2f096fe9598cb6e37c54024afdb80634e97bded8e1777812ab0f38cf0dc` |
+| macOS ARM64 `scarp-0.0.7-alpha.2-aarch64-apple-darwin.tar.gz` | `08aa0b3d0f4b8458a016abce9d403a5cfd1bf19255954c276c79c033932d1ffe` |
 
-Those digests apply **only** to [the published v0.0.7-alpha.1 artifacts](https://github.com/scarp-lang/scarp/releases/tag/v0.0.7-alpha.1). The hash matching is an integrity check, not a guarantee that experimental software is production-ready. If a hash fails to match, **stop**.
+Those digests apply **only** to [the published v0.0.7-alpha.2 artifacts](https://github.com/scarp-lang/scarp/releases/tag/v0.0.7-alpha.2). The hash matching is an integrity check, not a guarantee that experimental software is production-ready. If a hash fails to match, **stop**.
 
 ## Check your installed interpreter
 
@@ -40,7 +40,7 @@ Extract the verified archive to a directory you control and invoke its own binar
 ./scarp version
 ~~~
 
-The printed version should agree with the archive you actually downloaded. For a verified v0.0.7-alpha.1 project, `scarp exec` selects a valid project manifest, then `src/main.srp`, then `main.srp` when no manifest is present; malformed manifests are an error. From the appropriate project directory, with the extracted executable accessible:
+The printed version should agree with the archive you actually downloaded. For a verified v0.0.7-alpha.2 project, `scarp exec` selects a valid project manifest, then `src/main.srp`, then `main.srp` when no manifest is present; malformed manifests are an error. From the appropriate project directory, with the extracted executable accessible:
 
 ~~~sh
 scarp exec

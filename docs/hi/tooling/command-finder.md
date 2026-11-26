@@ -10,7 +10,7 @@ Scarp के प्रयोगात्मक compiler releases में CLI �
 
 पहले असली binary का version जाँचें। Alpha.3 या नए compiler में `scarp version` और alpha.1/alpha.2 में `scarp --version` चलाएँ। `FILE.srp` की जगह अपनी source file का path दें। `PROJECT_DIRECTORY` की जगह `Scarp.project` manifest वाला स्पष्ट project folder दें। `scarp create demo` चलाने से **नया folder** बनता है; यह पुराने folder को overwrite नहीं करता।
 
-यह widget पेज लोड होने के बाद **browser में ही काम करता है**। यह GitHub से data नहीं माँगता, आपके कंप्यूटर का executable नहीं पहचानता, आपकी files नहीं पढ़ता और Scarp code execute नहीं करता। इसके links अलग-अलग प्रकाशित releases के जाँचे हुए संदर्भों तक ले जाते हैं। **नवीनतम प्रकाशित release [v0.0.7-alpha.1](/hi/releases/v0.0.7-alpha.1)** है; compiler की बदलती `main` branch नहीं।
+यह widget पेज लोड होने के बाद **browser में ही काम करता है**। यह GitHub से data नहीं माँगता, आपके कंप्यूटर का executable नहीं पहचानता, आपकी files नहीं पढ़ता और Scarp code execute नहीं करता। इसके links अलग-अलग प्रकाशित releases के जाँचे हुए संदर्भों तक ले जाते हैं। **नवीनतम प्रकाशित release [v0.0.7-alpha.2](/hi/releases/v0.0.7-alpha.2)** है; compiler की बदलती `main` branch नहीं।
 
 ## अलग-अलग commands पहली बार कब आए?
 
@@ -65,3 +65,5 @@ Alpha.2 पुराने `run` command के लिए चुना जा �
 [पिछली alpha.15 release](/hi/releases/v0.0.6-alpha.15) अपने source-specific विवरण के साथ उपलब्ध है।
 
 **नया alpha.18 Command Finder विकल्प:** वर्तमान project या default source चलाने के लिए `Run the current project or default entrypoint` चुनें। [Alpha.18](/hi/releases/v0.0.6-alpha.18) और बाद के प्रकाशित releases में `scarp exec` बिना path के उपलब्ध है। [Alpha.17](/hi/releases/v0.0.6-alpha.17) में यह सुविधा नहीं थी। [सुरक्षित fallback](/hi/guide/exec-and-lifetime-alpha18) और [पुराने alpha.16](/hi/releases/v0.0.6-alpha.16) की सीमाएँ अलग-अलग पढ़ें।
+
+**Native object task (v0.0.7-alpha.2):** **Native ELF64 object बनाएँ** चुनने पर `scarp native-object` का command pattern मिलेगा। पुराने releases में यह task अनुपलब्ध है। यह experimental object बनाता है, linked executable नहीं। Source और allowances के लिए [वर्तमान native-object guide](/hi/guide/native-object) पढ़ें।

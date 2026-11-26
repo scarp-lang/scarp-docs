@@ -11,7 +11,7 @@ Official TypeScript-generated documentation for the experimental [Scarp Programm
 
 **Compiler:** https://github.com/scarp-lang/scarp
 
-**Latest published compiler:** [v0.0.7-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.7-alpha.1), November 25, 2026, source `996bd5b83c8cb26e98637563729f67bdacc61cd4`. Fixed-array concatenation, variadic integer reductions, bounded interpreter frame reuse and expanded experimental ELF64 scalar control flow are published. [English release](docs/releases/v0.0.7-alpha.1.md) · [हिन्दी रिलीज़](docs/hi/releases/v0.0.7-alpha.1.md) · [Current reference](docs/reference/current.md). **For binaries use [the official downloads hub](https://scarp-lang.github.io/downloads/)**; there is no general native compiler CLI.
+**Latest published compiler:** [v0.0.7-alpha.2](https://github.com/scarp-lang/scarp/releases/tag/v0.0.7-alpha.2), November 26, 2026, source `638dc4c227f34f1c660be66834bcc0cbdb22dec8`. Experimental native-object CLI, bounded direct calls and Rust aggregate layout queries are published. [English release](docs/releases/v0.0.7-alpha.2.md) · [हिन्दी रिलीज़](docs/hi/releases/v0.0.7-alpha.2.md) · [Current reference](docs/reference/current.md). **For binaries use [the official downloads hub](https://scarp-lang.github.io/downloads/)**; the object-only CLI is experimental; there is no general native executable compiler.
 
 **Supported documentation policy:** The public site now recommends only the **latest published Scarp prerelease**, via [Official Downloads](https://scarp-lang.github.io/downloads/), the [current English guide](docs/guide/current.md), [हिन्दी वर्तमान गाइड](docs/hi/guide/current.md), and the [current compiler reference](docs/reference/current.md). Older compiler pages are retired from public search, navigation and sitemap, and return noindex migration notices. Their tagged evidence remains in this repository for test reproducibility, not recommended installation.
 
@@ -50,7 +50,7 @@ Official TypeScript-generated documentation for the experimental [Scarp Programm
 
 **Read the bilingual site offline:** [English offline download instructions](docs/guide/offline-docs.md) · [हिन्दी offline documentation](docs/hi/guide/offline-docs.md). A tested GitHub Actions artifact contains reproducible bundled docs, a Node.js loopback server and SHA-256 checksums. Offline docs are not compiler releases.
 
-**Choose version-correct CLI commands:** [Interactive English Command Finder](docs/tooling/command-finder.md) · [हिन्दी CLI Command Finder](docs/hi/tooling/command-finder.md). Eleven common tasks across nineteen pinned compiler prereleases, with explicit unavailable states and a copy button; no server API or installed-binary access is required.
+**Choose version-correct CLI commands:** [Interactive English Command Finder](docs/tooling/command-finder.md) · [हिन्दी CLI Command Finder](docs/hi/tooling/command-finder.md). Thirteen common tasks across twenty-seven pinned compiler prereleases, with explicit unavailable states and a copy button; no server API or installed-binary access is required.
 
 **Verify your running Scarp compiler and host:** [English `diagnose --json` guide](docs/tooling/diagnose-alpha6.md) · [हिन्दी `diagnose --json` मार्गदर्शिका](docs/hi/tooling/diagnose-alpha6.md). Covers the tagged alpha.6 capability JSON and the distinction between interpreter execution and unsupported native binaries.
 

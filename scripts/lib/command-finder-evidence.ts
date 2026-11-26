@@ -41,7 +41,8 @@ const publishedReleases = [
   ['v0.0.6-alpha.18', '84d8de05968a488773e7c5b6eda1376d8957553c'],
   ['v0.0.6-alpha.19', 'e534e73a81c9500e3aef9f3d51cafa0bc7bbcf75'],
   ['v0.0.6-alpha.20', 'b1a9347f93540fdf95b0ddecba4adc55a3b4bb98'],
-  ['v0.0.7-alpha.1', '996bd5b83c8cb26e98637563729f67bdacc61cd4']
+  ['v0.0.7-alpha.1', '996bd5b83c8cb26e98637563729f67bdacc61cd4'],
+  ['v0.0.7-alpha.2', '638dc4c227f34f1c660be66834bcc0cbdb22dec8']
 ]
 const firstSupported = [
   ['run-file', 0],
@@ -51,11 +52,11 @@ const firstSupported = [
   ['inspect-symbols', 5],
   ['diagnose-host', 2],
   ['inspect-ast', 2],
-  ['init-project', 12], ['test-project', 12], ['project-info', 12], ['test-json-v2', 13], ['exec-default', 22]
+  ['init-project', 12], ['test-project', 12], ['project-info', 12], ['test-json-v2', 13], ['exec-default', 22], ['native-object', 26]
 ]
 const noteKeys = [
   'legacy-run', 'exec', 'verify', 'project', 'modules', 'symbols', 'diagnose', 'ast',
-  'init', 'test', 'info', 'testv2', 'exec-default'
+  'init', 'test', 'info', 'testv2', 'exec-default', 'native-object'
 ] as const
 
 type FinderRelease = { tag: string; source: string }
@@ -78,7 +79,7 @@ export function validateCommandFinder(
   }
 
   if (JSON.stringify(releases.map(r => [r.tag,r.source])) !== JSON.stringify(publishedReleases)) {
-    errors.push('Release list must match twenty-six exact published compiler tag commits in order')
+    errors.push('Release list must match twenty-seven exact published compiler tag commits in order')
   }
   if (JSON.stringify(tasks.map(t => [t.id,t.first])) !== JSON.stringify(firstSupported)) {
     errors.push('Task availability boundaries differ from the published tagged CLI')
@@ -125,6 +126,10 @@ export function validateCommandFinder(
       '](' + prefix + '/tooling/test-json-v2-alpha9)',
       '](' + prefix + '/releases/v0.0.6-alpha.9)'
     ]) expect(name + ' page',page,expected)
+  }
+  for (const [locale,page,prefix] of [['English',english,''],['Hindi',hindi,'/hi']] as const) {
+    expect(locale+' native task',page,']('+prefix+'/guide/native-object)')
+    expect(locale+' native task',page,'scarp native-object')
   }
   // An up-to-date destination with a stale visible label misleads readers.
   const latestTag = releases.at(-1)?.tag
@@ -177,6 +182,7 @@ export function validateCommandFinder(
     'item.commands.join(', 'pre.tabIndex=0',
     'navigator.clipboard?.writeText', 'words.copied', 'words.copyFailed',
     'reference.href=BASE+item.reference.replace(',
+    "if(locale==='hi') reference.href=BASE+'hi/'+item.reference.replace(",
     "releaseSelect.addEventListener('change',render)",
     "taskSelect.addEventListener('change',render)",
     "result.appendChild(el('p',undefined,words.warning))"

@@ -327,6 +327,7 @@ function installFinder():void {
     }
     const reference=el('a',undefined,words.reference)
     reference.href=BASE+item.reference.replace(/^\/+/,'')
+    if(locale==='hi') reference.href=BASE+'hi/'+item.reference.replace(/^\/+/,'')
     result.appendChild(reference)
     result.appendChild(el('p',undefined,words.warning))
   }
