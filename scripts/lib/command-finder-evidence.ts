@@ -52,11 +52,11 @@ const firstSupported = [
   ['inspect-symbols', 5],
   ['diagnose-host', 2],
   ['inspect-ast', 2],
-  ['init-project', 12], ['test-project', 12], ['project-info', 12], ['test-json-v2', 13], ['exec-default', 22]
+  ['init-project', 12], ['test-project', 12], ['project-info', 12], ['test-json-v2', 13], ['exec-default', 22], ['native-object', 26]
 ]
 const noteKeys = [
   'legacy-run', 'exec', 'verify', 'project', 'modules', 'symbols', 'diagnose', 'ast',
-  'init', 'test', 'info', 'testv2', 'exec-default'
+  'init', 'test', 'info', 'testv2', 'exec-default', 'native-object'
 ] as const
 
 type FinderRelease = { tag: string; source: string }
@@ -126,6 +126,10 @@ export function validateCommandFinder(
       '](' + prefix + '/tooling/test-json-v2-alpha9)',
       '](' + prefix + '/releases/v0.0.6-alpha.9)'
     ]) expect(name + ' page',page,expected)
+  }
+  for (const [locale,page,prefix] of [['English',english,''],['Hindi',hindi,'/hi']] as const) {
+    expect(locale+' native task',page,']('+prefix+'/guide/native-object)')
+    expect(locale+' native task',page,'scarp native-object')
   }
   // An up-to-date destination with a stale visible label misleads readers.
   const latestTag = releases.at(-1)?.tag

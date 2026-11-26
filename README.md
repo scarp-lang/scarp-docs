@@ -50,7 +50,7 @@ Official TypeScript-generated documentation for the experimental [Scarp Programm
 
 **Read the bilingual site offline:** [English offline download instructions](docs/guide/offline-docs.md) · [हिन्दी offline documentation](docs/hi/guide/offline-docs.md). A tested GitHub Actions artifact contains reproducible bundled docs, a Node.js loopback server and SHA-256 checksums. Offline docs are not compiler releases.
 
-**Choose version-correct CLI commands:** [Interactive English Command Finder](docs/tooling/command-finder.md) · [हिन्दी CLI Command Finder](docs/hi/tooling/command-finder.md). Eleven common tasks across nineteen pinned compiler prereleases, with explicit unavailable states and a copy button; no server API or installed-binary access is required.
+**Choose version-correct CLI commands:** [Interactive English Command Finder](docs/tooling/command-finder.md) · [हिन्दी CLI Command Finder](docs/hi/tooling/command-finder.md). Thirteen common tasks across twenty-seven pinned compiler prereleases, with explicit unavailable states and a copy button; no server API or installed-binary access is required.
 
 **Verify your running Scarp compiler and host:** [English `diagnose --json` guide](docs/tooling/diagnose-alpha6.md) · [हिन्दी `diagnose --json` मार्गदर्शिका](docs/hi/tooling/diagnose-alpha6.md). Covers the tagged alpha.6 capability JSON and the distinction between interpreter execution and unsupported native binaries.
 

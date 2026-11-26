@@ -36,7 +36,7 @@ assert.equal(RELEASES.find(entry => entry.tag === 'v0.0.6-alpha.15')?.source,
 const expected = new Map<CommandTask,number>([
   ['run-file',0], ['static-verify',2], ['create-project',3],
   ['inspect-project',4], ['inspect-symbols',5], ['diagnose-host',2], ['inspect-ast',2],
-  ['init-project',12], ['test-project',12], ['project-info',12], ['test-json-v2',13], ['exec-default',22]
+  ['init-project',12], ['test-project',12], ['project-info',12], ['test-json-v2',13], ['exec-default',22], ['native-object',26]
 ])
 let combinations = 0
 let unavailable = 0
@@ -66,7 +66,7 @@ for (const [index,release] of RELEASES.entries()) {
   }
 }
 assert.equal(combinations,RELEASES.length * TASKS.length)
-assert.equal(unavailable,89,'release-sensitive unsupported capabilities must stay explicit')
+assert.equal(unavailable,115,'release-sensitive unsupported capabilities must stay explicit')
 assert.deepEqual(commandAdvice('v0.0.5-alpha.1','run-file').commands,['scarp run FILE.srp'])
 assert.deepEqual(commandAdvice('v0.0.5-alpha.2','run-file').commands,['scarp run FILE.srp'])
 assert.deepEqual(commandAdvice('v0.0.5-alpha.3','run-file').commands,['scarp exec FILE.srp'])
@@ -105,6 +105,14 @@ assert.throws(()=>commandAdvice('not-a-published-release' as ReleaseTag,'run-fil
 assert.deepEqual(commandAdvice(LATEST_RELEASE,'run-file').commands,['scarp exec FILE.srp'])
 assert.deepEqual(commandAdvice(LATEST_RELEASE,'exec-default').commands,['scarp exec'])
 assert.throws(()=>commandAdvice(LATEST_RELEASE,'native-compile' as CommandTask),TypeError)
+for (const release of RELEASES.slice(0,-1)) {
+  const advice=commandAdvice(release.tag,'native-object')
+  assert.equal(advice.supported,false)
+  assert.deepEqual(advice.commands,[])
+}
+assert.deepEqual(commandAdvice(LATEST_RELEASE,'native-object').commands,['scarp native-object --json x86_64-none bounded-entry ENTRY 1000 512 FILE.srp -o OUTPUT.o'])
+assert.equal(commandAdvice(LATEST_RELEASE,'native-object').reference,'/guide/native-object')
+assert.equal(commandAdvice(LATEST_RELEASE,'native-object').note,'native-object')
 
 type MutableTextSource = Exclude<keyof FinderSources,'pages'>
 const mutations: Array<[MutableTextSource,string,string]> = [

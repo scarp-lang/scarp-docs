@@ -65,3 +65,5 @@ The published compiler adds `--interactive` and `--input-file PATH`. Follow the 
 [Earlier alpha.15 release](/releases/v0.0.6-alpha.15) remains available with its original compiler boundaries.
 
 **Command Finder task (introduced in alpha.18):** choose **Run the current project or default entrypoint**. [Alpha.18](/releases/v0.0.6-alpha.18) and later published releases support `scarp exec` with no source path; this behavior was unavailable in [alpha.17](/releases/v0.0.6-alpha.17). See the [exec and Lifetime guide](/guide/exec-and-lifetime-alpha18) for safe manifest selection and the [historical alpha.16 release](/releases/v0.0.6-alpha.16) for older behavior.
+
+**Native object task (v0.0.7-alpha.2):** choose **Emit a native ELF64 object** to obtain the `scarp native-object` command pattern. Earlier releases must show this task as unavailable. It emits an experimental object, not a linked executable. Follow the [current native-object guide](/guide/native-object) for the source and required allowances.

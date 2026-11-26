@@ -65,3 +65,5 @@ Alpha.2 पुराने `run` command के लिए चुना जा �
 [पिछली alpha.15 release](/hi/releases/v0.0.6-alpha.15) अपने source-specific विवरण के साथ उपलब्ध है।
 
 **नया alpha.18 Command Finder विकल्प:** वर्तमान project या default source चलाने के लिए `Run the current project or default entrypoint` चुनें। [Alpha.18](/hi/releases/v0.0.6-alpha.18) और बाद के प्रकाशित releases में `scarp exec` बिना path के उपलब्ध है। [Alpha.17](/hi/releases/v0.0.6-alpha.17) में यह सुविधा नहीं थी। [सुरक्षित fallback](/hi/guide/exec-and-lifetime-alpha18) और [पुराने alpha.16](/hi/releases/v0.0.6-alpha.16) की सीमाएँ अलग-अलग पढ़ें।
+
+**Native object task (v0.0.7-alpha.2):** **Native ELF64 object बनाएँ** चुनने पर `scarp native-object` का command pattern मिलेगा। पुराने releases में यह task अनुपलब्ध है। यह experimental object बनाता है, linked executable नहीं। Source और allowances के लिए [वर्तमान native-object guide](/hi/guide/native-object) पढ़ें।

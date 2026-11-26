@@ -127,6 +127,19 @@ async function testLocale(
     assert.equal(await widget.locator('.finder-result').getAttribute('aria-live'),'polite')
     assertions++
 
+    // The new native object task is available only in published alpha.2.
+    await widget.locator('#scarp-task').selectOption('native-object')
+    await widget.locator('pre').waitFor({state:'visible'})
+    assert.match(await widget.locator('pre').innerText(),/scarp native-object --json x86_64-none bounded-entry/)
+    assert.ok(await widget.locator('.finder-result a[href="'+prefix+'guide/native-object"]').count()>0)
+    await releaseChoice.selectOption('v0.0.7-alpha.1')
+    await widget.locator('pre').waitFor({state:'detached'})
+    assert.match(await widget.locator('.finder-result').innerText(),/v0\.0\.7-alpha\.2/)
+    await releaseChoice.selectOption(LATEST_RELEASE)
+    await widget.locator('#scarp-task').selectOption('inspect-symbols')
+    await widget.locator('pre').waitFor({state:'visible'})
+    assertions++
+
     // Deterministic in-page clipboard stubs: no OS permissions or external APIs.
     // Literal browser-side JS avoids injecting tsx/esbuild __name helpers
     // that do not exist inside Playwright's isolated page runtime.
