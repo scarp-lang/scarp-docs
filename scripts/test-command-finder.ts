@@ -131,6 +131,7 @@ const mutations: Array<[MutableTextSource,string,string]> = [
   ['client','pre.tabIndex=0','pre.tabIndex=-1'],
   ['client',"releaseSelect.value=parsed.releases.at(-1)?.tag??''","releaseSelect.value=parsed.releases.at(0)?.tag??''"],
   ['client','reference.href=BASE+item.reference.replace(','reference.href=item.reference.replace('],
+  ['client',"if(locale==='hi') reference.href=BASE+'hi/'+item.reference.replace(","if(locale==='en') reference.href=BASE+'hi/'+item.reference.replace("],
   ['client',"taskSelect.addEventListener('change',render)","taskSelect.addEventListener('keydown',render)"],
   ['builder','TASKS.map(task=>commandAdvice(','TASKS.map(task=>differentAdvice('],
   ['builder','replace(/</g,','replace(/>/g,'],

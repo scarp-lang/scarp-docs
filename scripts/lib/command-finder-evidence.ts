@@ -182,6 +182,7 @@ export function validateCommandFinder(
     'item.commands.join(', 'pre.tabIndex=0',
     'navigator.clipboard?.writeText', 'words.copied', 'words.copyFailed',
     'reference.href=BASE+item.reference.replace(',
+    "if(locale==='hi') reference.href=BASE+'hi/'+item.reference.replace(",
     "releaseSelect.addEventListener('change',render)",
     "taskSelect.addEventListener('change',render)",
     "result.appendChild(el('p',undefined,words.warning))"

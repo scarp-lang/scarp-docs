@@ -41,6 +41,12 @@ Success exit 0, invalid arguments या target exit 2, source/compile/output er
 
 JSON में schema_version, target, mode, symbol, max_work, peak_stack_bytes, max_active_frames और failure_spans मिलते हैं। Failure spans UTF-8 byte offsets हैं, character positions नहीं।
 
+## समस्या का निदान
+
+Reported peak_stack_bytes इस exact source और selected entry के लिए न्यूनतम accepted stack allowance है। उतना ही budget देकर object bytes समान रहते हैं; एक byte कम पर rejection होना चाहिए। External caller arguments और interrupt frames इसमें शामिल नहीं हैं।
+
+`x86_64` target अमान्य है; explicit `x86_64-none` उपयोग करें। Missing source, unsupported construct अथवा पहले से मौजूद destination पर नया replacement object नहीं बनता। JSON failure_spans में comments तथा original line endings के byte offsets भी गिने जाते हैं; इसलिए exact source file और JSON report साथ रखें।
+
 ## क्या समर्थित नहीं
 
 Native recursion, external calls, heap-backed values, aggregate execution, project inputs और executable linking भविष्य का काम है। Rust aggregate layout metadata execution support नहीं है। Interpreter के लिए `scarp exec` इस्तेमाल करें।

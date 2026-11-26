@@ -41,6 +41,12 @@ Success exits 0, invalid arguments or targets exit 2, and source, compilation or
 
 JSON includes schema_version, target, mode, symbol, max_work, peak_stack_bytes, max_active_frames and failure_spans. Failure spans are UTF-8 byte offsets, not character positions.
 
+## Troubleshooting
+
+Use the reported peak_stack_bytes as the minimum accepted stack allowance for this exact source and selected entry. Re-emitting with that exact budget preserves the object bytes; one byte less must be rejected. This does not include external caller argument slots or interrupt frames.
+
+A target such as `x86_64` is invalid; use the explicit `x86_64-none` target. A missing source, unsupported source construct, or pre-existing destination does not produce a replacement object. JSON failure_spans include comments and original line endings in their byte offsets, so retain the exact source file and JSON report.
+
 ## What is not supported
 
 Native recursion, external calls, heap-backed values, aggregate execution, project input and executable linking remain future work. Rust aggregate layout metadata does not imply execution support. Use `scarp exec` for interpreter execution.

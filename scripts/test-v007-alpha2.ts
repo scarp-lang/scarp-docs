@@ -131,14 +131,52 @@ if (process.argv[2]) {
     assert.equal(repeated.status,1)
     assert.equal(repeated.stdout,'')
     assert.deepEqual(readFileSync(output),bytes,'Existing object must remain untouched')
+    // The exact reported peak must produce identical bytes.
+    const exact = [...command]
+    exact[exact.indexOf('512')]=String(report.peak_stack_bytes)
+    exact[exact.length-1]='exact.o'
+    const exactReport = JSON.parse(run(exact))
+    assert.equal(exactReport.peak_stack_bytes,report.peak_stack_bytes)
+    assert.equal(exactReport.max_stack_bytes,report.peak_stack_bytes)
+    assert.deepEqual(readFileSync(join(work,'exact.o')),bytes)
+    assert.ok(report.peak_stack_bytes>0)
     const rejected = [...command]
-    rejected[rejected.indexOf('512')]='0'
+    rejected[rejected.indexOf('512')]=String(report.peak_stack_bytes-1)
     rejected[rejected.length-1]='rejected.o'
     const denied = spawnSync(binary,rejected,{cwd:work,encoding:'utf8',timeout:30000})
     assert.equal(denied.error,undefined)
-    assert.notEqual(denied.status,0)
+    assert.equal(denied.status,1)
+    assert.match(denied.stderr,/exceeding the caller budget/)
     assert.equal(denied.stdout,'')
     assert.ok(!existsSync(join(work,'rejected.o')),'Rejected stack budget must not publish an object')
+    // A malformed target is a usage failure, even with a missing input.
+    const invalid = spawnSync(binary,['native-object','--json','x86_64','checked',
+      'missing.srp','-o','invalid.o'],{cwd:work,encoding:'utf8',timeout:30000})
+    assert.equal(invalid.error,undefined)
+    assert.equal(invalid.status,2)
+    assert.equal(invalid.stdout,'')
+    assert.ok(invalid.stderr.length>0)
+    assert.ok(!existsSync(join(work,'invalid.o')))
+    // Validate original byte spans with UTF-8 and CRLF before the arithmetic.
+    const unicode = '// जहाँ 😀\r\npure funcra f(a:integer,b:integer)->integer{return a/b;}'
+    writeFileSync(join(work,'unicode.srp'),unicode)
+    for (const [mode,extra,symbol] of [
+      ['checked',[],'scarp_checked_integer_function'],
+      ['bounded',['1000'],'scarp_bounded_integer_function']
+    ] as const) {
+      const metadata = JSON.parse(run(['native-object','--json','x86_64-none',mode,...extra,
+        'unicode.srp','-o',mode+'.o']))
+      assert.equal(metadata.symbol,symbol)
+      assert.equal(metadata.mode,mode)
+      assert.equal(metadata.max_work,mode==='checked'?null:1000)
+      assert.equal(metadata.integer_arguments,2)
+      const sourceBytes=Buffer.from(unicode,'utf8')
+      const division=sourceBytes.indexOf('/b;')
+      assert.ok(metadata.failure_spans.some((span: number[])=>span[0]===division&&span[1]===division+1))
+      for(const [start,end] of metadata.failure_spans) {
+        assert.ok(Number.isInteger(start)&&Number.isInteger(end)&&start>=0&&end>=start&&end<=sourceBytes.length)
+      }
+    }
   } finally { rmSync(work,{recursive:true,force:true}) }
 }
 console.log('PASS: v0.0.7-alpha.2 bilingual release evidence and examples'+(process.argv[2]?' (executed)':' (static only)'))
