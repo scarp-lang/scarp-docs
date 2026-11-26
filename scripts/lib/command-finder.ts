@@ -33,11 +33,12 @@ export const RELEASES = [
   { tag: 'v0.0.6-alpha.18', label: 'v0.0.6-alpha.18', source: '84d8de05968a488773e7c5b6eda1376d8957553c' },
   { tag: 'v0.0.6-alpha.19', label: 'v0.0.6-alpha.19', source: 'e534e73a81c9500e3aef9f3d51cafa0bc7bbcf75' },
   { tag: 'v0.0.6-alpha.20', label: 'v0.0.6-alpha.20', source: 'b1a9347f93540fdf95b0ddecba4adc55a3b4bb98' },
-  { tag: 'v0.0.7-alpha.1', label: 'v0.0.7-alpha.1 (latest)', source: '996bd5b83c8cb26e98637563729f67bdacc61cd4' }
+  { tag: 'v0.0.7-alpha.1', label: 'v0.0.7-alpha.1', source: '996bd5b83c8cb26e98637563729f67bdacc61cd4' },
+  { tag: 'v0.0.7-alpha.2', label: 'v0.0.7-alpha.2 (latest)', source: '638dc4c227f34f1c660be66834bcc0cbdb22dec8' }
 ] as const
 
 export type ReleaseTag = (typeof RELEASES)[number]['tag']
-export const LATEST_RELEASE: ReleaseTag = 'v0.0.7-alpha.1'
+export const LATEST_RELEASE: ReleaseTag = 'v0.0.7-alpha.2'
 
 export const TASKS = [
   { id: 'run-file', en: 'Run a source file', hi: 'Source file चलाएँ', first: 0, reference: '/tooling/cli-alpha1' },

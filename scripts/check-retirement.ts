@@ -24,10 +24,14 @@ for(const locale of ['', 'hi/']) {
       'Published tuple ordering must not retain its development-only page')
   }
 }
-if(manifest.compilerRef==='v0.0.7-alpha.1') {
+if(manifest.compilerRef==='v0.0.7-alpha.1' || manifest.compilerRef==='v0.0.7-alpha.2') {
   for(const locale of ['', 'hi/']) {
-    for(const lesson of ['guide/alpha7-first.md','guide/current-types.md','releases/v0.0.7-alpha.1.md']) {
+    for(const lesson of ['guide/alpha7-first.md','guide/current-types.md','releases/'+manifest.compilerRef+'.md']) {
       assert.ok(active.includes(locale+lesson),'Missing current bilingual guide: '+locale+lesson)
+    }
+    if(manifest.compilerRef==='v0.0.7-alpha.2') {
+      assert.ok(active.includes(locale+'guide/native-object.md'),'Missing native object guide')
+      assert.ok(!active.includes(locale+'releases/v0.0.7-alpha.1.md'),'Previous v0.0.7 release remains active')
     }
     assert.ok(!active.includes(locale+'releases/v0.0.6-alpha.20.md'),'Previous release remains active')
   }

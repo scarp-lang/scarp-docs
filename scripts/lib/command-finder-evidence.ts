@@ -41,7 +41,8 @@ const publishedReleases = [
   ['v0.0.6-alpha.18', '84d8de05968a488773e7c5b6eda1376d8957553c'],
   ['v0.0.6-alpha.19', 'e534e73a81c9500e3aef9f3d51cafa0bc7bbcf75'],
   ['v0.0.6-alpha.20', 'b1a9347f93540fdf95b0ddecba4adc55a3b4bb98'],
-  ['v0.0.7-alpha.1', '996bd5b83c8cb26e98637563729f67bdacc61cd4']
+  ['v0.0.7-alpha.1', '996bd5b83c8cb26e98637563729f67bdacc61cd4'],
+  ['v0.0.7-alpha.2', '638dc4c227f34f1c660be66834bcc0cbdb22dec8']
 ]
 const firstSupported = [
   ['run-file', 0],
@@ -78,7 +79,7 @@ export function validateCommandFinder(
   }
 
   if (JSON.stringify(releases.map(r => [r.tag,r.source])) !== JSON.stringify(publishedReleases)) {
-    errors.push('Release list must match twenty-six exact published compiler tag commits in order')
+    errors.push('Release list must match twenty-seven exact published compiler tag commits in order')
   }
   if (JSON.stringify(tasks.map(t => [t.id,t.first])) !== JSON.stringify(firstSupported)) {
     errors.push('Task availability boundaries differ from the published tagged CLI')

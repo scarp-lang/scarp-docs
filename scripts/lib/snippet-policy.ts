@@ -23,8 +23,9 @@ export function checkSnippetPolicy(markdown: string): SnippetIssue[] {
   const alpha3Cli = markdown.includes('<!-- scarp-cli-release: v0.0.5-alpha.3 -->')
   // The bilingual upgrade guide spans alpha.3 and alpha.4, but only the
   // published alpha.4 side demonstrates new project verbs.
-  const alpha18Cli = ['v0.0.6-alpha.18', 'v0.0.6-alpha.19', 'v0.0.6-alpha.20', 'v0.0.7-alpha.1'].some(tag =>
+  const alpha18Cli = ['v0.0.6-alpha.18', 'v0.0.6-alpha.19', 'v0.0.6-alpha.20', 'v0.0.7-alpha.1', 'v0.0.7-alpha.2'].some(tag =>
     markdown.includes('<!-- scarp-cli-release: ' + tag + ' -->'))
+  const nativeObjectCli = markdown.includes('<!-- scarp-cli-release: v0.0.7-alpha.2 -->')
   const alpha10Cli = alpha18Cli ||
     markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.17 -->') ||
     markdown.includes('<!-- scarp-cli-release: v0.0.6-alpha.10 -->') ||
@@ -87,6 +88,10 @@ export function checkSnippetPolicy(markdown: string): SnippetIssue[] {
         if (!alpha18Cli && /^\s*(?:\$\s*)?scarp exec\s*$/.test(line)) {
           issues.push({ line: fence.line + i + 1,
             message: 'zero-argument scarp exec requires published alpha.18' })
+          continue
+        }
+        if (!nativeObjectCli && /^\s*(?:\$\s*)?scarp native-object\b/.test(line)) {
+          issues.push({ line: fence.line + i + 1, message: 'native-object requires published v0.0.7-alpha.2' })
           continue
         }
         const command = /^\s*(?:\$\s*)?scarp\s+(build|compile|create|launch|exec|verify|inspect|init|test|project)\b/.exec(line)
