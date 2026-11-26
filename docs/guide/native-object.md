@@ -23,15 +23,15 @@ pure funcra evaluate(value: integer) -> integer {
 scarp native-object --json x86_64-none bounded-entry evaluate 1000 512 calls.srp -o calls.o
 ~~~
 
-JSON is emitted to stdout after successful object publication. `calls.o` is a relocatable ELF64 object, not something to execute directly.
+The source name `evaluate` selects the entry; the exported object symbol is **`scarp_bounded_integer_entry`**, not `evaluate`. JSON is emitted to stdout after successful object publication. `calls.o` is a relocatable ELF64 object, not something to execute directly.
 
 ## Modes and limits
 
-| Mode | Use |
-| --- | --- |
-| `checked` | Standalone pure integer function, forward scalar flow |
-| `bounded` | Standalone function with loops and a work allowance |
-| `bounded-entry` | Named entry, same-file nonrecursive calls, work and stack allowances |
+| Mode | Use | Exported symbol |
+| --- | --- | --- |
+| `checked` | Standalone pure integer function, forward scalar flow | `scarp_checked_integer_function` |
+| `bounded` | Standalone function with loops and a work allowance | `scarp_bounded_integer_function` |
+| `bounded-entry` | Named entry, same-file nonrecursive calls, work and stack allowances | `scarp_bounded_integer_entry` |
 
 The explicit target is `x86_64-none`. Both allowances are unsigned 32-bit decimal values. The stack budget is measured below the aligned caller stack pointer before CALL; external argument slots and caller alignment padding are separate.
 

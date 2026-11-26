@@ -23,15 +23,15 @@ pure funcra evaluate(value: integer) -> integer {
 scarp native-object --json x86_64-none bounded-entry evaluate 1000 512 calls.srp -o calls.o
 ~~~
 
-JSON सफल object publication के बाद stdout में आता है। `calls.o` ELF64 relocatable object है; इसे सीधे execute न करें।
+Source में `evaluate` entry चुनता है; object का exported symbol **`scarp_bounded_integer_entry`** है, `evaluate` नहीं। JSON सफल object publication के बाद stdout में आता है। `calls.o` ELF64 relocatable object है; इसे सीधे execute न करें।
 
 ## Modes और limits
 
-| Mode | उपयोग |
-| --- | --- |
-| `checked` | एक pure integer function, forward scalar flow |
-| `bounded` | Standalone function, loops और work allowance |
-| `bounded-entry` | Named entry, same-file nonrecursive calls, work और stack allowance |
+| Mode | उपयोग | Exported symbol |
+| --- | --- | --- |
+| `checked` | एक pure integer function, forward scalar flow | `scarp_checked_integer_function` |
+| `bounded` | Standalone function, loops और work allowance | `scarp_bounded_integer_function` |
+| `bounded-entry` | Named entry, same-file nonrecursive calls, work और stack allowance | `scarp_bounded_integer_entry` |
 
 Target `x86_64-none` explicit है। दोनों allowances unsigned 32-bit decimal हैं। Stack budget aligned caller stack pointer के नीचे मापा जाता है; external argument slots और caller padding अलग हैं।
 
