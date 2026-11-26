@@ -1,9 +1,9 @@
 # Scarp v0.0.7 में पहला कदम
 
-<!-- scarp-cli-release: v0.0.7-alpha.1 -->
-<!-- scarp-current-source: 996bd5b83c8cb26e98637563729f67bdacc61cd4 -->
+<!-- scarp-cli-release: v0.0.7-alpha.2 -->
+<!-- scarp-current-source: 638dc4c227f34f1c660be66834bcc0cbdb22dec8 -->
 
-यह पाठ [प्रकाशित v0.0.7-alpha.1](/hi/releases/v0.0.7-alpha.1) के interpreter तथा experimental Rust API की सीमाएँ बताता है।
+यह पाठ [प्रकाशित v0.0.7-alpha.2](/hi/releases/v0.0.7-alpha.2) के interpreter तथा experimental Rust API की सीमाएँ बताता है।
 
 ## Fixed arrays जोड़ना
 
@@ -46,8 +46,8 @@ print(integer_lcm(3, 0, 5));
 
 Interpreter सामान्य calls के बाद सीमित frame buffers reuse कर सकता है। लौटाए गए immutable values अगले calls के बाद भी valid रहते हैं। यह OS RAM limit या cycle collector नहीं है।
 
-Experimental x86-64 ELF64 Rust API में 16 तक required integer arguments, scalar conditional expressions, counted repeats और nested loop control उपलब्ध हैं। ABI provisional है। `scarp exec` interpreter ही चलाता है; general native function calls, executable linking और native compilation CLI शामिल नहीं हैं।
+Experimental x86-64 ELF64 Rust API में 16 तक required integer arguments, scalar conditional expressions, counted repeats और nested loop control उपलब्ध हैं। ABI provisional है। `scarp exec` interpreter ही चलाता है; alpha.2 में experimental `scarp native-object` तथा उसी file के nonrecursive direct calls उपलब्ध हैं। General executable linking और external calls नहीं हैं। [Native-object पाठ](/hi/guide/native-object) पढ़ें।
 
 ## Source evidence
 
-Compiler के [array example](https://github.com/scarp-lang/scarp/blob/996bd5b83c8cb26e98637563729f67bdacc61cd4/examples/array_concat.srp), [integer example](https://github.com/scarp-lang/scarp/blob/996bd5b83c8cb26e98637563729f67bdacc61cd4/examples/integer_reductions.srp) और [native contract](https://github.com/scarp-lang/scarp/blob/996bd5b83c8cb26e98637563729f67bdacc61cd4/docs/native-elf64.md) immutable source पर हैं।
+Compiler के [array example](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/examples/array_concat.srp), [integer example](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/examples/integer_reductions.srp) और [native contract](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/docs/native-elf64.md) immutable source पर हैं।

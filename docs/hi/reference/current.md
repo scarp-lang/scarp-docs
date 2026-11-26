@@ -1,8 +1,8 @@
 # वर्तमान Scarp compiler reference
 
-<!-- scarp-cli-release: v0.0.7-alpha.1 -->
+<!-- scarp-cli-release: v0.0.7-alpha.2 -->
 
-**प्रकाशित वर्तमान snapshot:** [v0.0.7-alpha.1](/hi/releases/v0.0.7-alpha.1), 25 नवंबर 2026। यह पृष्ठ **सत्यापित वर्तमान व्यवहार** बताता है; भविष्य के releases में syntax हमेशा समान रहने की गारंटी नहीं।
+**प्रकाशित वर्तमान snapshot:** [v0.0.7-alpha.2](/hi/releases/v0.0.7-alpha.2), 26 नवंबर 2026। यह पृष्ठ **सत्यापित वर्तमान व्यवहार** बताता है; भविष्य के releases में syntax हमेशा समान रहने की गारंटी नहीं।
 
 ## CLI और entrypoint चुनाव
 
@@ -59,14 +59,14 @@ Alpha.20 में `0.1d + 0.2d` exact `0.3` देता है; unsuffixed bin
 
 Alpha.19 ने checked named/exported callable handles, signature/effect constrained slots और cumulative execution receipts दिए। Alpha.20 में composite strings के logical UTF-8 bytes भी quota में गिने जाते हैं। Ledger पूरे process की memory limit नहीं है।
 
-Experimental Rust native-object API में अब 16 तक required integer arguments, scalar conditional expressions, counted repeats और nested loop control हैं। Execution work सीमित है और diagnostic source spans सुरक्षित हैं। General native calls, contracts, defaults, heap-backed values और executable linking उपलब्ध नहीं हैं। [Tagged compiler native contract](https://github.com/scarp-lang/scarp/blob/996bd5b83c8cb26e98637563729f67bdacc61cd4/docs/native-elf64.md) देखें।
+Experimental native-object backend pure integer functions, 16 तक required integer arguments तथा एक ही file के bounded nonrecursive direct calls स्वीकार करता है। नई CLI केवल relocatable x86-64 ELF64 object बनाती है। Work और call-stack bounds जाँचे जाते हैं; ABI experimental है। [Native-object पाठ](/hi/guide/native-object) तथा [tagged compiler contract](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/docs/native-elf64.md) देखें।
 
 [वर्तमान release guide](/hi/guide/alpha7-first) में array concatenation, integer reductions और native सीमाएँ पढ़ें।
 
 ## वर्तमान compiler में क्या उपलब्ध नहीं है?
 
-प्रयोगात्मक ELF64 तथा C11 code generation सीमित **Rust host APIs** हैं, सामान्य `.srp` native compilation command नहीं। Scarp experimental interpreter ही है; syntax तथा standard-library compatibility स्थिर नहीं।
+ELF64 object emission अब experimental CLI से उपलब्ध है; C11 emission और checked aggregate layout planning Rust host APIs हैं। सामान्य executable linking, recursion, external calls, heap-backed values और aggregate execution उपलब्ध नहीं हैं। Scarp experimental interpreter ही है; syntax तथा standard-library compatibility स्थिर नहीं।
 
 ## आधिकारिक डाउनलोड और प्रमाण
 
-[आधिकारिक Downloads](https://scarp-lang.github.io/downloads/), [वर्तमान इंस्टॉलेशन](/hi/guide/install-latest), [वर्तमान भाषा पाठ](/hi/guide/alpha7-first) तथा [compiler का मूल source](https://github.com/scarp-lang/scarp/tree/996bd5b83c8cb26e98637563729f67bdacc61cd4) पढ़ें। पुराने version-specific pages अब current search/navigation में नहीं दिखते; उनके परीक्षण Git में सुरक्षित हैं।
+[आधिकारिक Downloads](https://scarp-lang.github.io/downloads/), [वर्तमान इंस्टॉलेशन](/hi/guide/install-latest), [वर्तमान भाषा पाठ](/hi/guide/alpha7-first) तथा [compiler का मूल source](https://github.com/scarp-lang/scarp/tree/638dc4c227f34f1c660be66834bcc0cbdb22dec8) पढ़ें। पुराने version-specific pages अब current search/navigation में नहीं दिखते; उनके परीक्षण Git में सुरक्षित हैं।

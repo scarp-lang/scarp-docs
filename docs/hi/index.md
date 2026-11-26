@@ -26,15 +26,15 @@ hero:
       link: https://scarp-lang.github.io/downloads/
 
 features:
-  - title: नवीनतम प्रकाशित v0.0.7-alpha.1 compiler
-    details: Exact decimal literals, tuple updates और ordering तथा Rust host native functions देखें।
-    link: /hi/releases/v0.0.7-alpha.1
+  - title: नवीनतम प्रकाशित v0.0.7-alpha.2 compiler
+    details: Experimental native-object CLI और bounded direct calls देखें।
+    link: /hi/releases/v0.0.7-alpha.2
 
   - title: वर्तमान compiler से शुरुआत
     details: केवल वर्तमान प्रकाशित Scarp interpreter के सत्यापित commands और installation steps सीखें।
     link: /hi/guide/current
   - title: वर्तमान Scarp language reference
-    details: Fixed-array concatenation, integer reductions और native scalar control flow का विस्तार।
+    details: Experimental ELF64 object CLI, bounded direct calls और aggregate layout queries।
     link: /hi/reference/current
   - title: v0.0.7 में नया क्या है
     details: Fixed arrays, integer reductions और experimental native backend की सीमाएँ।
@@ -102,7 +102,7 @@ features:
 ---
 
 ::: warning प्रयोगात्मक रिलीज़
-नवीनतम सत्यापित प्रकाशित compiler **[v0.0.7-alpha.1](/hi/releases/v0.0.7-alpha.1)** है। [आधिकारिक Scarp डाउनलोड](https://scarp-lang.github.io/downloads/) और [वर्तमान इंस्टॉलेशन गाइड](/hi/guide/install-latest) से शुरुआत करें। यह experimental prerelease है; पुराने पृष्ठ केवल अपने मूल release के परीक्षण बताते हैं। [फ़ीचर स्थिति](/hi/reference/status) देखें।
+नवीनतम सत्यापित प्रकाशित compiler **[v0.0.7-alpha.2](/hi/releases/v0.0.7-alpha.2)** है। [आधिकारिक Scarp डाउनलोड](https://scarp-lang.github.io/downloads/) और [वर्तमान इंस्टॉलेशन गाइड](/hi/guide/install-latest) से शुरुआत करें। यह experimental prerelease है; पुराने पृष्ठ केवल अपने मूल release के परीक्षण बताते हैं। [फ़ीचर स्थिति](/hi/reference/status) देखें।
 :::
 
 [ऐतिहासिक alpha.9 BigInt और JSON-v2 रिलीज़](/hi/releases/v0.0.6-alpha.9) अपने मूल compiler version के लिए उपलब्ध है।

@@ -1,8 +1,8 @@
 # Current Scarp compiler reference
 
-<!-- scarp-cli-release: v0.0.7-alpha.1 -->
+<!-- scarp-cli-release: v0.0.7-alpha.2 -->
 
-**Current published snapshot:** [v0.0.7-alpha.1](/releases/v0.0.7-alpha.1), published November 25, 2026. This page describes **verified current behavior**, not a promise of stable syntax across future prereleases.
+**Current published snapshot:** [v0.0.7-alpha.2](/releases/v0.0.7-alpha.2), published November 26, 2026. This page describes **verified current behavior**, not a promise of stable syntax across future prereleases.
 
 ## CLI and entrypoint selection
 
@@ -59,14 +59,14 @@ Read the [current type system guide](/guide/current-types) for scalar, composite
 
 Alpha.19 introduced checked named/exported callable handles, signature/effect-constrained slots and cumulative execution receipts. Alpha.20 extends host argument admission to strings inside composite values, counted by logical UTF-8 occurrence. These quotas do not bound total process memory.
 
-The experimental Rust native-object API now accepts pure integer functions with up to 16 required integer arguments, scalar conditional expressions, counted repeats and nested loop control. Work is bounded, and diagnostic spans are preserved. General native calls, contracts, defaults, heap-backed values and executable linking remain outside the subset. See the [tagged compiler native contract](https://github.com/scarp-lang/scarp/blob/996bd5b83c8cb26e98637563729f67bdacc61cd4/docs/native-elf64.md).
+The experimental native-object backend accepts pure integer functions, up to sixteen required arguments, and bounded nonrecursive direct calls within a file. The new CLI emits relocatable x86-64 ELF64 objects only. Work and call-stack bounds are checked; the ABI is experimental. See the [native-object tutorial](/guide/native-object) and [tagged compiler contract](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/docs/native-elf64.md).
 
 Read the [current release guide](/guide/alpha7-first) for array concatenation, integer reductions and native limitations.
 
 ## What remains outside this compiler
 
-The native ELF64 and C11 code-generation experiments are **Rust host APIs**, not general user-facing `.srp` binary compilation. Scarp remains an experimental interpreter, with no stable compiler or standard-library compatibility promise.
+ELF64 object emission is now exposed through an experimental CLI; C11 emission and checked aggregate layout planning remain Rust host APIs. Neither provides general executable compilation. Native recursion, external calls, heap-backed values and aggregate execution remain unsupported. Scarp remains an experimental interpreter, with no stable compiler or standard-library compatibility promise.
 
 ## Download and evidence
 
-Use [official downloads](https://scarp-lang.github.io/downloads/), the [current installation guide](/guide/install-latest), the [current language lesson](/guide/alpha7-first), and [immutable compiler source](https://github.com/scarp-lang/scarp/tree/996bd5b83c8cb26e98637563729f67bdacc61cd4). Archived versioned pages are **retired from current documentation discovery**, though their source and test evidence remain in Git.
+Use [official downloads](https://scarp-lang.github.io/downloads/), the [current installation guide](/guide/install-latest), the [current language lesson](/guide/alpha7-first), and [immutable compiler source](https://github.com/scarp-lang/scarp/tree/638dc4c227f34f1c660be66834bcc0cbdb22dec8). Archived versioned pages are **retired from current documentation discovery**, though their source and test evidence remain in Git.
