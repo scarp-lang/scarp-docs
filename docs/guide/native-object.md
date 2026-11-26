@@ -14,13 +14,13 @@ pure funcra add_one(value: integer) -> integer {
     return value + 1;
 }
 
-pure funcra entry(value: integer) -> integer {
+pure funcra evaluate(value: integer) -> integer {
     return add_one(value);
 }
 ~~~
 
 ~~~sh
-scarp native-object --json x86_64-none bounded-entry entry 1000 512 calls.srp -o calls.o
+scarp native-object --json x86_64-none bounded-entry evaluate 1000 512 calls.srp -o calls.o
 ~~~
 
 JSON is emitted to stdout after successful object publication. `calls.o` is a relocatable ELF64 object, not something to execute directly.
