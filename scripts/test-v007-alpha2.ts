@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { existsSync, readFileSync, mkdtempSync, writeFileSync, rmSync } from 'node:fs'
 import { spawnSync } from 'node:child_process'
 import { tmpdir } from 'node:os'
-import { resolve, join } from 'node:path'
+import { resolve, join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { checkSnippetPolicy } from './lib/snippet-policy.ts'
 import { extractCodeFences } from './lib/code-fences.ts'
@@ -49,6 +49,19 @@ for(const page of nativePages) {
   assert.deepEqual(checkSnippetPolicy(page),[])
   assert.ok(checkSnippetPolicy(page.replace(tag,'v0.0.7-alpha.1')).some(issue=>issue.message.includes('native-object requires')))
 }
+function bilingualFences(guide: string, languages: string[]) {
+  const pages = ['', 'hi/'].map(prefix=>read('docs/'+prefix+'guide/'+guide+'.md'))
+  for (const page of pages) {
+    assert.ok(page.includes('<!-- scarp-current-source: '+commit+' -->'))
+    assert.deepEqual(checkSnippetPolicy(page),[])
+  }
+  const snippets = pages.map(page=>extractCodeFences(page).map(({language,code})=>({language,code})))
+  assert.deepEqual(snippets[0],snippets[1],guide+' bilingual snippets differ')
+  assert.deepEqual(snippets[0].map(x=>x.language),languages)
+  return snippets[0]
+}
+const abi = bilingualFences('native-abi',['c','sh'])
+const layout = bilingualFences('native-layout',['rust'])
 if (process.argv[2]) {
   const binary = resolve(process.argv[2])
   const work = mkdtempSync(join(tmpdir(),'scarp-docs-v007-'))
@@ -96,6 +109,24 @@ if (process.argv[2]) {
     assert.equal(bytes[5],1,'Little endian ELF')
     assert.equal(bytes.readUInt16LE(16),1,'ET_REL')
     assert.equal(bytes.readUInt16LE(18),62,'EM_X86_64')
+    // Link the documented C harness independently and check real native execution.
+    function hostRun(command: string, args: string[]) {
+      const result = spawnSync(command,args,{cwd:work,encoding:'utf8',timeout:30000})
+      assert.equal(result.error,undefined,String(result.error))
+      assert.equal(result.status,0,result.stderr)
+      return result.stdout
+    }
+    writeFileSync(join(work,'host.c'),abi[0].code+'\n')
+    for (const line of abi[1].code.trim().split('\n')) {
+      const [command,...args] = line.split(/\s+/)
+      hostRun(command,args)
+    }
+    // Build the documented Rust host query against the same exact compiler.
+    const build = dirname(binary)
+    writeFileSync(join(work,'layout.rs'),layout[0].code+'\n')
+    hostRun('rustc',['--edition=2021','--extern','scarp='+join(build,'libscarp.rlib'),
+      '-L','dependency='+join(build,'deps'),'layout.rs','-o','layout-check'])
+    hostRun('./layout-check',[])
     const repeated = spawnSync(binary,command,{cwd:work,encoding:'utf8',timeout:30000})
     assert.equal(repeated.status,1)
     assert.equal(repeated.stdout,'')

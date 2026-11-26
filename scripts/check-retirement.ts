@@ -30,7 +30,9 @@ if(manifest.compilerRef==='v0.0.7-alpha.1' || manifest.compilerRef==='v0.0.7-alp
       assert.ok(active.includes(locale+lesson),'Missing current bilingual guide: '+locale+lesson)
     }
     if(manifest.compilerRef==='v0.0.7-alpha.2') {
-      assert.ok(active.includes(locale+'guide/native-object.md'),'Missing native object guide')
+      for (const page of ['native-object','native-abi','native-layout']) {
+        assert.ok(active.includes(locale+'guide/'+page+'.md'),'Missing native guide: '+page)
+      }
       assert.ok(!active.includes(locale+'releases/v0.0.7-alpha.1.md'),'Previous v0.0.7 release remains active')
     }
     assert.ok(!active.includes(locale+'releases/v0.0.6-alpha.20.md'),'Previous release remains active')

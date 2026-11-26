@@ -158,3 +158,5 @@ Static check हर runtime property साबित नहीं कर सक�
 Interpreter यहाँ बताए source aggregates को चलाता है; experimental scalar native APIs सीमित subset स्वीकार करती हैं। Composite values raw pointers या first-class function values नहीं हैं। Shared immutable storage, logical allocation quotas तथा Lifetime तुरंत OS memory वापसी या पूरे process की RAM सीमा का वादा नहीं करते। [Systems और embedding](/hi/guide/alpha7-first) तथा [वर्तमान reference](/hi/reference/current) पढ़ें।
 
 हर Scarp block को अलग source file में save करके प्रकाशित interpreter से चलाएँ। CI दोनों भाषाओं के blocks निकालकर exact parity, source verification और documented stdout की जाँच करता है। यह गाइड प्रकाशित compiler तक सीमित है, main branch तक नहीं।
+
+Target layout के लिए [experimental native value layout](/hi/guide/native-layout) पढ़ें।

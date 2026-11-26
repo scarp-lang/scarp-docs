@@ -28,7 +28,9 @@ export function isActiveDocumentationSource(source: string, currentTag: string):
     active.add('guide/alpha7-first.md')
     active.add('guide/current-types.md')
   }
-  if(currentTag==='v0.0.7-alpha.2') active.add('guide/native-object.md')
+  if(currentTag==='v0.0.7-alpha.2') {
+    for (const page of ['guide/native-object.md','guide/native-abi.md','guide/native-layout.md']) active.add(page)
+  }
   // The focused lesson is only current while its exact compiler tag is current.
   if(currentTag==='v0.0.6-alpha.18') active.add('guide/exec-and-lifetime-alpha18.md')
   return active.has(name)

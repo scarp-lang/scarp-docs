@@ -158,3 +158,5 @@ A static check cannot prove every runtime property: dynamic bounds, arithmetic e
 The interpreter supports the source aggregates documented here; the experimental scalar native APIs support only a restricted subset. Composite values are not raw pointers or first-class function values. Shared immutable storage, logical allocation quotas and Lifetime do not imply immediate OS memory return or a process-wide RAM limit. Consult the [systems and embedding guide](/guide/alpha7-first) and [current reference](/reference/current).
 
 For each example, save its Scarp block as a separate source file and run it using the published interpreter. CI extracts these blocks from both languages, checks exact parity, verifies source and compares stdout with the documented output. The guide remains scoped to the published compiler, not main.
+
+For target layout, see [experimental native value layout](/guide/native-layout). The Rust planner does not imply native aggregate execution.

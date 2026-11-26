@@ -46,3 +46,5 @@ JSON includes schema_version, target, mode, symbol, max_work, peak_stack_bytes, 
 Native recursion, external calls, heap-backed values, aggregate execution, project input and executable linking remain future work. Rust aggregate layout metadata does not imply execution support. Use `scarp exec` for interpreter execution.
 
 [Current reference](/reference/current) · [Immutable native-object contract](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/docs/native-object-output.md) · [Release](/releases/v0.0.7-alpha.2).
+
+[Native ABI and host testing](/guide/native-abi) · [Native value layout](/guide/native-layout).
