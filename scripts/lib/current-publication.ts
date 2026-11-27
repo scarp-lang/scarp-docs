@@ -24,12 +24,16 @@ export function isActiveDocumentationSource(source: string, currentTag: string):
     active.add('guide/alpha20-systems.md')
     active.add('guide/alpha20-types.md')
   }
-  if(currentTag==='v0.0.7-alpha.1' || currentTag==='v0.0.7-alpha.2') {
+  if(currentTag==='v0.0.7-alpha.1' || (currentTag==='v0.0.7-alpha.2' || currentTag==='v0.0.7-alpha.3')) {
     active.add('guide/alpha7-first.md')
     active.add('guide/current-types.md')
   }
-  if(currentTag==='v0.0.7-alpha.2') {
+  if((currentTag==='v0.0.7-alpha.2' || currentTag==='v0.0.7-alpha.3')) {
     for (const page of ['guide/native-object.md','guide/native-abi.md','guide/native-layout.md']) active.add(page)
+  }
+  if(currentTag==='v0.0.7-alpha.3') {
+    active.add('guide/v007-alpha3-generics-strings.md')
+    active.add('guide/native-aggregate-locals.md')
   }
   // The focused lesson is only current while its exact compiler tag is current.
   if(currentTag==='v0.0.6-alpha.18') active.add('guide/exec-and-lifetime-alpha18.md')

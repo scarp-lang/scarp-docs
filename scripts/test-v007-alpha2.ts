@@ -16,9 +16,10 @@ const evidence = JSON.parse(read('data/compiler-v007-alpha2-release.json'))
 assert.equal(evidence.compilerRef, tag)
 assert.equal(evidence.compilerCommit, commit)
 assert.deepEqual(validateCompilerEvidence(evidence), [])
-assert.deepEqual(JSON.parse(read('data/compiler-latest-release.json')), evidence)
+const frozen = JSON.parse(read('conformance/v007-alpha2/guide-fences.json')) as Record<string,string>
+const historicalGuide = (path: string) => { assert.ok(frozen[path], 'Missing frozen guide: '+path); return frozen[path] }
 const lessons = ['', 'hi/'].map(prefix => {
-  const page = read('docs/'+prefix+'guide/alpha7-first.md')
+  const page = historicalGuide('docs/'+prefix+'guide/alpha7-first.md')
   assert.ok(page.includes('<!-- scarp-current-source: '+commit+' -->'))
   const release = read('docs/'+prefix+'releases/'+tag+'.md')
   for (const name of evidence.assets as string[]) {
@@ -34,13 +35,13 @@ assert.deepEqual(lessons[0].map(x=>x.language), ['scarp','text','scarp','text'])
 const expected = ['4\n2 8\n2', '6\n6\n60\n0']
 for (const [i,value] of expected.entries()) assert.equal(lessons[0][2*i+1].code,value)
 const types = ['', 'hi/'].map(prefix => {
-  const page = read('docs/'+prefix+'guide/current-types.md')
+  const page = historicalGuide('docs/'+prefix+'guide/current-types.md')
   assert.ok(page.includes('<!-- scarp-current-source: '+commit+' -->'))
   return extractCodeFences(page).map(({language,code})=>({language,code}))
 })
 assert.deepEqual(types[0], types[1], 'Bilingual current type snippets differ')
 assert.deepEqual(types[0].map(x=>x.language), Array.from({length:5},()=>['scarp','text']).flat())
-const nativePages = ['', 'hi/'].map(prefix=>read('docs/'+prefix+'guide/native-object.md'))
+const nativePages = ['', 'hi/'].map(prefix=>historicalGuide('docs/'+prefix+'guide/native-object.md'))
 const native = nativePages.map(page=>extractCodeFences(page).map(({language,code})=>({language,code})))
 assert.deepEqual(native[0],native[1],'Native tutorial fences must match across languages')
 assert.deepEqual(native[0].map(x=>x.language),['scarp','sh'])
@@ -50,7 +51,7 @@ for(const page of nativePages) {
   assert.ok(checkSnippetPolicy(page.replace(tag,'v0.0.7-alpha.1')).some(issue=>issue.message.includes('native-object requires')))
 }
 function bilingualFences(guide: string, languages: string[]) {
-  const pages = ['', 'hi/'].map(prefix=>read('docs/'+prefix+'guide/'+guide+'.md'))
+  const pages = ['', 'hi/'].map(prefix=>historicalGuide('docs/'+prefix+'guide/'+guide+'.md'))
   for (const page of pages) {
     assert.ok(page.includes('<!-- scarp-current-source: '+commit+' -->'))
     assert.deepEqual(checkSnippetPolicy(page),[])
