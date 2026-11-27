@@ -1,8 +1,8 @@
 # Current Scarp compiler reference
 
-<!-- scarp-cli-release: v0.0.7-alpha.2 -->
+<!-- scarp-cli-release: v0.0.7-alpha.3 -->
 
-**Current published snapshot:** [v0.0.7-alpha.2](/releases/v0.0.7-alpha.2), published November 26, 2026. This page describes **verified current behavior**, not a promise of stable syntax across future prereleases.
+**Current published snapshot:** [v0.0.7-alpha.3](/releases/v0.0.7-alpha.3), published November 27, 2026. This page describes **verified current behavior**, not a promise of stable syntax across future prereleases.
 
 ## CLI and entrypoint selection
 
@@ -55,18 +55,24 @@ Alpha.20 supports exact decimal literals (`0.1d + 0.2d` is exactly `0.3`), persi
 
 Read the [current type system guide](/guide/current-types) for scalar, composite and nominal types with runnable examples.
 
+## Generics, strings and Lifetime
+
+File-level `funcra` supports explicit `::<...>` type arguments, contextual inference and generic Option/Result payloads. Numeric and Comparable constraints preserve concrete type rules. String concatenation `+`, repetition `*`, raw and multiline literals are interpreted; interpolation is not supported. Function completion retires unneeded values and transfers result ownership without duplicating it for contract evaluation. This is not a process RAM cap.
+
+[Generics and strings](/guide/v007-alpha3-generics-strings) · [Native aggregate locals](/guide/native-aggregate-locals).
+
 ## Rust embedding and experimental native objects
 
 Alpha.19 introduced checked named/exported callable handles, signature/effect-constrained slots and cumulative execution receipts. Alpha.20 extends host argument admission to strings inside composite values, counted by logical UTF-8 occurrence. These quotas do not bound total process memory.
 
-The experimental native-object backend accepts pure integer functions, up to sixteen required arguments, and bounded nonrecursive direct calls within a file. The new CLI emits relocatable x86-64 ELF64 objects only. Work and call-stack bounds are checked; the ABI is experimental. See the [native-object tutorial](/guide/native-object) and [tagged compiler contract](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/docs/native-elf64.md).
+The experimental native-object backend accepts pure integer functions, up to sixteen required arguments, and bounded nonrecursive direct calls within a file. The new CLI emits relocatable x86-64 ELF64 objects only. Work and call-stack bounds are checked; the ABI is experimental. See the [native-object tutorial](/guide/native-object) and [tagged compiler contract](https://github.com/scarp-lang/scarp/blob/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5/docs/native-elf64.md).
 
 Read the [current release guide](/guide/alpha7-first) for array concatenation, integer reductions and native limitations.
 
 ## What remains outside this compiler
 
-ELF64 object emission is now exposed through an experimental CLI; C11 emission and checked aggregate layout planning remain Rust host APIs. Neither provides general executable compilation. Native recursion, external calls, heap-backed values and aggregate execution remain unsupported. Scarp remains an experimental interpreter, with no stable compiler or standard-library compatibility promise.
+ELF64 object emission is now exposed through an experimental CLI; C11 emission and checked aggregate layout planning remain Rust host APIs. Neither provides general executable compilation. Native recursion, external calls, heap-backed values and general aggregate parameters/results remain unsupported. Private flat integer/Boolean arrays, tuples and records are supported as bounded native stack locals. Scarp remains an experimental interpreter, with no stable compiler or standard-library compatibility promise.
 
 ## Download and evidence
 
-Use [official downloads](https://scarp-lang.github.io/downloads/), the [current installation guide](/guide/install-latest), the [current language lesson](/guide/alpha7-first), and [immutable compiler source](https://github.com/scarp-lang/scarp/tree/638dc4c227f34f1c660be66834bcc0cbdb22dec8). Archived versioned pages are **retired from current documentation discovery**, though their source and test evidence remain in Git.
+Use [official downloads](https://scarp-lang.github.io/downloads/), the [current installation guide](/guide/install-latest), the [current language lesson](/guide/alpha7-first), and [immutable compiler source](https://github.com/scarp-lang/scarp/tree/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5). Archived versioned pages are **retired from current documentation discovery**, though their source and test evidence remain in Git.

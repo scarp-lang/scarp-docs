@@ -6,7 +6,8 @@ The language is **prerelease and evolving**. Use the exact executable version ma
 
 | Version | Distinguishing features |
 | --- | --- |
-| **[v0.0.7-alpha.2](/releases/v0.0.7-alpha.2)** | **Latest (Nov 26):** Experimental ELF64 object CLI, bounded direct calls and Rust aggregate layout queries; no general native executable compiler. |
+| **[v0.0.7-alpha.3](/releases/v0.0.7-alpha.3)** | **Latest (Nov 27):** Generic functions, contextual type inference, generic Option/Result, bounded string operators and experimental native integer specialization with private aggregate locals; no general native executable compiler. |
+| **[v0.0.7-alpha.2](/releases/v0.0.7-alpha.2)** | **Earlier (Nov 26):** Experimental ELF64 object CLI, bounded direct calls and Rust aggregate layout queries; no general native executable compiler. |
 | **[v0.0.7-alpha.1](/releases/v0.0.7-alpha.1)** | **Historical (Nov 25):** Fixed-array concatenation, variadic integer reductions, bounded frame reuse and experimental ELF64 scalar control flow; no general native CLI. |
 | **[v0.0.6-alpha.20](/releases/v0.0.6-alpha.20)** | **Earlier (Nov 24):** Exact decimal literals, persistent tuple updates, numeric tuple ordering, lowercase `scarp.project` and experimental Rust native functions; no general native CLI. |
 | **[v0.0.6-alpha.19](/releases/v0.0.6-alpha.19)** | Checked Rust host callable handles and cumulative quotas |

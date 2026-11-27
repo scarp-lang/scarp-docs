@@ -1,9 +1,9 @@
 # Experimental native-object CLI
 
-<!-- scarp-cli-release: v0.0.7-alpha.2 -->
-<!-- scarp-current-source: 638dc4c227f34f1c660be66834bcc0cbdb22dec8 -->
+<!-- scarp-cli-release: v0.0.7-alpha.3 -->
+<!-- scarp-current-source: 44a3bb0a91e67570e46ce058a3f6211f8e5db0f5 -->
 
-This tutorial targets the published alpha.2 object-only backend. It is not a complete operating-system, kernel or executable compiler.
+This tutorial targets the published alpha.3 object-only backend. It is not a complete operating-system, kernel or executable compiler.
 
 ## A small call graph
 
@@ -49,8 +49,10 @@ A target such as `x86_64` is invalid; use the explicit `x86_64-none` target. A m
 
 ## What is not supported
 
-Native recursion, external calls, heap-backed values, aggregate execution, project input and executable linking remain future work. Rust aggregate layout metadata does not imply execution support. Use `scarp exec` for interpreter execution.
+Native recursion, external calls, heap-backed values, general aggregate parameters/results, project input and executable linking remain outside this backend. Alpha.3 adds private flat integer/Boolean aggregate stack locals and concrete integer generic specialization. Use `scarp exec` for interpreter execution.
 
-[Current reference](/reference/current) · [Immutable native-object contract](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/docs/native-object-output.md) · [Release](/releases/v0.0.7-alpha.2).
+[Current reference](/reference/current) · [Immutable native-object contract](https://github.com/scarp-lang/scarp/blob/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5/docs/native-object-output.md) · [Release](/releases/v0.0.7-alpha.3).
 
 [Native ABI and host testing](/guide/native-abi) · [Native value layout](/guide/native-layout).
+
+For alpha.3 additions and their limits, see [generics and strings](/guide/v007-alpha3-generics-strings) and [native aggregate locals](/guide/native-aggregate-locals).

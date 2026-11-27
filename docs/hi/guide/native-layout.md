@@ -1,9 +1,9 @@
 # Experimental native value layout
 
-<!-- scarp-cli-release: v0.0.7-alpha.2 -->
-<!-- scarp-current-source: 638dc4c227f34f1c660be66834bcc0cbdb22dec8 -->
+<!-- scarp-cli-release: v0.0.7-alpha.3 -->
+<!-- scarp-current-source: 44a3bb0a91e67570e46ce058a3f6211f8e5db0f5 -->
 
-Scarp alpha.2 का Rust host API target layout की गणना करता है। यह memory serialization या aggregate native execution नहीं करता। Interpreter representation इससे अलग है।
+Scarp alpha.3 का Rust host API target layout की गणना करता है। Planner स्वयं memory serialization या native execution नहीं करता। Alpha.3 के bounded stack locals अलग backend सुविधा हैं। Interpreter representation इससे अलग है।
 
 ## Size, alignment और padding
 
@@ -45,6 +45,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 ## Limits और engineering boundaries
 
-Planner checked 64-bit arithmetic उपयोग करता है और value size को i64::MAX तक सीमित करता है। Traversal 64 levels तथा 65,536 component visits तक bounded है। Dynamic या heap-backed types, callable types और foreign type IDs reject होते हैं। General pointers, address spaces, ABI stabilization और aggregate lowering का दावा नहीं है।
+Planner checked 64-bit arithmetic उपयोग करता है और value size को i64::MAX तक सीमित करता है। Traversal 64 levels तथा 65,536 component visits तक bounded है। Dynamic या heap-backed types, callable types और foreign type IDs reject होते हैं। General pointers, address spaces, ABI stabilization और general aggregate lowering का दावा नहीं है।
 
-[मूल layout contract](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/docs/native-value-layout.md) · [वर्तमान type guide](/hi/guide/current-types) · [Native ABI](/hi/guide/native-abi).
+[मूल layout contract](https://github.com/scarp-lang/scarp/blob/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5/docs/native-value-layout.md) · [वर्तमान type guide](/hi/guide/current-types) · [Native ABI](/hi/guide/native-abi).
+
+Alpha.3 की नई सुविधाओं और उनकी सीमाओं के लिए [Generic functions](/hi/guide/v007-alpha3-generics-strings) तथा [Native aggregate locals](/hi/guide/native-aggregate-locals) पढ़ें।

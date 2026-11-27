@@ -1,9 +1,9 @@
 # Native object ABI और host validation
 
-<!-- scarp-cli-release: v0.0.7-alpha.2 -->
-<!-- scarp-current-source: 638dc4c227f34f1c660be66834bcc0cbdb22dec8 -->
+<!-- scarp-cli-release: v0.0.7-alpha.3 -->
+<!-- scarp-current-source: 44a3bb0a91e67570e46ce058a3f6211f8e5db0f5 -->
 
-यह पाठ प्रकाशित alpha.2 के experimental SysV AMD64 ABI को समझाता है। पहले [native-object पाठ](/hi/guide/native-object) पूरा करें।
+यह पाठ प्रकाशित alpha.3 के experimental SysV AMD64 ABI को समझाता है। पहले [native-object पाठ](/hi/guide/native-object) पूरा करें।
 
 ## Source नाम और exported symbol
 
@@ -70,4 +70,6 @@ cc -std=c11 -Wall -Wextra -Werror host.c calls.o -o host-check
 
 सफल assertion run exit 0 देता है। यह hosted Linux ABI validation है; bootloader, kernel image, general native linker या stable ABI का प्रमाण नहीं।
 
-[मूल native ABI contract](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/docs/native-elf64.md) · [वर्तमान reference](/hi/reference/current).
+[मूल native ABI contract](https://github.com/scarp-lang/scarp/blob/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5/docs/native-elf64.md) · [वर्तमान reference](/hi/reference/current).
+
+Alpha.3 की नई सुविधाओं और उनकी सीमाओं के लिए [Generic functions](/hi/guide/v007-alpha3-generics-strings) तथा [Native aggregate locals](/hi/guide/native-aggregate-locals) पढ़ें।

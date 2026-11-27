@@ -1,0 +1,25 @@
+{
+  "compilerCommit": "44a3bb0a91e67570e46ce058a3f6211f8e5db0f5",
+  "files": [
+    {
+      "name": "string_operators.srp",
+      "upstream": "examples/string_operators.srp",
+      "blob": "e313b914b819d9e94fea87938122bb1317e42f81"
+    },
+    {
+      "name": "string_operators.stdout",
+      "upstream": "examples/string_operators.stdout",
+      "blob": "dc5a3ecb096da9b000957e18689287154ba0e06f"
+    },
+    {
+      "name": "native_aggregate_locals.srp",
+      "upstream": "examples/native_aggregate_locals.srp",
+      "blob": "3f0afd302eb2a8fabee383b32295e5d610b6c90e"
+    },
+    {
+      "name": "native_aggregate_locals.stdout",
+      "upstream": "examples/native_aggregate_locals.stdout",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    }
+  ]
+}

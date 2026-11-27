@@ -8,7 +8,7 @@
 
 **Unsure which command belongs to your installed compiler?** Use the [interactive version-aware CLI Command Finder](/tooling/command-finder) to avoid mixing older `run` / `check` with newer static `verify` or project inspection.
 
-**Current compiler:** [v0.0.7-alpha.2](/releases/v0.0.7-alpha.2) (November 26, 2026). Fixed-array concatenation, variadic integer reductions, bounded frame reuse and experimental ELF64 scalar control flow; no general native CLI. [Current language lesson](/guide/alpha7-first) · [Historical alpha.18](/releases/v0.0.6-alpha.18) · [alpha.17](/releases/v0.0.6-alpha.17) · [alpha.16](/releases/v0.0.6-alpha.16).
+**Current compiler:** [v0.0.7-alpha.3](/releases/v0.0.7-alpha.3) (November 27, 2026). Generic functions, contextual type inference, generic Option/Result, bounded string operators and experimental native integer specialization with private aggregate locals; no general native executable compiler. [Current language lesson](/guide/alpha7-first) · [Historical alpha.18](/releases/v0.0.6-alpha.18) · [alpha.17](/releases/v0.0.6-alpha.17) · [alpha.16](/releases/v0.0.6-alpha.16).
 
 **Start here if you are new to Scarp.** This track connects complete, compiler-backed lessons from the first program through numerical modeling, project modules, and the symbol-navigation tools introduced in the **[published v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1)** prerelease.
 
