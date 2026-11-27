@@ -1,8 +1,8 @@
 # वर्तमान Scarp compiler reference
 
-<!-- scarp-cli-release: v0.0.7-alpha.2 -->
+<!-- scarp-cli-release: v0.0.7-alpha.3 -->
 
-**प्रकाशित वर्तमान snapshot:** [v0.0.7-alpha.2](/hi/releases/v0.0.7-alpha.2), 26 नवंबर 2026। यह पृष्ठ **सत्यापित वर्तमान व्यवहार** बताता है; भविष्य के releases में syntax हमेशा समान रहने की गारंटी नहीं।
+**प्रकाशित वर्तमान snapshot:** [v0.0.7-alpha.3](/hi/releases/v0.0.7-alpha.3), 27 नवंबर 2026। यह पृष्ठ **सत्यापित वर्तमान व्यवहार** बताता है; भविष्य के releases में syntax हमेशा समान रहने की गारंटी नहीं।
 
 ## CLI और entrypoint चुनाव
 
@@ -55,18 +55,24 @@ Alpha.20 में `0.1d + 0.2d` exact `0.3` देता है; unsuffixed bin
 
 [वर्तमान type system guide](/hi/guide/current-types) में scalar, composite और nominal types के उदाहरण पढ़ें।
 
+## Generic functions, strings और Lifetime
+
+File-level `funcra` में explicit `::<...>` type arguments, contextual inference और generic Option/Result payloads उपलब्ध हैं। `Numeric` तथा `Comparable` constraints concrete type की सीमाएँ रखते हैं। String concatenation `+`, repetition `*`, raw और multiline literals interpreter में उपलब्ध हैं; interpolation नहीं। Function completion पर अनुपयोगी values retire होती हैं और result ownership transfer होती है। यह process RAM cap नहीं है।
+
+[Generic और string पाठ](/hi/guide/v007-alpha3-generics-strings) · [Native aggregate locals](/hi/guide/native-aggregate-locals).
+
 ## Rust embedding और native API
 
 Alpha.19 ने checked named/exported callable handles, signature/effect constrained slots और cumulative execution receipts दिए। Alpha.20 में composite strings के logical UTF-8 bytes भी quota में गिने जाते हैं। Ledger पूरे process की memory limit नहीं है।
 
-Experimental native-object backend pure integer functions, 16 तक required integer arguments तथा एक ही file के bounded nonrecursive direct calls स्वीकार करता है। नई CLI केवल relocatable x86-64 ELF64 object बनाती है। Work और call-stack bounds जाँचे जाते हैं; ABI experimental है। [Native-object पाठ](/hi/guide/native-object) तथा [tagged compiler contract](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/docs/native-elf64.md) देखें।
+Experimental native-object backend pure integer functions, 16 तक required integer arguments तथा एक ही file के bounded nonrecursive direct calls स्वीकार करता है। नई CLI केवल relocatable x86-64 ELF64 object बनाती है। Work और call-stack bounds जाँचे जाते हैं; ABI experimental है। [Native-object पाठ](/hi/guide/native-object) तथा [tagged compiler contract](https://github.com/scarp-lang/scarp/blob/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5/docs/native-elf64.md) देखें।
 
 [वर्तमान release guide](/hi/guide/alpha7-first) में array concatenation, integer reductions और native सीमाएँ पढ़ें।
 
 ## वर्तमान compiler में क्या उपलब्ध नहीं है?
 
-ELF64 object emission अब experimental CLI से उपलब्ध है; C11 emission और checked aggregate layout planning Rust host APIs हैं। सामान्य executable linking, recursion, external calls, heap-backed values और aggregate execution उपलब्ध नहीं हैं। Scarp experimental interpreter ही है; syntax तथा standard-library compatibility स्थिर नहीं।
+ELF64 object emission अब experimental CLI से उपलब्ध है; C11 emission और checked aggregate layout planning Rust host APIs हैं। सामान्य executable linking, recursion, external calls, heap-backed values और general aggregate parameters/results उपलब्ध नहीं हैं। Flat integer/Boolean arrays, tuples और records private bounded native stack locals के रूप में उपलब्ध हैं। Scarp experimental interpreter ही है; syntax तथा standard-library compatibility स्थिर नहीं।
 
 ## आधिकारिक डाउनलोड और प्रमाण
 
-[आधिकारिक Downloads](https://scarp-lang.github.io/downloads/), [वर्तमान इंस्टॉलेशन](/hi/guide/install-latest), [वर्तमान भाषा पाठ](/hi/guide/alpha7-first) तथा [compiler का मूल source](https://github.com/scarp-lang/scarp/tree/638dc4c227f34f1c660be66834bcc0cbdb22dec8) पढ़ें। पुराने version-specific pages अब current search/navigation में नहीं दिखते; उनके परीक्षण Git में सुरक्षित हैं।
+[आधिकारिक Downloads](https://scarp-lang.github.io/downloads/), [वर्तमान इंस्टॉलेशन](/hi/guide/install-latest), [वर्तमान भाषा पाठ](/hi/guide/alpha7-first) तथा [compiler का मूल source](https://github.com/scarp-lang/scarp/tree/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5) पढ़ें। पुराने version-specific pages अब current search/navigation में नहीं दिखते; उनके परीक्षण Git में सुरक्षित हैं।
