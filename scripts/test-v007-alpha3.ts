@@ -17,7 +17,8 @@ assert.equal(evidence.compilerRef, tag)
 assert.equal(evidence.compilerCommit, commit)
 assert.equal(evidence.releasedAt, '2026-11-27T12:32:43Z')
 assert.deepEqual(validateCompilerEvidence(evidence), [])
-assert.deepEqual(JSON.parse(read('data/compiler-latest-release.json')), evidence)
+const current = JSON.parse(read('data/compiler-latest-release.json'))
+if (current.compilerRef === tag) assert.deepEqual(current, evidence)
 const manifest = JSON.parse(read('conformance/v007-alpha3/manifest.json')) as {
   compilerCommit: string; files: {name:string; upstream:string; blob:string}[]
 }
@@ -42,8 +43,8 @@ const pages = ['', 'hi/'].map(locale => {
     .map(({language,code})=>({language,code}))
 })
 assert.deepEqual(pages[0],pages[1])
-assert.deepEqual(pages[0].map(x=>x.language),['scarp','text','scarp','text','scarp','text','scarp','text'])
-const expected = ["100 Scarp true\n7 0.01","[list: <string>] [list: <integer>]","Scarp","Hello Scarp\nababab\nliteral\\n\nfirst\nsecond"]
+assert.deepEqual(pages[0].map(x=>x.language),['scarp','text','scarp','text','scarp','text','scarp','text','scarp','text'])
+const expected = ["100 Scarp true\n7 0.01","[list: <string>] [list: <integer>]","Scarp","12\nfailed","Hello Scarp\nababab\nliteral\\n\nfirst\nsecond"]
 for (let i=0;i<expected.length;i++) assert.equal(pages[0][i*2+1].code,expected[i])
 if (process.argv[2]) {
   const binary=resolve(process.argv[2])

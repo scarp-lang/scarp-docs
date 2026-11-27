@@ -1,5 +1,8 @@
 # Generic functions and string operators
 
+<!-- scarp-cli-release: v0.0.7-alpha.3 -->
+<!-- scarp-current-source: 44a3bb0a91e67570e46ce058a3f6211f8e5db0f5 -->
+
 This lesson targets published [v0.0.7-alpha.3](/releases/v0.0.7-alpha.3). Examples target the interpreter, not a native executable.
 
 ## Type inference
@@ -52,6 +55,30 @@ print(unwrap(some("Scarp"), "missing"));
 
 ~~~text
 Scarp
+~~~
+
+## Result payloads and propagation
+
+A generic Result may transform its success payload while retaining the exact error type required by propagation with `?`. Here the successful value becomes a one-element tuple; a failure is returned unchanged.
+
+~~~scarp
+pure funcra wrap<T, E>(input: result<T, E>) -> result<tuple<T>, E> {
+    bind value = input?;
+    return new result<tuple<T>, E>::Ok((value,));
+}
+funcra display(input: result<tuple<integer>, string>) -> unit {
+    match on input {
+        case Ok((value,)) { print(value); }
+        case Err(error) { print(error); }
+    }
+}
+display(wrap(new result<integer, string>::Ok(12)));
+display(wrap(new result<integer, string>::Err("failed")));
+~~~
+
+~~~text
+12
+failed
 ~~~
 
 ## Strings

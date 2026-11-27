@@ -1,6 +1,9 @@
 # Generic functions और string operators
 
-यह पाठ प्रकाशित [v0.0.7-alpha.3](/hi/releases/v0.0.7-alpha.3). उदाहरण interpreter के लिए हैं, native executable के लिए नहीं।
+<!-- scarp-cli-release: v0.0.7-alpha.3 -->
+<!-- scarp-current-source: 44a3bb0a91e67570e46ce058a3f6211f8e5db0f5 -->
+
+यह पाठ प्रकाशित [v0.0.7-alpha.3](/hi/releases/v0.0.7-alpha.3) पर आधारित है। उदाहरण interpreter के लिए हैं, native executable के लिए नहीं।
 
 ## Type inference
 
@@ -54,7 +57,31 @@ print(unwrap(some("Scarp"), "missing"));
 Scarp
 ~~~
 
-## Strings
+## Result payloads और propagation
+
+Generic Result का success type बदला जा सकता है, लेकिन `?` से लौटने वाले error का type समान होना चाहिए। नीचे success को one-element tuple में रखा जाता है; error बिना परिवर्तन के लौटता है।
+
+~~~scarp
+pure funcra wrap<T, E>(input: result<T, E>) -> result<tuple<T>, E> {
+    bind value = input?;
+    return new result<tuple<T>, E>::Ok((value,));
+}
+funcra display(input: result<tuple<integer>, string>) -> unit {
+    match on input {
+        case Ok((value,)) { print(value); }
+        case Err(error) { print(error); }
+    }
+}
+display(wrap(new result<integer, string>::Ok(12)));
+display(wrap(new result<integer, string>::Err("failed")));
+~~~
+
+~~~text
+12
+failed
+~~~
+
+## Strings और literals
 
 Concatenation में दो strings और repetition में string व integer चाहिए। Raw literal backslash सुरक्षित रखता है और triple quotes newline सुरक्षित रखते हैं।
 

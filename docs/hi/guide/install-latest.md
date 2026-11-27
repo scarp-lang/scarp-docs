@@ -22,9 +22,9 @@
 
 | सत्यापित v0.0.7-alpha.3 archive | SHA-256 |
 | --- | --- |
-| Windows x64 `scarp-0.0.7-alpha.2-x86_64-pc-windows-msvc.zip` | `b92da1ab3f2c0e57daee46b494c66f67165843e8b4040aad02262062a2bbe310` |
-| Linux x64 `scarp-0.0.7-alpha.2-x86_64-unknown-linux-gnu.tar.gz` | `61de8af415f9e9650c3d6865f1821eba799a6fab45e8ff57bc5f4a115f82b989` |
-| macOS ARM64 `scarp-0.0.7-alpha.2-aarch64-apple-darwin.tar.gz` | `7bc234c84b7d21ff359ff2440d5bd179b8c2c3a5105c7cd2e2af7faceb1b2e4e` |
+| Windows x64 `scarp-0.0.7-alpha.3-x86_64-pc-windows-msvc.zip` | `b92da1ab3f2c0e57daee46b494c66f67165843e8b4040aad02262062a2bbe310` |
+| Linux x64 `scarp-0.0.7-alpha.3-x86_64-unknown-linux-gnu.tar.gz` | `61de8af415f9e9650c3d6865f1821eba799a6fab45e8ff57bc5f4a115f82b989` |
+| macOS ARM64 `scarp-0.0.7-alpha.3-aarch64-apple-darwin.tar.gz` | `7bc234c84b7d21ff359ff2440d5bd179b8c2c3a5105c7cd2e2af7faceb1b2e4e` |
 
 ये hash **सिर्फ** [प्रकाशित v0.0.7-alpha.3 archives](https://github.com/scarp-lang/scarp/releases/tag/v0.0.7-alpha.3) के लिए हैं। Hash सही होना experimental software के production-ready होने की गारंटी नहीं है। Mismatch होने पर **आगे न बढ़ें**।
 

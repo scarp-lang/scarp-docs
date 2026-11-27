@@ -3,7 +3,7 @@
 <!-- scarp-cli-release: v0.0.7-alpha.3 -->
 <!-- scarp-current-source: 44a3bb0a91e67570e46ce058a3f6211f8e5db0f5 -->
 
-Scarp alpha.3 का Rust host API target layout की गणना करता है। यह memory serialization या aggregate native execution नहीं करता। Interpreter representation इससे अलग है।
+Scarp alpha.3 का Rust host API target layout की गणना करता है। Planner स्वयं memory serialization या native execution नहीं करता। Alpha.3 के bounded stack locals अलग backend सुविधा हैं। Interpreter representation इससे अलग है।
 
 ## Size, alignment और padding
 
