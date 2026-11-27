@@ -2,7 +2,7 @@
 
 > **For new Scarp downloads:** Use [Official Downloads](https://scarp-lang.github.io/downloads/) and the [current installation guide](/guide/install-latest). The archived binary names and checksums below apply only to their original release.
 ::: warning Historical alpha.4 release
-For a new installation, use the [currently published alpha.20 packages and checksums](/releases/v0.0.7-alpha.2). These alpha.4 archives and checksums remain available only for reproducing historical behavior.
+For a new installation, use the [currently published alpha.3 packages and checksums](/releases/v0.0.7-alpha.3). These alpha.4 archives and checksums remain available only for reproducing historical behavior.
 :::
 
 <!-- scarp-cli-release: v0.0.5-alpha.4 -->
