@@ -1,9 +1,9 @@
 # First steps with Scarp v0.0.7
 
-<!-- scarp-cli-release: v0.0.7-alpha.2 -->
-<!-- scarp-current-source: 638dc4c227f34f1c660be66834bcc0cbdb22dec8 -->
+<!-- scarp-cli-release: v0.0.7-alpha.3 -->
+<!-- scarp-current-source: 44a3bb0a91e67570e46ce058a3f6211f8e5db0f5 -->
 
-This lesson targets the interpreter and experimental native backend in [published v0.0.7-alpha.2](/releases/v0.0.7-alpha.2).
+This lesson targets the interpreter and experimental native backend in [published v0.0.7-alpha.3](/releases/v0.0.7-alpha.3).
 
 ## Join fixed arrays
 
@@ -50,4 +50,6 @@ The experimental x86-64 ELF64 Rust API supports up to 16 required integer argume
 
 ## Source evidence
 
-Immutable upstream evidence: [array example](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/examples/array_concat.srp), [integer example](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/examples/integer_reductions.srp), and [native contract](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/docs/native-elf64.md).
+Immutable upstream evidence: [array example](https://github.com/scarp-lang/scarp/blob/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5/examples/array_concat.srp), [integer example](https://github.com/scarp-lang/scarp/blob/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5/examples/integer_reductions.srp), and [native contract](https://github.com/scarp-lang/scarp/blob/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5/docs/native-elf64.md).
+
+For alpha.3 additions and their limits, see [generics and strings](/guide/v007-alpha3-generics-strings) and [native aggregate locals](/guide/native-aggregate-locals).

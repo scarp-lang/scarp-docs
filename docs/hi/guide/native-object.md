@@ -1,9 +1,9 @@
 # प्रयोगात्मक native-object CLI
 
-<!-- scarp-cli-release: v0.0.7-alpha.2 -->
-<!-- scarp-current-source: 638dc4c227f34f1c660be66834bcc0cbdb22dec8 -->
+<!-- scarp-cli-release: v0.0.7-alpha.3 -->
+<!-- scarp-current-source: 44a3bb0a91e67570e46ce058a3f6211f8e5db0f5 -->
 
-यह पाठ प्रकाशित alpha.2 के object-only backend पर आधारित है। यह operating system, bootable kernel या executable बनाने का पूरा compiler नहीं है।
+यह पाठ प्रकाशित alpha.3 के object-only backend पर आधारित है। यह operating system, bootable kernel या executable बनाने का पूरा compiler नहीं है।
 
 ## एक छोटा call graph
 
@@ -49,8 +49,10 @@ Reported peak_stack_bytes इस exact source और selected entry के ल�
 
 ## क्या समर्थित नहीं
 
-Native recursion, external calls, heap-backed values, aggregate execution, project inputs और executable linking भविष्य का काम है। Rust aggregate layout metadata execution support नहीं है। Interpreter के लिए `scarp exec` इस्तेमाल करें।
+Native recursion, external calls, heap-backed values, general aggregate parameters/results, project inputs और executable linking उपलब्ध नहीं हैं। Alpha.3 में private flat integer/Boolean aggregate stack locals तथा concrete integer generic specialization उपलब्ध हैं। Interpreter के लिए `scarp exec` इस्तेमाल करें।
 
-[वर्तमान reference](/hi/reference/current) · [मूल native-object contract](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/docs/native-object-output.md) · [Release](/hi/releases/v0.0.7-alpha.2).
+[वर्तमान reference](/hi/reference/current) · [मूल native-object contract](https://github.com/scarp-lang/scarp/blob/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5/docs/native-object-output.md) · [Release](/hi/releases/v0.0.7-alpha.3).
 
 [Native ABI और host testing](/hi/guide/native-abi) · [Native value layout](/hi/guide/native-layout).
+
+Alpha.3 की नई सुविधाओं और उनकी सीमाओं के लिए [Generic functions](/hi/guide/v007-alpha3-generics-strings) तथा [Native aggregate locals](/hi/guide/native-aggregate-locals) पढ़ें।

@@ -1,9 +1,9 @@
 # Experimental native value layout
 
-<!-- scarp-cli-release: v0.0.7-alpha.2 -->
-<!-- scarp-current-source: 638dc4c227f34f1c660be66834bcc0cbdb22dec8 -->
+<!-- scarp-cli-release: v0.0.7-alpha.3 -->
+<!-- scarp-current-source: 44a3bb0a91e67570e46ce058a3f6211f8e5db0f5 -->
 
-The alpha.2 Rust host API computes target layouts without serializing values or executing native aggregates. Interpreter storage is a separate representation.
+The alpha.3 Rust host API computes target layouts without serializing values or executing native aggregates. Interpreter storage is a separate representation.
 
 ## Size, alignment and padding
 
@@ -45,6 +45,8 @@ This example asserts size, alignment and field offsets. It does not pass a tuple
 
 ## Limits and engineering boundaries
 
-The planner uses checked 64-bit arithmetic and bounds total value size to i64::MAX. Traversal is limited to 64 levels and 65,536 component visits. Dynamic or heap-backed types, callable types and foreign type IDs are rejected. This is not support for general pointers, address spaces, stable aggregate ABI or aggregate lowering.
+The planner uses checked 64-bit arithmetic and bounds total value size to i64::MAX. Traversal is limited to 64 levels and 65,536 component visits. Dynamic or heap-backed types, callable types and foreign type IDs are rejected. This is not support for general pointers, address spaces, stable aggregate ABI or general aggregate lowering.
 
-[Pinned upstream layout contract](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/docs/native-value-layout.md) · [Current type guide](/guide/current-types) · [Native ABI](/guide/native-abi).
+[Pinned upstream layout contract](https://github.com/scarp-lang/scarp/blob/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5/docs/native-value-layout.md) · [Current type guide](/guide/current-types) · [Native ABI](/guide/native-abi).
+
+For alpha.3 additions and their limits, see [generics and strings](/guide/v007-alpha3-generics-strings) and [native aggregate locals](/guide/native-aggregate-locals).

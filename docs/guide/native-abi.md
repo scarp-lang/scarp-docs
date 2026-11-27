@@ -1,9 +1,9 @@
 # Native object ABI and host validation
 
-<!-- scarp-cli-release: v0.0.7-alpha.2 -->
-<!-- scarp-current-source: 638dc4c227f34f1c660be66834bcc0cbdb22dec8 -->
+<!-- scarp-cli-release: v0.0.7-alpha.3 -->
+<!-- scarp-current-source: 44a3bb0a91e67570e46ce058a3f6211f8e5db0f5 -->
 
-This guide explains the published alpha.2 experimental SysV AMD64 ABI. First complete [the native-object tutorial](/guide/native-object).
+This guide explains the published alpha.3 experimental SysV AMD64 ABI. First complete [the native-object tutorial](/guide/native-object).
 
 ## Source name versus exported symbol
 
@@ -70,4 +70,6 @@ cc -std=c11 -Wall -Wextra -Werror host.c calls.o -o host-check
 
 A successful assertion run exits 0. This is hosted Linux ABI validation, not evidence of bootloader, kernel image, general native linker or stable ABI support.
 
-[Pinned upstream native ABI contract](https://github.com/scarp-lang/scarp/blob/638dc4c227f34f1c660be66834bcc0cbdb22dec8/docs/native-elf64.md) · [Current reference](/reference/current).
+[Pinned upstream native ABI contract](https://github.com/scarp-lang/scarp/blob/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5/docs/native-elf64.md) · [Current reference](/reference/current).
+
+For alpha.3 additions and their limits, see [generics and strings](/guide/v007-alpha3-generics-strings) and [native aggregate locals](/guide/native-aggregate-locals).
