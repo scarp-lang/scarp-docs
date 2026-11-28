@@ -301,3 +301,71 @@ test('search is consistently bounded over a large but valid corpus',()=>{
   assert.equal(answers.length,18)
   assert.ok(elapsed<4000,'Search over 1024 pages should complete in under 4s: '+elapsed)
 })
+
+test('exact section facet returns only matching sections before truncation',()=>{
+  const reference=searchDocumentation(examples,'E0063',{locale:'en',section:'reference'})
+  assert.deepEqual(reference.map(x=>x.entry.title),['Compiler diagnostics'])
+  const language=searchDocumentation(examples,'E0063',{locale:'en',section:'language'})
+  assert.deepEqual(language.map(x=>x.entry.title),['Exact decimal calculations'])
+  assert.deepEqual(searchDocumentation(examples,'E0063',{locale:'en',section:'community'}),[])
+  assert.deepEqual(searchDocumentation(examples,'E0063',{locale:'hi',section:'reference'})
+    .map(x=>x.entry.title),['Compiler त्रुटि E0063'])
+})
+
+test('facets run before ranking and result limits',()=>{
+  const rows=parseSearchIndex([
+    ...Array.from({length:30},(_,n)=>entry('guide-'+n,'Memory guide '+n,
+      'guide','memory'.repeat(2))),
+    ...Array.from({length:20},(_,n)=>entry('reference-'+n,'Memory reference '+n,
+      'reference','memory'.repeat(2)))
+  ])
+  const matches=searchDocumentation(rows,'memory',{
+    locale:'en',section:'reference',limit:8
+  })
+  assert.equal(matches.length,8)
+  assert.ok(matches.every(x=>x.entry.section==='reference'))
+  assert.ok(matches.every(x=>x.entry.route.includes('/reference/')))
+  const entire=searchDocumentation(rows,'memory',{
+    locale:'en',section:'reference',limit:50
+  })
+  assert.equal(entire.length,20)
+})
+
+test('invalid facet input fails closed rather than disabling filters',()=>{
+  for(const invalid of ['', '../guide', '/guide','Guide',' guide ','a:b','a b',
+    '<script>','🤖','a'.repeat(70)]) {
+    // Empty string is reserved for the browser's All sections dropdown;
+    // the UI passes undefined instead of an empty value.
+    assert.deepEqual(searchDocumentation(examples,'memory',{
+      locale:'en',section:invalid
+    }),[],invalid)
+  }
+  assert.ok(searchDocumentation(examples,'memory',{locale:'en'}).length>0)
+  assert.ok(searchDocumentation(examples,'memory',{
+    locale:'en',section:undefined
+  }).length>0)
+})
+
+test('structured section: and dropdown facets compose with AND semantics',()=>{
+  assert.deepEqual(searchDocumentation(examples,'section:language E0063',{
+    locale:'en',section:'reference'
+  }),[])
+  assert.deepEqual(searchDocumentation(examples,'body:E0063 -decimal',{
+    locale:'en',section:'reference'
+  }).map(x=>x.entry.title),['Compiler diagnostics'])
+  assert.deepEqual(searchDocumentation(examples,'in:language E0063',{
+    locale:'en',section:'language'
+  }).map(x=>x.entry.title),['Exact decimal calculations'])
+})
+
+test('facet selection respects locale isolation across repeated calls',()=>{
+  const en=searchDocumentation(examples,'Lifetime',{locale:'en',section:'language'})
+  const hi=searchDocumentation(examples,'Lifetime',{locale:'hi',section:'language'})
+  assert.ok(en.length>0)
+  assert.ok(hi.length>0)
+  assert.ok(en.every(x=>x.entry.locale==='en'))
+  assert.ok(hi.every(x=>x.entry.locale==='hi'))
+  assert.ok(searchDocumentation(examples,'Lifetime',{
+    locale:'hi',section:'reference'
+  }).length===0)
+})
