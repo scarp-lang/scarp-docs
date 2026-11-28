@@ -65,7 +65,7 @@ File-level `funcra` supports explicit `::<...>` type arguments, contextual infer
 
 Alpha.19 introduced checked named/exported callable handles, signature/effect-constrained slots and cumulative execution receipts. Alpha.20 extends host argument admission to strings inside composite values, counted by logical UTF-8 occurrence. These quotas do not bound total process memory.
 
-The experimental native-object backend accepts pure integer functions, up to sixteen required arguments, and bounded nonrecursive direct calls within a file. The new CLI emits relocatable x86-64 ELF64 objects only. Work and call-stack bounds are checked; the ABI is experimental. See the [native-object tutorial](/guide/native-object) and [tagged compiler contract](https://github.com/scarp-lang/scarp/blob/e620bdcb512fbe909b08f1b4cc625865e4cdf339/docs/native-elf64.md).
+The experimental native-object backend accepts pure integer functions, up to sixteen required arguments, and bounded direct calls and budget-limited self/mutual recursion within a file. The new CLI emits relocatable x86-64 ELF64 objects only. Work and call-stack bounds are checked; the ABI is experimental. See the [native-object tutorial](/guide/native-object) and [tagged compiler contract](https://github.com/scarp-lang/scarp/blob/e620bdcb512fbe909b08f1b4cc625865e4cdf339/docs/native-elf64.md).
 
 Read the [current release guide](/guide/alpha7-first) for array concatenation, integer reductions and native limitations.
 

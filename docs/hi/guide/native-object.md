@@ -31,7 +31,7 @@ Source में `evaluate` entry चुनता है; object का exported
 | --- | --- | --- |
 | `checked` | एक pure integer function, forward scalar flow | `scarp_checked_integer_function` |
 | `bounded` | Standalone function, loops और work allowance | `scarp_bounded_integer_function` |
-| `bounded-entry` | Named entry, same-file nonrecursive calls, work और stack allowance | `scarp_bounded_integer_entry` |
+| `bounded-entry` | Named entry, budget-सीमित self/mutual recursion, work, active-frame और stack allowances | `scarp_bounded_integer_entry` |
 
 Target `x86_64-none` explicit है। दोनों allowances unsigned 32-bit decimal हैं। Stack budget aligned caller stack pointer के नीचे मापा जाता है; external argument slots और caller padding अलग हैं।
 
@@ -49,7 +49,7 @@ Reported peak_stack_bytes इस exact source और selected entry के ल�
 
 ## क्या समर्थित नहीं
 
-Native recursion, external calls, heap-backed values, general aggregate parameters/results, project inputs और executable linking उपलब्ध नहीं हैं। Alpha.3 में private flat integer/Boolean aggregate stack locals तथा concrete integer generic specialization उपलब्ध हैं। Interpreter के लिए `scarp exec` इस्तेमाल करें।
+बिना सीमा की recursion, external calls, heap-backed values, general aggregate parameters/results, project inputs और executable linking अभी उपलब्ध नहीं हैं। Alpha.3 में private flat integer/Boolean aggregates और concrete integer generic specialization आए; alpha.4 में bounded self/mutual recursion और nested private aggregates जुड़े। [alpha.4 systems पाठ](/hi/guide/v007-alpha4-systems)। Interpreter के लिए `scarp exec` इस्तेमाल करें।
 
 [वर्तमान reference](/hi/reference/current) · [मूल native-object contract](https://github.com/scarp-lang/scarp/blob/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5/docs/native-object-output.md) · [Release](/hi/releases/v0.0.7-alpha.3).
 

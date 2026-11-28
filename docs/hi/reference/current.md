@@ -65,13 +65,13 @@ File-level `funcra` में explicit `::<...>` type arguments, contextual infe
 
 Alpha.19 ने checked named/exported callable handles, signature/effect constrained slots और cumulative execution receipts दिए। Alpha.20 में composite strings के logical UTF-8 bytes भी quota में गिने जाते हैं। Ledger पूरे process की memory limit नहीं है।
 
-Experimental native-object backend pure integer functions, 16 तक required integer arguments तथा एक ही file के bounded nonrecursive direct calls स्वीकार करता है। नई CLI केवल relocatable x86-64 ELF64 object बनाती है। Work और call-stack bounds जाँचे जाते हैं; ABI experimental है। [Native-object पाठ](/hi/guide/native-object) तथा [tagged compiler contract](https://github.com/scarp-lang/scarp/blob/e620bdcb512fbe909b08f1b4cc625865e4cdf339/docs/native-elf64.md) देखें।
+Experimental native-object backend pure integer functions, 16 तक required integer arguments तथा एक ही file के bounded direct calls और budget-सीमित self/mutual recursion स्वीकार करता है। नई CLI केवल relocatable x86-64 ELF64 object बनाती है। Work और call-stack bounds जाँचे जाते हैं; ABI experimental है। [Native-object पाठ](/hi/guide/native-object) तथा [tagged compiler contract](https://github.com/scarp-lang/scarp/blob/e620bdcb512fbe909b08f1b4cc625865e4cdf339/docs/native-elf64.md) देखें।
 
 [वर्तमान release guide](/hi/guide/alpha7-first) में array concatenation, integer reductions और native सीमाएँ पढ़ें।
 
 ## वर्तमान compiler में क्या उपलब्ध नहीं है?
 
-ELF64 object emission अब experimental CLI से उपलब्ध है; C11 emission और checked aggregate layout planning Rust host APIs हैं। सामान्य executable linking, recursion, external calls, heap-backed values और general aggregate parameters/results उपलब्ध नहीं हैं। Flat integer/Boolean arrays, tuples और records private bounded native stack locals के रूप में उपलब्ध हैं। Scarp experimental interpreter ही है; syntax तथा standard-library compatibility स्थिर नहीं।
+ELF64 object emission अब experimental CLI से उपलब्ध है; C11 emission और checked aggregate layout planning Rust host APIs हैं। सामान्य executable linking, external calls, heap-backed values और general aggregate parameters/results उपलब्ध नहीं हैं। Flat integer/Boolean arrays, tuples और records private bounded native stack locals के रूप में उपलब्ध हैं। Scarp experimental interpreter ही है; syntax तथा standard-library compatibility स्थिर नहीं।
 
 ## आधिकारिक डाउनलोड और प्रमाण
 
