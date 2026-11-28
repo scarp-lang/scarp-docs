@@ -863,9 +863,9 @@ jobs:
       - name: Build exact published compiler
         run: cargo build --manifest-path .compiler-v007-alpha3/Cargo.toml --locked --offline
       - name: Verify bilingual lessons and pinned examples
-        run: npm run test:v007-alpha3
-      - name: Verify published alpha.4 fixture evidence
-        run: npm run test:v007-alpha4 -- .compiler-v007-alpha3/target/debug/scarp .compiler-v007-alpha3
+        run: npm run test:v007-alpha3 -- .compiler-v007-alpha3/target/debug/scarp .compiler-v007-alpha3
+      - name: Verify published alpha.4 fixture evidence (static only)
+        run: npm run test:v007-alpha4
       - name: Run upstream language and aggregate regression tests
         run: cargo test --manifest-path .compiler-v007-alpha3/Cargo.toml --locked --offline --test generic_functions --test generic_variant_payloads --test string_operators --test native_object_aggregates
 
