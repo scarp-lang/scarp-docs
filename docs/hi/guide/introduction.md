@@ -1,6 +1,6 @@
 # Scarp का परिचय
 
-**नवीनतम प्रकाशित compiler [v0.0.7-alpha.3](https://github.com/scarp-lang/scarp/releases/tag/v0.0.7-alpha.3) है।** Generic functions, contextual type inference, generic Option/Result, bounded string operators तथा private aggregate locals के साथ experimental native integer specialization; सामान्य native executable compiler नहीं। [वर्तमान release](/hi/releases/v0.0.7-alpha.3) · [ऐतिहासिक alpha.18](/hi/releases/v0.0.6-alpha.18) · [पिछली alpha.17](/hi/releases/v0.0.6-alpha.17) · [Learning path](/hi/guide/learning-path)।
+**नवीनतम प्रकाशित compiler [v0.0.7-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.7-alpha.4) है।** Generic functions, contextual type inference, generic Option/Result, bounded string operators तथा private aggregate locals के साथ experimental native integer specialization; सामान्य native executable compiler नहीं। [वर्तमान release](/hi/releases/v0.0.7-alpha.4) · [ऐतिहासिक alpha.18](/hi/releases/v0.0.6-alpha.18) · [पिछली alpha.17](/hi/releases/v0.0.6-alpha.17) · [Learning path](/hi/guide/learning-path)।
 
 **वर्तमान compiler इंस्टॉल करें:** [आधिकारिक Scarp Downloads](https://scarp-lang.github.io/downloads/) · [नई इंस्टॉलेशन गाइड](/hi/guide/install-latest)। यह नए इंस्टॉलेशन का अनुशंसित रास्ता है; पुराने उदाहरण अपने मूल release पर सत्यापित हैं।
 

@@ -8,7 +8,7 @@
 
 **Unsure which command belongs to your installed compiler?** Use the [interactive version-aware CLI Command Finder](/tooling/command-finder) to avoid mixing older `run` / `check` with newer static `verify` or project inspection.
 
-**Current compiler:** [v0.0.7-alpha.3](/releases/v0.0.7-alpha.3) (November 27, 2026). Generic functions, contextual type inference, generic Option/Result, bounded string operators and experimental native integer specialization with private aggregate locals; no general native executable compiler. [Current language lesson](/guide/alpha7-first) · [Historical alpha.18](/releases/v0.0.6-alpha.18) · [alpha.17](/releases/v0.0.6-alpha.17) · [alpha.16](/releases/v0.0.6-alpha.16).
+**Current compiler:** [v0.0.7-alpha.4](/releases/v0.0.7-alpha.4) (November 28, 2026). Generic functions, contextual type inference, generic Option/Result, bounded string operators and experimental native integer specialization with private aggregate locals; no general native executable compiler. [Current language lesson](/guide/alpha7-first) · [Historical alpha.18](/releases/v0.0.6-alpha.18) · [alpha.17](/releases/v0.0.6-alpha.17) · [alpha.16](/releases/v0.0.6-alpha.16).
 
 **Start here if you are new to Scarp.** This track connects complete, compiler-backed lessons from the first program through numerical modeling, project modules, and the symbol-navigation tools introduced in the **[published v0.0.6-alpha.1](https://github.com/scarp-lang/scarp/releases/tag/v0.0.6-alpha.1)** prerelease.
 
@@ -143,3 +143,5 @@ This is a learning exercise, **not** a new officially verified program. Use the 
 - **Version reasoning:** explain why the historical `run`/`check` examples, alpha.4 projects, and alpha.6 symbols belong to different release-scoped guides.
 
 Continue to [feature status](/reference/status), [version compatibility](/reference/compatibility), and [evidence methodology](/reference/evidence). All published packages here remain prereleases; completion of these stages does not imply stable language APIs or unsupported future features.
+
+For the newest systems capabilities, explore [alpha.4 nested aggregates and recursion](/guide/v007-alpha4-systems) and [wide-exponent BigInt](/guide/v007-alpha4-bigint).

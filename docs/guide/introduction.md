@@ -1,6 +1,6 @@
 # Introduction to Scarp
 
-**Latest published compiler: [v0.0.7-alpha.3](https://github.com/scarp-lang/scarp/releases/tag/v0.0.7-alpha.3).** Generic functions, contextual type inference, generic Option/Result, bounded string operators and experimental native integer specialization with private aggregate locals; no general native executable compiler. [Current release](/releases/v0.0.7-alpha.3) · [Historical alpha.18](/releases/v0.0.6-alpha.18) · [Historical alpha.17](/releases/v0.0.6-alpha.17) · [Learning path](/guide/learning-path).
+**Latest published compiler: [v0.0.7-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.7-alpha.4).** Generic functions, contextual type inference, generic Option/Result, bounded string operators and experimental native integer specialization with private aggregate locals; no general native executable compiler. [Current release](/releases/v0.0.7-alpha.4) · [Historical alpha.18](/releases/v0.0.6-alpha.18) · [Historical alpha.17](/releases/v0.0.6-alpha.17) · [Learning path](/guide/learning-path).
 
 **Install the current compiler:** [Official Scarp Downloads](https://scarp-lang.github.io/downloads/) · [Current installation guide](/guide/install-latest). This is the recommended path for new installations; older examples retain their original release-specific evidence.
 
