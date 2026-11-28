@@ -60,6 +60,9 @@ jobs:
         run: npm run check:alpha17
       - name: Verify published alpha.18 exec, immutable arrays and Lifetime evidence
         run: npm run check:alpha18
+      - name: Verify bounded English/Hindi search parser, facets and ranking
+        run: npm run test:search-engine
+
       - name: Validate Scarp-owned bilingual search and keyboard accessibility
         run: npm run check:hindi-search && npm run test:hindi-search
       - name: Test version-aware bilingual command finder and historical release boundaries
