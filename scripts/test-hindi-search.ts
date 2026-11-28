@@ -30,8 +30,8 @@ mutate('client',"const hindi=document.documentElement.lang.startsWith('hi')",
 mutate('engine',"if (page.entry.locale !== options.locale) continue",
   "if (false) continue")
 mutate('client',"fetch(BASE+'assets/search-index.json')","fetch('https://search.example.com/index')")
-mutate('client',"searchDocumentation(await searchIndex(),query,{locale})",
-  "searchDocumentation(await searchIndex(),query,{locale:'en'})")
+mutate('client',"section:scope.value||undefined",
+  "section:undefined")
 mutate('client',"t('No results found','कोई परिणाम नहीं मिला')",
   "t('No results found','No results found')")
 mutate('client',"dialog.showModal()","dialog.show()")
@@ -42,6 +42,7 @@ mutate('client',"event.key!=='ArrowDown'&&event.key!=='ArrowUp'",
   "event.key!=='Tab'&&event.key!=='Tab'")
 mutate('renderer','aria-keyshortcuts="Control+K Meta+K /"',
   'aria-keyshortcuts="Control+L"')
+mutate('renderer','id="search-scope"','id="missing-scope"')
 mutate('renderer','id="search-status" role="status" aria-live="polite"',
   'id="search-status"')
 mutate('renderer',"locale:view.locale","locale:'en'")
@@ -61,4 +62,4 @@ mutate('readme','docs/hi/guide/search-and-navigation.md',
 assert.ok(validateHindiLocalSearch({...pages,
   hindi:pages.hindi.replace(/[\u0900-\u097f]/gu,'')}).length>0,
   'Removing all Hindi script must fail')
-console.log('PASS: 22 owned-search localization, ARIA, network, keyboard and release-drift regressions')
+console.log('PASS: 23 owned-search localization, ARIA, network, keyboard and release-drift regressions')
