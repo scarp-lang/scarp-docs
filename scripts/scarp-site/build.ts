@@ -186,8 +186,19 @@ function htmlDocument(view:PageView, views:PageView[], currentTag:string,activeR
     '<div class="search-header"><h2 id="search-title">'+searchText+'</h2>'+
     '<button type="button" id="search-close" aria-label="'+localized('Close search','खोज बंद करें',locale)+'">×</button></div>'+
     '<label for="search-query">'+localized('Search all '+(locale==='hi'?'Hindi':'English')+' pages','दस्तावेज़ों में खोजें',locale)+'</label>'+
-    '<input id="search-query" type="search" autocomplete="off" placeholder="'+
+    '<input id="search-query" type="search" autocomplete="off" aria-describedby="search-help" placeholder="'+
       localized('Type a keyword…','शब्द लिखें…',locale)+'"/>'+
+    '<div class="search-controls"><label for="search-scope">'+
+      localized('Documentation section','दस्तावेज़ अनुभाग',locale)+'</label>'+
+    '<select id="search-scope" aria-label="'+localized('Filter by section','अनुभाग से छाँटें',locale)+'">'+
+    '<option value="">'+localized('All sections','सभी अनुभाग',locale)+'</option>'+
+    groupOrder.filter(group=>views.some(v=>v.active&&v.locale===locale&&groupFor(v.source)===group))
+      .map(group=>'<option value="'+htmlAttr(group)+'">'+
+        escapeHtml((groupLabels[group]??[group,group])[locale==='hi'?1:0]??group)+'</option>').join('')+
+    '</select></div>'+
+    '<p id="search-help" class="search-help">'+localized(
+      'Tips: use "exact phrase", -exclude, title:term, body:term, or section:guide. Search stays on this device.',
+      'सुझाव: "सटीक वाक्यांश", -शब्द, title:term, body:term या section:guide लिखें। खोज आपके डिवाइस पर होती है।',locale)+'</p>'+
     '<p id="search-status" role="status" aria-live="polite"></p><ul id="search-results"></ul></dialog>'+
     finder+
     '<footer class="site-footer">'+localized('Experimental Scarp language. Verify each guide against its published compiler release.',
