@@ -115,6 +115,14 @@ main { min-width:0; }
 .search-header h2 { margin:0 0 .6rem; font-size:1.3rem; }
 .search-panel label { display:block; font-size:.85rem; margin-bottom:.35rem; color:var(--muted); }
 #search-query { display:block; width:100%; padding:.65rem .85rem; }
+.search-controls { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.5rem 1.3rem; padding:.7rem 0 .25rem; }
+.search-panel .search-controls label { margin:0; }
+#search-scope { min-width: min(100%, 220px); max-width:100%; padding:.4rem .6rem; }
+.search-help { margin:.45rem 0 .1rem; color:var(--muted); font-size:.8rem; line-height:1.55; }
+@media(max-width:480px) {
+  .search-controls { align-items:stretch; flex-direction:column; gap:.3rem; }
+  #search-scope { width:100%; }
+}
 #search-status { color:var(--muted); font-size:.85rem; }
 #search-results { list-style:none; padding:0; margin:.25rem 0; max-height:46vh; overflow-y:auto; }
 #search-results li { border-bottom:1px solid var(--line); }
