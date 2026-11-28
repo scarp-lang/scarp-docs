@@ -5,7 +5,7 @@ import { deploymentLabels, getSuccessfulRunCount } from './pages-api.js'
  * The server renders every page as plain HTML; this enhances only the search,
  * appearance, mobile menu, deployment count and release-aware CLI widget.
  */
-import { parseSearchIndex, type SearchEntry } from './search-index.js'
+import { parseSearchIndex, searchDocumentation, type SearchEntry } from './search-index.js'
 interface Release { tag:string; label:string }
 interface Task { id:string; en:string; hi:string }
 interface CommandAdvice {
@@ -88,41 +88,6 @@ function searchIndex():Promise<SearchEntry[]> {
   }
   return searchIndexPromise
 }
-function search(entries:SearchEntry[],value:string):SearchEntry[]{
-  const terms=value.toLocaleLowerCase().split(/\s+/u).filter(Boolean)
-  if(terms.length===0)return []
-  const scored=entries.filter(e=>e.locale===locale).map(e=>{
-    const heading=e.title.toLocaleLowerCase()
-    const content=e.excerpt.toLocaleLowerCase()
-    if(!terms.every(term=>heading.includes(term)||content.includes(term)))return null
-    const score=terms.reduce((sum,term)=>sum+
-      (heading===term?100:heading.startsWith(term)?50:heading.includes(term)?22:0)+
-      (content.includes(term)?1:0),0)
-    return {entry:e,score}
-  }).filter((x):x is {entry:SearchEntry;score:number}=>x!==null)
-  return scored.sort((a,b)=>b.score-a.score||a.entry.title.localeCompare(b.entry.title))
-    .slice(0,18).map(x=>x.entry)
-}
-
-/**
- * Give search results context around the actual match, not just the first
- * paragraph of a long page. Slice by Unicode code points so Devanagari text,
- * emoji and other supplementary characters cannot be cut in half.
- */
-function searchPreview(content:string,query:string,maxLength=160):string {
-  const chars=Array.from(content)
-  if(chars.length<=maxLength)return content
-  const folded=content.toLocaleLowerCase()
-  const matches=query.toLocaleLowerCase().split(/\s+/u).filter(Boolean)
-    .map(term=>folded.indexOf(term)).filter(index=>index>=0)
-  const first=matches.length?Math.min(...matches):0
-  const matchPosition=Array.from(content.slice(0,first)).length
-  const start=Math.max(0,Math.min(matchPosition-48,chars.length-maxLength))
-  const end=Math.min(chars.length,start+maxLength)
-  return (start>0?'…':'')+chars.slice(start,end).join('').trim()+
-    (end<chars.length?'…':'')
-}
-
 function installSearch():void {
   const dialog=document.querySelector<HTMLDialogElement>('#search-panel')
   const open=document.querySelector<HTMLButtonElement>('#search-open')
@@ -144,17 +109,17 @@ function installSearch():void {
     }
     status.textContent=t('Searching local documentation…','स्थानीय दस्तावेज़ खोजे जा रहे हैं…')
     try {
-      const entries=search(await searchIndex(),query)
+      const results=searchDocumentation(await searchIndex(),query,{locale})
       if(current!==generation||!dialog.open)return
-      status.textContent=entries.length
-        ?t(entries.length+' result(s)',entries.length+' परिणाम')
+      status.textContent=results.length
+        ?t(results.length+' result(s)',results.length+' परिणाम')
         :t('No results found','कोई परिणाम नहीं मिला')
-      for(const entry of entries){
+      for(const {entry,preview} of results){
         const li=el('li')
         const link=el('a')
         link.href=entry.route
         link.appendChild(el('strong',undefined,entry.title))
-        link.appendChild(el('small',undefined,searchPreview(entry.excerpt,query)))
+        link.appendChild(el('small',undefined,preview))
         li.appendChild(link)
         output.appendChild(li)
       }
