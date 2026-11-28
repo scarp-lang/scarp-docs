@@ -93,9 +93,10 @@ function installSearch():void {
   const open=document.querySelector<HTMLButtonElement>('#search-open')
   const close=document.querySelector<HTMLButtonElement>('#search-close')
   const input=document.querySelector<HTMLInputElement>('#search-query')
+  const scope=document.querySelector<HTMLSelectElement>('#search-scope')
   const output=document.querySelector<HTMLUListElement>('#search-results')
   const status=document.querySelector<HTMLElement>('#search-status')
-  if(!dialog||!open||!close||!input||!output||!status)return
+  if(!dialog||!open||!close||!input||!scope||!output||!status)return
   let previousFocus:HTMLElement|null=null
   let generation=0
 
@@ -109,7 +110,9 @@ function installSearch():void {
     }
     status.textContent=t('Searching local documentation…','स्थानीय दस्तावेज़ खोजे जा रहे हैं…')
     try {
-      const results=searchDocumentation(await searchIndex(),query,{locale})
+      const results=searchDocumentation(await searchIndex(),query,{
+        locale,section:scope.value||undefined
+      })
       if(current!==generation||!dialog.open)return
       status.textContent=results.length
         ?t(results.length+' result(s)',results.length+' परिणाम')
@@ -147,6 +150,7 @@ function installSearch():void {
     else open.focus({preventScroll:true})
   })
   input.addEventListener('input',()=>{void refresh()})
+  scope.addEventListener('change',()=>{void refresh()})
   // Arrow navigation keeps search results reachable without a mouse. Ordinary
   // Tab/Shift+Tab remain available, and Enter uses the native link behavior.
   dialog.addEventListener('keydown', event=>{
