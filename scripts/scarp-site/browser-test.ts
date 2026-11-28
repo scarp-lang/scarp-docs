@@ -228,7 +228,7 @@ async function testLocale(
 
     // The category selector must restrict matches before the result limit,
     // preserve the query, and be fully keyboard accessible in both locales.
-    const scope=page.locator<HTMLSelectElement>('#search-scope')
+    const scope=page.locator('#search-scope')
     assert.equal(await scope.getAttribute('aria-label'),
       lang==='hi'?'अनुभाग से छाँटें':'Filter by section')
     assert.equal(await scope.inputValue(),'')
