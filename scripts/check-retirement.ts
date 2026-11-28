@@ -24,12 +24,12 @@ for(const locale of ['', 'hi/']) {
       'Published tuple ordering must not retain its development-only page')
   }
 }
-if(manifest.compilerRef==='v0.0.7-alpha.1' || (manifest.compilerRef==='v0.0.7-alpha.2' || manifest.compilerRef==='v0.0.7-alpha.3')) {
+if(manifest.compilerRef==='v0.0.7-alpha.1' || (manifest.compilerRef==='v0.0.7-alpha.2' || (manifest.compilerRef==='v0.0.7-alpha.3' || manifest.compilerRef==='v0.0.7-alpha.4'))) {
   for(const locale of ['', 'hi/']) {
     for(const lesson of ['guide/alpha7-first.md','guide/current-types.md','releases/'+manifest.compilerRef+'.md']) {
       assert.ok(active.includes(locale+lesson),'Missing current bilingual guide: '+locale+lesson)
     }
-    if((manifest.compilerRef==='v0.0.7-alpha.2' || manifest.compilerRef==='v0.0.7-alpha.3')) {
+    if((manifest.compilerRef==='v0.0.7-alpha.2' || (manifest.compilerRef==='v0.0.7-alpha.3' || manifest.compilerRef==='v0.0.7-alpha.4'))) {
       for (const page of ['native-object','native-abi','native-layout']) {
         assert.ok(active.includes(locale+'guide/'+page+'.md'),'Missing native guide: '+page)
       }
@@ -38,11 +38,20 @@ if(manifest.compilerRef==='v0.0.7-alpha.1' || (manifest.compilerRef==='v0.0.7-al
     assert.ok(!active.includes(locale+'releases/v0.0.6-alpha.20.md'),'Previous release remains active')
   }
 }
-if(manifest.compilerRef==='v0.0.7-alpha.3') {
+if((manifest.compilerRef==='v0.0.7-alpha.3' || manifest.compilerRef==='v0.0.7-alpha.4')) {
   for(const locale of ['', 'hi/']) {
     for(const page of ['guide/v007-alpha3-generics-strings.md','guide/native-aggregate-locals.md'])
       assert.ok(active.includes(locale+page),'Missing alpha.3 lesson: '+locale+page)
     assert.ok(!active.includes(locale+'releases/v0.0.7-alpha.2.md'),'Alpha.2 release remains active')
+  }
+}
+if(manifest.compilerRef==='v0.0.7-alpha.4') {
+  for(const locale of ['', 'hi/']) {
+    for(const page of ['guide/v007-alpha4-systems.md','guide/v007-alpha4-bigint.md']) {
+      assert.ok(active.includes(locale+page),'Missing current alpha.4 lesson: '+locale+page)
+    }
+    assert.ok(!active.includes(locale+'releases/v0.0.7-alpha.3.md'),
+      'Previous alpha.3 release must remain retired')
   }
 }
 assert.ok(all.length>=200,'Missing historical source fixtures')
