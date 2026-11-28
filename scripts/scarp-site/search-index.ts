@@ -43,6 +43,8 @@ export interface SearchOptions {
   readonly locale: 'en' | 'hi'
   readonly limit?: number
   readonly previewLength?: number
+  /** Exact section facet, applied before ranking and result limiting. */
+  readonly section?: string
 }
 
 /** Validate generated data before any route is used as an href. */
@@ -275,9 +277,16 @@ export function searchDocumentation(
   const limit = Number.isFinite(requested)
     ? Math.max(0, Math.min(MAX_RESULTS, Math.trunc(requested))) : DEFAULT_LIMIT
   if (limit === 0) return []
+  // A malformed facet must fail closed: never silently return all sections.
+  if (options.section !== undefined &&
+      (typeof options.section !== 'string' ||
+       !/^[a-z][a-z0-9-]{0,63}$/.test(options.section))) {
+    return []
+  }
   const found: DocumentationSearchResult[] = []
   for (const page of indexedPages(entries)) {
     if (page.entry.locale !== options.locale) continue
+    if (options.section && page.entry.section !== options.section) continue
     const match = scorePage(page, query)
     if (!match) continue
     const preview = searchPreview(page.entry.excerpt, queryText, options.previewLength)
