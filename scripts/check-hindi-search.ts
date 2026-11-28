@@ -7,6 +7,7 @@ const root=resolve(fileURLToPath(new URL('..',import.meta.url)))
 const read=(path:string):string=>readFileSync(resolve(root,path),'utf8')
 export const sources:SearchLocalizationSources={
   client:read('scripts/scarp-site/client.ts'),
+  engine:read('scripts/scarp-site/search-index.ts'),
   renderer:read('scripts/scarp-site/build.ts'),
   readme:read('README.md'),
   english:read('docs/guide/search-and-navigation.md'),
