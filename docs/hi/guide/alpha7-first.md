@@ -1,9 +1,9 @@
 # Scarp v0.0.7 में पहला कदम
 
-<!-- scarp-cli-release: v0.0.7-alpha.3 -->
-<!-- scarp-current-source: 44a3bb0a91e67570e46ce058a3f6211f8e5db0f5 -->
+<!-- scarp-cli-release: v0.0.7-alpha.4 -->
+<!-- scarp-current-source: e620bdcb512fbe909b08f1b4cc625865e4cdf339 -->
 
-यह पाठ [प्रकाशित v0.0.7-alpha.3](/hi/releases/v0.0.7-alpha.3) के interpreter तथा experimental Rust API की सीमाएँ बताता है।
+यह पाठ [प्रकाशित v0.0.7-alpha.4](/hi/releases/v0.0.7-alpha.4) के interpreter तथा experimental Rust API की सीमाएँ बताता है।
 
 ## Fixed arrays जोड़ना
 
@@ -50,6 +50,8 @@ Experimental x86-64 ELF64 Rust API में 16 तक required integer argument
 
 ## Source evidence
 
-Compiler के [array example](https://github.com/scarp-lang/scarp/blob/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5/examples/array_concat.srp), [integer example](https://github.com/scarp-lang/scarp/blob/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5/examples/integer_reductions.srp) और [native contract](https://github.com/scarp-lang/scarp/blob/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5/docs/native-elf64.md) immutable source पर हैं।
+Compiler के [array example](https://github.com/scarp-lang/scarp/blob/e620bdcb512fbe909b08f1b4cc625865e4cdf339/examples/array_concat.srp), [integer example](https://github.com/scarp-lang/scarp/blob/e620bdcb512fbe909b08f1b4cc625865e4cdf339/examples/integer_reductions.srp) और [native contract](https://github.com/scarp-lang/scarp/blob/e620bdcb512fbe909b08f1b4cc625865e4cdf339/docs/native-elf64.md) immutable source पर हैं।
 
 Alpha.3 की नई सुविधाओं और उनकी सीमाओं के लिए [Generic functions](/hi/guide/v007-alpha3-generics-strings) तथा [Native aggregate locals](/hi/guide/native-aggregate-locals) पढ़ें।
+
+alpha.4 में Rust host API से bounded native recursion और private nested aggregates समर्थित हैं; `scarp native-object` CLI recursive call graph स्वीकार नहीं करता। [सिस्टम उदाहरण](/hi/guide/v007-alpha4-systems) देखें।

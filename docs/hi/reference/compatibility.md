@@ -6,7 +6,8 @@ Scarp के शुरुआती prereleases में syntax और API ब�
 
 | संस्करण | प्रमुख प्रकाशित सुविधा |
 | --- | --- |
-| **[v0.0.7-alpha.3](/hi/releases/v0.0.7-alpha.3)** | **नवीनतम (27 नवंबर):** Generic functions, contextual type inference, generic Option/Result, bounded string operators तथा private aggregate locals के साथ experimental native integer specialization; सामान्य native executable compiler नहीं। |
+| **[v0.0.7-alpha.4](/hi/releases/v0.0.7-alpha.4)** | **नवीनतम (28 नवंबर):** Bounded native recursion, nested private aggregates, exact BigInt wide exponents और file-backed arithmetic; सामान्य executable compiler अभी नहीं। |
+| **[v0.0.7-alpha.3](/hi/releases/v0.0.7-alpha.3)** | प्रकाशित 27 नवंबर: Generic functions, contextual type inference, generic Option/Result, bounded string operators तथा private aggregate locals के साथ experimental native integer specialization; सामान्य native executable compiler नहीं। |
 | **[v0.0.7-alpha.2](/hi/releases/v0.0.7-alpha.2)** | **पूर्व (26 नवंबर):** Experimental ELF64 object CLI, bounded direct calls और Rust aggregate layout queries; सामान्य native executable compiler नहीं। |
 | **[v0.0.7-alpha.1](/hi/releases/v0.0.7-alpha.1)** | **ऐतिहासिक (25 नवंबर):** Fixed-array concatenation, integer reductions, bounded frame reuse और experimental ELF64 scalar control flow; सामान्य native CLI नहीं। |
 | **[v0.0.6-alpha.20](/hi/releases/v0.0.6-alpha.20)** | **पूर्व (24 नवंबर):** Exact decimal literals, persistent tuple updates, numeric tuple ordering, lowercase `scarp.project` और experimental Rust native functions; सामान्य native CLI नहीं। |

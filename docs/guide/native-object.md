@@ -31,7 +31,7 @@ The source name `evaluate` selects the entry; the exported object symbol is **`s
 | --- | --- | --- |
 | `checked` | Standalone pure integer function, forward scalar flow | `scarp_checked_integer_function` |
 | `bounded` | Standalone function with loops and a work allowance | `scarp_bounded_integer_function` |
-| `bounded-entry` | Named entry, same-file nonrecursive calls, work and stack allowances | `scarp_bounded_integer_entry` |
+| `bounded-entry` | Named entry, nonrecursive same-file calls, work and stack allowances | `scarp_bounded_integer_entry` |
 
 The explicit target is `x86_64-none`. Both allowances are unsigned 32-bit decimal values. The stack budget is measured below the aligned caller stack pointer before CALL; external argument slots and caller alignment padding are separate.
 
@@ -49,7 +49,7 @@ A target such as `x86_64` is invalid; use the explicit `x86_64-none` target. A m
 
 ## What is not supported
 
-Native recursion, external calls, heap-backed values, general aggregate parameters/results, project input and executable linking remain outside this backend. Alpha.3 adds private flat integer/Boolean aggregate stack locals and concrete integer generic specialization. Use `scarp exec` for interpreter execution.
+Recursive call graphs, external calls, heap-backed values, general aggregate parameters/results, project input and executable linking remain outside this CLI. Alpha.3 introduced private flat integer/Boolean aggregates and concrete integer generic specialization; alpha.4 added nested private aggregates for this nonrecursive CLI and a separate Rust API `emit_elf64_recursive_integer_entry` for bounded recursion. [Verified alpha.4 systems examples](/guide/v007-alpha4-systems). Use `scarp exec` for interpreter execution.
 
 [Current reference](/reference/current) · [Immutable native-object contract](https://github.com/scarp-lang/scarp/blob/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5/docs/native-object-output.md) · [Release](/releases/v0.0.7-alpha.3).
 

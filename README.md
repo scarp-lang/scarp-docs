@@ -11,7 +11,7 @@ Official TypeScript-generated documentation for the experimental [Scarp Programm
 
 **Compiler:** https://github.com/scarp-lang/scarp
 
-**Latest published compiler:** [v0.0.7-alpha.3](https://github.com/scarp-lang/scarp/releases/tag/v0.0.7-alpha.3), November 27, 2026, source `44a3bb0a91e67570e46ce058a3f6211f8e5db0f5`. Generic functions, contextual type inference, generic Option/Result, bounded string operators and experimental native integer specialization with private aggregate locals; no general native executable compiler. [English release](docs/releases/v0.0.7-alpha.3.md) · [हिन्दी रिलीज़](docs/hi/releases/v0.0.7-alpha.3.md) · [Current reference](docs/reference/current.md). **For binaries use [the official downloads hub](https://scarp-lang.github.io/downloads/)**.
+**Latest published compiler:** [v0.0.7-alpha.4](https://github.com/scarp-lang/scarp/releases/tag/v0.0.7-alpha.4), November 28, 2026, source `e620bdcb512fbe909b08f1b4cc625865e4cdf339`. Bounded native recursion, nested private aggregates and exact resource-limited BigInt operations; `scarp exec` remains interpreted.
 
 **Supported documentation policy:** The public site now recommends only the **latest published Scarp prerelease**, via [Official Downloads](https://scarp-lang.github.io/downloads/), the [current English guide](docs/guide/current.md), [हिन्दी वर्तमान गाइड](docs/hi/guide/current.md), and the [current compiler reference](docs/reference/current.md). Older compiler pages are retired from public search, navigation and sitemap, and return noindex migration notices. Their tagged evidence remains in this repository for test reproducibility, not recommended installation.
 

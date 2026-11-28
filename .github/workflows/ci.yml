@@ -864,5 +864,32 @@ jobs:
         run: cargo build --manifest-path .compiler-v007-alpha3/Cargo.toml --locked --offline
       - name: Verify bilingual lessons and pinned examples
         run: npm run test:v007-alpha3 -- .compiler-v007-alpha3/target/debug/scarp .compiler-v007-alpha3
+      - name: Verify published alpha.4 fixture evidence (static only)
+        run: npm run test:v007-alpha4
       - name: Run upstream language and aggregate regression tests
         run: cargo test --manifest-path .compiler-v007-alpha3/Cargo.toml --locked --offline --test generic_functions --test generic_variant_payloads --test string_operators --test native_object_aggregates
+
+  v007-alpha4-conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: scarp-lang/scarp
+          ref: e620bdcb512fbe909b08f1b4cc625865e4cdf339
+          path: .compiler-v007-alpha4
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22'
+      - name: Install TypeScript tooling
+        run: npm install --no-audit --no-fund
+      - name: Confirm exact published compiler revision
+        run: test "$(git -C .compiler-v007-alpha4 rev-parse HEAD)" = "e620bdcb512fbe909b08f1b4cc625865e4cdf339"
+      - name: Build published alpha.4 interpreter
+        run: cargo build --manifest-path .compiler-v007-alpha4/Cargo.toml --locked --offline
+      - name: Execute published alpha.4 source, BigInt and native-object contract
+        run: npm run test:v007-alpha4 -- .compiler-v007-alpha4/target/debug/scarp .compiler-v007-alpha4
+      - name: Execute upstream alpha.4 numerical and native regressions
+        run: cargo test --manifest-path .compiler-v007-alpha4/Cargo.toml --locked --offline --test bigint_exponents --test bigint_files --test native_object_direct_calls --test native_object_aggregates
+
