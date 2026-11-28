@@ -42,7 +42,7 @@ For an explicit file, use `scarp exec path/to/file.srp`. `exec` runs interpreted
 
 ## Step 4: Understand the current capabilities
 
-The current release adds bounded native recursion, nested private aggregates and resource-limited wide BigInt operations. Previously published generic functions and string operators remain available.
+The current release adds bounded native recursion through a Rust API (not through `scarp native-object`), nested private aggregates and resource-limited wide BigInt operations. Previously published generic functions and string operators remain available.
 
 The [current compiler reference](/reference/current) summarizes what is demonstrably available in this release, including exact decimal literals, tuple operations, source entrypoint selection, and Lifetime behavior. The [release notes](/releases/v0.0.7-alpha.4) provide immutable source provenance and published checksums.
 

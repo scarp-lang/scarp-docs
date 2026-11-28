@@ -3,7 +3,7 @@
 <!-- scarp-cli-release: v0.0.7-alpha.4 -->
 <!-- scarp-current-source: e620bdcb512fbe909b08f1b4cc625865e4cdf339 -->
 
-ये उदाहरण प्रकाशित `v0.0.7-alpha.4` source से लिए गए हैं। पहले interpreter से verify/exec करें, फिर केवल function declarations वाला program native-object में दें।
+ये उदाहरण प्रकाशित `v0.0.7-alpha.4` source से लिए गए हैं। पहले interpreter से verify/exec करें। Native CLI में केवल nonrecursive declarations स्वीकार होते हैं; recursive object के लिए अलग Rust API चाहिए।
 
 ## Nested private frame aggregates
 
@@ -45,7 +45,7 @@ print(entry(1, -7));
 
 ## Bounded mutual recursion
 
-`gcd` और `reduce` एक-दूसरे को call करते हैं। Native lowering work, live frames और stack को सीमित करता है; ये limits अनंत recursion की अनुमति नहीं हैं।
+`gcd` और `reduce` एक-दूसरे को call करते हैं। Tag के Rust API `emit_elf64_recursive_integer_entry` में work, active-frame और stack budgets हैं। alpha.4 में `scarp native-object` CLI अभी recursive call graph को E0049 से रोकता है।
 
 ~~~scarp
 // Alternate frames while reducing the Euclidean remainder.
@@ -69,13 +69,13 @@ print(gcd(1071, 462));
 
 ## Native object बनाने का तरीका
 
-ऊपर दिए `.srp` उदाहरणों के `print(...)` statements हटाकर केवल types/functions को `aggregates.srp` और `recursive.srp` में रखें। Native object output ELF64 relocatable है, स्वयं executable नहीं। CLI काम की सीमा और stack सीमा को compile-time validate करता है।
+Nonrecursive aggregate source में `print(...)` statements हटाकर `aggregates.srp` बनाएं। Recursive `gcd` को `scarp native-object` में न भेजें: CLI E0049 देता है। Recursive object के लिए Rust host API `emit_elf64_recursive_integer_entry(source, name, max_work, max_active_frames, max_stack_bytes)` प्रयोग करें। ELF64 object executable नहीं है।
 
 ~~~sh
 scarp verify native_nested_aggregate_locals.srp
 scarp exec native_nested_aggregate_locals.srp
 scarp native-object --json x86_64-none bounded-entry entry 4000 8192 aggregates.srp -o aggregates.o
-scarp native-object --json x86_64-none bounded-entry gcd 4000 8192 recursive.srp -o recursive.o
+scarp exec native_recursive_entry.srp
 ~~~
 
 [इस tag की रिलीज़](/hi/releases/v0.0.7-alpha.4) · [पुराना alpha.3 aggregate पाठ](/hi/guide/native-aggregate-locals) · [Pinned source](https://github.com/scarp-lang/scarp/blob/e620bdcb512fbe909b08f1b4cc625865e4cdf339/examples/native_recursive_entry.srp).

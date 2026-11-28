@@ -65,7 +65,7 @@ File-level `funcra` में explicit `::<...>` type arguments, contextual infe
 
 Alpha.19 ने checked named/exported callable handles, signature/effect constrained slots और cumulative execution receipts दिए। Alpha.20 में composite strings के logical UTF-8 bytes भी quota में गिने जाते हैं। Ledger पूरे process की memory limit नहीं है।
 
-Experimental native-object backend pure integer functions, 16 तक required integer arguments तथा एक ही file के bounded direct calls और budget-सीमित self/mutual recursion स्वीकार करता है। नई CLI केवल relocatable x86-64 ELF64 object बनाती है। Work और call-stack bounds जाँचे जाते हैं; ABI experimental है। [Native-object पाठ](/hi/guide/native-object) तथा [tagged compiler contract](https://github.com/scarp-lang/scarp/blob/e620bdcb512fbe909b08f1b4cc625865e4cdf339/docs/native-elf64.md) देखें।
+Experimental native-object backend pure integer functions, 16 तक required integer arguments तथा एक ही file के bounded nonrecursive calls; अलग Rust host API में budget-सीमित self/mutual recursion स्वीकार करता है। नई CLI केवल relocatable x86-64 ELF64 object बनाती है। Work और call-stack bounds जाँचे जाते हैं; ABI experimental है। [Native-object पाठ](/hi/guide/native-object) तथा [tagged compiler contract](https://github.com/scarp-lang/scarp/blob/e620bdcb512fbe909b08f1b4cc625865e4cdf339/docs/native-elf64.md) देखें।
 
 [वर्तमान release guide](/hi/guide/alpha7-first) में array concatenation, integer reductions और native सीमाएँ पढ़ें।
 
@@ -79,4 +79,4 @@ ELF64 object emission अब experimental CLI से उपलब्ध है; 
 
 ## alpha.4 की native और BigInt सीमाएँ
 
-Native `bounded-entry` अब सीमित self/mutual recursion और nested private records/arrays/tuples को स्वीकार करता है। हर aggregate में अधिकतम 32 integer/Boolean leaves समर्थित हैं। Work, stack और active-frame budgets अलग हैं। File-backed BigInt में अलग IO, buffer और work सीमाएँ हैं। [सिस्टम पाठ](/hi/guide/v007-alpha4-systems) · [BigInt पाठ](/hi/guide/v007-alpha4-bigint)।
+Rust API `emit_elf64_recursive_integer_entry` सीमित self/mutual recursion स्वीकार करता है, लेकिन `scarp native-object` CLI अब भी recursive call graph रोकता है। Nested private records/arrays/tuples CLI के nonrecursive subset में उपलब्ध हैं। हर aggregate में अधिकतम 32 integer/Boolean leaves समर्थित हैं। Work, stack और active-frame budgets अलग हैं। File-backed BigInt में अलग IO, buffer और work सीमाएँ हैं। [सिस्टम पाठ](/hi/guide/v007-alpha4-systems) · [BigInt पाठ](/hi/guide/v007-alpha4-bigint)।

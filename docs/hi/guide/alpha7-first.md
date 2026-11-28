@@ -54,4 +54,4 @@ Compiler के [array example](https://github.com/scarp-lang/scarp/blob/e620bdc
 
 Alpha.3 की नई सुविधाओं और उनकी सीमाओं के लिए [Generic functions](/hi/guide/v007-alpha3-generics-strings) तथा [Native aggregate locals](/hi/guide/native-aggregate-locals) पढ़ें।
 
-alpha.4 में bounded native recursion और nested aggregates समर्थित हैं। [सिस्टम उदाहरण](/hi/guide/v007-alpha4-systems) देखें।
+alpha.4 में Rust host API से bounded native recursion और private nested aggregates समर्थित हैं; `scarp native-object` CLI recursive call graph स्वीकार नहीं करता। [सिस्टम उदाहरण](/hi/guide/v007-alpha4-systems) देखें।

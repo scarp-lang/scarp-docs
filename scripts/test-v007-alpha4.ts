@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { createHash } from 'node:crypto'
-import { readFileSync, mkdtempSync, writeFileSync, rmSync } from 'node:fs'
+import { readFileSync, mkdtempSync, writeFileSync, rmSync, existsSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import { tmpdir } from 'node:os'
 import { spawnSync } from 'node:child_process'
@@ -112,6 +112,19 @@ if(process.argv[2]){
       const destination=stem+'.o'
       writeFileSync(join(work,source),stripped)
       assert.equal(run(['verify',source]),'')
+      if(entry==='gcd'){
+        // The published alpha.4 Rust API supports bounded recursion, while
+        // the shipped CLI deliberately rejects recursive call graphs.
+        const result=spawnSync(binary,['native-object','--json','x86_64-none',
+          'bounded-entry',entry,'4000','8192',source,'-o',destination],{
+          cwd:work,encoding:'utf8',timeout:45000
+        })
+        assert.equal(result.status,1)
+        assert.match(result.stderr,/E0049/)
+        assert.match(result.stderr,/nonrecursive/)
+        assert.equal(existsSync(join(work,destination)),false)
+        continue
+      }
       const report=JSON.parse(run(['native-object','--json','x86_64-none',
         'bounded-entry',entry,'4000','8192',source,'-o',destination]))
       assert.equal(report.mode,'bounded-entry')

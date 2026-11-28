@@ -3,7 +3,7 @@
 <!-- scarp-cli-release: v0.0.7-alpha.4 -->
 <!-- scarp-current-source: e620bdcb512fbe909b08f1b4cc625865e4cdf339 -->
 
-The examples are byte-for-byte from published `v0.0.7-alpha.4` compiler fixtures. Verify and execute with the interpreter first; for native-object emission pass a declaration-only source file.
+The examples are byte-for-byte from published `v0.0.7-alpha.4` compiler fixtures. Verify and execute with the interpreter first. The CLI accepts a declaration-only nonrecursive source for object emission; recursive entry emission requires the separate tagged Rust API.
 
 ## Nested private frame aggregates
 
@@ -45,7 +45,7 @@ print(entry(1, -7));
 
 ## Bounded mutual recursion
 
-`gcd` and `reduce` call each other. Native lowering enforces work, live-frame and stack budgets; these bounds do not allow unrestricted recursion.
+`gcd` and `reduce` call each other. The tagged Rust API `emit_elf64_recursive_integer_entry` enforces work, active-frame and stack budgets. The alpha.4 `scarp native-object` CLI still rejects recursive call graphs.
 
 ~~~scarp
 // Alternate frames while reducing the Euclidean remainder.
@@ -69,13 +69,13 @@ print(gcd(1071, 462));
 
 ## Emitting the native object
 
-For native-object, remove the top-level `print(...)` statements from the above examples and save only types and functions in `aggregates.srp` and `recursive.srp`. The output is a relocatable ELF64 object, not an executable. The CLI validates work and stack budgets.
+For the nonrecursive aggregate CLI example, remove the top-level `print(...)` statements and save only types and functions in `aggregates.srp`. Do not pass recursive `gcd` to `scarp native-object`: that CLI rejects recursion with E0049. To emit a recursive entry, use the tagged Rust host API `emit_elf64_recursive_integer_entry(source, name, max_work, max_active_frames, max_stack_bytes)`. Both APIs produce relocatable ELF64 objects, not executables.
 
 ~~~sh
 scarp verify native_nested_aggregate_locals.srp
 scarp exec native_nested_aggregate_locals.srp
 scarp native-object --json x86_64-none bounded-entry entry 4000 8192 aggregates.srp -o aggregates.o
-scarp native-object --json x86_64-none bounded-entry gcd 4000 8192 recursive.srp -o recursive.o
+scarp exec native_recursive_entry.srp
 ~~~
 
 [Published release](/releases/v0.0.7-alpha.4) · [Earlier alpha.3 aggregate lesson](/guide/native-aggregate-locals) · [Pinned source](https://github.com/scarp-lang/scarp/blob/e620bdcb512fbe909b08f1b4cc625865e4cdf339/examples/native_recursive_entry.srp).

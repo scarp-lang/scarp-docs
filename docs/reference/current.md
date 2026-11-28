@@ -65,13 +65,13 @@ File-level `funcra` supports explicit `::<...>` type arguments, contextual infer
 
 Alpha.19 introduced checked named/exported callable handles, signature/effect-constrained slots and cumulative execution receipts. Alpha.20 extends host argument admission to strings inside composite values, counted by logical UTF-8 occurrence. These quotas do not bound total process memory.
 
-The experimental native-object backend accepts pure integer functions, up to sixteen required arguments, and bounded direct calls and budget-limited self/mutual recursion within a file. The new CLI emits relocatable x86-64 ELF64 objects only. Work and call-stack bounds are checked; the ABI is experimental. See the [native-object tutorial](/guide/native-object) and [tagged compiler contract](https://github.com/scarp-lang/scarp/blob/e620bdcb512fbe909b08f1b4cc625865e4cdf339/docs/native-elf64.md).
+The experimental native-object backend accepts pure integer functions, up to sixteen required arguments, and bounded nonrecursive direct calls within a file. A separate Rust API supports budget-limited self/mutual recursion. The new CLI emits relocatable x86-64 ELF64 objects only. Work and call-stack bounds are checked; the ABI is experimental. See the [native-object tutorial](/guide/native-object) and [tagged compiler contract](https://github.com/scarp-lang/scarp/blob/e620bdcb512fbe909b08f1b4cc625865e4cdf339/docs/native-elf64.md).
 
 Read the [current release guide](/guide/alpha7-first) for array concatenation, integer reductions and native limitations.
 
 ## What remains outside this compiler
 
-ELF64 object emission is now exposed through an experimental CLI; C11 emission and checked aggregate layout planning remain Rust host APIs. Neither provides general executable compilation. Bounded native self/mutual recursion is supported; external calls, heap-backed values and general aggregate parameters/results remain unsupported. Private flat integer/Boolean arrays, tuples and records are supported as bounded native stack locals. Scarp remains an experimental interpreter, with no stable compiler or standard-library compatibility promise.
+ELF64 object emission is now exposed through an experimental CLI; C11 emission and checked aggregate layout planning remain Rust host APIs. Neither provides general executable compilation. Bounded native self/mutual recursion is supported only via the tagged Rust API, not the `scarp native-object` CLI; external calls, heap-backed values and general aggregate parameters/results remain unsupported. Private flat integer/Boolean arrays, tuples and records are supported as bounded native stack locals. Scarp remains an experimental interpreter, with no stable compiler or standard-library compatibility promise.
 
 ## Download and evidence
 
@@ -79,4 +79,4 @@ Use [official downloads](https://scarp-lang.github.io/downloads/), the [current 
 
 ## Native recursion and BigInt resource limits in alpha.4
 
-Native `bounded-entry` supports bounded self/mutual recursion with independent work, active-frame and stack budgets. Nested private records, arrays and tuples are limited to **32 integer/Boolean leaves per aggregate value**. File-backed BigInt operations have separate input, output, staging and work limits. [Native systems tutorial](/guide/v007-alpha4-systems) · [BigInt tutorial](/guide/v007-alpha4-bigint).
+The Rust API `emit_elf64_recursive_integer_entry` supports bounded self/mutual recursion with independent work, active-frame and stack budgets. The CLI `native-object bounded-entry` continues to reject recursive call graphs. Nested private records, arrays and tuples are limited to **32 integer/Boolean leaves per aggregate value**. File-backed BigInt operations have separate input, output, staging and work limits. [Native systems tutorial](/guide/v007-alpha4-systems) · [BigInt tutorial](/guide/v007-alpha4-bigint).

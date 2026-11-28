@@ -54,4 +54,4 @@ Immutable upstream evidence: [array example](https://github.com/scarp-lang/scarp
 
 For alpha.3 additions and their limits, see [generics and strings](/guide/v007-alpha3-generics-strings) and [native aggregate locals](/guide/native-aggregate-locals).
 
-Alpha.4 supports bounded native recursion and nested private aggregate values. [See the tagged systems examples](/guide/v007-alpha4-systems).
+Alpha.4 supports bounded native recursion through the Rust host API, not through the `scarp native-object` CLI, and supports nested private aggregate values. [See the tagged systems examples](/guide/v007-alpha4-systems).

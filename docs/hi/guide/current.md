@@ -42,7 +42,7 @@ scarp verify src/main.srp
 
 ## चरण 4: वर्तमान सुविधाओं को समझें
 
-वर्तमान release में generic functions, contextual inference, string operators और bounded native aggregate locals उपलब्ध हैं; पुराने interpreter सुधार भी बने हुए हैं।
+वर्तमान alpha.4 release में Rust API से bounded native recursion (CLI से नहीं), nested private aggregates, BigInt wide exponents और file-backed BigInt operations उपलब्ध हैं; generic functions तथा string operators भी समर्थित हैं।
 
 [वर्तमान compiler reference](/hi/reference/current) में इस रिलीज़ के exact decimal, tuple operations, entrypoint चुनाव और Lifetime व्यवहार का सार है। [Release notes](/hi/releases/v0.0.7-alpha.4) में प्रकाशित source और checksums उपलब्ध हैं।
 
