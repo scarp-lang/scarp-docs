@@ -1,9 +1,9 @@
 # Current Scarp type system
 
-<!-- scarp-cli-release: v0.0.7-alpha.3 -->
-<!-- scarp-current-source: 44a3bb0a91e67570e46ce058a3f6211f8e5db0f5 -->
+<!-- scarp-cli-release: v0.0.7-alpha.4 -->
+<!-- scarp-current-source: e620bdcb512fbe909b08f1b4cc625865e4cdf339 -->
 
-This reference describes the source type model of [published v0.0.7-alpha.3](/releases/v0.0.7-alpha.3). Install only from [official downloads](https://scarp-lang.github.io/downloads/). Types describe values and allowed operations; a mutable binding does not imply mutable backing storage. A successful interpreter example does not establish native-backend support.
+This reference describes the source type model of [published v0.0.7-alpha.4](/releases/v0.0.7-alpha.4). Install only from [official downloads](https://scarp-lang.github.io/downloads/). Types describe values and allowed operations; a mutable binding does not imply mutable backing storage. A successful interpreter example does not establish native-backend support.
 
 ## Choosing a type
 
@@ -64,7 +64,7 @@ print(0.1 + 0.2);
 0.30000000000000004
 ~~~
 
-Use explicit conversions between numeric types. Decimal division must be exactly representable unless explicit rounding is requested. See [BigInt](https://github.com/scarp-lang/scarp/blob/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5/docs/bigint.md), [Decimal](https://github.com/scarp-lang/scarp/blob/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5/docs/decimal.md) and the [current release lesson](/guide/alpha7-first). Some source documents retain draft-era headings: the immutable published tag is the evidence boundary.
+Use explicit conversions between numeric types. Decimal division must be exactly representable unless explicit rounding is requested. See [BigInt](https://github.com/scarp-lang/scarp/blob/e620bdcb512fbe909b08f1b4cc625865e4cdf339/docs/bigint.md), [Decimal](https://github.com/scarp-lang/scarp/blob/e620bdcb512fbe909b08f1b4cc625865e4cdf339/docs/decimal.md) and the [current release lesson](/guide/alpha7-first). Some source documents retain draft-era headings: the immutable published tag is the evidence boundary.
 
 ## Fixed tuples and arrays
 
@@ -85,7 +85,7 @@ print(values[1], changed[1]);
 20 40
 ~~~
 
-The expression array_set creates a new array while preserving the old one. Type metadata distinguishes tuple<integer, string> from tuple<string, integer> and array<integer, 2> from array<integer, 3>. Ordinary square brackets construct numerical vectors rather than generic arrays. See [tuples](https://github.com/scarp-lang/scarp/blob/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5/docs/tuples.md) and [fixed arrays](https://github.com/scarp-lang/scarp/blob/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5/docs/fixed-arrays.md).
+The expression array_set creates a new array while preserving the old one. Type metadata distinguishes tuple<integer, string> from tuple<string, integer> and array<integer, 2> from array<integer, 3>. Ordinary square brackets construct numerical vectors rather than generic arrays. See [tuples](https://github.com/scarp-lang/scarp/blob/e620bdcb512fbe909b08f1b4cc625865e4cdf339/docs/tuples.md) and [fixed arrays](https://github.com/scarp-lang/scarp/blob/e620bdcb512fbe909b08f1b4cc625865e4cdf339/docs/fixed-arrays.md).
 
 ## Dynamic lists and deterministic maps
 
@@ -108,7 +108,7 @@ print(map_get_or(updated, "absent", -1));
 -1
 ~~~
 
-List lengths are bounded at 4,096 and map entries at 1,024. These limits do not remove execution and allocation quotas. Use [list contract](https://github.com/scarp-lang/scarp/blob/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5/docs/typed-dynamic-lists.md) and [map contract](https://github.com/scarp-lang/scarp/blob/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5/docs/typed-maps.md) for precise operations.
+List lengths are bounded at 4,096 and map entries at 1,024. These limits do not remove execution and allocation quotas. Use [list contract](https://github.com/scarp-lang/scarp/blob/e620bdcb512fbe909b08f1b4cc625865e4cdf339/docs/typed-dynamic-lists.md) and [map contract](https://github.com/scarp-lang/scarp/blob/e620bdcb512fbe909b08f1b4cc625865e4cdf339/docs/typed-maps.md) for precise operations.
 
 ## Nominal records and variants
 
@@ -137,7 +137,7 @@ Scarp
 Not found
 ~~~
 
-Records and variants are bounded acyclic types, not arbitrary recursive object graphs. A payload can contain another supported composite type. Exported nominal types need explicit public declarations and module-aware type names. See [records](https://github.com/scarp-lang/scarp/blob/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5/docs/development/source-records.md) and [variants](https://github.com/scarp-lang/scarp/blob/44a3bb0a91e67570e46ce058a3f6211f8e5db0f5/docs/development/source-variants.md).
+Records and variants are bounded acyclic types, not arbitrary recursive object graphs. A payload can contain another supported composite type. Exported nominal types need explicit public declarations and module-aware type names. See [records](https://github.com/scarp-lang/scarp/blob/e620bdcb512fbe909b08f1b4cc625865e4cdf339/docs/development/source-records.md) and [variants](https://github.com/scarp-lang/scarp/blob/e620bdcb512fbe909b08f1b4cc625865e4cdf339/docs/development/source-variants.md).
 
 ## Common mistakes and how to reason about them
 
