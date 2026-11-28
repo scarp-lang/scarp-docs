@@ -7,6 +7,7 @@ import { LATEST_RELEASE } from './command-finder.ts'
  */
 export interface SearchLocalizationSources {
   client: string
+  engine: string
   renderer: string
   readme: string
   english: string
@@ -22,7 +23,7 @@ export function validateHindiLocalSearch(sources: SearchLocalizationSources): st
       if (!body.includes(fragment)) failures.push(where + ': missing ' + fragment)
     }
   }
-  const { client, renderer, readme, english, hindi, englishIntro, hindiIntro } = sources
+  const { client, engine, renderer, readme, english, hindi, englishIntro, hindiIntro } = sources
 
   // Search must be entirely local to Scarp's deployed /scarp-docs/ assets.
   // Separate preview/browser tests cover keyboard behavior and network isolation.
@@ -31,7 +32,7 @@ export function validateHindiLocalSearch(sources: SearchLocalizationSources): st
     "const locale:'en'|'hi'=hindi?'hi':'en'",
     "const t=(en:string,hi:string):string=>hindi?hi:en",
     "fetch(BASE+'assets/search-index.json')",
-    "entries.filter(e=>e.locale===locale)",
+    "searchDocumentation(await searchIndex(),query,{locale})",
     "t('No results found','कोई परिणाम नहीं मिला')",
     "t('Could not load the local search index. Use page navigation instead.',",
     "dialog.showModal()",
@@ -43,7 +44,7 @@ export function validateHindiLocalSearch(sources: SearchLocalizationSources): st
     "event.key==='/'&&!typing&&!dialog.open"
   ])
   const indexStart=client.indexOf('function searchIndex():Promise<SearchEntry[]>')
-  const indexEnd=client.indexOf('function search(entries:',indexStart)
+  const indexEnd=client.indexOf('function installSearch():void',indexStart)
   if(indexStart<0 || indexEnd<=indexStart){
     failures.push('Browser: local search index fetch contract missing')
   }else{
@@ -54,6 +55,23 @@ export function validateHindiLocalSearch(sources: SearchLocalizationSources): st
     if(!indexScope.includes("fetch(BASE+'assets/search-index.json')")){
       failures.push('Browser: search must fetch only the local static index')
     }
+  }
+
+  // The exported browser-safe search engine owns locale isolation, not the
+  // browser controller. Validate both the call site and implementation so
+  // eliminating the old inline filter never weakens the bilingual contract.
+  requireText('Search engine',engine,[
+    "if (options.locale !== 'en' && options.locale !== 'hi')",
+    "if (page.entry.locale !== options.locale) continue",
+    "export function parseSearchIndex(",
+    "export function searchDocumentation(",
+    "export function searchPreview(",
+    "if (seen.has(entry.route))",
+    "const MAX_TOTAL_TEXT =",
+    "const MAX_QUERY ="
+  ])
+  if (/(?:fetch\s*\(|XMLHttpRequest|sendBeacon|https?:\/\/|algolia|meilisearch|typesense)/i.test(engine)) {
+    failures.push('Search engine: ranking and parsing must remain offline and framework-free')
   }
 
   // HTML source and search index are emitted by the independent generator.
