@@ -9,6 +9,7 @@ const root=resolve(fileURLToPath(new URL('..',import.meta.url)))
 const read=(p:string):string=>readFileSync(resolve(root,p),'utf8')
 const pages:SearchLocalizationSources={
   client:read('scripts/scarp-site/client.ts'),
+  engine:read('scripts/scarp-site/search-index.ts'),
   renderer:read('scripts/scarp-site/build.ts'),
   readme:read('README.md'),
   english:read('docs/guide/search-and-navigation.md'),
@@ -26,8 +27,11 @@ function mutate(key:keyof SearchLocalizationSources,from:string,to:string):void{
 // The old VitePress theme is not used by any test or acceptance check here.
 mutate('client',"const hindi=document.documentElement.lang.startsWith('hi')",
   "const hindi=false")
-mutate('client',"entries.filter(e=>e.locale===locale)","entries.filter(e=>true)")
+mutate('engine',"if (page.entry.locale !== options.locale) continue",
+  "if (false) continue")
 mutate('client',"fetch(BASE+'assets/search-index.json')","fetch('https://search.example.com/index')")
+mutate('client',"searchDocumentation(await searchIndex(),query,{locale})",
+  "searchDocumentation(await searchIndex(),query,{locale:'en'})")
 mutate('client',"t('No results found','कोई परिणाम नहीं मिला')",
   "t('No results found','No results found')")
 mutate('client',"dialog.showModal()","dialog.show()")
@@ -57,4 +61,4 @@ mutate('readme','docs/hi/guide/search-and-navigation.md',
 assert.ok(validateHindiLocalSearch({...pages,
   hindi:pages.hindi.replace(/[\u0900-\u097f]/gu,'')}).length>0,
   'Removing all Hindi script must fail')
-console.log('PASS: 21 owned-search localization, ARIA, network, keyboard and release-drift regressions')
+console.log('PASS: 22 owned-search localization, ARIA, network, keyboard and release-drift regressions')
