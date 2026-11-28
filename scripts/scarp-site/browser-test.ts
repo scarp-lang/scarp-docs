@@ -226,6 +226,31 @@ async function testLocale(
       lang+': previews must be code-point bounded')
     assertions++
 
+    // The category selector must restrict matches before the result limit,
+    // preserve the query, and be fully keyboard accessible in both locales.
+    const scope=page.locator<HTMLSelectElement>('#search-scope')
+    assert.equal(await scope.getAttribute('aria-label'),
+      lang==='hi'?'अनुभाग से छाँटें':'Filter by section')
+    assert.equal(await scope.inputValue(),'')
+    assert.ok(await scope.locator('option[value="reference"]').count()>0,
+      lang+': reference section must be available in current docs')
+    await scope.selectOption('reference')
+    await page.waitForFunction(() => {
+      const status=document.querySelector('#search-status')?.textContent??''
+      return /(?:result|परिणाम)/.test(status)
+    })
+    const scopedResults=await page.locator('#search-results li a').evaluateAll(links=>
+      links.map(link=>link.getAttribute('href')||''))
+    assert.ok(scopedResults.length>0 &&
+      scopedResults.every(href=>href.startsWith(prefix+'reference/')),
+      lang+': section filter must hide all non-reference pages')
+    assert.equal(await searchInput.inputValue(),'E0063',
+      lang+': changing the section must preserve the query')
+    await scope.selectOption('')
+    await page.waitForFunction(()=>
+      (document.querySelector('#search-scope') as HTMLSelectElement).value==='')
+    assertions++
+
     await searchInput.fill('zzqvkpwmntrxhfbjkldsrp9776')
     await page.getByRole('status').getByText(
       lang==='hi'?'कोई परिणाम नहीं मिला':'No results found',{exact:true}).waitFor()
