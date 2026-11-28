@@ -1,0 +1,35 @@
+{
+  "compilerCommit": "e620bdcb512fbe909b08f1b4cc625865e4cdf339",
+  "files": [
+    {
+      "name": "bigint_wide_exponents.srp",
+      "upstream": "examples/bigint_wide_exponents.srp",
+      "blob": "aa09f8647840cfe0cecbb7067fb0b86fbbe13217"
+    },
+    {
+      "name": "bigint_wide_exponents.stdout",
+      "upstream": "examples/bigint_wide_exponents.stdout",
+      "blob": "b58e121fb19fa78624ec7ce207f575655316afff"
+    },
+    {
+      "name": "native_nested_aggregate_locals.srp",
+      "upstream": "examples/native_nested_aggregate_locals.srp",
+      "blob": "a09fc11fcd779cfd3106f0a34fc1ef119fc62f42"
+    },
+    {
+      "name": "native_nested_aggregate_locals.stdout",
+      "upstream": "examples/native_nested_aggregate_locals.stdout",
+      "blob": "0f1893a9cd87040c3810b9cd614f3eaa66862b4c"
+    },
+    {
+      "name": "native_recursive_entry.srp",
+      "upstream": "examples/native_recursive_entry.srp",
+      "blob": "4c27e37ca468f517f626d4889a61be14fa49e897"
+    },
+    {
+      "name": "native_recursive_entry.stdout",
+      "upstream": "examples/native_recursive_entry.stdout",
+      "blob": "aabe6ec3909c9d4871f8f89ef88ca3b6795ebd29"
+    }
+  ]
+}
